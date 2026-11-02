@@ -1,0 +1,1397 @@
+{
+  "id": "fu2-famille",
+  "version": 1,
+  "order": 2,
+  "title": "Family & Friends",
+  "targetTitle": "Ma famille",
+  "world": "starter-village",
+  "objective": "Talk about family and friends, introduce people, describe them, name colors, and talk about pets.",
+  "canDo": [
+    "I can name people in my family.",
+    "I can introduce someone with voici.",
+    "I can describe a person with a few words.",
+    "I can name colors.",
+    "I can say what pets I have."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Low–Novice Mid",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons"
+    ]
+  },
+  "ageBands": [
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Written by the development team. Needs review by native-speaker linguists for each regional variant before release. Audio uses on-device text-to-speech until native recordings are made."
+  },
+  "vocabulary": [
+    {
+      "id": "famille",
+      "kind": "word",
+      "target": "la famille",
+      "english": "the family",
+      "gender": "f",
+      "picture": "👨‍👩‍👧",
+      "altText": "a family of three"
+    },
+    {
+      "id": "mere",
+      "kind": "word",
+      "target": "la mère",
+      "english": "the mother",
+      "gender": "f",
+      "note": "Kids usually say maman."
+    },
+    {
+      "id": "pere",
+      "kind": "word",
+      "target": "le père",
+      "english": "the father",
+      "gender": "m",
+      "note": "Kids usually say papa."
+    },
+    {
+      "id": "frere",
+      "kind": "word",
+      "target": "le frère",
+      "english": "the brother",
+      "gender": "m"
+    },
+    {
+      "id": "soeur",
+      "kind": "word",
+      "target": "la sœur",
+      "english": "the sister",
+      "gender": "f"
+    },
+    {
+      "id": "grand-pere",
+      "kind": "word",
+      "target": "le grand-père",
+      "english": "the grandfather",
+      "gender": "m",
+      "note": "Kids often say papi or pépé."
+    },
+    {
+      "id": "grand-mere",
+      "kind": "word",
+      "target": "la grand-mère",
+      "english": "the grandmother",
+      "gender": "f",
+      "note": "Kids often say mamie or mémé."
+    },
+    {
+      "id": "ami",
+      "kind": "word",
+      "target": "l'ami",
+      "english": "the friend (boy)",
+      "gender": "m"
+    },
+    {
+      "id": "amie",
+      "kind": "word",
+      "target": "l'amie",
+      "english": "the friend (girl)",
+      "gender": "f",
+      "note": "Ami and amie sound the same!"
+    },
+    {
+      "id": "grand",
+      "kind": "word",
+      "target": "grand",
+      "english": "tall / big",
+      "partOfSpeech": "adjective",
+      "note": "For a girl: grande."
+    },
+    {
+      "id": "petit",
+      "kind": "word",
+      "target": "petit",
+      "english": "short / small",
+      "partOfSpeech": "adjective",
+      "note": "For a girl: petite."
+    },
+    {
+      "id": "gentil",
+      "kind": "word",
+      "target": "gentil",
+      "english": "kind / nice",
+      "partOfSpeech": "adjective",
+      "note": "For a girl: gentille."
+    },
+    {
+      "id": "drole",
+      "kind": "word",
+      "target": "drôle",
+      "english": "funny",
+      "partOfSpeech": "adjective",
+      "note": "Drôle is the same for boys and girls."
+    },
+    {
+      "id": "rouge",
+      "kind": "word",
+      "target": "rouge",
+      "english": "red",
+      "partOfSpeech": "adjective",
+      "picture": "🔴",
+      "altText": "a red circle"
+    },
+    {
+      "id": "bleu",
+      "kind": "word",
+      "target": "bleu",
+      "english": "blue",
+      "partOfSpeech": "adjective",
+      "picture": "🔵",
+      "altText": "a blue circle"
+    },
+    {
+      "id": "vert",
+      "kind": "word",
+      "target": "vert",
+      "english": "green",
+      "partOfSpeech": "adjective",
+      "picture": "🟢",
+      "altText": "a green circle"
+    },
+    {
+      "id": "jaune",
+      "kind": "word",
+      "target": "jaune",
+      "english": "yellow",
+      "partOfSpeech": "adjective",
+      "picture": "🟡",
+      "altText": "a yellow circle"
+    },
+    {
+      "id": "violet",
+      "kind": "word",
+      "target": "violet",
+      "english": "purple",
+      "partOfSpeech": "adjective",
+      "picture": "🟣",
+      "altText": "a purple circle"
+    },
+    {
+      "id": "marron",
+      "kind": "word",
+      "target": {
+        "base": "marron",
+        "fr-CA": "brun"
+      },
+      "english": "brown",
+      "partOfSpeech": "adjective",
+      "picture": "🟤",
+      "altText": "a brown circle",
+      "note": "France says marron; Québec says brun."
+    },
+    {
+      "id": "chien",
+      "kind": "word",
+      "target": "le chien",
+      "english": "the dog",
+      "gender": "m",
+      "picture": "🐕",
+      "altText": "a dog",
+      "note": "A girl dog is la chienne."
+    },
+    {
+      "id": "chat",
+      "kind": "word",
+      "target": "le chat",
+      "english": "the cat",
+      "gender": "m",
+      "picture": "🐈",
+      "altText": "a cat"
+    },
+    {
+      "id": "poisson",
+      "kind": "word",
+      "target": "le poisson",
+      "english": "the fish",
+      "gender": "m",
+      "picture": "🐟",
+      "altText": "a fish"
+    },
+    {
+      "id": "oiseau",
+      "kind": "word",
+      "target": "l'oiseau",
+      "english": "the bird",
+      "gender": "m",
+      "picture": "🐦",
+      "altText": "a bird"
+    },
+    {
+      "id": "tortue",
+      "kind": "word",
+      "target": "la tortue",
+      "english": "the turtle",
+      "gender": "f",
+      "picture": "🐢",
+      "altText": "a turtle"
+    },
+    {
+      "id": "animal",
+      "kind": "word",
+      "target": "l'animal de compagnie",
+      "english": "the pet",
+      "gender": "m"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "voici",
+      "kind": "phrase",
+      "target": "voici…",
+      "english": "this is… / here is…",
+      "example": {
+        "target": "Voici mon frère.",
+        "english": "This is my brother."
+      }
+    },
+    {
+      "id": "c-est",
+      "kind": "phrase",
+      "target": "c'est…",
+      "english": "it's / he's / she's…",
+      "example": {
+        "target": "C'est ma grand-mère.",
+        "english": "She's my grandmother."
+      }
+    },
+    {
+      "id": "j-ai",
+      "kind": "phrase",
+      "target": "j'ai…",
+      "english": "I have…",
+      "example": {
+        "target": "J'ai un chat.",
+        "english": "I have a cat."
+      }
+    },
+    {
+      "id": "tu-as",
+      "kind": "phrase",
+      "target": "Tu as… ?",
+      "english": "Do you have…?"
+    },
+    {
+      "id": "quelle-couleur",
+      "kind": "phrase",
+      "target": "De quelle couleur est… ?",
+      "english": "What color is…?"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "fn-u2-mamie",
+      "title": "Mamie and papi",
+      "body": "French kids have lots of cute names for grandparents: mamie, mémé, papi, pépé. Many families eat a long Sunday lunch together with the grandparents."
+    },
+    {
+      "id": "fn-u2-parrain",
+      "title": "Parrain and marraine",
+      "body": "Many children have a parrain (godfather) and a marraine (godmother), special adults who give advice and celebrate birthdays with them."
+    },
+    {
+      "id": "fn-u2-mon",
+      "title": "Mon, ma, mes",
+      "body": "“My” changes in French: mon frère (boy words), ma sœur (girl words), mes amis (more than one). Before a vowel sound, it's always mon: mon amie."
+    }
+  ],
+  "quests": [
+    {
+      "id": "fu2-q1",
+      "order": 1,
+      "title": "Mateo's family photo",
+      "npc": "mateo",
+      "location": "The plaza",
+      "summary": "Mateo shows you a photo of his family.",
+      "objective": "Name the people in a family.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Mateo",
+            "line": "Regarde ! C'est une photo de ma famille.",
+            "gloss": "Look! It's a photo of my family.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Mateo",
+            "line": "Voici ma mère et voici mon père. Tu as des frères et sœurs ?",
+            "gloss": "This is my mother and this is my father. Do you have brothers or sisters?",
+            "choices": [
+              {
+                "text": "Oui, j'ai un frère.",
+                "gloss": "Yes, I have a brother.",
+                "next": "n3"
+              },
+              {
+                "text": "Oui, j'ai une sœur.",
+                "gloss": "Yes, I have a sister.",
+                "next": "n3"
+              },
+              {
+                "text": "Non, je suis enfant unique.",
+                "gloss": "No, I'm an only child.",
+                "next": "n3"
+              }
+            ],
+            "hint": "Coco says: Any true answer is a good answer here!"
+          },
+          {
+            "id": "n3",
+            "speaker": "Mateo",
+            "line": "Super ! Moi, j'ai une sœur, Sofía.",
+            "gloss": "Cool! I have a sister, Sofía.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "fu2-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "fu2-q1-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "famille",
+            "mere",
+            "pere",
+            "frere",
+            "soeur"
+          ],
+          "hint": "Frère sounds like “fair”.",
+          "explanation": "Mère, père, frère, sœur.",
+          "pairs": [
+            {
+              "target": "la famille",
+              "english": "the family"
+            },
+            {
+              "target": "la mère",
+              "english": "the mother"
+            },
+            {
+              "target": "le père",
+              "english": "the father"
+            },
+            {
+              "target": "le frère",
+              "english": "the brother"
+            },
+            {
+              "target": "la sœur",
+              "english": "the sister"
+            }
+          ]
+        },
+        {
+          "id": "fu2-q1-a2",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "grand-mere"
+          ],
+          "hint": "It starts with la, so it's a woman.",
+          "explanation": "La grand-mère = the grandmother.",
+          "target": "la grand-mère",
+          "targetEnglish": "the grandmother",
+          "choices": [
+            {
+              "id": "a",
+              "text": "the grandfather"
+            },
+            {
+              "id": "b",
+              "text": "the grandmother"
+            },
+            {
+              "id": "c",
+              "text": "the sister"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "fu2-q1-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "grand-pere",
+            "c-est"
+          ],
+          "hint": "Père = father.",
+          "explanation": "C'est mon grand-père = He's my grandfather.",
+          "target": "C'est mon grand-père.",
+          "targetEnglish": "He's my grandfather.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "He's my brother."
+            },
+            {
+              "id": "b",
+              "text": "She's my grandmother."
+            },
+            {
+              "id": "c",
+              "text": "He's my grandfather."
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "fu2-q1-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in French: “the sister”",
+          "items": [
+            "soeur"
+          ],
+          "hint": "It starts with s and has a joined œ.",
+          "explanation": "La sœur = the sister. (You can type oe for œ.)",
+          "targetEnglish": "the sister",
+          "accepted": [
+            "la sœur",
+            "sœur",
+            "la soeur",
+            "soeur"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "hat-straw"
+      }
+    },
+    {
+      "id": "fu2-q2",
+      "order": 2,
+      "title": "Meet my friends",
+      "npc": "luna",
+      "location": "The plaza",
+      "summary": "Luna introduces her friends Nico and Sofía.",
+      "objective": "Introduce people with voici and c'est.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "Re-bonjour ! Je te présente mes amis.",
+            "gloss": "Hi again! Let me introduce my friends.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "Voici Nico et voici Sofía.",
+            "gloss": "This is Nico and this is Sofía.",
+            "choices": [
+              {
+                "text": "Enchanté !",
+                "gloss": "Nice to meet you!",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "C'est combien ?",
+                "gloss": "How much is it?",
+                "next": "n2",
+                "correct": false,
+                "feedback": "You just met them! Say “Enchanté !”."
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "Luna",
+            "line": "Nico a un chien. On va le voir plus tard !",
+            "gloss": "Nico has a dog. Let's go see it later!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "fu2-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "fu2-q2-a1",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "voici",
+            "soeur"
+          ],
+          "hint": "Sœur is a girl word.",
+          "explanation": "Ma for girl words, mon for boy words, mes for more than one.",
+          "sentence": "Voici ___ sœur.",
+          "targetEnglish": "This is my sister.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "mon"
+            },
+            {
+              "id": "b",
+              "text": "ma"
+            },
+            {
+              "id": "c",
+              "text": "mes"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "fu2-q2-a2",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “This is my friend (a boy).”",
+          "items": [
+            "voici",
+            "ami"
+          ],
+          "hint": "Start with Voici.",
+          "explanation": "Voici mon ami = This is my friend.",
+          "tiles": [
+            "Voici",
+            "mon",
+            "ami"
+          ],
+          "targetEnglish": "This is my friend (a boy).",
+          "distractors": [
+            "ma"
+          ]
+        },
+        {
+          "id": "fu2-q2-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "voici",
+            "ami"
+          ],
+          "hint": "What do you say when you meet someone new?",
+          "explanation": "Answer an introduction with Enchanté !",
+          "target": "Voici mon ami Nico.",
+          "targetEnglish": "This is my friend Nico.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "J'ai un chat."
+            },
+            {
+              "id": "b",
+              "text": "Enchanté, Nico !"
+            },
+            {
+              "id": "c",
+              "text": "Désolé."
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "fu2-q2-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "voici",
+            "amie"
+          ],
+          "hint": "Voici: vwah-SEE.",
+          "explanation": "Mon amie: mon before a vowel, even for a girl.",
+          "target": "Voici mon amie.",
+          "targetEnglish": "This is my friend (a girl).",
+          "accepted": [
+            "Voici mon amie"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "backpack-blue"
+      }
+    },
+    {
+      "id": "fu2-q3",
+      "order": 3,
+      "title": "Describe a friend",
+      "npc": "profe-sol",
+      "location": "The school",
+      "summary": "Profe Sol's class learns to describe people.",
+      "objective": "Describe people with a few adjectives.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Profe Sol",
+            "line": "Aujourd'hui, on apprend à décrire les gens.",
+            "gloss": "Today we learn to describe people.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Profe Sol",
+            "line": "Comment est Nico ? Il est grand ou petit ?",
+            "gloss": "What's Nico like? Is he tall or short?",
+            "choices": [
+              {
+                "text": "Il est grand.",
+                "gloss": "He's tall.",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "Il est petit.",
+                "gloss": "He's short.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "Look again: Nico is the tallest kid in the village!"
+              }
+            ],
+            "hint": "Coco says: Nico is taller than the fence!"
+          },
+          {
+            "id": "n3",
+            "speaker": "Profe Sol",
+            "line": "Oui ! Nico est grand et très gentil.",
+            "gloss": "Yes! Nico is tall and very kind.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "fu2-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "fu2-q3-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "grand"
+          ],
+          "hint": "Grand sounds like “grand”: big!",
+          "explanation": "Grand = tall / big.",
+          "target": "Nico est grand.",
+          "targetEnglish": "Nico is tall.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Nico is tall."
+            },
+            {
+              "id": "b",
+              "text": "Nico is short."
+            },
+            {
+              "id": "c",
+              "text": "Nico is funny."
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "fu2-q3-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "grand",
+            "petit",
+            "gentil",
+            "drole"
+          ],
+          "hint": "Petit sounds like “petite”: small.",
+          "explanation": "Grand, petit, gentil, drôle.",
+          "pairs": [
+            {
+              "target": "grand",
+              "english": "tall / big"
+            },
+            {
+              "target": "petit",
+              "english": "short / small"
+            },
+            {
+              "target": "gentil",
+              "english": "kind / nice"
+            },
+            {
+              "target": "drôle",
+              "english": "funny"
+            }
+          ]
+        },
+        {
+          "id": "fu2-q3-a3",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "gentil"
+          ],
+          "hint": "Sofía is a girl.",
+          "explanation": "Describing words match the person: gentil for a boy, gentille for a girl.",
+          "sentence": "Sofía est très ___.",
+          "targetEnglish": "Sofía is very kind.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "gentils"
+            },
+            {
+              "id": "b",
+              "text": "gentil"
+            },
+            {
+              "id": "c",
+              "text": "gentille"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "fu2-q3-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in French: “Mateo is funny.”",
+          "items": [
+            "drole"
+          ],
+          "hint": "Mateo + est + funny.",
+          "explanation": "Mateo est drôle.",
+          "targetEnglish": "Mateo is funny.",
+          "accepted": [
+            "Mateo est drôle"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "beret-green"
+      }
+    },
+    {
+      "id": "fu2-q4",
+      "order": 4,
+      "title": "Abuela Lola's colors",
+      "npc": "abuela-lola",
+      "location": "Abuela Lola's garden",
+      "summary": "Mateo's grandma is painting and needs help with colors.",
+      "objective": "Name colors.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Abuela Lola",
+            "line": "Bonjour, mon chou ! Je peins.",
+            "gloss": "Hi, sweetie! I'm painting.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Abuela Lola",
+            "line": "De quelle couleur est le soleil ?",
+            "gloss": "What color is the sun?",
+            "choices": [
+              {
+                "text": "Il est jaune.",
+                "gloss": "It's yellow.",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "Il est bleu.",
+                "gloss": "It's blue.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "Hmm, look up! The sun is yellow: jaune."
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "Abuela Lola",
+            "line": "Parfait ! Tu m'aides avec les couleurs.",
+            "gloss": "Perfect! You're helping me with the colors.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "fu2-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "fu2-q4-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "bleu"
+          ],
+          "hint": "Bleu sounds a lot like blue.",
+          "explanation": "Bleu = blue.",
+          "target": "bleu",
+          "targetEnglish": "blue",
+          "choices": [
+            {
+              "id": "a",
+              "text": "green",
+              "picture": "🟢",
+              "altText": "a green circle"
+            },
+            {
+              "id": "b",
+              "text": "blue",
+              "picture": "🔵",
+              "altText": "a blue circle"
+            },
+            {
+              "id": "c",
+              "text": "red",
+              "picture": "🔴",
+              "altText": "a red circle"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "fu2-q4-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "rouge",
+            "vert",
+            "jaune",
+            "violet"
+          ],
+          "hint": "Rouge is the color of a rose… almost!",
+          "explanation": "Rouge, vert, jaune, violet.",
+          "pairs": [
+            {
+              "target": "rouge",
+              "english": "red"
+            },
+            {
+              "target": "vert",
+              "english": "green"
+            },
+            {
+              "target": "jaune",
+              "english": "yellow"
+            },
+            {
+              "target": "violet",
+              "english": "purple"
+            }
+          ]
+        },
+        {
+          "id": "fu2-q4-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "marron",
+            "chien"
+          ],
+          "hint": "Chien is dog.",
+          "explanation": "France says marron; Québec says brun.",
+          "target": {
+            "base": "Le chien est marron.",
+            "fr-CA": "Le chien est brun."
+          },
+          "targetEnglish": "The dog is brown.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "The dog is brown."
+            },
+            {
+              "id": "b",
+              "text": "The cat is brown."
+            },
+            {
+              "id": "c",
+              "text": "The dog is black."
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "fu2-q4-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "rouge",
+            "bleu",
+            "vert"
+          ],
+          "hint": "The French r is in the throat, like a soft gargle.",
+          "explanation": "Rouge starts with the French r sound.",
+          "target": "rouge, bleu, vert",
+          "targetEnglish": "red, blue, green",
+          "accepted": [
+            "rouge bleu vert"
+          ]
+        },
+        {
+          "id": "fu2-q4-a5",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in French: “yellow”",
+          "items": [
+            "jaune"
+          ],
+          "hint": "zhohn",
+          "explanation": "Jaune = yellow.",
+          "targetEnglish": "yellow",
+          "accepted": [
+            "jaune"
+          ]
+        },
+        {
+          "id": "fu2-q4-a6",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "quelle-couleur",
+            "jaune"
+          ],
+          "hint": "Answer with Il est… and a color.",
+          "explanation": "De quelle couleur… ? asks the color. Answer: Il est jaune.",
+          "target": "De quelle couleur est le soleil ?",
+          "targetEnglish": "What color is the sun?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Il est violet."
+            },
+            {
+              "id": "b",
+              "text": "J'ai un soleil."
+            },
+            {
+              "id": "c",
+              "text": "Il est jaune."
+            }
+          ],
+          "answer": "c"
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "paintbrush"
+      }
+    },
+    {
+      "id": "fu2-q5",
+      "order": 5,
+      "title": "Nico's pets",
+      "npc": "nico",
+      "location": "Near the pond",
+      "summary": "Nico and his dog Canela talk about pets.",
+      "objective": "Name pets and say what you have.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Nico",
+            "line": "Salut ! Voici ma chienne, Canela.",
+            "gloss": "Hi! This is my dog, Canela.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Nico",
+            "line": "Tu as un animal de compagnie ?",
+            "gloss": "Do you have a pet?",
+            "choices": [
+              {
+                "text": "Oui, j'ai un chat.",
+                "gloss": "Yes, I have a cat.",
+                "next": "n3"
+              },
+              {
+                "text": "Oui, j'ai un poisson.",
+                "gloss": "Yes, I have a fish.",
+                "next": "n3"
+              },
+              {
+                "text": "Non, je n'ai pas d'animal.",
+                "gloss": "No, I don't have a pet.",
+                "next": "n3"
+              }
+            ],
+            "hint": "Coco says: Pick what's true for you, or just pretend!"
+          },
+          {
+            "id": "n3",
+            "speaker": "Nico",
+            "line": "Canela adore tous les amis !",
+            "gloss": "Canela loves all friends!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "fu2-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "fu2-q5-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "chat"
+          ],
+          "hint": "Chat sounds like “shah”.",
+          "explanation": "Le chat = the cat.",
+          "target": "le chat",
+          "targetEnglish": "the cat",
+          "choices": [
+            {
+              "id": "a",
+              "text": "the dog",
+              "picture": "🐕",
+              "altText": "a dog"
+            },
+            {
+              "id": "b",
+              "text": "the bird",
+              "picture": "🐦",
+              "altText": "a bird"
+            },
+            {
+              "id": "c",
+              "text": "the cat",
+              "picture": "🐈",
+              "altText": "a cat"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "fu2-q5-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "chien",
+            "poisson",
+            "oiseau",
+            "tortue"
+          ],
+          "hint": "Tortue sounds like tortoise.",
+          "explanation": "Chien, poisson, oiseau, tortue.",
+          "pairs": [
+            {
+              "target": "le chien",
+              "english": "the dog"
+            },
+            {
+              "target": "le poisson",
+              "english": "the fish"
+            },
+            {
+              "target": "l'oiseau",
+              "english": "the bird"
+            },
+            {
+              "target": "la tortue",
+              "english": "the turtle"
+            }
+          ]
+        },
+        {
+          "id": "fu2-q5-a3",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “I have a dog.”",
+          "items": [
+            "j-ai",
+            "chien"
+          ],
+          "hint": "Start with I have.",
+          "explanation": "J'ai un chien = I have a dog.",
+          "tiles": [
+            "J'ai",
+            "un",
+            "chien"
+          ],
+          "targetEnglish": "I have a dog.",
+          "distractors": [
+            "une"
+          ]
+        },
+        {
+          "id": "fu2-q5-a4",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "tu-as",
+            "j-ai",
+            "animal"
+          ],
+          "hint": "Answer with j'ai (I have).",
+          "explanation": "Tu as… ? asks “do you have…?”, and you answer with j'ai.",
+          "target": "Tu as un animal de compagnie ?",
+          "targetEnglish": "Do you have a pet?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Oui, il est bleu."
+            },
+            {
+              "id": "b",
+              "text": "Oui, j'ai un chat."
+            },
+            {
+              "id": "c",
+              "text": "À bientôt."
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "fu2-q5-a5",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in French: “the turtle”",
+          "items": [
+            "tortue"
+          ],
+          "hint": "It starts with t.",
+          "explanation": "La tortue = the turtle.",
+          "targetEnglish": "the turtle",
+          "accepted": [
+            "la tortue",
+            "tortue"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "pet-dog",
+        "badge": "badge-u2"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "fu2-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "fu2-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "grand-pere"
+        ],
+        "hint": "Père = father.",
+        "explanation": "Le grand-père = the grandfather.",
+        "target": "le grand-père",
+        "targetEnglish": "the grandfather",
+        "choices": [
+          {
+            "id": "a",
+            "text": "the grandmother"
+          },
+          {
+            "id": "b",
+            "text": "the brother"
+          },
+          {
+            "id": "c",
+            "text": "the grandfather"
+          }
+        ],
+        "answer": "c"
+      },
+      {
+        "id": "fu2-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in French: “the brother”",
+        "items": [
+          "frere"
+        ],
+        "hint": "It rhymes with père.",
+        "explanation": "Le frère = the brother.",
+        "targetEnglish": "the brother",
+        "accepted": [
+          "le frère",
+          "frère",
+          "le frere",
+          "frere"
+        ]
+      },
+      {
+        "id": "fu2-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "gentil"
+        ],
+        "hint": "Gentille = kind.",
+        "explanation": "Elle est gentille = She is kind.",
+        "target": "Elle est gentille.",
+        "targetEnglish": "She is kind.",
+        "choices": [
+          {
+            "id": "a",
+            "text": "She is tall."
+          },
+          {
+            "id": "b",
+            "text": "She is kind."
+          },
+          {
+            "id": "c",
+            "text": "She is my sister."
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "fu2-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in French: “red”",
+        "items": [
+          "rouge"
+        ],
+        "hint": "Like a rose.",
+        "explanation": "Rouge = red.",
+        "targetEnglish": "red",
+        "accepted": [
+          "rouge"
+        ]
+      },
+      {
+        "id": "fu2-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in French: “I have a dog.”",
+        "items": [
+          "j-ai",
+          "chien"
+        ],
+        "hint": "I have = j'ai.",
+        "explanation": "J'ai un chien.",
+        "target": "J'ai un chien.",
+        "targetEnglish": "I have a dog.",
+        "accepted": [
+          "J'ai un chien."
+        ]
+      }
+    ]
+  }
+}

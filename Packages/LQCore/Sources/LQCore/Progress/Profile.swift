@@ -47,6 +47,10 @@ public struct LearnerSettings: Codable, Hashable, Sendable {
     public var textScale = 1.0
     public var colorBlindSymbols = true
     public var sessionReminderMinutes: Int? = 25
+    /// Show romaji under Japanese text. nil (older saves) = on.
+    public var showRomanization: Bool? = nil
+
+    public var romanizationOn: Bool { showRomanization ?? true }
 
     public init() {}
 }
@@ -142,6 +146,8 @@ public struct PlayerProfile: Codable, Hashable, Identifiable, Sendable {
     public var lastPosition: GridPoint?
     /// Side games and exploration (optional so older saves still load).
     public var extras: ExtrasProgress?
+    /// Progress in courses other than the active one, by course id.
+    public var otherCourses: [String: CourseSnapshot]?
 
     public init(id: UUID = UUID(), nickname: String, ageBand: AgeBand, avatar: AvatarConfig = .init(),
                 courseId: String = "en-es", variant: String, now: Date = Date()) {
@@ -172,5 +178,38 @@ public struct PlayerProfile: Codable, Hashable, Identifiable, Sendable {
         s = String(s.filter { $0.isLetter || $0 == " " || $0 == "-" || $0 == "'" })
         s = s.split(separator: " ").joined(separator: " ")
         return String(s.prefix(maxNicknameLength))
+    }
+}
+
+/// Everything that belongs to one course, so a learner can switch languages
+/// and come back later without losing progress. XP, cosmetics, badges, the
+/// avatar and settings are shared across languages.
+public struct CourseSnapshot: Codable, Hashable, Sendable {
+    public var variant: String
+    public var progress: CourseProgress
+    public var knowledge: [String: ItemKnowledge]
+    public var assessments: [AssessmentResult]
+    public var extras: ExtrasProgress?
+}
+
+extension PlayerProfile {
+    /// Ids of courses this learner has started (including the active one).
+    public var startedCourses: [String] { [courseId] + (otherCourses ?? [:]).keys.sorted() }
+
+    /// Switches the active course, parking the current one. Returning to a course restores it.
+    public mutating func switchCourse(to id: String, defaultVariant: String) {
+        guard id != courseId else { return }
+        var others = otherCourses ?? [:]
+        others[courseId] = CourseSnapshot(variant: variant, progress: progress, knowledge: knowledge,
+                                          assessments: assessments, extras: extras)
+        if let back = others.removeValue(forKey: id) {
+            variant = back.variant; progress = back.progress; knowledge = back.knowledge
+            assessments = back.assessments; extras = back.extras
+        } else {
+            variant = defaultVariant; progress = CourseProgress(); knowledge = [:]; assessments = []; extras = nil
+        }
+        courseId = id
+        otherCourses = others.isEmpty ? nil : others
+        lastPosition = nil
     }
 }

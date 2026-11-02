@@ -43,13 +43,25 @@ public struct ContentLibrary: Sendable {
         return lib
     }
 
-    /// The course bundled with LQCore (English → Spanish).
-    public static func bundledSpanish() throws -> ContentLibrary {
+    /// Courses that ship in the app, in menu order.
+    public static let bundledCourseIds = ["en-es", "en-fr", "en-ja"]
+
+    /// A course bundled with LQCore, by id ("en-es", "en-fr", "en-ja").
+    public static func bundled(_ id: String) throws -> ContentLibrary {
         guard let base = Bundle.module.url(forResource: "Content", withExtension: nil) else {
             throw ContentError.missingFile("Content")
         }
-        return try load(from: base.appendingPathComponent("en-es"))
+        return try load(from: base.appendingPathComponent(id))
     }
+
+    /// The English → Spanish course.
+    public static func bundledSpanish() throws -> ContentLibrary { try bundled("en-es") }
+
+    /// How answers are compared for this course.
+    public var checkContext: CheckContext { CheckContext(course: course) }
+
+    /// Phrases NPCs and screens use in this course's language.
+    public var phrases: LocalPhrases { LocalPhrases.for(course.targetLanguage) }
 
     // MARK: Lookup
 

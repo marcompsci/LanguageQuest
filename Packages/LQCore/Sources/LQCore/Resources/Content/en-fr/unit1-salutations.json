@@ -1,0 +1,1347 @@
+{
+  "id": "fu1-salutations",
+  "version": 1,
+  "order": 1,
+  "title": "Greetings & Introductions",
+  "targetTitle": "Bonjour !",
+  "world": "starter-village",
+  "objective": "Greet people, introduce yourself, ask how someone is, use polite words, and count to ten.",
+  "canDo": [
+    "I can greet people at different times of day.",
+    "I can say my name and ask someone's name.",
+    "I can ask how someone is and answer.",
+    "I can use please, thank you, you're welcome, and sorry.",
+    "I can count from 0 to 10."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Low–Novice Mid",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons"
+    ]
+  },
+  "ageBands": [
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Written by the development team. Needs review by native-speaker linguists for each regional variant before release. Audio uses on-device text-to-speech until native recordings are made."
+  },
+  "vocabulary": [
+    {
+      "id": "bonjour",
+      "kind": "word",
+      "target": "bonjour",
+      "english": "hello / good morning",
+      "picture": "👋",
+      "altText": "a waving hand",
+      "example": {
+        "target": "Bonjour, Luna !",
+        "english": "Hello, Luna!"
+      }
+    },
+    {
+      "id": "bonsoir",
+      "kind": "word",
+      "target": "bonsoir",
+      "english": "good evening",
+      "picture": "🌆",
+      "altText": "a city at sunset"
+    },
+    {
+      "id": "salut",
+      "kind": "word",
+      "target": "salut",
+      "english": "hi / bye (casual)"
+    },
+    {
+      "id": "au-revoir",
+      "kind": "phrase",
+      "target": "au revoir",
+      "english": "goodbye"
+    },
+    {
+      "id": "a-bientot",
+      "kind": "phrase",
+      "target": "à bientôt",
+      "english": "see you soon"
+    },
+    {
+      "id": "bonne-nuit",
+      "kind": "phrase",
+      "target": "bonne nuit",
+      "english": "good night",
+      "picture": "🌙",
+      "altText": "a crescent moon"
+    },
+    {
+      "id": "bien",
+      "kind": "word",
+      "target": "bien",
+      "english": "well / fine",
+      "picture": "👍",
+      "altText": "thumbs up"
+    },
+    {
+      "id": "tres-bien",
+      "kind": "phrase",
+      "target": "très bien",
+      "english": "very well"
+    },
+    {
+      "id": "pas-mal",
+      "kind": "phrase",
+      "target": "pas mal",
+      "english": "not bad"
+    },
+    {
+      "id": "comme-ci",
+      "kind": "phrase",
+      "target": "comme ci, comme ça",
+      "english": "so-so"
+    },
+    {
+      "id": "merci",
+      "kind": "word",
+      "target": "merci",
+      "english": "thank you"
+    },
+    {
+      "id": "s-il-te-plait",
+      "kind": "phrase",
+      "target": "s'il te plaît",
+      "english": "please (to a friend)"
+    },
+    {
+      "id": "s-il-vous-plait",
+      "kind": "phrase",
+      "target": "s'il vous plaît",
+      "english": "please (polite)"
+    },
+    {
+      "id": "de-rien",
+      "kind": "phrase",
+      "target": {
+        "base": "de rien",
+        "fr-CA": "bienvenue"
+      },
+      "english": "you're welcome",
+      "note": "In Québec, people often answer merci with bienvenue."
+    },
+    {
+      "id": "pardon",
+      "kind": "word",
+      "target": "pardon",
+      "english": "excuse me / sorry"
+    },
+    {
+      "id": "desole",
+      "kind": "word",
+      "target": "désolé",
+      "english": "I'm sorry",
+      "note": "A girl writes désolée; it sounds the same."
+    },
+    {
+      "id": "zero",
+      "kind": "word",
+      "target": "zéro",
+      "english": "zero (0)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "un",
+      "kind": "word",
+      "target": "un",
+      "english": "one (1)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "deux",
+      "kind": "word",
+      "target": "deux",
+      "english": "two (2)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "trois",
+      "kind": "word",
+      "target": "trois",
+      "english": "three (3)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "quatre",
+      "kind": "word",
+      "target": "quatre",
+      "english": "four (4)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "cinq",
+      "kind": "word",
+      "target": "cinq",
+      "english": "five (5)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "six",
+      "kind": "word",
+      "target": "six",
+      "english": "six (6)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "sept",
+      "kind": "word",
+      "target": "sept",
+      "english": "seven (7)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "huit",
+      "kind": "word",
+      "target": "huit",
+      "english": "eight (8)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "neuf",
+      "kind": "word",
+      "target": "neuf",
+      "english": "nine (9)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "dix",
+      "kind": "word",
+      "target": "dix",
+      "english": "ten (10)",
+      "partOfSpeech": "number"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "comment-tu-tappelles",
+      "kind": "phrase",
+      "target": "Comment tu t'appelles ?",
+      "english": "What's your name?"
+    },
+    {
+      "id": "je-mappelle",
+      "kind": "phrase",
+      "target": "je m'appelle…",
+      "english": "my name is…",
+      "example": {
+        "target": "Je m'appelle Mateo.",
+        "english": "My name is Mateo."
+      }
+    },
+    {
+      "id": "enchante",
+      "kind": "phrase",
+      "target": "enchanté",
+      "english": "nice to meet you",
+      "note": "A girl writes enchantée; it sounds the same."
+    },
+    {
+      "id": "comment-ca-va",
+      "kind": "phrase",
+      "target": "Comment ça va ?",
+      "english": "How are you?"
+    },
+    {
+      "id": "et-toi",
+      "kind": "phrase",
+      "target": "Et toi ?",
+      "english": "And you?"
+    },
+    {
+      "id": "et-vous",
+      "kind": "phrase",
+      "target": "Et vous ?",
+      "english": "And you? (polite, to adults)"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "fn-u1-tuvous",
+      "title": "Tu and vous",
+      "body": "French has a friendly “you” (tu) and a polite “you” (vous). Use vous with adults you don't know well, like a shopkeeper or a teacher, and tu with friends and family.",
+      "byVariant": {
+        "fr-CA": "In Québec, tu is used more often than in France, even with some adults. Vous is still polite with strangers."
+      }
+    },
+    {
+      "id": "fn-u1-bise",
+      "title": "La bise",
+      "body": "Friends and family often greet with la bise: light kisses on the cheeks. A handshake is normal for a first meeting.",
+      "byVariant": {
+        "fr-FR": "In France the number of kisses depends on the region: two in Paris, but three or even four in some places!",
+        "fr-CA": "In Québec, friends often do two kisses, but a hug or a wave is common too."
+      }
+    },
+    {
+      "id": "fn-u1-bonjour",
+      "title": "Always say bonjour",
+      "body": "Saying bonjour when you walk into a shop or a bakery is important. Skipping it can seem rude. In the evening, people switch to bonsoir.",
+      "byVariant": {
+        "fr-CA": "In Québec, people often say bonne journée (have a good day) when leaving."
+      }
+    }
+  ],
+  "quests": [
+    {
+      "id": "fu1-q1",
+      "order": 1,
+      "title": "Bonjour, village!",
+      "npc": "luna",
+      "location": "Luna's house",
+      "summary": "Luna shows you around and teaches the first greetings.",
+      "objective": "Greet people with bonjour, bonsoir, and salut.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "Bonjour ! Je suis Luna. Bienvenue au village !",
+            "gloss": "Hello! I'm Luna. Welcome to the village!",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "Ici, on dit « bonjour » toute la journée.",
+            "gloss": "Here we say “bonjour” all day long.",
+            "choices": [
+              {
+                "text": "Bonjour, Luna !",
+                "gloss": "Hello, Luna!",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "Bonne nuit, Luna !",
+                "gloss": "Good night, Luna!",
+                "next": "n2",
+                "correct": false,
+                "feedback": "It's daytime! Bonne nuit is for bedtime. Try bonjour."
+              }
+            ],
+            "hint": "Coco says: During the day, say bonjour!"
+          },
+          {
+            "id": "n3",
+            "speaker": "Luna",
+            "line": "Très bien ! Allons saluer tout le monde.",
+            "gloss": "Very good! Let's go say hello to everyone.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "fu1-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "fu1-q1-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "bonsoir"
+          ],
+          "hint": "Soir means evening.",
+          "explanation": "Bonsoir = good evening.",
+          "target": "Bonsoir !",
+          "targetEnglish": "Good evening!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Good morning!"
+            },
+            {
+              "id": "b",
+              "text": "Goodbye!"
+            },
+            {
+              "id": "c",
+              "text": "Good evening!"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "fu1-q1-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "bonjour",
+            "au-revoir",
+            "a-bientot",
+            "bonne-nuit",
+            "bonsoir"
+          ],
+          "hint": "Nuit sounds a bit like night.",
+          "explanation": "Bonjour, au revoir, à bientôt, bonne nuit, bonsoir.",
+          "pairs": [
+            {
+              "target": "bonjour",
+              "english": "hello / good morning"
+            },
+            {
+              "target": "au revoir",
+              "english": "goodbye"
+            },
+            {
+              "target": "à bientôt",
+              "english": "see you soon"
+            },
+            {
+              "target": "bonne nuit",
+              "english": "good night"
+            },
+            {
+              "target": "bonsoir",
+              "english": "good evening"
+            }
+          ]
+        },
+        {
+          "id": "fu1-q1-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "salut"
+          ],
+          "hint": "Say the same greeting back.",
+          "explanation": "Salut is a casual hi (and bye) between friends.",
+          "target": "Salut !",
+          "targetEnglish": "Hi!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Merci."
+            },
+            {
+              "id": "b",
+              "text": "Salut !"
+            },
+            {
+              "id": "c",
+              "text": "Bonne nuit !"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "fu1-q1-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "bonjour"
+          ],
+          "hint": "Bonjour: bon-ZHOOR.",
+          "explanation": "The j in bonjour sounds like the s in “measure”.",
+          "target": "Bonjour, Luna !",
+          "targetEnglish": "Hello, Luna!",
+          "accepted": [
+            "Bonjour Luna",
+            "Bonjour"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "scarf-yellow"
+      }
+    },
+    {
+      "id": "fu1-q2",
+      "order": 2,
+      "title": "What's your name?",
+      "npc": "mateo",
+      "location": "The plaza",
+      "summary": "Mateo wants to know your name.",
+      "objective": "Ask someone's name and say your own.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Mateo",
+            "line": "Salut ! Je m'appelle Mateo. Comment tu t'appelles ?",
+            "gloss": "Hi! My name is Mateo. What's your name?",
+            "choices": [
+              {
+                "text": "Je m'appelle {name}.",
+                "gloss": "My name is {name}.",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "J'ai dix ans.",
+                "gloss": "I'm ten years old.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Mateo asked your name! Start with “Je m'appelle…”."
+              }
+            ],
+            "hint": "Coco says: To say your name, use “Je m'appelle” and then your name."
+          },
+          {
+            "id": "n2",
+            "speaker": "Mateo",
+            "line": "Enchanté, {name} !",
+            "gloss": "Nice to meet you, {name}!",
+            "next": "n3"
+          },
+          {
+            "id": "n3",
+            "speaker": "Mateo",
+            "line": "On s'entraîne avec les prénoms ?",
+            "gloss": "Shall we practice names?",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "fu1-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "fu1-q2-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "comment-tu-tappelles"
+          ],
+          "hint": "Appeler means to call.",
+          "explanation": "Comment tu t'appelles ? literally means “How do you call yourself?”",
+          "target": "Comment tu t'appelles ?",
+          "targetEnglish": "What's your name?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "What's your name?"
+            },
+            {
+              "id": "b",
+              "text": "How are you?"
+            },
+            {
+              "id": "c",
+              "text": "How many?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "fu1-q2-a2",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “My name is Mateo.”",
+          "items": [
+            "je-mappelle"
+          ],
+          "hint": "Start with Je.",
+          "explanation": "Je m'appelle Mateo = My name is Mateo.",
+          "tiles": [
+            "Je",
+            "m'appelle",
+            "Mateo"
+          ],
+          "targetEnglish": "My name is Mateo.",
+          "distractors": [
+            "Merci"
+          ]
+        },
+        {
+          "id": "fu1-q2-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "enchante"
+          ],
+          "hint": "You say it when you meet someone.",
+          "explanation": "Enchanté = nice to meet you.",
+          "target": "Enchanté !",
+          "targetEnglish": "Nice to meet you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Very well!"
+            },
+            {
+              "id": "b",
+              "text": "See you soon!"
+            },
+            {
+              "id": "c",
+              "text": "Nice to meet you!"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "fu1-q2-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in French: “Nice to meet you.”",
+          "items": [
+            "enchante"
+          ],
+          "hint": "One word, starts with en…",
+          "explanation": "Enchanté (or enchantée for a girl).",
+          "targetEnglish": "Nice to meet you.",
+          "accepted": [
+            "enchanté",
+            "enchantée"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "cap-red"
+      }
+    },
+    {
+      "id": "fu1-q3",
+      "order": 3,
+      "title": "How are you?",
+      "npc": "dona-rosa",
+      "location": "The bakery",
+      "summary": "Doña Rosa the baker asks how you are.",
+      "objective": "Ask how someone is and answer, politely with adults.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Doña Rosa",
+            "line": "Bonjour ! Comment ça va ?",
+            "gloss": "Hello! How are you?",
+            "choices": [
+              {
+                "text": "Très bien, merci. Et vous ?",
+                "gloss": "Very well, thanks. And you?",
+                "next": "n2"
+              },
+              {
+                "text": "Comme ci, comme ça.",
+                "gloss": "So-so.",
+                "next": "n2"
+              },
+              {
+                "text": "Je m'appelle Rosa.",
+                "gloss": "My name is Rosa.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "That's her name! She asked how you are. Try “Très bien, merci”."
+              }
+            ],
+            "hint": "Coco says: With adults, “Et vous ?” is the polite way to ask back."
+          },
+          {
+            "id": "n2",
+            "speaker": "Doña Rosa",
+            "line": "Je vais très bien ! Merci de demander.",
+            "gloss": "I'm very well! Thanks for asking.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "fu1-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "fu1-q3-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "comment-ca-va"
+          ],
+          "hint": "Ça va is about how things are going.",
+          "explanation": "Comment ça va ? = How are you?",
+          "target": "Comment ça va ?",
+          "targetEnglish": "How are you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "What's your name?"
+            },
+            {
+              "id": "b",
+              "text": "How are you?"
+            },
+            {
+              "id": "c",
+              "text": "Where are you?"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "fu1-q3-a2",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "comme-ci"
+          ],
+          "hint": "Like this, like that…",
+          "explanation": "Comme ci, comme ça means so-so.",
+          "target": "Comme ci, comme ça.",
+          "targetEnglish": "So-so.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Very well."
+            },
+            {
+              "id": "b",
+              "text": "Bad."
+            },
+            {
+              "id": "c",
+              "text": "So-so."
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "fu1-q3-a3",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "tres-bien",
+            "bien"
+          ],
+          "hint": "Which word means well?",
+          "explanation": "Ça va très bien = I'm very well.",
+          "sentence": "Ça va très ___.",
+          "targetEnglish": "I'm very well.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "merci"
+            },
+            {
+              "id": "b",
+              "text": "bien"
+            },
+            {
+              "id": "c",
+              "text": "salut"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "fu1-q3-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "bien",
+            "merci",
+            "et-toi"
+          ],
+          "hint": "Merci: mair-SEE.",
+          "explanation": "Asking back, Et toi ?, is friendly.",
+          "target": "Bien, merci. Et toi ?",
+          "targetEnglish": "Fine, thanks. And you?",
+          "accepted": [
+            "Bien merci et toi",
+            "Bien merci"
+          ]
+        },
+        {
+          "id": "fu1-q3-a5",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "pas-mal",
+            "et-vous"
+          ],
+          "hint": "Pas mal = not bad.",
+          "explanation": "Use Et vous ? to ask an adult back politely.",
+          "target": "Pas mal. Et vous ?",
+          "targetEnglish": "Not bad. And you? (polite)",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Not bad. And you? (polite)"
+            },
+            {
+              "id": "b",
+              "text": "Very well. And you?"
+            },
+            {
+              "id": "c",
+              "text": "So-so, thanks."
+            }
+          ],
+          "answer": "a"
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "apron"
+      }
+    },
+    {
+      "id": "fu1-q4",
+      "order": 4,
+      "title": "Polite words",
+      "npc": "profe-sol",
+      "location": "The school",
+      "summary": "Profe Sol teaches the polite words everyone uses.",
+      "objective": "Use please, thank you, you're welcome, and sorry.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Profe Sol",
+            "line": "Bonjour ! Je suis la prof Sol. Dans ma classe, on est poli.",
+            "gloss": "Hello! I'm Teacher Sol. In my class, we're polite.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Profe Sol",
+            "line": "Tu veux un livre ?",
+            "gloss": "Do you want a book?",
+            "choices": [
+              {
+                "text": "Oui, s'il vous plaît.",
+                "gloss": "Yes, please.",
+                "next": "n3"
+              },
+              {
+                "text": "Non, merci.",
+                "gloss": "No, thank you.",
+                "next": "n3"
+              },
+              {
+                "text": {
+                  "base": "De rien.",
+                  "fr-CA": "Bienvenue."
+                },
+                "gloss": "You're welcome.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "That answers a thank-you. Try “Oui, s'il vous plaît” or “Non, merci”."
+              }
+            ],
+            "hint": "Coco says: To a teacher, please is “s'il vous plaît”."
+          },
+          {
+            "id": "n3",
+            "speaker": "Profe Sol",
+            "line": "Comme c'est gentil ! Allez, on s'entraîne.",
+            "gloss": "How kind! Now, let's practice.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "fu1-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "fu1-q4-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "s-il-te-plait",
+            "merci",
+            "de-rien",
+            "desole"
+          ],
+          "hint": "Merci is the one everybody knows!",
+          "explanation": "These polite words help everywhere you go.",
+          "pairs": [
+            {
+              "target": "s'il te plaît",
+              "english": "please (to a friend)"
+            },
+            {
+              "target": "merci",
+              "english": "thank you"
+            },
+            {
+              "target": {
+                "base": "de rien",
+                "fr-CA": "bienvenue"
+              },
+              "english": "you're welcome"
+            },
+            {
+              "target": "désolé",
+              "english": "I'm sorry"
+            }
+          ]
+        },
+        {
+          "id": "fu1-q4-a2",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "de-rien"
+          ],
+          "hint": "What do you say after someone thanks you?",
+          "explanation": "De rien literally means “of nothing”. In Québec: bienvenue.",
+          "target": "Merci pour ton aide.",
+          "targetEnglish": "Thanks for your help.",
+          "choices": [
+            {
+              "id": "a",
+              "text": {
+                "base": "De rien.",
+                "fr-CA": "Bienvenue."
+              }
+            },
+            {
+              "id": "b",
+              "text": "S'il te plaît."
+            },
+            {
+              "id": "c",
+              "text": "Bonjour."
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "fu1-q4-a3",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in French: “please (to a friend)”",
+          "items": [
+            "s-il-te-plait"
+          ],
+          "hint": "Three words: s'il te…",
+          "explanation": "S'il te plaît = please (to a friend). S'il vous plaît is the polite form.",
+          "targetEnglish": "please (to a friend)",
+          "accepted": [
+            "s'il te plaît"
+          ]
+        },
+        {
+          "id": "fu1-q4-a4",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "pardon"
+          ],
+          "hint": "You say it when you bump into someone.",
+          "explanation": "Pardon works for “excuse me” and a small “sorry”.",
+          "target": "Pardon !",
+          "targetEnglish": "Excuse me! / Sorry!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Please!"
+            },
+            {
+              "id": "b",
+              "text": "Excuse me! / Sorry!"
+            },
+            {
+              "id": "c",
+              "text": "Thank you!"
+            }
+          ],
+          "answer": "b"
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "glasses-round"
+      }
+    },
+    {
+      "id": "fu1-q5",
+      "order": 5,
+      "title": "Count with Don Pepe",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Don Pepe needs help counting his apples.",
+      "objective": "Count from 0 to 10.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "Bonjour ! Je suis Don Pepe. Tu m'aides à compter ?",
+            "gloss": "Hello! I'm Don Pepe. Will you help me count?",
+            "choices": [
+              {
+                "text": "Oui, bien sûr !",
+                "gloss": "Yes, of course!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Au revoir.",
+                "gloss": "Goodbye.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Don Pepe needs your help! Try “Oui, bien sûr !”."
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": "Un, deux, trois… C'est parti !",
+            "gloss": "One, two, three… Let's go!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "fu1-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "fu1-q5-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "sept"
+          ],
+          "hint": "Sept sounds like “set”: the p is silent.",
+          "explanation": "Sept = 7.",
+          "target": "sept",
+          "targetEnglish": "seven",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6"
+            },
+            {
+              "id": "b",
+              "text": "7"
+            },
+            {
+              "id": "c",
+              "text": "9"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "fu1-q5-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "zero",
+            "un",
+            "deux",
+            "trois",
+            "quatre",
+            "cinq"
+          ],
+          "hint": "Deux sounds like “duh”.",
+          "explanation": "Zéro, un, deux, trois, quatre, cinq.",
+          "pairs": [
+            {
+              "target": "zéro",
+              "english": "0"
+            },
+            {
+              "target": "un",
+              "english": "1"
+            },
+            {
+              "target": "deux",
+              "english": "2"
+            },
+            {
+              "target": "trois",
+              "english": "3"
+            },
+            {
+              "target": "quatre",
+              "english": "4"
+            },
+            {
+              "target": "cinq",
+              "english": "5"
+            }
+          ]
+        },
+        {
+          "id": "fu1-q5-a3",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "huit",
+            "six",
+            "neuf"
+          ],
+          "hint": "What comes after sept?",
+          "explanation": "Six, sept, huit, neuf: 6, 7, 8, 9.",
+          "sentence": "six, sept, ___, neuf",
+          "targetEnglish": "six, seven, ___, nine",
+          "choices": [
+            {
+              "id": "a",
+              "text": "huit"
+            },
+            {
+              "id": "b",
+              "text": "trois"
+            },
+            {
+              "id": "c",
+              "text": "dix"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "fu1-q5-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in French: “ten”",
+          "items": [
+            "dix"
+          ],
+          "hint": "It sounds like “deess”.",
+          "explanation": "Dix = 10.",
+          "targetEnglish": "ten",
+          "accepted": [
+            "dix"
+          ]
+        },
+        {
+          "id": "fu1-q5-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "six",
+            "sept",
+            "huit",
+            "neuf",
+            "dix"
+          ],
+          "hint": "Huit: WEET.",
+          "explanation": "You counted to dix!",
+          "target": "six, sept, huit, neuf, dix",
+          "targetEnglish": "six, seven, eight, nine, ten",
+          "accepted": [
+            "six sept huit neuf dix"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "basket",
+        "badge": "badge-u1"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "fu1-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "fu1-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "bonne-nuit"
+        ],
+        "hint": "Nuit = night.",
+        "explanation": "Bonne nuit is for bedtime.",
+        "target": "Bonne nuit.",
+        "targetEnglish": "Good night.",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Good morning."
+          },
+          {
+            "id": "b",
+            "text": "Good night."
+          },
+          {
+            "id": "c",
+            "text": "Thank you."
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "fu1-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in French: “thank you”",
+        "items": [
+          "merci"
+        ],
+        "hint": "One word.",
+        "explanation": "Merci = thank you.",
+        "targetEnglish": "thank you",
+        "accepted": [
+          "merci"
+        ]
+      },
+      {
+        "id": "fu1-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "et-toi"
+        ],
+        "hint": "You say it to ask the question back.",
+        "explanation": "Et toi ? = And you?",
+        "target": "Et toi ?",
+        "targetEnglish": "And you?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Who are you?"
+          },
+          {
+            "id": "b",
+            "text": "And you?"
+          },
+          {
+            "id": "c",
+            "text": "Are you well?"
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "fu1-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in French: “five”",
+        "items": [
+          "cinq"
+        ],
+        "hint": "SANK.",
+        "explanation": "Cinq = 5.",
+        "targetEnglish": "five",
+        "accepted": [
+          "cinq"
+        ]
+      },
+      {
+        "id": "fu1-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in French: “Nice to meet you.”",
+        "items": [
+          "enchante"
+        ],
+        "hint": "What do you say when you meet someone?",
+        "explanation": "Enchanté = nice to meet you.",
+        "target": "Enchanté.",
+        "targetEnglish": "Nice to meet you.",
+        "accepted": [
+          "Enchanté",
+          "Enchantée"
+        ]
+      }
+    ]
+  }
+}

@@ -27,7 +27,8 @@ public enum Phrasebook {
                 let k = p.knowledge[item.id]
                 guard includeUnmet || k != nil else { continue }
                 if !q.isEmpty {
-                    let hay = (item.target.allForms + [item.english]).map(AnswerChecker.fold)
+                    let roman = item.target.allForms.compactMap { library.course.romanize($0) }
+                    let hay = (item.target.allForms + roman + [item.english]).map(AnswerChecker.fold)
                     guard hay.contains(where: { $0.contains(q) }) else { continue }
                 }
                 let mine = item.target.text(for: p.variant)

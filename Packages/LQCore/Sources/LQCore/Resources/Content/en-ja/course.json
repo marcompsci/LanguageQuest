@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "en-ja",
+  "title": "Japanese for English speakers",
+  "sourceLanguage": "en",
+  "targetLanguage": "ja",
+  "languageName": "Japanese",
+  "nativeName": "日本語",
+  "writingSystem": "kana",
+  "romanizationOverrides": {
+    "こんにちは": "konnichiwa",
+    "こんにちは！": "konnichiwa!",
+    "こんばんは": "konbanwa",
+    "こんばんは！": "konbanwa!"
+  },
+  "typingKeys": [
+    "ー",
+    "っ",
+    "ゃ",
+    "ゅ",
+    "ょ"
+  ],
+  "defaultVariant": "ja-JP",
+  "variants": [
+    {
+      "id": "ja-JP",
+      "name": "Standard Japanese",
+      "nativeName": "ひょうじゅんご",
+      "flagEmoji": "🇯🇵",
+      "voiceLocales": [
+        "ja-JP"
+      ],
+      "speechLocales": [
+        "ja-JP"
+      ],
+      "currency": {
+        "code": "JPY",
+        "singular": "yen",
+        "plural": "yen",
+        "symbol": "¥",
+        "displayScale": 100
+      },
+      "usesVoseo": false,
+      "note": "Written in hiragana and katakana with spaces between words, like beginner books. Romaji is shown underneath and you can type either."
+    }
+  ],
+  "unitFiles": [
+    "unit1-aisatsu.json",
+    "unit2-kazoku.json",
+    "unit3-kaimono.json"
+  ]
+}

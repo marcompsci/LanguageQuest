@@ -1,0 +1,1307 @@
+{
+  "id": "ju1-aisatsu",
+  "version": 1,
+  "order": 1,
+  "title": "Greetings & Introductions",
+  "targetTitle": "あいさつ",
+  "world": "starter-village",
+  "objective": "Greet people, introduce yourself, say how you are, use polite words, and count to ten.",
+  "canDo": [
+    "I can greet people at different times of day.",
+    "I can say my name and ask someone's name.",
+    "I can say how I am.",
+    "I can use please, thank you, you're welcome, and sorry.",
+    "I can count from 0 to 10."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Low–Novice Mid",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons"
+    ]
+  },
+  "ageBands": [
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Written by the development team. Needs review by native-speaker linguists for each regional variant before release. Audio uses on-device text-to-speech until native recordings are made."
+  },
+  "vocabulary": [
+    {
+      "id": "konnichiwa",
+      "kind": "word",
+      "target": "こんにちは",
+      "english": "hello",
+      "picture": "👋",
+      "altText": "a waving hand",
+      "note": "The last kana は is read wa here."
+    },
+    {
+      "id": "ohayou",
+      "kind": "word",
+      "target": "おはよう",
+      "english": "good morning (casual)",
+      "picture": "🌅",
+      "altText": "the sun rising"
+    },
+    {
+      "id": "ohayou-gozaimasu",
+      "kind": "phrase",
+      "target": "おはよう ございます",
+      "english": "good morning (polite)"
+    },
+    {
+      "id": "konbanwa",
+      "kind": "word",
+      "target": "こんばんは",
+      "english": "good evening",
+      "picture": "🌆",
+      "altText": "a city at sunset"
+    },
+    {
+      "id": "sayounara",
+      "kind": "word",
+      "target": "さようなら",
+      "english": "goodbye",
+      "note": "Friends usually say またね (see you) instead."
+    },
+    {
+      "id": "matane",
+      "kind": "word",
+      "target": "またね",
+      "english": "see you"
+    },
+    {
+      "id": "oyasumi",
+      "kind": "word",
+      "target": "おやすみ",
+      "english": "good night",
+      "picture": "🌙",
+      "altText": "a crescent moon"
+    },
+    {
+      "id": "genki",
+      "kind": "word",
+      "target": "げんき",
+      "english": "well / healthy / energetic",
+      "picture": "💪",
+      "altText": "a flexed arm"
+    },
+    {
+      "id": "maamaa",
+      "kind": "word",
+      "target": "まあまあ",
+      "english": "so-so"
+    },
+    {
+      "id": "tsukareta",
+      "kind": "word",
+      "target": "つかれた",
+      "english": "tired"
+    },
+    {
+      "id": "arigatou",
+      "kind": "word",
+      "target": "ありがとう",
+      "english": "thank you"
+    },
+    {
+      "id": "douitashimashite",
+      "kind": "phrase",
+      "target": "どういたしまして",
+      "english": "you're welcome"
+    },
+    {
+      "id": "onegaishimasu",
+      "kind": "phrase",
+      "target": "おねがいします",
+      "english": "please"
+    },
+    {
+      "id": "sumimasen",
+      "kind": "word",
+      "target": "すみません",
+      "english": "excuse me / sorry"
+    },
+    {
+      "id": "gomennasai",
+      "kind": "word",
+      "target": "ごめんなさい",
+      "english": "I'm sorry"
+    },
+    {
+      "id": "zero",
+      "kind": "word",
+      "target": "ゼロ",
+      "english": "zero (0)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "ichi",
+      "kind": "word",
+      "target": "いち",
+      "english": "one (1)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "ni",
+      "kind": "word",
+      "target": "に",
+      "english": "two (2)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "san",
+      "kind": "word",
+      "target": "さん",
+      "english": "three (3)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "yon",
+      "kind": "word",
+      "target": "よん",
+      "english": "four (4)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "go",
+      "kind": "word",
+      "target": "ご",
+      "english": "five (5)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "roku",
+      "kind": "word",
+      "target": "ろく",
+      "english": "six (6)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "nana",
+      "kind": "word",
+      "target": "なな",
+      "english": "seven (7)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "hachi",
+      "kind": "word",
+      "target": "はち",
+      "english": "eight (8)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "kyuu",
+      "kind": "word",
+      "target": "きゅう",
+      "english": "nine (9)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "juu",
+      "kind": "word",
+      "target": "じゅう",
+      "english": "ten (10)",
+      "partOfSpeech": "number"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "onamae",
+      "kind": "phrase",
+      "target": "おなまえ は なん です か？",
+      "english": "What's your name?"
+    },
+    {
+      "id": "watashi-wa",
+      "kind": "phrase",
+      "target": "わたし は … です",
+      "english": "I am… / My name is…",
+      "example": {
+        "target": "わたし は マテオ です。",
+        "english": "I'm Mateo."
+      }
+    },
+    {
+      "id": "hajimemashite",
+      "kind": "phrase",
+      "target": "はじめまして",
+      "english": "nice to meet you (first meeting)"
+    },
+    {
+      "id": "genki-desu-ka",
+      "kind": "phrase",
+      "target": "げんき です か？",
+      "english": "How are you? (lit. are you well?)"
+    },
+    {
+      "id": "genki-desu",
+      "kind": "phrase",
+      "target": "げんき です",
+      "english": "I'm fine"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "jn-u1-ojigi",
+      "title": "Bowing",
+      "body": "In Japan people often bow (おじぎ) when they say hello, thank you or sorry. A small nod is fine between friends; a deeper bow shows more respect."
+    },
+    {
+      "id": "jn-u1-genki",
+      "title": "Not every day: げんき です か",
+      "body": "げんき です か literally asks “are you well?”. People use it when they haven't seen someone for a while, not as an everyday “how are you”. Day to day, a simple おはよう or こんにちは is enough."
+    },
+    {
+      "id": "jn-u1-san",
+      "title": "-san and sensei",
+      "body": "People add -さん after someone's name to be polite: ローザ さん (Ms. Rosa). Teachers are せんせい: ソル せんせい. You never add -さん to your own name."
+    }
+  ],
+  "quests": [
+    {
+      "id": "ju1-q1",
+      "order": 1,
+      "title": "Good morning, village!",
+      "npc": "luna",
+      "location": "Luna's house",
+      "summary": "Luna shows you around and teaches the first greetings.",
+      "objective": "Greet people with the right greeting for the time of day.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "こんにちは！ わたし は ルナ です。 むら へ ようこそ！",
+            "gloss": "Hello! I'm Luna. Welcome to the village!",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "あさ は 「おはよう」 と いいます。",
+            "gloss": "In the morning, we say “ohayō”.",
+            "choices": [
+              {
+                "text": "おはよう、 ルナ！",
+                "gloss": "Good morning, Luna!",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "おやすみ、 ルナ！",
+                "gloss": "Good night, Luna!",
+                "next": "n2",
+                "correct": false,
+                "feedback": "It's morning! おやすみ is for bedtime. Try おはよう."
+              }
+            ],
+            "hint": "Coco says: It's morning, so pick おはよう!"
+          },
+          {
+            "id": "n3",
+            "speaker": "Luna",
+            "line": "いい ね！ みんな に あいさつ しよう。",
+            "gloss": "Nice! Let's go greet everyone.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "ju1-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "ju1-q1-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "konbanwa"
+          ],
+          "hint": "ばん means evening.",
+          "explanation": "こんばんは (konbanwa) = good evening.",
+          "target": "こんばんは！",
+          "targetEnglish": "Good evening!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Good morning!"
+            },
+            {
+              "id": "b",
+              "text": "Goodbye!"
+            },
+            {
+              "id": "c",
+              "text": "Good evening!"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "ju1-q1-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "konnichiwa",
+            "sayounara",
+            "matane",
+            "oyasumi",
+            "konbanwa"
+          ],
+          "hint": "おやすみ is what you say at bedtime.",
+          "explanation": "こんにちは, さようなら, またね, おやすみ, こんばんは.",
+          "pairs": [
+            {
+              "target": "こんにちは",
+              "english": "hello"
+            },
+            {
+              "target": "さようなら",
+              "english": "goodbye"
+            },
+            {
+              "target": "またね",
+              "english": "see you"
+            },
+            {
+              "target": "おやすみ",
+              "english": "good night"
+            },
+            {
+              "target": "こんばんは",
+              "english": "good evening"
+            }
+          ]
+        },
+        {
+          "id": "ju1-q1-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "ohayou"
+          ],
+          "hint": "Say the same greeting back.",
+          "explanation": "When someone says おはよう, say おはよう back.",
+          "target": "おはよう！",
+          "targetEnglish": "Good morning!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ありがとう。"
+            },
+            {
+              "id": "b",
+              "text": "おはよう！"
+            },
+            {
+              "id": "c",
+              "text": "おやすみ！"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju1-q1-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "ohayou-gozaimasu"
+          ],
+          "hint": "o-ha-yō go-za-i-mas: the final u is almost silent.",
+          "explanation": "ございます makes it polite, for teachers and adults.",
+          "target": "おはよう ございます！",
+          "targetEnglish": "Good morning! (polite)",
+          "accepted": [
+            "おはよう ございます",
+            "おはよう"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "scarf-yellow"
+      }
+    },
+    {
+      "id": "ju1-q2",
+      "order": 2,
+      "title": "What's your name?",
+      "npc": "mateo",
+      "location": "The plaza",
+      "summary": "Mateo wants to know your name.",
+      "objective": "Ask someone's name and say your own.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Mateo",
+            "line": "こんにちは！ ぼく は マテオ。 おなまえ は？",
+            "gloss": "Hi! I'm Mateo. What's your name?",
+            "choices": [
+              {
+                "text": "わたし は {name} です。",
+                "gloss": "I'm {name}.",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "じゅう さい です。",
+                "gloss": "I'm ten years old.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Mateo asked your name! Start with “わたし は … です”."
+              }
+            ],
+            "hint": "Coco says: Say わたし は, your name, then です."
+          },
+          {
+            "id": "n2",
+            "speaker": "Mateo",
+            "line": "はじめまして、 {name}！ よろしく ね。",
+            "gloss": "Nice to meet you, {name}! Glad to know you.",
+            "next": "n3"
+          },
+          {
+            "id": "n3",
+            "speaker": "Mateo",
+            "line": "なまえ の れんしゅう を しよう。",
+            "gloss": "Let's practice names.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "ju1-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "ju1-q2-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "onamae"
+          ],
+          "hint": "なまえ means name.",
+          "explanation": "おなまえ は なん です か？ = What's your name?",
+          "target": "おなまえ は なん です か？",
+          "targetEnglish": "What's your name?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "What's your name?"
+            },
+            {
+              "id": "b",
+              "text": "How are you?"
+            },
+            {
+              "id": "c",
+              "text": "How many?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "ju1-q2-a2",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “I'm Mateo.”",
+          "items": [
+            "watashi-wa"
+          ],
+          "hint": "Start with わたし (I).",
+          "explanation": "わたし は マテオ です = I'm Mateo. The verb です comes last!",
+          "tiles": [
+            "わたし",
+            "は",
+            "マテオ",
+            "です"
+          ],
+          "targetEnglish": "I'm Mateo.",
+          "distractors": [
+            "ありがとう"
+          ]
+        },
+        {
+          "id": "ju1-q2-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "hajimemashite"
+          ],
+          "hint": "You only say it the first time you meet someone.",
+          "explanation": "はじめまして = nice to meet you.",
+          "target": "はじめまして。",
+          "targetEnglish": "Nice to meet you.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Very well."
+            },
+            {
+              "id": "b",
+              "text": "See you."
+            },
+            {
+              "id": "c",
+              "text": "Nice to meet you."
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "ju1-q2-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Japanese: “Nice to meet you.”",
+          "items": [
+            "hajimemashite"
+          ],
+          "hint": "ha-ji-me-ma-shi-te",
+          "explanation": "はじめまして (hajimemashite). You can type kana or romaji.",
+          "targetEnglish": "Nice to meet you.",
+          "accepted": [
+            "はじめまして"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "cap-red"
+      }
+    },
+    {
+      "id": "ju1-q3",
+      "order": 3,
+      "title": "How are you?",
+      "npc": "dona-rosa",
+      "location": "The bakery",
+      "summary": "Doña Rosa the baker asks how you are.",
+      "objective": "Say how you are.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Doña Rosa",
+            "line": "こんにちは！ げんき です か？",
+            "gloss": "Hello! How are you?",
+            "choices": [
+              {
+                "text": "はい、 げんき です。 ありがとう。",
+                "gloss": "Yes, I'm fine. Thanks.",
+                "next": "n2"
+              },
+              {
+                "text": "まあまあ です。",
+                "gloss": "So-so.",
+                "next": "n2"
+              },
+              {
+                "text": "ローザ です。",
+                "gloss": "It's Rosa.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "That's her name! She asked how you are. Try “はい、 げんき です”."
+              }
+            ],
+            "hint": "Coco says: げんき means well and full of energy."
+          },
+          {
+            "id": "n2",
+            "speaker": "Doña Rosa",
+            "line": "よかった！ わたし も げんき です。",
+            "gloss": "Great! I'm fine too.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "ju1-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "ju1-q3-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "genki-desu-ka"
+          ],
+          "hint": "か at the end makes a question.",
+          "explanation": "げんき です か？ = How are you?",
+          "target": "げんき です か？",
+          "targetEnglish": "How are you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "What's your name?"
+            },
+            {
+              "id": "b",
+              "text": "How are you?"
+            },
+            {
+              "id": "c",
+              "text": "Where are you?"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju1-q3-a2",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "maamaa"
+          ],
+          "hint": "Not great, not bad…",
+          "explanation": "まあまあ = so-so.",
+          "target": "まあまあ です。",
+          "targetEnglish": "So-so.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Very well."
+            },
+            {
+              "id": "b",
+              "text": "I'm tired."
+            },
+            {
+              "id": "c",
+              "text": "So-so."
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "ju1-q3-a3",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "genki",
+            "genki-desu"
+          ],
+          "hint": "Which word means well?",
+          "explanation": "とても げんき です = I'm very well.",
+          "sentence": "とても ___ です。",
+          "targetEnglish": "I'm very well.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ありがとう"
+            },
+            {
+              "id": "b",
+              "text": "げんき"
+            },
+            {
+              "id": "c",
+              "text": "こんにちは"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju1-q3-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "genki-desu"
+          ],
+          "hint": "gen-ki des.",
+          "explanation": "はい = yes.",
+          "target": "はい、 げんき です。",
+          "targetEnglish": "Yes, I'm fine.",
+          "accepted": [
+            "はい、 げんき です",
+            "げんき です"
+          ]
+        },
+        {
+          "id": "ju1-q3-a5",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "tsukareta"
+          ],
+          "hint": "You say it after a long day.",
+          "explanation": "つかれた = (I'm) tired.",
+          "target": "つかれた。",
+          "targetEnglish": "I'm tired.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "I'm tired."
+            },
+            {
+              "id": "b",
+              "text": "I'm fine."
+            },
+            {
+              "id": "c",
+              "text": "So-so."
+            }
+          ],
+          "answer": "a"
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "apron"
+      }
+    },
+    {
+      "id": "ju1-q4",
+      "order": 4,
+      "title": "Polite words",
+      "npc": "profe-sol",
+      "location": "The school",
+      "summary": "Profe Sol teaches the polite words everyone uses.",
+      "objective": "Use please, thank you, you're welcome, and sorry.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Profe Sol",
+            "line": "こんにちは！ わたし は ソル せんせい です。",
+            "gloss": "Hello! I'm Teacher Sol.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Profe Sol",
+            "line": "ほん、 いります か？",
+            "gloss": "Do you need a book?",
+            "choices": [
+              {
+                "text": "はい、 おねがいします。",
+                "gloss": "Yes, please.",
+                "next": "n3"
+              },
+              {
+                "text": "いいえ、 だいじょうぶ です。",
+                "gloss": "No, I'm okay.",
+                "next": "n3"
+              },
+              {
+                "text": "どういたしまして。",
+                "gloss": "You're welcome.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "That answers a thank-you. Try “はい、 おねがいします”."
+              }
+            ],
+            "hint": "Coco says: Please is おねがいします."
+          },
+          {
+            "id": "n3",
+            "speaker": "Profe Sol",
+            "line": "えらい ね！ れんしゅう しましょう。",
+            "gloss": "Well done! Let's practice.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "ju1-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "ju1-q4-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "onegaishimasu",
+            "arigatou",
+            "douitashimashite",
+            "gomennasai"
+          ],
+          "hint": "ありがとう is the one everybody knows!",
+          "explanation": "These polite words help everywhere.",
+          "pairs": [
+            {
+              "target": "おねがいします",
+              "english": "please"
+            },
+            {
+              "target": "ありがとう",
+              "english": "thank you"
+            },
+            {
+              "target": "どういたしまして",
+              "english": "you're welcome"
+            },
+            {
+              "target": "ごめんなさい",
+              "english": "I'm sorry"
+            }
+          ]
+        },
+        {
+          "id": "ju1-q4-a2",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "douitashimashite"
+          ],
+          "hint": "What do you say after someone thanks you?",
+          "explanation": "どういたしまして = you're welcome.",
+          "target": "てつだって くれて ありがとう。",
+          "targetEnglish": "Thanks for helping me.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "どういたしまして。"
+            },
+            {
+              "id": "b",
+              "text": "おねがいします。"
+            },
+            {
+              "id": "c",
+              "text": "こんばんは。"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "ju1-q4-a3",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Japanese: “thank you”",
+          "items": [
+            "arigatou"
+          ],
+          "hint": "a-ri-ga-tō",
+          "explanation": "ありがとう (arigatō). ありがとう ございます is more polite.",
+          "targetEnglish": "thank you",
+          "accepted": [
+            "ありがとう",
+            "ありがとう ございます"
+          ]
+        },
+        {
+          "id": "ju1-q4-a4",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "sumimasen"
+          ],
+          "hint": "You say it to get attention or when you bump into someone.",
+          "explanation": "すみません works for “excuse me” and a small “sorry”.",
+          "target": "すみません！",
+          "targetEnglish": "Excuse me! / Sorry!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Please!"
+            },
+            {
+              "id": "b",
+              "text": "Excuse me! / Sorry!"
+            },
+            {
+              "id": "c",
+              "text": "Thank you!"
+            }
+          ],
+          "answer": "b"
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "glasses-round"
+      }
+    },
+    {
+      "id": "ju1-q5",
+      "order": 5,
+      "title": "Count with Don Pepe",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Don Pepe needs help counting his apples.",
+      "objective": "Count from 0 to 10.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "こんにちは！ ペペ です。 かぞえる の を てつだって くれる？",
+            "gloss": "Hello! I'm Pepe. Will you help me count?",
+            "choices": [
+              {
+                "text": "うん、 いい よ！",
+                "gloss": "Sure!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "さようなら。",
+                "gloss": "Goodbye.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Pepe needs your help! Try “うん、 いい よ！”."
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": "いち、 に、 さん… いこう！",
+            "gloss": "One, two, three… Let's go!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "ju1-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "ju1-q5-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "nana"
+          ],
+          "hint": "なな sounds like “nah-nah”.",
+          "explanation": "なな = 7. (しち also means 7.)",
+          "target": "なな",
+          "targetEnglish": "seven",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6"
+            },
+            {
+              "id": "b",
+              "text": "7"
+            },
+            {
+              "id": "c",
+              "text": "9"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju1-q5-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "zero",
+            "ichi",
+            "ni",
+            "san",
+            "yon",
+            "go"
+          ],
+          "hint": "さん is 3, like “san”.",
+          "explanation": "ゼロ, いち, に, さん, よん, ご.",
+          "pairs": [
+            {
+              "target": "ゼロ",
+              "english": "0"
+            },
+            {
+              "target": "いち",
+              "english": "1"
+            },
+            {
+              "target": "に",
+              "english": "2"
+            },
+            {
+              "target": "さん",
+              "english": "3"
+            },
+            {
+              "target": "よん",
+              "english": "4"
+            },
+            {
+              "target": "ご",
+              "english": "5"
+            }
+          ]
+        },
+        {
+          "id": "ju1-q5-a3",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "hachi",
+            "roku",
+            "kyuu"
+          ],
+          "hint": "What comes after なな?",
+          "explanation": "ろく, なな, はち, きゅう: 6, 7, 8, 9.",
+          "sentence": "ろく、 なな、 ___、 きゅう",
+          "targetEnglish": "six, seven, ___, nine",
+          "choices": [
+            {
+              "id": "a",
+              "text": "はち"
+            },
+            {
+              "id": "b",
+              "text": "さん"
+            },
+            {
+              "id": "c",
+              "text": "じゅう"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "ju1-q5-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Japanese: “ten”",
+          "items": [
+            "juu"
+          ],
+          "hint": "jū",
+          "explanation": "じゅう (jū) = 10.",
+          "targetEnglish": "ten",
+          "accepted": [
+            "じゅう"
+          ]
+        },
+        {
+          "id": "ju1-q5-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "roku",
+            "nana",
+            "hachi",
+            "kyuu",
+            "juu"
+          ],
+          "hint": "kyū and jū have long vowels.",
+          "explanation": "You counted to じゅう!",
+          "target": "ろく、 なな、 はち、 きゅう、 じゅう",
+          "targetEnglish": "six, seven, eight, nine, ten",
+          "accepted": [
+            "ろく なな はち きゅう じゅう"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "basket",
+        "badge": "badge-u1"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "ju1-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "ju1-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "oyasumi"
+        ],
+        "hint": "Bedtime word.",
+        "explanation": "おやすみ = good night.",
+        "target": "おやすみ。",
+        "targetEnglish": "Good night.",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Good morning."
+          },
+          {
+            "id": "b",
+            "text": "Good night."
+          },
+          {
+            "id": "c",
+            "text": "Thank you."
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "ju1-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Japanese: “thank you”",
+        "items": [
+          "arigatou"
+        ],
+        "hint": "a-ri-ga-tō",
+        "explanation": "ありがとう = thank you.",
+        "targetEnglish": "thank you",
+        "accepted": [
+          "ありがとう"
+        ]
+      },
+      {
+        "id": "ju1-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "matane"
+        ],
+        "hint": "Friends say it when they leave.",
+        "explanation": "またね = see you.",
+        "target": "またね！",
+        "targetEnglish": "See you!",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Who are you?"
+          },
+          {
+            "id": "b",
+            "text": "See you!"
+          },
+          {
+            "id": "c",
+            "text": "Are you well?"
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "ju1-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Japanese: “five”",
+        "items": [
+          "go"
+        ],
+        "hint": "One kana.",
+        "explanation": "ご (go) = 5.",
+        "targetEnglish": "five",
+        "accepted": [
+          "ご"
+        ]
+      },
+      {
+        "id": "ju1-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in Japanese: “Nice to meet you.”",
+        "items": [
+          "hajimemashite"
+        ],
+        "hint": "What do you say when you first meet someone?",
+        "explanation": "はじめまして.",
+        "target": "はじめまして。",
+        "targetEnglish": "Nice to meet you.",
+        "accepted": [
+          "はじめまして。"
+        ]
+      }
+    ]
+  }
+}

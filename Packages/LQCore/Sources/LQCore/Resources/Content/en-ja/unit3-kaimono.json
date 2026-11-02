@@ -1,0 +1,1371 @@
+{
+  "id": "ju3-kaimono",
+  "version": 1,
+  "order": 3,
+  "title": "At the Market",
+  "targetTitle": "おかいもの",
+  "world": "starter-village",
+  "objective": "Name foods, ask for things, say what you like, count to twenty, and ask prices.",
+  "canDo": [
+    "I can name fruits and breakfast foods.",
+    "I can say what I like and don't like.",
+    "I can count from 11 to 20.",
+    "I can ask how much something costs.",
+    "I can ask for food politely."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Mid",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons",
+      "Communities"
+    ]
+  },
+  "ageBands": [
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Written by the development team. Needs review by native-speaker linguists for each regional variant before release. Audio uses on-device text-to-speech until native recordings are made."
+  },
+  "vocabulary": [
+    {
+      "id": "manzana",
+      "kind": "word",
+      "target": "りんご",
+      "english": "apple",
+      "picture": "🍎",
+      "altText": "a red apple"
+    },
+    {
+      "id": "platano",
+      "kind": "word",
+      "target": "バナナ",
+      "english": "banana",
+      "picture": "🍌",
+      "altText": "a banana"
+    },
+    {
+      "id": "naranja",
+      "kind": "word",
+      "target": "オレンジ",
+      "english": "orange (fruit)",
+      "picture": "🍊",
+      "altText": "an orange"
+    },
+    {
+      "id": "fresa",
+      "kind": "word",
+      "target": "いちご",
+      "english": "strawberry",
+      "picture": "🍓",
+      "altText": "a strawberry"
+    },
+    {
+      "id": "uvas",
+      "kind": "word",
+      "target": "ぶどう",
+      "english": "grapes",
+      "picture": "🍇",
+      "altText": "a bunch of grapes"
+    },
+    {
+      "id": "aguacate",
+      "kind": "word",
+      "target": "アボカド",
+      "english": "avocado",
+      "picture": "🥑",
+      "altText": "an avocado"
+    },
+    {
+      "id": "pan",
+      "kind": "word",
+      "target": "パン",
+      "english": "bread",
+      "picture": "🍞",
+      "altText": "a loaf of bread",
+      "note": "パン comes from the Portuguese word pão."
+    },
+    {
+      "id": "leche",
+      "kind": "word",
+      "target": "ぎゅうにゅう",
+      "english": "milk",
+      "picture": "🥛",
+      "altText": "a glass of milk",
+      "note": "ミルク is also used."
+    },
+    {
+      "id": "queso",
+      "kind": "word",
+      "target": "チーズ",
+      "english": "cheese",
+      "picture": "🧀",
+      "altText": "a wedge of cheese"
+    },
+    {
+      "id": "huevos",
+      "kind": "word",
+      "target": "たまご",
+      "english": "egg",
+      "picture": "🥚",
+      "altText": "an egg"
+    },
+    {
+      "id": "jugo",
+      "kind": "word",
+      "target": "ジュース",
+      "english": "juice",
+      "picture": "🧃",
+      "altText": "a juice box"
+    },
+    {
+      "id": "agua",
+      "kind": "word",
+      "target": "みず",
+      "english": "water",
+      "picture": "💧",
+      "altText": "a water drop",
+      "note": "おみず is the polite form."
+    },
+    {
+      "id": "desayuno",
+      "kind": "word",
+      "target": "あさごはん",
+      "english": "breakfast",
+      "note": "あさ (morning) + ごはん (meal / rice)."
+    },
+    {
+      "id": "ame",
+      "kind": "word",
+      "target": "あめ",
+      "english": "candy",
+      "picture": "🍬",
+      "altText": "a wrapped candy"
+    },
+    {
+      "id": "n11",
+      "kind": "word",
+      "target": "じゅういち",
+      "english": "eleven (11)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n12",
+      "kind": "word",
+      "target": "じゅうに",
+      "english": "twelve (12)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n13",
+      "kind": "word",
+      "target": "じゅうさん",
+      "english": "thirteen (13)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n14",
+      "kind": "word",
+      "target": "じゅうよん",
+      "english": "fourteen (14)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n15",
+      "kind": "word",
+      "target": "じゅうご",
+      "english": "fifteen (15)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n16",
+      "kind": "word",
+      "target": "じゅうろく",
+      "english": "sixteen (16)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n17",
+      "kind": "word",
+      "target": "じゅうなな",
+      "english": "seventeen (17)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n18",
+      "kind": "word",
+      "target": "じゅうはち",
+      "english": "eighteen (18)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n19",
+      "kind": "word",
+      "target": "じゅうきゅう",
+      "english": "nineteen (19)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n20",
+      "kind": "word",
+      "target": "にじゅう",
+      "english": "twenty (20)",
+      "partOfSpeech": "number"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "o-kudasai",
+      "kind": "phrase",
+      "target": "… を ください",
+      "english": "…, please (give me)",
+      "example": {
+        "target": "パン を ください。",
+        "english": "Bread, please."
+      }
+    },
+    {
+      "id": "ga-suki",
+      "kind": "phrase",
+      "target": "… が すき です",
+      "english": "I like…",
+      "example": {
+        "target": "チーズ が すき です。",
+        "english": "I like cheese."
+      }
+    },
+    {
+      "id": "suki-janai",
+      "kind": "phrase",
+      "target": "… は すき じゃない です",
+      "english": "I don't like…"
+    },
+    {
+      "id": "ikura",
+      "kind": "phrase",
+      "target": "いくら です か？",
+      "english": "How much is it?"
+    },
+    {
+      "id": "en-desu",
+      "kind": "phrase",
+      "target": "… えん です",
+      "english": "it's … yen"
+    },
+    {
+      "id": "douzo",
+      "kind": "phrase",
+      "target": "はい、 どうぞ",
+      "english": "here you go"
+    },
+    {
+      "id": "itadakimasu",
+      "kind": "phrase",
+      "target": "いただきます",
+      "english": "(said before eating)"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "jn-u3-dagashi",
+      "title": "Candy shops",
+      "body": "Traditional だがしや (candy shops) sell sweets for just a few ¥10 coins. Kids stop by after school to choose snacks with their pocket money."
+    },
+    {
+      "id": "jn-u3-itadakimasu",
+      "title": "いただきます",
+      "body": "Before eating, everyone says いただきます (I humbly receive), often with hands together. After the meal, they say ごちそうさま でした to thank the cook."
+    },
+    {
+      "id": "jn-u3-yen",
+      "title": "Yen",
+      "body": "Japan uses the yen (えん, ¥). There are no cents: coins go from ¥1 up to ¥500. Market Rush prices are in hundreds of yen."
+    },
+    {
+      "id": "jn-u3-katakana",
+      "title": "Katakana words",
+      "body": "Words that came from other languages are written in katakana: バナナ (banana), パン (bread, from Portuguese), ジュース (juice). Many of them sound like the English word!"
+    }
+  ],
+  "quests": [
+    {
+      "id": "ju3-q1",
+      "order": 1,
+      "title": "Don Pepe's fruit stand",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Don Pepe shows off his fresh fruit.",
+      "objective": "Name fruits.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "いらっしゃいませ！ しんせん な くだもの が ある よ。",
+            "gloss": "Welcome! I have fresh fruit.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": "あかい くだもの は どれ？",
+            "gloss": "Which fruit is red?",
+            "choices": [
+              {
+                "text": "りんご です。",
+                "gloss": "The apple.",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "バナナ です。",
+                "gloss": "The banana.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "Bananas are yellow! Which fruit is red?"
+              }
+            ],
+            "hint": "Coco says: Think of a red fruit. 🍎"
+          },
+          {
+            "id": "n3",
+            "speaker": "Don Pepe",
+            "line": "そう！ りんご は あかい ね。",
+            "gloss": "That's right! The apple is red.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "ju3-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "ju3-q1-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "manzana"
+          ],
+          "hint": "rin-go",
+          "explanation": "りんご = apple.",
+          "target": "りんご",
+          "targetEnglish": "apple",
+          "choices": [
+            {
+              "id": "a",
+              "text": "orange",
+              "picture": "🍊",
+              "altText": "an orange"
+            },
+            {
+              "id": "b",
+              "text": "apple",
+              "picture": "🍎",
+              "altText": "a red apple"
+            },
+            {
+              "id": "c",
+              "text": "banana",
+              "picture": "🍌",
+              "altText": "a banana"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju3-q1-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "naranja",
+            "platano",
+            "fresa",
+            "uvas"
+          ],
+          "hint": "バナナ sounds just like banana.",
+          "explanation": "オレンジ, バナナ, いちご, ぶどう.",
+          "pairs": [
+            {
+              "target": "オレンジ",
+              "english": "orange (fruit)"
+            },
+            {
+              "target": "バナナ",
+              "english": "banana"
+            },
+            {
+              "target": "いちご",
+              "english": "strawberry"
+            },
+            {
+              "target": "ぶどう",
+              "english": "grapes"
+            }
+          ]
+        },
+        {
+          "id": "ju3-q1-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "aguacate",
+            "midori"
+          ],
+          "hint": "みどり is a color from Unit 2.",
+          "explanation": "アボカド は みどり です = The avocado is green.",
+          "target": "アボカド は みどり です。",
+          "targetEnglish": "The avocado is green.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "The apple is green."
+            },
+            {
+              "id": "b",
+              "text": "The avocado is green."
+            },
+            {
+              "id": "c",
+              "text": "The avocado is yellow."
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju3-q1-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Japanese: “apple”",
+          "items": [
+            "manzana"
+          ],
+          "hint": "rin-go",
+          "explanation": "りんご = apple.",
+          "targetEnglish": "apple",
+          "accepted": [
+            "りんご"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "hat-sun"
+      }
+    },
+    {
+      "id": "ju3-q2",
+      "order": 2,
+      "title": "Bread at the bakery",
+      "npc": "dona-rosa",
+      "location": "The bakery",
+      "summary": "Doña Rosa asks what you'd like.",
+      "objective": "Ask for things and say what you like.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Doña Rosa",
+            "line": "いらっしゃい！ なに に する？",
+            "gloss": "Welcome! What would you like?",
+            "choices": [
+              {
+                "text": "パン を ください。",
+                "gloss": "Bread, please.",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "パン。",
+                "gloss": "Bread.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Almost! Add を ください (please give me)."
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "Doña Rosa",
+            "line": "はい、 どうぞ！ メロンパン は すき？",
+            "gloss": "Here you go! Do you like melon bread?",
+            "choices": [
+              {
+                "text": "うん、 だいすき！",
+                "gloss": "Yes, I love it!",
+                "next": "n3"
+              },
+              {
+                "text": "ううん、 すき じゃない。",
+                "gloss": "No, I don't like it.",
+                "next": "n3"
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "Doña Rosa",
+            "line": "ありがとう！ また きて ね。",
+            "gloss": "Thank you! Come again.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "ju3-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "ju3-q2-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "ga-suki",
+            "pan"
+          ],
+          "hint": "すき means like.",
+          "explanation": "… が すき です = I like …",
+          "target": "パン が すき です。",
+          "targetEnglish": "I like bread.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "I want bread."
+            },
+            {
+              "id": "b",
+              "text": "I don't like bread."
+            },
+            {
+              "id": "c",
+              "text": "I like bread."
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "ju3-q2-a2",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "suki-janai",
+            "leche"
+          ],
+          "hint": "Which word makes it negative?",
+          "explanation": "すき じゃない です = I don't like.",
+          "sentence": "ぎゅうにゅう は すき ___ です。",
+          "targetEnglish": "I don't like milk.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ください"
+            },
+            {
+              "id": "b",
+              "text": "じゃない"
+            },
+            {
+              "id": "c",
+              "text": "いくら"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju3-q2-a3",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “Bread, please.”",
+          "items": [
+            "o-kudasai",
+            "pan"
+          ],
+          "hint": "The thing first, then を ください.",
+          "explanation": "パン を ください = Bread, please.",
+          "tiles": [
+            "パン",
+            "を",
+            "ください"
+          ],
+          "targetEnglish": "Bread, please.",
+          "distractors": [
+            "が"
+          ]
+        },
+        {
+          "id": "ju3-q2-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "ga-suki",
+            "queso"
+          ],
+          "hint": "chī-zu",
+          "explanation": "チーズ が すき です = I like cheese.",
+          "target": "チーズ が すき です。",
+          "targetEnglish": "I like cheese.",
+          "accepted": [
+            "チーズ が すき です"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "chef-hat"
+      }
+    },
+    {
+      "id": "ju3-q3",
+      "order": 3,
+      "title": "Numbers to twenty",
+      "npc": "senora-ana",
+      "location": "The market",
+      "summary": "Señora Ana counts her eggs.",
+      "objective": "Count from 11 to 20.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Señora Ana",
+            "line": "こんにちは！ たまご が じゅうに こ ある よ。",
+            "gloss": "Hello! I have twelve eggs.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Señora Ana",
+            "line": "たまご は いくつ？",
+            "gloss": "How many eggs?",
+            "choices": [
+              {
+                "text": "じゅうに。",
+                "gloss": "Twelve.",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "に。",
+                "gloss": "Two.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "Listen again: じゅうに is 12, に is 2."
+              }
+            ],
+            "hint": "Coco says: じゅう (10) + に (2) = 12!"
+          },
+          {
+            "id": "n3",
+            "speaker": "Señora Ana",
+            "line": "そう！ じゅうに こ を ローザ さん に。",
+            "gloss": "Right! Twelve for Rosa.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "ju3-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "ju3-q3-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "n15"
+          ],
+          "hint": "じゅう (10) + ご (5).",
+          "explanation": "じゅうご = 15.",
+          "target": "じゅうご",
+          "targetEnglish": "fifteen",
+          "choices": [
+            {
+              "id": "a",
+              "text": "5"
+            },
+            {
+              "id": "b",
+              "text": "15"
+            },
+            {
+              "id": "c",
+              "text": "50"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju3-q3-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "n11",
+            "n12",
+            "n13",
+            "n14",
+            "n16"
+          ],
+          "hint": "Just say じゅう, then 1 to 9.",
+          "explanation": "Japanese numbers are easy: 10 + 1 = じゅういち.",
+          "pairs": [
+            {
+              "target": "じゅういち",
+              "english": "11"
+            },
+            {
+              "target": "じゅうに",
+              "english": "12"
+            },
+            {
+              "target": "じゅうさん",
+              "english": "13"
+            },
+            {
+              "target": "じゅうよん",
+              "english": "14"
+            },
+            {
+              "target": "じゅうろく",
+              "english": "16"
+            }
+          ]
+        },
+        {
+          "id": "ju3-q3-a3",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "n18",
+            "n17",
+            "n19"
+          ],
+          "hint": "What comes after 17?",
+          "explanation": "17, 18, 19 = じゅうなな, じゅうはち, じゅうきゅう.",
+          "sentence": "じゅうなな、 ___、 じゅうきゅう",
+          "targetEnglish": "seventeen, ___, nineteen",
+          "choices": [
+            {
+              "id": "a",
+              "text": "じゅうろく"
+            },
+            {
+              "id": "b",
+              "text": "じゅうはち"
+            },
+            {
+              "id": "c",
+              "text": "にじゅう"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju3-q3-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Japanese: “twenty”",
+          "items": [
+            "n20"
+          ],
+          "hint": "two tens: に + じゅう",
+          "explanation": "にじゅう = 20 (2 × 10).",
+          "targetEnglish": "twenty",
+          "accepted": [
+            "にじゅう"
+          ]
+        },
+        {
+          "id": "ju3-q3-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "n16",
+            "n17",
+            "n18",
+            "n19",
+            "n20"
+          ],
+          "hint": "jū-ro-ku…",
+          "explanation": "You counted to にじゅう!",
+          "target": "じゅうろく、 じゅうなな、 じゅうはち、 じゅうきゅう、 にじゅう",
+          "targetEnglish": "16, 17, 18, 19, 20",
+          "accepted": [
+            "じゅうろく じゅうなな じゅうはち じゅうきゅう にじゅう"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "coin-pin"
+      }
+    },
+    {
+      "id": "ju3-q4",
+      "order": 4,
+      "title": "How much is it?",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Buy a candy from Don Pepe, politely.",
+      "objective": "Ask prices and buy something politely.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "なに を さがして います か？",
+            "gloss": "What are you looking for?",
+            "choices": [
+              {
+                "text": "この あめ は いくら です か？",
+                "gloss": "How much is this candy?",
+                "next": "n2"
+              }
+            ],
+            "hint": "Coco says: いくら means how much."
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": "じゅう えん です。",
+            "gloss": "It's 10 yen.",
+            "choices": [
+              {
+                "text": "はい、 どうぞ。 ありがとう！",
+                "gloss": "Here you go. Thanks!",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "どういたしまして。",
+                "gloss": "You're welcome.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "You're paying, so say “はい、 どうぞ” (here you go) and thank him!"
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "Don Pepe",
+            "line": "まいど ありがとう！",
+            "gloss": "Thanks for your business!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "ju3-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "ju3-q4-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "ikura"
+          ],
+          "hint": "いくら = how much.",
+          "explanation": "いくら です か？ = How much is it?",
+          "target": "いくら です か？",
+          "targetEnglish": "How much is it?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How many are there?"
+            },
+            {
+              "id": "b",
+              "text": "How much is it?"
+            },
+            {
+              "id": "c",
+              "text": "What do you want?"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju3-q4-a2",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "en-desu",
+            "juu"
+          ],
+          "hint": "じゅう is from Unit 1.",
+          "explanation": "じゅう えん = 10 yen.",
+          "target": "じゅう えん です。",
+          "targetEnglish": "It's 10 yen.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "It's 2 yen."
+            },
+            {
+              "id": "b",
+              "text": "It's 12 yen."
+            },
+            {
+              "id": "c",
+              "text": "It's 10 yen."
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "ju3-q4-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "o-kudasai",
+            "ame"
+          ],
+          "hint": "How do you ask for something?",
+          "explanation": "… を ください = please give me …",
+          "target": "あめ は じゅうご えん です。",
+          "targetEnglish": "The candy is 15 yen.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "あめ を ください。"
+            },
+            {
+              "id": "b",
+              "text": "おなまえ は？"
+            },
+            {
+              "id": "c",
+              "text": "おやすみ。"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "ju3-q4-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Japanese: “How much is it?”",
+          "items": [
+            "ikura"
+          ],
+          "hint": "i-ku-ra de-su ka",
+          "explanation": "いくら です か？ You can type ikura desu ka.",
+          "targetEnglish": "How much is it?",
+          "accepted": [
+            "いくら です か？"
+          ]
+        },
+        {
+          "id": "ju3-q4-a5",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "douzo"
+          ],
+          "hint": "What do you say when you hand over money?",
+          "explanation": "はい、 どうぞ = here you go.",
+          "target": "じゅう えん です。",
+          "targetEnglish": "That's 10 yen.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "はじめまして。"
+            },
+            {
+              "id": "b",
+              "text": "はい、 どうぞ。"
+            },
+            {
+              "id": "c",
+              "text": "またね。"
+            }
+          ],
+          "answer": "b"
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "bandana-purple"
+      }
+    },
+    {
+      "id": "ju3-q5",
+      "order": 5,
+      "title": "Breakfast with Luna",
+      "npc": "luna",
+      "location": "Luna's house",
+      "summary": "Luna invites you for breakfast.",
+      "objective": "Ask for food politely.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "おはよう！ あさごはん の じかん だ よ。",
+            "gloss": "Good morning! It's breakfast time.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "なに が いい？ たまご と パン と ジュース が ある よ。",
+            "gloss": "What would you like? There are eggs, bread and juice.",
+            "choices": [
+              {
+                "text": "たまご を ください。",
+                "gloss": "Eggs, please.",
+                "next": "n3"
+              },
+              {
+                "text": "チーズ と パン を ください。",
+                "gloss": "Cheese and bread, please.",
+                "next": "n3"
+              },
+              {
+                "text": "ぜんぶ ほしい！",
+                "gloss": "I want everything!",
+                "next": "n3"
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "Luna",
+            "line": "じゃあ、 いただきます！",
+            "gloss": "Okay, let's eat! (itadakimasu)",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "ju3-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "ju3-q5-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "huevos",
+            "jugo",
+            "agua",
+            "queso"
+          ],
+          "hint": "ジュース sounds like juice.",
+          "explanation": "たまご, ジュース, みず, チーズ.",
+          "pairs": [
+            {
+              "target": "たまご",
+              "english": "egg"
+            },
+            {
+              "target": "ジュース",
+              "english": "juice"
+            },
+            {
+              "target": "みず",
+              "english": "water"
+            },
+            {
+              "target": "チーズ",
+              "english": "cheese"
+            }
+          ]
+        },
+        {
+          "id": "ju3-q5-a2",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "desayuno"
+          ],
+          "hint": "あさ means morning.",
+          "explanation": "あさごはん = breakfast.",
+          "target": "あさごはん",
+          "targetEnglish": "breakfast",
+          "choices": [
+            {
+              "id": "a",
+              "text": "lunch"
+            },
+            {
+              "id": "b",
+              "text": "breakfast"
+            },
+            {
+              "id": "c",
+              "text": "dinner"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju3-q5-a3",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “Orange juice, please.”",
+          "items": [
+            "o-kudasai",
+            "jugo",
+            "naranja"
+          ],
+          "hint": "Orange juice first, then を ください.",
+          "explanation": "オレンジ ジュース を ください.",
+          "tiles": [
+            "オレンジ",
+            "ジュース",
+            "を",
+            "ください"
+          ],
+          "targetEnglish": "Orange juice, please.",
+          "distractors": [
+            "チーズ"
+          ]
+        },
+        {
+          "id": "ju3-q5-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Japanese: “water”",
+          "items": [
+            "agua"
+          ],
+          "hint": "mi-zu",
+          "explanation": "みず = water.",
+          "targetEnglish": "water",
+          "accepted": [
+            "みず",
+            "おみず"
+          ]
+        },
+        {
+          "id": "ju3-q5-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "o-kudasai",
+            "huevos"
+          ],
+          "hint": "ku-da-sai",
+          "explanation": "… を ください is how you ask for things.",
+          "target": "たまご を ください。",
+          "targetEnglish": "Eggs, please.",
+          "accepted": [
+            "たまご を ください"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "crown-flowers",
+        "badge": "badge-u3"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "ju3-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "ju3-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "uvas"
+        ],
+        "hint": "bu-dō",
+        "explanation": "ぶどう = grapes.",
+        "target": "ぶどう",
+        "targetEnglish": "grapes",
+        "choices": [
+          {
+            "id": "a",
+            "text": "grapes"
+          },
+          {
+            "id": "b",
+            "text": "cheese"
+          },
+          {
+            "id": "c",
+            "text": "egg"
+          }
+        ],
+        "answer": "a"
+      },
+      {
+        "id": "ju3-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Japanese: “fourteen”",
+        "items": [
+          "n14"
+        ],
+        "hint": "じゅう + よん",
+        "explanation": "じゅうよん = 14.",
+        "targetEnglish": "fourteen",
+        "accepted": [
+          "じゅうよん"
+        ]
+      },
+      {
+        "id": "ju3-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "suki-janai",
+          "queso"
+        ],
+        "hint": "じゃない = not.",
+        "explanation": "すき じゃない = don't like.",
+        "target": "チーズ は すき じゃない です。",
+        "targetEnglish": "I don't like cheese.",
+        "choices": [
+          {
+            "id": "a",
+            "text": "I like cheese."
+          },
+          {
+            "id": "b",
+            "text": "I want cheese."
+          },
+          {
+            "id": "c",
+            "text": "I don't like cheese."
+          }
+        ],
+        "answer": "c"
+      },
+      {
+        "id": "ju3-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Japanese: “please (give me)”",
+        "items": [
+          "o-kudasai"
+        ],
+        "hint": "ku-da-sai",
+        "explanation": "ください = please give me.",
+        "targetEnglish": "please (give me)",
+        "accepted": [
+          "ください"
+        ]
+      },
+      {
+        "id": "ju3-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in Japanese: “How much is it?”",
+        "items": [
+          "ikura"
+        ],
+        "hint": "Ask the price.",
+        "explanation": "いくら です か？",
+        "target": "いくら です か？",
+        "targetEnglish": "How much is it?",
+        "accepted": [
+          "いくら です か？"
+        ]
+      }
+    ]
+  }
+}

@@ -30,11 +30,14 @@ enum GameHelpers {
 
     static func seeded(_ seed: UInt64) -> SeededRandom { SeededRandom(seed: seed) }
 
-    /// Removes a leading article ("el", "la", "los", "las") and trailing "…".
+    /// Removes a leading article (Spanish el/la/los/las, French le/la/les/l'/un/une) and trailing "…".
     static func bareWord(_ s: String) -> (article: String?, word: String) {
         let clean = s.replacingOccurrences(of: "…", with: "").trimmingCharacters(in: .whitespaces)
-        for a in ["el ", "la ", "los ", "las "] where clean.lowercased().hasPrefix(a) {
+        for a in ["el ", "la ", "los ", "las ", "le ", "les ", "un ", "une "] where clean.lowercased().hasPrefix(a) {
             return (String(clean.prefix(a.count - 1)), String(clean.dropFirst(a.count)))
+        }
+        for a in ["l'", "l’"] where clean.lowercased().hasPrefix(a) {
+            return (String(clean.prefix(2)), String(clean.dropFirst(2)))
         }
         return (nil, clean)
     }

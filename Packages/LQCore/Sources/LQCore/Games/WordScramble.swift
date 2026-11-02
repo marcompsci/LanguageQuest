@@ -18,12 +18,14 @@ public struct WordScramble: Sendable {
     public static let maxLetters = 9
 
     public let puzzles: [ScramblePuzzle]
+    let context: CheckContext
     public private(set) var index = 0
     public private(set) var firstTryCorrect = 0
     public private(set) var attemptsThisRound = 0
 
     public init(library: ContentLibrary, profile: PlayerProfile, seed: UInt64) {
         var rng = SeededRandom(seed: seed)
+        context = library.checkContext
         let v = profile.variant
         let candidates = library.allItems.filter { $0.kind == .word }.compactMap { item -> (LexItem, String?, String)? in
             let (article, word) = GameHelpers.bareWord(item.target.text(for: v))
@@ -59,7 +61,7 @@ public struct WordScramble: Sendable {
     public mutating func submit(_ attempt: String) -> Bool {
         guard let p = current else { return false }
         attemptsThisRound += 1
-        let ok = AnswerChecker.fold(attempt) == AnswerChecker.fold(p.answer)
+        let ok = AnswerChecker.equivalent(attempt, p.answer, context: context)
         if ok {
             if attemptsThisRound == 1 { firstTryCorrect += 1 }
             index += 1

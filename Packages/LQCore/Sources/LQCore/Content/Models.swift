@@ -146,6 +146,17 @@ public struct Currency: Codable, Hashable, Sendable {
     public var singular: String
     public var plural: String
     public var symbol: String
+    /// Multiplier for shop prices in mini-games (e.g. 100 for yen). nil = 1.
+    public var displayScale: Int?
+
+    public var scale: Int { displayScale ?? 1 }
+}
+
+public enum WritingSystem: String, Codable, Sendable {
+    /// Latin alphabet with accents (Spanish, French).
+    case latin
+    /// Japanese kana. Words are separated by spaces in lessons; romaji is derived automatically.
+    case kana
 }
 
 /// A regional variety of the target language (e.g. Mexico, Spain, Argentina).
@@ -173,8 +184,27 @@ public struct Course: Codable, Sendable {
     public var defaultVariant: String
     public var variants: [LanguageVariant]
     public var unitFiles: [String]
+    /// English name of the target language ("Spanish"). nil = derived from the code.
+    public var languageName: String?
+    /// Native name ("Español", "Français", "日本語").
+    public var nativeName: String?
+    public var writingSystem: WritingSystem?
+    /// Whole-word romaji overrides for kana courses (e.g. こんにちは → konnichiwa).
+    public var romanizationOverrides: [String: String]?
+    /// Extra keys shown above the keyboard for typed answers.
+    public var typingKeys: [String]?
 
     public func variant(_ id: String) -> LanguageVariant? { variants.first { $0.id == id } }
+
+    public var displayLanguage: String {
+        languageName ?? ["es": "Spanish", "fr": "French", "ja": "Japanese"][targetLanguage] ?? targetLanguage
+    }
+    public var script: WritingSystem { writingSystem ?? .latin }
+
+    /// Romaji for kana courses, nil for Latin-script courses.
+    public func romanize(_ s: String) -> String? {
+        script == .kana ? Kana.romanize(s, overrides: romanizationOverrides ?? [:]) : nil
+    }
 }
 
 // MARK: - Unit

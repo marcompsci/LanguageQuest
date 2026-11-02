@@ -20,6 +20,11 @@ public struct PlaceSign: Hashable, Sendable {
     public var position: GridPoint
     public var spanish: String
     public var english: String
+    /// The sign in other target languages (key: language code).
+    public var other: [String: String] = [:]
+
+    /// The sign's text in a target language (Spanish if missing).
+    public func text(_ language: String) -> String { language == "es" ? spanish : other[language] ?? spanish }
 }
 
 /// The first explorable world. Map is text so designers can edit it without code.
@@ -77,12 +82,18 @@ public enum StarterVillage {
     ]
 
     public static let signs: [PlaceSign] = [
-        PlaceSign(position: GridPoint(4, 4), spanish: "La casa de Luna", english: "Luna's house"),
-        PlaceSign(position: GridPoint(23, 4), spanish: "La escuela", english: "The school"),
-        PlaceSign(position: GridPoint(4, 17), spanish: "La panadería", english: "The bakery"),
-        PlaceSign(position: GridPoint(14, 11), spanish: "La fuente", english: "The fountain"),
-        PlaceSign(position: GridPoint(25, 15), spanish: "El mercado", english: "The market"),
-        PlaceSign(position: GridPoint(31, 11), spanish: "Pueblo Conversación", english: "Conversation Town (coming soon)"),
+        PlaceSign(position: GridPoint(4, 4), spanish: "La casa de Luna", english: "Luna's house",
+                  other: ["fr": "La maison de Luna", "ja": "ルナ の いえ"]),
+        PlaceSign(position: GridPoint(23, 4), spanish: "La escuela", english: "The school",
+                  other: ["fr": "L'école", "ja": "がっこう"]),
+        PlaceSign(position: GridPoint(4, 17), spanish: "La panadería", english: "The bakery",
+                  other: ["fr": "La boulangerie", "ja": "パンや"]),
+        PlaceSign(position: GridPoint(14, 11), spanish: "La fuente", english: "The fountain",
+                  other: ["fr": "La fontaine", "ja": "ふんすい"]),
+        PlaceSign(position: GridPoint(25, 15), spanish: "El mercado", english: "The market",
+                  other: ["fr": "Le marché", "ja": "いちば"]),
+        PlaceSign(position: GridPoint(31, 11), spanish: "Pueblo Conversación", english: "Conversation Town (coming soon)",
+                  other: ["fr": "Ville Conversation", "ja": "かいわ タウン"]),
     ]
 
     public static var npcPositions: Set<GridPoint> { Set(npcs.map(\.position)) }

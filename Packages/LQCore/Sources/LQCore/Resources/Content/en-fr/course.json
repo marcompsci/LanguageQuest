@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "id": "en-fr",
+  "title": "French for English speakers",
+  "sourceLanguage": "en",
+  "targetLanguage": "fr",
+  "languageName": "French",
+  "nativeName": "Français",
+  "writingSystem": "latin",
+  "typingKeys": [
+    "é",
+    "è",
+    "ê",
+    "à",
+    "â",
+    "ç",
+    "ô",
+    "î",
+    "û",
+    "ù",
+    "ë",
+    "ï",
+    "œ"
+  ],
+  "defaultVariant": "fr-FR",
+  "variants": [
+    {
+      "id": "fr-FR",
+      "name": "France",
+      "nativeName": "France",
+      "flagEmoji": "🇫🇷",
+      "voiceLocales": [
+        "fr-FR"
+      ],
+      "speechLocales": [
+        "fr-FR"
+      ],
+      "currency": {
+        "code": "EUR",
+        "singular": "euro",
+        "plural": "euros",
+        "symbol": "€"
+      },
+      "usesVoseo": false,
+      "note": "The French of France. Breakfast is le petit-déjeuner."
+    },
+    {
+      "id": "fr-CA",
+      "name": "Québec (Canada)",
+      "nativeName": "Québec",
+      "flagEmoji": "🇨🇦",
+      "voiceLocales": [
+        "fr-CA",
+        "fr-FR"
+      ],
+      "speechLocales": [
+        "fr-CA",
+        "fr-FR"
+      ],
+      "currency": {
+        "code": "CAD",
+        "singular": "dollar",
+        "plural": "dollars",
+        "symbol": "$"
+      },
+      "usesVoseo": false,
+      "note": "Québec French says bienvenue for you're welcome and le déjeuner for breakfast."
+    }
+  ],
+  "unitFiles": [
+    "unit1-salutations.json",
+    "unit2-famille.json",
+    "unit3-marche.json"
+  ]
+}

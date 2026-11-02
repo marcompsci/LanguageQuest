@@ -21,6 +21,21 @@ public enum AnswerVerdict: Equatable, Sendable {
     }
 }
 
+/// How to compare answers for a course's writing system.
+public struct CheckContext: Sendable {
+    public var script: WritingSystem
+    public var overrides: [String: String]
+    /// The variant that `VText.base` represents (es-419 for Spanish, fr-FR for French…).
+    public var baseVariant: String
+    public init(script: WritingSystem = .latin, overrides: [String: String] = [:], baseVariant: String = "es-419") {
+        self.script = script; self.overrides = overrides; self.baseVariant = baseVariant
+    }
+    public static let latin = CheckContext()
+    public init(course: Course) {
+        self.init(script: course.script, overrides: course.romanizationOverrides ?? [:], baseVariant: course.defaultVariant)
+    }
+}
+
 public enum AnswerChecker {
     /// Lowercases, trims, removes punctuation (including ¿ ¡), and collapses spaces.
     public static func normalize(_ s: String) -> String {
@@ -39,7 +54,9 @@ public enum AnswerChecker {
     ///   - accepted: every acceptable answer (each may have regional forms).
     ///   - variant: the learner's chosen variant id.
     ///   - allowTypos: speech results and young learners get one-letter leeway as "almost".
-    public static func check(_ input: String, accepted: [VText], variant: String, allowTypos: Bool = true) -> AnswerVerdict {
+    public static func check(_ input: String, accepted: [VText], variant: String, allowTypos: Bool = true,
+                             context: CheckContext = .latin) -> AnswerVerdict {
+        if context.script == .kana { return checkKana(input, accepted: accepted, variant: variant, allowTypos: allowTypos, context: context) }
         let given = normalize(input)
         let preferred = accepted.map { $0.text(for: variant) }
         let expected = preferred.first ?? ""
@@ -55,8 +72,8 @@ public enum AnswerChecker {
                     return .correctOtherRegion(expected: a.text(for: variant), variant: v)
                 }
             }
-            if variant != "es-419", a.overrides[variant] != nil, normalize(a.base) == given {
-                return .correctOtherRegion(expected: a.text(for: variant), variant: "es-419")
+            if variant != context.baseVariant, a.overrides[variant] != nil, normalize(a.base) == given {
+                return .correctOtherRegion(expected: a.text(for: variant), variant: context.baseVariant)
             }
         }
 
@@ -72,6 +89,24 @@ public enum AnswerChecker {
             }
         }
         return .incorrect(expected: expected)
+    }
+
+    /// Japanese: kana or romaji input both work; long vowels are forgiven.
+    static func checkKana(_ input: String, accepted: [VText], variant: String, allowTypos: Bool, context: CheckContext) -> AnswerVerdict {
+        let expected = accepted.first.map { $0.text(for: variant) } ?? ""
+        let key = Kana.matchKey(input, overrides: context.overrides)
+        guard !key.isEmpty else { return .incorrect(expected: expected) }
+        let keys = accepted.flatMap(\.allForms).map { Kana.matchKey($0, overrides: context.overrides) }
+        if keys.contains(key) { return .correct }
+        if allowTypos, keys.contains(where: { $0.count >= 5 && editDistance($0, key) == 1 }) { return .almost(expected: expected) }
+        return .incorrect(expected: expected)
+    }
+
+    /// True when two answers are the same for this course (used by side games).
+    public static func equivalent(_ a: String, _ b: String, context: CheckContext = .latin) -> Bool {
+        context.script == .kana
+            ? Kana.matchKey(a, overrides: context.overrides) == Kana.matchKey(b, overrides: context.overrides) && !a.isEmpty
+            : fold(a) == fold(b)
     }
 
     /// Checks a built sentence (tile order) against the correct order.
@@ -102,9 +137,9 @@ public enum AnswerChecker {
     }
 
     /// Kid-friendly feedback line for a verdict. Variant names come from the course.
-    public static func feedback(for verdict: AnswerVerdict, variantName: (String) -> String) -> String {
+    public static func feedback(for verdict: AnswerVerdict, praise: String = "¡Muy bien!", variantName: (String) -> String) -> String {
         switch verdict {
-        case .correct: return "¡Muy bien! That's right."
+        case .correct: return "\(praise) That's right."
         case .correctMissingAccents(let e): return "Right! Watch the accents: \(e)"
         case .correctOtherRegion(let e, let v): return "That's right in \(variantName(v))! Here we say: \(e)"
         case .almost(let e): return "So close! Check the spelling: \(e)"

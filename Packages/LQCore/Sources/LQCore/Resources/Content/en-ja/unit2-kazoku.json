@@ -1,0 +1,1348 @@
+{
+  "id": "ju2-kazoku",
+  "version": 1,
+  "order": 2,
+  "title": "Family & Friends",
+  "targetTitle": "かぞく",
+  "world": "starter-village",
+  "objective": "Talk about family and friends, introduce people, describe them, name colors, and talk about pets.",
+  "canDo": [
+    "I can name people in my family, including older and younger siblings.",
+    "I can introduce someone with こちら は … です.",
+    "I can describe a person with a few words.",
+    "I can name colors.",
+    "I can say what pets I have."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Low–Novice Mid",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons"
+    ]
+  },
+  "ageBands": [
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Written by the development team. Needs review by native-speaker linguists for each regional variant before release. Audio uses on-device text-to-speech until native recordings are made."
+  },
+  "vocabulary": [
+    {
+      "id": "kazoku",
+      "kind": "word",
+      "target": "かぞく",
+      "english": "the family",
+      "picture": "👨‍👩‍👧",
+      "altText": "a family of three"
+    },
+    {
+      "id": "okaasan",
+      "kind": "word",
+      "target": "おかあさん",
+      "english": "mother"
+    },
+    {
+      "id": "otousan",
+      "kind": "word",
+      "target": "おとうさん",
+      "english": "father"
+    },
+    {
+      "id": "oniisan",
+      "kind": "word",
+      "target": "おにいさん",
+      "english": "older brother"
+    },
+    {
+      "id": "oneesan",
+      "kind": "word",
+      "target": "おねえさん",
+      "english": "older sister"
+    },
+    {
+      "id": "otouto",
+      "kind": "word",
+      "target": "おとうと",
+      "english": "younger brother"
+    },
+    {
+      "id": "imouto",
+      "kind": "word",
+      "target": "いもうと",
+      "english": "younger sister"
+    },
+    {
+      "id": "ojiisan",
+      "kind": "word",
+      "target": "おじいさん",
+      "english": "grandfather"
+    },
+    {
+      "id": "obaasan",
+      "kind": "word",
+      "target": "おばあさん",
+      "english": "grandmother"
+    },
+    {
+      "id": "tomodachi",
+      "kind": "word",
+      "target": "ともだち",
+      "english": "friend"
+    },
+    {
+      "id": "se-ga-takai",
+      "kind": "phrase",
+      "target": "せ が たかい",
+      "english": "tall (lit. height is high)"
+    },
+    {
+      "id": "se-ga-hikui",
+      "kind": "phrase",
+      "target": "せ が ひくい",
+      "english": "short (lit. height is low)"
+    },
+    {
+      "id": "yasashii",
+      "kind": "word",
+      "target": "やさしい",
+      "english": "kind / gentle",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "id": "omoshiroi",
+      "kind": "word",
+      "target": "おもしろい",
+      "english": "funny / interesting",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "id": "aka",
+      "kind": "word",
+      "target": "あか",
+      "english": "red",
+      "picture": "🔴",
+      "altText": "a red circle"
+    },
+    {
+      "id": "ao",
+      "kind": "word",
+      "target": "あお",
+      "english": "blue",
+      "picture": "🔵",
+      "altText": "a blue circle"
+    },
+    {
+      "id": "midori",
+      "kind": "word",
+      "target": "みどり",
+      "english": "green",
+      "picture": "🟢",
+      "altText": "a green circle"
+    },
+    {
+      "id": "kiiro",
+      "kind": "word",
+      "target": "きいろ",
+      "english": "yellow",
+      "picture": "🟡",
+      "altText": "a yellow circle"
+    },
+    {
+      "id": "murasaki",
+      "kind": "word",
+      "target": "むらさき",
+      "english": "purple",
+      "picture": "🟣",
+      "altText": "a purple circle"
+    },
+    {
+      "id": "chairo",
+      "kind": "word",
+      "target": "ちゃいろ",
+      "english": "brown",
+      "picture": "🟤",
+      "altText": "a brown circle",
+      "note": "ちゃいろ literally means tea color."
+    },
+    {
+      "id": "inu",
+      "kind": "word",
+      "target": "いぬ",
+      "english": "dog",
+      "picture": "🐕",
+      "altText": "a dog"
+    },
+    {
+      "id": "neko",
+      "kind": "word",
+      "target": "ねこ",
+      "english": "cat",
+      "picture": "🐈",
+      "altText": "a cat"
+    },
+    {
+      "id": "sakana",
+      "kind": "word",
+      "target": "さかな",
+      "english": "fish",
+      "picture": "🐟",
+      "altText": "a fish"
+    },
+    {
+      "id": "tori",
+      "kind": "word",
+      "target": "とり",
+      "english": "bird",
+      "picture": "🐦",
+      "altText": "a bird"
+    },
+    {
+      "id": "kame",
+      "kind": "word",
+      "target": "かめ",
+      "english": "turtle",
+      "picture": "🐢",
+      "altText": "a turtle"
+    },
+    {
+      "id": "petto",
+      "kind": "word",
+      "target": "ペット",
+      "english": "pet"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "kochira-wa",
+      "kind": "phrase",
+      "target": "こちら は … です",
+      "english": "this is… (introducing someone)",
+      "example": {
+        "target": "こちら は ニコ です。",
+        "english": "This is Nico."
+      }
+    },
+    {
+      "id": "ga-imasu",
+      "kind": "phrase",
+      "target": "… が います",
+      "english": "there is… / I have… (people and animals)",
+      "example": {
+        "target": "ねこ が います。",
+        "english": "I have a cat."
+      }
+    },
+    {
+      "id": "imasu-ka",
+      "kind": "phrase",
+      "target": "… が います か？",
+      "english": "Do you have…? (people and animals)"
+    },
+    {
+      "id": "nani-iro",
+      "kind": "phrase",
+      "target": "なに いろ です か？",
+      "english": "What color is it?"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "jn-u2-family",
+      "title": "Older and younger",
+      "body": "Japanese has different words for older and younger siblings: おにいさん (older brother) and おとうと (younger brother), おねえさん (older sister) and いもうと (younger sister). Age matters in how people speak to each other."
+    },
+    {
+      "id": "jn-u2-mine",
+      "title": "My mom vs. your mom",
+      "body": "When talking about your own family to others, Japanese uses humble words: はは (my mother) and ちち (my father). おかあさん and おとうさん are for someone else's parents, or for calling your own."
+    },
+    {
+      "id": "jn-u2-ao",
+      "title": "Is it blue or green?",
+      "body": "In Japan, the green traffic light is called あお (blue)! Long ago, あお covered both blue and green, and the name stuck."
+    }
+  ],
+  "quests": [
+    {
+      "id": "ju2-q1",
+      "order": 1,
+      "title": "Mateo's family photo",
+      "npc": "mateo",
+      "location": "The plaza",
+      "summary": "Mateo shows you a photo of his family.",
+      "objective": "Name the people in a family.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Mateo",
+            "line": "みて！ ぼく の かぞく の しゃしん だ よ。",
+            "gloss": "Look! It's a photo of my family.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Mateo",
+            "line": "これ が おかあさん で、 これ が おとうさん。 きょうだい は いる？",
+            "gloss": "This is my mom and this is my dad. Do you have brothers or sisters?",
+            "choices": [
+              {
+                "text": "うん、 おにいさん が いる よ。",
+                "gloss": "Yes, I have an older brother.",
+                "next": "n3"
+              },
+              {
+                "text": "うん、 いもうと が いる よ。",
+                "gloss": "Yes, I have a younger sister.",
+                "next": "n3"
+              },
+              {
+                "text": "ううん、 ひとりっこ だ よ。",
+                "gloss": "No, I'm an only child.",
+                "next": "n3"
+              }
+            ],
+            "hint": "Coco says: Any true answer is a good answer here!"
+          },
+          {
+            "id": "n3",
+            "speaker": "Mateo",
+            "line": "いい ね！ ぼく に は いもうと が いる よ。 ソフィア って いう んだ。",
+            "gloss": "Cool! I have a younger sister. Her name is Sofía.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "ju2-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "ju2-q1-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "kazoku",
+            "okaasan",
+            "otousan",
+            "oniisan",
+            "imouto"
+          ],
+          "hint": "おかあさん has かあ (mom) inside.",
+          "explanation": "かぞく, おかあさん, おとうさん, おにいさん, いもうと.",
+          "pairs": [
+            {
+              "target": "かぞく",
+              "english": "the family"
+            },
+            {
+              "target": "おかあさん",
+              "english": "mother"
+            },
+            {
+              "target": "おとうさん",
+              "english": "father"
+            },
+            {
+              "target": "おにいさん",
+              "english": "older brother"
+            },
+            {
+              "target": "いもうと",
+              "english": "younger sister"
+            }
+          ]
+        },
+        {
+          "id": "ju2-q1-a2",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "obaasan"
+          ],
+          "hint": "ばあ: a long a sound.",
+          "explanation": "おばあさん (obāsan) = grandmother. おじいさん = grandfather.",
+          "target": "おばあさん",
+          "targetEnglish": "grandmother",
+          "choices": [
+            {
+              "id": "a",
+              "text": "grandfather"
+            },
+            {
+              "id": "b",
+              "text": "grandmother"
+            },
+            {
+              "id": "c",
+              "text": "older sister"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju2-q1-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "ojiisan"
+          ],
+          "hint": "じい: a long i sound.",
+          "explanation": "ぼく の おじいさん です = He's my grandfather. (の means my / 's.)",
+          "target": "ぼく の おじいさん です。",
+          "targetEnglish": "He's my grandfather.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "He's my older brother."
+            },
+            {
+              "id": "b",
+              "text": "She's my grandmother."
+            },
+            {
+              "id": "c",
+              "text": "He's my grandfather."
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "ju2-q1-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Japanese: “older sister”",
+          "items": [
+            "oneesan"
+          ],
+          "hint": "o-nē-san",
+          "explanation": "おねえさん (onēsan) = older sister.",
+          "targetEnglish": "older sister",
+          "accepted": [
+            "おねえさん"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "hat-straw"
+      }
+    },
+    {
+      "id": "ju2-q2",
+      "order": 2,
+      "title": "Meet my friends",
+      "npc": "luna",
+      "location": "The plaza",
+      "summary": "Luna introduces her friends Nico and Sofía.",
+      "objective": "Introduce people with こちら は … です.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "また あった ね！ ともだち を しょうかい する ね。",
+            "gloss": "Hi again! Let me introduce my friends.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "こちら は ニコ で、 こちら は ソフィア です。",
+            "gloss": "This is Nico, and this is Sofía.",
+            "choices": [
+              {
+                "text": "はじめまして！",
+                "gloss": "Nice to meet you!",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "いくら です か？",
+                "gloss": "How much is it?",
+                "next": "n2",
+                "correct": false,
+                "feedback": "You just met them! Say “はじめまして！”."
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "Luna",
+            "line": "ニコ は いぬ を かって いる よ。 あとで みに いこう！",
+            "gloss": "Nico has a dog. Let's go see it later!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "ju2-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "ju2-q2-a1",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "kochira-wa"
+          ],
+          "hint": "Which particle marks the topic?",
+          "explanation": "こちら は ソフィア です = This is Sofía. Here は is read wa.",
+          "sentence": "こちら ___ ソフィア です。",
+          "targetEnglish": "This is Sofía.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "を"
+            },
+            {
+              "id": "b",
+              "text": "は"
+            },
+            {
+              "id": "c",
+              "text": "に"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju2-q2-a2",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “This is my friend Nico.”",
+          "items": [
+            "kochira-wa",
+            "tomodachi"
+          ],
+          "hint": "Start with こちら.",
+          "explanation": "こちら は ともだち の ニコ です.",
+          "tiles": [
+            "こちら",
+            "は",
+            "ともだち",
+            "の",
+            "ニコ",
+            "です"
+          ],
+          "targetEnglish": "This is my friend Nico.",
+          "distractors": [
+            "が"
+          ]
+        },
+        {
+          "id": "ju2-q2-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "kochira-wa",
+            "tomodachi"
+          ],
+          "hint": "What do you say when you meet someone new?",
+          "explanation": "Answer an introduction with はじめまして！",
+          "target": "こちら は ともだち の ニコ です。",
+          "targetEnglish": "This is my friend Nico.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ねこ が います。"
+            },
+            {
+              "id": "b",
+              "text": "はじめまして、 ニコ！"
+            },
+            {
+              "id": "c",
+              "text": "ごめんなさい。"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju2-q2-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "kochira-wa",
+            "tomodachi"
+          ],
+          "hint": "to-mo-da-chi.",
+          "explanation": "こちら は … です introduces someone politely.",
+          "target": "こちら は ともだち です。",
+          "targetEnglish": "This is my friend.",
+          "accepted": [
+            "こちら は ともだち です"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "backpack-blue"
+      }
+    },
+    {
+      "id": "ju2-q3",
+      "order": 3,
+      "title": "Describe a friend",
+      "npc": "profe-sol",
+      "location": "The school",
+      "summary": "Profe Sol's class learns to describe people.",
+      "objective": "Describe people with a few words.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Profe Sol",
+            "line": "きょう は ひと の ようす を いいましょう。",
+            "gloss": "Today let's describe people.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Profe Sol",
+            "line": "ニコ は せ が たかい？ ひくい？",
+            "gloss": "Is Nico tall? Short?",
+            "choices": [
+              {
+                "text": "せ が たかい です。",
+                "gloss": "He's tall.",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "せ が ひくい です。",
+                "gloss": "He's short.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "Look again: Nico is the tallest kid in the village!"
+              }
+            ],
+            "hint": "Coco says: Nico is taller than the fence!"
+          },
+          {
+            "id": "n3",
+            "speaker": "Profe Sol",
+            "line": "そう！ ニコ は せ が たかくて、 とても やさしい です。",
+            "gloss": "Yes! Nico is tall and very kind.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "ju2-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "ju2-q3-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "se-ga-takai"
+          ],
+          "hint": "たかい means high.",
+          "explanation": "せ が たかい = tall (his height is high).",
+          "target": "ニコ は せ が たかい です。",
+          "targetEnglish": "Nico is tall.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Nico is tall."
+            },
+            {
+              "id": "b",
+              "text": "Nico is short."
+            },
+            {
+              "id": "c",
+              "text": "Nico is funny."
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "ju2-q3-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "se-ga-takai",
+            "se-ga-hikui",
+            "yasashii",
+            "omoshiroi"
+          ],
+          "hint": "ひくい means low.",
+          "explanation": "せ が たかい, せ が ひくい, やさしい, おもしろい.",
+          "pairs": [
+            {
+              "target": "せ が たかい",
+              "english": "tall (lit. height is high)"
+            },
+            {
+              "target": "せ が ひくい",
+              "english": "short (lit. height is low)"
+            },
+            {
+              "target": "やさしい",
+              "english": "kind / gentle"
+            },
+            {
+              "target": "おもしろい",
+              "english": "funny / interesting"
+            }
+          ]
+        },
+        {
+          "id": "ju2-q3-a3",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "yasashii"
+          ],
+          "hint": "Which word describes a person?",
+          "explanation": "Japanese describing words don't change for boys or girls.",
+          "sentence": "ソフィア は とても ___ です。",
+          "targetEnglish": "Sofía is very kind.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ありがとう"
+            },
+            {
+              "id": "b",
+              "text": "やさしい"
+            },
+            {
+              "id": "c",
+              "text": "みどり"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju2-q3-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Japanese: “funny”",
+          "items": [
+            "omoshiroi"
+          ],
+          "hint": "o-mo-shi-ro-i",
+          "explanation": "おもしろい = funny / interesting.",
+          "targetEnglish": "funny",
+          "accepted": [
+            "おもしろい"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "beret-green"
+      }
+    },
+    {
+      "id": "ju2-q4",
+      "order": 4,
+      "title": "Abuela Lola's colors",
+      "npc": "abuela-lola",
+      "location": "Abuela Lola's garden",
+      "summary": "Mateo's grandma is painting and needs help with colors.",
+      "objective": "Name colors.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Abuela Lola",
+            "line": "あら、 いらっしゃい！ え を かいて いる の。",
+            "gloss": "Oh, welcome! I'm painting a picture.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Abuela Lola",
+            "line": "たいよう は なに いろ？",
+            "gloss": "What color is the sun?",
+            "choices": [
+              {
+                "text": "きいろ です。",
+                "gloss": "It's yellow.",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "あお です。",
+                "gloss": "It's blue.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "Look up! The sun is yellow: きいろ."
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "Abuela Lola",
+            "line": "ばっちり！ てつだって くれて ありがとう。",
+            "gloss": "Perfect! Thanks for helping me.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "ju2-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "ju2-q4-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "ao"
+          ],
+          "hint": "あお is short: a-o.",
+          "explanation": "あお = blue.",
+          "target": "あお",
+          "targetEnglish": "blue",
+          "choices": [
+            {
+              "id": "a",
+              "text": "green",
+              "picture": "🟢",
+              "altText": "a green circle"
+            },
+            {
+              "id": "b",
+              "text": "blue",
+              "picture": "🔵",
+              "altText": "a blue circle"
+            },
+            {
+              "id": "c",
+              "text": "red",
+              "picture": "🔴",
+              "altText": "a red circle"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju2-q4-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "aka",
+            "midori",
+            "kiiro",
+            "murasaki"
+          ],
+          "hint": "あか is the color of a fire truck.",
+          "explanation": "あか, みどり, きいろ, むらさき.",
+          "pairs": [
+            {
+              "target": "あか",
+              "english": "red"
+            },
+            {
+              "target": "みどり",
+              "english": "green"
+            },
+            {
+              "target": "きいろ",
+              "english": "yellow"
+            },
+            {
+              "target": "むらさき",
+              "english": "purple"
+            }
+          ]
+        },
+        {
+          "id": "ju2-q4-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "chairo",
+            "inu"
+          ],
+          "hint": "いぬ is dog.",
+          "explanation": "ちゃいろ (tea color) = brown.",
+          "target": "いぬ は ちゃいろ です。",
+          "targetEnglish": "The dog is brown.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "The dog is brown."
+            },
+            {
+              "id": "b",
+              "text": "The cat is brown."
+            },
+            {
+              "id": "c",
+              "text": "The dog is black."
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "ju2-q4-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "aka",
+            "ao",
+            "midori"
+          ],
+          "hint": "The r in みどり is a light tap, between r and d.",
+          "explanation": "Japanese r is a quick tap of the tongue.",
+          "target": "あか、 あお、 みどり",
+          "targetEnglish": "red, blue, green",
+          "accepted": [
+            "あか あお みどり"
+          ]
+        },
+        {
+          "id": "ju2-q4-a5",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Japanese: “yellow”",
+          "items": [
+            "kiiro"
+          ],
+          "hint": "kī-ro",
+          "explanation": "きいろ = yellow.",
+          "targetEnglish": "yellow",
+          "accepted": [
+            "きいろ"
+          ]
+        },
+        {
+          "id": "ju2-q4-a6",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "nani-iro",
+            "kiiro"
+          ],
+          "hint": "Answer with a color and です.",
+          "explanation": "なに いろ です か asks the color. Answer: きいろ です.",
+          "target": "たいよう は なに いろ です か？",
+          "targetEnglish": "What color is the sun?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "むらさき です。"
+            },
+            {
+              "id": "b",
+              "text": "たいよう が います。"
+            },
+            {
+              "id": "c",
+              "text": "きいろ です。"
+            }
+          ],
+          "answer": "c"
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "paintbrush"
+      }
+    },
+    {
+      "id": "ju2-q5",
+      "order": 5,
+      "title": "Nico's pets",
+      "npc": "nico",
+      "location": "Near the pond",
+      "summary": "Nico and his dog Canela talk about pets.",
+      "objective": "Name pets and say what you have.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Nico",
+            "line": "やあ！ これ は ぼく の いぬ、 カネラ だ よ。",
+            "gloss": "Hey! This is my dog, Canela.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Nico",
+            "line": "ペット は いる？",
+            "gloss": "Do you have a pet?",
+            "choices": [
+              {
+                "text": "うん、 ねこ が いる よ。",
+                "gloss": "Yes, I have a cat.",
+                "next": "n3"
+              },
+              {
+                "text": "うん、 さかな が いる よ。",
+                "gloss": "Yes, I have a fish.",
+                "next": "n3"
+              },
+              {
+                "text": "ううん、 いない よ。",
+                "gloss": "No, I don't.",
+                "next": "n3"
+              }
+            ],
+            "hint": "Coco says: Pick what's true for you, or just pretend!"
+          },
+          {
+            "id": "n3",
+            "speaker": "Nico",
+            "line": "カネラ は みんな が だいすき！",
+            "gloss": "Canela loves everyone!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "ju2-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "ju2-q5-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "neko"
+          ],
+          "hint": "ねこ: ne-ko.",
+          "explanation": "ねこ = cat.",
+          "target": "ねこ",
+          "targetEnglish": "cat",
+          "choices": [
+            {
+              "id": "a",
+              "text": "dog",
+              "picture": "🐕",
+              "altText": "a dog"
+            },
+            {
+              "id": "b",
+              "text": "bird",
+              "picture": "🐦",
+              "altText": "a bird"
+            },
+            {
+              "id": "c",
+              "text": "cat",
+              "picture": "🐈",
+              "altText": "a cat"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "ju2-q5-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "inu",
+            "sakana",
+            "tori",
+            "kame"
+          ],
+          "hint": "かめ is a turtle.",
+          "explanation": "いぬ, さかな, とり, かめ.",
+          "pairs": [
+            {
+              "target": "いぬ",
+              "english": "dog"
+            },
+            {
+              "target": "さかな",
+              "english": "fish"
+            },
+            {
+              "target": "とり",
+              "english": "bird"
+            },
+            {
+              "target": "かめ",
+              "english": "turtle"
+            }
+          ]
+        },
+        {
+          "id": "ju2-q5-a3",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “I have a cat.”",
+          "items": [
+            "ga-imasu",
+            "neko"
+          ],
+          "hint": "Animal first, then が います.",
+          "explanation": "ねこ が います = I have a cat (there is a cat).",
+          "tiles": [
+            "ねこ",
+            "が",
+            "います"
+          ],
+          "targetEnglish": "I have a cat.",
+          "distractors": [
+            "を"
+          ]
+        },
+        {
+          "id": "ju2-q5-a4",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "imasu-ka",
+            "ga-imasu",
+            "petto"
+          ],
+          "hint": "Answer with が います.",
+          "explanation": "… が います か asks “do you have…?”; answer … が います.",
+          "target": "ペット は います か？",
+          "targetEnglish": "Do you have a pet?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "はい、 あお です。"
+            },
+            {
+              "id": "b",
+              "text": "はい、 ねこ が います。"
+            },
+            {
+              "id": "c",
+              "text": "またね。"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "ju2-q5-a5",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Japanese: “turtle”",
+          "items": [
+            "kame"
+          ],
+          "hint": "ka-me",
+          "explanation": "かめ = turtle.",
+          "targetEnglish": "turtle",
+          "accepted": [
+            "かめ"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "pet-dog",
+        "badge": "badge-u2"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "ju2-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "ju2-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "ojiisan"
+        ],
+        "hint": "じい: long i.",
+        "explanation": "おじいさん = grandfather.",
+        "target": "おじいさん",
+        "targetEnglish": "grandfather",
+        "choices": [
+          {
+            "id": "a",
+            "text": "grandmother"
+          },
+          {
+            "id": "b",
+            "text": "older brother"
+          },
+          {
+            "id": "c",
+            "text": "grandfather"
+          }
+        ],
+        "answer": "c"
+      },
+      {
+        "id": "ju2-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Japanese: “older brother”",
+        "items": [
+          "oniisan"
+        ],
+        "hint": "o-nī-san",
+        "explanation": "おにいさん = older brother.",
+        "targetEnglish": "older brother",
+        "accepted": [
+          "おにいさん"
+        ]
+      },
+      {
+        "id": "ju2-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "yasashii"
+        ],
+        "hint": "やさしい = kind.",
+        "explanation": "かのじょ は やさしい です = She is kind.",
+        "target": "かのじょ は やさしい です。",
+        "targetEnglish": "She is kind.",
+        "choices": [
+          {
+            "id": "a",
+            "text": "She is tall."
+          },
+          {
+            "id": "b",
+            "text": "She is kind."
+          },
+          {
+            "id": "c",
+            "text": "She is my sister."
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "ju2-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Japanese: “red”",
+        "items": [
+          "aka"
+        ],
+        "hint": "a-ka",
+        "explanation": "あか = red.",
+        "targetEnglish": "red",
+        "accepted": [
+          "あか"
+        ]
+      },
+      {
+        "id": "ju2-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in Japanese: “I have a dog.”",
+        "items": [
+          "ga-imasu",
+          "inu"
+        ],
+        "hint": "Animal + が います.",
+        "explanation": "いぬ が います.",
+        "target": "いぬ が います。",
+        "targetEnglish": "I have a dog.",
+        "accepted": [
+          "いぬ が います。"
+        ]
+      }
+    ]
+  }
+}

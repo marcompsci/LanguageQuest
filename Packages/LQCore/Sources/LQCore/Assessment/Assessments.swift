@@ -212,13 +212,13 @@ public struct ParentReport: Sendable {
 
     /// Screen-free practice ideas tied to what the child is learning.
     static func offlineIdeas(_ p: PlayerProfile, library: ContentLibrary) -> [String] {
-        var ideas: [String] = []
+        let phrases = library.phrases
         let done = p.progress.completedQuests
-        func did(_ unit: String) -> Bool { library.unit(unit)?.quests.contains { done.contains($0.id) } ?? false }
-        if did("u1-saludos") { ideas.append("Greet each other in Spanish at breakfast: \"¡Buenos días! ¿Cómo estás?\"") }
-        if did("u2-familia") { ideas.append("Look at family photos together and name each person: \"Es mi abuela.\"") }
-        if did("u3-mercado") { ideas.append("At the store, let your child ask you \"¿Cuánto cuesta?\" and answer with numbers up to 20.") }
-        ideas.append("Count steps, stairs or toys aloud in Spanish (uno, dos, tres…).")
+        var ideas: [String] = []
+        for u in library.units where u.quests.contains(where: { done.contains($0.id) }) {
+            if let idea = phrases.offlineIdeas[u.order] { ideas.append(idea) }
+        }
+        ideas.append(phrases.countingIdea)
         return ideas
     }
 }

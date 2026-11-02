@@ -1,4 +1,8 @@
 import json
+LANG_NAME="Spanish"
+def set_language(name):
+    global LANG_NAME
+    LANG_NAME=name
 def V(base, **ov):
     if not ov: return base
     d={"base":base}
@@ -45,11 +49,11 @@ def fill(id, sentence, opts, ans, items, hint, expl, en=None, prompt="Pick the w
     if en: d["targetEnglish"]=en
     d["choices"],d["answer"]=_choices(opts,ans); return d
 def write(id, en, accepted, items, hint, expl, practice="independent", prompt=None):
-    d=_base(id,"typeAnswer","writing","presentational",practice,prompt or f"Write in Spanish: “{en}”",items,hint,expl)
+    d=_base(id,"typeAnswer","writing","presentational",practice,prompt or f"Write in {LANG_NAME}: “{en}”",items,hint,expl)
     d["targetEnglish"]=en; d["accepted"]=list(accepted); return d
 def speak(id, es, en, items, hint, expl, accepted=None, practice="guided", prompt=None):
     d=_base(id,"speak","speaking","presentational",practice,
-            prompt or ("Say it out loud." if practice=="guided" else f"Say in Spanish: “{en}”"),items,hint,expl)
+            prompt or ("Say it out loud." if practice=="guided" else f"Say in {LANG_NAME}: “{en}”"),items,hint,expl)
     d["target"]=es; d["targetEnglish"]=en; d["accepted"]=list(accepted or [es]); return d
 def reply(id, heard, heard_en, opts, ans, items, hint, expl, practice="guided", prompt="Pick the best reply."):
     d=_base(id,"dialogueReply","listening","interpersonal",practice,prompt,items,hint,expl)
@@ -80,3 +84,9 @@ def dump(obj, path):
     with open(path,"w",encoding="utf-8") as f: json.dump(obj,f,ensure_ascii=False,indent=2); f.write("\n")
 REVIEW={"text":"authored","audio":"draft","reviewers":[],
         "notes":"Written by the development team. Needs review by native-speaker linguists for each regional variant before release. Audio uses on-device text-to-speech until native recordings are made."}
+def mkunit(id, order, title, target_title, objective, can_do, level, goals, vocab, phrases, notes, quests, mastery):
+    return {"id":id,"version":1,"order":order,"title":title,"targetTitle":target_title,"world":"starter-village",
+            "objective":objective,"canDo":can_do,
+            "actfl":{"modes":["interpretive","interpersonal","presentational"],"targetLevel":level,"otherGoals":goals},
+            "ageBands":["10-12","13-15","16+"],"review":REVIEW,"vocabulary":vocab,"phrases":phrases,
+            "culturalNotes":notes,"quests":quests,"masteryCheck":mastery}
