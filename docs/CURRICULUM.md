@@ -1,0 +1,159 @@
+# Curriculum
+
+## Principles
+
+- **Aligned with ACTFL standards** (World-Readiness Standards): every unit has activities in all three communication modes:
+  - **Interpretive**: understand what you hear or read.
+  - **Interpersonal**: two-way exchange (NPC replies).
+  - **Presentational**: produce for an audience (build, write, speak).
+
+  Units also touch Cultures and Comparisons (cultural notes, regional variants), and Unit 3 touches Communities. Target range: Novice Low to Novice Mid. Source: https://www.actfl.org/educator-resources/world-readiness-standards-for-learning-languages/standards-summary
+- **Age is not proficiency.** Placement and skills are independent of age band.
+- **Teach, then test.** Each quest goes dialogue (meet the language in context) → guided practice (choices, tiles, models) → independent practice (typing or speaking from memory). Each unit ends with an optional mastery check.
+- **XP is not proficiency.** Mastery comes only from the learner model (below).
+- **No claims of school credit or fluency.**
+
+## Launch course: English → Spanish
+
+### Regional variants (switchable any time)
+
+| id | Name | Notes | Currency in examples |
+|---|---|---|---|
+| `es-419` | Latin America (general) | Neutral base form for all content | pesos |
+| `es-MX` | Mexico | Most common in the US | pesos |
+| `es-ES` | Spain | zumo, marrón, patata; vosotros comes in a later unit | euros |
+| `es-AR` | Argentina | **voseo**: ¿Cómo te llamás? ¿Tenés…?; banana, frutilla, palta | pesos |
+| `es-CO` | Colombia | banano; usted is common | pesos |
+| `es-PR` | Caribbean (Puerto Rico) | guineo | dólares |
+
+How variants work:
+- Any piece of target text can carry overrides: `{"base": "el jugo", "es-ES": "el zumo"}`.
+- The answer checker accepts another region's correct form, with a note ("That's right in Spain! Here we say: el jugo").
+- Missing accents are accepted with a note.
+- A one-letter typo in a word of 5 or more letters counts as "almost": not correct, and the learner can retry. Shorter words get no typo leeway because a single letter can change the meaning (dos/tos).
+
+### Units in the vertical slice
+
+| Unit | Quests (NPC) | Can-do goals |
+|---|---|---|
+| **1. ¡Hola!** Greetings & Introductions | Good morning, village! (Luna) · What's your name? (Mateo) · How are you? (Doña Rosa) · The magic words (Profe Sol) · Count with Don Pepe (Don Pepe) | Greet by time of day; ask and give names; ask how someone is and answer (including polite *usted*); please, thank you, you're welcome, sorry; count 0–10 |
+| **2. Mi familia** Family & Friends | Mateo's family photo · Meet my friends (Luna) · Describe a friend (Profe Sol) · Abuela Lola's colors · Nico's pets | Family members; *este es / esta es*; describe people with gender agreement; colors; pets with *tengo / ¿tienes?* |
+| **3. En el mercado** At the Market | Don Pepe's fruit stand · Bread at the bakery (Doña Rosa) · Numbers to twenty (Señora Ana) · How much is it? (Don Pepe) · Breakfast with Luna | Fruits and foods; *quiero / me gusta / no me gusta*; 11–20; *¿Cuánto cuesta?*; polite ordering with *quisiera, ¿me da…?, aquí tiene* |
+
+Totals:
+- 15 quests and 68 quest activities, with at least 3 activity types per quest (enforced).
+- 5 mastery-check items per unit.
+- 94 words and phrases, 10 cultural notes.
+
+Every unit practises listening, reading, writing and speaking, in both guided and independent form (enforced by tests).
+
+**Cultural notes:** tú and usted; greeting kisses (one versus two by region); when "la tarde" starts; two last names; grandparents and padrinos; open-air markets and the tianguis; tortilla in Mexico versus Spain; money by country; ¡buen provecho!
+
+### Activity types
+
+| Type | Skill | Mode | Track in learner model |
+|---|---|---|---|
+| `listenChoose`: hear Spanish, pick the meaning ("Show the words" is available) | Listening | Interpretive | Comprehension |
+| `readChoose` | Reading | Interpretive | Comprehension |
+| `match`: Spanish ↔ English pairs | Reading | Interpretive | Comprehension |
+| `fillBlank` | Reading | Interpretive | Comprehension |
+| `dialogueReply`: pick the right reply | Listening | Interpersonal | Comprehension |
+| `buildSentence`: word tiles plus distractors | Writing | Presentational | Guided production |
+| `typeAnswer`: no word bank, accent keys provided | Writing | Presentational | Spontaneous production |
+| `speak`: model shown (guided) or English prompt only (independent) | Speaking | Presentational | Guided, or spontaneous if verified by recognition |
+
+A self-checked spoken answer (no microphone) counts as guided practice, because it can't prove spontaneous use.
+
+## Learner model and adaptive review
+
+Each item (word or phrase) has two memory tracks: comprehension and production.
+
+Scheduler (`SpacedScheduler`), a variant of SM-2:
+- **Grade** comes from correctness, attempts, hint use, and response time: 5 = right on the first try and quick; 4 = slow; 3 = needed retries or a hint; 1 = wrong.
+- **Intervals:** 1 day, then 3 days, then roughly ease × the previous interval, capped at 180 days. Effortful successes grow by only 60%. A miss returns in 10 minutes and lowers ease.
+- **Real elapsed time:** remembering after a longer gap than scheduled earns more credit (up to 2×).
+- **Delayed retention:** reviews at least a day after the previous one are counted separately.
+
+Mastery levels:
+
+| Level | Rule |
+|---|---|
+| New | Never practised |
+| Learning | Practised at least once |
+| Familiar | 2 or more successful spaced reviews |
+| **Understands** | Comprehension interval of at least 7 days AND at least one correct delayed review |
+| **Can use** | Understands, plus at least 2 first-try, no-hint spontaneous productions, one of them delayed |
+
+Cramming in one sitting can't reach "Understands" (tested).
+
+Assessments:
+- **Baseline placement** (optional and skippable): up to 4 mastery questions per unit; 75% or better opens the next unit; no speaking items, so no microphone is needed.
+- **Retention check:** weekly at most, on items not seen for 7 or more days; comprehension items only.
+- **Mastery check:** independent practice, one try each, no hints; passing (80%) gives a badge; failing loses nothing.
+
+## Content pipeline and review status
+
+| Status | Meaning | Can ship? |
+|---|---|---|
+| `draft` | Being written | No |
+| `authored` | Complete, self-checked by the team, passes the validator | TestFlight only, labelled |
+| `linguist-reviewed` | A native-speaker linguist approved it for every variant it covers | Not yet |
+| `released` | Reviewed text **and** audio, with reviewer names recorded | Yes |
+
+**Current status of all three units: text `authored`, audio `draft`.** A release build (`ContentValidator.validate(_, releaseBuild: true)`) fails until both are `released`. A test checks that this honesty gate stays in place.
+
+**Review checklist for linguists:**
+- Accuracy and naturalness per variant.
+- Regional overrides are complete; for example, check whether Colombia or the Caribbean also need overrides where only base forms exist today.
+- Age-appropriateness and cultural notes.
+- Every accepted answer list (are common correct alternatives missing?).
+- English glosses.
+
+**Audio.** Every item has an `audioFile` slot. Today it is nil, and the app uses the best on-device text-to-speech voice for the variant. Voice availability differs by device and iOS version, so the app picks at runtime and doesn't guarantee an accent. Release requires native-speaker recordings for each variant: about 94 items plus dialogue lines and activity prompts per variant.
+
+## Content schema
+
+Course manifest (`Content/en-es/course.json`):
+
+```json
+{ "schemaVersion": 1, "id": "en-es", "sourceLanguage": "en", "targetLanguage": "es",
+  "defaultVariant": "es-419",
+  "variants": [{ "id": "es-AR", "name": "Argentina", "voiceLocales": ["es-AR","es-419","es-MX"],
+                 "speechLocales": ["es-AR","es-419","es-MX"], "currency": {...}, "usesVoseo": true }],
+  "unitFiles": ["unit1-saludos.json", "unit2-familia.json", "unit3-mercado.json"] }
+```
+
+Unit (abridged):
+
+```json
+{ "id": "u1-saludos", "version": 1, "order": 1, "title": "Greetings & Introductions",
+  "targetTitle": "¡Hola!", "world": "starter-village", "objective": "…", "canDo": ["…"],
+  "actfl": { "modes": ["interpretive","interpersonal","presentational"], "targetLevel": "Novice Low–Novice Mid", "otherGoals": ["Cultures"] },
+  "ageBands": ["7-9","10-12","13-15","16+"],
+  "review": { "text": "authored", "audio": "draft", "reviewers": [], "notes": "…" },
+  "vocabulary": [{ "id": "hola", "kind": "word", "target": "hola", "english": "hello", "picture": "👋", "altText": "a waving hand" }],
+  "phrases": [{ "id": "como-te-llamas", "kind": "phrase", "target": { "base": "¿Cómo te llamas?", "es-AR": "¿Cómo te llamás?" }, "english": "What's your name?" }],
+  "culturalNotes": [{ "id": "…", "title": "…", "body": "…", "byVariant": { "es-AR": "…" } }],
+  "quests": [{ "id": "u1-q1", "order": 1, "title": "…", "npc": "luna", "location": "…",
+               "dialogue": { "start": "n1", "nodes": [{ "id": "n2", "speaker": "Luna", "line": "…", "gloss": "…",
+                   "choices": [{ "text": "¡Buenos días, Luna!", "gloss": "…", "next": "n3", "correct": true },
+                               { "text": "¡Buenas noches, Luna!", "gloss": "…", "next": "n2", "correct": false, "feedback": "It's morning! …" }],
+                   "hint": "Coco says: …" }] },
+               "activities": [{ "id": "u1-q1-a1", "type": "listenChoose", "skill": "listening", "mode": "interpretive",
+                   "practice": "guided", "prompt": "Listen. What does it mean?", "target": "¡Buenos días!",
+                   "choices": [{ "id": "a", "text": "Good night!" }, { "id": "b", "text": "Good morning!" }], "answer": "b",
+                   "items": ["buenos-dias"], "hint": "…", "explanation": "…" }],
+               "reward": { "xp": 30, "cosmetic": "scarf-yellow" } }],
+  "masteryCheck": { "id": "u1-mastery", "passPercent": 80, "activities": [ … independent only … ] } }
+```
+
+**Validator rules** (`ContentValidator`, run on every load and in tests):
+- Unique ids; known variants only; no placeholder text (TODO, TBD, lorem…).
+- At least 5 quests per unit; at least 3 activity types per quest; all four skills per unit.
+- Every picture has alt text.
+- Skill matches activity type; answers exist among the choices; no duplicate choices in any variant.
+- Wrong dialogue replies carry feedback; every dialogue node is reachable and can reach an ending.
+- Mastery items are independent practice.
+- Released content must name its reviewers.
+
+**Authoring:** `tools/content-authoring/*.py` generate the JSON; `tools/content-authoring/build.sh` regenerates the JSON and runs the content tests. The scripts are the source of truth. Adding French or Japanese means a new course folder and manifest, with no engine changes.

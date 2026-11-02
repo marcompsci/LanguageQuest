@@ -1,0 +1,53 @@
+{
+  "identifier" : "8C3A1E52",
+  "nonRenewingSubscriptions" : [],
+  "products" : [],
+  "settings" : {
+    "_applicationInternalID" : "0",
+    "_developerTeamID" : "",
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : []
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21543001",
+      "localizations" : [],
+      "name" : "familyplus",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [],
+          "codeOffers" : [],
+          "displayPrice" : "3.99",
+          "familyShareable" : true,
+          "groupNumber" : 1,
+          "internalID" : "6740000001",
+          "introductoryOffer" : null,
+          "localizations" : [ { "description" : "Up to 4 explorers, advanced worlds and extras", "displayName" : "Family Plus (Monthly)", "locale" : "en_US" } ],
+          "productID" : "com.phoronomics.languagequest.familyplus.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Family Plus Monthly",
+          "subscriptionGroupID" : "21543001",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [],
+          "codeOffers" : [],
+          "displayPrice" : "29.99",
+          "familyShareable" : true,
+          "groupNumber" : 1,
+          "internalID" : "6740000002",
+          "introductoryOffer" : null,
+          "localizations" : [ { "description" : "Up to 4 explorers, advanced worlds and extras", "displayName" : "Family Plus (Yearly)", "locale" : "en_US" } ],
+          "productID" : "com.phoronomics.languagequest.familyplus.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Family Plus Yearly",
+          "subscriptionGroupID" : "21543001",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : { "major" : 3, "minor" : 0 }
+}

@@ -1,0 +1,68 @@
+# Roadmap and Milestone Plan
+
+Status key: ✅ done and tested · 🟡 built, needs device or expert validation · ⬜ planned
+
+## Milestone 0: Foundations ✅
+- New repo, XcodeGen project, `LQCore` Swift package, test script.
+- **Acceptance:** `swift test` runs on macOS and Linux; `xcodegen generate` produces a project with app and UI-test targets.
+
+## Milestone 1: Core engine ✅
+- Content models with regional variants; validator; answer checker; spaced scheduler with comprehension and production tracks; progression and rewards; saves with backup and migration; entitlement logic; parental gate; tile map with A*.
+- **Acceptance:** every rule in CURRICULUM.md and PRIVACY_AND_CHILD_SAFETY.md that can be expressed in logic has a unit test; 75 tests green.
+
+## Milestone 2: Spanish content, Units 1–3 🟡
+- 15 quests and 68 activities across 8 types; mastery checks; cultural notes; 6 variants.
+- **Acceptance:** the validator passes; every answer key passes in every variant (✅).
+- **Still needed:** native-speaker linguist sign-off per variant, and native audio recordings.
+
+## Milestone 3: Playable vertical slice 🟡
+- Onboarding, avatar, Starter Village (SpriteKit), NPC dialogue, quest player, eight exercise views, journal, bag, review, placement, mastery check, parent area, StoreKit service (off).
+- **Acceptance:**
+  - (a) builds in Xcode 16 for iOS 17;
+  - (b) the 6 UI tests pass on the iPhone 16 simulator;
+  - (c) a child can finish Unit 1 without adult help;
+  - (d) VoiceOver can complete quest 1 using "Go to".
+- **Status:** code complete but not yet compiled against the iOS SDK. **Next action: build on a Mac, fix compiler errors, then run the UI tests.**
+
+## Milestone 4: Polish and accessibility pass ⬜
+- Fix accessibility-audit findings; Dynamic Type at AX3 layouts; landscape layout on iPad; original sound effects (synthesised, no licensed audio); NPC walking animation frames; parent PIN in the Keychain; a "voices on this device" readout for parents.
+- **Acceptance:** zero audit issues on onboarding, quest, review, and parent screens; manual VoiceOver walk-through passes.
+
+## Milestone 5: Content release readiness ⬜
+- Linguist review per variant; record native audio (`audioFile` per item and dialogue line); mark units `released`.
+- **Acceptance:** `ContentValidator.validate(_, releaseBuild: true)` passes; an audio file exists for every item and line, in every variant offered.
+
+## Milestone 6: Legal and store readiness ⬜
+- Children's privacy legal review; privacy policy; category decision (APP_STORE_CHECKLIST §1); Declared Age Range API integration (iOS 26) with fallback; age rating questionnaire.
+- **Acceptance:** written legal sign-off; TestFlight external review passes; App Privacy label is "Data Not Collected".
+
+## Milestone 7: TestFlight family pilot ⬜
+- 2-week pilot across age bands, measuring retention, mastery-check pass rate, and parent dashboard comprehension.
+- **Acceptance:** pilot report; top issues fixed.
+
+## Later: game and curriculum expansion ⬜
+- **Conversation Town** (Units 4–6: school, home, hobbies), then Adventure City, Explorer Academy, Quest Kingdom, Mastery Realm. Worlds are data: a new map plus NPC files.
+- **Word Battles:** friendly encounters in which listening, sentence building, pronunciation and recall power the moves. Mistakes trigger coaching, not damage.
+- **Puzzle Academy:** spelling, grammar, reading, matching, sentence ordering.
+- **Mini-games in Spanish:** soccer (commands and numbers), cooking (food and imperatives), treasure hunt (directions), shopping (money), travel (transport), racing (left/right and fast/slow).
+- **Family and classroom co-op:** same device, or family-only via Game Center friends; **preset messages only**; no stranger matching.
+- **More variants:** vosotros unit for Spain; Chile and Peru variants after linguist review.
+- **French, then Japanese**, only after content is authored, linguistically reviewed, and tested (Japanese needs kana-input activities).
+- **Monetisation:** turn on Family Plus only after legal, technical, and unit-economics review (PRD §6).
+- **Android:** reuse the JSON content and the LQCore test vectors.
+
+## What is mocked, unfinished, or legally unreviewed (as of this build)
+
+| Item | State |
+|---|---|
+| iOS app target | Written without an iOS SDK; **never compiled yet**. Expect a round of compiler fixes. |
+| UI tests | Written, not yet run |
+| Spanish content | Authored by the dev team; **not linguist-reviewed** (marked `authored`) |
+| Audio | **Text-to-speech placeholder**; no native recordings |
+| Speech recognition | Implemented (on-device only), **untested on device**; locale support varies by device |
+| Paid plans / StoreKit | Implemented and **disabled**; StoreKit config for local testing only; not legally or economically reviewed |
+| COPPA, state-law, and Apple Kids analysis | Design-level only; **no legal review** |
+| Parent PIN, Declared Age Range API | Not implemented |
+| Sound effects and music | Not implemented (haptic feedback only) |
+| Conversation Town and later worlds, Word Battles, Puzzle Academy, mini-games, co-op | Not implemented |
+| French and Japanese | Not started (by design) |

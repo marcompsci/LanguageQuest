@@ -23,7 +23,7 @@ public struct Progression: Sendable {
 
     // MARK: Unlocks
 
-    public func isUnitUnlocked(_ unit: Unit, _ p: CourseProgress, plan: Plan, config: StoreConfig = .default) -> Bool {
+    public func isUnitUnlocked(_ unit: LessonUnit, _ p: CourseProgress, plan: Plan, config: StoreConfig = .default) -> Bool {
         guard FeatureGate.isAvailable(.lessons(unitOrder: unit.order), plan: plan, config: config) else { return false }
         if p.placedOutUnits.contains(unit.id) { return true }
         guard let prev = library.units.last(where: { $0.order < unit.order }) else { return true }
@@ -31,11 +31,11 @@ public struct Progression: Sendable {
     }
 
     /// All quests done (or placed out). The mastery check is encouraged, never a wall.
-    public func isUnitFinished(_ unit: Unit, _ p: CourseProgress) -> Bool {
+    public func isUnitFinished(_ unit: LessonUnit, _ p: CourseProgress) -> Bool {
         p.placedOutUnits.contains(unit.id) || unit.quests.allSatisfy { p.completedQuests.contains($0.id) }
     }
 
-    public func status(of quest: Quest, in unit: Unit, _ p: CourseProgress, plan: Plan) -> QuestStatus {
+    public func status(of quest: Quest, in unit: LessonUnit, _ p: CourseProgress, plan: Plan) -> QuestStatus {
         if p.completedQuests.contains(quest.id) { return .complete }
         guard isUnitUnlocked(unit, p, plan: plan) else { return .locked }
         let sorted = unit.quests.sorted { $0.order < $1.order }
@@ -123,7 +123,7 @@ public struct Progression: Sendable {
 }
 
 extension ContentLibrary {
-    public func quest(containing activityId: String) -> (unit: Unit, quest: Quest)? {
+    public func quest(containing activityId: String) -> (unit: LessonUnit, quest: Quest)? {
         for u in units { for q in u.quests where q.activities.contains(where: { $0.id == activityId }) { return (u, q) } }
         return nil
     }

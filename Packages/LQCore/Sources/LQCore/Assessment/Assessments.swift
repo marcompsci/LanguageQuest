@@ -48,11 +48,11 @@ public struct PlacementSession: Sendable {
         if library.units.isEmpty { finished = true }
     }
 
-    private func questions(for u: Unit) -> [Activity] {
+    private func questions(for u: LessonUnit) -> [Activity] {
         Array(u.masteryCheck.activities.prefix(Self.questionsPerUnit))
     }
 
-    public var currentUnit: Unit? { finished ? nil : library.units[unitIndex] }
+    public var currentUnit: LessonUnit? { finished ? nil : library.units[unitIndex] }
 
     public var currentQuestion: Activity? {
         guard let u = currentUnit else { return nil }
@@ -93,13 +93,13 @@ public struct PlacementSession: Sendable {
 }
 
 public enum MasteryCheckGrader {
-    public static func grade(unit: Unit, answers: [AssessmentAnswer], now: Date) -> AssessmentResult {
+    public static func grade(unit: LessonUnit, answers: [AssessmentAnswer], now: Date) -> AssessmentResult {
         let pct = AssessmentScoring.percent(answers)
         return AssessmentResult(kind: .masteryCheck, date: now, unitId: unit.id,
                                 bySkill: AssessmentScoring.score(answers), passed: pct >= unit.masteryCheck.passPercent)
     }
 
-    public static func apply(_ r: AssessmentResult, unit: Unit, badge: String, profile: inout PlayerProfile) {
+    public static func apply(_ r: AssessmentResult, unit: LessonUnit, badge: String, profile: inout PlayerProfile) {
         profile.assessments.append(r)
         if r.passed == true {
             profile.progress.passedMasteryChecks.insert(unit.masteryCheck.id)

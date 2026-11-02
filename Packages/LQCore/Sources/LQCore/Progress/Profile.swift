@@ -91,6 +91,10 @@ public struct AssessmentResult: Codable, Hashable, Sendable {
     public var bySkill: [Skill: SkillScore]
     public var passed: Bool?
 
+    public init(kind: AssessmentKind, date: Date, unitId: String?, bySkill: [Skill: SkillScore], passed: Bool?) {
+        self.kind = kind; self.date = date; self.unitId = unitId; self.bySkill = bySkill; self.passed = passed
+    }
+
     public var overall: SkillScore {
         bySkill.values.reduce(SkillScore()) { SkillScore(correct: $0.correct + $1.correct, total: $0.total + $1.total) }
     }

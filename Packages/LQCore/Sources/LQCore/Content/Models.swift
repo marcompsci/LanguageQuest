@@ -243,7 +243,7 @@ public struct MasteryCheck: Codable, Hashable, Sendable {
     public var activities: [Activity]
 }
 
-public struct Unit: Codable, Hashable, Identifiable, Sendable {
+public struct LessonUnit: Codable, Hashable, Identifiable, Sendable {
     public var id: String
     public var version: Int
     public var order: Int
@@ -348,6 +348,7 @@ public struct DialogueEffect: Codable, Hashable, Sendable {
     public enum Kind: String, Codable, Sendable { case setFlag, startQuest, giveCosmetic }
     public var kind: Kind
     public var value: String
+    public init(kind: Kind, value: String) { self.kind = kind; self.value = value }
 }
 
 public struct DialogueChoice: Codable, Hashable, Sendable {
@@ -357,6 +358,9 @@ public struct DialogueChoice: Codable, Hashable, Sendable {
     /// nil = any reply is fine (social choice). false = gentle redirect.
     public var correct: Bool?
     public var feedback: String?
+    public init(text: VText, gloss: String, next: String, correct: Bool? = nil, feedback: String? = nil) {
+        self.text = text; self.gloss = gloss; self.next = next; self.correct = correct; self.feedback = feedback
+    }
 }
 
 public struct DialogueNode: Codable, Hashable, Identifiable, Sendable {
@@ -369,11 +373,19 @@ public struct DialogueNode: Codable, Hashable, Identifiable, Sendable {
     public var effects: [DialogueEffect]?
     /// A safe, pre-written hint (Coco the parrot). Never generated.
     public var hint: String?
+
+    public init(id: String, speaker: String, line: VText, gloss: String, choices: [DialogueChoice]? = nil,
+                next: String? = nil, effects: [DialogueEffect]? = nil, hint: String? = nil) {
+        self.id = id; self.speaker = speaker; self.line = line; self.gloss = gloss
+        self.choices = choices; self.next = next; self.effects = effects; self.hint = hint
+    }
 }
 
 public struct Dialogue: Codable, Hashable, Sendable {
     public var start: String
     public var nodes: [DialogueNode]
+
+    public init(start: String, nodes: [DialogueNode]) { self.start = start; self.nodes = nodes }
 
     public func node(_ id: String) -> DialogueNode? { nodes.first { $0.id == id } }
 }
