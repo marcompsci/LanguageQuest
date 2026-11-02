@@ -37,6 +37,18 @@ final class LanguageQuestUITests: XCTestCase {
         XCTAssertTrue(app.buttons["grownUpsButton"].waitForExistence(timeout: 5))
     }
 
+    @MainActor func testJapaneseOnboardingSkipsVariantStep() {
+        let app = launch(seed: false)
+        let next = app.buttons["onboardingNext"]
+        XCTAssertTrue(next.waitForExistence(timeout: 5))
+        next.tap()                                   // welcome
+        app.buttons["age-13-15"].tap()
+        next.tap()                                   // age
+        app.buttons["course-en-ja"].tap()
+        next.tap()                                   // language → straight to avatar (one variant)
+        XCTAssertTrue(app.staticTexts["Make your explorer"].waitForExistence(timeout: 3))
+    }
+
     @MainActor func testParentGateBlocksWrongAnswer() {
         let app = launch(seed: true)
         app.buttons["grownUpsButton"].tap()
