@@ -22,7 +22,7 @@ Status key: ✅ done and tested · 🟡 built, needs device or expert validation
   - (b) the 6 UI tests pass on the iPhone 16 simulator;
   - (c) a child can finish Unit 1 without adult help;
   - (d) VoiceOver can complete quest 1 using "Go to".
-- **Status:** code complete but not yet compiled against the iOS SDK. **Next action: build on a Mac, fix compiler errors, then run the UI tests.**
+- **Status:** builds in Xcode and runs on a physical iPhone (v0.2, 2 Nov 2026). **Next action:** run the UI tests and play-test on device.
 
 ## Milestone 4: Polish and accessibility pass ⬜
 - Fix accessibility-audit findings; Dynamic Type at AX3 layouts; landscape layout on iPad; original sound effects (synthesised, no licensed audio); NPC walking animation frames; parent PIN in the Keychain; a "voices on this device" readout for parents.
@@ -69,7 +69,7 @@ Status key: ✅ done and tested · 🟡 built, needs device or expert validation
 
 | Item | State |
 |---|---|
-| iOS app target | Written without an iOS SDK; **never compiled yet**. Expect a round of compiler fixes. |
+| iOS app target | Builds and runs on iPhone (v0.2); needs device play-testing |
 | UI tests | Written, not yet run |
 | Spanish content | Authored by the dev team; **not linguist-reviewed** (marked `authored`) |
 | Audio | **Text-to-speech placeholder**; no native recordings |

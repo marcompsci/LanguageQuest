@@ -139,7 +139,7 @@ public enum SoundEffect: String, CaseIterable, Sendable {
     }
 }
 
-public enum MusicTrack: String, CaseIterable, Sendable {
+public enum GameMusic: String, CaseIterable, Sendable {
     case village, battle
 
     public var song: ChipSong {
@@ -177,7 +177,7 @@ public final class ChipMixer: @unchecked Sendable {
 
     public init() {}
 
-    public func setMusic(_ track: MusicTrack?) {
+    public func setMusic(_ track: GameMusic?) {
         lock.lock(); defer { lock.unlock() }
         if let t = track { if music?.song != t.song { music = ChipVoice(t.song) } } else { music = nil }
     }

@@ -39,7 +39,7 @@ xcodebuild -project LanguageQuest.xcodeproj -scheme LanguageQuest \
   -destination 'platform=iOS Simulator,name=iPhone 16' test
 ```
 
-> **First build:** the app target was written in an environment without the iOS SDK. It parses cleanly and was independently reviewed, but it has not been compiled yet. If Xcode reports errors, they should be small type or API fixes. `LQCore` is fully compiled and tested. The project is preset to Apple team X6LZQ3FS36.
+> **Build status:** v0.2 builds in Xcode and runs on a physical iPhone (2 Nov 2026). `LQCore` is fully compiled and tested. The project is preset to Apple team X6LZQ3FS36.
 
 ### Real device
 

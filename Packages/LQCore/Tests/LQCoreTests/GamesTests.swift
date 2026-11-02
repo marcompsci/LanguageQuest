@@ -15,9 +15,9 @@ final class ChiptuneTests: XCTestCase {
     func testParsingAndLengths() {
         let n = ChipSong.parse("C5:1 -:0.5 E5:0.5")
         XCTAssertEqual(n, [ChipNote(72, 1), ChipNote(nil, 0.5), ChipNote(76, 0.5)])
-        XCTAssertEqual(MusicTrack.village.song.lengthBeats, 16)
-        XCTAssertEqual(MusicTrack.battle.song.lengthBeats, 8)
-        for t in MusicTrack.allCases {
+        XCTAssertEqual(GameMusic.village.song.lengthBeats, 16)
+        XCTAssertEqual(GameMusic.battle.song.lengthBeats, 8)
+        for t in GameMusic.allCases {
             let lens = Set(t.song.tracks.map(\.lengthBeats))
             XCTAssertEqual(lens.count, 1, "\(t) tracks stay in sync when looping")
         }

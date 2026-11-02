@@ -9,7 +9,7 @@ final class AudioService {
     private let mixer = ChipMixer()
     private var source: AVAudioSourceNode?
     private var started = false
-    private(set) var currentMusic: MusicTrack?
+    private(set) var currentMusic: GameMusic?
     var effectsOn = true
     var musicOn = true { didSet { applyMusic() } }
 
@@ -49,7 +49,7 @@ final class AudioService {
         mixer.play(e)
     }
 
-    func setMusic(_ track: MusicTrack?) {
+    func setMusic(_ track: GameMusic?) {
         currentMusic = track
         applyMusic()
     }
