@@ -21,6 +21,8 @@ public struct ChipTrack: Sendable, Equatable {
     public var notes: [ChipNote]
     public var wave: Waveform
     public var volume: Float
+    /// Percussive fade (seconds for the note to fall to ~37%). nil = sustained.
+    public var decay: Double? = nil
     public var lengthBeats: Double { notes.reduce(0) { $0 + $1.beats } }
 }
 
@@ -97,7 +99,8 @@ public struct ChipVoice: Sendable {
                 let total = note.beats * 60 / song.bpm
                 let elapsed = total - st.remaining
                 // Short attack and release so notes don't click.
-                let env = Float(min(1, elapsed / 0.005, st.remaining / 0.02))
+                var env = Float(min(1, elapsed / 0.005, st.remaining / 0.02))
+                if let d = track.decay { env *= Float(exp(-elapsed / d)) }
                 out += ChipSynth.sample(track.wave, phase: st.phase, noiseState: &noise) * track.volume * env
                 st.phase += ChipSynth.frequency(midi: m) * dt
                 st.phase -= floor(st.phase)
@@ -140,7 +143,7 @@ public enum SoundEffect: String, CaseIterable, Sendable {
 }
 
 public enum GameMusic: String, CaseIterable, Sendable {
-    case village, battle
+    case village, battle, reggaeton
 
     public var song: ChipSong {
         switch self {
@@ -161,7 +164,47 @@ public enum GameMusic: String, CaseIterable, Sendable {
             return ChipSong(bpm: 140, tracks: [
                 ChipTrack(notes: ChipSong.parse(melody), wave: .square(duty: 0.5), volume: 0.09),
                 ChipTrack(notes: ChipSong.parse(bass), wave: .triangle, volume: 0.17)], loops: true)
+        case .reggaeton:
+            return Self.reggaetonSong
         }
+    }
+}
+
+extension GameMusic {
+    /// An original reggaeton-style instrumental for the Spanish lessons: the
+    /// dembow rhythm (a public, centuries-old 3-3-2 pattern) at 95 BPM in A minor,
+    /// over an i–VI–III–VII progression (Am–F–C–G). Eight bars: hook, then groove.
+    static var reggaetonSong: ChipSong {
+        func rep(_ s: String, _ n: Int) -> String { Array(repeating: s, count: n).joined(separator: " ") }
+        // Kick on every beat.
+        let kick = rep("A1:0.25 -:0.75", 32)
+        // Dembow snare: 16th-note positions 3, 6, 11 and 14 of each bar.
+        let snare = rep("-:0.75 C4:0.25 -:0.5 C4:0.25 -:0.25", 16)
+        // Offbeat hi-hats.
+        let hats = rep("-:0.5 C6:0.25 -:0.25", 32)
+        // Bass in a 3-3-2 rhythm following the chords.
+        let bassBars = ["A2", "F2", "C3", "G2"].map { "\($0):1.5 \($0):1.5 \($0):1" }.joined(separator: " ")
+        let bass = rep(bassBars, 2)
+        // Chord stabs on the offbeats, three voices.
+        let voicings = [("A4", "C5", "E5"), ("A4", "C5", "F5"), ("G4", "C5", "E5"), ("G4", "B4", "D5")]
+        func stab(_ pick: ((String, String, String)) -> String) -> String {
+            rep(voicings.map { rep("-:0.5 \(pick($0)):0.25 -:0.25", 4) }.joined(separator: " "), 2)
+        }
+        // The hook (bars 1–4), then four bars of groove so it never gets in the way of the lesson.
+        let hook = "E5:0.5 E5:0.25 G5:0.25 E5:0.5 D5:0.5 C5:1 -:1 " +
+                   "C5:0.5 C5:0.25 D5:0.25 C5:0.5 A4:0.5 A4:1 -:1 " +
+                   "G4:0.5 C5:0.5 E5:0.5 G5:0.5 E5:1 D5:0.5 C5:0.5 " +
+                   "B4:0.5 D5:0.5 B4:0.5 G4:0.5 A4:2 -:16"
+        return ChipSong(bpm: 95, tracks: [
+            ChipTrack(notes: ChipSong.parse(kick), wave: .triangle, volume: 0.30, decay: 0.09),
+            ChipTrack(notes: ChipSong.parse(snare), wave: .noise, volume: 0.16, decay: 0.07),
+            ChipTrack(notes: ChipSong.parse(hats), wave: .noise, volume: 0.05, decay: 0.025),
+            ChipTrack(notes: ChipSong.parse(bass), wave: .triangle, volume: 0.20, decay: 0.45),
+            ChipTrack(notes: ChipSong.parse(stab { $0.0 }), wave: .square(duty: 0.25), volume: 0.035, decay: 0.08),
+            ChipTrack(notes: ChipSong.parse(stab { $0.1 }), wave: .square(duty: 0.25), volume: 0.035, decay: 0.08),
+            ChipTrack(notes: ChipSong.parse(stab { $0.2 }), wave: .square(duty: 0.25), volume: 0.035, decay: 0.08),
+            ChipTrack(notes: ChipSong.parse(hook), wave: .square(duty: 0.5), volume: 0.07, decay: 0.6),
+        ], loops: true)
     }
 }
 

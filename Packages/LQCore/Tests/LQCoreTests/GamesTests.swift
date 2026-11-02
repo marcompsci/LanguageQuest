@@ -17,6 +17,7 @@ final class ChiptuneTests: XCTestCase {
         XCTAssertEqual(n, [ChipNote(72, 1), ChipNote(nil, 0.5), ChipNote(76, 0.5)])
         XCTAssertEqual(GameMusic.village.song.lengthBeats, 16)
         XCTAssertEqual(GameMusic.battle.song.lengthBeats, 8)
+        XCTAssertEqual(GameMusic.reggaeton.song.lengthBeats, 32, "8 bars of 4/4")
         for t in GameMusic.allCases {
             let lens = Set(t.song.tracks.map(\.lengthBeats))
             XCTAssertEqual(lens.count, 1, "\(t) tracks stay in sync when looping")
@@ -39,6 +40,22 @@ final class ChiptuneTests: XCTestCase {
         mixer.setMusic(nil)
         long.withUnsafeMutableBufferPointer { mixer.render(into: $0.baseAddress!, count: 44100, sampleRate: 44100) }
         XCTAssertEqual(long.map(abs).max() ?? 1, 0)
+    }
+
+    func testReggaetonHasTheDembowGroove() {
+        let song = GameMusic.reggaeton.song
+        XCTAssertEqual(song.bpm, 95)
+        // Snare hits at 16th positions 3, 6, 11, 14 in the first bar.
+        let snare = song.tracks[1].notes
+        var t = 0.0, hits: [Int] = []
+        for n in snare { if n.midi != nil, t < 4 { hits.append(Int((t * 4).rounded())) }; t += n.beats }
+        XCTAssertEqual(hits, [3, 6, 11, 14])
+        // Plays audibly and stays inside [-1, 1] after the master level is applied.
+        var v = ChipVoice(song)
+        var peak: Float = 0
+        for _ in 0..<44100 * 3 { peak = max(peak, abs(v.next(sampleRate: 44100))) }
+        XCTAssertGreaterThan(peak, 0.05)
+        XCTAssertLessThan(peak, 1.0)
     }
 
     func testEveryEffectHasSoundAndEnds() {

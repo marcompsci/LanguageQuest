@@ -235,9 +235,19 @@ final class AppModel: ObservableObject {
         audio.musicOn = profile?.settings.music ?? true
         audio.musicLevel = profile?.settings.musicLevel ?? LearnerSettings.defaultMusicVolume
         audio.lessonMode = sheet != nil
-        let battle: Bool
-        if case .battle = sheet { battle = true } else { battle = false }
-        audio.setMusic(route == .world ? (battle ? .battle : .village) : nil)
+        audio.setMusic(route == .world ? musicForScreen : nil)
+    }
+
+    /// Battle music for duels; reggaeton during Spanish lessons and games; the village theme otherwise.
+    private var musicForScreen: GameMusic {
+        guard let sheet else { return .village }
+        switch sheet {
+        case .battle: return .battle
+        case .quest, .review, .placement, .mastery, .scramble, .market:
+            return library?.course.targetLanguage == "es" ? .reggaeton : .village
+        case .journal, .bag, .parent, .games, .phrasebook:
+            return .village
+        }
     }
 
     func sessionBegan() {
