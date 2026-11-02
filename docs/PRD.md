@@ -13,10 +13,11 @@ Launch course: **Spanish, taught in English**, with a switchable regional variet
 
 Age sets **presentation**, never level. Every player can take the placement test, and skills are tracked separately.
 
+**Minimum age: 10.** (Changed from 7+ in v0.2.)
+
 | Band | Presentation | Default theme |
 |---|---|---|
-| 7–9 | Read-aloud instructions on, larger text, picture cues, guided play | Playful |
-| 10–12 | Quests, sentence building, listening and speaking | Playful |
+| 10–12 | Quests, sentence building, listening and speaking; read-aloud available | Playful |
 | 13–15 | Contextual dialogue, more independent practice, school alignment | Explorer |
 | 16+ | Practical situations, denser UI, (later) complex grammar | Explorer |
 
@@ -26,7 +27,7 @@ There is no birthdate. Onboarding asks for an age band with **no option pre-sele
 
 - **Punishing mechanics.** Energy and hearts systems, mistake counters, and streak anxiety. We use none of them: mistakes bring feedback and retries.
 - **Flashcard drills with no context.** Here every word arrives through a conversation with a character, in a place.
-- **Kids' apps stop at age 8; teen apps aren't made for kids.** One curriculum spans ages 7 to 16+, with two themes.
+- **Kids' apps stop at age 8; teen apps aren't made for younger players.** One curriculum spans ages 10 to 16+, with two themes.
 - **Material tested before it is taught.** Units have can-do goals, guided practice before independent practice, then a mastery check.
 - **Opaque progress.** The parent dashboard separates *activity* (time, XP) from *demonstrated mastery*. Mastery means remembered across days, and producing language is tracked separately from understanding it.
 - **Subscription traps.** Apple billing only, prices configurable, and essential learning always free.

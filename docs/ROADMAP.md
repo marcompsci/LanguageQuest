@@ -40,10 +40,24 @@ Status key: ✅ done and tested · 🟡 built, needs device or expert validation
 - 2-week pilot across age bands, measuring retention, mastery-check pass rate, and parent dashboard comprehension.
 - **Acceptance:** pilot report; top issues fixed.
 
+## Milestone 3b: v0.2 "10+ update", 10 phases 🟡
+| # | Phase | Acceptance | Status |
+|---|---|---|---|
+| 1 | Retarget to ages 10+ | No 7–9 band; old saves migrate; tests | ✅ tested |
+| 2 | Chiptune music and sound effects | Every effect is audible and ends; music loops in sync; separate settings | ✅ core tested · 🟡 device audio |
+| 3 | Walk cycle, shadows, ambient life | Off under Reduce Motion | 🟡 device check |
+| 4 | Word Battles | Questions well formed for every opponent and seed; mistakes never cost points; 4 in a row wins | ✅ core tested |
+| 5 | Word Scramble | Every puzzle solvable and actually scrambled, in every variant | ✅ core tested |
+| 6 | Market Rush | Every order payable with coins; basket and payment checks | ✅ core tested |
+| 7 | Hidden word treasures | 10 unique, reachable spots; saved in the treasure book | ✅ core tested |
+| 8 | Quest tracker | Correct 8-way headings; tap walks there | ✅ core tested |
+| 9 | Phrasebook | Accent-insensitive search across all regions' forms and English | ✅ core tested |
+| 10 | Parent PIN | SHA-256 vectors; trivial PINs rejected; lockout | ✅ core tested |
+
 ## Later: game and curriculum expansion ⬜
 - **Conversation Town** (Units 4–6: school, home, hobbies), then Adventure City, Explorer Academy, Quest Kingdom, Mastery Realm. Worlds are data: a new map plus NPC files.
-- **Word Battles:** friendly encounters in which listening, sentence building, pronunciation and recall power the moves. Mistakes trigger coaching, not damage.
-- **Puzzle Academy:** spelling, grammar, reading, matching, sentence ordering.
+- **Word Battles 2:** listening and speaking rounds, plus new opponents per world.
+- **Puzzle Academy 2:** grammar and sentence-ordering puzzles (Word Scramble shipped in v0.2).
 - **Mini-games in Spanish:** soccer (commands and numbers), cooking (food and imperatives), treasure hunt (directions), shopping (money), travel (transport), racing (left/right and fast/slow).
 - **Family and classroom co-op:** same device, or family-only via Game Center friends; **preset messages only**; no stranger matching.
 - **More variants:** vosotros unit for Spain; Chile and Peru variants after linguist review.
@@ -62,7 +76,7 @@ Status key: ✅ done and tested · 🟡 built, needs device or expert validation
 | Speech recognition | Implemented (on-device only), **untested on device**; locale support varies by device |
 | Paid plans / StoreKit | Implemented and **disabled**; StoreKit config for local testing only; not legally or economically reviewed |
 | COPPA, state-law, and Apple Kids analysis | Design-level only; **no legal review** |
-| Parent PIN, Declared Age Range API | Not implemented |
-| Sound effects and music | Not implemented (haptic feedback only) |
-| Conversation Town and later worlds, Word Battles, Puzzle Academy, mini-games, co-op | Not implemented |
+| Declared Age Range API | Not implemented (parent PIN shipped in v0.2) |
+| Sound effects and music | Synthesized chiptune (v0.2); not yet heard on device |
+| Conversation Town and later worlds, more mini-games (soccer, cooking, travel, racing), co-op | Not implemented (Word Battles, Word Scramble and Market Rush shipped in v0.2) |
 | French and Japanese | Not started (by design) |

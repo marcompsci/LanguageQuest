@@ -1,6 +1,8 @@
 # Test Plan
 
-## 1. Automated: LQCore unit tests (75 tests; all pass)
+## 1. Automated: LQCore unit tests (95 tests; all pass)
+
+v0.2 added `ChiptuneTests` (4), `WordBattleTests` (5), `SideGameTests` (7), `ParentPINTests` (3), and an age-band test. Together they cover music and effects rendering, battle questions and scoring, scramble solvability, market payability, treasure reachability, compass headings, phrasebook search across regions, optional extras for old saves, SHA-256 test vectors, PIN rules, and lockout.
 
 Run with `./scripts/test-core.sh`, or `cd Packages/LQCore && swift test` (macOS or Linux).
 
@@ -62,7 +64,7 @@ Run in Xcode (⌘U) or with `xcodebuild test -scheme LanguageQuest -destination 
 - [ ] The map is usable without seeing it: "Go to" list → auto-walk → auto-talk
 - [ ] Right and wrong feedback uses shape (✓ / ↺) plus words plus colour
 - [ ] Listening items offer "Show the words", for deaf and hard-of-hearing learners
-- [ ] Read-aloud for instructions (default on for ages 7–9)
+- [ ] Read-aloud for instructions (available in parent settings; off by default for 10+)
 - [ ] Reduced motion stops NPC bobbing, water animation, hop and camera easing
 - [ ] Tap targets ≥ 44 pt (main buttons 54 pt; the A button 84 pt)
 - [ ] Text contrast passes (automated) and is re-checked on device

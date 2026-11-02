@@ -18,7 +18,7 @@
 
 ## Market gaps (our inference from the above)
 
-1. **A real story RPG for ages 7–13.** Kids' Spanish apps are clustered at ages 0–8 and built from flashcard mini-games. Droplets is the only one aimed at 7–16, and it teaches vocabulary only.
+1. **A real story RPG for ages 10–15.** Kids' Spanish apps are clustered at ages 0–8 and built from flashcard mini-games. Droplets is the only one aimed at 7–16, and it teaches vocabulary only.
 2. **One product from child to teen.** Teen options are general-audience or 13+ and not designed for kids.
 3. **Motivation without punishment.** Energy and hearts, mistake counters, daily caps and streaks are the most-cited frustrations. → Language Quest: no lives, energy, timers or streaks. Wrong answers get a hint and a retry.
 4. **Teaching in order.** Content is tested before it is taught, with little explanation. → Language Quest: can-do goals, guided before independent practice, an explanation after every answer, and a mastery check that encourages but never blocks.

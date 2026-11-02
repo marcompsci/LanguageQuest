@@ -129,7 +129,7 @@ Unit (abridged):
 { "id": "u1-saludos", "version": 1, "order": 1, "title": "Greetings & Introductions",
   "targetTitle": "¡Hola!", "world": "starter-village", "objective": "…", "canDo": ["…"],
   "actfl": { "modes": ["interpretive","interpersonal","presentational"], "targetLevel": "Novice Low–Novice Mid", "otherGoals": ["Cultures"] },
-  "ageBands": ["7-9","10-12","13-15","16+"],
+  "ageBands": ["10-12","13-15","16+"],
   "review": { "text": "authored", "audio": "draft", "reviewers": [], "notes": "…" },
   "vocabulary": [{ "id": "hola", "kind": "word", "target": "hola", "english": "hello", "picture": "👋", "altText": "a waving hand" }],
   "phrases": [{ "id": "como-te-llamas", "kind": "phrase", "target": { "base": "¿Cómo te llamas?", "es-AR": "¿Cómo te llamás?" }, "english": "What's your name?" }],

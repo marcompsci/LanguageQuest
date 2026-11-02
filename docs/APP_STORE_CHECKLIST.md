@@ -16,6 +16,8 @@ The facts:
 | B. One app in the Kids Category, band 9–11 | Kids shelf, parent trust | Teens (13+) are a poor fit; Kids rules bind every future update, including teen features |
 | C. Two apps: "Language Quest Kids" (Kids Category, 6–8 or 9–11) and "Language Quest" (13+) sharing LQCore and content | Best fit for each audience | Two listings, double maintenance, and families split across apps |
 
+**Update (v0.2): the app now targets ages 10+**, which makes option A the clear fit. Age rating: 9+ is the closest Apple tier below 10 (content would qualify for 4+, but 9+ signals the intended audience); a 9–11 Kids Category listing would exclude most of the audience.
+
 **Recommendation:** start with **A**, keeping Kids-Category-grade privacy (no third-party SDKs, parental gates, no external links). Revisit C after kid and teen usability testing. **This decision needs legal review** together with the COPPA analysis.
 
 ## 2. Build and project
@@ -69,7 +71,7 @@ The facts:
 
 ## 7. Review notes template
 
-> Language Quest is an offline Spanish-learning adventure for ages 7 and up. It has no accounts, ads, analytics, chat, or network features, and all data stays on the device. The Grown-ups area (lock icon, top right) is behind a parental gate: type the answer to the written-out sum in digits. Speech checking is off by default; a grown-up can enable on-device recognition in the Grown-ups area. Audio never leaves the device. To test quickly: tap "Go to" → Luna, talk to her, and complete the first quest.
+> Language Quest is an offline Spanish-learning adventure for ages 10 and up. It has no accounts, ads, analytics, chat, or network features, and all data stays on the device. The Grown-ups area (lock icon, top right) is behind a parental gate: type the answer to the written-out sum in digits. Speech checking is off by default; a grown-up can enable on-device recognition in the Grown-ups area. Audio never leaves the device. To test quickly: tap "Go to" → Luna, talk to her, and complete the first quest.
 
 ## 8. Before you press Submit
 
