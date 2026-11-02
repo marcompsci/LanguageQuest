@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		047ED72C713FA111A400F301 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13833B177E1737D61CF0196B /* PrivacyInfo.xcprivacy */; };
+		1C7494722B876922D0DA074D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162D1FB9AE4F4A78866BBA60 /* OnboardingView.swift */; };
+		21FA13FD7F29201293359C11 /* LanguageQuestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE9089108E6FBF0100BEAF6 /* LanguageQuestUITests.swift */; };
+		378E29EAB7E85A778F3CD5C4 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A560394D6350E0C9A44F60 /* SpeechService.swift */; };
+		453D788C8933ABC39FFBD203 /* DialogueOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589B69E8921F9555AC9F843 /* DialogueOverlay.swift */; };
+		60C28828D15E7F5DB34BD027 /* GamesViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D16AA0744FB255447A7BC6E /* GamesViews.swift */; };
+		652EB4A97685BAB639C45233 /* QuestPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839773334A51BD6E8B119381 /* QuestPlayerView.swift */; };
+		7C158082F93BA199CB0CB962 /* AudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF908645A01795BB7F12E9 /* AudioService.swift */; };
+		82AD379946AF0384699DE258 /* LanguageQuest.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 89E6181925702439665497F9 /* LanguageQuest.storekit */; };
+		8465350E29DD14BDA1FEC31B /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB717234CB21DE33DDB51F97 /* AppModel.swift */; };
+		967AD8C76FC3BCA7DC4064B1 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A22EDA37507347E218EC53 /* JournalView.swift */; };
+		B125A9CA54EFCF36C27365F2 /* LanguageQuestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3FCD0BA6191D6442B45EE /* LanguageQuestApp.swift */; };
+		B252674FD4CBEE3926B34BB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244A1528DFD2A71384D6F57A /* Assets.xcassets */; };
+		B32F8A02CBEFA207D0F298FB /* LQCore in Frameworks */ = {isa = PBXBuildFile; productRef = 52D665DF6B3B549126E38AB8 /* LQCore */; };
+		B8ABB7B0C45E1B3213B15354 /* VillageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6630EF63B7B3AD80B83D73BE /* VillageScene.swift */; };
+		BF2F86CA990FFF0DF4744BA0 /* SpeechRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374A69BDC88AB7B2B67ECD6D /* SpeechRecognitionService.swift */; };
+		C95C5F77DAB31969D855FD4C /* ParentPINStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F655C88FC9FE2FD3B98B1E /* ParentPINStore.swift */; };
+		CECC3A8DC62F6B1FB50A3A84 /* WorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9B41B13A3A33C328E3C229 /* WorldView.swift */; };
+		D9F62E3B1EC99AD2FE9EBC6D /* PixelArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6D37AA912455CA4D33775E /* PixelArt.swift */; };
+		DED4F6268EA8A467897AD97B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B4134866A3A20F5A8EC302 /* Theme.swift */; };
+		E341C4B530914E2EDC7AC111 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DA89544E5EDF9E10687B6 /* StoreService.swift */; };
+		E5A04E36E6410A88D3319A76 /* ReviewViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121348E801C4C30DE01D77D7 /* ReviewViews.swift */; };
+		F3C1712C845D736DA06C7EB9 /* ParentAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1687C4DE66B87EAF3D3353 /* ParentAreaView.swift */; };
+		FC78BE459FEA149A6AA3978B /* ActivityHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFEBAFB3FD0CBBD0ACF5EB /* ActivityHost.swift */; };
+		FF8A7186C3B96302181E0AE9 /* Exercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D46C30E93643BB88B3BF0 /* Exercises.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		169DB7DC76EFF62F6F5A609A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A187085886BE58E05DB253B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5FAC0CF4AA9B17B39E12DD84;
+			remoteInfo = LanguageQuest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		104DA89544E5EDF9E10687B6 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
+		11E3FCD0BA6191D6442B45EE /* LanguageQuestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageQuestApp.swift; sourceTree = "<group>"; };
+		121348E801C4C30DE01D77D7 /* ReviewViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViews.swift; sourceTree = "<group>"; };
+		13833B177E1737D61CF0196B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1589B69E8921F9555AC9F843 /* DialogueOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueOverlay.swift; sourceTree = "<group>"; };
+		162D1FB9AE4F4A78866BBA60 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		244A1528DFD2A71384D6F57A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		374A69BDC88AB7B2B67ECD6D /* SpeechRecognitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionService.swift; sourceTree = "<group>"; };
+		3AAF908645A01795BB7F12E9 /* AudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioService.swift; sourceTree = "<group>"; };
+		3D16AA0744FB255447A7BC6E /* GamesViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViews.swift; sourceTree = "<group>"; };
+		42A560394D6350E0C9A44F60 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
+		4C9B41B13A3A33C328E3C229 /* WorldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldView.swift; sourceTree = "<group>"; };
+		4FFFEBAFB3FD0CBBD0ACF5EB /* ActivityHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHost.swift; sourceTree = "<group>"; };
+		5AE9089108E6FBF0100BEAF6 /* LanguageQuestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageQuestUITests.swift; sourceTree = "<group>"; };
+		6630EF63B7B3AD80B83D73BE /* VillageScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageScene.swift; sourceTree = "<group>"; };
+		807D46C30E93643BB88B3BF0 /* Exercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercises.swift; sourceTree = "<group>"; };
+		839773334A51BD6E8B119381 /* QuestPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestPlayerView.swift; sourceTree = "<group>"; };
+		89E6181925702439665497F9 /* LanguageQuest.storekit */ = {isa = PBXFileReference; path = LanguageQuest.storekit; sourceTree = "<group>"; };
+		93F655C88FC9FE2FD3B98B1E /* ParentPINStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentPINStore.swift; sourceTree = "<group>"; };
+		A3B4134866A3A20F5A8EC302 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		AB717234CB21DE33DDB51F97 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		AF1687C4DE66B87EAF3D3353 /* ParentAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentAreaView.swift; sourceTree = "<group>"; };
+		B8B0EBDF36C86E623DC6A2DD /* LanguageQuest.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LanguageQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C96DE49B4C0737B07A0147F3 /* LQCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LQCore; path = Packages/LQCore; sourceTree = SOURCE_ROOT; };
+		D7A22EDA37507347E218EC53 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
+		EE6D37AA912455CA4D33775E /* PixelArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelArt.swift; sourceTree = "<group>"; };
+		FC908AEBC0707AE8B0DA3EBA /* LanguageQuestUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = LanguageQuestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		49600F77D07641BDB490E424 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B32F8A02CBEFA207D0F298FB /* LQCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0CDD05798491A6F3C77456EB /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				EE6D37AA912455CA4D33775E /* PixelArt.swift */,
+				6630EF63B7B3AD80B83D73BE /* VillageScene.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		31A9196F0D7DEFF1EFF11962 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				244A1528DFD2A71384D6F57A /* Assets.xcassets */,
+				89E6181925702439665497F9 /* LanguageQuest.storekit */,
+				13833B177E1737D61CF0196B /* PrivacyInfo.xcprivacy */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4CD4F014F92FEEF23E214B75 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3AAF908645A01795BB7F12E9 /* AudioService.swift */,
+				93F655C88FC9FE2FD3B98B1E /* ParentPINStore.swift */,
+				374A69BDC88AB7B2B67ECD6D /* SpeechRecognitionService.swift */,
+				42A560394D6350E0C9A44F60 /* SpeechService.swift */,
+				104DA89544E5EDF9E10687B6 /* StoreService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		68B4556FA5F8F6BE9A4751E0 /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				4FFFEBAFB3FD0CBBD0ACF5EB /* ActivityHost.swift */,
+				807D46C30E93643BB88B3BF0 /* Exercises.swift */,
+			);
+			path = Activities;
+			sourceTree = "<group>";
+		};
+		6F1DE0511EEF8F159B0E6728 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				C96DE49B4C0737B07A0147F3 /* LQCore */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		702D09F5FB18F5FDAE8FE6EE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1589B69E8921F9555AC9F843 /* DialogueOverlay.swift */,
+				3D16AA0744FB255447A7BC6E /* GamesViews.swift */,
+				D7A22EDA37507347E218EC53 /* JournalView.swift */,
+				162D1FB9AE4F4A78866BBA60 /* OnboardingView.swift */,
+				AF1687C4DE66B87EAF3D3353 /* ParentAreaView.swift */,
+				839773334A51BD6E8B119381 /* QuestPlayerView.swift */,
+				121348E801C4C30DE01D77D7 /* ReviewViews.swift */,
+				4C9B41B13A3A33C328E3C229 /* WorldView.swift */,
+				68B4556FA5F8F6BE9A4751E0 /* Activities */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7D2FCDA77B1AD30CFCECD5F5 = {
+			isa = PBXGroup;
+			children = (
+				D711932A2F5DD636B5A86B1B /* App */,
+				6F1DE0511EEF8F159B0E6728 /* Packages */,
+				B3C287BFE264310287A8B039 /* UITests */,
+				BB3A7B981B00038B26CD1B39 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B3C287BFE264310287A8B039 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				5AE9089108E6FBF0100BEAF6 /* LanguageQuestUITests.swift */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		BB3A7B981B00038B26CD1B39 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B8B0EBDF36C86E623DC6A2DD /* LanguageQuest.app */,
+				FC908AEBC0707AE8B0DA3EBA /* LanguageQuestUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D711932A2F5DD636B5A86B1B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AB717234CB21DE33DDB51F97 /* AppModel.swift */,
+				11E3FCD0BA6191D6442B45EE /* LanguageQuestApp.swift */,
+				A3B4134866A3A20F5A8EC302 /* Theme.swift */,
+				0CDD05798491A6F3C77456EB /* Game */,
+				31A9196F0D7DEFF1EFF11962 /* Resources */,
+				4CD4F014F92FEEF23E214B75 /* Services */,
+				702D09F5FB18F5FDAE8FE6EE /* Views */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5FAC0CF4AA9B17B39E12DD84 /* LanguageQuest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19D35644F2A885599229E628 /* Build configuration list for PBXNativeTarget "LanguageQuest" */;
+			buildPhases = (
+				F3414D77F6E1F33A21DCE517 /* Sources */,
+				734C967219A256494D349A44 /* Resources */,
+				49600F77D07641BDB490E424 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LanguageQuest;
+			packageProductDependencies = (
+				52D665DF6B3B549126E38AB8 /* LQCore */,
+			);
+			productName = LanguageQuest;
+			productReference = B8B0EBDF36C86E623DC6A2DD /* LanguageQuest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D34A592F897C4993AA09763C /* LanguageQuestUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3B026E8458ABB6EAF9C100D /* Build configuration list for PBXNativeTarget "LanguageQuestUITests" */;
+			buildPhases = (
+				AC26A3E9EC4A91E89E56DF83 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52213957D10028C8943F0706 /* PBXTargetDependency */,
+			);
+			name = LanguageQuestUITests;
+			productName = LanguageQuestUITests;
+			productReference = FC908AEBC0707AE8B0DA3EBA /* LanguageQuestUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A187085886BE58E05DB253B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					5FAC0CF4AA9B17B39E12DD84 = {
+						DevelopmentTeam = X6LZQ3FS36;
+						ProvisioningStyle = Automatic;
+					};
+					D34A592F897C4993AA09763C = {
+						DevelopmentTeam = X6LZQ3FS36;
+						TestTargetID = 5FAC0CF4AA9B17B39E12DD84;
+					};
+				};
+			};
+			buildConfigurationList = 0EFC56C48F48B2975C6C2DE3 /* Build configuration list for PBXProject "LanguageQuest" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 7D2FCDA77B1AD30CFCECD5F5;
+			packageReferences = (
+				96E29DCA299D64F66F54EAB9 /* XCLocalSwiftPackageReference "Packages/LQCore" */,
+			);
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5FAC0CF4AA9B17B39E12DD84 /* LanguageQuest */,
+				D34A592F897C4993AA09763C /* LanguageQuestUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		734C967219A256494D349A44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B252674FD4CBEE3926B34BB0 /* Assets.xcassets in Resources */,
+				82AD379946AF0384699DE258 /* LanguageQuest.storekit in Resources */,
+				047ED72C713FA111A400F301 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC26A3E9EC4A91E89E56DF83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21FA13FD7F29201293359C11 /* LanguageQuestUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3414D77F6E1F33A21DCE517 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC78BE459FEA149A6AA3978B /* ActivityHost.swift in Sources */,
+				8465350E29DD14BDA1FEC31B /* AppModel.swift in Sources */,
+				7C158082F93BA199CB0CB962 /* AudioService.swift in Sources */,
+				453D788C8933ABC39FFBD203 /* DialogueOverlay.swift in Sources */,
+				FF8A7186C3B96302181E0AE9 /* Exercises.swift in Sources */,
+				60C28828D15E7F5DB34BD027 /* GamesViews.swift in Sources */,
+				967AD8C76FC3BCA7DC4064B1 /* JournalView.swift in Sources */,
+				B125A9CA54EFCF36C27365F2 /* LanguageQuestApp.swift in Sources */,
+				1C7494722B876922D0DA074D /* OnboardingView.swift in Sources */,
+				F3C1712C845D736DA06C7EB9 /* ParentAreaView.swift in Sources */,
+				C95C5F77DAB31969D855FD4C /* ParentPINStore.swift in Sources */,
+				D9F62E3B1EC99AD2FE9EBC6D /* PixelArt.swift in Sources */,
+				652EB4A97685BAB639C45233 /* QuestPlayerView.swift in Sources */,
+				E5A04E36E6410A88D3319A76 /* ReviewViews.swift in Sources */,
+				BF2F86CA990FFF0DF4744BA0 /* SpeechRecognitionService.swift in Sources */,
+				378E29EAB7E85A778F3CD5C4 /* SpeechService.swift in Sources */,
+				E341C4B530914E2EDC7AC111 /* StoreService.swift in Sources */,
+				DED4F6268EA8A467897AD97B /* Theme.swift in Sources */,
+				B8ABB7B0C45E1B3213B15354 /* VillageScene.swift in Sources */,
+				CECC3A8DC62F6B1FB50A3A84 /* WorldView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52213957D10028C8943F0706 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5FAC0CF4AA9B17B39E12DD84 /* LanguageQuest */;
+			targetProxy = 169DB7DC76EFF62F6F5A609A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0C8DD140D19287B4A8528B82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoronomics.languagequest.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LanguageQuest;
+			};
+			name = Release;
+		};
+		1B8BCBB14AC8D65D63B9C505 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = X6LZQ3FS36;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		2CD4508FD7EFA03BBBDF3D6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Language Quest";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Only if a grown-up turns on speech practice: the microphone listens while you hold the talk button so the app can check your Spanish. Audio is processed on this device and never saved or sent.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech practice uses on-device recognition only. Your voice never leaves this device and is not stored.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoronomics.languagequest;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2D2DBF5E6DC1A3526EECC520 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Language Quest";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Only if a grown-up turns on speech practice: the microphone listens while you hold the talk button so the app can check your Spanish. Audio is processed on this device and never saved or sent.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech practice uses on-device recognition only. Your voice never leaves this device and is not stored.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoronomics.languagequest;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AAE8419B5BED253B5E77AF61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoronomics.languagequest.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LanguageQuest;
+			};
+			name = Debug;
+		};
+		D1A4DE3F166B5C3F8DB42344 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = X6LZQ3FS36;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0EFC56C48F48B2975C6C2DE3 /* Build configuration list for PBXProject "LanguageQuest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1A4DE3F166B5C3F8DB42344 /* Debug */,
+				1B8BCBB14AC8D65D63B9C505 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		19D35644F2A885599229E628 /* Build configuration list for PBXNativeTarget "LanguageQuest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CD4508FD7EFA03BBBDF3D6D /* Debug */,
+				2D2DBF5E6DC1A3526EECC520 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F3B026E8458ABB6EAF9C100D /* Build configuration list for PBXNativeTarget "LanguageQuestUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAE8419B5BED253B5E77AF61 /* Debug */,
+				0C8DD140D19287B4A8528B82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		96E29DCA299D64F66F54EAB9 /* XCLocalSwiftPackageReference "Packages/LQCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/LQCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		52D665DF6B3B549126E38AB8 /* LQCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LQCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 9A187085886BE58E05DB253B /* Project object */;
+}

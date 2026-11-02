@@ -15,6 +15,11 @@ final class AppModel: ObservableObject {
         case placement
         case mastery(String)
         case parent
+        case games
+        case battle(String)
+        case scramble
+        case market
+        case phrasebook
         var id: String {
             switch self {
             case .quest(let q): return "quest-\(q)"
@@ -24,6 +29,11 @@ final class AppModel: ObservableObject {
             case .placement: return "placement"
             case .mastery(let u): return "mastery-\(u)"
             case .parent: return "parent"
+            case .games: return "games"
+            case .battle(let o): return "battle-\(o)"
+            case .scramble: return "scramble"
+            case .market: return "market"
+            case .phrasebook: return "phrasebook"
             }
         }
     }
@@ -38,6 +48,9 @@ final class AppModel: ObservableObject {
     let progression: Progression?
     let storeConfig: StoreConfig
     let speech = SpeechService()
+    let audio = AudioService()
+    /// A word treasure just found (shown as a card over the map).
+    @Published var foundTreasure: WordTreasure?
     lazy var store = StoreService(config: storeConfig)
     private let saveStore: SaveStore
     private var sessionStart: Date?
@@ -179,7 +192,25 @@ final class AppModel: ObservableObject {
 
     // MARK: Session time (on device only)
 
+    // MARK: Sound
+
+    /// Plays a sound effect if the explorer's settings allow it.
+    func sfx(_ e: SoundEffect) {
+        audio.effectsOn = profile?.settings.soundEffects ?? true
+        audio.play(e)
+    }
+
+    /// Applies the music setting and picks the track for what's on screen.
+    func syncMusic() {
+        audio.musicOn = profile?.settings.music ?? true
+        let battle: Bool
+        if case .battle = sheet { battle = true } else { battle = false }
+        audio.setMusic(route == .world ? (battle ? .battle : .village) : nil)
+    }
+
     func sessionBegan() {
+        audio.resume()
+        syncMusic()
         sessionStart = Date()
         stretchReminder = false
         reminderTask?.cancel()
@@ -192,6 +223,7 @@ final class AppModel: ObservableObject {
     }
 
     func sessionEnded() {
+        audio.suspend()
         reminderTask?.cancel()
         persist()   // position changes are saved lazily
         guard let start = sessionStart else { return }

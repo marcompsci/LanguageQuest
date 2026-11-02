@@ -12,12 +12,16 @@ struct ParentAreaView: View {
         NavigationStack {
             Group {
                 if unlockedAt == nil {
-                    ParentGateView { unlockedAt = Date() }
+                    if let record = ParentPINStore.load() {
+                        PINGateView(record: record) { unlockedAt = Date() }
+                    } else {
+                        ParentGateView { unlockedAt = Date() }
+                    }
                 } else {
                     ParentDashboardView(gatePassedAt: $unlockedAt)
                 }
             }
-            .navigationTitle("Grown-ups")
+            .navigationTitle("Parents")
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
         }
     }
@@ -35,8 +39,8 @@ struct ParentGateView: View {
     var body: some View {
         VStack(spacing: 18) {
             Image(systemName: "lock.shield.fill").font(.system(size: 48)).accessibilityHidden(true)
-            Text("For grown-ups").font(.title.bold())
-            Text("Kids: please ask a grown-up to help with this part.")
+            Text("For parents and guardians").font(.title.bold())
+            Text("This area is for a parent or guardian.")
                 .font(.subheadline).multilineTextAlignment(.center)
             Text("Type the answer in numbers:").font(.headline)
             Text(challenge.question).font(.title2.bold()).multilineTextAlignment(.center)
@@ -69,6 +73,51 @@ struct ParentGateView: View {
     }
 }
 
+/// PIN entry, used instead of the math question once a parent sets a PIN.
+struct PINGateView: View {
+    @Environment(\.palette) var p
+    let record: ParentPINRecord
+    let onPass: () -> Void
+    @State private var pin = ""
+    @State private var tracker = GateAttemptTracker()
+    @State private var message: String?
+
+    var body: some View {
+        VStack(spacing: 18) {
+            Image(systemName: "lock.fill").font(.system(size: 48)).accessibilityHidden(true)
+            Text("Parent PIN").font(.title.bold())
+            SecureField("PIN", text: $pin)
+                .keyboardType(.numberPad)
+                .textContentType(.oneTimeCode)
+                .font(.title)
+                .multilineTextAlignment(.center)
+                .padding(12)
+                .background(Color(p.surface), in: RoundedRectangle(cornerRadius: 12))
+                .frame(maxWidth: 220)
+                .accessibilityIdentifier("pinField")
+            if let m = message { Text(m).foregroundStyle(Color(p.retry)) }
+            Button("Unlock") {
+                if tracker.submitPIN(pin, record: record, now: Date()) { onPass() } else {
+                    pin = ""
+                    message = tracker.isLocked(now: Date()) ? "Too many tries. Please wait a minute." : "That PIN isn't right."
+                }
+            }
+            .buttonStyle(PrimaryButtonStyle())
+            .frame(maxWidth: 320)
+            .disabled(pin.isEmpty || tracker.isLocked(now: Date()))
+            Button("Forgot PIN?") {
+                Task { @MainActor in
+                    if await ParentPINStore.resetWithDeviceOwner() { onPass() } else { message = "Couldn't confirm the device owner." }
+                }
+            }
+            .font(.subheadline)
+            Text("Forgot it? The phone's own passcode or Face ID resets the PIN.").font(.caption).multilineTextAlignment(.center)
+            Spacer()
+        }
+        .padding(24)
+    }
+}
+
 struct ParentDashboardView: View {
     @EnvironmentObject var model: AppModel
     @Environment(\.palette) var p
@@ -77,6 +126,10 @@ struct ParentDashboardView: View {
     @State private var confirmDeleteAll = false
     @State private var exportURL: URL?
     @State private var speechMessage: String?
+    @State private var hasPIN = ParentPINStore.load() != nil
+    @State private var newPIN = ""
+    @State private var confirmPIN = ""
+    @State private var pinMessage: String?
 
     var body: some View {
         List {
@@ -89,6 +142,7 @@ struct ParentDashboardView: View {
                 suggestionsSection(report)
                 settingsSection(prof, lib)
                 speechSection
+                pinSection
                 privacySection(prof)
                 planSection
             }
@@ -193,7 +247,8 @@ struct ParentDashboardView: View {
             Toggle("Reduce motion", isOn: settingBinding(\.reducedMotion, prof))
             Toggle("Show English subtitles in conversations", isOn: settingBinding(\.subtitles, prof))
             Toggle("Read instructions aloud", isOn: settingBinding(\.readAloudInstructions, prof))
-            Toggle("Vibration feedback", isOn: settingBinding(\.soundEffects, prof))
+            Toggle("Sound effects and vibration", isOn: settingBinding(\.soundEffects, prof))
+            Toggle("Music", isOn: settingBinding(\.music, prof))
             VStack(alignment: .leading) {
                 Text("Voice volume")
                 Slider(value: settingBinding(\.voiceVolume, prof), in: 0...1)
@@ -236,6 +291,33 @@ struct ParentDashboardView: View {
             if let m = speechMessage { Text(m).font(.caption) }
         } header: { Text("Speaking practice") } footer: {
             Text("Off by default. When on, the microphone listens only while your child holds the talk button, recognition happens on this device, and audio is never saved or sent. When off, kids say words aloud and tap “I said it!”.")
+        }
+    }
+
+    private var pinSection: some View {
+        Section {
+            if hasPIN {
+                Label("A parent PIN is set", systemImage: "lock.fill")
+                Button("Remove PIN", role: .destructive) { ParentPINStore.delete(); hasPIN = false; pinMessage = "PIN removed." }
+            }
+            SecureField(hasPIN ? "New PIN (4–6 digits)" : "Choose a PIN (4–6 digits)", text: $newPIN).keyboardType(.numberPad)
+            SecureField("Type it again", text: $confirmPIN).keyboardType(.numberPad)
+            Button(hasPIN ? "Change PIN" : "Set PIN") {
+                switch ParentPIN.validateNew(newPIN, confirm: confirmPIN) {
+                case .none:
+                    hasPIN = ParentPINStore.save(pin: newPIN)
+                    pinMessage = hasPIN ? "PIN saved." : "Couldn't save the PIN."
+                case .notDigits?: pinMessage = "Use digits only."
+                case .wrongLength?: pinMessage = "Use 4 to 6 digits."
+                case .tooSimple?: pinMessage = "Pick something harder to guess than 1111 or 1234."
+                case .mismatch?: pinMessage = "The two PINs don't match."
+                }
+                newPIN = ""; confirmPIN = ""
+            }
+            .disabled(newPIN.isEmpty)
+            if let m = pinMessage { Text(m).font(.caption) }
+        } header: { Text("Parent PIN") } footer: {
+            Text("Teens can solve the math question, so a PIN keeps settings, data deletion and purchases for parents. Only a salted hash is stored, in this device's Keychain.")
         }
     }
 

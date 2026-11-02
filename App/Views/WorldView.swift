@@ -10,6 +10,15 @@ final class WorldCoordinator: ObservableObject, VillageSceneDelegate {
         var runner: DialogueRunner
         var quest: Quest?
         var replayQuest: Quest?
+        var duel: BattleOpponent?
+    }
+
+    struct Tracker: Equatable {
+        var questTitle: String
+        var npcName: String
+        var heading: Heading
+        var steps: Int
+        var target: GridPoint
     }
 
     let scene: VillageScene
@@ -18,6 +27,7 @@ final class WorldCoordinator: ObservableObject, VillageSceneDelegate {
     @Published var signText: PlaceSign?
     @Published var notice: String?
     @Published var actionLabel = "Look"
+    @Published var tracker: Tracker?
 
     init(start: GridPoint) {
         scene = VillageScene(size: CGSize(width: 390, height: 600), start: start)
@@ -41,12 +51,26 @@ final class WorldCoordinator: ObservableObject, VillageSceneDelegate {
         scene.setPlayer(PixelArt.avatarLook(p.avatar), showPet: p.avatar.accessory == "pet-dog")
         let offering = Set(StarterVillage.npcs.map(\.id).filter { prog.quest(offeredBy: $0, p.progress, plan: model.plan) != nil })
         scene.setQuestMarkers(offering)
+        scene.setFoundTreasures(p.extrasOrEmpty.treasuresFound)
+        updateTracker()
         scene.inputLocked = conversation != nil || model.sheet != nil
         refreshActionLabel()
     }
 
+    /// Points the HUD arrow at whoever hosts the next quest.
+    func updateTracker() {
+        guard let model, let p = model.profile, let prog = model.progression,
+              let q = prog.nextQuest(p.progress, plan: model.plan), let npc = StarterVillage.npc(q.npc) else { tracker = nil; return }
+        let me = scene.playerPosition
+        tracker = Tracker(questTitle: q.title, npcName: npc.name,
+                          heading: QuestCompass.heading(from: me, to: npc.position),
+                          steps: QuestCompass.steps(from: me, to: npc.position, map: scene.map, blocked: StarterVillage.npcPositions),
+                          target: npc.position)
+    }
+
     func refreshActionLabel() {
         if let n = scene.facingNPC { actionLabel = "Talk to \(n.name)" }
+        else if scene.facingTreasure != nil { actionLabel = "Look closer" }
         else if scene.facingSign != nil { actionLabel = "Read sign" }
         else { actionLabel = "Look" }
     }
@@ -60,16 +84,22 @@ final class WorldCoordinator: ObservableObject, VillageSceneDelegate {
         } else {
             let done = lib.allQuests.filter { $0.npc == npc.id && p.progress.completedQuests.contains($0.id) }
             if let last = done.last {
+                let duel = BattleRoster.opponent(forNPC: npc.id).flatMap { BattleRoster.isUnlocked($0, progress: p.progress, progression: prog) ? $0 : nil }
+                var choices = [DialogueChoice(text: "¡Sí, por favor!", gloss: "Yes, please! (practice the quest again)", next: "yes"),
+                               DialogueChoice(text: "Ahora no, gracias.", gloss: "Not now, thanks.", next: "no")]
+                if duel != nil {
+                    choices.insert(DialogueChoice(text: "¡Un duelo de palabras!", gloss: "A word duel!", next: "duel"), at: 1)
+                }
                 let d = Dialogue(start: "a", nodes: [
                     DialogueNode(id: "a", speaker: npc.name, line: "¡Hola otra vez, {name}! ¿Practicamos?", gloss: "Hi again, {name}! Shall we practice?",
-                                 choices: [DialogueChoice(text: "¡Sí, por favor!", gloss: "Yes, please!", next: "yes", correct: nil, feedback: nil),
-                                           DialogueChoice(text: "Ahora no, gracias.", gloss: "Not now, thanks.", next: "no", correct: nil, feedback: nil)],
-                                 next: nil, effects: nil, hint: nil),
+                                 choices: choices, next: nil, effects: nil, hint: nil),
+                    DialogueNode(id: "duel", speaker: npc.name, line: duel?.greeting ?? "¡Vamos!", gloss: duel?.greetingGloss ?? "Let's go!",
+                                 choices: nil, next: nil, effects: [DialogueEffect(kind: .setFlag, value: "duel")], hint: nil),
                     DialogueNode(id: "yes", speaker: npc.name, line: "¡Vamos!", gloss: "Let's go!", choices: nil, next: nil,
                                  effects: [DialogueEffect(kind: .setFlag, value: "replay")], hint: nil),
                     DialogueNode(id: "no", speaker: npc.name, line: "¡Hasta luego!", gloss: "See you later!", choices: nil, next: nil, effects: nil, hint: nil),
                 ])
-                conversation = Conversation(npc: npc, runner: DialogueRunner(d), quest: nil, replayQuest: last)
+                conversation = Conversation(npc: npc, runner: DialogueRunner(d), quest: nil, replayQuest: last, duel: duel)
             } else {
                 let next = prog.nextQuest(p.progress, plan: model.plan)
                 let tip = next.map { q in "Finish “\(q.title)” with \(StarterVillage.npc(q.npc)?.name ?? "a friend") first." } ?? "Come back soon!"
@@ -80,7 +110,17 @@ final class WorldCoordinator: ObservableObject, VillageSceneDelegate {
             }
         }
         scene.inputLocked = true
+        model.sfx(.talk)
         if let line = conversation?.runner.current?.line { model.say(line) }
+    }
+
+    func scene(_ s: VillageScene, foundTreasure t: WordTreasure) {
+        guard let model else { return }
+        model.updateProfile { $0.updateExtras { $0.treasuresFound.insert(t.id) } }
+        model.sfx(.treasure)
+        model.foundTreasure = t
+        model.say(t.spanish)
+        refreshActionLabel()
     }
 
     func scene(_ s: VillageScene, readSign sign: PlaceSign) {
@@ -97,8 +137,13 @@ final class WorldCoordinator: ObservableObject, VillageSceneDelegate {
         }
     }
 
+    private var steps = 0
+
     func scene(_ s: VillageScene, movedTo p: GridPoint, facing: Direction) {
+        steps += 1
+        if steps % 2 == 0 { model?.sfx(.step) }
         refreshActionLabel()
+        updateTracker()
         signText = nil
         model?.updateProfile(persist: false) { $0.lastPosition = p; $0.lastScene = StarterVillage.sceneId }
     }
@@ -123,9 +168,11 @@ final class WorldCoordinator: ObservableObject, VillageSceneDelegate {
             conversation = nil
             scene.inputLocked = false
             if let q = c.quest { model.startQuest(q) }
+            else if let o = c.duel, c.runner.effects.contains(where: { $0.kind == .setFlag && $0.value == "duel" }) { model.sheet = .battle(o.id) }
             else if let r = c.replayQuest, c.runner.effects.contains(where: { $0.kind == .setFlag && $0.value == "replay" }) { model.startQuest(r) }
         } else {
             conversation = c
+            if c.runner.lastFeedback != nil { model.sfx(.retry) } else { model.sfx(.select) }
             if let line = c.runner.current?.line, c.runner.lastFeedback == nil { model.say(line) }
         }
     }
@@ -147,20 +194,25 @@ struct WorldView: View {
                 .accessibilityLabel("Starter Village map. Use the Go to button to walk to a person or place.")
             VStack(spacing: 0) {
                 topBar
+                if let t = world.tracker { trackerBanner(t) }
                 Spacer()
                 if let s = world.signText { signBubble(s) }
                 if let n = world.notice { noticeBubble(n) }
                 if model.stretchReminder { stretchBubble }
                 controls
             }
+            if let t = model.foundTreasure {
+                TreasureCard(treasure: t) { model.foundTreasure = nil }
+                    .transition(.scale)
+            }
             if let c = world.conversation {
                 DialogueOverlay(conversation: c, onAdvance: world.advance, onChoose: world.choose)
                     .transition(.move(edge: .bottom))
             }
         }
-        .onAppear { world.sync(from: model) }
-        .onChange(of: model.save) { _, _ in world.sync(from: model) }
-        .onChange(of: model.sheet) { _, _ in world.sync(from: model) }
+        .onAppear { world.sync(from: model); model.syncMusic() }
+        .onChange(of: model.save) { _, _ in world.sync(from: model); model.syncMusic() }
+        .onChange(of: model.sheet) { _, _ in world.sync(from: model); model.syncMusic() }
         .sheet(item: $model.sheet) { sheet in
             sheetView(sheet)
                 .lqTheme(model.palette, scale: model.profile?.settings.textScale ?? 1)
@@ -181,6 +233,9 @@ struct WorldView: View {
             hudButton("book.closed.fill", "Quest journal") { model.sheet = .journal }
             hudButton("bag.fill", "Bag and badges") { model.sheet = .bag }
             hudButton("arrow.triangle.2.circlepath", "Review") { model.sheet = .review }
+            hudButton("gamecontroller.fill", "Games") { model.sheet = .games }
+                .accessibilityIdentifier("gamesButton")
+            hudButton("character.book.closed.fill", "Phrasebook") { model.sheet = .phrasebook }
             Spacer()
             if let p = model.profile {
                 Label("\(p.rewards.xp) XP", systemImage: "star.fill")
@@ -189,11 +244,36 @@ struct WorldView: View {
                     .background(.thinMaterial, in: Capsule())
                     .accessibilityLabel("\(p.rewards.xp) experience points")
             }
-            hudButton("lock.shield", "Grown-ups") { model.sheet = .parent }
+            hudButton("lock.shield", "Parents") { model.sheet = .parent }
                 .accessibilityIdentifier("grownUpsButton")
         }
         .padding(.horizontal, 12)
         .padding(.top, 4)
+    }
+
+    private func trackerBanner(_ t: WorldCoordinator.Tracker) -> some View {
+        Button { world.scene.walk(to: t.target) } label: {
+            HStack(spacing: 10) {
+                Image(systemName: t.heading.symbolName).font(.title3.bold())
+                    .frame(width: 34, height: 34)
+                    .background(Color(model.palette.accent), in: Circle())
+                    .foregroundStyle(Color(model.palette.onAccent))
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(t.questTitle).font(.subheadline.bold()).lineLimit(1)
+                    Text(t.heading == .here ? "\(t.npcName) is right here. Press A!" : "Find \(t.npcName) · \(t.steps) steps").font(.caption)
+                }
+                Spacer(minLength: 0)
+                Image(systemName: "figure.walk").font(.caption)
+            }
+            .padding(8)
+            .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 14))
+        }
+        .buttonStyle(.plain)
+        .padding(.horizontal, 12)
+        .padding(.top, 6)
+        .accessibilityLabel("Next quest: \(t.questTitle). \(t.npcName) is \(t.heading.words), \(t.steps) steps away.")
+        .accessibilityHint("Walks you there")
+        .accessibilityIdentifier("questTracker")
     }
 
     private func hudButton(_ icon: String, _ label: String, action: @escaping () -> Void) -> some View {
@@ -270,6 +350,11 @@ struct WorldView: View {
         case .placement: PlacementView()
         case .mastery(let unitId): MasteryCheckView(unitId: unitId)
         case .parent: ParentAreaView()
+        case .games: GamesHubView()
+        case .battle(let id): BattleView(opponentId: id)
+        case .scramble: ScrambleView()
+        case .market: MarketRushView()
+        case .phrasebook: PhrasebookView()
         }
     }
 }

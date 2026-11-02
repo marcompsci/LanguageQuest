@@ -121,6 +121,7 @@ struct ActivityHost: View {
     private func submit(_ v: AnswerVerdict) {
         attempts += 1
         verdict = v
+        model.sfx(v.isCorrect ? .correct : .retry)
         if v.isCorrect {
             finished = true
         } else if assessment || attempts >= Self.maxTries {
@@ -131,6 +132,7 @@ struct ActivityHost: View {
     private func finish(correct: Bool, extraAttempts: Int) {
         attempts = 1 + extraAttempts
         verdict = .correct
+        model.sfx(.correct)
         finished = true
     }
 

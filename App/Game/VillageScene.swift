@@ -7,6 +7,7 @@ protocol VillageSceneDelegate: AnyObject {
     func scene(_ s: VillageScene, readSign sign: PlaceSign)
     func scene(_ s: VillageScene, reachedExit exit: MapExit)
     func scene(_ s: VillageScene, movedTo p: GridPoint, facing: Direction)
+    func scene(_ s: VillageScene, foundTreasure t: WordTreasure)
 }
 
 /// The explorable Starter Village. Movement and collision come from LQCore's
@@ -34,6 +35,10 @@ final class VillageScene: SKScene {
     private var walkQueue: [GridPoint] = []
     private var isStepping = false
     private var waterNodes: [SKSpriteNode] = []
+    private var treasureNodes: [String: SKSpriteNode] = [:]
+    private var foundTreasures: Set<String> = []
+    private var stepCount = 0
+    private var lookRNG = SeededRandom(seed: 2026)
     private let stepDuration: TimeInterval = 0.17
 
     init(size: CGSize, start: GridPoint) {
@@ -73,6 +78,8 @@ final class VillageScene: SKScene {
         player.position = point(mover.position)
         player.texture = PixelArt.character(playerLook, facing: .down)
         addChild(player)
+        addShadow(to: player)
+        buildTreasures()
         pet.size = CGSize(width: tileSize * 0.8, height: tileSize * 0.8)
         pet.zPosition = 9
         pet.texture = PixelArt.dog()
@@ -119,6 +126,7 @@ final class VillageScene: SKScene {
             n.zPosition = 10
             n.name = npc.id
             addChild(n)
+            addShadow(to: n)
             npcNodes[npc.id] = n
             let marker = SKLabelNode(text: "!")
             marker.fontName = "AvenirNext-Heavy"
@@ -131,9 +139,59 @@ final class VillageScene: SKScene {
         }
     }
 
+    private func addShadow(to node: SKSpriteNode) {
+        let sh = SKShapeNode(ellipseOf: CGSize(width: tileSize * 0.55, height: tileSize * 0.16))
+        sh.fillColor = UIColor(white: 0, alpha: 0.22)
+        sh.strokeColor = .clear
+        sh.position = CGPoint(x: 0, y: -tileSize * 0.44)
+        sh.zPosition = -1
+        node.addChild(sh)
+    }
+
+    private func buildTreasures() {
+        let tex = PixelArt.sparkle()
+        for t in StarterVillage.treasures {
+            let n = SKSpriteNode(texture: tex, size: CGSize(width: tileSize * 0.4, height: tileSize * 0.4))
+            n.position = CGPoint(x: point(t.position).x + tileSize * 0.22, y: point(t.position).y + tileSize * 0.22)
+            n.zPosition = 8
+            n.isHidden = foundTreasures.contains(t.id)
+            addChild(n)
+            treasureNodes[t.id] = n
+        }
+    }
+
+    /// Hides sparkles for treasures already found.
+    func setFoundTreasures(_ ids: Set<String>) {
+        foundTreasures = ids
+        for (id, n) in treasureNodes { n.isHidden = ids.contains(id) }
+    }
+
     private func startAmbient() {
         removeAction(forKey: "ambient")
+        removeAction(forKey: "lookAround")
+        for (_, n) in treasureNodes { n.removeAction(forKey: "twinkle"); n.alpha = 1 }
+        for (_, m) in questMarkers { m.removeAction(forKey: "bounce") }
         guard !reducedMotion else { return }
+        for (i, (_, n)) in treasureNodes.sorted(by: { $0.key < $1.key }).enumerated() {
+            let twinkle = SKAction.sequence([.wait(forDuration: 0.3 * Double(i % 5)),
+                                             .repeatForever(.sequence([.fadeAlpha(to: 0.15, duration: 0.7), .fadeAlpha(to: 1, duration: 0.7)]))])
+            n.run(twinkle, withKey: "twinkle")
+        }
+        for (_, m) in questMarkers {
+            m.run(.repeatForever(.sequence([.moveBy(x: 0, y: 4, duration: 0.35), .moveBy(x: 0, y: -4, duration: 0.35)])), withKey: "bounce")
+        }
+        // Villagers glance around now and then.
+        let look = SKAction.run { [weak self] in
+            guard let self, !self.inputLocked else { return }
+            let npcs = StarterVillage.npcs
+            let npc = npcs[Int(self.lookRNG.next() % UInt64(npcs.count))]
+            let d = Direction.allCases[Int(self.lookRNG.next() % 4)]
+            if let n = self.npcNodes[npc.id] {
+                n.texture = PixelArt.character(PixelArt.npcLook(npc.id), facing: d)
+                n.xScale = d == .left ? -1 : 1
+            }
+        }
+        run(.repeatForever(.sequence([.wait(forDuration: 2.5, withRange: 2), look])), withKey: "lookAround")
         let water = [Tile.water, Tile.fountain]
         let f0 = Dictionary(uniqueKeysWithValues: water.map { ($0, PixelArt.tileTexture($0, frame: 0)) })
         let f1 = Dictionary(uniqueKeysWithValues: water.map { ($0, PixelArt.tileTexture($0, frame: 1)) })
@@ -199,6 +257,9 @@ final class VillageScene: SKScene {
         player.xScale = d == .left ? -abs(player.xScale) : abs(player.xScale)
         guard moved else { return false }
         isStepping = true
+        stepCount += 1
+        player.texture = PixelArt.character(playerLook, facing: d, frame: 1)
+        if !reducedMotion { puff(at: point(before)) }
         let dest = point(mover.position)
         let move = SKAction.move(to: dest, duration: stepDuration)
         let hop = reducedMotion ? SKAction.wait(forDuration: 0) :
@@ -206,12 +267,23 @@ final class VillageScene: SKScene {
         player.run(.group([move, hop])) { [weak self] in
             guard let self else { return }
             self.isStepping = false
+            self.player.texture = PixelArt.character(self.playerLook, facing: self.mover.facing, frame: 0)
             self.villageDelegate?.scene(self, movedTo: self.mover.position, facing: self.mover.facing)
             if let exit = StarterVillage.exit(at: self.mover.position) { self.villageDelegate?.scene(self, reachedExit: exit) }
         }
         if !pet.isHidden { pet.run(.move(to: point(before), duration: stepDuration)) }
         updateCamera(animated: true)
         return true
+    }
+
+    private func puff(at p: CGPoint) {
+        let dot = SKShapeNode(circleOfRadius: tileSize * 0.08)
+        dot.fillColor = UIColor(white: 1, alpha: 0.7)
+        dot.strokeColor = .clear
+        dot.position = CGPoint(x: p.x, y: p.y - tileSize * 0.4)
+        dot.zPosition = 5
+        addChild(dot)
+        dot.run(.sequence([.group([.scale(to: 2.2, duration: 0.3), .fadeOut(withDuration: 0.3)]), .removeFromParent()]))
     }
 
     /// Walk to a tile (tap-to-walk and the accessible "Go to" list).
@@ -225,7 +297,9 @@ final class VillageScene: SKScene {
     private func checkArrival() {
         guard let t = pendingTarget else { return }
         pendingTarget = nil
-        if mover.position == t, let sign = StarterVillage.sign(at: t) {
+        if mover.position == t, let tr = StarterVillage.treasure(at: t) {
+            revealTreasure(tr)
+        } else if mover.position == t, let sign = StarterVillage.sign(at: t) {
             villageDelegate?.scene(self, readSign: sign)
         } else if mover.position.manhattan(to: t) == 1 {
             let d: Direction = t.x > mover.position.x ? .right : t.x < mover.position.x ? .left : t.y < mover.position.y ? .up : .down
@@ -242,14 +316,34 @@ final class VillageScene: SKScene {
         if let npc = StarterVillage.npc(at: f) {
             faceNPC(npc)
             villageDelegate?.scene(self, interactWithNPC: npc)
+        } else if let tr = StarterVillage.treasure(at: f) ?? StarterVillage.treasure(at: mover.position), !foundTreasures.contains(tr.id) {
+            revealTreasure(tr)
         } else if let sign = StarterVillage.sign(at: f) ?? StarterVillage.sign(at: mover.position) {
             villageDelegate?.scene(self, readSign: sign)
         }
     }
 
+    private func revealTreasure(_ t: WordTreasure) {
+        guard !foundTreasures.contains(t.id) else { return }
+        foundTreasures.insert(t.id)
+        if let n = treasureNodes[t.id] {
+            n.removeAllActions()
+            if reducedMotion { n.isHidden = true } else {
+                n.run(.sequence([.group([.scale(to: 3, duration: 0.4), .fadeOut(withDuration: 0.4)]), .hide()]))
+            }
+        }
+        villageDelegate?.scene(self, foundTreasure: t)
+    }
+
     /// What the action button would do now, for its label.
     var facingNPC: NPCSpot? { StarterVillage.npc(at: mover.facingTile) }
     var facingSign: PlaceSign? { StarterVillage.sign(at: mover.facingTile) }
+    var facingTreasure: WordTreasure? {
+        guard let t = StarterVillage.treasure(at: mover.facingTile) ?? StarterVillage.treasure(at: mover.position),
+              !foundTreasures.contains(t.id) else { return nil }
+        return t
+    }
+    var playerPosition: GridPoint { mover.position }
 
     private func faceNPC(_ npc: NPCSpot) {
         let opposite: [Direction: Direction] = [.up: .down, .down: .up, .left: .right, .right: .left]

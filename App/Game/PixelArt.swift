@@ -159,7 +159,14 @@ enum PixelArt {
         var extras: [String] = []   // cosmetic ids / NPC extras
     }
 
-    static func character(_ l: Look, facing: Direction) -> SKTexture {
+    /// Second walking pose: legs apart.
+    static let strideRows = [
+        "....PPP..PPP....",
+        "...PPP....PPP...",
+        "...KKK....KKK...",
+    ]
+
+    static func character(_ l: Look, facing: Direction, frame: Int = 0) -> SKTexture {
         var c = Canvas(16, 16)
         let colors: [Character: UInt32] = [
             "S": skin[l.skin % skin.count], "E": 0x231A26, "M": 0xB0505A,
@@ -167,6 +174,10 @@ enum PixelArt {
             "H": hairColors[l.hairColor % hairColors.count],
         ]
         c.draw(bodyRows, colors)
+        if frame % 2 == 1 {
+            for y in 13..<16 { for x in 0..<16 { c.set(x, y, nil) } }
+            c.draw(strideRows, colors, dy: 13)
+        }
         if facing == .up {
             c.draw(backHair, colors)
         } else {
@@ -242,6 +253,14 @@ enum PixelArt {
         "...B.B..B.B.....",
         "................",
     ]
+
+    /// A soft four-point sparkle for hidden word treasures.
+    static func sparkle() -> SKTexture {
+        var c = Canvas(8, 8)
+        c.draw(["...W....", "...W....", "..WYW...", "WWYYYWW.", "..WYW...", "...W....", "...W....", "........"],
+               ["W": 0xFFFFFF, "Y": 0xFFE680])
+        return c.texture()
+    }
 
     static func dog() -> SKTexture {
         var c = Canvas(16, 16)

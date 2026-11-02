@@ -83,6 +83,7 @@ struct QuestPlayerView: View {
             Image(systemName: "star.circle.fill").font(.system(size: 80)).foregroundStyle(Color(p.accent))
                 .accessibilityHidden(true)
             Text("¡Misión cumplida!").font(.largeTitle.bold())
+                .onAppear { model.sfx(.reward) }
             Text("Quest complete: \(q.title)").font(.title3)
             Text("+\(xpEarned) XP").font(.title2.bold())
             if let c = reward?.cosmeticUnlocked, let item = Catalog.cosmetic(c) {
