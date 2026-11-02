@@ -5,10 +5,14 @@ import LQCore
 /// native-speaker recordings (see docs/CURRICULUM.md "Audio"). Voices differ by
 /// device and iOS version, so we pick the best available match at runtime.
 @MainActor
-final class SpeechService {
+final class SpeechService: NSObject, AVSpeechSynthesizerDelegate {
     private let synth = AVSpeechSynthesizer()
+    /// Called with true when the voice starts and false when it stops (used to duck music).
+    var onSpeakingChanged: ((Bool) -> Void)?
 
-    init() {
+    override init() {
+        super.init()
+        synth.delegate = self
         // Plays alongside other audio and respects the silent switch only for effects.
         try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio, options: [.duckOthers, .mixWithOthers])
     }
@@ -44,6 +48,16 @@ final class SpeechService {
     }
 
     func stop() { synth.stopSpeaking(at: .immediate) }
+
+    nonisolated func speechSynthesizer(_ s: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+        Task { @MainActor in self.onSpeakingChanged?(true) }
+    }
+    nonisolated func speechSynthesizer(_ s: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        Task { @MainActor in self.onSpeakingChanged?(self.synth.isSpeaking) }
+    }
+    nonisolated func speechSynthesizer(_ s: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+        Task { @MainActor in self.onSpeakingChanged?(self.synth.isSpeaking) }
+    }
 
     /// Names of the Spanish voices on this device, for the parent settings screen.
     static func availableSpanishVoices() -> [String] {

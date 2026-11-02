@@ -259,6 +259,12 @@ struct ParentDashboardView: View {
             Toggle("Sound effects and vibration", isOn: settingBinding(\.soundEffects, prof))
             Toggle("Music", isOn: settingBinding(\.music, prof))
             VStack(alignment: .leading) {
+                Text("Music volume")
+                Slider(value: Binding(get: { (model.profile ?? prof).settings.musicLevel },
+                                      set: { v in model.updateProfile { $0.settings.musicVolume = v } }), in: 0...1)
+                Text("Music always goes quiet while words are spoken and during lessons.").font(.caption)
+            }
+            VStack(alignment: .leading) {
                 Text("Voice volume")
                 Slider(value: settingBinding(\.voiceVolume, prof), in: 0...1)
             }

@@ -49,6 +49,11 @@ public struct LearnerSettings: Codable, Hashable, Sendable {
     public var sessionReminderMinutes: Int? = 25
     /// Show romaji under Japanese text. nil (older saves) = on.
     public var showRomanization: Bool? = nil
+    /// Background music level 0…1. nil (older saves) = the quiet default.
+    public var musicVolume: Double? = nil
+
+    public static let defaultMusicVolume = 0.35
+    public var musicLevel: Double { musicVolume ?? Self.defaultMusicVolume }
 
     public var romanizationOn: Bool { showRomanization ?? true }
 

@@ -12,6 +12,15 @@ final class AudioService {
     private(set) var currentMusic: GameMusic?
     var effectsOn = true
     var musicOn = true { didSet { applyMusic() } }
+    /// The explorer's chosen music level (0…1).
+    var musicLevel: Double = LearnerSettings.defaultMusicVolume { didSet { applyVolume() } }
+    /// True while a lesson, review or game screen is open: music sits far in the background.
+    var lessonMode = false { didSet { applyVolume() } }
+    /// True while the voice is speaking: music drops out so every word is clear.
+    var voiceSpeaking = false { didSet { applyVolume() } }
+
+    /// Music level in lessons, relative to the chosen level.
+    static let lessonFactor = 0.3
 
     init() {
         let mixer = self.mixer
@@ -26,6 +35,12 @@ final class AudioService {
         engine.attach(node)
         engine.connect(node, to: engine.mainMixerNode, format: format)
         engine.mainMixerNode.outputVolume = 0.8
+        applyVolume()
+    }
+
+    private func applyVolume() {
+        let level = voiceSpeaking ? 0 : musicLevel * (lessonMode ? Self.lessonFactor : 1)
+        mixer.musicVolume = Float(level)
     }
 
     /// Starts lazily (and only while the app is in the foreground).
@@ -63,8 +78,6 @@ final class AudioService {
         }
     }
 
-    /// Lower the music while the voice speaks Spanish.
-    func duck(_ on: Bool) { mixer.musicVolume = on ? 0.35 : 1 }
 
     func suspend() {
         mixer.setMusic(nil)

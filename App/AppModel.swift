@@ -103,6 +103,7 @@ final class AppModel: ObservableObject {
             try? FamilyManager.addProfile(p, to: &save, config: storeConfig)
         }
         route = profile == nil ? .onboarding : .world
+        speech.onSpeakingChanged = { [weak self] speaking in self?.audio.voiceSpeaking = speaking }
     }
 
     // MARK: Profile
@@ -232,6 +233,8 @@ final class AppModel: ObservableObject {
     /// Applies the music setting and picks the track for what's on screen.
     func syncMusic() {
         audio.musicOn = profile?.settings.music ?? true
+        audio.musicLevel = profile?.settings.musicLevel ?? LearnerSettings.defaultMusicVolume
+        audio.lessonMode = sheet != nil
         let battle: Bool
         if case .battle = sheet { battle = true } else { battle = false }
         audio.setMusic(route == .world ? (battle ? .battle : .village) : nil)
