@@ -75,6 +75,9 @@ public struct Flashcard: Hashable, Sendable {
     public var front: VText
     public var back: String
     public var picture: String?
+    public init(itemId: String, front: VText, back: String, picture: String? = nil) {
+        self.itemId = itemId; self.front = front; self.back = back; self.picture = picture
+    }
 }
 
 public enum FlashcardDeck {
