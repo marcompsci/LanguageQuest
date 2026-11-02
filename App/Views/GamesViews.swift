@@ -233,8 +233,11 @@ struct BattleView: View {
 
     private func finish(_ b: WordBattle) {
         model.updateProfile { prof in
+            // XP only for the first win against each opponent, so duels can't be farmed.
+            if b.playerWon && (prof.extrasOrEmpty.battleStars[b.opponent.id] ?? 0) == 0 { prof.rewards.xp += 15 }
+        }
+        model.updateProfile { prof in
             prof.updateExtras { e in e.battleStars[b.opponent.id] = max(e.battleStars[b.opponent.id] ?? 0, b.stars) }
-            if b.playerWon { prof.rewards.xp += 15 }
         }
         model.sfx(b.playerWon ? .reward : .select)
     }
@@ -332,6 +335,7 @@ struct ScrambleView: View {
             Button("Skip this word") {
                 revealed = pz.answer
                 game?.skip()
+                if let g = game, g.finished { model.updateProfile { $0.updateExtras { $0.scrambleBestStars = max($0.scrambleBestStars, g.stars) } } }
                 chosen = []
                 feedback = nil
             }.font(.subheadline)

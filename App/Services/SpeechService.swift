@@ -10,7 +10,7 @@ final class SpeechService {
 
     init() {
         // Plays alongside other audio and respects the silent switch only for effects.
-        try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
+        try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio, options: [.duckOthers, .mixWithOthers])
     }
 
     /// Best voice for a variant: exact locale, then the variant's fallbacks, then any Spanish voice.

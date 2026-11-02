@@ -30,9 +30,11 @@ final class AudioService {
 
     /// Starts lazily (and only while the app is in the foreground).
     private func ensureStarted() {
-        guard !started else { return }
+        // The engine stops on its own when another part of the app (speech recognition) reconfigures the session.
+        guard !(started && engine.isRunning) else { return }
         do {
-            try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default, options: [.mixWithOthers])
+            // Same category as SpeechService so effects and Spanish voice share one session.
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio, options: [.duckOthers, .mixWithOthers])
             try AVAudioSession.sharedInstance().setActive(true)
             try engine.start()
             started = true

@@ -170,7 +170,7 @@ final class VillageScene: SKScene {
         removeAction(forKey: "ambient")
         removeAction(forKey: "lookAround")
         for (_, n) in treasureNodes { n.removeAction(forKey: "twinkle"); n.alpha = 1 }
-        for (_, m) in questMarkers { m.removeAction(forKey: "bounce") }
+        for (_, m) in questMarkers { m.removeAction(forKey: "bounce"); m.position = CGPoint(x: 0, y: tileSize * 0.55) }
         guard !reducedMotion else { return }
         for (i, (_, n)) in treasureNodes.sorted(by: { $0.key < $1.key }).enumerated() {
             let twinkle = SKAction.sequence([.wait(forDuration: 0.3 * Double(i % 5)),

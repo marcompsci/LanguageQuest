@@ -57,7 +57,7 @@ final class AppModel: ObservableObject {
     private var reminderTask: Task<Void, Never>?
 
     /// UI tests launch with "-uiTesting" to use an in-memory save.
-    static var isUITesting: Bool { ProcessInfo.processInfo.arguments.contains("-uiTesting") }
+    nonisolated static var isUITesting: Bool { ProcessInfo.processInfo.arguments.contains("-uiTesting") }
 
     init() {
         storeConfig = .default
@@ -137,6 +137,7 @@ final class AppModel: ObservableObject {
     }
 
     func deleteEverything() {
+        ParentPINStore.delete()
         if let fresh = try? FamilyManager.deleteEverything(store: saveStore) { save = fresh }
         sheet = nil
         route = .onboarding
