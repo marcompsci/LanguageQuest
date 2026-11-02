@@ -138,12 +138,15 @@ struct BattleView: View {
     @State private var lastTurn: BattleTurn?
     @State private var picked: Int?
     @State private var started = Date()
+    @State private var mode: BattleMode?
 
     var body: some View {
         NavigationStack {
             ZStack {
                 ThemedBackground()
-                if let b = battle {
+                if mode == nil {
+                    modePicker
+                } else if let b = battle {
                     VStack(spacing: 16) {
                         meters(b)
                         if let q = b.current {
@@ -160,18 +163,44 @@ struct BattleView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { ToolbarItem(placement: .cancellationAction) { Button("Leave") { dismiss() } } }
         }
-        .onAppear(perform: setup)
+    }
+
+    private var modePicker: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "bolt.fill").font(.system(size: 54)).foregroundStyle(Color(p.accent)).accessibilityHidden(true)
+            Text("Choose your duel").font(.title.bold())
+            Button { mode = .classic; setup() } label: {
+                VStack(spacing: 4) {
+                    Text("Classic").font(.headline)
+                    Text("Take your time. No timer.").font(.caption)
+                }.frame(maxWidth: .infinity)
+            }
+            .buttonStyle(SecondaryButtonStyle())
+            .accessibilityIdentifier("duelClassic")
+            Button { mode = .speed; setup() } label: {
+                VStack(spacing: 4) {
+                    Text("⚡ Speed duel").font(.headline)
+                    Text("Answer within \(Int(BattleMode.speedWindow)) seconds for +\(BattleMode.speedBonus) bonus spark. The rival is tougher. Running out of time never costs points.")
+                        .font(.caption).multilineTextAlignment(.center)
+                }.frame(maxWidth: .infinity)
+            }
+            .buttonStyle(PrimaryButtonStyle())
+            .accessibilityIdentifier("duelSpeed")
+        }
+        .padding(24)
     }
 
     private func setup() {
         guard battle == nil, let lib = model.library, let prof = model.profile,
               let o = BattleRoster.opponents.first(where: { $0.id == opponentId }) else { return }
-        battle = WordBattle(opponent: o, library: lib, profile: prof, seed: freshSeed())
+        var b = WordBattle(opponent: o, library: lib, profile: prof, seed: freshSeed())
+        b.mode = mode ?? .classic
+        battle = b
         started = Date()
     }
 
     private func meters(_ b: WordBattle) -> some View {
-        let maxSpark = Double(WordBattle.rounds * 30)
+        let maxSpark = Double(WordBattle.rounds * (b.mode == .speed ? 40 : 30))
         return VStack(spacing: 10) {
             meter(label: model.profile?.nickname.isEmpty == false ? model.profile!.nickname : "You",
                   value: Double(b.playerSpark), max: maxSpark, color: Color(p.accent))
@@ -195,7 +224,21 @@ struct BattleView: View {
 
     private func question(_ q: BattleQuestion, _ b: WordBattle) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(q.spanishPrompt ? "What does it mean?" : "How do you say it in \(model.languageName)?").font(.headline)
+            HStack {
+                Text(q.spanishPrompt ? "What does it mean?" : "How do you say it in \(model.languageName)?").font(.headline)
+                Spacer()
+                if b.mode == .speed && picked == nil {
+                    TimelineView(.periodic(from: started, by: 0.1)) { ctx in
+                        let left = max(0, BattleMode.speedWindow - ctx.date.timeIntervalSince(started))
+                        Gauge(value: left, in: 0...BattleMode.speedWindow) { Image(systemName: "bolt.fill") }
+                            .gaugeStyle(.accessoryCircularCapacity)
+                            .tint(left > 0 ? Color(p.accent) : .gray)
+                            .scaleEffect(0.7)
+                            .accessibilityLabel(left > 0 ? "Speed bonus: \(Int(left.rounded(.up))) seconds left" : "Speed bonus over")
+                    }
+                    .frame(width: 44, height: 44)
+                }
+            }
             HStack {
                 Text(model.display(q.prompt)).font(.largeTitle.bold())
                 Spacer()
@@ -221,7 +264,7 @@ struct BattleView: View {
                       systemImage: t.correct ? "checkmark.circle.fill" : "arrow.uturn.backward.circle.fill")
                     .foregroundStyle(Color(t.correct ? p.success : p.retry))
                     .font(.headline)
-                Button("Next round") { picked = nil; lastTurn = nil; battle = advance(b) }
+                Button("Next round") { picked = nil; lastTurn = nil; battle = advance(b); started = Date() }
                     .buttonStyle(PrimaryButtonStyle())
                     .accessibilityIdentifier("nextRound")
             }
@@ -234,7 +277,7 @@ struct BattleView: View {
     private func answer(_ i: Int) {
         guard var b = battle, let lib = model.library, let q = b.current else { return }
         let variant = model.profile?.variant ?? "es-419"
-        let turn = b.answer(i, library: lib, variant: variant)
+        let turn = b.answer(i, library: lib, variant: variant, seconds: Date().timeIntervalSince(started))
         model.updateProfile { prof in
             PracticeRecorder.record(itemId: q.itemId, outcome: ReviewOutcome(correct: turn?.correct ?? false,
                                     responseSeconds: Date().timeIntervalSince(started)), track: .comprehension, profile: &prof, now: Date())
@@ -266,7 +309,7 @@ struct BattleView: View {
             Text(String(repeating: "★", count: b.stars) + String(repeating: "☆", count: 3 - b.stars)).font(.largeTitle)
                 .accessibilityLabel("\(b.stars) of 3 stars")
             Text("\(b.correctCount) of \(b.questions.count) right").font(.headline)
-            Button("Rematch") { battle = nil; pending = nil; setup() }.buttonStyle(SecondaryButtonStyle())
+            Button("Rematch") { battle = nil; pending = nil; mode = nil }.buttonStyle(SecondaryButtonStyle())
             Button("Back to the village") { dismiss() }.buttonStyle(PrimaryButtonStyle())
         }
     }

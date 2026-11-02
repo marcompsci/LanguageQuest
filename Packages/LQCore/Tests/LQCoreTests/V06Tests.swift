@@ -74,3 +74,23 @@ final class V06Tests: XCTestCase {
         XCTAssertEqual(p.extrasOrEmpty.wordsWritten, ["n5"])
     }
 }
+
+final class SpeedDuelTests: XCTestCase {
+    func testSpeedDuelRewardsFastAnswersAndNeedsThem() throws {
+        let lib = try ContentLibrary.bundled("en-es")
+        let p = PlayerProfile(nickname: "", ageBand: .age13to15, variant: "es-MX")
+        let o = BattleRoster.opponents[0]
+        var fast = WordBattle(opponent: o, library: lib, profile: p, seed: 3)
+        fast.mode = .speed
+        while let q = fast.current { fast.answer(q.answerIndex, library: lib, variant: "es-MX", seconds: 2) }
+        XCTAssertTrue(fast.playerWon)
+        var slow = WordBattle(opponent: o, library: lib, profile: p, seed: 3)
+        slow.mode = .speed
+        while let q = slow.current { slow.answer(q.answerIndex, library: lib, variant: "es-MX", seconds: 9) }
+        XCTAssertFalse(slow.playerWon, "the speed rival is tougher: slow perfect answers aren't enough")
+        XCTAssertEqual(slow.stars, 3, "stars still count right answers, not speed")
+        var classic = WordBattle(opponent: o, library: lib, profile: p, seed: 3)
+        while let q = classic.current { classic.answer(q.answerIndex, library: lib, variant: "es-MX", seconds: 60) }
+        XCTAssertTrue(classic.playerWon, "classic has no timer")
+    }
+}

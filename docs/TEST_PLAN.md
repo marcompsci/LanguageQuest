@@ -64,7 +64,7 @@ Run in Xcode (⌘U) or with `xcodebuild test -scheme LanguageQuest -destination 
 - [ ] The map is usable without seeing it: "Go to" list → auto-walk → auto-talk
 - [ ] Right and wrong feedback uses shape (✓ / ↺) plus words plus colour
 - [ ] Listening items offer "Show the words", for deaf and hard-of-hearing learners
-- [ ] Read-aloud for instructions (available in parent settings; off by default for 10+)
+- [ ] Read-aloud for instructions (available in parent settings; off by default for 11+)
 - [ ] Reduced motion stops NPC bobbing, water animation, hop and camera easing
 - [ ] Tap targets ≥ 44 pt (main buttons 54 pt; the A button 84 pt)
 - [ ] Text contrast passes (automated) and is re-checked on device

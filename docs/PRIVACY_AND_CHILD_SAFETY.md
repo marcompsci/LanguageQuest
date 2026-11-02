@@ -1,6 +1,6 @@
 # Privacy and Child Safety
 
-> **Audience: ages 10 and up (v0.2).** COPPA still applies to players aged 10–12.
+> **Audience: ages 11 and up (v0.6; 10+ in v0.2–v0.5).** COPPA still applies to players aged 11–12.
 >
 > **Not legal advice, and not a compliance claim.** This document describes how the app is designed and what still needs review. Language Quest has **not** been reviewed by a privacy lawyer and must not be described as "COPPA compliant" until it has been. Facts are current as of November 2026; laws are changing quickly, so re-check before release.
 
@@ -70,7 +70,7 @@ How the design maps to this:
 | 3.1.2 subscriptions | Disclosure text, restore button, Settings cancellation guidance, and App Store prices only. Paid plans are off. |
 | Age rating honesty (2.3.6) | No user-generated content, chat, web access, or ads; expected rating 4+ (see APP_STORE_CHECKLIST). |
 
-**Limitation of the knowledge gate.** Players aged 10+ can solve it. **v0.2 adds an optional parent PIN**: 4–6 digits, with trivial PINs rejected, a salted SHA-256 hash stored in the Keychain (this device only), and the same 3-try lockout. It replaces the math gate once set, and the device owner's passcode or Face ID resets it. Purchases additionally go through Apple's own confirmation, and Ask to Buy for Family Sharing children.
+**Limitation of the knowledge gate.** Players aged 11+ can solve it. **v0.2 adds an optional parent PIN**: 4–6 digits, with trivial PINs rejected, a salted SHA-256 hash stored in the Keychain (this device only), and the same 3-try lockout. It replaces the math gate once set, and the device owner's passcode or Face ID resets it. Purchases additionally go through Apple's own confirmation, and Ask to Buy for Family Sharing children.
 
 ## 5. Child-safety design rules
 

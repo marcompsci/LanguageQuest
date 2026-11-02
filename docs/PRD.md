@@ -17,7 +17,7 @@ Age sets **presentation**, never level. Every player can take the placement test
 
 | Band | Presentation | Default theme |
 |---|---|---|
-| 10–12 | Quests, sentence building, listening and speaking; read-aloud available | Playful |
+| 11–12 | Quests, sentence building, listening and speaking; read-aloud available | Playful |
 | 13–15 | Contextual dialogue, more independent practice, school alignment | Explorer |
 | 16+ | Practical situations, denser UI, (later) complex grammar | Explorer |
 
@@ -27,7 +27,7 @@ There is no birthdate. Onboarding asks for an age band with **no option pre-sele
 
 - **Punishing mechanics.** Energy and hearts systems, mistake counters, and streak anxiety. We use none of them: mistakes bring feedback and retries.
 - **Flashcard drills with no context.** Here every word arrives through a conversation with a character, in a place.
-- **Kids' apps stop at age 8; teen apps aren't made for younger players.** One curriculum spans ages 10 to 16+, with two themes.
+- **Kids' apps stop at age 8; teen apps aren't made for younger players.** One curriculum spans ages 11 to 16+, with two themes (Explorer is the default since v0.6).
 - **Material tested before it is taught.** Units have can-do goals, guided practice before independent practice, then a mastery check.
 - **Opaque progress.** The parent dashboard separates *activity* (time, XP) from *demonstrated mastery*. Mastery means remembered across days, and producing language is tracked separately from understanding it.
 - **Subscription traps.** Apple billing only, prices configurable, and essential learning always free.

@@ -56,9 +56,20 @@ public struct BattleTurn: Equatable, Sendable {
     public var coachTip: String
 }
 
+/// Classic has no timer. Speed (opt-in, for older players) gives bonus spark for fast
+/// answers against a tougher rival; running out of time still costs nothing.
+public enum BattleMode: String, CaseIterable, Sendable {
+    case classic, speed
+    /// Seconds for a speed bonus.
+    public static let speedWindow: TimeInterval = 5
+    public static let speedBonus = 10
+}
+
 public struct WordBattle: Sendable {
     public static let rounds = 6
     public static let rivalPattern = [15, 20, 15, 20, 15, 20]
+    public static let speedRivalPattern = [25, 35, 25, 35, 30, 30]
+    public var mode: BattleMode = .classic
     public static let baseGain = 20
     public static let comboBonus = 5
     public static let maxComboBonus = 10
@@ -109,18 +120,20 @@ public struct WordBattle: Sendable {
     public var stars: Int { GameHelpers.stars(correct: correctCount, of: questions.count) }
 
     @discardableResult
-    public mutating func answer(_ index: Int, library: ContentLibrary, variant: String) -> BattleTurn? {
+    public mutating func answer(_ index: Int, library: ContentLibrary, variant: String, seconds: TimeInterval? = nil) -> BattleTurn? {
         guard let q = current else { return nil }
         let correct = index == q.answerIndex
         var gain = 0
         if correct {
             gain = Self.baseGain + min(combo * Self.comboBonus, Self.maxComboBonus)
+            if mode == .speed, let s = seconds, s <= BattleMode.speedWindow { gain += BattleMode.speedBonus }
             combo += 1
             correctCount += 1
         } else {
             combo = 0
         }
-        let rival = Self.rivalPattern[round % Self.rivalPattern.count]
+        let pattern = mode == .speed ? Self.speedRivalPattern : Self.rivalPattern
+        let rival = pattern[round % pattern.count]
         playerSpark += gain
         rivalSpark += rival
         round += 1

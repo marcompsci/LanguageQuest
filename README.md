@@ -67,6 +67,16 @@ xcodebuild -project LanguageQuest.xcodeproj -scheme LanguageQuest \
 9. **Phrasebook.** Every word you've met, searchable in Spanish (any region's form) or English, with audio, mastery level, and how other regions say it.
 10. **Parent PIN.** Optional; a salted hash is stored in the Keychain. Teens can solve the math gate, so this keeps parent settings for parents. Forgot your PIN? The device passcode resets it.
 
+## v0.6: ages 11+, writing, bonus lessons
+
+- **Ages 11+.** Bands are now 11–12, 13–15 and 16+; older saves ("7-9", "10-12") load as 11–12. Everyone starts with the sleeker Explorer look.
+- **Smoother voices.** The app picks the most natural voice installed (Premium, then Enhanced), avoids robotic novelty voices, and speaks sentence by sentence with short pauses. Settings shows which voice is used and how to download a better one (Apple's free Enhanced/Premium voices).
+- **Multiple-choice flashcards.** Every flashcard (deck and the menu's quick card) asks you to pick the meaning from four choices; you can still tap to peek.
+- **Bonus lesson.** A daily 6-activity lesson on the main menu: finished-quest practice (due words first) plus a sneak peek at the next quest's words. +25 XP once a day per language.
+- **Write Out.** Trace, copy, then write words from memory on a canvas, with pen, eraser (scribble out), undo and clear. The screen can turn to landscape for more room. Latin-alphabet languages have a Print/Cursive switch, and every language has a Letters row (alphabet, kana, Greek, Hebrew, Fidel). Handwriting is checked on-device with Vision where it supports the language (Spanish, French, German, Italian, Latin, Chinese, Japanese, plus Latin-letter spellings); otherwise you compare with the example.
+- **Better village.** Richer tiles with variation, tree shadows, glinting water, a soft vignette, petals by day and fireflies at night, lit windows and a lantern glow after dark (particles off with Reduce Motion).
+- **Speed duels.** An opt-in Word Battle mode with a 5-second bonus window and a tougher rival. Running out of time never costs points; Classic stays timer-free.
+
 ## v0.4: menu and languages
 
 The app now opens on a **main menu**: Play, your three languages with flags and progress (tap one to switch), a Today card, and buttons for Games, Flashcards, Review, Phrasebook, Kana Dojo (Japanese), Quest journal, Wardrobe, Bag, Settings and Parents. In the village, the house button goes back to the menu and the flag button switches language. Also new: flashcards, the Kana Dojo, a day/night tint, a lesson theme for each language (reggaeton, a Paris waltz, Tokyo pop) and badges per language.

@@ -19,6 +19,7 @@
 		82AD379946AF0384699DE258 /* LanguageQuest.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 89E6181925702439665497F9 /* LanguageQuest.storekit */; };
 		8465350E29DD14BDA1FEC31B /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB717234CB21DE33DDB51F97 /* AppModel.swift */; };
 		967AD8C76FC3BCA7DC4064B1 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A22EDA37507347E218EC53 /* JournalView.swift */; };
+		A5CAAE604B801E57EEE03338 /* VillageFX.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0CDFC4A8D26B20DCD814BA /* VillageFX.swift */; };
 		A6352DCBDCA39851B8585E8F /* WriteOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4A8113C531B263A0B038EB /* WriteOutView.swift */; };
 		B125A9CA54EFCF36C27365F2 /* LanguageQuestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3FCD0BA6191D6442B45EE /* LanguageQuestApp.swift */; };
 		B252674FD4CBEE3926B34BB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244A1528DFD2A71384D6F57A /* Assets.xcassets */; };
@@ -76,6 +77,7 @@
 		C96DE49B4C0737B07A0147F3 /* LQCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LQCore; path = Packages/LQCore; sourceTree = SOURCE_ROOT; };
 		D7A22EDA37507347E218EC53 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		DA9539C4E88EB0F5D43E63AB /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		EE0CDFC4A8D26B20DCD814BA /* VillageFX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageFX.swift; sourceTree = "<group>"; };
 		EE6D37AA912455CA4D33775E /* PixelArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelArt.swift; sourceTree = "<group>"; };
 		FC908AEBC0707AE8B0DA3EBA /* LanguageQuestUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = LanguageQuestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				EE6D37AA912455CA4D33775E /* PixelArt.swift */,
+				EE0CDFC4A8D26B20DCD814BA /* VillageFX.swift */,
 				6630EF63B7B3AD80B83D73BE /* VillageScene.swift */,
 			);
 			path = Game;
@@ -325,6 +328,7 @@
 				378E29EAB7E85A778F3CD5C4 /* SpeechService.swift in Sources */,
 				E341C4B530914E2EDC7AC111 /* StoreService.swift in Sources */,
 				DED4F6268EA8A467897AD97B /* Theme.swift in Sources */,
+				A5CAAE604B801E57EEE03338 /* VillageFX.swift in Sources */,
 				B8ABB7B0C45E1B3213B15354 /* VillageScene.swift in Sources */,
 				CECC3A8DC62F6B1FB50A3A84 /* WorldView.swift in Sources */,
 				A6352DCBDCA39851B8585E8F /* WriteOutView.swift in Sources */,

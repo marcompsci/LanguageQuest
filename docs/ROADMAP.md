@@ -77,6 +77,17 @@ Status key: ✅ done and tested · 🟡 built, needs device or expert validation
 | Read-aloud for languages without an iOS voice | Reads the Latin spelling with a fallback voice instead of the wrong language's voice | 🟡 device check |
 | Starter courses → full 3 units | Same depth as Spanish/French/Japanese | ⬜ |
 
+## Milestone 3e: v0.6 "11+ update" 🟡
+| Item | Acceptance | Status |
+|---|---|---|
+| Ages 11+ | Bands 11–12/13–15/16+; old saves migrate | ✅ core tested |
+| Natural voices | Best installed voice (Premium > Enhanced > compact), no novelty voices, sentence pauses | 🟡 listen on device |
+| Multiple-choice flashcards | 4 unique meanings for every word in every course | ✅ core tested |
+| Bonus lesson | 6 activities; never pulls from unstarted quests; XP once per day | ✅ core tested |
+| Write Out | Canvas with landscape, print/cursive, on-device Vision check where supported | ✅ matching tested · 🟡 device check |
+| Village art and atmosphere | Rich tiles, lighting, particles; off with Reduce Motion | 🟡 device look |
+| Speed duel | Fast answers earn bonus spark; slow perfect play can't beat the speed rival; classic unchanged | ✅ core tested |
+
 ## Later: game and curriculum expansion ⬜
 - **Conversation Town** (Units 4–6: school, home, hobbies), then Adventure City, Explorer Academy, Quest Kingdom, Mastery Realm. Worlds are data: a new map plus NPC files.
 - **Word Battles 2:** listening and speaking rounds, plus new opponents per world.

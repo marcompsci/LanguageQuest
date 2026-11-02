@@ -23,11 +23,33 @@ final class VillageScene: SKScene {
     private let dayTint = SKSpriteNode(color: .clear, size: .zero)
     private(set) var dayPhase: DayPhase = .day
 
+    // v0.6 lighting and atmosphere.
+    private let vignette = SKSpriteNode()
+    private let lantern = SKSpriteNode(texture: VillageFX.softLight(128))
+    private var windowGlows: [SKSpriteNode] = []
+    private var weather: SKEmitterNode?
+
     func setDayPhase(_ phase: DayPhase) {
         dayPhase = phase
         let t = phase.tint
         dayTint.color = UIColor(red: t.color.r, green: t.color.g, blue: t.color.b, alpha: 1)
         dayTint.alpha = t.alpha
+        let dark = phase == .night ? 1.0 : phase == .evening ? 0.55 : 0
+        lantern.alpha = dark * 0.45
+        for g in windowGlows { g.alpha = dark * 0.7 }
+        refreshWeather()
+    }
+
+    /// Petals by day, fireflies after dark. Off with Reduce Motion.
+    private func refreshWeather() {
+        weather?.removeFromParent()
+        weather = nil
+        guard view != nil, !reducedMotion else { return }
+        let e = VillageFX.emitter(for: dayPhase, area: size)
+        e.targetNode = self
+        cam.addChild(e)
+        e.advanceSimulationTime(6)
+        weather = e
     }
     /// Direction held on the on-screen pad (nil when released).
     var heldDirection: Direction?
@@ -103,6 +125,13 @@ final class VillageScene: SKScene {
         cam.addChild(tint)
         dayTint.zPosition = 99
         cam.addChild(dayTint)
+        vignette.zPosition = 101
+        vignette.alpha = 0.35
+        cam.addChild(vignette)
+        lantern.size = CGSize(width: tileSize * 5, height: tileSize * 5)
+        lantern.color = UIColor(red: 1, green: 0.85, blue: 0.55, alpha: 1); lantern.colorBlendFactor = 1
+        lantern.blendMode = .add; lantern.alpha = 0; lantern.zPosition = -1
+        player.addChild(lantern)
         setDayPhase(dayPhase)
         updateCamera()
         startAmbient()
@@ -111,23 +140,37 @@ final class VillageScene: SKScene {
     override func didChangeSize(_ oldSize: CGSize) {
         tint.size = CGSize(width: size.width * 2, height: size.height * 2)
         dayTint.size = tint.size
+        vignette.texture = VillageFX.vignette(size)
+        vignette.size = size
+        if weather != nil { refreshWeather() }
         updateCamera()
     }
 
     private func buildTiles() {
-        var cache: [Character: SKTexture] = [:]
+        var cache: [String: SKTexture] = [:]
         for y in 0..<map.height {
             for x in 0..<map.width {
                 let p = GridPoint(x, y)
                 guard let t = map.tile(at: p) else { continue }
                 // Trees, bushes and fountains sit on grass/path: draw them with their own base.
-                let tex = cache[t.rawValue] ?? PixelArt.tileTexture(t)
-                cache[t.rawValue] = tex
+                let variant = PixelArt.noise(x, y, 7) % 3
+                let key = "\(t.rawValue)\(variant)"
+                let tex = cache[key] ?? PixelArt.richTile(t, variant: variant)
+                cache[key] = tex
                 let n = SKSpriteNode(texture: tex, size: CGSize(width: tileSize, height: tileSize))
                 n.position = point(p)
                 n.zPosition = 0
                 addChild(n)
                 if t == .water || t == .fountain { waterNodes.append(n); n.userData = ["tile": String(t.rawValue)] }
+                if t == .wall {
+                    // Windows light up after dark.
+                    let g = SKSpriteNode(texture: VillageFX.softLight(), size: CGSize(width: tileSize * 1.4, height: tileSize * 1.4))
+                    g.color = UIColor(red: 1, green: 0.82, blue: 0.45, alpha: 1); g.colorBlendFactor = 1
+                    g.blendMode = .add; g.alpha = 0; g.zPosition = 99.5
+                    g.position = n.position
+                    addChild(g)
+                    windowGlows.append(g)
+                }
             }
         }
     }
@@ -232,7 +275,7 @@ final class VillageScene: SKScene {
             n.removeAction(forKey: "bob")
             if let spot = StarterVillage.npc(id) { n.position = point(spot.position) }
         }
-        if view != nil { startAmbient() }
+        if view != nil { startAmbient(); refreshWeather() }
     }
 
     func setPlayer(_ look: PixelArt.Look, showPet: Bool) {
