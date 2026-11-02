@@ -108,7 +108,7 @@ final class ProgressionTests: XCTestCase {
         lib = try ContentLibrary.bundledSpanish()
         prog = Progression(library: lib)
     }
-    func newProfile() -> PlayerProfile { PlayerProfile(nickname: "Leo", ageBand: .age7to9, variant: "es-MX", now: t0) }
+    func newProfile() -> PlayerProfile { PlayerProfile(nickname: "Leo", ageBand: .age10to12, variant: "es-MX", now: t0) }
 
     func testOnlyFirstQuestIsOpenAtStart() {
         let p = newProfile()
@@ -189,11 +189,21 @@ final class ProgressionTests: XCTestCase {
     }
 
     func testAgeBandSetsPresentationNotProficiency() {
-        let young = PlayerProfile(nickname: "", ageBand: .age7to9, variant: "es-MX")
+        let young = PlayerProfile(nickname: "", ageBand: .age10to12, variant: "es-MX")
         let teen = PlayerProfile(nickname: "", ageBand: .age16plus, variant: "es-MX")
         XCTAssertEqual(young.theme, .playful)
         XCTAssertEqual(teen.theme, .explorer)
-        XCTAssertTrue(young.settings.readAloudInstructions)
         XCTAssertEqual(young.progress, teen.progress)
+    }
+
+    func testAppIsForAgesTenAndUp() throws {
+        XCTAssertEqual(AgeBand.minimumAge, 10)
+        XCTAssertEqual(AgeBand.allCases.map(\.rawValue), ["10-12", "13-15", "16+"])
+        // Old prototype saves with "7-9" load as 10–12 instead of failing.
+        let old = try JSONDecoder().decode([AgeBand].self, from: Data(#"["7-9","13-15"]"#.utf8))
+        XCTAssertEqual(old, [.age10to12, .age13to15])
+        XCTAssertThrowsError(try JSONDecoder().decode(AgeBand.self, from: Data(#""5-6""#.utf8)))
+        let lib = try ContentLibrary.bundledSpanish()
+        for u in lib.units { XCTAssertFalse(u.ageBands.isEmpty); XCTAssertTrue(u.ageBands.allSatisfy(AgeBand.allCases.contains)) }
     }
 }

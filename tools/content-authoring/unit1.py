@@ -97,9 +97,9 @@ q3=quest("u1-q3",3,"How are you?","dona-rosa","The bakery",
   read("u1-q3-a5","Mal. ¿Y usted?","Not well. And you? (polite)",["Not well. And you? (polite)","Very well. And you?","So-so, thanks."],0,["mal","y-usted"],
        "Mal is the opposite of bien.","Use ¿Y usted? to ask a grown-up back politely.")],
  30,cosmetic="apron")
-q4=quest("u1-q4",4,"The magic words","profe-sol","The school",
+q4=quest("u1-q4",4,"Polite words","profe-sol","The school",
  "Profe Sol teaches the polite words everyone uses.","Use please, thank you, you're welcome, and sorry.",
- [node("n1","Profe Sol","¡Hola! Soy la profe Sol. En mi clase usamos palabras mágicas.","Hi! I'm Teacher Sol. In my class we use magic words.",next="n2"),
+ [node("n1","Profe Sol","¡Hola! Soy la profe Sol. En mi clase usamos palabras de cortesía.","Hi! I'm Teacher Sol. In my class we use polite words.",next="n2"),
   node("n2","Profe Sol","¿Quieres un libro?","Do you want a book?",
        choices=[("Sí, por favor.","Yes, please.","n3"),("No, gracias.","No, thank you.","n3"),
                 ("De nada.","You're welcome.","n2",False,"De nada answers a thank-you. Try “Sí, por favor” or “No, gracias”.")],
@@ -142,6 +142,6 @@ unit={"id":"u1-saludos","version":1,"order":1,"title":"Greetings & Introductions
  "canDo":["I can greet people at different times of day.","I can say my name and ask someone's name.","I can ask how someone is and answer.",
           "I can use please, thank you, you're welcome, and sorry.","I can count from 0 to 10."],
  "actfl":{"modes":["interpretive","interpersonal","presentational"],"targetLevel":"Novice Low–Novice Mid","otherGoals":["Cultures","Comparisons"]},
- "ageBands":["7-9","10-12","13-15","16+"],"review":REVIEW,
+ "ageBands":["10-12","13-15","16+"],"review":REVIEW,
  "vocabulary":vocab,"phrases":phrases,"culturalNotes":notes,"quests":[q1,q2,q3,q4,q5],"masteryCheck":mastery}
 dump(unit, OUT+"/unit1-saludos.json")

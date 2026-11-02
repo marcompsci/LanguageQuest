@@ -26,7 +26,6 @@
     ]
   },
   "ageBands": [
-    "7-9",
     "10-12",
     "13-15",
     "16+"
@@ -858,7 +857,7 @@
     {
       "id": "u1-q4",
       "order": 4,
-      "title": "The magic words",
+      "title": "Polite words",
       "npc": "profe-sol",
       "location": "The school",
       "summary": "Profe Sol teaches the polite words everyone uses.",
@@ -869,8 +868,8 @@
           {
             "id": "n1",
             "speaker": "Profe Sol",
-            "line": "¡Hola! Soy la profe Sol. En mi clase usamos palabras mágicas.",
-            "gloss": "Hi! I'm Teacher Sol. In my class we use magic words.",
+            "line": "¡Hola! Soy la profe Sol. En mi clase usamos palabras de cortesía.",
+            "gloss": "Hi! I'm Teacher Sol. In my class we use polite words.",
             "next": "n2"
           },
           {

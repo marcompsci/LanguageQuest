@@ -41,15 +41,17 @@ public enum ReviewStatus: String, Codable, Comparable, Sendable {
 }
 
 /// Age bands drive presentation (theme, reading support), never proficiency.
+/// Language Quest is for ages 10 and up.
 public enum AgeBand: String, Codable, CaseIterable, Sendable {
-    case age7to9 = "7-9"
     case age10to12 = "10-12"
     case age13to15 = "13-15"
     case age16plus = "16+"
 
+    /// The youngest age the app is designed for.
+    public static let minimumAge = 10
+
     public var label: String {
         switch self {
-        case .age7to9: return "7–9"
         case .age10to12: return "10–12"
         case .age13to15: return "13–15"
         case .age16plus: return "16+"
@@ -57,10 +59,18 @@ public enum AgeBand: String, Codable, CaseIterable, Sendable {
     }
 
     /// The default visual theme for this band. Players can switch any time.
-    public var defaultTheme: ThemeKind { self == .age7to9 || self == .age10to12 ? .playful : .explorer }
+    public var defaultTheme: ThemeKind { self == .age10to12 ? .playful : .explorer }
 
-    /// Younger players get read-aloud of English instructions by default.
-    public var readAloudByDefault: Bool { self == .age7to9 }
+    /// Read-aloud of English instructions is available to everyone but off by default for 10+.
+    public var readAloudByDefault: Bool { false }
+
+    /// Saves from the earlier 7+ prototype stored "7-9"; those profiles become 10–12.
+    public init(from decoder: Decoder) throws {
+        let raw = try decoder.singleValueContainer().decode(String.self)
+        if let band = AgeBand(rawValue: raw) { self = band; return }
+        if raw == "7-9" { self = .age10to12; return }
+        throw DecodingError.dataCorrupted(.init(codingPath: decoder.codingPath, debugDescription: "Unknown age band \(raw)"))
+    }
 }
 
 // MARK: - Variant-aware text

@@ -225,7 +225,7 @@ final class AssessmentFlowTests: XCTestCase {
         let answers = u.masteryCheck.activities.enumerated().map { AssessmentAnswer(activity: $1, correct: $0 != 0) }
         let r = MasteryCheckGrader.grade(unit: u, answers: answers, now: t0)
         XCTAssertEqual(r.passed, true) // 4/5 = 80%
-        var p = PlayerProfile(nickname: "", ageBand: .age7to9, variant: "es-MX", now: t0)
+        var p = PlayerProfile(nickname: "", ageBand: .age10to12, variant: "es-MX", now: t0)
         MasteryCheckGrader.apply(r, unit: u, badge: Catalog.masteryBadge(forUnitOrder: 1), profile: &p)
         XCTAssertTrue(p.progress.passedMasteryChecks.contains(u.masteryCheck.id))
         XCTAssertTrue(p.rewards.badges.contains("badge-mastery-u1"))

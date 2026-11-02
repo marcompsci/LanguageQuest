@@ -21,7 +21,7 @@ public struct AvatarConfig: Codable, Hashable, Sendable {
 }
 
 public enum ThemeKind: String, Codable, CaseIterable, Sendable {
-    /// Bright, rounded, read-aloud friendly (default for 7–12).
+    /// Bright and rounded (default for 10–12).
     case playful
     /// Dusk palette, sleeker UI, denser text (default for 13+).
     case explorer
@@ -140,6 +140,8 @@ public struct PlayerProfile: Codable, Hashable, Identifiable, Sendable {
     public var log: ActivityLog
     public var lastScene: String?
     public var lastPosition: GridPoint?
+    /// Side games and exploration (optional so older saves still load).
+    public var extras: ExtrasProgress?
 
     public init(id: UUID = UUID(), nickname: String, ageBand: AgeBand, avatar: AvatarConfig = .init(),
                 courseId: String = "en-es", variant: String, now: Date = Date()) {
@@ -153,7 +155,7 @@ public struct PlayerProfile: Codable, Hashable, Identifiable, Sendable {
         self.createdAt = now
         var s = LearnerSettings()
         s.readAloudInstructions = ageBand.readAloudByDefault
-        s.textScale = ageBand == .age7to9 ? 1.15 : 1.0
+        s.textScale = 1.0
         self.settings = s
         self.progress = CourseProgress()
         self.knowledge = [:]
