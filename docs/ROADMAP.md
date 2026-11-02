@@ -61,7 +61,7 @@ Status key: ✅ done and tested · 🟡 built, needs device or expert validation
 - **Mini-games in Spanish:** soccer (commands and numbers), cooking (food and imperatives), treasure hunt (directions), shopping (money), travel (transport), racing (left/right and fast/slow).
 - **Family and classroom co-op:** same device, or family-only via Game Center friends; **preset messages only**; no stranger matching.
 - **More variants:** vosotros unit for Spain; Chile and Peru variants after linguist review.
-- **French, then Japanese**, only after content is authored, linguistically reviewed, and tested (Japanese needs kana-input activities).
+- **French and Japanese:** authored in v0.3 (3 units each). Next: linguist review, native audio, kanji with furigana for older learners, and a kana-reading mini-game.
 - **Monetisation:** turn on Family Plus only after legal, technical, and unit-economics review (PRD §6).
 - **Android:** reuse the JSON content and the LQCore test vectors.
 
@@ -79,4 +79,4 @@ Status key: ✅ done and tested · 🟡 built, needs device or expert validation
 | Declared Age Range API | Not implemented (parent PIN shipped in v0.2) |
 | Sound effects and music | Synthesized chiptune (v0.2); not yet heard on device |
 | Conversation Town and later worlds, more mini-games (soccer, cooking, travel, racing), co-op | Not implemented (Word Battles, Word Scramble and Market Rush shipped in v0.2) |
-| French and Japanese | Not started (by design) |
+| French and Japanese | Authored (v0.3), tested, running on device; **not linguist-reviewed** |

@@ -1,12 +1,12 @@
 # Language Quest
 
-An iOS-first pixel-art adventure game that teaches Spanish to players aged **10 and up**. Explore Starter Village, talk with its people, finish quests, and practise listening, reading, writing and speaking, with spaced review and a parent dashboard. It has no ads, no energy or hearts, no streaks, and works offline.
+An iOS-first pixel-art adventure game that teaches **Spanish, French and Japanese** to players aged **10 and up**. Explore Starter Village, talk with its people, finish quests, and practise listening, reading, writing and speaking, with spaced review and a parent dashboard. It has no ads, no energy or hearts, no streaks, and works offline.
 
 **Status: vertical slice v0.1. Not production-ready.** See [What works vs. what's planned](#what-works-vs-whats-planned).
 
 ## What's here
 
-- `Packages/LQCore`: all learning and game logic, plus the Spanish course content. Platform-independent; **95 unit tests, all passing**.
+- `Packages/LQCore`: all learning and game logic, plus the Spanish, French and Japanese courses. Platform-independent; **106 unit tests, all passing**.
 - `App/`: SwiftUI + SpriteKit app: onboarding, avatar, explorable village, NPC dialogue, 8 exercise types, journal, bag, review, placement, mastery checks, parent area, StoreKit 2 (disabled).
 - `UITests/`: key-flow UI tests and accessibility audits.
 - `docs/`: [PRD](docs/PRD.md) · [Competitor research](docs/COMPETITOR_RESEARCH.md) · [Curriculum](docs/CURRICULUM.md) · [Architecture](docs/ARCHITECTURE.md) · [Privacy & child safety](docs/PRIVACY_AND_CHILD_SAFETY.md) · [App Store checklist](docs/APP_STORE_CHECKLIST.md) · [Test plan](docs/TEST_PLAN.md) · [Roadmap & milestones](docs/ROADMAP.md)
@@ -19,7 +19,7 @@ Requirements: macOS with **Xcode 16+** (iOS 17 SDK or later) and [XcodeGen](http
 brew install xcodegen
 git clone https://github.com/marcompsci/LanguageQuest.git
 cd LanguageQuest
-./scripts/test-core.sh          # 95 logic tests (also: cd Packages/LQCore && swift test)
+./scripts/test-core.sh          # 106 logic tests (also: cd Packages/LQCore && swift test)
 open LanguageQuest.xcodeproj    # committed; regenerate with `xcodegen generate` after editing project.yml
 ```
 
@@ -66,6 +66,16 @@ xcodebuild -project LanguageQuest.xcodeproj -scheme LanguageQuest \
 8. **Quest tracker.** An arrow and step count point to the next quest; tap it to walk there.
 9. **Phrasebook.** Every word you've met, searchable in Spanish (any region's form) or English, with audio, mastery level, and how other regions say it.
 10. **Parent PIN.** Optional; a salted hash is stored in the Keychain. Teens can solve the math gate, so this keeps parent settings for parents. Forgot your PIN? The device passcode resets it.
+
+## Languages (v0.3)
+
+| Course | Varieties | Units | Notes |
+|---|---|---|---|
+| Spanish | Latin America (general), Mexico, Spain, Argentina (voseo), Colombia, Caribbean | 3 units · 15 quests | |
+| French | France, Québec | 3 units · 15 quests | Québec words: bienvenue, le déjeuner (breakfast), brun; prices in euros or Canadian dollars |
+| Japanese | Standard | 3 units · 15 quests | Hiragana and katakana with spaces between words, romaji shown underneath (can be turned off); answers in kana or romaji; long vowels forgiven; prices in yen |
+
+Choose the language during onboarding, or switch it in **Parents → Settings → Language**. Each language keeps its own progress, while XP, items and badges are shared. **All three courses are authored but not yet linguist-reviewed.**
 
 ## Editing content
 
