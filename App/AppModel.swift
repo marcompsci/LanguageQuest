@@ -5,7 +5,7 @@ import LQCore
 /// wires it to persistence, services, and navigation.
 @MainActor
 final class AppModel: ObservableObject {
-    enum Route: Equatable { case loading, onboarding, menu, world, failed(String) }
+    enum Route: Equatable { case loading, onboarding, menu, hub, world, failed(String) }
 
     enum Sheet: Identifiable, Equatable {
         case quest(String)
@@ -150,8 +150,14 @@ final class AppModel: ObservableObject {
         route = .world
     }
 
-    /// Main menu <-> village.
+    /// Main menu (pick a language) -> language page -> village.
     func openMenu() { sheet = nil; route = .menu; syncMusic() }
+    func openHub() { sheet = nil; route = .hub; syncMusic() }
+    /// From the main menu: switch to that language and open its page.
+    func chooseLanguage(_ id: String) {
+        if id != profile?.courseId { switchCourse(to: id) }
+        openHub()
+    }
     func play() { sheet = nil; route = .world; syncMusic() }
 
     var courseSummaries: [CourseSummary] {
@@ -258,7 +264,7 @@ final class AppModel: ObservableObject {
         audio.musicOn = profile?.settings.music ?? true
         audio.musicLevel = profile?.settings.musicLevel ?? LearnerSettings.defaultMusicVolume
         audio.lessonMode = sheet != nil
-        audio.setMusic(route == .world || route == .menu ? musicForScreen : nil)
+        audio.setMusic(route == .world || route == .menu || route == .hub ? musicForScreen : nil)
     }
 
     /// Battle music for duels; each language's lesson theme (reggaeton, Paris waltz, Tokyo pop) during lessons and games; the village theme otherwise.

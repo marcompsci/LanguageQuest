@@ -1,46 +1,35 @@
 import SwiftUI
 import LQCore
 
-/// The main menu: shown at launch and from the house button in the village.
+/// Main menu: shown at launch. Players pick a language here, which opens that language's page.
 struct MenuView: View {
     @EnvironmentObject var model: AppModel
     @Environment(\.palette) var p
     @State private var phase = DayPhase.now()
-
-    private let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
 
     var body: some View {
         ZStack {
             ThemedBackground()
             ScrollView {
                 VStack(spacing: 16) {
+                    HStack {
+                        Spacer()
+                        HamburgerMenu()
+                    }
                     Text("Language Quest")
                         .font(.system(size: 34, weight: .heavy, design: .rounded))
-                        .padding(.top, 8)
                         .accessibilityAddTraits(.isHeader)
                     if let prof = model.profile {
                         explorerCard(prof)
-                        Button { model.play() } label: {
-                            Label("Play: \(model.languageName) village", systemImage: "play.fill")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(PrimaryButtonStyle())
-                        .accessibilityIdentifier("playButton")
-                        languagesCard
-                        todayCard(prof)
-                        LazyVGrid(columns: columns, spacing: 12) {
-                            tile("gamecontroller.fill", "Games", "menu-games") { model.sheet = .games }
-                            tile("rectangle.on.rectangle.angled", "Flashcards", "menu-flashcards") { model.sheet = .flashcards }
-                            tile("arrow.triangle.2.circlepath", "Review", "menu-review") { model.sheet = .review }
-                            tile("character.book.closed.fill", "Phrasebook", "menu-phrasebook") { model.sheet = .phrasebook }
-                            if model.library?.course.script == .kana {
-                                tile("character.ja", "Kana Dojo", "menu-kana") { model.sheet = .kana }
+                        Card {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text("Choose a language").font(.title3.bold())
+                                ForEach(model.courseSummaries) { s in
+                                    LanguageRow(summary: s) { model.chooseLanguage(s.courseId) }
+                                }
+                                Text("Progress in each language is kept when you switch.")
+                                    .font(.caption).foregroundStyle(Color(p.secondaryText))
                             }
-                            tile("book.closed.fill", "Quest journal", "menu-journal") { model.sheet = .journal }
-                            tile("tshirt.fill", "Wardrobe", "menu-wardrobe") { model.sheet = .wardrobe }
-                            tile("bag.fill", "Bag and badges", "menu-bag") { model.sheet = .bag }
-                            tile("gearshape.fill", "Settings", "menu-settings") { model.sheet = .settings }
-                            tile("lock.shield", "Parents", "grownUpsButton") { model.sheet = .parent }
                         }
                         if model.save.profiles.count > 1 { explorersCard }
                     }
@@ -69,17 +58,79 @@ struct MenuView: View {
         .accessibilityElement(children: .combine)
     }
 
-    private var languagesCard: some View {
+    private var explorersCard: some View {
         Card {
-            VStack(alignment: .leading, spacing: 10) {
-                HStack {
-                    Text("Languages").font(.headline)
-                    Spacer()
-                    Text("Tap to switch").font(.caption).foregroundStyle(Color(p.secondaryText))
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Explorers on this device").font(.headline)
+                ForEach(model.save.profiles, id: \.id) { other in
+                    Button { model.switchProfile(other.id) } label: {
+                        HStack {
+                            Image(uiImage: PixelArt.avatarImage(other.avatar, scale: 3)).interpolation(.none).accessibilityHidden(true)
+                            Text(other.nickname.isEmpty ? "Explorer" : other.nickname)
+                            Spacer()
+                            if other.id == model.profile?.id { Image(systemName: "checkmark.circle.fill").accessibilityLabel("Playing now") }
+                        }
+                    }
                 }
-                ForEach(model.courseSummaries) { s in LanguageRow(summary: s) }
-                Text("Progress in each language is kept when you switch.").font(.caption).foregroundStyle(Color(p.secondaryText))
             }
+        }
+    }
+}
+
+/// The page after choosing a language: Play, Today, Games and Flashcards.
+/// Everything else lives in the ☰ menu at the top right.
+struct LanguageHubView: View {
+    @EnvironmentObject var model: AppModel
+    @Environment(\.palette) var p
+
+    private let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
+
+    var body: some View {
+        ZStack {
+            ThemedBackground()
+            ScrollView {
+                VStack(spacing: 16) {
+                    topBar
+                    if let prof = model.profile, let s = model.courseSummaries.first(where: \.isActive) {
+                        VStack(spacing: 4) {
+                            Text(s.flag).font(.system(size: 64)).accessibilityHidden(true)
+                            Text(s.language).font(.system(size: 32, weight: .heavy, design: .rounded))
+                                .accessibilityAddTraits(.isHeader)
+                            Text(s.nativeName).font(.headline).foregroundStyle(Color(p.secondaryText))
+                            ProgressView(value: s.fraction).tint(Color(p.accent)).padding(.horizontal, 40).padding(.top, 6)
+                            Text("\(s.questsDone)/\(s.questsTotal) quests · \(s.wordsMet) words met")
+                                .font(.caption).foregroundStyle(Color(p.secondaryText))
+                        }
+                        Button { model.play() } label: {
+                            Label("Play", systemImage: "play.fill").frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(PrimaryButtonStyle())
+                        .accessibilityLabel("Play: \(s.language) village")
+                        .accessibilityIdentifier("playButton")
+                        todayCard(prof)
+                        LazyVGrid(columns: columns, spacing: 12) {
+                            MenuTile(icon: "gamecontroller.fill", title: "Games", id: "menu-games") { model.sheet = .games }
+                            MenuTile(icon: "rectangle.on.rectangle.angled", title: "Flashcards", id: "menu-flashcards") { model.sheet = .flashcards }
+                            if model.library?.course.script == .kana {
+                                MenuTile(icon: "character.ja", title: "Kana Dojo", id: "menu-kana") { model.sheet = .kana }
+                            }
+                        }
+                    }
+                }
+                .padding(16)
+            }
+        }
+    }
+
+    private var topBar: some View {
+        HStack {
+            Button { model.openMenu() } label: {
+                Label("Languages", systemImage: "chevron.left").font(.headline)
+            }
+            .accessibilityHint("Back to the main menu to choose a language")
+            .accessibilityIdentifier("backToLanguages")
+            Spacer()
+            HamburgerMenu()
         }
     }
 
@@ -99,32 +150,48 @@ struct MenuView: View {
             }
         }
     }
+}
 
-    private var explorersCard: some View {
-        Card {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Explorers on this device").font(.headline)
-                ForEach(model.save.profiles, id: \.id) { other in
-                    Button { model.switchProfile(other.id) } label: {
-                        HStack {
-                            Image(uiImage: PixelArt.avatarImage(other.avatar, scale: 3)).interpolation(.none).accessibilityHidden(true)
-                            Text(other.nickname.isEmpty ? "Explorer" : other.nickname)
-                            Spacer()
-                            if other.id == model.profile?.id { Image(systemName: "checkmark.circle.fill").accessibilityLabel("Playing now") }
-                        }
-                    }
-                }
-            }
+/// ☰ at the top right: every screen that isn't on the language page.
+struct HamburgerMenu: View {
+    @EnvironmentObject var model: AppModel
+    @Environment(\.palette) var p
+
+    var body: some View {
+        Menu {
+            Button { model.sheet = .review } label: { Label("Review", systemImage: "arrow.triangle.2.circlepath") }
+            Button { model.sheet = .phrasebook } label: { Label("Phrasebook", systemImage: "character.book.closed.fill") }
+            Button { model.sheet = .journal } label: { Label("Quest journal", systemImage: "book.closed.fill") }
+            Button { model.sheet = .wardrobe } label: { Label("Wardrobe", systemImage: "tshirt.fill") }
+            Button { model.sheet = .bag } label: { Label("Bag and badges", systemImage: "bag.fill") }
+            Divider()
+            Button { model.sheet = .settings } label: { Label("Settings", systemImage: "gearshape.fill") }
+            Button { model.sheet = .parent } label: { Label("Parents", systemImage: "lock.shield") }
+        } label: {
+            Image(systemName: "line.3.horizontal")
+                .font(.title2.bold())
+                .frame(width: 46, height: 46)
+                .background(Color(p.surface), in: RoundedRectangle(cornerRadius: 12))
         }
+        .accessibilityLabel("Menu")
+        .accessibilityIdentifier("hamburgerMenu")
     }
+}
 
-    private func tile(_ icon: String, _ title: String, _ id: String, action: @escaping () -> Void) -> some View {
+struct MenuTile: View {
+    @Environment(\.palette) var p
+    let icon: String
+    let title: String
+    let id: String
+    let action: () -> Void
+
+    var body: some View {
         Button(action: action) {
             VStack(spacing: 8) {
                 Image(systemName: icon).font(.title2).foregroundStyle(Color(p.accent))
                 Text(title).font(.subheadline.bold()).multilineTextAlignment(.center)
             }
-            .frame(maxWidth: .infinity, minHeight: 82)
+            .frame(maxWidth: .infinity, minHeight: 100)
             .background(Color(p.surface), in: RoundedRectangle(cornerRadius: 16))
         }
         .buttonStyle(.plain)
@@ -132,14 +199,16 @@ struct MenuView: View {
     }
 }
 
-/// A flag, the language name and a progress bar. Tapping switches to that language.
+/// A flag, the language name and a progress bar.
 struct LanguageRow: View {
     @EnvironmentObject var model: AppModel
     @Environment(\.palette) var p
     let summary: CourseSummary
+    /// Defaults to switching language in place (used by the switcher sheet).
+    var action: (() -> Void)? = nil
 
     var body: some View {
-        Button { model.switchCourse(to: summary.courseId) } label: {
+        Button { if let action { action() } else { model.switchCourse(to: summary.courseId) } } label: {
             HStack(spacing: 12) {
                 Text(summary.flag).font(.largeTitle)
                 VStack(alignment: .leading, spacing: 4) {
@@ -152,7 +221,9 @@ struct LanguageRow: View {
                         .font(.caption).foregroundStyle(Color(p.secondaryText))
                 }
                 Spacer(minLength: 0)
-                if summary.isActive {
+                if action != nil {
+                    Image(systemName: "chevron.right").foregroundStyle(Color(p.secondaryText))
+                } else if summary.isActive {
                     Image(systemName: "checkmark.circle.fill").font(.title2).foregroundStyle(Color(p.accent))
                 }
             }
@@ -163,7 +234,7 @@ struct LanguageRow: View {
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(summary.language). \(summary.started ? "\(summary.questsDone) of \(summary.questsTotal) quests done" : "Not started")")
         .accessibilityValue(summary.isActive ? "Learning now" : "")
-        .accessibilityHint(summary.isActive ? "" : "Switches to \(summary.language)")
+        .accessibilityHint(action != nil ? "Opens \(summary.language)" : (summary.isActive ? "" : "Switches to \(summary.language)"))
         .accessibilityIdentifier("course-\(summary.courseId)")
     }
 }

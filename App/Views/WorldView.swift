@@ -236,7 +236,7 @@ struct WorldView: View {
 
     private var topBar: some View {
         HStack(spacing: 8) {
-            hudButton("house.fill", "Main menu") { model.openMenu() }
+            hudButton("house.fill", "\(model.languageName) home") { model.openHub() }
                 .accessibilityIdentifier("menuButton")
             Button { model.sheet = .languages } label: {
                 Text(model.courseSummaries.first(where: \.isActive)?.flag ?? "🌐").font(.title2).frame(width: 46, height: 46)

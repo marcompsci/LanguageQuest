@@ -39,6 +39,8 @@ struct RootView: View {
                 OnboardingView()
             case .menu:
                 MenuView()
+            case .hub:
+                LanguageHubView()
             case .world:
                 WorldView()
             }
