@@ -221,8 +221,12 @@ final class AppModel: ObservableObject {
 
     func text(_ v: VText) -> String { personalize(v.text(for: profile?.variant ?? library?.course.defaultVariant ?? "es-419")) }
 
-    /// Text for display: adds romaji under Japanese when the setting is on.
-    func display(_ v: VText) -> String { display(text(v)) }
+    /// Text for display: adds the pronunciation line (romaji, pinyin, transliteration) when the setting is on.
+    func display(_ v: VText) -> String {
+        let raw = v.text(for: profile?.variant ?? library?.course.defaultVariant ?? "es-419")
+        guard profile?.settings.romanizationOn ?? true, let r = library?.course.romanize(raw), r != raw else { return personalize(raw) }
+        return "\(personalize(raw))\n\(personalize(r))"
+    }
     func display(_ s: String) -> String {
         guard profile?.settings.romanizationOn ?? true, let r = library?.course.romanize(s), r != s else { return s }
         return "\(s)\n\(r)"
@@ -241,7 +245,8 @@ final class AppModel: ObservableObject {
 
     func say(_ v: VText) {
         guard let p = profile else { return }
-        speech.speakSpanish(text(v), variant: variant, settings: p.settings)
+        let raw = v.text(for: p.variant)
+        speech.speakTarget(personalize(raw), romanized: library?.course.romanize(raw).map(personalize), variant: variant, settings: p.settings)
     }
 
     func readAloud(_ english: String) {

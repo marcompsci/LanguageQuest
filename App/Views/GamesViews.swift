@@ -51,7 +51,8 @@ struct GamesHubView: View {
                 if let prof = model.profile, let prog = model.progression {
                     let extras = prof.extrasOrEmpty
                     Section {
-                        ForEach(BattleRoster.opponents) { o in
+                        // Starter courses have one unit, so only show duels that can open.
+                        ForEach(BattleRoster.opponents.filter { o in o.unitOrder.map { n in prog.library.units.contains { $0.order == n } } ?? true }) { o in
                             let open = BattleRoster.isUnlocked(o, progress: prof.progress, progression: prog)
                             Button { model.sheet = .battle(o.id) } label: {
                                 gameRow(icon: "bolt.fill", title: "\(o.name): \(o.title)",
@@ -65,17 +66,21 @@ struct GamesHubView: View {
                         Text("Friendly duels: answer to charge your spark. Mistakes never cost points, only the spark you'd have gained. Or challenge them by talking to them in the village.")
                     }
                     Section("Puzzles and mini-games") {
-                        Button { model.sheet = .scramble } label: {
-                            gameRow(icon: "textformat.abc", title: "Word Scramble (Profe Sol)", detail: stars(extras.scrambleBestStars), locked: false)
+                        if WordScramble.isAvailable(prog.library) {
+                            Button { model.sheet = .scramble } label: {
+                                gameRow(icon: "textformat.abc", title: "Word Scramble (Profe Sol)", detail: stars(extras.scrambleBestStars), locked: false)
+                            }
+                            .accessibilityIdentifier("scrambleGame")
                         }
-                        .accessibilityIdentifier("scrambleGame")
-                        let marketOpen = prog.library.units.first { $0.order == 3 }.map { prog.isUnitUnlocked($0, prof.progress, plan: model.plan) } ?? false
-                        Button { model.sheet = .market } label: {
-                            gameRow(icon: "cart.fill", title: "Market Rush (Señora Ana)",
-                                    detail: marketOpen ? stars(extras.marketBestStars) : "Opens with Unit 3", locked: !marketOpen)
+                        if prog.library.units.contains(where: { $0.order == 3 }) {
+                            let marketOpen = prog.library.units.first { $0.order == 3 }.map { prog.isUnitUnlocked($0, prof.progress, plan: model.plan) } ?? false
+                            Button { model.sheet = .market } label: {
+                                gameRow(icon: "cart.fill", title: "Market Rush (Señora Ana)",
+                                        detail: marketOpen ? stars(extras.marketBestStars) : "Opens with Unit 3", locked: !marketOpen)
+                            }
+                            .disabled(!marketOpen)
+                            .accessibilityIdentifier("marketGame")
                         }
-                        .disabled(!marketOpen)
-                        .accessibilityIdentifier("marketGame")
                         Button { model.sheet = .flashcards } label: {
                             gameRow(icon: "rectangle.on.rectangle.angled", title: "Flashcards",
                                     detail: "\(extras.flashcardsReviewed ?? 0) cards flipped", locked: false)
@@ -539,7 +544,7 @@ struct PhrasebookView: View {
                     }
                 }
             }
-            .searchable(text: $query, prompt: model.library?.course.script == .kana ? "Search kana, romaji or English" : "Search \(model.languageName) or English")
+            .searchable(text: $query, prompt: model.library?.course.script == .kana ? "Search kana, romaji or English" : model.library?.course.hasRomanization == true ? "Search \(model.languageName), its Latin spelling, or English" : "Search \(model.languageName) or English")
             .navigationTitle("Phrasebook")
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
         }

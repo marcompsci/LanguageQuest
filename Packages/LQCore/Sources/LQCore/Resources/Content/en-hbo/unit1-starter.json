@@ -1,0 +1,1206 @@
+{
+  "id": "hbou1-starter",
+  "version": 1,
+  "order": 1,
+  "title": "Greetings & Introductions",
+  "targetTitle": "שָׁלוֹם!",
+  "world": "starter-village",
+  "objective": "Greet people, introduce yourself, ask how someone is, use polite words, and count to ten.",
+  "canDo": [
+    "I can greet people and say goodbye.",
+    "I can say my name and ask someone's name.",
+    "I can ask how someone is and answer.",
+    "I can say thank you and use polite words.",
+    "I can count from 1 to 10."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Low",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons"
+    ]
+  },
+  "ageBands": [
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Starter unit written by the development team. Needs review by a native speaker or specialist in the ancient language before release. Audio uses on-device text-to-speech, which may not exist for this language."
+  },
+  "vocabulary": [
+    {
+      "id": "hello",
+      "kind": "word",
+      "target": "שָׁלוֹם",
+      "english": "peace (hello)",
+      "picture": "👋",
+      "altText": "a waving hand"
+    },
+    {
+      "id": "g2",
+      "kind": "word",
+      "target": "שָׁלוֹם לְךָ",
+      "english": "peace to you"
+    },
+    {
+      "id": "g3",
+      "kind": "word",
+      "target": "בָּרוּךְ הַבָּא",
+      "english": "blessed is the one who comes (welcome)"
+    },
+    {
+      "id": "bye",
+      "kind": "word",
+      "target": "לֵךְ לְשָׁלוֹם",
+      "english": "go in peace"
+    },
+    {
+      "id": "please",
+      "kind": "word",
+      "target": "נָא",
+      "english": "please"
+    },
+    {
+      "id": "thanks",
+      "kind": "word",
+      "target": "תּוֹדָה",
+      "english": "thanks",
+      "picture": "🙏",
+      "altText": "hands pressed together"
+    },
+    {
+      "id": "sorry",
+      "kind": "word",
+      "target": "סְלַח נָא",
+      "english": "forgive, please"
+    },
+    {
+      "id": "yes",
+      "kind": "word",
+      "target": "כֵּן",
+      "english": "yes (so)"
+    },
+    {
+      "id": "no",
+      "kind": "word",
+      "target": "לֹא",
+      "english": "no / not"
+    },
+    {
+      "id": "n1",
+      "kind": "word",
+      "target": "אֶחָד",
+      "english": "one (1)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n2",
+      "kind": "word",
+      "target": "שְׁנַיִם",
+      "english": "two (2)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n3",
+      "kind": "word",
+      "target": "שְׁלֹשָׁה",
+      "english": "three (3)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n4",
+      "kind": "word",
+      "target": "אַרְבָּעָה",
+      "english": "four (4)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n5",
+      "kind": "word",
+      "target": "חֲמִשָּׁה",
+      "english": "five (5)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n6",
+      "kind": "word",
+      "target": "שִׁשָּׁה",
+      "english": "six (6)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n7",
+      "kind": "word",
+      "target": "שִׁבְעָה",
+      "english": "seven (7)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n8",
+      "kind": "word",
+      "target": "שְׁמֹנָה",
+      "english": "eight (8)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n9",
+      "kind": "word",
+      "target": "תִּשְׁעָה",
+      "english": "nine (9)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n10",
+      "kind": "word",
+      "target": "עֲשָׂרָה",
+      "english": "ten (10)",
+      "partOfSpeech": "number"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "whatname",
+      "kind": "phrase",
+      "target": "מַה־שְּׁמֶךָ?",
+      "english": "What is your name?"
+    },
+    {
+      "id": "myname",
+      "kind": "phrase",
+      "target": "שְׁמִי ….",
+      "english": "My name is ….",
+      "example": {
+        "target": "שְׁמִי מָתֵאוֹ.",
+        "english": "My name is Mateo."
+      }
+    },
+    {
+      "id": "nice",
+      "kind": "phrase",
+      "target": "בָּרוּךְ אַתָּה!",
+      "english": "Blessed are you!"
+    },
+    {
+      "id": "how",
+      "kind": "phrase",
+      "target": "הֲשָׁלוֹם לְךָ?",
+      "english": "Is it well with you?"
+    },
+    {
+      "id": "imfine",
+      "kind": "phrase",
+      "target": "שָׁלוֹם לִי.",
+      "english": "It is well with me."
+    },
+    {
+      "id": "andyou",
+      "kind": "phrase",
+      "target": "וְאַתָּה?",
+      "english": "And you?"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "hbon-u1-1",
+      "title": "Letters first, vowels later",
+      "body": "The Bible was first written with consonants only. Around 1,000 years ago scholars called Masoretes added the dots and lines (vowel points) so the reading would never be forgotten."
+    },
+    {
+      "id": "hbon-u1-2",
+      "title": "Bread house",
+      "body": "Many place names are Hebrew words: Bethlehem is בֵּית לֶחֶם (beit lechem), the house of bread. Our village bakery uses the same words!"
+    },
+    {
+      "id": "hbon-u1-3",
+      "title": "Words you already know",
+      "body": "English borrowed Biblical Hebrew words like amen (so be it), hallelujah (praise God) and shalom (peace)."
+    }
+  ],
+  "quests": [
+    {
+      "id": "hbou1-q1",
+      "order": 1,
+      "title": "Hello, village!",
+      "npc": "luna",
+      "location": "Luna's house",
+      "summary": "Luna shows you around and teaches the first greetings.",
+      "objective": "Greet people and say goodbye.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "שָׁלוֹם! אֲנִי לוּנָה. בָּרוּךְ הַבָּא!",
+            "gloss": "Peace! I am Luna. Welcome!",
+            "choices": [
+              {
+                "text": "שָׁלוֹם!",
+                "gloss": "Peace (hello)!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "לֵךְ לְשָׁלוֹם!",
+                "gloss": "Go in peace!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Luna just said hello! Try שָׁלוֹם."
+              }
+            ],
+            "hint": "Coco says: Answer with שָׁלוֹם (shalom)."
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "טוֹב מְאֹד!",
+            "gloss": "Very good!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "hbou1-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "hbou1-q1-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "bye"
+          ],
+          "hint": "You say it when you leave.",
+          "explanation": "לֵךְ לְשָׁלוֹם (lekh leshalom) = go in peace.",
+          "target": "לֵךְ לְשָׁלוֹם!",
+          "targetEnglish": "Go in peace!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "peace (hello)"
+            },
+            {
+              "id": "b",
+              "text": "peace to you"
+            },
+            {
+              "id": "c",
+              "text": "go in peace"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "hbou1-q1-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Biblical Hebrew to the English.",
+          "items": [
+            "hello",
+            "g2",
+            "g3",
+            "bye"
+          ],
+          "hint": "Start with the ones you're sure of.",
+          "explanation": "Greetings: שָׁלוֹם, שָׁלוֹם לְךָ, בָּרוּךְ הַבָּא, לֵךְ לְשָׁלוֹם.",
+          "pairs": [
+            {
+              "target": "שָׁלוֹם",
+              "english": "peace (hello)"
+            },
+            {
+              "target": "שָׁלוֹם לְךָ",
+              "english": "peace to you"
+            },
+            {
+              "target": "בָּרוּךְ הַבָּא",
+              "english": "blessed is the one who comes (welcome)"
+            },
+            {
+              "target": "לֵךְ לְשָׁלוֹם",
+              "english": "go in peace"
+            }
+          ]
+        },
+        {
+          "id": "hbou1-q1-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Say the same greeting back.",
+          "explanation": "שָׁלוֹם (shalom) = peace (hello).",
+          "target": "שָׁלוֹם!",
+          "targetEnglish": "Peace (hello)!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "נָא!"
+            },
+            {
+              "id": "b",
+              "text": "שָׁלוֹם!"
+            },
+            {
+              "id": "c",
+              "text": "לֵךְ לְשָׁלוֹם!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "hbou1-q1-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Listen first, then copy the sound.",
+          "explanation": "שָׁלוֹם (shalom) = peace (hello).",
+          "target": "שָׁלוֹם!",
+          "targetEnglish": "Peace (hello)!",
+          "accepted": [
+            "שָׁלוֹם",
+            "shalom"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "scarf-yellow"
+      }
+    },
+    {
+      "id": "hbou1-q2",
+      "order": 2,
+      "title": "What's your name?",
+      "npc": "mateo",
+      "location": "The plaza",
+      "summary": "Mateo wants to know your name.",
+      "objective": "Ask someone's name and say your own.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Mateo",
+            "line": "שָׁלוֹם! שְׁמִי מָתֵאוֹ. מַה־שְּׁמֶךָ?",
+            "gloss": "Peace! My name is Mateo. What is your name?",
+            "choices": [
+              {
+                "text": "שְׁמִי {name}.",
+                "gloss": "My name is {name}.",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "תּוֹדָה!",
+                "gloss": "Thanks!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Mateo asked your name! Say your name."
+              }
+            ],
+            "hint": "Coco says: Copy how Mateo said his name, then use yours."
+          },
+          {
+            "id": "n2",
+            "speaker": "Mateo",
+            "line": "בָּרוּךְ אַתָּה, {name}!",
+            "gloss": "Blessed are you, {name}!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "hbou1-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "hbou1-q2-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "whatname"
+          ],
+          "hint": "Mateo asks this when he meets someone.",
+          "explanation": "מַה־שְּׁמֶךָ? (mah-shemekha?) = What is your name?.",
+          "target": "מַה־שְּׁמֶךָ?",
+          "targetEnglish": "What is your name?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "What is your name?"
+            },
+            {
+              "id": "b",
+              "text": "Is it well with you?"
+            },
+            {
+              "id": "c",
+              "text": "And you?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "hbou1-q2-a2",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "myname",
+            "whatname"
+          ],
+          "hint": "Answer with your name.",
+          "explanation": "שְׁמִי מָתֵאוֹ. = My name is Mateo.",
+          "target": "מַה־שְּׁמֶךָ?",
+          "targetEnglish": "What is your name?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "שְׁמִי מָתֵאוֹ."
+            },
+            {
+              "id": "b",
+              "text": "תּוֹדָה!"
+            },
+            {
+              "id": "c",
+              "text": "וְאַתָּה?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "hbou1-q2-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "nice"
+          ],
+          "hint": "You say it when you meet someone new.",
+          "explanation": "בָּרוּךְ אַתָּה! (barukh attah!) = Blessed are you!.",
+          "target": "בָּרוּךְ אַתָּה!",
+          "targetEnglish": "Blessed are you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Is it well with you?"
+            },
+            {
+              "id": "b",
+              "text": "go in peace"
+            },
+            {
+              "id": "c",
+              "text": "Blessed are you!"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "hbou1-q2-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Biblical Hebrew: “Blessed are you!”",
+          "items": [
+            "nice"
+          ],
+          "hint": "Mateo said it after hearing your name. You can type barukh attah!.",
+          "explanation": "בָּרוּךְ אַתָּה! (barukh attah!) = Blessed are you!.",
+          "targetEnglish": "Blessed are you!",
+          "accepted": [
+            "בָּרוּךְ אַתָּה!",
+            "barukh attah!"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "cap-red"
+      }
+    },
+    {
+      "id": "hbou1-q3",
+      "order": 3,
+      "title": "How are you?",
+      "npc": "dona-rosa",
+      "location": "The bakery",
+      "summary": "Doña Rosa the baker asks how you are.",
+      "objective": "Ask how someone is and answer.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Doña Rosa",
+            "line": "שָׁלוֹם! הֲשָׁלוֹם לְךָ?",
+            "gloss": "Peace! Is it well with you?",
+            "choices": [
+              {
+                "text": "שָׁלוֹם לִי. וְאַתָּה?",
+                "gloss": "It is well with me. And you?",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "שְׁמִי מָתֵאוֹ.",
+                "gloss": "My name is Mateo.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "She asked how you are, not your name!"
+              }
+            ],
+            "hint": "Coco says: Say how you are, then ask back: וְאַתָּה?"
+          },
+          {
+            "id": "n2",
+            "speaker": "Doña Rosa",
+            "line": "גַּם לִי שָׁלוֹם!",
+            "gloss": "It is well with me too!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "hbou1-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "hbou1-q3-a1",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "how",
+            "imfine"
+          ],
+          "hint": "She wants to know how you are.",
+          "explanation": "שָׁלוֹם לִי. (shalom li.) = It is well with me..",
+          "target": "הֲשָׁלוֹם לְךָ?",
+          "targetEnglish": "Is it well with you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "מַה־שְּׁמֶךָ?"
+            },
+            {
+              "id": "b",
+              "text": "שָׁלוֹם לִי."
+            },
+            {
+              "id": "c",
+              "text": "לֵךְ לְשָׁלוֹם!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "hbou1-q3-a2",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "andyou"
+          ],
+          "hint": "You use it to ask the question back.",
+          "explanation": "וְאַתָּה? (ve'attah?) = And you?.",
+          "target": "וְאַתָּה?",
+          "targetEnglish": "And you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Is it well with you?"
+            },
+            {
+              "id": "b",
+              "text": "And you?"
+            },
+            {
+              "id": "c",
+              "text": "What is your name?"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "hbou1-q3-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "how"
+          ],
+          "hint": "Doña Rosa asked you this.",
+          "explanation": "הֲשָׁלוֹם לְךָ? (hashalom lekha?) = Is it well with you?.",
+          "target": "הֲשָׁלוֹם לְךָ?",
+          "targetEnglish": "Is it well with you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Is it well with you?"
+            },
+            {
+              "id": "b",
+              "text": "What is your name?"
+            },
+            {
+              "id": "c",
+              "text": "Blessed are you!"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "hbou1-q3-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "imfine"
+          ],
+          "hint": "Say it slowly.",
+          "explanation": "שָׁלוֹם לִי. (shalom li.) = It is well with me..",
+          "target": "שָׁלוֹם לִי.",
+          "targetEnglish": "It is well with me.",
+          "accepted": [
+            "שָׁלוֹם לִי.",
+            "shalom li."
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "apron"
+      }
+    },
+    {
+      "id": "hbou1-q4",
+      "order": 4,
+      "title": "Magic words",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Don Pepe gives you a gift at his fruit stand.",
+      "objective": "Say thank you and use polite words.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "הִנֵּה תַּפּוּחַ לְךָ!",
+            "gloss": "Here is an apple for you!",
+            "choices": [
+              {
+                "text": "תּוֹדָה!",
+                "gloss": "Thanks!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "סְלַח נָא!",
+                "gloss": "Forgive, please!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "He's giving you a present! Try תּוֹדָה."
+              }
+            ],
+            "hint": "Coco says: When someone gives you something, say תּוֹדָה."
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": "לֵךְ לְשָׁלוֹם!",
+            "gloss": "Go in peace!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "hbou1-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "hbou1-q4-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Biblical Hebrew to the English.",
+          "items": [
+            "please",
+            "thanks",
+            "sorry",
+            "yes",
+            "no"
+          ],
+          "hint": "Thank you is the one you hear most.",
+          "explanation": "נָא, תּוֹדָה, סְלַח נָא, כֵּן, לֹא.",
+          "pairs": [
+            {
+              "target": "נָא",
+              "english": "please"
+            },
+            {
+              "target": "תּוֹדָה",
+              "english": "thanks"
+            },
+            {
+              "target": "סְלַח נָא",
+              "english": "forgive, please"
+            },
+            {
+              "target": "כֵּן",
+              "english": "yes (so)"
+            },
+            {
+              "target": "לֹא",
+              "english": "no / not"
+            }
+          ]
+        },
+        {
+          "id": "hbou1-q4-a2",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "thanks"
+          ],
+          "hint": "Someone gives you a present. What do you say?",
+          "explanation": "תּוֹדָה (todah) = thanks.",
+          "target": "הִנֵּה תַּפּוּחַ לְךָ!",
+          "targetEnglish": "Here is an apple for you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "תּוֹדָה!"
+            },
+            {
+              "id": "b",
+              "text": "לֵךְ לְשָׁלוֹם!"
+            },
+            {
+              "id": "c",
+              "text": "מַה־שְּׁמֶךָ?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "hbou1-q4-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "please"
+          ],
+          "hint": "Listen for a polite word.",
+          "explanation": "נָא = please.",
+          "target": "נָא",
+          "targetEnglish": "please",
+          "choices": [
+            {
+              "id": "a",
+              "text": "thanks"
+            },
+            {
+              "id": "b",
+              "text": "please"
+            },
+            {
+              "id": "c",
+              "text": "peace (hello)"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "hbou1-q4-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Biblical Hebrew: “thanks”",
+          "items": [
+            "thanks"
+          ],
+          "hint": "You just said it to Don Pepe. You can type todah.",
+          "explanation": "תּוֹדָה (todah) = thanks.",
+          "targetEnglish": "thanks",
+          "accepted": [
+            "תּוֹדָה",
+            "todah"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "glasses-round"
+      }
+    },
+    {
+      "id": "hbou1-q5",
+      "order": 5,
+      "title": "Count with Nico",
+      "npc": "nico",
+      "location": "Near the pond",
+      "summary": "Nico and his dog Canela count everything they see.",
+      "objective": "Count from 1 to 10.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Nico",
+            "line": "שָׁלוֹם! נִסְפֹּר!",
+            "gloss": "Peace! Let's count!",
+            "choices": [
+              {
+                "text": "לְכוּ!",
+                "gloss": "Let's go!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "לֵךְ לְשָׁלוֹם!",
+                "gloss": "Go in peace!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Nico wants to count with you! Say let's go."
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "Nico",
+            "line": "אֶחָד, שְׁנַיִם, שְׁלֹשָׁה…",
+            "gloss": "One, two, three…",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "hbou1-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "hbou1-q5-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "n3"
+          ],
+          "hint": "Count on your fingers.",
+          "explanation": "שְׁלֹשָׁה = 3.",
+          "target": "שְׁלֹשָׁה",
+          "targetEnglish": "three",
+          "choices": [
+            {
+              "id": "a",
+              "text": "2"
+            },
+            {
+              "id": "b",
+              "text": "3"
+            },
+            {
+              "id": "c",
+              "text": "8"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "hbou1-q5-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Biblical Hebrew numbers.",
+          "items": [
+            "n1",
+            "n2",
+            "n3",
+            "n4",
+            "n5"
+          ],
+          "hint": "Start with one.",
+          "explanation": "אֶחָד, שְׁנַיִם, שְׁלֹשָׁה, אַרְבָּעָה, חֲמִשָּׁה: 1 to 5.",
+          "pairs": [
+            {
+              "target": "אֶחָד",
+              "english": "1"
+            },
+            {
+              "target": "שְׁנַיִם",
+              "english": "2"
+            },
+            {
+              "target": "שְׁלֹשָׁה",
+              "english": "3"
+            },
+            {
+              "target": "אַרְבָּעָה",
+              "english": "4"
+            },
+            {
+              "target": "חֲמִשָּׁה",
+              "english": "5"
+            }
+          ]
+        },
+        {
+          "id": "hbou1-q5-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "n7"
+          ],
+          "hint": "It comes after six.",
+          "explanation": "שִׁבְעָה = 7.",
+          "target": "שִׁבְעָה",
+          "targetEnglish": "seven",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6"
+            },
+            {
+              "id": "b",
+              "text": "7"
+            },
+            {
+              "id": "c",
+              "text": "9"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "hbou1-q5-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Biblical Hebrew: “two”",
+          "items": [
+            "n2"
+          ],
+          "hint": "It comes after one. You can type shenayim.",
+          "explanation": "שְׁנַיִם = 2.",
+          "targetEnglish": "two",
+          "accepted": [
+            "שְׁנַיִם",
+            "shenayim"
+          ]
+        },
+        {
+          "id": "hbou1-q5-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "n10"
+          ],
+          "hint": "The last number in this lesson.",
+          "explanation": "עֲשָׂרָה = 10.",
+          "target": "עֲשָׂרָה",
+          "targetEnglish": "ten",
+          "accepted": [
+            "עֲשָׂרָה",
+            "asarah"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "basket",
+        "badge": "badge-u1"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "hbou1-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "hbou1-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "bye"
+        ],
+        "hint": "You say it when you leave.",
+        "explanation": "לֵךְ לְשָׁלוֹם (lekh leshalom) = go in peace.",
+        "target": "לֵךְ לְשָׁלוֹם!",
+        "targetEnglish": "Go in peace!",
+        "choices": [
+          {
+            "id": "a",
+            "text": "peace (hello)"
+          },
+          {
+            "id": "b",
+            "text": "go in peace"
+          },
+          {
+            "id": "c",
+            "text": "thanks"
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "hbou1-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Biblical Hebrew: “hello”",
+        "items": [
+          "hello"
+        ],
+        "hint": "The first word Luna taught you.",
+        "explanation": "שָׁלוֹם (shalom) = peace (hello).",
+        "targetEnglish": "hello",
+        "accepted": [
+          "שָׁלוֹם",
+          "shalom"
+        ]
+      },
+      {
+        "id": "hbou1-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "andyou"
+        ],
+        "hint": "You use it to ask back.",
+        "explanation": "וְאַתָּה? (ve'attah?) = And you?.",
+        "target": "וְאַתָּה?",
+        "targetEnglish": "And you?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "What is your name?"
+          },
+          {
+            "id": "b",
+            "text": "Blessed are you!"
+          },
+          {
+            "id": "c",
+            "text": "And you?"
+          }
+        ],
+        "answer": "c"
+      },
+      {
+        "id": "hbou1-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Biblical Hebrew: “five”",
+        "items": [
+          "n5"
+        ],
+        "hint": "Count on one hand.",
+        "explanation": "חֲמִשָּׁה = 5.",
+        "targetEnglish": "five",
+        "accepted": [
+          "חֲמִשָּׁה",
+          "chamishah"
+        ]
+      },
+      {
+        "id": "hbou1-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in Biblical Hebrew: “Blessed are you!”",
+        "items": [
+          "nice"
+        ],
+        "hint": "What do you say when you meet someone?",
+        "explanation": "בָּרוּךְ אַתָּה! (barukh attah!) = Blessed are you!.",
+        "target": "בָּרוּךְ אַתָּה!",
+        "targetEnglish": "Blessed are you!",
+        "accepted": [
+          "בָּרוּךְ אַתָּה!",
+          "barukh attah!"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1208 @@
+{
+  "id": "lau1-starter",
+  "version": 1,
+  "order": 1,
+  "title": "Greetings & Introductions",
+  "targetTitle": "Salve!",
+  "world": "starter-village",
+  "objective": "Greet people, introduce yourself, ask how someone is, use polite words, and count to ten.",
+  "canDo": [
+    "I can greet people and say goodbye.",
+    "I can say my name and ask someone's name.",
+    "I can ask how someone is and answer.",
+    "I can say thank you and use polite words.",
+    "I can count from 1 to 10."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Low",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons"
+    ]
+  },
+  "ageBands": [
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Starter unit written by the development team. Needs review by a native speaker or specialist in the ancient language before release. Audio uses on-device text-to-speech, which may not exist for this language."
+  },
+  "vocabulary": [
+    {
+      "id": "hello",
+      "kind": "word",
+      "target": "Salve",
+      "english": "hello (to one person)",
+      "picture": "👋",
+      "altText": "a waving hand"
+    },
+    {
+      "id": "g2",
+      "kind": "word",
+      "target": "Salvete",
+      "english": "hello (to several people)"
+    },
+    {
+      "id": "g3",
+      "kind": "word",
+      "target": "Ave",
+      "english": "hail / hello"
+    },
+    {
+      "id": "g4",
+      "kind": "word",
+      "target": "Valete",
+      "english": "goodbye (to several people)",
+      "picture": "🌙",
+      "altText": "a crescent moon"
+    },
+    {
+      "id": "bye",
+      "kind": "word",
+      "target": "Vale",
+      "english": "goodbye (to one person)"
+    },
+    {
+      "id": "please",
+      "kind": "word",
+      "target": "Quaeso",
+      "english": "please"
+    },
+    {
+      "id": "thanks",
+      "kind": "word",
+      "target": "Gratias tibi",
+      "english": "thank you",
+      "picture": "🙏",
+      "altText": "hands pressed together"
+    },
+    {
+      "id": "welcome",
+      "kind": "word",
+      "target": "Libenter",
+      "english": "gladly (you're welcome)"
+    },
+    {
+      "id": "sorry",
+      "kind": "word",
+      "target": "Ignosce mihi",
+      "english": "forgive me"
+    },
+    {
+      "id": "yes",
+      "kind": "word",
+      "target": "Ita",
+      "english": "yes"
+    },
+    {
+      "id": "no",
+      "kind": "word",
+      "target": "Minime",
+      "english": "no"
+    },
+    {
+      "id": "n1",
+      "kind": "word",
+      "target": "unus",
+      "english": "one (1)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n2",
+      "kind": "word",
+      "target": "duo",
+      "english": "two (2)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n3",
+      "kind": "word",
+      "target": "tres",
+      "english": "three (3)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n4",
+      "kind": "word",
+      "target": "quattuor",
+      "english": "four (4)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n5",
+      "kind": "word",
+      "target": "quinque",
+      "english": "five (5)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n6",
+      "kind": "word",
+      "target": "sex",
+      "english": "six (6)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n7",
+      "kind": "word",
+      "target": "septem",
+      "english": "seven (7)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n8",
+      "kind": "word",
+      "target": "octo",
+      "english": "eight (8)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n9",
+      "kind": "word",
+      "target": "novem",
+      "english": "nine (9)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n10",
+      "kind": "word",
+      "target": "decem",
+      "english": "ten (10)",
+      "partOfSpeech": "number"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "whatname",
+      "kind": "phrase",
+      "target": "Quid est nomen tibi?",
+      "english": "What's your name?"
+    },
+    {
+      "id": "myname",
+      "kind": "phrase",
+      "target": "Nomen mihi est ….",
+      "english": "My name is ….",
+      "example": {
+        "target": "Nomen mihi est Mateo.",
+        "english": "My name is Mateo."
+      }
+    },
+    {
+      "id": "nice",
+      "kind": "phrase",
+      "target": "Gaudeo te videre!",
+      "english": "I'm glad to see you!"
+    },
+    {
+      "id": "how",
+      "kind": "phrase",
+      "target": "Quid agis?",
+      "english": "How are you?"
+    },
+    {
+      "id": "imfine",
+      "kind": "phrase",
+      "target": "Bene valeo, gratias.",
+      "english": "I'm well, thanks."
+    },
+    {
+      "id": "andyou",
+      "kind": "phrase",
+      "target": "Et tu?",
+      "english": "And you?"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "lan-u1-1",
+      "title": "Latin is everywhere",
+      "body": "Spanish, French, Italian, Portuguese and Romanian grew out of Latin, and about half of English words come from it too: aqua (water) → aquarium."
+    },
+    {
+      "id": "lan-u1-2",
+      "title": "How Romans sounded",
+      "body": "In classical Latin, c is always k (Cicero = KI-ke-ro) and v sounds like w (veni, vidi, vici = WAY-nee, WEE-dee, WEE-kee)."
+    },
+    {
+      "id": "lan-u1-3",
+      "title": "One or many",
+      "body": "Latin changes greetings for one person or several: salve / salvete (hello), vale / valete (goodbye)."
+    }
+  ],
+  "quests": [
+    {
+      "id": "lau1-q1",
+      "order": 1,
+      "title": "Hello, village!",
+      "npc": "luna",
+      "location": "Luna's house",
+      "summary": "Luna shows you around and teaches the first greetings.",
+      "objective": "Greet people and say goodbye.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "Salve! Ego sum Luna. Bene venisti in vicum!",
+            "gloss": "Hello! I'm Luna. Welcome to the village!",
+            "choices": [
+              {
+                "text": "Salve!",
+                "gloss": "Hello (to one person)!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Valete!",
+                "gloss": "Goodbye (to several people)!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Luna just said hello! Try Salve."
+              }
+            ],
+            "hint": "Coco says: Answer with Salve."
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "Optime! Omnes salutemus!",
+            "gloss": "Excellent! Let's greet everyone!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "lau1-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "lau1-q1-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "bye"
+          ],
+          "hint": "You say it when you leave.",
+          "explanation": "Vale = goodbye (to one person).",
+          "target": "Vale!",
+          "targetEnglish": "Goodbye (to one person)!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "hello (to one person)"
+            },
+            {
+              "id": "b",
+              "text": "hello (to several people)"
+            },
+            {
+              "id": "c",
+              "text": "goodbye (to one person)"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "lau1-q1-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Latin to the English.",
+          "items": [
+            "hello",
+            "g2",
+            "g3",
+            "g4",
+            "bye"
+          ],
+          "hint": "Start with the ones you're sure of.",
+          "explanation": "Greetings: Salve, Salvete, Ave, Valete, Vale.",
+          "pairs": [
+            {
+              "target": "Salve",
+              "english": "hello (to one person)"
+            },
+            {
+              "target": "Salvete",
+              "english": "hello (to several people)"
+            },
+            {
+              "target": "Ave",
+              "english": "hail / hello"
+            },
+            {
+              "target": "Valete",
+              "english": "goodbye (to several people)"
+            },
+            {
+              "target": "Vale",
+              "english": "goodbye (to one person)"
+            }
+          ]
+        },
+        {
+          "id": "lau1-q1-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Say the same greeting back.",
+          "explanation": "Salve = hello (to one person).",
+          "target": "Salve!",
+          "targetEnglish": "Hello (to one person)!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Quaeso!"
+            },
+            {
+              "id": "b",
+              "text": "Salve!"
+            },
+            {
+              "id": "c",
+              "text": "Vale!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "lau1-q1-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Listen first, then copy the sound.",
+          "explanation": "Salve = hello (to one person).",
+          "target": "Salve!",
+          "targetEnglish": "Hello (to one person)!",
+          "accepted": [
+            "Salve"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "scarf-yellow"
+      }
+    },
+    {
+      "id": "lau1-q2",
+      "order": 2,
+      "title": "What's your name?",
+      "npc": "mateo",
+      "location": "The plaza",
+      "summary": "Mateo wants to know your name.",
+      "objective": "Ask someone's name and say your own.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Mateo",
+            "line": "Salve! Nomen mihi est Mateo. Quid est nomen tibi?",
+            "gloss": "Hello! My name is Mateo. What's your name?",
+            "choices": [
+              {
+                "text": "Nomen mihi est {name}.",
+                "gloss": "My name is {name}.",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Gratias tibi!",
+                "gloss": "Thank you!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Mateo asked your name! Say your name."
+              }
+            ],
+            "hint": "Coco says: Copy how Mateo said his name, then use yours."
+          },
+          {
+            "id": "n2",
+            "speaker": "Mateo",
+            "line": "Gaudeo te videre, {name}!",
+            "gloss": "I'm glad to see you, {name}!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "lau1-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "lau1-q2-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "whatname"
+          ],
+          "hint": "Mateo asks this when he meets someone.",
+          "explanation": "Quid est nomen tibi? = What's your name?.",
+          "target": "Quid est nomen tibi?",
+          "targetEnglish": "What's your name?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "What's your name?"
+            },
+            {
+              "id": "b",
+              "text": "How are you?"
+            },
+            {
+              "id": "c",
+              "text": "And you?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "lau1-q2-a2",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “My name is Mateo.”",
+          "items": [
+            "myname"
+          ],
+          "hint": "Start with Nomen.",
+          "explanation": "Nomen mihi est Mateo. = My name is Mateo.",
+          "tiles": [
+            "Nomen",
+            "mihi",
+            "est",
+            "Mateo"
+          ],
+          "targetEnglish": "My name is Mateo.",
+          "distractors": [
+            "Salve"
+          ]
+        },
+        {
+          "id": "lau1-q2-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "nice"
+          ],
+          "hint": "You say it when you meet someone new.",
+          "explanation": "Gaudeo te videre! = I'm glad to see you!.",
+          "target": "Gaudeo te videre!",
+          "targetEnglish": "I'm glad to see you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How are you?"
+            },
+            {
+              "id": "b",
+              "text": "goodbye (to one person)"
+            },
+            {
+              "id": "c",
+              "text": "I'm glad to see you!"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "lau1-q2-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Latin: “I'm glad to see you!”",
+          "items": [
+            "nice"
+          ],
+          "hint": "Mateo said it after hearing your name.",
+          "explanation": "Gaudeo te videre! = I'm glad to see you!.",
+          "targetEnglish": "I'm glad to see you!",
+          "accepted": [
+            "Gaudeo te videre!"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "cap-red"
+      }
+    },
+    {
+      "id": "lau1-q3",
+      "order": 3,
+      "title": "How are you?",
+      "npc": "dona-rosa",
+      "location": "The bakery",
+      "summary": "Doña Rosa the baker asks how you are.",
+      "objective": "Ask how someone is and answer.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Doña Rosa",
+            "line": "Salve! Quid agis?",
+            "gloss": "Hello! How are you?",
+            "choices": [
+              {
+                "text": "Bene valeo, gratias. Et tu?",
+                "gloss": "I'm well, thanks. And you?",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Nomen mihi est Mateo.",
+                "gloss": "My name is Mateo.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "She asked how you are, not your name!"
+              }
+            ],
+            "hint": "Coco says: Say how you are, then ask back: Et tu?"
+          },
+          {
+            "id": "n2",
+            "speaker": "Doña Rosa",
+            "line": "Ego quoque bene valeo, gratias!",
+            "gloss": "I'm well too, thanks!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "lau1-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "lau1-q3-a1",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "how",
+            "imfine"
+          ],
+          "hint": "She wants to know how you are.",
+          "explanation": "Bene valeo, gratias. = I'm well, thanks..",
+          "target": "Quid agis?",
+          "targetEnglish": "How are you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Quid est nomen tibi?"
+            },
+            {
+              "id": "b",
+              "text": "Bene valeo, gratias."
+            },
+            {
+              "id": "c",
+              "text": "Vale!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "lau1-q3-a2",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "andyou"
+          ],
+          "hint": "You use it to ask the question back.",
+          "explanation": "Et tu? = And you?.",
+          "target": "Et tu?",
+          "targetEnglish": "And you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How are you?"
+            },
+            {
+              "id": "b",
+              "text": "And you?"
+            },
+            {
+              "id": "c",
+              "text": "What's your name?"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "lau1-q3-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "how"
+          ],
+          "hint": "Doña Rosa asked you this.",
+          "explanation": "Quid agis? = How are you?.",
+          "target": "Quid agis?",
+          "targetEnglish": "How are you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How are you?"
+            },
+            {
+              "id": "b",
+              "text": "What's your name?"
+            },
+            {
+              "id": "c",
+              "text": "I'm glad to see you!"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "lau1-q3-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "imfine"
+          ],
+          "hint": "Say it slowly.",
+          "explanation": "Bene valeo, gratias. = I'm well, thanks..",
+          "target": "Bene valeo, gratias.",
+          "targetEnglish": "I'm well, thanks.",
+          "accepted": [
+            "Bene valeo, gratias."
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "apron"
+      }
+    },
+    {
+      "id": "lau1-q4",
+      "order": 4,
+      "title": "Magic words",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Don Pepe gives you a gift at his fruit stand.",
+      "objective": "Say thank you and use polite words.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "Ecce, malum tibi!",
+            "gloss": "Look, an apple for you!",
+            "choices": [
+              {
+                "text": "Gratias tibi!",
+                "gloss": "Thank you!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Ignosce mihi!",
+                "gloss": "Forgive me!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "He's giving you a present! Try Gratias tibi."
+              }
+            ],
+            "hint": "Coco says: When someone gives you something, say Gratias tibi."
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": "Libenter! Vale!",
+            "gloss": "Gladly! Goodbye!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "lau1-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "lau1-q4-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Latin to the English.",
+          "items": [
+            "please",
+            "thanks",
+            "welcome",
+            "sorry",
+            "yes"
+          ],
+          "hint": "Thank you is the one you hear most.",
+          "explanation": "Quaeso, Gratias tibi, Libenter, Ignosce mihi, Ita.",
+          "pairs": [
+            {
+              "target": "Quaeso",
+              "english": "please"
+            },
+            {
+              "target": "Gratias tibi",
+              "english": "thank you"
+            },
+            {
+              "target": "Libenter",
+              "english": "gladly (you're welcome)"
+            },
+            {
+              "target": "Ignosce mihi",
+              "english": "forgive me"
+            },
+            {
+              "target": "Ita",
+              "english": "yes"
+            }
+          ]
+        },
+        {
+          "id": "lau1-q4-a2",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "thanks"
+          ],
+          "hint": "Someone gives you a present. What do you say?",
+          "explanation": "Gratias tibi = thank you.",
+          "target": "Ecce, malum tibi!",
+          "targetEnglish": "Look, an apple for you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Gratias tibi!"
+            },
+            {
+              "id": "b",
+              "text": "Vale!"
+            },
+            {
+              "id": "c",
+              "text": "Quid est nomen tibi?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "lau1-q4-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "please"
+          ],
+          "hint": "Listen for a polite word.",
+          "explanation": "Quaeso = please.",
+          "target": "Quaeso",
+          "targetEnglish": "please",
+          "choices": [
+            {
+              "id": "a",
+              "text": "thank you"
+            },
+            {
+              "id": "b",
+              "text": "please"
+            },
+            {
+              "id": "c",
+              "text": "hello (to one person)"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "lau1-q4-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Latin: “thank you”",
+          "items": [
+            "thanks"
+          ],
+          "hint": "You just said it to Don Pepe.",
+          "explanation": "Gratias tibi = thank you.",
+          "targetEnglish": "thank you",
+          "accepted": [
+            "Gratias tibi"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "glasses-round"
+      }
+    },
+    {
+      "id": "lau1-q5",
+      "order": 5,
+      "title": "Count with Nico",
+      "npc": "nico",
+      "location": "Near the pond",
+      "summary": "Nico and his dog Canela count everything they see.",
+      "objective": "Count from 1 to 10.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Nico",
+            "line": "Salve! Numeremus usque ad decem!",
+            "gloss": "Hello! Let's count up to ten!",
+            "choices": [
+              {
+                "text": "Eamus!",
+                "gloss": "Let's go!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Vale!",
+                "gloss": "Goodbye (to one person)!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Nico wants to count with you! Say let's go."
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "Nico",
+            "line": "Unus, duo, tres… incipiamus!",
+            "gloss": "One, two, three… let's begin!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "lau1-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "lau1-q5-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "n3"
+          ],
+          "hint": "Count on your fingers.",
+          "explanation": "tres = 3.",
+          "target": "tres",
+          "targetEnglish": "three",
+          "choices": [
+            {
+              "id": "a",
+              "text": "2"
+            },
+            {
+              "id": "b",
+              "text": "3"
+            },
+            {
+              "id": "c",
+              "text": "8"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "lau1-q5-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Latin numbers.",
+          "items": [
+            "n1",
+            "n2",
+            "n3",
+            "n4",
+            "n5"
+          ],
+          "hint": "Start with one.",
+          "explanation": "unus, duo, tres, quattuor, quinque: 1 to 5.",
+          "pairs": [
+            {
+              "target": "unus",
+              "english": "1"
+            },
+            {
+              "target": "duo",
+              "english": "2"
+            },
+            {
+              "target": "tres",
+              "english": "3"
+            },
+            {
+              "target": "quattuor",
+              "english": "4"
+            },
+            {
+              "target": "quinque",
+              "english": "5"
+            }
+          ]
+        },
+        {
+          "id": "lau1-q5-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "n7"
+          ],
+          "hint": "It comes after six.",
+          "explanation": "septem = 7.",
+          "target": "septem",
+          "targetEnglish": "seven",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6"
+            },
+            {
+              "id": "b",
+              "text": "7"
+            },
+            {
+              "id": "c",
+              "text": "9"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "lau1-q5-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Latin: “two”",
+          "items": [
+            "n2"
+          ],
+          "hint": "It comes after one.",
+          "explanation": "duo = 2.",
+          "targetEnglish": "two",
+          "accepted": [
+            "duo"
+          ]
+        },
+        {
+          "id": "lau1-q5-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "n10"
+          ],
+          "hint": "The last number in this lesson.",
+          "explanation": "decem = 10.",
+          "target": "decem",
+          "targetEnglish": "ten",
+          "accepted": [
+            "decem"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "basket",
+        "badge": "badge-u1"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "lau1-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "lau1-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "bye"
+        ],
+        "hint": "You say it when you leave.",
+        "explanation": "Vale = goodbye (to one person).",
+        "target": "Vale!",
+        "targetEnglish": "Goodbye (to one person)!",
+        "choices": [
+          {
+            "id": "a",
+            "text": "hello (to one person)"
+          },
+          {
+            "id": "b",
+            "text": "goodbye (to one person)"
+          },
+          {
+            "id": "c",
+            "text": "thank you"
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "lau1-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Latin: “hello”",
+        "items": [
+          "hello"
+        ],
+        "hint": "The first word Luna taught you.",
+        "explanation": "Salve = hello (to one person).",
+        "targetEnglish": "hello",
+        "accepted": [
+          "Salve"
+        ]
+      },
+      {
+        "id": "lau1-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "andyou"
+        ],
+        "hint": "You use it to ask back.",
+        "explanation": "Et tu? = And you?.",
+        "target": "Et tu?",
+        "targetEnglish": "And you?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "What's your name?"
+          },
+          {
+            "id": "b",
+            "text": "I'm glad to see you!"
+          },
+          {
+            "id": "c",
+            "text": "And you?"
+          }
+        ],
+        "answer": "c"
+      },
+      {
+        "id": "lau1-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Latin: “five”",
+        "items": [
+          "n5"
+        ],
+        "hint": "Count on one hand.",
+        "explanation": "quinque = 5.",
+        "targetEnglish": "five",
+        "accepted": [
+          "quinque"
+        ]
+      },
+      {
+        "id": "lau1-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in Latin: “I'm glad to see you!”",
+        "items": [
+          "nice"
+        ],
+        "hint": "What do you say when you meet someone?",
+        "explanation": "Gaudeo te videre! = I'm glad to see you!.",
+        "target": "Gaudeo te videre!",
+        "targetEnglish": "I'm glad to see you!",
+        "accepted": [
+          "Gaudeo te videre!"
+        ]
+      }
+    ]
+  }
+}

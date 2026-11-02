@@ -84,8 +84,8 @@ struct PlayerSettingsView: View {
                                 ForEach(lib.course.variants) { v in Text("\(v.flagEmoji) \(v.name)").tag(v.id) }
                             }
                         }
-                        if lib.course.script == .kana {
-                            Toggle("Show romaji under Japanese", isOn: Binding(get: { (model.profile ?? prof).settings.romanizationOn },
+                        if lib.course.hasRomanization {
+                            Toggle("Show pronunciation under \(lib.course.displayLanguage)", isOn: Binding(get: { (model.profile ?? prof).settings.romanizationOn },
                                                                                set: { v in model.updateProfile { $0.settings.showRomanization = v } }))
                         }
                         Toggle("English subtitles in conversations", isOn: setting(\.subtitles, prof))

@@ -44,7 +44,9 @@ public struct ContentLibrary: Sendable {
     }
 
     /// Courses that ship in the app, in menu order.
-    public static let bundledCourseIds = ["en-es", "en-fr", "en-ja"]
+    public static let bundledCourseIds = ["en-es", "en-fr", "en-ja", "en-de", "en-it", "en-zh",
+                                          "en-yo", "en-he", "en-egy", "en-am",
+                                          "en-grc", "en-la", "en-hbo"]
 
     /// A course bundled with LQCore, by id ("en-es", "en-fr", "en-ja").
     public static func bundled(_ id: String) throws -> ContentLibrary {

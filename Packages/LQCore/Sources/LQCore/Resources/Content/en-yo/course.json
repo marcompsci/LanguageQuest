@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "en-yo",
+  "title": "Yoruba for English speakers",
+  "sourceLanguage": "en",
+  "targetLanguage": "yo",
+  "languageName": "Yoruba",
+  "nativeName": "Èdè Yorùbá",
+  "writingSystem": "latin",
+  "category": "african",
+  "defaultVariant": "yo-NG",
+  "variants": [
+    {
+      "id": "yo-NG",
+      "name": "Nigeria",
+      "nativeName": "Nàìjíríà",
+      "flagEmoji": "🇳🇬",
+      "voiceLocales": [
+        "yo-NG"
+      ],
+      "speechLocales": [
+        "yo-NG"
+      ],
+      "currency": {
+        "code": "NGN",
+        "singular": "naira",
+        "plural": "naira",
+        "symbol": "₦"
+      },
+      "usesVoseo": false,
+      "note": "Standard Yoruba as spoken in southwest Nigeria and Benin. Tone marks show the pitch of each vowel; you can type answers without them.",
+      "romanizedVoiceLocales": [
+        "en-NG",
+        "en-GB",
+        "en-US"
+      ]
+    }
+  ],
+  "unitFiles": [
+    "unit1-starter.json"
+  ],
+  "typingKeys": [
+    "ẹ",
+    "ọ",
+    "ṣ",
+    "á",
+    "à",
+    "é",
+    "è",
+    "í",
+    "ì",
+    "ó",
+    "ò",
+    "ú",
+    "ù"
+  ]
+}

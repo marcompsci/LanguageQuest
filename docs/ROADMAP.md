@@ -68,6 +68,15 @@ Status key: ✅ done and tested · 🟡 built, needs device or expert validation
 | 9 | Lesson music per language | Reggaeton (Spanish), Paris waltz (French), Tokyo pop (Japanese); tracks loop in sync | ✅ core tested · 🟡 heard on device |
 | 10 | Per-language badges | Unit and mastery badges are earned once per language and named for it | ✅ core tested |
 
+## Milestone 3d: v0.5 "more languages" 🟡
+| Item | Acceptance | Status |
+|---|---|---|
+| 10 starter courses (German, Italian, Chinese, Yoruba, Hebrew, Ancient Egyptian, Amharic, Ancient Greek, Latin, Biblical Hebrew) | Validate; every dialogue finishes; every answer key passes its checker; every non-Latin string romanizes | ✅ core tested · **not reviewed by native speakers/specialists** |
+| Menu sections | Choose a language / African Languages / Old Languages | ✅ core tested · 🟡 UI test written |
+| Recent lesson card with a quick flashcard | Picks a practiced word; records into the right language even after switching | ✅ core tested |
+| Read-aloud for languages without an iOS voice | Reads the Latin spelling with a fallback voice instead of the wrong language's voice | 🟡 device check |
+| Starter courses → full 3 units | Same depth as Spanish/French/Japanese | ⬜ |
+
 ## Later: game and curriculum expansion ⬜
 - **Conversation Town** (Units 4–6: school, home, hobbies), then Adventure City, Explorer Academy, Quest Kingdom, Mastery Realm. Worlds are data: a new map plus NPC files.
 - **Word Battles 2:** listening and speaking rounds, plus new opponents per world.
@@ -94,3 +103,4 @@ Status key: ✅ done and tested · 🟡 built, needs device or expert validation
 | Sound effects and music | Synthesized chiptune (v0.2); not yet heard on device |
 | Conversation Town and later worlds, more mini-games (soccer, cooking, travel, racing), co-op | Not implemented (Word Battles, Word Scramble and Market Rush shipped in v0.2) |
 | French and Japanese | Authored (v0.3), tested, running on device; **not linguist-reviewed** |
+| 10 starter courses (v0.5) | Generated from `tools/content-authoring/starter_langs.py`; tested; **not reviewed**. Amharic, Yoruba and Ancient Egyptian have no iOS voice; Latin, Ancient Greek and Biblical Hebrew use modern Italian/Greek/Hebrew voices |

@@ -1,0 +1,1216 @@
+{
+  "id": "zhu1-starter",
+  "version": 1,
+  "order": 1,
+  "title": "Greetings & Introductions",
+  "targetTitle": "你好！",
+  "world": "starter-village",
+  "objective": "Greet people, introduce yourself, ask how someone is, use polite words, and count to ten.",
+  "canDo": [
+    "I can greet people and say goodbye.",
+    "I can say my name and ask someone's name.",
+    "I can ask how someone is and answer.",
+    "I can say thank you and use polite words.",
+    "I can count from 1 to 10."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Low",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons"
+    ]
+  },
+  "ageBands": [
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Starter unit written by the development team. Needs review by a native speaker before release. Audio uses on-device text-to-speech, which may not exist for this language."
+  },
+  "vocabulary": [
+    {
+      "id": "hello",
+      "kind": "word",
+      "target": "你好",
+      "english": "hello",
+      "picture": "👋",
+      "altText": "a waving hand"
+    },
+    {
+      "id": "g2",
+      "kind": "word",
+      "target": "早上好",
+      "english": "good morning"
+    },
+    {
+      "id": "g3",
+      "kind": "word",
+      "target": "晚上好",
+      "english": "good evening"
+    },
+    {
+      "id": "g4",
+      "kind": "word",
+      "target": "晚安",
+      "english": "good night",
+      "picture": "🌙",
+      "altText": "a crescent moon"
+    },
+    {
+      "id": "bye",
+      "kind": "word",
+      "target": "再见",
+      "english": "goodbye"
+    },
+    {
+      "id": "please",
+      "kind": "word",
+      "target": "请",
+      "english": "please"
+    },
+    {
+      "id": "thanks",
+      "kind": "word",
+      "target": "谢谢",
+      "english": "thank you",
+      "picture": "🙏",
+      "altText": "hands pressed together"
+    },
+    {
+      "id": "welcome",
+      "kind": "word",
+      "target": "不客气",
+      "english": "you're welcome"
+    },
+    {
+      "id": "sorry",
+      "kind": "word",
+      "target": "对不起",
+      "english": "sorry"
+    },
+    {
+      "id": "yes",
+      "kind": "word",
+      "target": "是",
+      "english": "yes (it is)"
+    },
+    {
+      "id": "no",
+      "kind": "word",
+      "target": "不是",
+      "english": "no (it isn't)"
+    },
+    {
+      "id": "n1",
+      "kind": "word",
+      "target": "一",
+      "english": "one (1)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n2",
+      "kind": "word",
+      "target": "二",
+      "english": "two (2)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n3",
+      "kind": "word",
+      "target": "三",
+      "english": "three (3)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n4",
+      "kind": "word",
+      "target": "四",
+      "english": "four (4)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n5",
+      "kind": "word",
+      "target": "五",
+      "english": "five (5)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n6",
+      "kind": "word",
+      "target": "六",
+      "english": "six (6)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n7",
+      "kind": "word",
+      "target": "七",
+      "english": "seven (7)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n8",
+      "kind": "word",
+      "target": "八",
+      "english": "eight (8)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n9",
+      "kind": "word",
+      "target": "九",
+      "english": "nine (9)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n10",
+      "kind": "word",
+      "target": "十",
+      "english": "ten (10)",
+      "partOfSpeech": "number"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "whatname",
+      "kind": "phrase",
+      "target": "你叫什么名字？",
+      "english": "What's your name?"
+    },
+    {
+      "id": "myname",
+      "kind": "phrase",
+      "target": "我叫…。",
+      "english": "My name is ….",
+      "example": {
+        "target": "我叫马特奥。",
+        "english": "My name is Mateo."
+      }
+    },
+    {
+      "id": "nice",
+      "kind": "phrase",
+      "target": "很高兴认识你！",
+      "english": "Nice to meet you!"
+    },
+    {
+      "id": "how",
+      "kind": "phrase",
+      "target": "你好吗？",
+      "english": "How are you?"
+    },
+    {
+      "id": "imfine",
+      "kind": "phrase",
+      "target": "我很好，谢谢。",
+      "english": "I'm fine, thanks."
+    },
+    {
+      "id": "andyou",
+      "kind": "phrase",
+      "target": "你呢？",
+      "english": "And you?"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "zhn-u1-1",
+      "title": "Four tones",
+      "body": "Mandarin has four tones (plus a light one). Mā, má, mǎ and mà are different words! The marks in pinyin show the tone."
+    },
+    {
+      "id": "zhn-u1-2",
+      "title": "Have you eaten?",
+      "body": "A friendly everyday greeting is 你吃了吗？ (nǐ chī le ma?, have you eaten?). It's a way of saying you care, not an invitation."
+    },
+    {
+      "id": "zhn-u1-3",
+      "title": "Counting on one hand",
+      "body": "In China you can show the numbers 6 to 10 with one hand. Six is a thumb and little finger, like a phone sign."
+    }
+  ],
+  "quests": [
+    {
+      "id": "zhu1-q1",
+      "order": 1,
+      "title": "Hello, village!",
+      "npc": "luna",
+      "location": "Luna's house",
+      "summary": "Luna shows you around and teaches the first greetings.",
+      "objective": "Greet people and say goodbye.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "你好！我是露娜。欢迎来到村子！",
+            "gloss": "Hello! I'm Luna. Welcome to the village!",
+            "choices": [
+              {
+                "text": "你好！",
+                "gloss": "Hello!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "晚安！",
+                "gloss": "Good night!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Luna just said hello! Try 你好."
+              }
+            ],
+            "hint": "Coco says: Answer with 你好 (nǐ hǎo)."
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "很好！我们去跟大家打招呼吧！",
+            "gloss": "Very good! Let's go say hello to everyone!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "zhu1-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "zhu1-q1-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "bye"
+          ],
+          "hint": "You say it when you leave.",
+          "explanation": "再见 (zàijiàn) = goodbye.",
+          "target": "再见！",
+          "targetEnglish": "Goodbye!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "hello"
+            },
+            {
+              "id": "b",
+              "text": "good morning"
+            },
+            {
+              "id": "c",
+              "text": "goodbye"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "zhu1-q1-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Chinese to the English.",
+          "items": [
+            "hello",
+            "g2",
+            "g3",
+            "g4",
+            "bye"
+          ],
+          "hint": "Start with the ones you're sure of.",
+          "explanation": "Greetings: 你好, 早上好, 晚上好, 晚安, 再见.",
+          "pairs": [
+            {
+              "target": "你好",
+              "english": "hello"
+            },
+            {
+              "target": "早上好",
+              "english": "good morning"
+            },
+            {
+              "target": "晚上好",
+              "english": "good evening"
+            },
+            {
+              "target": "晚安",
+              "english": "good night"
+            },
+            {
+              "target": "再见",
+              "english": "goodbye"
+            }
+          ]
+        },
+        {
+          "id": "zhu1-q1-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Say the same greeting back.",
+          "explanation": "你好 (nǐ hǎo) = hello.",
+          "target": "你好！",
+          "targetEnglish": "Hello!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "请！"
+            },
+            {
+              "id": "b",
+              "text": "你好！"
+            },
+            {
+              "id": "c",
+              "text": "再见！"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "zhu1-q1-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Listen first, then copy the sound.",
+          "explanation": "你好 (nǐ hǎo) = hello.",
+          "target": "你好！",
+          "targetEnglish": "Hello!",
+          "accepted": [
+            "你好",
+            "nǐ hǎo"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "scarf-yellow"
+      }
+    },
+    {
+      "id": "zhu1-q2",
+      "order": 2,
+      "title": "What's your name?",
+      "npc": "mateo",
+      "location": "The plaza",
+      "summary": "Mateo wants to know your name.",
+      "objective": "Ask someone's name and say your own.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Mateo",
+            "line": "你好！我叫马特奥。你叫什么名字？",
+            "gloss": "Hi! My name is Mateo. What's your name?",
+            "choices": [
+              {
+                "text": "我叫{name}。",
+                "gloss": "My name is {name}.",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "谢谢！",
+                "gloss": "Thank you!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Mateo asked your name! Say your name."
+              }
+            ],
+            "hint": "Coco says: Copy how Mateo said his name, then use yours."
+          },
+          {
+            "id": "n2",
+            "speaker": "Mateo",
+            "line": "很高兴认识你，{name}！",
+            "gloss": "Nice to meet you, {name}!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "zhu1-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "zhu1-q2-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "whatname"
+          ],
+          "hint": "Mateo asks this when he meets someone.",
+          "explanation": "你叫什么名字？ (nǐ jiào shénme míngzi?) = What's your name?.",
+          "target": "你叫什么名字？",
+          "targetEnglish": "What's your name?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "What's your name?"
+            },
+            {
+              "id": "b",
+              "text": "How are you?"
+            },
+            {
+              "id": "c",
+              "text": "And you?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "zhu1-q2-a2",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “My name is Mateo.”",
+          "items": [
+            "myname"
+          ],
+          "hint": "Start with 我.",
+          "explanation": "我叫马特奥。 = My name is Mateo.",
+          "tiles": [
+            "我",
+            "叫",
+            "马特奥"
+          ],
+          "targetEnglish": "My name is Mateo.",
+          "distractors": [
+            "你好"
+          ]
+        },
+        {
+          "id": "zhu1-q2-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "nice"
+          ],
+          "hint": "You say it when you meet someone new.",
+          "explanation": "很高兴认识你！ (hěn gāoxìng rènshi nǐ!) = Nice to meet you!.",
+          "target": "很高兴认识你！",
+          "targetEnglish": "Nice to meet you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How are you?"
+            },
+            {
+              "id": "b",
+              "text": "goodbye"
+            },
+            {
+              "id": "c",
+              "text": "Nice to meet you!"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "zhu1-q2-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Chinese: “Nice to meet you!”",
+          "items": [
+            "nice"
+          ],
+          "hint": "Mateo said it after hearing your name. You can type hěn gāoxìng rènshi nǐ!.",
+          "explanation": "很高兴认识你！ (hěn gāoxìng rènshi nǐ!) = Nice to meet you!.",
+          "targetEnglish": "Nice to meet you!",
+          "accepted": [
+            "很高兴认识你！",
+            "hěn gāoxìng rènshi nǐ!"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "cap-red"
+      }
+    },
+    {
+      "id": "zhu1-q3",
+      "order": 3,
+      "title": "How are you?",
+      "npc": "dona-rosa",
+      "location": "The bakery",
+      "summary": "Doña Rosa the baker asks how you are.",
+      "objective": "Ask how someone is and answer.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Doña Rosa",
+            "line": "你好！你好吗？",
+            "gloss": "Hello! How are you?",
+            "choices": [
+              {
+                "text": "我很好，谢谢。你呢？",
+                "gloss": "I'm fine, thanks. And you?",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "我叫马特奥。",
+                "gloss": "My name is Mateo.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "She asked how you are, not your name!"
+              }
+            ],
+            "hint": "Coco says: Say how you are, then ask back: 你呢？"
+          },
+          {
+            "id": "n2",
+            "speaker": "Doña Rosa",
+            "line": "我也很好，谢谢！",
+            "gloss": "I'm fine too, thanks!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "zhu1-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "zhu1-q3-a1",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "how",
+            "imfine"
+          ],
+          "hint": "She wants to know how you are.",
+          "explanation": "我很好，谢谢。 (wǒ hěn hǎo, xièxie.) = I'm fine, thanks..",
+          "target": "你好吗？",
+          "targetEnglish": "How are you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "你叫什么名字？"
+            },
+            {
+              "id": "b",
+              "text": "我很好，谢谢。"
+            },
+            {
+              "id": "c",
+              "text": "再见！"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "zhu1-q3-a2",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "andyou"
+          ],
+          "hint": "You use it to ask the question back.",
+          "explanation": "你呢？ (nǐ ne?) = And you?.",
+          "target": "你呢？",
+          "targetEnglish": "And you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How are you?"
+            },
+            {
+              "id": "b",
+              "text": "And you?"
+            },
+            {
+              "id": "c",
+              "text": "What's your name?"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "zhu1-q3-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "how"
+          ],
+          "hint": "Doña Rosa asked you this.",
+          "explanation": "你好吗？ (nǐ hǎo ma?) = How are you?.",
+          "target": "你好吗？",
+          "targetEnglish": "How are you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How are you?"
+            },
+            {
+              "id": "b",
+              "text": "What's your name?"
+            },
+            {
+              "id": "c",
+              "text": "Nice to meet you!"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "zhu1-q3-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "imfine"
+          ],
+          "hint": "Say it slowly.",
+          "explanation": "我很好，谢谢。 (wǒ hěn hǎo, xièxie.) = I'm fine, thanks..",
+          "target": "我很好，谢谢。",
+          "targetEnglish": "I'm fine, thanks.",
+          "accepted": [
+            "我很好，谢谢。",
+            "wǒ hěn hǎo, xièxie."
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "apron"
+      }
+    },
+    {
+      "id": "zhu1-q4",
+      "order": 4,
+      "title": "Magic words",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Don Pepe gives you a gift at his fruit stand.",
+      "objective": "Say thank you and use polite words.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "这个苹果给你！",
+            "gloss": "This apple is for you!",
+            "choices": [
+              {
+                "text": "谢谢！",
+                "gloss": "Thank you!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "对不起！",
+                "gloss": "Sorry!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "He's giving you a present! Try 谢谢."
+              }
+            ],
+            "hint": "Coco says: When someone gives you something, say 谢谢."
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": "不客气！回头见！",
+            "gloss": "You're welcome! See you later!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "zhu1-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "zhu1-q4-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Chinese to the English.",
+          "items": [
+            "please",
+            "thanks",
+            "welcome",
+            "sorry",
+            "yes"
+          ],
+          "hint": "Thank you is the one you hear most.",
+          "explanation": "请, 谢谢, 不客气, 对不起, 是.",
+          "pairs": [
+            {
+              "target": "请",
+              "english": "please"
+            },
+            {
+              "target": "谢谢",
+              "english": "thank you"
+            },
+            {
+              "target": "不客气",
+              "english": "you're welcome"
+            },
+            {
+              "target": "对不起",
+              "english": "sorry"
+            },
+            {
+              "target": "是",
+              "english": "yes (it is)"
+            }
+          ]
+        },
+        {
+          "id": "zhu1-q4-a2",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "thanks"
+          ],
+          "hint": "Someone gives you a present. What do you say?",
+          "explanation": "谢谢 (xièxie) = thank you.",
+          "target": "这个苹果给你！",
+          "targetEnglish": "This apple is for you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "谢谢！"
+            },
+            {
+              "id": "b",
+              "text": "再见！"
+            },
+            {
+              "id": "c",
+              "text": "你叫什么名字？"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "zhu1-q4-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "please"
+          ],
+          "hint": "Listen for a polite word.",
+          "explanation": "请 = please.",
+          "target": "请",
+          "targetEnglish": "please",
+          "choices": [
+            {
+              "id": "a",
+              "text": "thank you"
+            },
+            {
+              "id": "b",
+              "text": "please"
+            },
+            {
+              "id": "c",
+              "text": "hello"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "zhu1-q4-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Chinese: “thank you”",
+          "items": [
+            "thanks"
+          ],
+          "hint": "You just said it to Don Pepe. You can type xièxie.",
+          "explanation": "谢谢 (xièxie) = thank you.",
+          "targetEnglish": "thank you",
+          "accepted": [
+            "谢谢",
+            "xièxie"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "glasses-round"
+      }
+    },
+    {
+      "id": "zhu1-q5",
+      "order": 5,
+      "title": "Count with Nico",
+      "npc": "nico",
+      "location": "Near the pond",
+      "summary": "Nico and his dog Canela count everything they see.",
+      "objective": "Count from 1 to 10.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Nico",
+            "line": "你好！我们数到十吧！",
+            "gloss": "Hi! Let's count to ten!",
+            "choices": [
+              {
+                "text": "我们开始吧！",
+                "gloss": "Let's go!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "再见！",
+                "gloss": "Goodbye!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Nico wants to count with you! Say let's go."
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "Nico",
+            "line": "一、二、三……开始！",
+            "gloss": "One, two, three… go!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "zhu1-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "zhu1-q5-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "n3"
+          ],
+          "hint": "Count on your fingers.",
+          "explanation": "三 = 3.",
+          "target": "三",
+          "targetEnglish": "three",
+          "choices": [
+            {
+              "id": "a",
+              "text": "2"
+            },
+            {
+              "id": "b",
+              "text": "3"
+            },
+            {
+              "id": "c",
+              "text": "8"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "zhu1-q5-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Chinese numbers.",
+          "items": [
+            "n1",
+            "n2",
+            "n3",
+            "n4",
+            "n5"
+          ],
+          "hint": "Start with one.",
+          "explanation": "一, 二, 三, 四, 五: 1 to 5.",
+          "pairs": [
+            {
+              "target": "一",
+              "english": "1"
+            },
+            {
+              "target": "二",
+              "english": "2"
+            },
+            {
+              "target": "三",
+              "english": "3"
+            },
+            {
+              "target": "四",
+              "english": "4"
+            },
+            {
+              "target": "五",
+              "english": "5"
+            }
+          ]
+        },
+        {
+          "id": "zhu1-q5-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "n7"
+          ],
+          "hint": "It comes after six.",
+          "explanation": "七 = 7.",
+          "target": "七",
+          "targetEnglish": "seven",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6"
+            },
+            {
+              "id": "b",
+              "text": "7"
+            },
+            {
+              "id": "c",
+              "text": "9"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "zhu1-q5-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Chinese: “two”",
+          "items": [
+            "n2"
+          ],
+          "hint": "It comes after one. You can type èr.",
+          "explanation": "二 = 2.",
+          "targetEnglish": "two",
+          "accepted": [
+            "二",
+            "èr"
+          ]
+        },
+        {
+          "id": "zhu1-q5-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "n10"
+          ],
+          "hint": "The last number in this lesson.",
+          "explanation": "十 = 10.",
+          "target": "十",
+          "targetEnglish": "ten",
+          "accepted": [
+            "十",
+            "shí"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "basket",
+        "badge": "badge-u1"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "zhu1-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "zhu1-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "bye"
+        ],
+        "hint": "You say it when you leave.",
+        "explanation": "再见 (zàijiàn) = goodbye.",
+        "target": "再见！",
+        "targetEnglish": "Goodbye!",
+        "choices": [
+          {
+            "id": "a",
+            "text": "hello"
+          },
+          {
+            "id": "b",
+            "text": "goodbye"
+          },
+          {
+            "id": "c",
+            "text": "thank you"
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "zhu1-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Chinese: “hello”",
+        "items": [
+          "hello"
+        ],
+        "hint": "The first word Luna taught you.",
+        "explanation": "你好 (nǐ hǎo) = hello.",
+        "targetEnglish": "hello",
+        "accepted": [
+          "你好",
+          "nǐ hǎo"
+        ]
+      },
+      {
+        "id": "zhu1-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "andyou"
+        ],
+        "hint": "You use it to ask back.",
+        "explanation": "你呢？ (nǐ ne?) = And you?.",
+        "target": "你呢？",
+        "targetEnglish": "And you?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "What's your name?"
+          },
+          {
+            "id": "b",
+            "text": "Nice to meet you!"
+          },
+          {
+            "id": "c",
+            "text": "And you?"
+          }
+        ],
+        "answer": "c"
+      },
+      {
+        "id": "zhu1-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Chinese: “five”",
+        "items": [
+          "n5"
+        ],
+        "hint": "Count on one hand.",
+        "explanation": "五 = 5.",
+        "targetEnglish": "five",
+        "accepted": [
+          "五",
+          "wǔ"
+        ]
+      },
+      {
+        "id": "zhu1-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in Chinese: “Nice to meet you!”",
+        "items": [
+          "nice"
+        ],
+        "hint": "What do you say when you meet someone?",
+        "explanation": "很高兴认识你！ (hěn gāoxìng rènshi nǐ!) = Nice to meet you!.",
+        "target": "很高兴认识你！",
+        "targetEnglish": "Nice to meet you!",
+        "accepted": [
+          "很高兴认识你！",
+          "hěn gāoxìng rènshi nǐ!"
+        ]
+      }
+    ]
+  }
+}

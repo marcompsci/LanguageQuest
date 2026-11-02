@@ -1,0 +1,1216 @@
+{
+  "id": "amu1-starter",
+  "version": 1,
+  "order": 1,
+  "title": "Greetings & Introductions",
+  "targetTitle": "ሰላም!",
+  "world": "starter-village",
+  "objective": "Greet people, introduce yourself, ask how someone is, use polite words, and count to ten.",
+  "canDo": [
+    "I can greet people and say goodbye.",
+    "I can say my name and ask someone's name.",
+    "I can ask how someone is and answer.",
+    "I can say thank you and use polite words.",
+    "I can count from 1 to 10."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Low",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons"
+    ]
+  },
+  "ageBands": [
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Starter unit written by the development team. Needs review by a native speaker before release. Audio uses on-device text-to-speech, which may not exist for this language."
+  },
+  "vocabulary": [
+    {
+      "id": "hello",
+      "kind": "word",
+      "target": "ሰላም",
+      "english": "hello (peace)",
+      "picture": "👋",
+      "altText": "a waving hand"
+    },
+    {
+      "id": "g2",
+      "kind": "word",
+      "target": "ጤና ይስጥልኝ",
+      "english": "hello (polite)"
+    },
+    {
+      "id": "g3",
+      "kind": "word",
+      "target": "ደህና ሁን",
+      "english": "goodbye (to a boy)"
+    },
+    {
+      "id": "g4",
+      "kind": "word",
+      "target": "ደህና እደር",
+      "english": "good night (to a boy)",
+      "picture": "🌙",
+      "altText": "a crescent moon"
+    },
+    {
+      "id": "bye",
+      "kind": "word",
+      "target": "ቻው",
+      "english": "bye"
+    },
+    {
+      "id": "please",
+      "kind": "word",
+      "target": "እባክህ",
+      "english": "please (to a boy; to a girl: ebakish)"
+    },
+    {
+      "id": "thanks",
+      "kind": "word",
+      "target": "አመሰግናለሁ",
+      "english": "thank you",
+      "picture": "🙏",
+      "altText": "hands pressed together"
+    },
+    {
+      "id": "welcome",
+      "kind": "word",
+      "target": "ምንም አይደለም",
+      "english": "you're welcome"
+    },
+    {
+      "id": "sorry",
+      "kind": "word",
+      "target": "ይቅርታ",
+      "english": "sorry / excuse me"
+    },
+    {
+      "id": "yes",
+      "kind": "word",
+      "target": "አዎ",
+      "english": "yes"
+    },
+    {
+      "id": "no",
+      "kind": "word",
+      "target": "አይ",
+      "english": "no"
+    },
+    {
+      "id": "n1",
+      "kind": "word",
+      "target": "አንድ",
+      "english": "one (1)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n2",
+      "kind": "word",
+      "target": "ሁለት",
+      "english": "two (2)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n3",
+      "kind": "word",
+      "target": "ሶስት",
+      "english": "three (3)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n4",
+      "kind": "word",
+      "target": "አራት",
+      "english": "four (4)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n5",
+      "kind": "word",
+      "target": "አምስት",
+      "english": "five (5)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n6",
+      "kind": "word",
+      "target": "ስድስት",
+      "english": "six (6)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n7",
+      "kind": "word",
+      "target": "ሰባት",
+      "english": "seven (7)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n8",
+      "kind": "word",
+      "target": "ስምንት",
+      "english": "eight (8)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n9",
+      "kind": "word",
+      "target": "ዘጠኝ",
+      "english": "nine (9)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n10",
+      "kind": "word",
+      "target": "አስር",
+      "english": "ten (10)",
+      "partOfSpeech": "number"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "whatname",
+      "kind": "phrase",
+      "target": "ስምህ ማን ነው?",
+      "english": "What's your name? (to a boy; to a girl: simish)"
+    },
+    {
+      "id": "myname",
+      "kind": "phrase",
+      "target": "ስሜ … ነው።",
+      "english": "My name is ….",
+      "example": {
+        "target": "ስሜ ማቴዎ ነው።",
+        "english": "My name is Mateo."
+      }
+    },
+    {
+      "id": "nice",
+      "kind": "phrase",
+      "target": "ስለተዋወቅን ደስ ብሎኛል!",
+      "english": "Nice to meet you!"
+    },
+    {
+      "id": "how",
+      "kind": "phrase",
+      "target": "ሰላም ነው?",
+      "english": "Is everything fine?"
+    },
+    {
+      "id": "imfine",
+      "kind": "phrase",
+      "target": "ሰላም ነው፣ አመሰግናለሁ።",
+      "english": "Everything's fine, thanks."
+    },
+    {
+      "id": "andyou",
+      "kind": "phrase",
+      "target": "አንተስ?",
+      "english": "And you? (to a boy; to a girl: anchis)"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "amn-u1-1",
+      "title": "The Fidel script",
+      "body": "Amharic is written in Ge'ez (Fidel), where each symbol is a whole syllable: ለ le, ሉ lu, ሊ li, ላ la. There are more than 200 of them!"
+    },
+    {
+      "id": "amn-u1-2",
+      "title": "Selam and lots of greetings",
+      "body": "Selam means peace and hello. Ethiopians often greet with several questions in a row (are you well? is your family well?) and a shoulder bump between friends."
+    },
+    {
+      "id": "amn-u1-3",
+      "title": "Coffee ceremony",
+      "body": "Coffee (buna) comes from Ethiopia. Families hold a coffee ceremony, roasting the beans and serving three rounds to friends and neighbors."
+    }
+  ],
+  "quests": [
+    {
+      "id": "amu1-q1",
+      "order": 1,
+      "title": "Hello, village!",
+      "npc": "luna",
+      "location": "Luna's house",
+      "summary": "Luna shows you around and teaches the first greetings.",
+      "objective": "Greet people and say goodbye.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "ሰላም! እኔ ሉና ነኝ። እንኳን ወደ መንደሩ በደህና መጣህ!",
+            "gloss": "Hello! I'm Luna. Welcome to the village!",
+            "choices": [
+              {
+                "text": "ሰላም!",
+                "gloss": "Hello (peace)!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "ደህና እደር!",
+                "gloss": "Good night (to a boy)!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Luna just said hello! Try ሰላም."
+              }
+            ],
+            "hint": "Coco says: Answer with ሰላም (selam)."
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "በጣም ጥሩ! ሁሉንም ሰላም እንበል!",
+            "gloss": "Very good! Let's say hello to everyone!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "amu1-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "amu1-q1-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "bye"
+          ],
+          "hint": "You say it when you leave.",
+          "explanation": "ቻው (chaw) = bye.",
+          "target": "ቻው!",
+          "targetEnglish": "Bye!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "hello (peace)"
+            },
+            {
+              "id": "b",
+              "text": "hello (polite)"
+            },
+            {
+              "id": "c",
+              "text": "bye"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "amu1-q1-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Amharic to the English.",
+          "items": [
+            "hello",
+            "g2",
+            "g3",
+            "g4",
+            "bye"
+          ],
+          "hint": "Start with the ones you're sure of.",
+          "explanation": "Greetings: ሰላም, ጤና ይስጥልኝ, ደህና ሁን, ደህና እደር, ቻው.",
+          "pairs": [
+            {
+              "target": "ሰላም",
+              "english": "hello (peace)"
+            },
+            {
+              "target": "ጤና ይስጥልኝ",
+              "english": "hello (polite)"
+            },
+            {
+              "target": "ደህና ሁን",
+              "english": "goodbye (to a boy)"
+            },
+            {
+              "target": "ደህና እደር",
+              "english": "good night (to a boy)"
+            },
+            {
+              "target": "ቻው",
+              "english": "bye"
+            }
+          ]
+        },
+        {
+          "id": "amu1-q1-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Say the same greeting back.",
+          "explanation": "ሰላም (selam) = hello (peace).",
+          "target": "ሰላም!",
+          "targetEnglish": "Hello (peace)!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "እባክህ!"
+            },
+            {
+              "id": "b",
+              "text": "ሰላም!"
+            },
+            {
+              "id": "c",
+              "text": "ቻው!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "amu1-q1-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Listen first, then copy the sound.",
+          "explanation": "ሰላም (selam) = hello (peace).",
+          "target": "ሰላም!",
+          "targetEnglish": "Hello (peace)!",
+          "accepted": [
+            "ሰላም",
+            "selam"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "scarf-yellow"
+      }
+    },
+    {
+      "id": "amu1-q2",
+      "order": 2,
+      "title": "What's your name?",
+      "npc": "mateo",
+      "location": "The plaza",
+      "summary": "Mateo wants to know your name.",
+      "objective": "Ask someone's name and say your own.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Mateo",
+            "line": "ሰላም! ስሜ ማቴዎ ነው። ስምህ ማን ነው?",
+            "gloss": "Hi! My name is Mateo. What's your name?",
+            "choices": [
+              {
+                "text": "ስሜ {name} ነው።",
+                "gloss": "My name is {name}.",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "አመሰግናለሁ!",
+                "gloss": "Thank you!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Mateo asked your name! Say your name."
+              }
+            ],
+            "hint": "Coco says: Copy how Mateo said his name, then use yours."
+          },
+          {
+            "id": "n2",
+            "speaker": "Mateo",
+            "line": "ስለተዋወቅን ደስ ብሎኛል፣ {name}!",
+            "gloss": "Nice to meet you, {name}!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "amu1-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "amu1-q2-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "whatname"
+          ],
+          "hint": "Mateo asks this when he meets someone.",
+          "explanation": "ስምህ ማን ነው? (simih man new?) = What's your name? (to a boy; to a girl: simish).",
+          "target": "ስምህ ማን ነው?",
+          "targetEnglish": "What's your name? (to a boy; to a girl: simish)",
+          "choices": [
+            {
+              "id": "a",
+              "text": "What's your name? (to a boy; to a girl: simish)"
+            },
+            {
+              "id": "b",
+              "text": "Is everything fine?"
+            },
+            {
+              "id": "c",
+              "text": "And you? (to a boy; to a girl: anchis)"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "amu1-q2-a2",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “My name is Mateo.”",
+          "items": [
+            "myname"
+          ],
+          "hint": "Start with ስሜ.",
+          "explanation": "ስሜ ማቴዎ ነው። = My name is Mateo.",
+          "tiles": [
+            "ስሜ",
+            "ማቴዎ",
+            "ነው።"
+          ],
+          "targetEnglish": "My name is Mateo.",
+          "distractors": [
+            "ሰላም"
+          ]
+        },
+        {
+          "id": "amu1-q2-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "nice"
+          ],
+          "hint": "You say it when you meet someone new.",
+          "explanation": "ስለተዋወቅን ደስ ብሎኛል! (siletewawekin des bilognal!) = Nice to meet you!.",
+          "target": "ስለተዋወቅን ደስ ብሎኛል!",
+          "targetEnglish": "Nice to meet you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Is everything fine?"
+            },
+            {
+              "id": "b",
+              "text": "bye"
+            },
+            {
+              "id": "c",
+              "text": "Nice to meet you!"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "amu1-q2-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Amharic: “Nice to meet you!”",
+          "items": [
+            "nice"
+          ],
+          "hint": "Mateo said it after hearing your name. You can type siletewawekin des bilognal!.",
+          "explanation": "ስለተዋወቅን ደስ ብሎኛል! (siletewawekin des bilognal!) = Nice to meet you!.",
+          "targetEnglish": "Nice to meet you!",
+          "accepted": [
+            "ስለተዋወቅን ደስ ብሎኛል!",
+            "siletewawekin des bilognal!"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "cap-red"
+      }
+    },
+    {
+      "id": "amu1-q3",
+      "order": 3,
+      "title": "How are you?",
+      "npc": "dona-rosa",
+      "location": "The bakery",
+      "summary": "Doña Rosa the baker asks how you are.",
+      "objective": "Ask how someone is and answer.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Doña Rosa",
+            "line": "ጤና ይስጥልኝ! ሰላም ነው?",
+            "gloss": "Hello! Is everything fine?",
+            "choices": [
+              {
+                "text": "ሰላም ነው፣ አመሰግናለሁ። አንተስ?",
+                "gloss": "Everything's fine, thanks. And you? (to a boy; to a girl: anchis)",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "ስሜ ማቴዎ ነው።",
+                "gloss": "My name is Mateo.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "She asked how you are, not your name!"
+              }
+            ],
+            "hint": "Coco says: Say how you are, then ask back: አንተስ?"
+          },
+          {
+            "id": "n2",
+            "speaker": "Doña Rosa",
+            "line": "እኔም ደህና ነኝ፣ አመሰግናለሁ!",
+            "gloss": "I'm fine too, thank you!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "amu1-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "amu1-q3-a1",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "how",
+            "imfine"
+          ],
+          "hint": "She wants to know how you are.",
+          "explanation": "ሰላም ነው፣ አመሰግናለሁ። (selam new, ameseginalehu.) = Everything's fine, thanks..",
+          "target": "ሰላም ነው?",
+          "targetEnglish": "Is everything fine?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ስምህ ማን ነው?"
+            },
+            {
+              "id": "b",
+              "text": "ሰላም ነው፣ አመሰግናለሁ።"
+            },
+            {
+              "id": "c",
+              "text": "ቻው!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "amu1-q3-a2",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "andyou"
+          ],
+          "hint": "You use it to ask the question back.",
+          "explanation": "አንተስ? (antes?) = And you? (to a boy; to a girl: anchis).",
+          "target": "አንተስ?",
+          "targetEnglish": "And you? (to a boy; to a girl: anchis)",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Is everything fine?"
+            },
+            {
+              "id": "b",
+              "text": "And you? (to a boy; to a girl: anchis)"
+            },
+            {
+              "id": "c",
+              "text": "What's your name? (to a boy; to a girl: simish)"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "amu1-q3-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "how"
+          ],
+          "hint": "Doña Rosa asked you this.",
+          "explanation": "ሰላም ነው? (selam new?) = Is everything fine?.",
+          "target": "ሰላም ነው?",
+          "targetEnglish": "Is everything fine?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Is everything fine?"
+            },
+            {
+              "id": "b",
+              "text": "What's your name? (to a boy; to a girl: simish)"
+            },
+            {
+              "id": "c",
+              "text": "Nice to meet you!"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "amu1-q3-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "imfine"
+          ],
+          "hint": "Say it slowly.",
+          "explanation": "ሰላም ነው፣ አመሰግናለሁ። (selam new, ameseginalehu.) = Everything's fine, thanks..",
+          "target": "ሰላም ነው፣ አመሰግናለሁ።",
+          "targetEnglish": "Everything's fine, thanks.",
+          "accepted": [
+            "ሰላም ነው፣ አመሰግናለሁ።",
+            "selam new, ameseginalehu."
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "apron"
+      }
+    },
+    {
+      "id": "amu1-q4",
+      "order": 4,
+      "title": "Magic words",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Don Pepe gives you a gift at his fruit stand.",
+      "objective": "Say thank you and use polite words.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "ይህ ፖም ለአንተ ነው!",
+            "gloss": "This apple is for you!",
+            "choices": [
+              {
+                "text": "አመሰግናለሁ!",
+                "gloss": "Thank you!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "ይቅርታ!",
+                "gloss": "Sorry / excuse me!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "He's giving you a present! Try አመሰግናለሁ."
+              }
+            ],
+            "hint": "Coco says: When someone gives you something, say አመሰግናለሁ."
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": "ምንም አይደለም! ቻው!",
+            "gloss": "You're welcome! Bye!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "amu1-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "amu1-q4-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Amharic to the English.",
+          "items": [
+            "please",
+            "thanks",
+            "welcome",
+            "sorry",
+            "yes"
+          ],
+          "hint": "Thank you is the one you hear most.",
+          "explanation": "እባክህ, አመሰግናለሁ, ምንም አይደለም, ይቅርታ, አዎ.",
+          "pairs": [
+            {
+              "target": "እባክህ",
+              "english": "please (to a boy; to a girl: ebakish)"
+            },
+            {
+              "target": "አመሰግናለሁ",
+              "english": "thank you"
+            },
+            {
+              "target": "ምንም አይደለም",
+              "english": "you're welcome"
+            },
+            {
+              "target": "ይቅርታ",
+              "english": "sorry / excuse me"
+            },
+            {
+              "target": "አዎ",
+              "english": "yes"
+            }
+          ]
+        },
+        {
+          "id": "amu1-q4-a2",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "thanks"
+          ],
+          "hint": "Someone gives you a present. What do you say?",
+          "explanation": "አመሰግናለሁ (ameseginalehu) = thank you.",
+          "target": "ይህ ፖም ለአንተ ነው!",
+          "targetEnglish": "This apple is for you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "አመሰግናለሁ!"
+            },
+            {
+              "id": "b",
+              "text": "ቻው!"
+            },
+            {
+              "id": "c",
+              "text": "ስምህ ማን ነው?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "amu1-q4-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "please"
+          ],
+          "hint": "Listen for a polite word.",
+          "explanation": "እባክህ = please (to a boy; to a girl: ebakish).",
+          "target": "እባክህ",
+          "targetEnglish": "please (to a boy; to a girl: ebakish)",
+          "choices": [
+            {
+              "id": "a",
+              "text": "thank you"
+            },
+            {
+              "id": "b",
+              "text": "please (to a boy; to a girl: ebakish)"
+            },
+            {
+              "id": "c",
+              "text": "hello (peace)"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "amu1-q4-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Amharic: “thank you”",
+          "items": [
+            "thanks"
+          ],
+          "hint": "You just said it to Don Pepe. You can type ameseginalehu.",
+          "explanation": "አመሰግናለሁ (ameseginalehu) = thank you.",
+          "targetEnglish": "thank you",
+          "accepted": [
+            "አመሰግናለሁ",
+            "ameseginalehu"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "glasses-round"
+      }
+    },
+    {
+      "id": "amu1-q5",
+      "order": 5,
+      "title": "Count with Nico",
+      "npc": "nico",
+      "location": "Near the pond",
+      "summary": "Nico and his dog Canela count everything they see.",
+      "objective": "Count from 1 to 10.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Nico",
+            "line": "ሰላም! እስከ አስር እንቁጠር!",
+            "gloss": "Hi! Let's count to ten!",
+            "choices": [
+              {
+                "text": "እንሂድ!",
+                "gloss": "Let's go!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "ቻው!",
+                "gloss": "Bye!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Nico wants to count with you! Say let's go."
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "Nico",
+            "line": "አንድ፣ ሁለት፣ ሶስት… እንጀምር!",
+            "gloss": "One, two, three… let's start!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "amu1-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "amu1-q5-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "n3"
+          ],
+          "hint": "Count on your fingers.",
+          "explanation": "ሶስት = 3.",
+          "target": "ሶስት",
+          "targetEnglish": "three",
+          "choices": [
+            {
+              "id": "a",
+              "text": "2"
+            },
+            {
+              "id": "b",
+              "text": "3"
+            },
+            {
+              "id": "c",
+              "text": "8"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "amu1-q5-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Amharic numbers.",
+          "items": [
+            "n1",
+            "n2",
+            "n3",
+            "n4",
+            "n5"
+          ],
+          "hint": "Start with one.",
+          "explanation": "አንድ, ሁለት, ሶስት, አራት, አምስት: 1 to 5.",
+          "pairs": [
+            {
+              "target": "አንድ",
+              "english": "1"
+            },
+            {
+              "target": "ሁለት",
+              "english": "2"
+            },
+            {
+              "target": "ሶስት",
+              "english": "3"
+            },
+            {
+              "target": "አራት",
+              "english": "4"
+            },
+            {
+              "target": "አምስት",
+              "english": "5"
+            }
+          ]
+        },
+        {
+          "id": "amu1-q5-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "n7"
+          ],
+          "hint": "It comes after six.",
+          "explanation": "ሰባት = 7.",
+          "target": "ሰባት",
+          "targetEnglish": "seven",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6"
+            },
+            {
+              "id": "b",
+              "text": "7"
+            },
+            {
+              "id": "c",
+              "text": "9"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "amu1-q5-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Amharic: “two”",
+          "items": [
+            "n2"
+          ],
+          "hint": "It comes after one. You can type hulet.",
+          "explanation": "ሁለት = 2.",
+          "targetEnglish": "two",
+          "accepted": [
+            "ሁለት",
+            "hulet"
+          ]
+        },
+        {
+          "id": "amu1-q5-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "n10"
+          ],
+          "hint": "The last number in this lesson.",
+          "explanation": "አስር = 10.",
+          "target": "አስር",
+          "targetEnglish": "ten",
+          "accepted": [
+            "አስር",
+            "asir"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "basket",
+        "badge": "badge-u1"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "amu1-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "amu1-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "bye"
+        ],
+        "hint": "You say it when you leave.",
+        "explanation": "ቻው (chaw) = bye.",
+        "target": "ቻው!",
+        "targetEnglish": "Bye!",
+        "choices": [
+          {
+            "id": "a",
+            "text": "hello (peace)"
+          },
+          {
+            "id": "b",
+            "text": "bye"
+          },
+          {
+            "id": "c",
+            "text": "thank you"
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "amu1-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Amharic: “hello”",
+        "items": [
+          "hello"
+        ],
+        "hint": "The first word Luna taught you.",
+        "explanation": "ሰላም (selam) = hello (peace).",
+        "targetEnglish": "hello",
+        "accepted": [
+          "ሰላም",
+          "selam"
+        ]
+      },
+      {
+        "id": "amu1-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "andyou"
+        ],
+        "hint": "You use it to ask back.",
+        "explanation": "አንተስ? (antes?) = And you? (to a boy; to a girl: anchis).",
+        "target": "አንተስ?",
+        "targetEnglish": "And you? (to a boy; to a girl: anchis)",
+        "choices": [
+          {
+            "id": "a",
+            "text": "What's your name? (to a boy; to a girl: simish)"
+          },
+          {
+            "id": "b",
+            "text": "Nice to meet you!"
+          },
+          {
+            "id": "c",
+            "text": "And you? (to a boy; to a girl: anchis)"
+          }
+        ],
+        "answer": "c"
+      },
+      {
+        "id": "amu1-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Amharic: “five”",
+        "items": [
+          "n5"
+        ],
+        "hint": "Count on one hand.",
+        "explanation": "አምስት = 5.",
+        "targetEnglish": "five",
+        "accepted": [
+          "አምስት",
+          "amist"
+        ]
+      },
+      {
+        "id": "amu1-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in Amharic: “Nice to meet you!”",
+        "items": [
+          "nice"
+        ],
+        "hint": "What do you say when you meet someone?",
+        "explanation": "ስለተዋወቅን ደስ ብሎኛል! (siletewawekin des bilognal!) = Nice to meet you!.",
+        "target": "ስለተዋወቅን ደስ ብሎኛል!",
+        "targetEnglish": "Nice to meet you!",
+        "accepted": [
+          "ስለተዋወቅን ደስ ብሎኛል!",
+          "siletewawekin des bilognal!"
+        ]
+      }
+    ]
+  }
+}

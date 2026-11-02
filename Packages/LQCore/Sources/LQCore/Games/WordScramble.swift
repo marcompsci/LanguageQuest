@@ -44,6 +44,12 @@ public struct WordScramble: Sendable {
         puzzles = out
     }
 
+    /// False for courses without enough spellable words (Chinese characters, for example).
+    public static func isAvailable(_ library: ContentLibrary) -> Bool {
+        let p = PlayerProfile(nickname: "", ageBand: .age13to15, courseId: library.course.id, variant: library.course.defaultVariant)
+        return WordScramble(library: library, profile: p, seed: 1).puzzles.count >= rounds
+    }
+
     /// Shuffles until the order differs from the word (words with all-equal letters can't differ).
     static func scramble(_ word: String, rng: inout SeededRandom) -> [Character] {
         let chars = Array(word.lowercased())

@@ -74,7 +74,8 @@ public struct WordBattle: Sendable {
     /// Builds questions from the opponent's unit, preferring words the player has met.
     public init(opponent: BattleOpponent, library: ContentLibrary, profile: PlayerProfile, seed: UInt64) {
         self.opponent = opponent
-        let units = library.units.filter { opponent.unitOrder == nil || $0.order == opponent.unitOrder }
+        let picked = library.units.filter { opponent.unitOrder == nil || $0.order == opponent.unitOrder }
+        let units = picked.isEmpty ? library.units : picked   // starter courses have one unit
         let pool = units.flatMap(\.allItems)
         var rng = SeededRandom(seed: seed)
         let met = pool.filter { profile.knowledge[$0.id] != nil }.shuffled(using: &rng)

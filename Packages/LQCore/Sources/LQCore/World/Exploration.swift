@@ -12,8 +12,20 @@ public struct WordTreasure: Hashable, Identifiable, Sendable {
     /// The word in other target languages, and a fact about that language's world.
     public var other: [String: (word: VText, fact: String)] = [:]
 
-    public func word(_ language: String) -> VText { language == "es" ? spanish : other[language]?.word ?? spanish }
-    public func fact(_ language: String) -> String { language == "es" ? fact : other[language]?.fact ?? fact }
+    public func word(_ language: String) -> VText {
+        if language == "es" { return spanish }
+        if let o = other[language] { return o.word }
+        if let g = StarterVillage.generatedTreasures[id]?[language] { return VText(g.word) }
+        if StarterVillage.generatedLanguages.contains(language) { return VText(english) }
+        return spanish
+    }
+    public func fact(_ language: String) -> String {
+        if language == "es" { return fact }
+        if let o = other[language] { return o.fact }
+        if let g = StarterVillage.generatedTreasures[id]?[language] { return g.fact ?? StarterVillage.generalTreasureFacts[id] ?? fact }
+        if StarterVillage.generatedLanguages.contains(language) { return StarterVillage.generalTreasureFacts[id] ?? fact }
+        return fact
+    }
 
     public static func == (a: WordTreasure, b: WordTreasure) -> Bool { a.id == b.id }
     public func hash(into h: inout Hasher) { h.combine(id) }
@@ -103,4 +115,20 @@ public enum QuestCompass {
     public static func steps(from a: GridPoint, to b: GridPoint, map: TileMap, blocked: Set<GridPoint>) -> Int {
         map.path(from: a, to: b, blocked: blocked)?.count ?? a.manhattan(to: b)
     }
+}
+
+extension StarterVillage {
+    /// Nature facts that fit any language, for treasures without a language-specific fact.
+    static let generalTreasureFacts: [String: String] = [
+        "t-flor": "Some flowers, like sunflowers, turn to follow the sun across the sky.",
+        "t-mariposa": "Butterflies taste with their feet!",
+        "t-abeja": "Bees dance to tell each other where to find flowers.",
+        "t-sol": "Light from the sun takes about eight minutes to reach Earth.",
+        "t-estrella": "The sun is a star too. It looks bigger because it's much closer.",
+        "t-luna": "The same side of the moon always faces Earth.",
+        "t-arbol": "Some trees warn each other about insects using smells.",
+        "t-nube": "A fluffy cloud can weigh as much as a hundred elephants, because it holds so much water.",
+        "t-caracol": "Snails carry their house with them and can sleep for months when it's dry.",
+        "t-rana": "Many frogs drink water through their skin instead of their mouths.",
+    ]
 }

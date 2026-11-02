@@ -30,7 +30,7 @@ public struct LocalPhrases: Sendable {
         switch language {
         case "fr": return french
         case "ja": return japanese
-        default: return spanish
+        default: return generated[language] ?? spanish
         }
     }
 

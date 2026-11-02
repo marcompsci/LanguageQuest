@@ -1,0 +1,1207 @@
+{
+  "id": "deu1-starter",
+  "version": 1,
+  "order": 1,
+  "title": "Greetings & Introductions",
+  "targetTitle": "Hallo!",
+  "world": "starter-village",
+  "objective": "Greet people, introduce yourself, ask how someone is, use polite words, and count to ten.",
+  "canDo": [
+    "I can greet people and say goodbye.",
+    "I can say my name and ask someone's name.",
+    "I can ask how someone is and answer.",
+    "I can say thank you and use polite words.",
+    "I can count from 1 to 10."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Low",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons"
+    ]
+  },
+  "ageBands": [
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Starter unit written by the development team. Needs review by a native speaker before release. Audio uses on-device text-to-speech, which may not exist for this language."
+  },
+  "vocabulary": [
+    {
+      "id": "hello",
+      "kind": "word",
+      "target": "Hallo",
+      "english": "hello",
+      "picture": "👋",
+      "altText": "a waving hand"
+    },
+    {
+      "id": "g2",
+      "kind": "word",
+      "target": "Guten Morgen",
+      "english": "good morning"
+    },
+    {
+      "id": "g3",
+      "kind": "word",
+      "target": "Guten Abend",
+      "english": "good evening"
+    },
+    {
+      "id": "g4",
+      "kind": "word",
+      "target": "Gute Nacht",
+      "english": "good night",
+      "picture": "🌙",
+      "altText": "a crescent moon"
+    },
+    {
+      "id": "bye",
+      "kind": "word",
+      "target": "Tschüss",
+      "english": "bye"
+    },
+    {
+      "id": "please",
+      "kind": "word",
+      "target": "Bitte",
+      "english": "please"
+    },
+    {
+      "id": "thanks",
+      "kind": "word",
+      "target": "Danke",
+      "english": "thank you",
+      "picture": "🙏",
+      "altText": "hands pressed together"
+    },
+    {
+      "id": "welcome",
+      "kind": "word",
+      "target": "Bitte schön",
+      "english": "you're welcome"
+    },
+    {
+      "id": "sorry",
+      "kind": "word",
+      "target": "Entschuldigung",
+      "english": "excuse me / sorry"
+    },
+    {
+      "id": "yes",
+      "kind": "word",
+      "target": "Ja",
+      "english": "yes"
+    },
+    {
+      "id": "no",
+      "kind": "word",
+      "target": "Nein",
+      "english": "no"
+    },
+    {
+      "id": "n1",
+      "kind": "word",
+      "target": "eins",
+      "english": "one (1)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n2",
+      "kind": "word",
+      "target": "zwei",
+      "english": "two (2)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n3",
+      "kind": "word",
+      "target": "drei",
+      "english": "three (3)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n4",
+      "kind": "word",
+      "target": "vier",
+      "english": "four (4)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n5",
+      "kind": "word",
+      "target": "fünf",
+      "english": "five (5)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n6",
+      "kind": "word",
+      "target": "sechs",
+      "english": "six (6)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n7",
+      "kind": "word",
+      "target": "sieben",
+      "english": "seven (7)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n8",
+      "kind": "word",
+      "target": "acht",
+      "english": "eight (8)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n9",
+      "kind": "word",
+      "target": "neun",
+      "english": "nine (9)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n10",
+      "kind": "word",
+      "target": "zehn",
+      "english": "ten (10)",
+      "partOfSpeech": "number"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "whatname",
+      "kind": "phrase",
+      "target": "Wie heißt du?",
+      "english": "What's your name?"
+    },
+    {
+      "id": "myname",
+      "kind": "phrase",
+      "target": "Ich heiße ….",
+      "english": "My name is ….",
+      "example": {
+        "target": "Ich heiße Mateo.",
+        "english": "My name is Mateo."
+      }
+    },
+    {
+      "id": "nice",
+      "kind": "phrase",
+      "target": "Freut mich!",
+      "english": "Nice to meet you!"
+    },
+    {
+      "id": "how",
+      "kind": "phrase",
+      "target": "Wie geht's?",
+      "english": "How are you?"
+    },
+    {
+      "id": "imfine",
+      "kind": "phrase",
+      "target": "Gut, danke.",
+      "english": "Fine, thanks."
+    },
+    {
+      "id": "andyou",
+      "kind": "phrase",
+      "target": "Und dir?",
+      "english": "And you?"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "den-u1-1",
+      "title": "Du and Sie",
+      "body": "German has a friendly “you” (du) for friends, family and kids, and a polite “you” (Sie, always with a capital S) for adults you don't know well."
+    },
+    {
+      "id": "den-u1-2",
+      "title": "Every noun has a capital",
+      "body": "In German every noun starts with a capital letter: der Hund (the dog), die Schule (the school). It makes nouns easy to spot!"
+    },
+    {
+      "id": "den-u1-3",
+      "title": "Hello across the German-speaking world",
+      "body": "Hallo works everywhere. In the south of Germany and in Austria you'll also hear Grüß Gott and Servus, and in Switzerland Grüezi."
+    }
+  ],
+  "quests": [
+    {
+      "id": "deu1-q1",
+      "order": 1,
+      "title": "Hello, village!",
+      "npc": "luna",
+      "location": "Luna's house",
+      "summary": "Luna shows you around and teaches the first greetings.",
+      "objective": "Greet people and say goodbye.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "Hallo! Ich bin Luna. Willkommen im Dorf!",
+            "gloss": "Hello! I'm Luna. Welcome to the village!",
+            "choices": [
+              {
+                "text": "Hallo!",
+                "gloss": "Hello!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Gute Nacht!",
+                "gloss": "Good night!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Luna just said hello! Try Hallo."
+              }
+            ],
+            "hint": "Coco says: Answer with Hallo."
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "Sehr gut! Sagen wir allen Hallo!",
+            "gloss": "Very good! Let's say hello to everyone!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "deu1-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "deu1-q1-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "bye"
+          ],
+          "hint": "You say it when you leave.",
+          "explanation": "Tschüss = bye.",
+          "target": "Tschüss!",
+          "targetEnglish": "Bye!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "hello"
+            },
+            {
+              "id": "b",
+              "text": "good morning"
+            },
+            {
+              "id": "c",
+              "text": "bye"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "deu1-q1-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the German to the English.",
+          "items": [
+            "hello",
+            "g2",
+            "g3",
+            "g4",
+            "bye"
+          ],
+          "hint": "Start with the ones you're sure of.",
+          "explanation": "Greetings: Hallo, Guten Morgen, Guten Abend, Gute Nacht, Tschüss.",
+          "pairs": [
+            {
+              "target": "Hallo",
+              "english": "hello"
+            },
+            {
+              "target": "Guten Morgen",
+              "english": "good morning"
+            },
+            {
+              "target": "Guten Abend",
+              "english": "good evening"
+            },
+            {
+              "target": "Gute Nacht",
+              "english": "good night"
+            },
+            {
+              "target": "Tschüss",
+              "english": "bye"
+            }
+          ]
+        },
+        {
+          "id": "deu1-q1-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Say the same greeting back.",
+          "explanation": "Hallo = hello.",
+          "target": "Hallo!",
+          "targetEnglish": "Hello!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Bitte!"
+            },
+            {
+              "id": "b",
+              "text": "Hallo!"
+            },
+            {
+              "id": "c",
+              "text": "Tschüss!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "deu1-q1-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Listen first, then copy the sound.",
+          "explanation": "Hallo = hello.",
+          "target": "Hallo!",
+          "targetEnglish": "Hello!",
+          "accepted": [
+            "Hallo"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "scarf-yellow"
+      }
+    },
+    {
+      "id": "deu1-q2",
+      "order": 2,
+      "title": "What's your name?",
+      "npc": "mateo",
+      "location": "The plaza",
+      "summary": "Mateo wants to know your name.",
+      "objective": "Ask someone's name and say your own.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Mateo",
+            "line": "Hallo! Ich heiße Mateo. Wie heißt du?",
+            "gloss": "Hi! My name is Mateo. What's your name?",
+            "choices": [
+              {
+                "text": "Ich heiße {name}.",
+                "gloss": "My name is {name}.",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Danke!",
+                "gloss": "Thank you!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Mateo asked your name! Say your name."
+              }
+            ],
+            "hint": "Coco says: Copy how Mateo said his name, then use yours."
+          },
+          {
+            "id": "n2",
+            "speaker": "Mateo",
+            "line": "Freut mich, {name}!",
+            "gloss": "Nice to meet you, {name}!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "deu1-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "deu1-q2-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "whatname"
+          ],
+          "hint": "Mateo asks this when he meets someone.",
+          "explanation": "Wie heißt du? = What's your name?.",
+          "target": "Wie heißt du?",
+          "targetEnglish": "What's your name?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "What's your name?"
+            },
+            {
+              "id": "b",
+              "text": "How are you?"
+            },
+            {
+              "id": "c",
+              "text": "And you?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "deu1-q2-a2",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “My name is Mateo.”",
+          "items": [
+            "myname"
+          ],
+          "hint": "Start with Ich.",
+          "explanation": "Ich heiße Mateo. = My name is Mateo.",
+          "tiles": [
+            "Ich",
+            "heiße",
+            "Mateo"
+          ],
+          "targetEnglish": "My name is Mateo.",
+          "distractors": [
+            "Hallo"
+          ]
+        },
+        {
+          "id": "deu1-q2-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "nice"
+          ],
+          "hint": "You say it when you meet someone new.",
+          "explanation": "Freut mich! = Nice to meet you!.",
+          "target": "Freut mich!",
+          "targetEnglish": "Nice to meet you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How are you?"
+            },
+            {
+              "id": "b",
+              "text": "bye"
+            },
+            {
+              "id": "c",
+              "text": "Nice to meet you!"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "deu1-q2-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in German: “Nice to meet you!”",
+          "items": [
+            "nice"
+          ],
+          "hint": "Mateo said it after hearing your name.",
+          "explanation": "Freut mich! = Nice to meet you!.",
+          "targetEnglish": "Nice to meet you!",
+          "accepted": [
+            "Freut mich!"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "cap-red"
+      }
+    },
+    {
+      "id": "deu1-q3",
+      "order": 3,
+      "title": "How are you?",
+      "npc": "dona-rosa",
+      "location": "The bakery",
+      "summary": "Doña Rosa the baker asks how you are.",
+      "objective": "Ask how someone is and answer.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Doña Rosa",
+            "line": "Guten Tag! Wie geht's?",
+            "gloss": "Good day! How are you?",
+            "choices": [
+              {
+                "text": "Gut, danke. Und dir?",
+                "gloss": "Fine, thanks. And you?",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Ich heiße Mateo.",
+                "gloss": "My name is Mateo.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "She asked how you are, not your name!"
+              }
+            ],
+            "hint": "Coco says: Say how you are, then ask back: Und dir?"
+          },
+          {
+            "id": "n2",
+            "speaker": "Doña Rosa",
+            "line": "Mir geht's auch gut, danke!",
+            "gloss": "I'm fine too, thanks!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "deu1-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "deu1-q3-a1",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "how",
+            "imfine"
+          ],
+          "hint": "She wants to know how you are.",
+          "explanation": "Gut, danke. = Fine, thanks..",
+          "target": "Wie geht's?",
+          "targetEnglish": "How are you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Wie heißt du?"
+            },
+            {
+              "id": "b",
+              "text": "Gut, danke."
+            },
+            {
+              "id": "c",
+              "text": "Tschüss!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "deu1-q3-a2",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "andyou"
+          ],
+          "hint": "You use it to ask the question back.",
+          "explanation": "Und dir? = And you?.",
+          "target": "Und dir?",
+          "targetEnglish": "And you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How are you?"
+            },
+            {
+              "id": "b",
+              "text": "And you?"
+            },
+            {
+              "id": "c",
+              "text": "What's your name?"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "deu1-q3-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "how"
+          ],
+          "hint": "Doña Rosa asked you this.",
+          "explanation": "Wie geht's? = How are you?.",
+          "target": "Wie geht's?",
+          "targetEnglish": "How are you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How are you?"
+            },
+            {
+              "id": "b",
+              "text": "What's your name?"
+            },
+            {
+              "id": "c",
+              "text": "Nice to meet you!"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "deu1-q3-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "imfine"
+          ],
+          "hint": "Say it slowly.",
+          "explanation": "Gut, danke. = Fine, thanks..",
+          "target": "Gut, danke.",
+          "targetEnglish": "Fine, thanks.",
+          "accepted": [
+            "Gut, danke."
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "apron"
+      }
+    },
+    {
+      "id": "deu1-q4",
+      "order": 4,
+      "title": "Magic words",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Don Pepe gives you a gift at his fruit stand.",
+      "objective": "Say thank you and use polite words.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "Hier ist ein Apfel für dich!",
+            "gloss": "Here's an apple for you!",
+            "choices": [
+              {
+                "text": "Danke!",
+                "gloss": "Thank you!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Entschuldigung!",
+                "gloss": "Excuse me / sorry!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "He's giving you a present! Try Danke."
+              }
+            ],
+            "hint": "Coco says: When someone gives you something, say Danke."
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": "Bitte schön! Bis bald!",
+            "gloss": "You're welcome! See you soon!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "deu1-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "deu1-q4-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the German to the English.",
+          "items": [
+            "please",
+            "thanks",
+            "welcome",
+            "sorry",
+            "yes"
+          ],
+          "hint": "Thank you is the one you hear most.",
+          "explanation": "Bitte, Danke, Bitte schön, Entschuldigung, Ja.",
+          "pairs": [
+            {
+              "target": "Bitte",
+              "english": "please"
+            },
+            {
+              "target": "Danke",
+              "english": "thank you"
+            },
+            {
+              "target": "Bitte schön",
+              "english": "you're welcome"
+            },
+            {
+              "target": "Entschuldigung",
+              "english": "excuse me / sorry"
+            },
+            {
+              "target": "Ja",
+              "english": "yes"
+            }
+          ]
+        },
+        {
+          "id": "deu1-q4-a2",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "thanks"
+          ],
+          "hint": "Someone gives you a present. What do you say?",
+          "explanation": "Danke = thank you.",
+          "target": "Hier ist ein Apfel für dich!",
+          "targetEnglish": "Here's an apple for you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Danke!"
+            },
+            {
+              "id": "b",
+              "text": "Tschüss!"
+            },
+            {
+              "id": "c",
+              "text": "Wie heißt du?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "deu1-q4-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "please"
+          ],
+          "hint": "Listen for a polite word.",
+          "explanation": "Bitte = please.",
+          "target": "Bitte",
+          "targetEnglish": "please",
+          "choices": [
+            {
+              "id": "a",
+              "text": "thank you"
+            },
+            {
+              "id": "b",
+              "text": "please"
+            },
+            {
+              "id": "c",
+              "text": "hello"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "deu1-q4-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in German: “thank you”",
+          "items": [
+            "thanks"
+          ],
+          "hint": "You just said it to Don Pepe.",
+          "explanation": "Danke = thank you.",
+          "targetEnglish": "thank you",
+          "accepted": [
+            "Danke"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "glasses-round"
+      }
+    },
+    {
+      "id": "deu1-q5",
+      "order": 5,
+      "title": "Count with Nico",
+      "npc": "nico",
+      "location": "Near the pond",
+      "summary": "Nico and his dog Canela count everything they see.",
+      "objective": "Count from 1 to 10.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Nico",
+            "line": "Hallo! Zählen wir bis zehn!",
+            "gloss": "Hi! Let's count to ten!",
+            "choices": [
+              {
+                "text": "Los geht's!",
+                "gloss": "Let's go!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Tschüss!",
+                "gloss": "Bye!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Nico wants to count with you! Say let's go."
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "Nico",
+            "line": "Eins, zwei, drei… los geht's!",
+            "gloss": "One, two, three… let's go!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "deu1-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "deu1-q5-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "n3"
+          ],
+          "hint": "Count on your fingers.",
+          "explanation": "drei = 3.",
+          "target": "drei",
+          "targetEnglish": "three",
+          "choices": [
+            {
+              "id": "a",
+              "text": "2"
+            },
+            {
+              "id": "b",
+              "text": "3"
+            },
+            {
+              "id": "c",
+              "text": "8"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "deu1-q5-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the German numbers.",
+          "items": [
+            "n1",
+            "n2",
+            "n3",
+            "n4",
+            "n5"
+          ],
+          "hint": "Start with one.",
+          "explanation": "eins, zwei, drei, vier, fünf: 1 to 5.",
+          "pairs": [
+            {
+              "target": "eins",
+              "english": "1"
+            },
+            {
+              "target": "zwei",
+              "english": "2"
+            },
+            {
+              "target": "drei",
+              "english": "3"
+            },
+            {
+              "target": "vier",
+              "english": "4"
+            },
+            {
+              "target": "fünf",
+              "english": "5"
+            }
+          ]
+        },
+        {
+          "id": "deu1-q5-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "n7"
+          ],
+          "hint": "It comes after six.",
+          "explanation": "sieben = 7.",
+          "target": "sieben",
+          "targetEnglish": "seven",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6"
+            },
+            {
+              "id": "b",
+              "text": "7"
+            },
+            {
+              "id": "c",
+              "text": "9"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "deu1-q5-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in German: “two”",
+          "items": [
+            "n2"
+          ],
+          "hint": "It comes after one.",
+          "explanation": "zwei = 2.",
+          "targetEnglish": "two",
+          "accepted": [
+            "zwei"
+          ]
+        },
+        {
+          "id": "deu1-q5-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "n10"
+          ],
+          "hint": "The last number in this lesson.",
+          "explanation": "zehn = 10.",
+          "target": "zehn",
+          "targetEnglish": "ten",
+          "accepted": [
+            "zehn"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "basket",
+        "badge": "badge-u1"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "deu1-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "deu1-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "bye"
+        ],
+        "hint": "You say it when you leave.",
+        "explanation": "Tschüss = bye.",
+        "target": "Tschüss!",
+        "targetEnglish": "Bye!",
+        "choices": [
+          {
+            "id": "a",
+            "text": "hello"
+          },
+          {
+            "id": "b",
+            "text": "bye"
+          },
+          {
+            "id": "c",
+            "text": "thank you"
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "deu1-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in German: “hello”",
+        "items": [
+          "hello"
+        ],
+        "hint": "The first word Luna taught you.",
+        "explanation": "Hallo = hello.",
+        "targetEnglish": "hello",
+        "accepted": [
+          "Hallo"
+        ]
+      },
+      {
+        "id": "deu1-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "andyou"
+        ],
+        "hint": "You use it to ask back.",
+        "explanation": "Und dir? = And you?.",
+        "target": "Und dir?",
+        "targetEnglish": "And you?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "What's your name?"
+          },
+          {
+            "id": "b",
+            "text": "Nice to meet you!"
+          },
+          {
+            "id": "c",
+            "text": "And you?"
+          }
+        ],
+        "answer": "c"
+      },
+      {
+        "id": "deu1-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in German: “five”",
+        "items": [
+          "n5"
+        ],
+        "hint": "Count on one hand.",
+        "explanation": "fünf = 5.",
+        "targetEnglish": "five",
+        "accepted": [
+          "fünf"
+        ]
+      },
+      {
+        "id": "deu1-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in German: “Nice to meet you!”",
+        "items": [
+          "nice"
+        ],
+        "hint": "What do you say when you meet someone?",
+        "explanation": "Freut mich! = Nice to meet you!.",
+        "target": "Freut mich!",
+        "targetEnglish": "Nice to meet you!",
+        "accepted": [
+          "Freut mich!"
+        ]
+      }
+    ]
+  }
+}

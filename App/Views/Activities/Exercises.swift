@@ -249,7 +249,7 @@ struct TypeExercise: View {
     @EnvironmentObject var model: AppModel
     private var accents: [String] { model.library?.course.typingKeys ?? ["á", "é", "í", "ó", "ú", "ñ", "ü", "¿", "¡"] }
     private var placeholder: String {
-        model.library?.course.script == .kana ? "Type in kana or romaji" : "Type in \(model.languageName)"
+        model.library?.course.script == .kana ? "Type in kana or romaji" : model.library?.course.hasRomanization == true ? "Type in \(model.languageName) or its Latin spelling" : "Type in \(model.languageName)"
     }
 
     var body: some View {

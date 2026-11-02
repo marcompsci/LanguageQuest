@@ -32,6 +32,26 @@ final class SpeechService: NSObject, AVSpeechSynthesizerDelegate {
         speak(text, voice: Self.voice(for: variant), settings: settings)
     }
 
+    /// Reads target-language text. When no voice for the language is installed (Amharic,
+    /// Yoruba, Ancient Egyptian…), reads its Latin spelling with a fallback voice instead
+    /// of handing the text to a voice for some other language.
+    func speakTarget(_ text: String, romanized: String?, variant: LanguageVariant?, settings: LearnerSettings) {
+        guard let v = variant else { return speakSpanish(text, variant: nil, settings: settings) }
+        let all = AVSpeechSynthesisVoice.speechVoices()
+        func best(_ locales: [String]) -> AVSpeechSynthesisVoice? {
+            for loc in locales {
+                let m = all.filter { $0.language.caseInsensitiveCompare(loc) == .orderedSame }
+                if let b = m.max(by: { $0.quality.rawValue < $1.quality.rawValue }) { return b }
+            }
+            return nil
+        }
+        if let native = best(v.voiceLocales) {
+            speak(text, voice: native, settings: settings)
+        } else if let fallback = best(v.romanizedVoiceLocales ?? ["en-US"]) {
+            speak(romanized ?? text, voice: fallback, settings: settings)
+        }
+    }
+
     func speakEnglish(_ text: String, settings: LearnerSettings) {
         speak(text, voice: AVSpeechSynthesisVoice(language: "en-US"), settings: settings)
     }

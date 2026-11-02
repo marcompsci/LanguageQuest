@@ -157,6 +157,22 @@ public enum WritingSystem: String, Codable, Sendable {
     case latin
     /// Japanese kana. Words are separated by spaces in lessons; romaji is derived automatically.
     case kana
+    /// Any other script (Chinese, Hebrew, Greek, Ge'ez…). The course lists a
+    /// romanization for every string in `romanizationOverrides`.
+    case transliterated
+}
+
+/// Where a course is listed on the main menu.
+public enum CourseCategory: String, Codable, CaseIterable, Sendable {
+    case modern, african, ancient
+
+    public var title: String {
+        switch self {
+        case .modern: return "Choose a language"
+        case .african: return "African Languages"
+        case .ancient: return "Old Languages"
+        }
+    }
 }
 
 /// A regional variety of the target language (e.g. Mexico, Spain, Argentina).
@@ -173,6 +189,9 @@ public struct LanguageVariant: Codable, Hashable, Identifiable, Sendable {
     /// Uses "vos" instead of "tú" for informal "you".
     public var usesVoseo: Bool
     public var note: String
+    /// When no voice for `voiceLocales` is installed, read the romanization with one
+    /// of these voices instead (e.g. Amharic read aloud from its Latin spelling).
+    public var romanizedVoiceLocales: [String]?
 }
 
 public struct Course: Codable, Sendable {
@@ -193,6 +212,10 @@ public struct Course: Codable, Sendable {
     public var romanizationOverrides: [String: String]?
     /// Extra keys shown above the keyboard for typed answers.
     public var typingKeys: [String]?
+    /// Menu section (nil = modern).
+    public var category: CourseCategory?
+    /// Hebrew and other right-to-left scripts.
+    public var rightToLeft: Bool?
 
     public func variant(_ id: String) -> LanguageVariant? { variants.first { $0.id == id } }
 
@@ -201,9 +224,36 @@ public struct Course: Codable, Sendable {
     }
     public var script: WritingSystem { writingSystem ?? .latin }
 
-    /// Romaji for kana courses, nil for Latin-script courses.
+    public var section: CourseCategory { category ?? .modern }
+    /// True when lessons can show a pronunciation line (romaji, pinyin, transliteration).
+    public var hasRomanization: Bool { script != .latin }
+
+    /// Romaji for kana courses, the authored romanization for other scripts, nil for Latin-script courses.
     public func romanize(_ s: String) -> String? {
-        script == .kana ? Kana.romanize(s, overrides: romanizationOverrides ?? [:]) : nil
+        switch script {
+        case .latin: return nil
+        case .kana: return Kana.romanize(s, overrides: romanizationOverrides ?? [:])
+        case .transliterated:
+            let map = romanizationOverrides ?? [:]
+            let trimmed = s.trimmingCharacters(in: .whitespacesAndNewlines)
+            if let whole = map[trimmed] { return whole }
+            // Word by word, keeping punctuation and anything already in Latin letters (names).
+            let punct = CharacterSet(charactersIn: ".,!?;:…·。，！？、「」“”\"'()[]")
+            var out: [String] = []
+            var hit = false
+            for token in trimmed.split(separator: " ").map(String.init) {
+                if let r = map[token] { out.append(r); hit = true; continue }
+                let core = token.trimmingCharacters(in: punct)
+                if let r = map[core], !core.isEmpty {
+                    out.append(token.replacingOccurrences(of: core, with: r)); hit = true
+                } else if core.unicodeScalars.allSatisfy({ $0.isASCII }) {
+                    out.append(token)
+                } else {
+                    return nil
+                }
+            }
+            return hit ? out.joined(separator: " ") : nil
+        }
     }
 }
 

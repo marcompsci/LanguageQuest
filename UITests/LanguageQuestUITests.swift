@@ -52,6 +52,11 @@ final class LanguageQuestUITests: XCTestCase {
     @MainActor func testMenuLanguagePageAndHamburger() {
         let app = launch(seed: true)
         XCTAssertTrue(app.buttons["course-en-fr"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["African Languages"].exists)
+        XCTAssertTrue(app.staticTexts["Old Languages"].exists)
+        for id in ["en-de", "en-it", "en-zh", "en-yo", "en-he", "en-egy", "en-am", "en-grc", "en-la", "en-hbo"] {
+            XCTAssertTrue(app.buttons["course-\(id)"].exists, id)
+        }
         app.buttons["course-en-fr"].tap()            // main menu → French page
         XCTAssertTrue(app.buttons["Play: French village"].waitForExistence(timeout: 3))
         XCTAssertTrue(app.buttons["menu-games"].exists)

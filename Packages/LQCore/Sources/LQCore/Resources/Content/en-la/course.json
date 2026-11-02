@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "en-la",
+  "title": "Latin for English speakers",
+  "sourceLanguage": "en",
+  "targetLanguage": "la",
+  "languageName": "Latin",
+  "nativeName": "Lingua Latina",
+  "writingSystem": "latin",
+  "category": "ancient",
+  "defaultVariant": "la",
+  "variants": [
+    {
+      "id": "la",
+      "name": "Classical Latin",
+      "nativeName": "Latina",
+      "flagEmoji": "🦅",
+      "voiceLocales": [
+        "it-IT"
+      ],
+      "speechLocales": [
+        "it-IT"
+      ],
+      "currency": {
+        "code": "DEN",
+        "singular": "denarius",
+        "plural": "denarii",
+        "symbol": "den."
+      },
+      "usesVoseo": false,
+      "note": "Classical Latin, the language of ancient Rome. The read-aloud voice is Italian, so it sounds like Church Latin rather than Cicero's pronunciation."
+    }
+  ],
+  "unitFiles": [
+    "unit1-starter.json"
+  ]
+}

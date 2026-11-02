@@ -1,0 +1,1208 @@
+{
+  "id": "egyu1-starter",
+  "version": 1,
+  "order": 1,
+  "title": "Greetings & Introductions",
+  "targetTitle": "em hotep!",
+  "world": "starter-village",
+  "objective": "Greet people, introduce yourself, ask how someone is, use polite words, and count to ten.",
+  "canDo": [
+    "I can greet people and say goodbye.",
+    "I can say my name and ask someone's name.",
+    "I can ask how someone is and answer.",
+    "I can say thank you and use polite words.",
+    "I can count from 1 to 10."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Low",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons"
+    ]
+  },
+  "ageBands": [
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Starter unit written by the development team. Needs review by a native speaker or specialist in the ancient language before release. Audio uses on-device text-to-speech, which may not exist for this language."
+  },
+  "vocabulary": [
+    {
+      "id": "hello",
+      "kind": "word",
+      "target": "em hotep",
+      "english": "in peace (hello)",
+      "picture": "👋",
+      "altText": "a waving hand"
+    },
+    {
+      "id": "g2",
+      "kind": "word",
+      "target": "ii-wy",
+      "english": "welcome!"
+    },
+    {
+      "id": "g3",
+      "kind": "word",
+      "target": "nefer",
+      "english": "good / beautiful"
+    },
+    {
+      "id": "g4",
+      "kind": "word",
+      "target": "ankh wedja seneb",
+      "english": "life, prosperity, health!",
+      "picture": "🌙",
+      "altText": "a crescent moon"
+    },
+    {
+      "id": "bye",
+      "kind": "word",
+      "target": "senebti",
+      "english": "stay healthy! (goodbye)"
+    },
+    {
+      "id": "thanks",
+      "kind": "word",
+      "target": "dua netjer",
+      "english": "thank god (thank you)",
+      "picture": "🙏",
+      "altText": "hands pressed together"
+    },
+    {
+      "id": "n1",
+      "kind": "word",
+      "target": "wa",
+      "english": "one (1)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n2",
+      "kind": "word",
+      "target": "sen",
+      "english": "two (2)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n3",
+      "kind": "word",
+      "target": "khemet",
+      "english": "three (3)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n4",
+      "kind": "word",
+      "target": "fedu",
+      "english": "four (4)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n5",
+      "kind": "word",
+      "target": "diu",
+      "english": "five (5)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n6",
+      "kind": "word",
+      "target": "sisu",
+      "english": "six (6)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n7",
+      "kind": "word",
+      "target": "sefekh",
+      "english": "seven (7)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n8",
+      "kind": "word",
+      "target": "khemenu",
+      "english": "eight (8)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n9",
+      "kind": "word",
+      "target": "pesedj",
+      "english": "nine (9)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n10",
+      "kind": "word",
+      "target": "medju",
+      "english": "ten (10)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "x-per",
+      "kind": "word",
+      "target": "per",
+      "english": "house",
+      "picture": "🏠",
+      "altText": "a house"
+    },
+    {
+      "id": "x-ra",
+      "kind": "word",
+      "target": "ra",
+      "english": "sun",
+      "picture": "☀️",
+      "altText": "the sun"
+    },
+    {
+      "id": "x-mu",
+      "kind": "word",
+      "target": "mu",
+      "english": "water",
+      "picture": "💧",
+      "altText": "a drop of water"
+    },
+    {
+      "id": "x-sesh",
+      "kind": "word",
+      "target": "sesh",
+      "english": "scribe",
+      "picture": "✍️",
+      "altText": "a hand writing"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "whatname",
+      "kind": "phrase",
+      "target": "ikh ren-ek?",
+      "english": "What is your name?"
+    },
+    {
+      "id": "myname",
+      "kind": "phrase",
+      "target": "ren-i ….",
+      "english": "My name is ….",
+      "example": {
+        "target": "ren-i Mateo.",
+        "english": "My name is Mateo."
+      }
+    },
+    {
+      "id": "nice",
+      "kind": "phrase",
+      "target": "hotep ib-i!",
+      "english": "My heart is happy! (nice to meet you)"
+    },
+    {
+      "id": "how",
+      "kind": "phrase",
+      "target": "seneb-ek?",
+      "english": "Are you healthy? (how are you?)"
+    },
+    {
+      "id": "imfine",
+      "kind": "phrase",
+      "target": "seneb-kwi.",
+      "english": "I am healthy."
+    },
+    {
+      "id": "andyou",
+      "kind": "phrase",
+      "target": "entek?",
+      "english": "And you?"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "egyn-u1-1",
+      "title": "God's words",
+      "body": "Egyptians called hieroglyphs medu netjer, “god's words”. They were carved on temples and tombs for more than 3,000 years. The ankh (☥) means life."
+    },
+    {
+      "id": "egyn-u1-2",
+      "title": "Where did the vowels go?",
+      "body": "Hieroglyphs only wrote consonants, so nobody knows exactly how Egyptian sounded. Egyptologists add an “e” between consonants: nfr becomes nefer, ḥtp becomes hotep."
+    },
+    {
+      "id": "egyn-u1-3",
+      "title": "Life, prosperity, health",
+      "body": "Letters and royal names were often followed by ankh, wedja, seneb: life, prosperity, health! Egyptian lives on today in Coptic, still used in Coptic church services."
+    }
+  ],
+  "quests": [
+    {
+      "id": "egyu1-q1",
+      "order": 1,
+      "title": "Hello, village!",
+      "npc": "luna",
+      "location": "Luna's house",
+      "summary": "Luna shows you around and teaches the first greetings.",
+      "objective": "Greet people and say goodbye.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "em hotep! ink Luna. ii-wy!",
+            "gloss": "Hello! I am Luna. Welcome!",
+            "choices": [
+              {
+                "text": "em hotep!",
+                "gloss": "In peace (hello)!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "ankh wedja seneb!",
+                "gloss": "Life, prosperity, health!!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Luna just said hello! Try em hotep."
+              }
+            ],
+            "hint": "Coco says: Answer with em hotep."
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "nefer wer!",
+            "gloss": "Very good!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "egyu1-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "egyu1-q1-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "bye"
+          ],
+          "hint": "You say it when you leave.",
+          "explanation": "senebti = stay healthy! (goodbye).",
+          "target": "senebti!",
+          "targetEnglish": "Stay healthy! (goodbye)!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "in peace (hello)"
+            },
+            {
+              "id": "b",
+              "text": "welcome!"
+            },
+            {
+              "id": "c",
+              "text": "stay healthy! (goodbye)"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "egyu1-q1-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Ancient Egyptian to the English.",
+          "items": [
+            "hello",
+            "g2",
+            "g3",
+            "g4",
+            "bye"
+          ],
+          "hint": "Start with the ones you're sure of.",
+          "explanation": "Greetings: em hotep, ii-wy, nefer, ankh wedja seneb, senebti.",
+          "pairs": [
+            {
+              "target": "em hotep",
+              "english": "in peace (hello)"
+            },
+            {
+              "target": "ii-wy",
+              "english": "welcome!"
+            },
+            {
+              "target": "nefer",
+              "english": "good / beautiful"
+            },
+            {
+              "target": "ankh wedja seneb",
+              "english": "life, prosperity, health!"
+            },
+            {
+              "target": "senebti",
+              "english": "stay healthy! (goodbye)"
+            }
+          ]
+        },
+        {
+          "id": "egyu1-q1-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Say the same greeting back.",
+          "explanation": "em hotep = in peace (hello).",
+          "target": "em hotep!",
+          "targetEnglish": "In peace (hello)!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "dua netjer!"
+            },
+            {
+              "id": "b",
+              "text": "em hotep!"
+            },
+            {
+              "id": "c",
+              "text": "senebti!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "egyu1-q1-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Listen first, then copy the sound.",
+          "explanation": "em hotep = in peace (hello).",
+          "target": "em hotep!",
+          "targetEnglish": "In peace (hello)!",
+          "accepted": [
+            "em hotep"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "scarf-yellow"
+      }
+    },
+    {
+      "id": "egyu1-q2",
+      "order": 2,
+      "title": "What's your name?",
+      "npc": "mateo",
+      "location": "The plaza",
+      "summary": "Mateo wants to know your name.",
+      "objective": "Ask someone's name and say your own.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Mateo",
+            "line": "em hotep! ren-i Mateo. ikh ren-ek?",
+            "gloss": "Hello! My name is Mateo. What is your name?",
+            "choices": [
+              {
+                "text": "ren-i {name}.",
+                "gloss": "My name is {name}.",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "dua netjer!",
+                "gloss": "Thank god (thank you)!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Mateo asked your name! Say your name."
+              }
+            ],
+            "hint": "Coco says: Copy how Mateo said his name, then use yours."
+          },
+          {
+            "id": "n2",
+            "speaker": "Mateo",
+            "line": "hotep ib-i, {name}!",
+            "gloss": "My heart is happy, {name}!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "egyu1-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "egyu1-q2-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "whatname"
+          ],
+          "hint": "Mateo asks this when he meets someone.",
+          "explanation": "ikh ren-ek? = What is your name?.",
+          "target": "ikh ren-ek?",
+          "targetEnglish": "What is your name?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "What is your name?"
+            },
+            {
+              "id": "b",
+              "text": "Are you healthy? (how are you?)"
+            },
+            {
+              "id": "c",
+              "text": "And you?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "egyu1-q2-a2",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “My name is Mateo.”",
+          "items": [
+            "myname"
+          ],
+          "hint": "Start with ren-i.",
+          "explanation": "ren-i Mateo. = My name is Mateo.",
+          "tiles": [
+            "ren-i",
+            "Mateo"
+          ],
+          "targetEnglish": "My name is Mateo.",
+          "distractors": [
+            "em hotep"
+          ]
+        },
+        {
+          "id": "egyu1-q2-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "nice"
+          ],
+          "hint": "You say it when you meet someone new.",
+          "explanation": "hotep ib-i! = My heart is happy! (nice to meet you).",
+          "target": "hotep ib-i!",
+          "targetEnglish": "My heart is happy! (nice to meet you)",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Are you healthy? (how are you?)"
+            },
+            {
+              "id": "b",
+              "text": "stay healthy! (goodbye)"
+            },
+            {
+              "id": "c",
+              "text": "My heart is happy! (nice to meet you)"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "egyu1-q2-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Ancient Egyptian: “My heart is happy! (nice to meet you)”",
+          "items": [
+            "nice"
+          ],
+          "hint": "Mateo said it after hearing your name.",
+          "explanation": "hotep ib-i! = My heart is happy! (nice to meet you).",
+          "targetEnglish": "My heart is happy! (nice to meet you)",
+          "accepted": [
+            "hotep ib-i!"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "cap-red"
+      }
+    },
+    {
+      "id": "egyu1-q3",
+      "order": 3,
+      "title": "How are you?",
+      "npc": "dona-rosa",
+      "location": "The bakery",
+      "summary": "Doña Rosa the baker asks how you are.",
+      "objective": "Ask how someone is and answer.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Doña Rosa",
+            "line": "em hotep! seneb-ek?",
+            "gloss": "Hello! Are you healthy?",
+            "choices": [
+              {
+                "text": "seneb-kwi. entek?",
+                "gloss": "I am healthy. And you?",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "ren-i Mateo.",
+                "gloss": "My name is Mateo.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "She asked how you are, not your name!"
+              }
+            ],
+            "hint": "Coco says: Say how you are, then ask back: entek?"
+          },
+          {
+            "id": "n2",
+            "speaker": "Doña Rosa",
+            "line": "seneb-kwi! dua netjer!",
+            "gloss": "I am healthy! Thank god!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "egyu1-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "egyu1-q3-a1",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "how",
+            "imfine"
+          ],
+          "hint": "She wants to know how you are.",
+          "explanation": "seneb-kwi. = I am healthy..",
+          "target": "seneb-ek?",
+          "targetEnglish": "Are you healthy? (how are you?)",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ikh ren-ek?"
+            },
+            {
+              "id": "b",
+              "text": "seneb-kwi."
+            },
+            {
+              "id": "c",
+              "text": "senebti!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "egyu1-q3-a2",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "andyou"
+          ],
+          "hint": "You use it to ask the question back.",
+          "explanation": "entek? = And you?.",
+          "target": "entek?",
+          "targetEnglish": "And you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Are you healthy? (how are you?)"
+            },
+            {
+              "id": "b",
+              "text": "And you?"
+            },
+            {
+              "id": "c",
+              "text": "What is your name?"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "egyu1-q3-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "how"
+          ],
+          "hint": "Doña Rosa asked you this.",
+          "explanation": "seneb-ek? = Are you healthy? (how are you?).",
+          "target": "seneb-ek?",
+          "targetEnglish": "Are you healthy? (how are you?)",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Are you healthy? (how are you?)"
+            },
+            {
+              "id": "b",
+              "text": "What is your name?"
+            },
+            {
+              "id": "c",
+              "text": "My heart is happy! (nice to meet you)"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "egyu1-q3-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "imfine"
+          ],
+          "hint": "Say it slowly.",
+          "explanation": "seneb-kwi. = I am healthy..",
+          "target": "seneb-kwi.",
+          "targetEnglish": "I am healthy.",
+          "accepted": [
+            "seneb-kwi."
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "apron"
+      }
+    },
+    {
+      "id": "egyu1-q4",
+      "order": 4,
+      "title": "Words of the scribes",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Don Pepe gives you a gift at his fruit stand.",
+      "objective": "Say thank you and use polite words.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "mek, ta en-ek!",
+            "gloss": "Look, bread for you!",
+            "choices": [
+              {
+                "text": "dua netjer!",
+                "gloss": "Thank god (thank you)!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "senebti!",
+                "gloss": "Stay healthy! (goodbye)!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "He's giving you a present! Try dua netjer."
+              }
+            ],
+            "hint": "Coco says: When someone gives you something, say dua netjer."
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": "nefer! senebti!",
+            "gloss": "Good! Stay healthy!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "egyu1-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "egyu1-q4-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Ancient Egyptian to the English.",
+          "items": [
+            "thanks",
+            "x-per",
+            "x-ra",
+            "x-mu",
+            "x-sesh"
+          ],
+          "hint": "Thank you is the one you hear most.",
+          "explanation": "dua netjer, per, ra, mu, sesh.",
+          "pairs": [
+            {
+              "target": "dua netjer",
+              "english": "thank god (thank you)"
+            },
+            {
+              "target": "per",
+              "english": "house"
+            },
+            {
+              "target": "ra",
+              "english": "sun"
+            },
+            {
+              "target": "mu",
+              "english": "water"
+            },
+            {
+              "target": "sesh",
+              "english": "scribe"
+            }
+          ]
+        },
+        {
+          "id": "egyu1-q4-a2",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "thanks"
+          ],
+          "hint": "Someone gives you a present. What do you say?",
+          "explanation": "dua netjer = thank god (thank you).",
+          "target": "mek, ta en-ek!",
+          "targetEnglish": "Look, bread for you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "dua netjer!"
+            },
+            {
+              "id": "b",
+              "text": "senebti!"
+            },
+            {
+              "id": "c",
+              "text": "ikh ren-ek?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "egyu1-q4-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "x-sesh"
+          ],
+          "hint": "Listen for a polite word.",
+          "explanation": "sesh = scribe.",
+          "target": "sesh",
+          "targetEnglish": "scribe",
+          "choices": [
+            {
+              "id": "a",
+              "text": "thank god (thank you)"
+            },
+            {
+              "id": "b",
+              "text": "scribe"
+            },
+            {
+              "id": "c",
+              "text": "in peace (hello)"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "egyu1-q4-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Ancient Egyptian: “thank god (thank you)”",
+          "items": [
+            "thanks"
+          ],
+          "hint": "You just said it to Don Pepe.",
+          "explanation": "dua netjer = thank god (thank you).",
+          "targetEnglish": "thank god (thank you)",
+          "accepted": [
+            "dua netjer"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "glasses-round"
+      }
+    },
+    {
+      "id": "egyu1-q5",
+      "order": 5,
+      "title": "Count with Nico",
+      "npc": "nico",
+      "location": "Near the pond",
+      "summary": "Nico and his dog Canela count everything they see.",
+      "objective": "Count from 1 to 10.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Nico",
+            "line": "em hotep, {name}!",
+            "gloss": "Hello, {name}!",
+            "choices": [
+              {
+                "text": "nefer wer!",
+                "gloss": "Let's go!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "senebti!",
+                "gloss": "Stay healthy! (goodbye)!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Nico wants to count with you! Say let's go."
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "Nico",
+            "line": "wa, sen, khemet…",
+            "gloss": "One, two, three…",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "egyu1-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "egyu1-q5-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "n3"
+          ],
+          "hint": "Count on your fingers.",
+          "explanation": "khemet = 3.",
+          "target": "khemet",
+          "targetEnglish": "three",
+          "choices": [
+            {
+              "id": "a",
+              "text": "2"
+            },
+            {
+              "id": "b",
+              "text": "3"
+            },
+            {
+              "id": "c",
+              "text": "8"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "egyu1-q5-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Ancient Egyptian numbers.",
+          "items": [
+            "n1",
+            "n2",
+            "n3",
+            "n4",
+            "n5"
+          ],
+          "hint": "Start with one.",
+          "explanation": "wa, sen, khemet, fedu, diu: 1 to 5.",
+          "pairs": [
+            {
+              "target": "wa",
+              "english": "1"
+            },
+            {
+              "target": "sen",
+              "english": "2"
+            },
+            {
+              "target": "khemet",
+              "english": "3"
+            },
+            {
+              "target": "fedu",
+              "english": "4"
+            },
+            {
+              "target": "diu",
+              "english": "5"
+            }
+          ]
+        },
+        {
+          "id": "egyu1-q5-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "n7"
+          ],
+          "hint": "It comes after six.",
+          "explanation": "sefekh = 7.",
+          "target": "sefekh",
+          "targetEnglish": "seven",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6"
+            },
+            {
+              "id": "b",
+              "text": "7"
+            },
+            {
+              "id": "c",
+              "text": "9"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "egyu1-q5-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Ancient Egyptian: “two”",
+          "items": [
+            "n2"
+          ],
+          "hint": "It comes after one.",
+          "explanation": "sen = 2.",
+          "targetEnglish": "two",
+          "accepted": [
+            "sen"
+          ]
+        },
+        {
+          "id": "egyu1-q5-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "n10"
+          ],
+          "hint": "The last number in this lesson.",
+          "explanation": "medju = 10.",
+          "target": "medju",
+          "targetEnglish": "ten",
+          "accepted": [
+            "medju"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "basket",
+        "badge": "badge-u1"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "egyu1-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "egyu1-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "bye"
+        ],
+        "hint": "You say it when you leave.",
+        "explanation": "senebti = stay healthy! (goodbye).",
+        "target": "senebti!",
+        "targetEnglish": "Stay healthy! (goodbye)!",
+        "choices": [
+          {
+            "id": "a",
+            "text": "in peace (hello)"
+          },
+          {
+            "id": "b",
+            "text": "stay healthy! (goodbye)"
+          },
+          {
+            "id": "c",
+            "text": "thank god (thank you)"
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "egyu1-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Ancient Egyptian: “hello”",
+        "items": [
+          "hello"
+        ],
+        "hint": "The first word Luna taught you.",
+        "explanation": "em hotep = in peace (hello).",
+        "targetEnglish": "hello",
+        "accepted": [
+          "em hotep"
+        ]
+      },
+      {
+        "id": "egyu1-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "andyou"
+        ],
+        "hint": "You use it to ask back.",
+        "explanation": "entek? = And you?.",
+        "target": "entek?",
+        "targetEnglish": "And you?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "What is your name?"
+          },
+          {
+            "id": "b",
+            "text": "My heart is happy! (nice to meet you)"
+          },
+          {
+            "id": "c",
+            "text": "And you?"
+          }
+        ],
+        "answer": "c"
+      },
+      {
+        "id": "egyu1-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Ancient Egyptian: “five”",
+        "items": [
+          "n5"
+        ],
+        "hint": "Count on one hand.",
+        "explanation": "diu = 5.",
+        "targetEnglish": "five",
+        "accepted": [
+          "diu"
+        ]
+      },
+      {
+        "id": "egyu1-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in Ancient Egyptian: “My heart is happy! (nice to meet you)”",
+        "items": [
+          "nice"
+        ],
+        "hint": "What do you say when you meet someone?",
+        "explanation": "hotep ib-i! = My heart is happy! (nice to meet you).",
+        "target": "hotep ib-i!",
+        "targetEnglish": "My heart is happy! (nice to meet you)",
+        "accepted": [
+          "hotep ib-i!"
+        ]
+      }
+    ]
+  }
+}

@@ -21,16 +21,29 @@ struct MenuView: View {
                         .accessibilityAddTraits(.isHeader)
                     if let prof = model.profile {
                         explorerCard(prof)
-                        Card {
-                            VStack(alignment: .leading, spacing: 10) {
-                                Text("Choose a language").font(.title3.bold())
-                                ForEach(model.courseSummaries) { s in
-                                    LanguageRow(summary: s) { model.chooseLanguage(s.courseId) }
+                        RecentLessonView()
+                        ForEach(CourseCategory.allCases, id: \.self) { section in
+                            let rows = model.courseSummaries.filter { $0.category == section }
+                            if !rows.isEmpty {
+                                Card {
+                                    VStack(alignment: .leading, spacing: 10) {
+                                        Text(section.title).font(.title3.bold())
+                                            .accessibilityAddTraits(.isHeader)
+                                            .accessibilityIdentifier("section-\(section.rawValue)")
+                                        if section != .modern {
+                                            Text(section == .african ? "Starter lessons: greetings, names, polite words and numbers."
+                                                                     : "Starter lessons in languages from the ancient world.")
+                                                .font(.caption).foregroundStyle(Color(p.secondaryText))
+                                        }
+                                        ForEach(rows) { s in
+                                            LanguageRow(summary: s) { model.chooseLanguage(s.courseId) }
+                                        }
+                                    }
                                 }
-                                Text("Progress in each language is kept when you switch.")
-                                    .font(.caption).foregroundStyle(Color(p.secondaryText))
                             }
                         }
+                        Text("Progress in each language is kept when you switch.")
+                            .font(.caption).foregroundStyle(Color(p.secondaryText))
                         if model.save.profiles.count > 1 { explorersCard }
                     }
                 }
@@ -236,5 +249,98 @@ struct LanguageRow: View {
         .accessibilityValue(summary.isActive ? "Learning now" : "")
         .accessibilityHint(action != nil ? "Opens \(summary.language)" : (summary.isActive ? "" : "Switches to \(summary.language)"))
         .accessibilityIdentifier("course-\(summary.courseId)")
+    }
+}
+
+/// "Recent lesson" on the main menu: the last quest, a button to keep going,
+/// and one quick flashcard from words practiced in earlier lessons.
+struct RecentLessonView: View {
+    @EnvironmentObject var model: AppModel
+    @Environment(\.palette) var p
+    @State private var seed = UInt64.random(in: 1...UInt64.max)
+    @State private var flipped = false
+    @State private var answered: Bool?
+    /// The card on screen stays put after answering (recording changes which word is due).
+    @State private var shown: Flashcard?
+
+    var body: some View {
+        if let prof = model.profile,
+           let r = RecentLessonCard.compute(prof, libraries: model.libraries, now: Date(), seed: seed) {
+            Card {
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack {
+                        Label("Recent lesson", systemImage: "clock.arrow.circlepath").font(.headline)
+                        Spacer()
+                        Text(r.flag).font(.title2).accessibilityHidden(true)
+                    }
+                    Button { model.chooseLanguage(r.courseId) } label: {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(r.questTitle).font(.subheadline.bold())
+                                Text(r.language).font(.caption).foregroundStyle(Color(p.secondaryText))
+                            }
+                            Spacer()
+                            Text("Continue").font(.subheadline.bold())
+                            Image(systemName: "chevron.right")
+                        }
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Continue \(r.language): \(r.questTitle)")
+                    .accessibilityIdentifier("recentContinue")
+                    if let card = shown ?? r.card { quickCard(card, courseId: r.courseId) }
+                }
+            }
+        }
+    }
+
+    private func roman(_ v: VText, _ courseId: String) -> String? {
+        guard model.profile?.settings.romanizationOn ?? true else { return nil }
+        return model.libraries[courseId]?.course.romanize(v.base)
+    }
+
+    @ViewBuilder
+    private func quickCard(_ card: Flashcard, courseId: String) -> some View {
+        VStack(spacing: 10) {
+            Text("Quick flashcard").font(.caption.bold()).foregroundStyle(Color(p.secondaryText))
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Button { withAnimation(.easeInOut(duration: 0.2)) { flipped.toggle() } } label: {
+                VStack(spacing: 6) {
+                    if let pic = card.picture { Text(pic).font(.largeTitle).accessibilityHidden(true) }
+                    Text(flipped ? card.back : card.front.base).font(.title2.bold())
+                    if !flipped, let r = roman(card.front, courseId) { Text(r).font(.subheadline).foregroundStyle(Color(p.secondaryText)) }
+                    if flipped { Text(card.front.base).font(.subheadline).foregroundStyle(Color(p.secondaryText)) }
+                    if !flipped { Text("Tap to flip").font(.caption2).foregroundStyle(Color(p.secondaryText)) }
+                }
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity, minHeight: 110)
+                .background(Color(p.accent).opacity(0.10), in: RoundedRectangle(cornerRadius: 14))
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(flipped ? "\(card.front.base) means \(card.back)" : card.front.base)
+            .accessibilityHint(flipped ? "" : "Flips the card")
+            .accessibilityIdentifier("quickFlashcard")
+            if let a = answered {
+                HStack {
+                    Text(a ? "Nice! See you in your next review." : "No problem, it'll come back soon.").font(.subheadline)
+                    Spacer()
+                    Button("Another") { seed &+= 1; flipped = false; answered = nil; shown = nil }.font(.subheadline.bold())
+                        .accessibilityIdentifier("quickAnother")
+                }
+            } else if flipped {
+                HStack(spacing: 10) {
+                    Button("Still learning") { record(card, courseId, false) }.buttonStyle(SecondaryButtonStyle())
+                    Button("I knew it") { record(card, courseId, true) }.buttonStyle(PrimaryButtonStyle())
+                        .accessibilityIdentifier("quickKnewIt")
+                }
+            }
+        }
+    }
+
+    private func record(_ card: Flashcard, _ courseId: String, _ knewIt: Bool) {
+        let libs = model.libraries
+        shown = card
+        model.updateProfile { RecentLessonCard.record(card, courseId: courseId, knewIt: knewIt, profile: &$0, libraries: libs, now: Date()) }
+        model.sfx(knewIt ? .correct : .retry)
+        answered = knewIt
     }
 }

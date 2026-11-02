@@ -7,6 +7,7 @@ public struct CourseSummary: Hashable, Identifiable, Sendable {
     public var language: String
     public var nativeName: String
     public var flag: String
+    public var category: CourseCategory
     public var isActive: Bool
     public var started: Bool
     public var questsDone: Int
@@ -32,6 +33,7 @@ public enum CourseOverview {
             return CourseSummary(
                 courseId: id, language: lib.course.displayLanguage, nativeName: lib.course.nativeName ?? lib.course.displayLanguage,
                 flag: lib.course.variant(variant)?.flagEmoji ?? lib.course.variants.first?.flagEmoji ?? "🌐",
+                category: lib.course.section,
                 isActive: active, started: active || snap != nil,
                 questsDone: quests.filter { progress.completedQuests.contains($0.id) }.count,
                 questsTotal: quests.count,
@@ -121,7 +123,7 @@ extension Catalog {
     public static func badge(anyId id: String) -> Badge? {
         let parts = id.split(separator: ":", maxSplits: 1).map(String.init)
         let (course, base) = parts.count == 2 ? (parts[0], parts[1]) : ("en-es", id)
-        guard var b = badge(base), let names = heroNames[course] else { return nil }
+        guard var b = badge(base), let names = heroNames[course] ?? generatedHeroNames[course] else { return nil }
         b.id = id
         switch base {
         case "badge-u1": b.name = names.unit1

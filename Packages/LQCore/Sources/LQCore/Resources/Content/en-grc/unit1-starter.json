@@ -1,0 +1,1197 @@
+{
+  "id": "grcu1-starter",
+  "version": 1,
+  "order": 1,
+  "title": "Greetings & Introductions",
+  "targetTitle": "χαῖρε!",
+  "world": "starter-village",
+  "objective": "Greet people, introduce yourself, ask how someone is, use polite words, and count to ten.",
+  "canDo": [
+    "I can greet people and say goodbye.",
+    "I can say my name and ask someone's name.",
+    "I can ask how someone is and answer.",
+    "I can say thank you and use polite words.",
+    "I can count from 1 to 10."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Low",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons"
+    ]
+  },
+  "ageBands": [
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Starter unit written by the development team. Needs review by a native speaker or specialist in the ancient language before release. Audio uses on-device text-to-speech, which may not exist for this language."
+  },
+  "vocabulary": [
+    {
+      "id": "hello",
+      "kind": "word",
+      "target": "χαῖρε",
+      "english": "hello (to one person)",
+      "picture": "👋",
+      "altText": "a waving hand"
+    },
+    {
+      "id": "g2",
+      "kind": "word",
+      "target": "χαίρετε",
+      "english": "hello (to several people)"
+    },
+    {
+      "id": "g3",
+      "kind": "word",
+      "target": "ὦ φίλε",
+      "english": "my friend!"
+    },
+    {
+      "id": "bye",
+      "kind": "word",
+      "target": "ἔρρωσο",
+      "english": "farewell (be strong)"
+    },
+    {
+      "id": "please",
+      "kind": "word",
+      "target": "εἰ βούλει",
+      "english": "please (if you wish)"
+    },
+    {
+      "id": "thanks",
+      "kind": "word",
+      "target": "χάριν οἶδα",
+      "english": "thank you (I'm grateful)",
+      "picture": "🙏",
+      "altText": "hands pressed together"
+    },
+    {
+      "id": "sorry",
+      "kind": "word",
+      "target": "σύγγνωθί μοι",
+      "english": "forgive me"
+    },
+    {
+      "id": "yes",
+      "kind": "word",
+      "target": "ναί",
+      "english": "yes"
+    },
+    {
+      "id": "no",
+      "kind": "word",
+      "target": "οὔ",
+      "english": "no"
+    },
+    {
+      "id": "n1",
+      "kind": "word",
+      "target": "εἷς",
+      "english": "one (1)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n2",
+      "kind": "word",
+      "target": "δύο",
+      "english": "two (2)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n3",
+      "kind": "word",
+      "target": "τρεῖς",
+      "english": "three (3)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n4",
+      "kind": "word",
+      "target": "τέτταρες",
+      "english": "four (4)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n5",
+      "kind": "word",
+      "target": "πέντε",
+      "english": "five (5)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n6",
+      "kind": "word",
+      "target": "ἕξ",
+      "english": "six (6)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n7",
+      "kind": "word",
+      "target": "ἑπτά",
+      "english": "seven (7)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n8",
+      "kind": "word",
+      "target": "ὀκτώ",
+      "english": "eight (8)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n9",
+      "kind": "word",
+      "target": "ἐννέα",
+      "english": "nine (9)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n10",
+      "kind": "word",
+      "target": "δέκα",
+      "english": "ten (10)",
+      "partOfSpeech": "number"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "whatname",
+      "kind": "phrase",
+      "target": "τί σοι ὄνομα;",
+      "english": "What's your name?"
+    },
+    {
+      "id": "myname",
+      "kind": "phrase",
+      "target": "ὄνομά μοι ….",
+      "english": "My name is ….",
+      "example": {
+        "target": "ὄνομά μοι Ματθαῖος.",
+        "english": "My name is Mateo."
+      }
+    },
+    {
+      "id": "nice",
+      "kind": "phrase",
+      "target": "ἥδομαί σε ἰδών!",
+      "english": "I'm glad to see you!"
+    },
+    {
+      "id": "how",
+      "kind": "phrase",
+      "target": "πῶς ἔχεις;",
+      "english": "How are you?"
+    },
+    {
+      "id": "imfine",
+      "kind": "phrase",
+      "target": "καλῶς ἔχω.",
+      "english": "I'm well."
+    },
+    {
+      "id": "andyou",
+      "kind": "phrase",
+      "target": "καὶ σύ;",
+      "english": "And you?"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "grcn-u1-1",
+      "title": "Alpha, beta…",
+      "body": "The word alphabet comes from the first two Greek letters, alpha (α) and beta (β). Thousands of English words come from Greek: telephone, dinosaur, planet…"
+    },
+    {
+      "id": "grcn-u1-2",
+      "title": "Accents and breathings",
+      "body": "Ancient Greek marks pitch accents (ά ὰ ᾶ) and “breathings” on words starting with a vowel: ἁ means an h sound (ha), ἀ means none (a)."
+    },
+    {
+      "id": "grcn-u1-3",
+      "title": "The agora",
+      "body": "The agora (ἀγορά) was the heart of a Greek city: a market where people also met to talk, argue and vote."
+    }
+  ],
+  "quests": [
+    {
+      "id": "grcu1-q1",
+      "order": 1,
+      "title": "Hello, village!",
+      "npc": "luna",
+      "location": "Luna's house",
+      "summary": "Luna shows you around and teaches the first greetings.",
+      "objective": "Greet people and say goodbye.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "χαῖρε, ὦ ξένε! ἐγώ εἰμι Λούνα.",
+            "gloss": "Hello, guest! I am Luna.",
+            "choices": [
+              {
+                "text": "χαῖρε!",
+                "gloss": "Hello (to one person)!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "ἔρρωσο!",
+                "gloss": "Farewell (be strong)!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Luna just said hello! Try χαῖρε."
+              }
+            ],
+            "hint": "Coco says: Answer with χαῖρε (khaîre)."
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "εὖ γε! ἴωμεν.",
+            "gloss": "Well done! Let's go.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "grcu1-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "grcu1-q1-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "bye"
+          ],
+          "hint": "You say it when you leave.",
+          "explanation": "ἔρρωσο (érrhōso) = farewell (be strong).",
+          "target": "ἔρρωσο!",
+          "targetEnglish": "Farewell (be strong)!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "hello (to one person)"
+            },
+            {
+              "id": "b",
+              "text": "hello (to several people)"
+            },
+            {
+              "id": "c",
+              "text": "farewell (be strong)"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "grcu1-q1-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Ancient Greek to the English.",
+          "items": [
+            "hello",
+            "g2",
+            "g3",
+            "bye"
+          ],
+          "hint": "Start with the ones you're sure of.",
+          "explanation": "Greetings: χαῖρε, χαίρετε, ὦ φίλε, ἔρρωσο.",
+          "pairs": [
+            {
+              "target": "χαῖρε",
+              "english": "hello (to one person)"
+            },
+            {
+              "target": "χαίρετε",
+              "english": "hello (to several people)"
+            },
+            {
+              "target": "ὦ φίλε",
+              "english": "my friend!"
+            },
+            {
+              "target": "ἔρρωσο",
+              "english": "farewell (be strong)"
+            }
+          ]
+        },
+        {
+          "id": "grcu1-q1-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Say the same greeting back.",
+          "explanation": "χαῖρε (khaîre) = hello (to one person).",
+          "target": "χαῖρε!",
+          "targetEnglish": "Hello (to one person)!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "εἰ βούλει!"
+            },
+            {
+              "id": "b",
+              "text": "χαῖρε!"
+            },
+            {
+              "id": "c",
+              "text": "ἔρρωσο!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "grcu1-q1-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Listen first, then copy the sound.",
+          "explanation": "χαῖρε (khaîre) = hello (to one person).",
+          "target": "χαῖρε!",
+          "targetEnglish": "Hello (to one person)!",
+          "accepted": [
+            "χαῖρε",
+            "khaîre"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "scarf-yellow"
+      }
+    },
+    {
+      "id": "grcu1-q2",
+      "order": 2,
+      "title": "What's your name?",
+      "npc": "mateo",
+      "location": "The plaza",
+      "summary": "Mateo wants to know your name.",
+      "objective": "Ask someone's name and say your own.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Mateo",
+            "line": "χαῖρε! ὄνομά μοι Ματθαῖος. τί σοι ὄνομα;",
+            "gloss": "Hello! My name is Mateo. What's your name?",
+            "choices": [
+              {
+                "text": "ὄνομά μοι {name}.",
+                "gloss": "My name is {name}.",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "χάριν οἶδα!",
+                "gloss": "Thank you (i'm grateful)!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Mateo asked your name! Say your name."
+              }
+            ],
+            "hint": "Coco says: Copy how Mateo said his name, then use yours."
+          },
+          {
+            "id": "n2",
+            "speaker": "Mateo",
+            "line": "ἥδομαί σε ἰδών, {name}!",
+            "gloss": "I'm glad to see you, {name}!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "grcu1-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "grcu1-q2-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "whatname"
+          ],
+          "hint": "Mateo asks this when he meets someone.",
+          "explanation": "τί σοι ὄνομα; (tí soi ónoma?) = What's your name?.",
+          "target": "τί σοι ὄνομα;",
+          "targetEnglish": "What's your name?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "What's your name?"
+            },
+            {
+              "id": "b",
+              "text": "How are you?"
+            },
+            {
+              "id": "c",
+              "text": "And you?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "grcu1-q2-a2",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “My name is Mateo.”",
+          "items": [
+            "myname"
+          ],
+          "hint": "Start with ὄνομά.",
+          "explanation": "ὄνομά μοι Ματθαῖος. = My name is Mateo.",
+          "tiles": [
+            "ὄνομά",
+            "μοι",
+            "Ματθαῖος"
+          ],
+          "targetEnglish": "My name is Mateo.",
+          "distractors": [
+            "χαῖρε"
+          ]
+        },
+        {
+          "id": "grcu1-q2-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "nice"
+          ],
+          "hint": "You say it when you meet someone new.",
+          "explanation": "ἥδομαί σε ἰδών! (hḗdomaí se idṓn!) = I'm glad to see you!.",
+          "target": "ἥδομαί σε ἰδών!",
+          "targetEnglish": "I'm glad to see you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How are you?"
+            },
+            {
+              "id": "b",
+              "text": "farewell (be strong)"
+            },
+            {
+              "id": "c",
+              "text": "I'm glad to see you!"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "grcu1-q2-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Ancient Greek: “I'm glad to see you!”",
+          "items": [
+            "nice"
+          ],
+          "hint": "Mateo said it after hearing your name. You can type hḗdomaí se idṓn!.",
+          "explanation": "ἥδομαί σε ἰδών! (hḗdomaí se idṓn!) = I'm glad to see you!.",
+          "targetEnglish": "I'm glad to see you!",
+          "accepted": [
+            "ἥδομαί σε ἰδών!",
+            "hḗdomaí se idṓn!"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "cap-red"
+      }
+    },
+    {
+      "id": "grcu1-q3",
+      "order": 3,
+      "title": "How are you?",
+      "npc": "dona-rosa",
+      "location": "The bakery",
+      "summary": "Doña Rosa the baker asks how you are.",
+      "objective": "Ask how someone is and answer.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Doña Rosa",
+            "line": "χαῖρε! πῶς ἔχεις;",
+            "gloss": "Hello! How are you?",
+            "choices": [
+              {
+                "text": "καλῶς ἔχω. καὶ σύ;",
+                "gloss": "I'm well. And you?",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "ὄνομά μοι Ματθαῖος.",
+                "gloss": "My name is Mateo.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "She asked how you are, not your name!"
+              }
+            ],
+            "hint": "Coco says: Say how you are, then ask back: καὶ σύ;"
+          },
+          {
+            "id": "n2",
+            "speaker": "Doña Rosa",
+            "line": "καὶ ἐγὼ καλῶς ἔχω!",
+            "gloss": "I'm well too!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "grcu1-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "grcu1-q3-a1",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "how",
+            "imfine"
+          ],
+          "hint": "She wants to know how you are.",
+          "explanation": "καλῶς ἔχω. (kalôs ékhō.) = I'm well..",
+          "target": "πῶς ἔχεις;",
+          "targetEnglish": "How are you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "τί σοι ὄνομα;"
+            },
+            {
+              "id": "b",
+              "text": "καλῶς ἔχω."
+            },
+            {
+              "id": "c",
+              "text": "ἔρρωσο!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "grcu1-q3-a2",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "andyou"
+          ],
+          "hint": "You use it to ask the question back.",
+          "explanation": "καὶ σύ; (kaì sý?) = And you?.",
+          "target": "καὶ σύ;",
+          "targetEnglish": "And you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How are you?"
+            },
+            {
+              "id": "b",
+              "text": "And you?"
+            },
+            {
+              "id": "c",
+              "text": "What's your name?"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "grcu1-q3-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "how"
+          ],
+          "hint": "Doña Rosa asked you this.",
+          "explanation": "πῶς ἔχεις; (pôs ékheis?) = How are you?.",
+          "target": "πῶς ἔχεις;",
+          "targetEnglish": "How are you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How are you?"
+            },
+            {
+              "id": "b",
+              "text": "What's your name?"
+            },
+            {
+              "id": "c",
+              "text": "I'm glad to see you!"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "grcu1-q3-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "imfine"
+          ],
+          "hint": "Say it slowly.",
+          "explanation": "καλῶς ἔχω. (kalôs ékhō.) = I'm well..",
+          "target": "καλῶς ἔχω.",
+          "targetEnglish": "I'm well.",
+          "accepted": [
+            "καλῶς ἔχω.",
+            "kalôs ékhō."
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "apron"
+      }
+    },
+    {
+      "id": "grcu1-q4",
+      "order": 4,
+      "title": "Magic words",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Don Pepe gives you a gift at his fruit stand.",
+      "objective": "Say thank you and use polite words.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "ἰδού, μῆλον σοί!",
+            "gloss": "Look, an apple for you!",
+            "choices": [
+              {
+                "text": "χάριν οἶδα!",
+                "gloss": "Thank you (i'm grateful)!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "σύγγνωθί μοι!",
+                "gloss": "Forgive me!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "He's giving you a present! Try χάριν οἶδα."
+              }
+            ],
+            "hint": "Coco says: When someone gives you something, say χάριν οἶδα."
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": "εὖ γε! ἔρρωσο!",
+            "gloss": "Well done! Farewell!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "grcu1-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "grcu1-q4-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Ancient Greek to the English.",
+          "items": [
+            "please",
+            "thanks",
+            "sorry",
+            "yes",
+            "no"
+          ],
+          "hint": "Thank you is the one you hear most.",
+          "explanation": "εἰ βούλει, χάριν οἶδα, σύγγνωθί μοι, ναί, οὔ.",
+          "pairs": [
+            {
+              "target": "εἰ βούλει",
+              "english": "please (if you wish)"
+            },
+            {
+              "target": "χάριν οἶδα",
+              "english": "thank you (I'm grateful)"
+            },
+            {
+              "target": "σύγγνωθί μοι",
+              "english": "forgive me"
+            },
+            {
+              "target": "ναί",
+              "english": "yes"
+            },
+            {
+              "target": "οὔ",
+              "english": "no"
+            }
+          ]
+        },
+        {
+          "id": "grcu1-q4-a2",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "thanks"
+          ],
+          "hint": "Someone gives you a present. What do you say?",
+          "explanation": "χάριν οἶδα (khárin oîda) = thank you (I'm grateful).",
+          "target": "ἰδού, μῆλον σοί!",
+          "targetEnglish": "Look, an apple for you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "χάριν οἶδα!"
+            },
+            {
+              "id": "b",
+              "text": "ἔρρωσο!"
+            },
+            {
+              "id": "c",
+              "text": "τί σοι ὄνομα;"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "grcu1-q4-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "please"
+          ],
+          "hint": "Listen for a polite word.",
+          "explanation": "εἰ βούλει = please (if you wish).",
+          "target": "εἰ βούλει",
+          "targetEnglish": "please (if you wish)",
+          "choices": [
+            {
+              "id": "a",
+              "text": "thank you (I'm grateful)"
+            },
+            {
+              "id": "b",
+              "text": "please (if you wish)"
+            },
+            {
+              "id": "c",
+              "text": "hello (to one person)"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "grcu1-q4-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Ancient Greek: “thank you (I'm grateful)”",
+          "items": [
+            "thanks"
+          ],
+          "hint": "You just said it to Don Pepe. You can type khárin oîda.",
+          "explanation": "χάριν οἶδα (khárin oîda) = thank you (I'm grateful).",
+          "targetEnglish": "thank you (I'm grateful)",
+          "accepted": [
+            "χάριν οἶδα",
+            "khárin oîda"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "glasses-round"
+      }
+    },
+    {
+      "id": "grcu1-q5",
+      "order": 5,
+      "title": "Count with Nico",
+      "npc": "nico",
+      "location": "Near the pond",
+      "summary": "Nico and his dog Canela count everything they see.",
+      "objective": "Count from 1 to 10.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Nico",
+            "line": "χαῖρε! ἀριθμῶμεν.",
+            "gloss": "Hello! Let's count.",
+            "choices": [
+              {
+                "text": "ἴωμεν!",
+                "gloss": "Let's go!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "ἔρρωσο!",
+                "gloss": "Farewell (be strong)!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Nico wants to count with you! Say let's go."
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "Nico",
+            "line": "εἷς, δύο, τρεῖς…",
+            "gloss": "One, two, three…",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "grcu1-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "grcu1-q5-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "n3"
+          ],
+          "hint": "Count on your fingers.",
+          "explanation": "τρεῖς = 3.",
+          "target": "τρεῖς",
+          "targetEnglish": "three",
+          "choices": [
+            {
+              "id": "a",
+              "text": "2"
+            },
+            {
+              "id": "b",
+              "text": "3"
+            },
+            {
+              "id": "c",
+              "text": "8"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "grcu1-q5-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Ancient Greek numbers.",
+          "items": [
+            "n1",
+            "n2",
+            "n3",
+            "n4",
+            "n5"
+          ],
+          "hint": "Start with one.",
+          "explanation": "εἷς, δύο, τρεῖς, τέτταρες, πέντε: 1 to 5.",
+          "pairs": [
+            {
+              "target": "εἷς",
+              "english": "1"
+            },
+            {
+              "target": "δύο",
+              "english": "2"
+            },
+            {
+              "target": "τρεῖς",
+              "english": "3"
+            },
+            {
+              "target": "τέτταρες",
+              "english": "4"
+            },
+            {
+              "target": "πέντε",
+              "english": "5"
+            }
+          ]
+        },
+        {
+          "id": "grcu1-q5-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "n7"
+          ],
+          "hint": "It comes after six.",
+          "explanation": "ἑπτά = 7.",
+          "target": "ἑπτά",
+          "targetEnglish": "seven",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6"
+            },
+            {
+              "id": "b",
+              "text": "7"
+            },
+            {
+              "id": "c",
+              "text": "9"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "grcu1-q5-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Ancient Greek: “two”",
+          "items": [
+            "n2"
+          ],
+          "hint": "It comes after one. You can type dýo.",
+          "explanation": "δύο = 2.",
+          "targetEnglish": "two",
+          "accepted": [
+            "δύο",
+            "dýo"
+          ]
+        },
+        {
+          "id": "grcu1-q5-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "n10"
+          ],
+          "hint": "The last number in this lesson.",
+          "explanation": "δέκα = 10.",
+          "target": "δέκα",
+          "targetEnglish": "ten",
+          "accepted": [
+            "δέκα",
+            "déka"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "basket",
+        "badge": "badge-u1"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "grcu1-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "grcu1-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "bye"
+        ],
+        "hint": "You say it when you leave.",
+        "explanation": "ἔρρωσο (érrhōso) = farewell (be strong).",
+        "target": "ἔρρωσο!",
+        "targetEnglish": "Farewell (be strong)!",
+        "choices": [
+          {
+            "id": "a",
+            "text": "hello (to one person)"
+          },
+          {
+            "id": "b",
+            "text": "farewell (be strong)"
+          },
+          {
+            "id": "c",
+            "text": "thank you (I'm grateful)"
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "grcu1-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Ancient Greek: “hello”",
+        "items": [
+          "hello"
+        ],
+        "hint": "The first word Luna taught you.",
+        "explanation": "χαῖρε (khaîre) = hello (to one person).",
+        "targetEnglish": "hello",
+        "accepted": [
+          "χαῖρε",
+          "khaîre"
+        ]
+      },
+      {
+        "id": "grcu1-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "andyou"
+        ],
+        "hint": "You use it to ask back.",
+        "explanation": "καὶ σύ; (kaì sý?) = And you?.",
+        "target": "καὶ σύ;",
+        "targetEnglish": "And you?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "What's your name?"
+          },
+          {
+            "id": "b",
+            "text": "I'm glad to see you!"
+          },
+          {
+            "id": "c",
+            "text": "And you?"
+          }
+        ],
+        "answer": "c"
+      },
+      {
+        "id": "grcu1-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Ancient Greek: “five”",
+        "items": [
+          "n5"
+        ],
+        "hint": "Count on one hand.",
+        "explanation": "πέντε = 5.",
+        "targetEnglish": "five",
+        "accepted": [
+          "πέντε",
+          "pénte"
+        ]
+      },
+      {
+        "id": "grcu1-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in Ancient Greek: “I'm glad to see you!”",
+        "items": [
+          "nice"
+        ],
+        "hint": "What do you say when you meet someone?",
+        "explanation": "ἥδομαί σε ἰδών! (hḗdomaí se idṓn!) = I'm glad to see you!.",
+        "target": "ἥδομαί σε ἰδών!",
+        "targetEnglish": "I'm glad to see you!",
+        "accepted": [
+          "ἥδομαί σε ἰδών!",
+          "hḗdomaí se idṓn!"
+        ]
+      }
+    ]
+  }
+}

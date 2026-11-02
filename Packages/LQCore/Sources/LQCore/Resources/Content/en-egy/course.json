@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "en-egy",
+  "title": "Ancient Egyptian for English speakers",
+  "sourceLanguage": "en",
+  "targetLanguage": "egy",
+  "languageName": "Ancient Egyptian",
+  "nativeName": "medu netjer",
+  "writingSystem": "latin",
+  "category": "african",
+  "defaultVariant": "egy",
+  "variants": [
+    {
+      "id": "egy",
+      "name": "Middle Egyptian",
+      "nativeName": "medu netjer",
+      "flagEmoji": "☥",
+      "voiceLocales": [],
+      "speechLocales": [],
+      "currency": {
+        "code": "DBN",
+        "singular": "deben",
+        "plural": "deben",
+        "symbol": "dbn"
+      },
+      "usesVoseo": false,
+      "note": "Middle Egyptian, the classic language of the hieroglyphs. Words use the pronunciation Egyptologists agree on (em hotep, nefer); the real ancient vowels are mostly unknown.",
+      "romanizedVoiceLocales": [
+        "en-GB",
+        "en-US"
+      ]
+    }
+  ],
+  "unitFiles": [
+    "unit1-starter.json"
+  ],
+  "typingKeys": [
+    "-"
+  ]
+}

@@ -1,0 +1,1208 @@
+{
+  "id": "you1-starter",
+  "version": 1,
+  "order": 1,
+  "title": "Greetings & Introductions",
+  "targetTitle": "Báwo ni!",
+  "world": "starter-village",
+  "objective": "Greet people, introduce yourself, ask how someone is, use polite words, and count to ten.",
+  "canDo": [
+    "I can greet people and say goodbye.",
+    "I can say my name and ask someone's name.",
+    "I can ask how someone is and answer.",
+    "I can say thank you and use polite words.",
+    "I can count from 1 to 10."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Low",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons"
+    ]
+  },
+  "ageBands": [
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Starter unit written by the development team. Needs review by a native speaker before release. Audio uses on-device text-to-speech, which may not exist for this language."
+  },
+  "vocabulary": [
+    {
+      "id": "hello",
+      "kind": "word",
+      "target": "Báwo ni",
+      "english": "hi / how are things",
+      "picture": "👋",
+      "altText": "a waving hand"
+    },
+    {
+      "id": "g2",
+      "kind": "word",
+      "target": "Ẹ káàárọ̀",
+      "english": "good morning (polite)"
+    },
+    {
+      "id": "g3",
+      "kind": "word",
+      "target": "Ẹ káalẹ́",
+      "english": "good evening (polite)"
+    },
+    {
+      "id": "g4",
+      "kind": "word",
+      "target": "Ó dàárọ̀",
+      "english": "good night",
+      "picture": "🌙",
+      "altText": "a crescent moon"
+    },
+    {
+      "id": "bye",
+      "kind": "word",
+      "target": "Ó dàbọ̀",
+      "english": "goodbye"
+    },
+    {
+      "id": "please",
+      "kind": "word",
+      "target": "Jọ̀wọ́",
+      "english": "please"
+    },
+    {
+      "id": "thanks",
+      "kind": "word",
+      "target": "O ṣé",
+      "english": "thank you (to a friend)",
+      "picture": "🙏",
+      "altText": "hands pressed together"
+    },
+    {
+      "id": "welcome",
+      "kind": "word",
+      "target": "Kò tọ́pẹ́",
+      "english": "you're welcome"
+    },
+    {
+      "id": "sorry",
+      "kind": "word",
+      "target": "Má bínú",
+      "english": "sorry"
+    },
+    {
+      "id": "yes",
+      "kind": "word",
+      "target": "Bẹ́ẹ̀ ni",
+      "english": "yes"
+    },
+    {
+      "id": "no",
+      "kind": "word",
+      "target": "Rárá",
+      "english": "no"
+    },
+    {
+      "id": "n1",
+      "kind": "word",
+      "target": "ọ̀kan",
+      "english": "one (1)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n2",
+      "kind": "word",
+      "target": "èjì",
+      "english": "two (2)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n3",
+      "kind": "word",
+      "target": "ẹ̀ta",
+      "english": "three (3)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n4",
+      "kind": "word",
+      "target": "ẹ̀rin",
+      "english": "four (4)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n5",
+      "kind": "word",
+      "target": "àrún",
+      "english": "five (5)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n6",
+      "kind": "word",
+      "target": "ẹ̀fà",
+      "english": "six (6)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n7",
+      "kind": "word",
+      "target": "èje",
+      "english": "seven (7)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n8",
+      "kind": "word",
+      "target": "ẹ̀jọ",
+      "english": "eight (8)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n9",
+      "kind": "word",
+      "target": "ẹ̀sán",
+      "english": "nine (9)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n10",
+      "kind": "word",
+      "target": "ẹ̀wá",
+      "english": "ten (10)",
+      "partOfSpeech": "number"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "whatname",
+      "kind": "phrase",
+      "target": "Kí ni orúkọ rẹ?",
+      "english": "What's your name?"
+    },
+    {
+      "id": "myname",
+      "kind": "phrase",
+      "target": "Orúkọ mi ni ….",
+      "english": "My name is ….",
+      "example": {
+        "target": "Orúkọ mi ni Mateo.",
+        "english": "My name is Mateo."
+      }
+    },
+    {
+      "id": "nice",
+      "kind": "phrase",
+      "target": "Inú mi dùn láti pàdé rẹ!",
+      "english": "Nice to meet you!"
+    },
+    {
+      "id": "how",
+      "kind": "phrase",
+      "target": "Ṣé dáadáa ni?",
+      "english": "Are you well?"
+    },
+    {
+      "id": "imfine",
+      "kind": "phrase",
+      "target": "Dáadáa ni, o ṣé.",
+      "english": "I'm fine, thanks."
+    },
+    {
+      "id": "andyou",
+      "kind": "phrase",
+      "target": "Ìwọ ńkọ́?",
+      "english": "And you?"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "yon-u1-1",
+      "title": "Ẹ and o: respect",
+      "body": "Yoruba uses ẹ (a respectful “you”) for elders and people you don't know, and o for friends. That's why good morning to an elder is Ẹ káàárọ̀, and thank you is Ẹ ṣé."
+    },
+    {
+      "id": "yon-u1-2",
+      "title": "A greeting for everything",
+      "body": "Yoruba has greetings for every time of day and almost every situation: working, eating, even coming back from a trip. Greeting elders properly is very important; boys may bow or lie down and girls may kneel."
+    },
+    {
+      "id": "yon-u1-3",
+      "title": "Tones and dots",
+      "body": "Yoruba is a tonal language. The accent marks show high (á) and low (à) tones, and the dots under ẹ, ọ and ṣ change the sound. Ọkọ can mean husband, hoe, car or spear depending on the tones!"
+    }
+  ],
+  "quests": [
+    {
+      "id": "you1-q1",
+      "order": 1,
+      "title": "Hello, village!",
+      "npc": "luna",
+      "location": "Luna's house",
+      "summary": "Luna shows you around and teaches the first greetings.",
+      "objective": "Greet people and say goodbye.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "Báwo ni! Èmi ni Luna. Ẹ káàbọ̀ sí abúlé!",
+            "gloss": "Hi! I'm Luna. Welcome to the village!",
+            "choices": [
+              {
+                "text": "Báwo ni!",
+                "gloss": "Hi / how are things!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Ó dàárọ̀!",
+                "gloss": "Good night!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Luna just said hello! Try Báwo ni."
+              }
+            ],
+            "hint": "Coco says: Answer with Báwo ni."
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "Ó dára gan-an! Ẹ jẹ́ ká kí gbogbo ènìyàn!",
+            "gloss": "Very good! Let's greet everyone!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "you1-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "you1-q1-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "bye"
+          ],
+          "hint": "You say it when you leave.",
+          "explanation": "Ó dàbọ̀ = goodbye.",
+          "target": "Ó dàbọ̀!",
+          "targetEnglish": "Goodbye!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "hi / how are things"
+            },
+            {
+              "id": "b",
+              "text": "good morning (polite)"
+            },
+            {
+              "id": "c",
+              "text": "goodbye"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "you1-q1-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Yoruba to the English.",
+          "items": [
+            "hello",
+            "g2",
+            "g3",
+            "g4",
+            "bye"
+          ],
+          "hint": "Start with the ones you're sure of.",
+          "explanation": "Greetings: Báwo ni, Ẹ káàárọ̀, Ẹ káalẹ́, Ó dàárọ̀, Ó dàbọ̀.",
+          "pairs": [
+            {
+              "target": "Báwo ni",
+              "english": "hi / how are things"
+            },
+            {
+              "target": "Ẹ káàárọ̀",
+              "english": "good morning (polite)"
+            },
+            {
+              "target": "Ẹ káalẹ́",
+              "english": "good evening (polite)"
+            },
+            {
+              "target": "Ó dàárọ̀",
+              "english": "good night"
+            },
+            {
+              "target": "Ó dàbọ̀",
+              "english": "goodbye"
+            }
+          ]
+        },
+        {
+          "id": "you1-q1-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Say the same greeting back.",
+          "explanation": "Báwo ni = hi / how are things.",
+          "target": "Báwo ni!",
+          "targetEnglish": "Hi / how are things!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Jọ̀wọ́!"
+            },
+            {
+              "id": "b",
+              "text": "Báwo ni!"
+            },
+            {
+              "id": "c",
+              "text": "Ó dàbọ̀!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "you1-q1-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Listen first, then copy the sound.",
+          "explanation": "Báwo ni = hi / how are things.",
+          "target": "Báwo ni!",
+          "targetEnglish": "Hi / how are things!",
+          "accepted": [
+            "Báwo ni"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "scarf-yellow"
+      }
+    },
+    {
+      "id": "you1-q2",
+      "order": 2,
+      "title": "What's your name?",
+      "npc": "mateo",
+      "location": "The plaza",
+      "summary": "Mateo wants to know your name.",
+      "objective": "Ask someone's name and say your own.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Mateo",
+            "line": "Báwo ni! Orúkọ mi ni Mateo. Kí ni orúkọ rẹ?",
+            "gloss": "Hi! My name is Mateo. What's your name?",
+            "choices": [
+              {
+                "text": "Orúkọ mi ni {name}.",
+                "gloss": "My name is {name}.",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "O ṣé!",
+                "gloss": "Thank you (to a friend)!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Mateo asked your name! Say your name."
+              }
+            ],
+            "hint": "Coco says: Copy how Mateo said his name, then use yours."
+          },
+          {
+            "id": "n2",
+            "speaker": "Mateo",
+            "line": "Inú mi dùn láti pàdé rẹ, {name}!",
+            "gloss": "Nice to meet you, {name}!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "you1-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "you1-q2-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "whatname"
+          ],
+          "hint": "Mateo asks this when he meets someone.",
+          "explanation": "Kí ni orúkọ rẹ? = What's your name?.",
+          "target": "Kí ni orúkọ rẹ?",
+          "targetEnglish": "What's your name?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "What's your name?"
+            },
+            {
+              "id": "b",
+              "text": "Are you well?"
+            },
+            {
+              "id": "c",
+              "text": "And you?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "you1-q2-a2",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “My name is Mateo.”",
+          "items": [
+            "myname"
+          ],
+          "hint": "Start with Orúkọ.",
+          "explanation": "Orúkọ mi ni Mateo. = My name is Mateo.",
+          "tiles": [
+            "Orúkọ",
+            "mi",
+            "ni",
+            "Mateo"
+          ],
+          "targetEnglish": "My name is Mateo.",
+          "distractors": [
+            "Báwo ni"
+          ]
+        },
+        {
+          "id": "you1-q2-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "nice"
+          ],
+          "hint": "You say it when you meet someone new.",
+          "explanation": "Inú mi dùn láti pàdé rẹ! = Nice to meet you!.",
+          "target": "Inú mi dùn láti pàdé rẹ!",
+          "targetEnglish": "Nice to meet you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Are you well?"
+            },
+            {
+              "id": "b",
+              "text": "goodbye"
+            },
+            {
+              "id": "c",
+              "text": "Nice to meet you!"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "you1-q2-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Yoruba: “Nice to meet you!”",
+          "items": [
+            "nice"
+          ],
+          "hint": "Mateo said it after hearing your name.",
+          "explanation": "Inú mi dùn láti pàdé rẹ! = Nice to meet you!.",
+          "targetEnglish": "Nice to meet you!",
+          "accepted": [
+            "Inú mi dùn láti pàdé rẹ!"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "cap-red"
+      }
+    },
+    {
+      "id": "you1-q3",
+      "order": 3,
+      "title": "How are you?",
+      "npc": "dona-rosa",
+      "location": "The bakery",
+      "summary": "Doña Rosa the baker asks how you are.",
+      "objective": "Ask how someone is and answer.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Doña Rosa",
+            "line": "Ẹ káàárọ̀! Ṣé dáadáa ni?",
+            "gloss": "Good morning! Are you well?",
+            "choices": [
+              {
+                "text": "Dáadáa ni, o ṣé. Ìwọ ńkọ́?",
+                "gloss": "I'm fine, thanks. And you?",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Orúkọ mi ni Mateo.",
+                "gloss": "My name is Mateo.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "She asked how you are, not your name!"
+              }
+            ],
+            "hint": "Coco says: Say how you are, then ask back: Ìwọ ńkọ́?"
+          },
+          {
+            "id": "n2",
+            "speaker": "Doña Rosa",
+            "line": "Èmi náà wà dáadáa, o ṣé!",
+            "gloss": "I'm fine too, thanks!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "you1-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "you1-q3-a1",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "how",
+            "imfine"
+          ],
+          "hint": "She wants to know how you are.",
+          "explanation": "Dáadáa ni, o ṣé. = I'm fine, thanks..",
+          "target": "Ṣé dáadáa ni?",
+          "targetEnglish": "Are you well?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Kí ni orúkọ rẹ?"
+            },
+            {
+              "id": "b",
+              "text": "Dáadáa ni, o ṣé."
+            },
+            {
+              "id": "c",
+              "text": "Ó dàbọ̀!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "you1-q3-a2",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "andyou"
+          ],
+          "hint": "You use it to ask the question back.",
+          "explanation": "Ìwọ ńkọ́? = And you?.",
+          "target": "Ìwọ ńkọ́?",
+          "targetEnglish": "And you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Are you well?"
+            },
+            {
+              "id": "b",
+              "text": "And you?"
+            },
+            {
+              "id": "c",
+              "text": "What's your name?"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "you1-q3-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "how"
+          ],
+          "hint": "Doña Rosa asked you this.",
+          "explanation": "Ṣé dáadáa ni? = Are you well?.",
+          "target": "Ṣé dáadáa ni?",
+          "targetEnglish": "Are you well?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Are you well?"
+            },
+            {
+              "id": "b",
+              "text": "What's your name?"
+            },
+            {
+              "id": "c",
+              "text": "Nice to meet you!"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "you1-q3-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "imfine"
+          ],
+          "hint": "Say it slowly.",
+          "explanation": "Dáadáa ni, o ṣé. = I'm fine, thanks..",
+          "target": "Dáadáa ni, o ṣé.",
+          "targetEnglish": "I'm fine, thanks.",
+          "accepted": [
+            "Dáadáa ni, o ṣé."
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "apron"
+      }
+    },
+    {
+      "id": "you1-q4",
+      "order": 4,
+      "title": "Magic words",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Don Pepe gives you a gift at his fruit stand.",
+      "objective": "Say thank you and use polite words.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "Ápù yìí jẹ́ tìrẹ!",
+            "gloss": "This apple is yours!",
+            "choices": [
+              {
+                "text": "O ṣé!",
+                "gloss": "Thank you (to a friend)!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Má bínú!",
+                "gloss": "Sorry!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "He's giving you a present! Try O ṣé."
+              }
+            ],
+            "hint": "Coco says: When someone gives you something, say O ṣé."
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": "Kò tọ́pẹ́! Ó dàbọ̀!",
+            "gloss": "You're welcome! Goodbye!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "you1-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "you1-q4-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Yoruba to the English.",
+          "items": [
+            "please",
+            "thanks",
+            "welcome",
+            "sorry",
+            "yes"
+          ],
+          "hint": "Thank you is the one you hear most.",
+          "explanation": "Jọ̀wọ́, O ṣé, Kò tọ́pẹ́, Má bínú, Bẹ́ẹ̀ ni.",
+          "pairs": [
+            {
+              "target": "Jọ̀wọ́",
+              "english": "please"
+            },
+            {
+              "target": "O ṣé",
+              "english": "thank you (to a friend)"
+            },
+            {
+              "target": "Kò tọ́pẹ́",
+              "english": "you're welcome"
+            },
+            {
+              "target": "Má bínú",
+              "english": "sorry"
+            },
+            {
+              "target": "Bẹ́ẹ̀ ni",
+              "english": "yes"
+            }
+          ]
+        },
+        {
+          "id": "you1-q4-a2",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "thanks"
+          ],
+          "hint": "Someone gives you a present. What do you say?",
+          "explanation": "O ṣé = thank you (to a friend).",
+          "target": "Ápù yìí jẹ́ tìrẹ!",
+          "targetEnglish": "This apple is yours!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "O ṣé!"
+            },
+            {
+              "id": "b",
+              "text": "Ó dàbọ̀!"
+            },
+            {
+              "id": "c",
+              "text": "Kí ni orúkọ rẹ?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "you1-q4-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "please"
+          ],
+          "hint": "Listen for a polite word.",
+          "explanation": "Jọ̀wọ́ = please.",
+          "target": "Jọ̀wọ́",
+          "targetEnglish": "please",
+          "choices": [
+            {
+              "id": "a",
+              "text": "thank you (to a friend)"
+            },
+            {
+              "id": "b",
+              "text": "please"
+            },
+            {
+              "id": "c",
+              "text": "hi / how are things"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "you1-q4-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Yoruba: “thank you (to a friend)”",
+          "items": [
+            "thanks"
+          ],
+          "hint": "You just said it to Don Pepe.",
+          "explanation": "O ṣé = thank you (to a friend).",
+          "targetEnglish": "thank you (to a friend)",
+          "accepted": [
+            "O ṣé"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "glasses-round"
+      }
+    },
+    {
+      "id": "you1-q5",
+      "order": 5,
+      "title": "Count with Nico",
+      "npc": "nico",
+      "location": "Near the pond",
+      "summary": "Nico and his dog Canela count everything they see.",
+      "objective": "Count from 1 to 10.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Nico",
+            "line": "Báwo ni! Ẹ jẹ́ ká ka títí dé ẹ̀wá!",
+            "gloss": "Hi! Let's count up to ten!",
+            "choices": [
+              {
+                "text": "Ẹ jẹ́ ká lọ!",
+                "gloss": "Let's go!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Ó dàbọ̀!",
+                "gloss": "Goodbye!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Nico wants to count with you! Say let's go."
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "Nico",
+            "line": "Ọ̀kan, èjì, ẹ̀ta… ẹ jẹ́ ká lọ!",
+            "gloss": "One, two, three… let's go!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "you1-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "you1-q5-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "n3"
+          ],
+          "hint": "Count on your fingers.",
+          "explanation": "ẹ̀ta = 3.",
+          "target": "ẹ̀ta",
+          "targetEnglish": "three",
+          "choices": [
+            {
+              "id": "a",
+              "text": "2"
+            },
+            {
+              "id": "b",
+              "text": "3"
+            },
+            {
+              "id": "c",
+              "text": "8"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "you1-q5-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Yoruba numbers.",
+          "items": [
+            "n1",
+            "n2",
+            "n3",
+            "n4",
+            "n5"
+          ],
+          "hint": "Start with one.",
+          "explanation": "ọ̀kan, èjì, ẹ̀ta, ẹ̀rin, àrún: 1 to 5.",
+          "pairs": [
+            {
+              "target": "ọ̀kan",
+              "english": "1"
+            },
+            {
+              "target": "èjì",
+              "english": "2"
+            },
+            {
+              "target": "ẹ̀ta",
+              "english": "3"
+            },
+            {
+              "target": "ẹ̀rin",
+              "english": "4"
+            },
+            {
+              "target": "àrún",
+              "english": "5"
+            }
+          ]
+        },
+        {
+          "id": "you1-q5-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "n7"
+          ],
+          "hint": "It comes after six.",
+          "explanation": "èje = 7.",
+          "target": "èje",
+          "targetEnglish": "seven",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6"
+            },
+            {
+              "id": "b",
+              "text": "7"
+            },
+            {
+              "id": "c",
+              "text": "9"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "you1-q5-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Yoruba: “two”",
+          "items": [
+            "n2"
+          ],
+          "hint": "It comes after one.",
+          "explanation": "èjì = 2.",
+          "targetEnglish": "two",
+          "accepted": [
+            "èjì"
+          ]
+        },
+        {
+          "id": "you1-q5-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "n10"
+          ],
+          "hint": "The last number in this lesson.",
+          "explanation": "ẹ̀wá = 10.",
+          "target": "ẹ̀wá",
+          "targetEnglish": "ten",
+          "accepted": [
+            "ẹ̀wá"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "basket",
+        "badge": "badge-u1"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "you1-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "you1-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "bye"
+        ],
+        "hint": "You say it when you leave.",
+        "explanation": "Ó dàbọ̀ = goodbye.",
+        "target": "Ó dàbọ̀!",
+        "targetEnglish": "Goodbye!",
+        "choices": [
+          {
+            "id": "a",
+            "text": "hi / how are things"
+          },
+          {
+            "id": "b",
+            "text": "goodbye"
+          },
+          {
+            "id": "c",
+            "text": "thank you (to a friend)"
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "you1-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Yoruba: “hello”",
+        "items": [
+          "hello"
+        ],
+        "hint": "The first word Luna taught you.",
+        "explanation": "Báwo ni = hi / how are things.",
+        "targetEnglish": "hello",
+        "accepted": [
+          "Báwo ni"
+        ]
+      },
+      {
+        "id": "you1-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "andyou"
+        ],
+        "hint": "You use it to ask back.",
+        "explanation": "Ìwọ ńkọ́? = And you?.",
+        "target": "Ìwọ ńkọ́?",
+        "targetEnglish": "And you?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "What's your name?"
+          },
+          {
+            "id": "b",
+            "text": "Nice to meet you!"
+          },
+          {
+            "id": "c",
+            "text": "And you?"
+          }
+        ],
+        "answer": "c"
+      },
+      {
+        "id": "you1-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Yoruba: “five”",
+        "items": [
+          "n5"
+        ],
+        "hint": "Count on one hand.",
+        "explanation": "àrún = 5.",
+        "targetEnglish": "five",
+        "accepted": [
+          "àrún"
+        ]
+      },
+      {
+        "id": "you1-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in Yoruba: “Nice to meet you!”",
+        "items": [
+          "nice"
+        ],
+        "hint": "What do you say when you meet someone?",
+        "explanation": "Inú mi dùn láti pàdé rẹ! = Nice to meet you!.",
+        "target": "Inú mi dùn láti pàdé rẹ!",
+        "targetEnglish": "Nice to meet you!",
+        "accepted": [
+          "Inú mi dùn láti pàdé rẹ!"
+        ]
+      }
+    ]
+  }
+}

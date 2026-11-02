@@ -71,15 +71,29 @@ xcodebuild -project LanguageQuest.xcodeproj -scheme LanguageQuest \
 
 The app now opens on a **main menu**: Play, your three languages with flags and progress (tap one to switch), a Today card, and buttons for Games, Flashcards, Review, Phrasebook, Kana Dojo (Japanese), Quest journal, Wardrobe, Bag, Settings and Parents. In the village, the house button goes back to the menu and the flag button switches language. Also new: flashcards, the Kana Dojo, a day/night tint, a lesson theme for each language (reggaeton, a Paris waltz, Tokyo pop) and badges per language.
 
-## Languages (v0.3)
+## Languages (v0.5)
 
-| Course | Varieties | Units | Notes |
+The main menu lists languages in three sections. Pick one to open its page; your progress in each is kept.
+
+| Section | Course | Size | Notes |
 |---|---|---|---|
-| Spanish | Latin America (general), Mexico, Spain, Argentina (voseo), Colombia, Caribbean | 3 units · 15 quests | |
-| French | France, Québec | 3 units · 15 quests | Québec words: bienvenue, le déjeuner (breakfast), brun; prices in euros or Canadian dollars |
-| Japanese | Standard | 3 units · 15 quests | Hiragana and katakana with spaces between words, romaji shown underneath (can be turned off); answers in kana or romaji; long vowels forgiven; prices in yen |
+| Choose a language | Spanish (6 regional varieties) | 3 units · 15 quests | |
+| | French (France, Québec) | 3 units · 15 quests | |
+| | Japanese | 3 units · 15 quests | Kana with romaji; Kana Dojo |
+| | German | Starter: 1 unit · 5 quests | |
+| | Italian | Starter | |
+| | Chinese (Mandarin, simplified) | Starter | Characters with pinyin; type either |
+| African Languages | Yoruba | Starter | Tone marks optional when typing; no iOS voice, so audio reads the spelling with an English voice |
+| | Hebrew (modern) | Starter | Right to left, Latin spelling underneath |
+| | Ancient Egyptian (Middle Egyptian) | Starter | Egyptologists' pronunciation (em hotep, nefer); read with an English voice |
+| | Amharic | Starter | Ge'ez (Fidel) script with Latin spelling; no iOS voice, so audio reads the spelling |
+| Old Languages | Ancient Greek (Attic) | Starter | Read aloud with a modern Greek voice |
+| | Latin (Classical) | Starter | Read aloud with an Italian voice |
+| | Biblical Hebrew | Starter | Vowel points; read aloud with a modern Hebrew voice |
 
-Choose the language during onboarding, or switch it any time from the menu, the flag button in the village, or Settings. Each language keeps its own progress, while XP, items and badges are shared. **All three courses are authored but not yet linguist-reviewed.**
+Starter units cover greetings, names, how are you, polite words and numbers 1–10, with a mastery check. Hebrew appears twice on purpose: modern Hebrew under African Languages (as requested) and Biblical Hebrew under Old Languages. Every non-Latin string has an authored Latin spelling (tested). **All courses are authored by the dev team and not yet reviewed by native speakers or specialists; the ancient languages especially need a specialist's check.**
+
+The main menu also shows a **Recent lesson** card: the last quest you practiced, a Continue button, and a quick flashcard from words you've already met (it records into the right language even if you've switched).
 
 ## Editing content
 

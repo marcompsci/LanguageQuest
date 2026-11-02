@@ -24,7 +24,9 @@ public struct PlaceSign: Hashable, Sendable {
     public var other: [String: String] = [:]
 
     /// The sign's text in a target language (Spanish if missing).
-    public func text(_ language: String) -> String { language == "es" ? spanish : other[language] ?? spanish }
+    public func text(_ language: String) -> String {
+        language == "es" ? spanish : other[language] ?? StarterVillage.generatedSigns[english]?[language] ?? spanish
+    }
 }
 
 /// The first explorable world. Map is text so designers can edit it without code.

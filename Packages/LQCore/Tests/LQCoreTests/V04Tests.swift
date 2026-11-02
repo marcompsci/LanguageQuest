@@ -13,7 +13,7 @@ final class V04Tests: XCTestCase {
         for a in l["en-es"]!.units[0].quests[0].activities { prog.complete(activity: a, outcome: .init(correct: true), profile: &p, now: Date()) }
         p.switchCourse(to: "en-fr", defaultVariant: "fr-CA")
         let s = CourseOverview.summaries(p, libraries: l, order: ContentLibrary.bundledCourseIds)
-        XCTAssertEqual(s.map(\.courseId), ["en-es", "en-fr", "en-ja"])
+        XCTAssertEqual(Array(s.map(\.courseId).prefix(3)), ["en-es", "en-fr", "en-ja"])
         XCTAssertEqual(s[0].questsDone, 1, "Spanish progress shown while French is active")
         XCTAssertEqual(s[0].flag, "🇦🇷", "flag follows the parked variant")
         XCTAssertGreaterThan(s[0].wordsMet, 0)

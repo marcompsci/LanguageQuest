@@ -4,6 +4,8 @@
   "title": "Spanish for English speakers",
   "sourceLanguage": "en",
   "targetLanguage": "es",
+  "languageName": "Spanish",
+  "nativeName": "Español",
   "defaultVariant": "es-419",
   "variants": [
     {

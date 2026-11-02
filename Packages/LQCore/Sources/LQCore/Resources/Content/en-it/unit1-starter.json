@@ -1,0 +1,1207 @@
+{
+  "id": "itu1-starter",
+  "version": 1,
+  "order": 1,
+  "title": "Greetings & Introductions",
+  "targetTitle": "Ciao!",
+  "world": "starter-village",
+  "objective": "Greet people, introduce yourself, ask how someone is, use polite words, and count to ten.",
+  "canDo": [
+    "I can greet people and say goodbye.",
+    "I can say my name and ask someone's name.",
+    "I can ask how someone is and answer.",
+    "I can say thank you and use polite words.",
+    "I can count from 1 to 10."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Low",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons"
+    ]
+  },
+  "ageBands": [
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Starter unit written by the development team. Needs review by a native speaker before release. Audio uses on-device text-to-speech, which may not exist for this language."
+  },
+  "vocabulary": [
+    {
+      "id": "hello",
+      "kind": "word",
+      "target": "Ciao",
+      "english": "hi / bye",
+      "picture": "👋",
+      "altText": "a waving hand"
+    },
+    {
+      "id": "g2",
+      "kind": "word",
+      "target": "Buongiorno",
+      "english": "good morning / good day"
+    },
+    {
+      "id": "g3",
+      "kind": "word",
+      "target": "Buonasera",
+      "english": "good evening"
+    },
+    {
+      "id": "g4",
+      "kind": "word",
+      "target": "Buonanotte",
+      "english": "good night",
+      "picture": "🌙",
+      "altText": "a crescent moon"
+    },
+    {
+      "id": "bye",
+      "kind": "word",
+      "target": "Arrivederci",
+      "english": "goodbye"
+    },
+    {
+      "id": "please",
+      "kind": "word",
+      "target": "Per favore",
+      "english": "please"
+    },
+    {
+      "id": "thanks",
+      "kind": "word",
+      "target": "Grazie",
+      "english": "thank you",
+      "picture": "🙏",
+      "altText": "hands pressed together"
+    },
+    {
+      "id": "welcome",
+      "kind": "word",
+      "target": "Prego",
+      "english": "you're welcome"
+    },
+    {
+      "id": "sorry",
+      "kind": "word",
+      "target": "Scusa",
+      "english": "sorry / excuse me"
+    },
+    {
+      "id": "yes",
+      "kind": "word",
+      "target": "Sì",
+      "english": "yes"
+    },
+    {
+      "id": "no",
+      "kind": "word",
+      "target": "No",
+      "english": "no"
+    },
+    {
+      "id": "n1",
+      "kind": "word",
+      "target": "uno",
+      "english": "one (1)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n2",
+      "kind": "word",
+      "target": "due",
+      "english": "two (2)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n3",
+      "kind": "word",
+      "target": "tre",
+      "english": "three (3)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n4",
+      "kind": "word",
+      "target": "quattro",
+      "english": "four (4)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n5",
+      "kind": "word",
+      "target": "cinque",
+      "english": "five (5)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n6",
+      "kind": "word",
+      "target": "sei",
+      "english": "six (6)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n7",
+      "kind": "word",
+      "target": "sette",
+      "english": "seven (7)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n8",
+      "kind": "word",
+      "target": "otto",
+      "english": "eight (8)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n9",
+      "kind": "word",
+      "target": "nove",
+      "english": "nine (9)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "n10",
+      "kind": "word",
+      "target": "dieci",
+      "english": "ten (10)",
+      "partOfSpeech": "number"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "whatname",
+      "kind": "phrase",
+      "target": "Come ti chiami?",
+      "english": "What's your name?"
+    },
+    {
+      "id": "myname",
+      "kind": "phrase",
+      "target": "Mi chiamo ….",
+      "english": "My name is ….",
+      "example": {
+        "target": "Mi chiamo Mateo.",
+        "english": "My name is Mateo."
+      }
+    },
+    {
+      "id": "nice",
+      "kind": "phrase",
+      "target": "Piacere!",
+      "english": "Nice to meet you!"
+    },
+    {
+      "id": "how",
+      "kind": "phrase",
+      "target": "Come stai?",
+      "english": "How are you?"
+    },
+    {
+      "id": "imfine",
+      "kind": "phrase",
+      "target": "Bene, grazie.",
+      "english": "Fine, thanks."
+    },
+    {
+      "id": "andyou",
+      "kind": "phrase",
+      "target": "E tu?",
+      "english": "And you?"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "itn-u1-1",
+      "title": "Tu and Lei",
+      "body": "Italian has a friendly “you” (tu) and a polite “you” (Lei) for adults you don't know well, like a shopkeeper or a teacher."
+    },
+    {
+      "id": "itn-u1-2",
+      "title": "Ciao both ways",
+      "body": "Ciao means both hi and bye between friends. With adults, use buongiorno during the day and buonasera from the afternoon on."
+    },
+    {
+      "id": "itn-u1-3",
+      "title": "Two kisses",
+      "body": "Friends and family often greet with two light kisses on the cheeks, starting on the right. A handshake is normal for a first meeting."
+    }
+  ],
+  "quests": [
+    {
+      "id": "itu1-q1",
+      "order": 1,
+      "title": "Hello, village!",
+      "npc": "luna",
+      "location": "Luna's house",
+      "summary": "Luna shows you around and teaches the first greetings.",
+      "objective": "Greet people and say goodbye.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "Ciao! Sono Luna. Benvenuto nel villaggio!",
+            "gloss": "Hi! I'm Luna. Welcome to the village!",
+            "choices": [
+              {
+                "text": "Ciao!",
+                "gloss": "Hi / bye!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Buonanotte!",
+                "gloss": "Good night!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Luna just said hello! Try Ciao."
+              }
+            ],
+            "hint": "Coco says: Answer with Ciao."
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "Molto bene! Andiamo a salutare tutti!",
+            "gloss": "Very good! Let's go say hello to everyone!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "itu1-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "itu1-q1-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "bye"
+          ],
+          "hint": "You say it when you leave.",
+          "explanation": "Arrivederci = goodbye.",
+          "target": "Arrivederci!",
+          "targetEnglish": "Goodbye!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "hi / bye"
+            },
+            {
+              "id": "b",
+              "text": "good morning / good day"
+            },
+            {
+              "id": "c",
+              "text": "goodbye"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "itu1-q1-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Italian to the English.",
+          "items": [
+            "hello",
+            "g2",
+            "g3",
+            "g4",
+            "bye"
+          ],
+          "hint": "Start with the ones you're sure of.",
+          "explanation": "Greetings: Ciao, Buongiorno, Buonasera, Buonanotte, Arrivederci.",
+          "pairs": [
+            {
+              "target": "Ciao",
+              "english": "hi / bye"
+            },
+            {
+              "target": "Buongiorno",
+              "english": "good morning / good day"
+            },
+            {
+              "target": "Buonasera",
+              "english": "good evening"
+            },
+            {
+              "target": "Buonanotte",
+              "english": "good night"
+            },
+            {
+              "target": "Arrivederci",
+              "english": "goodbye"
+            }
+          ]
+        },
+        {
+          "id": "itu1-q1-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Say the same greeting back.",
+          "explanation": "Ciao = hi / bye.",
+          "target": "Ciao!",
+          "targetEnglish": "Hi / bye!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Per favore!"
+            },
+            {
+              "id": "b",
+              "text": "Ciao!"
+            },
+            {
+              "id": "c",
+              "text": "Arrivederci!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "itu1-q1-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "hello"
+          ],
+          "hint": "Listen first, then copy the sound.",
+          "explanation": "Ciao = hi / bye.",
+          "target": "Ciao!",
+          "targetEnglish": "Hi / bye!",
+          "accepted": [
+            "Ciao"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "scarf-yellow"
+      }
+    },
+    {
+      "id": "itu1-q2",
+      "order": 2,
+      "title": "What's your name?",
+      "npc": "mateo",
+      "location": "The plaza",
+      "summary": "Mateo wants to know your name.",
+      "objective": "Ask someone's name and say your own.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Mateo",
+            "line": "Ciao! Mi chiamo Mateo. Come ti chiami?",
+            "gloss": "Hi! My name is Mateo. What's your name?",
+            "choices": [
+              {
+                "text": "Mi chiamo {name}.",
+                "gloss": "My name is {name}.",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Grazie!",
+                "gloss": "Thank you!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Mateo asked your name! Say your name."
+              }
+            ],
+            "hint": "Coco says: Copy how Mateo said his name, then use yours."
+          },
+          {
+            "id": "n2",
+            "speaker": "Mateo",
+            "line": "Piacere, {name}!",
+            "gloss": "Nice to meet you, {name}!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "itu1-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "itu1-q2-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "whatname"
+          ],
+          "hint": "Mateo asks this when he meets someone.",
+          "explanation": "Come ti chiami? = What's your name?.",
+          "target": "Come ti chiami?",
+          "targetEnglish": "What's your name?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "What's your name?"
+            },
+            {
+              "id": "b",
+              "text": "How are you?"
+            },
+            {
+              "id": "c",
+              "text": "And you?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "itu1-q2-a2",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “My name is Mateo.”",
+          "items": [
+            "myname"
+          ],
+          "hint": "Start with Mi.",
+          "explanation": "Mi chiamo Mateo. = My name is Mateo.",
+          "tiles": [
+            "Mi",
+            "chiamo",
+            "Mateo"
+          ],
+          "targetEnglish": "My name is Mateo.",
+          "distractors": [
+            "Ciao"
+          ]
+        },
+        {
+          "id": "itu1-q2-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "nice"
+          ],
+          "hint": "You say it when you meet someone new.",
+          "explanation": "Piacere! = Nice to meet you!.",
+          "target": "Piacere!",
+          "targetEnglish": "Nice to meet you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How are you?"
+            },
+            {
+              "id": "b",
+              "text": "goodbye"
+            },
+            {
+              "id": "c",
+              "text": "Nice to meet you!"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "itu1-q2-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Italian: “Nice to meet you!”",
+          "items": [
+            "nice"
+          ],
+          "hint": "Mateo said it after hearing your name.",
+          "explanation": "Piacere! = Nice to meet you!.",
+          "targetEnglish": "Nice to meet you!",
+          "accepted": [
+            "Piacere!"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "cap-red"
+      }
+    },
+    {
+      "id": "itu1-q3",
+      "order": 3,
+      "title": "How are you?",
+      "npc": "dona-rosa",
+      "location": "The bakery",
+      "summary": "Doña Rosa the baker asks how you are.",
+      "objective": "Ask how someone is and answer.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Doña Rosa",
+            "line": "Buongiorno! Come stai?",
+            "gloss": "Good morning! How are you?",
+            "choices": [
+              {
+                "text": "Bene, grazie. E tu?",
+                "gloss": "Fine, thanks. And you?",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Mi chiamo Mateo.",
+                "gloss": "My name is Mateo.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "She asked how you are, not your name!"
+              }
+            ],
+            "hint": "Coco says: Say how you are, then ask back: E tu?"
+          },
+          {
+            "id": "n2",
+            "speaker": "Doña Rosa",
+            "line": "Anch'io sto bene, grazie!",
+            "gloss": "I'm fine too, thanks!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "itu1-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "itu1-q3-a1",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "how",
+            "imfine"
+          ],
+          "hint": "She wants to know how you are.",
+          "explanation": "Bene, grazie. = Fine, thanks..",
+          "target": "Come stai?",
+          "targetEnglish": "How are you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Come ti chiami?"
+            },
+            {
+              "id": "b",
+              "text": "Bene, grazie."
+            },
+            {
+              "id": "c",
+              "text": "Arrivederci!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "itu1-q3-a2",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "andyou"
+          ],
+          "hint": "You use it to ask the question back.",
+          "explanation": "E tu? = And you?.",
+          "target": "E tu?",
+          "targetEnglish": "And you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How are you?"
+            },
+            {
+              "id": "b",
+              "text": "And you?"
+            },
+            {
+              "id": "c",
+              "text": "What's your name?"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "itu1-q3-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "how"
+          ],
+          "hint": "Doña Rosa asked you this.",
+          "explanation": "Come stai? = How are you?.",
+          "target": "Come stai?",
+          "targetEnglish": "How are you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How are you?"
+            },
+            {
+              "id": "b",
+              "text": "What's your name?"
+            },
+            {
+              "id": "c",
+              "text": "Nice to meet you!"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "itu1-q3-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "imfine"
+          ],
+          "hint": "Say it slowly.",
+          "explanation": "Bene, grazie. = Fine, thanks..",
+          "target": "Bene, grazie.",
+          "targetEnglish": "Fine, thanks.",
+          "accepted": [
+            "Bene, grazie."
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "apron"
+      }
+    },
+    {
+      "id": "itu1-q4",
+      "order": 4,
+      "title": "Magic words",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Don Pepe gives you a gift at his fruit stand.",
+      "objective": "Say thank you and use polite words.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "Ecco una mela per te!",
+            "gloss": "Here's an apple for you!",
+            "choices": [
+              {
+                "text": "Grazie!",
+                "gloss": "Thank you!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Scusa!",
+                "gloss": "Sorry / excuse me!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "He's giving you a present! Try Grazie."
+              }
+            ],
+            "hint": "Coco says: When someone gives you something, say Grazie."
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": "Prego! A presto!",
+            "gloss": "You're welcome! See you soon!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "itu1-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "itu1-q4-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Italian to the English.",
+          "items": [
+            "please",
+            "thanks",
+            "welcome",
+            "sorry",
+            "yes"
+          ],
+          "hint": "Thank you is the one you hear most.",
+          "explanation": "Per favore, Grazie, Prego, Scusa, Sì.",
+          "pairs": [
+            {
+              "target": "Per favore",
+              "english": "please"
+            },
+            {
+              "target": "Grazie",
+              "english": "thank you"
+            },
+            {
+              "target": "Prego",
+              "english": "you're welcome"
+            },
+            {
+              "target": "Scusa",
+              "english": "sorry / excuse me"
+            },
+            {
+              "target": "Sì",
+              "english": "yes"
+            }
+          ]
+        },
+        {
+          "id": "itu1-q4-a2",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "thanks"
+          ],
+          "hint": "Someone gives you a present. What do you say?",
+          "explanation": "Grazie = thank you.",
+          "target": "Ecco una mela per te!",
+          "targetEnglish": "Here's an apple for you!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Grazie!"
+            },
+            {
+              "id": "b",
+              "text": "Arrivederci!"
+            },
+            {
+              "id": "c",
+              "text": "Come ti chiami?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "itu1-q4-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "please"
+          ],
+          "hint": "Listen for a polite word.",
+          "explanation": "Per favore = please.",
+          "target": "Per favore",
+          "targetEnglish": "please",
+          "choices": [
+            {
+              "id": "a",
+              "text": "thank you"
+            },
+            {
+              "id": "b",
+              "text": "please"
+            },
+            {
+              "id": "c",
+              "text": "hi / bye"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "itu1-q4-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Italian: “thank you”",
+          "items": [
+            "thanks"
+          ],
+          "hint": "You just said it to Don Pepe.",
+          "explanation": "Grazie = thank you.",
+          "targetEnglish": "thank you",
+          "accepted": [
+            "Grazie"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "glasses-round"
+      }
+    },
+    {
+      "id": "itu1-q5",
+      "order": 5,
+      "title": "Count with Nico",
+      "npc": "nico",
+      "location": "Near the pond",
+      "summary": "Nico and his dog Canela count everything they see.",
+      "objective": "Count from 1 to 10.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Nico",
+            "line": "Ciao! Contiamo fino a dieci!",
+            "gloss": "Hi! Let's count to ten!",
+            "choices": [
+              {
+                "text": "Andiamo!",
+                "gloss": "Let's go!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Arrivederci!",
+                "gloss": "Goodbye!",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Nico wants to count with you! Say let's go."
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "Nico",
+            "line": "Uno, due, tre… via!",
+            "gloss": "One, two, three… go!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "itu1-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "itu1-q5-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "n3"
+          ],
+          "hint": "Count on your fingers.",
+          "explanation": "tre = 3.",
+          "target": "tre",
+          "targetEnglish": "three",
+          "choices": [
+            {
+              "id": "a",
+              "text": "2"
+            },
+            {
+              "id": "b",
+              "text": "3"
+            },
+            {
+              "id": "c",
+              "text": "8"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "itu1-q5-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Italian numbers.",
+          "items": [
+            "n1",
+            "n2",
+            "n3",
+            "n4",
+            "n5"
+          ],
+          "hint": "Start with one.",
+          "explanation": "uno, due, tre, quattro, cinque: 1 to 5.",
+          "pairs": [
+            {
+              "target": "uno",
+              "english": "1"
+            },
+            {
+              "target": "due",
+              "english": "2"
+            },
+            {
+              "target": "tre",
+              "english": "3"
+            },
+            {
+              "target": "quattro",
+              "english": "4"
+            },
+            {
+              "target": "cinque",
+              "english": "5"
+            }
+          ]
+        },
+        {
+          "id": "itu1-q5-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "n7"
+          ],
+          "hint": "It comes after six.",
+          "explanation": "sette = 7.",
+          "target": "sette",
+          "targetEnglish": "seven",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6"
+            },
+            {
+              "id": "b",
+              "text": "7"
+            },
+            {
+              "id": "c",
+              "text": "9"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "itu1-q5-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Italian: “two”",
+          "items": [
+            "n2"
+          ],
+          "hint": "It comes after one.",
+          "explanation": "due = 2.",
+          "targetEnglish": "two",
+          "accepted": [
+            "due"
+          ]
+        },
+        {
+          "id": "itu1-q5-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "n10"
+          ],
+          "hint": "The last number in this lesson.",
+          "explanation": "dieci = 10.",
+          "target": "dieci",
+          "targetEnglish": "ten",
+          "accepted": [
+            "dieci"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "basket",
+        "badge": "badge-u1"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "itu1-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "itu1-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "bye"
+        ],
+        "hint": "You say it when you leave.",
+        "explanation": "Arrivederci = goodbye.",
+        "target": "Arrivederci!",
+        "targetEnglish": "Goodbye!",
+        "choices": [
+          {
+            "id": "a",
+            "text": "hi / bye"
+          },
+          {
+            "id": "b",
+            "text": "goodbye"
+          },
+          {
+            "id": "c",
+            "text": "thank you"
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "itu1-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Italian: “hello”",
+        "items": [
+          "hello"
+        ],
+        "hint": "The first word Luna taught you.",
+        "explanation": "Ciao = hi / bye.",
+        "targetEnglish": "hello",
+        "accepted": [
+          "Ciao"
+        ]
+      },
+      {
+        "id": "itu1-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "andyou"
+        ],
+        "hint": "You use it to ask back.",
+        "explanation": "E tu? = And you?.",
+        "target": "E tu?",
+        "targetEnglish": "And you?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "What's your name?"
+          },
+          {
+            "id": "b",
+            "text": "Nice to meet you!"
+          },
+          {
+            "id": "c",
+            "text": "And you?"
+          }
+        ],
+        "answer": "c"
+      },
+      {
+        "id": "itu1-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Italian: “five”",
+        "items": [
+          "n5"
+        ],
+        "hint": "Count on one hand.",
+        "explanation": "cinque = 5.",
+        "targetEnglish": "five",
+        "accepted": [
+          "cinque"
+        ]
+      },
+      {
+        "id": "itu1-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in Italian: “Nice to meet you!”",
+        "items": [
+          "nice"
+        ],
+        "hint": "What do you say when you meet someone?",
+        "explanation": "Piacere! = Nice to meet you!.",
+        "target": "Piacere!",
+        "targetEnglish": "Nice to meet you!",
+        "accepted": [
+          "Piacere!"
+        ]
+      }
+    ]
+  }
+}

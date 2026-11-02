@@ -3,6 +3,7 @@ from lib import *
 OUT=sys.argv[1]
 def cur(code,s,p,sym): return {"code":code,"singular":s,"plural":p,"symbol":sym}
 course={"schemaVersion":1,"id":"en-es","title":"Spanish for English speakers","sourceLanguage":"en","targetLanguage":"es",
+ "languageName":"Spanish","nativeName":"Español",
  "defaultVariant":"es-419",
  "variants":[
   {"id":"es-419","name":"Latin America (general)","nativeName":"Latinoamérica","flagEmoji":"🌎","voiceLocales":["es-MX","es-US","es-419"],"speechLocales":["es-419","es-MX","es-US"],"currency":cur("MXN","peso","pesos","$"),"usesVoseo":False,"note":"A neutral Latin American Spanish understood everywhere. Uses Mexican pesos in market examples."},

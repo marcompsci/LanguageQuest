@@ -153,6 +153,8 @@ public struct PlayerProfile: Codable, Hashable, Identifiable, Sendable {
     public var extras: ExtrasProgress?
     /// Progress in courses other than the active one, by course id.
     public var otherCourses: [String: CourseSnapshot]?
+    /// The last quest practiced, in any language (for the menu's Recent lesson card).
+    public var recentLesson: RecentLesson?
 
     public init(id: UUID = UUID(), nickname: String, ageBand: AgeBand, avatar: AvatarConfig = .init(),
                 courseId: String = "en-es", variant: String, now: Date = Date()) {

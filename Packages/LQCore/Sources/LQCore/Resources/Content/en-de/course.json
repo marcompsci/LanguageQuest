@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "en-de",
+  "title": "German for English speakers",
+  "sourceLanguage": "en",
+  "targetLanguage": "de",
+  "languageName": "German",
+  "nativeName": "Deutsch",
+  "writingSystem": "latin",
+  "category": "modern",
+  "defaultVariant": "de-DE",
+  "variants": [
+    {
+      "id": "de-DE",
+      "name": "Germany",
+      "nativeName": "Deutschland",
+      "flagEmoji": "🇩🇪",
+      "voiceLocales": [
+        "de-DE",
+        "de-AT",
+        "de-CH"
+      ],
+      "speechLocales": [
+        "de-DE",
+        "de-AT",
+        "de-CH"
+      ],
+      "currency": {
+        "code": "EUR",
+        "singular": "euro",
+        "plural": "euros",
+        "symbol": "€"
+      },
+      "usesVoseo": false,
+      "note": "Standard German as spoken in Germany. In Austria and southern Germany people also say Grüß Gott and Servus."
+    }
+  ],
+  "unitFiles": [
+    "unit1-starter.json"
+  ],
+  "typingKeys": [
+    "ä",
+    "ö",
+    "ü",
+    "ß"
+  ]
+}

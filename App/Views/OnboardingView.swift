@@ -49,7 +49,7 @@ struct OnboardingView: View {
                     .interpolation(.none)
                     .accessibilityLabel("Luna, your guide")
                 Text("Language Quest").font(.largeTitle.bold())
-                Text("Explore a village, meet new friends, and learn Spanish, French or Japanese by talking with them.")
+                Text("Explore a village, meet new friends, and learn languages from around the world by talking with them.")
                     .font(.title3).multilineTextAlignment(.center)
                 Text("No ads. No timers. Mistakes are how we learn.").font(.subheadline)
             }

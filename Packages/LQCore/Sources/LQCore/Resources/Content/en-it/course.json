@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "en-it",
+  "title": "Italian for English speakers",
+  "sourceLanguage": "en",
+  "targetLanguage": "it",
+  "languageName": "Italian",
+  "nativeName": "Italiano",
+  "writingSystem": "latin",
+  "category": "modern",
+  "defaultVariant": "it-IT",
+  "variants": [
+    {
+      "id": "it-IT",
+      "name": "Italy",
+      "nativeName": "Italia",
+      "flagEmoji": "🇮🇹",
+      "voiceLocales": [
+        "it-IT"
+      ],
+      "speechLocales": [
+        "it-IT"
+      ],
+      "currency": {
+        "code": "EUR",
+        "singular": "euro",
+        "plural": "euro",
+        "symbol": "€"
+      },
+      "usesVoseo": false,
+      "note": "Standard Italian as spoken across Italy."
+    }
+  ],
+  "unitFiles": [
+    "unit1-starter.json"
+  ],
+  "typingKeys": [
+    "à",
+    "è",
+    "é",
+    "ì",
+    "ò",
+    "ù"
+  ]
+}

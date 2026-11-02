@@ -151,6 +151,8 @@ public enum GameMusic: String, CaseIterable, Sendable {
         case "es": return .reggaeton
         case "fr": return .paris
         case "ja": return .tokyo
+        case "it": return .paris
+        case "zh": return .tokyo
         default: return .village
         }
     }

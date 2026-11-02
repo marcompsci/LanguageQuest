@@ -105,6 +105,9 @@ public struct Progression: Sendable {
         profile.log.activitiesByDay[day, default: 0] += 1
 
         var result = ActivityCompletion(xpGained: 0, questCompleted: nil, cosmeticUnlocked: nil, badgeEarned: nil, firstTime: firstTime)
+        if let (_, quest) = library.quest(containing: a.id) {
+            profile.recentLesson = RecentLesson(courseId: library.course.id, questId: quest.id, at: now)
+        }
         if let (_, quest) = library.quest(containing: a.id), !profile.progress.completedQuests.contains(quest.id) {
             profile.progress.startedQuests.insert(quest.id)
             let done = quest.activities.allSatisfy { profile.progress.completedActivities[$0.id] != nil }

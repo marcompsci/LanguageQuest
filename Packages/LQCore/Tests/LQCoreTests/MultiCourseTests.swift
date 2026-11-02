@@ -6,12 +6,13 @@ final class MultiCourseTests: XCTestCase {
 
     func testEveryCourseLoadsAndValidates() throws {
         let libs = try allCourses()
-        XCTAssertEqual(libs.map(\.course.targetLanguage), ["es", "fr", "ja"])
+        XCTAssertEqual(libs.map(\.course.targetLanguage), ["es", "fr", "ja", "de", "it", "zh", "yo", "he", "egy", "am", "grc", "la", "hbo"])
         for lib in libs {
             let errors = ContentValidator.validate(lib).filter { $0.severity == .error }
             XCTAssertTrue(errors.isEmpty, "\(lib.course.id):\n" + errors.map(\.message).joined(separator: "\n"))
-            XCTAssertEqual(lib.units.count, 3, lib.course.id)
-            XCTAssertEqual(lib.allQuests.count, 15, lib.course.id)
+            let full = ["en-es", "en-fr", "en-ja"].contains(lib.course.id)
+            XCTAssertEqual(lib.units.count, full ? 3 : 1, lib.course.id)
+            XCTAssertEqual(lib.allQuests.count, full ? 15 : 5, lib.course.id)
             XCTAssertNotNil(lib.course.variant(lib.course.defaultVariant))
             XCTAssertFalse(ContentValidator.validate(lib, releaseBuild: true).filter { $0.severity == .error }.isEmpty,
                            "\(lib.course.id) is unreviewed, so release validation must fail")
@@ -121,11 +122,14 @@ final class MultiCourseTests: XCTestCase {
         for lib in try allCourses() {
             let variant = lib.course.defaultVariant
             let p = PlayerProfile(nickname: "", ageBand: .age13to15, courseId: lib.course.id, variant: variant)
-            for g in MarketRush.goods { XCTAssertNotNil(lib.item(g), "\(lib.course.id) needs market item \(g)") }
-            var m = MarketRush(library: lib, seed: 4)
-            while let o = m.current { XCTAssertTrue(m.checkPayment(MarketRush.fewestCoins(for: o.total))); m.completeRound() }
+            if lib.units.contains(where: { $0.order == 3 }) {   // Market Rush opens with Unit 3
+                for g in MarketRush.goods { XCTAssertNotNil(lib.item(g), "\(lib.course.id) needs market item \(g)") }
+                var m = MarketRush(library: lib, seed: 4)
+                while let o = m.current { XCTAssertTrue(m.checkPayment(MarketRush.fewestCoins(for: o.total))); m.completeRound() }
+            }
             var s = WordScramble(library: lib, profile: p, seed: 5)
-            XCTAssertEqual(s.puzzles.count, WordScramble.rounds, lib.course.id)
+            XCTAssertEqual(WordScramble.isAvailable(lib), lib.course.targetLanguage != "zh", lib.course.id)
+            if WordScramble.isAvailable(lib) { XCTAssertEqual(s.puzzles.count, WordScramble.rounds, lib.course.id) }
             while let pz = s.current { XCTAssertTrue(s.submit(pz.answer), "\(lib.course.id) \(pz.answer)") }
             for o in BattleRoster.opponents {
                 var b = WordBattle(opponent: o, library: lib, profile: p, seed: 6)
@@ -139,12 +143,19 @@ final class MultiCourseTests: XCTestCase {
     }
 
     func testSignsAndTreasuresSpeakEveryLanguage() {
-        for lang in ["es", "fr", "ja"] {
-            for s in StarterVillage.signs { XCTAssertFalse(s.text(lang).isEmpty) }
+        for lang in ["es", "fr", "ja", "de", "it", "zh", "yo", "he", "egy", "am", "grc", "la", "hbo"] {
+            for s in StarterVillage.signs {
+                XCTAssertFalse(s.text(lang).isEmpty)
+                if lang != "es" { XCTAssertNotEqual(s.text(lang), s.spanish, "\(s.english) in \(lang)") }
+            }
             for t in StarterVillage.treasures {
                 XCTAssertFalse(t.word(lang).base.isEmpty)
                 XCTAssertFalse(t.fact(lang).isEmpty)
-                if lang != "es" { XCTAssertNotEqual(t.word(lang), t.spanish, "\(t.id) has a \(lang) word") }
+                // Italian luna and rana really are the same as Spanish.
+                if lang != "es" && !(lang == "it" && ["t-luna", "t-rana"].contains(t.id)) {
+                    XCTAssertNotEqual(t.word(lang), t.spanish, "\(t.id) has a \(lang) word")
+                }
+                if lang != "es" { XCTAssertNotEqual(t.fact(lang), t.fact, "\(t.id) \(lang) doesn't reuse the Spanish fact") }
             }
         }
     }
