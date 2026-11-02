@@ -250,8 +250,8 @@ struct ParentDashboardView: View {
                                                                    set: { v in model.updateProfile { $0.settings.showRomanization = v } }))
             }
             Picker("Look", selection: binding(\.theme, prof)) {
-                Text("Playful (younger)").tag(ThemeKind.playful)
-                Text("Explorer (teens)").tag(ThemeKind.explorer)
+                Text("Playful (bright)").tag(ThemeKind.playful)
+                Text("Explorer (sleek)").tag(ThemeKind.explorer)
             }
             Toggle("Reduce motion", isOn: settingBinding(\.reducedMotion, prof))
             Toggle("Show English subtitles in conversations", isOn: settingBinding(\.subtitles, prof))

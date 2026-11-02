@@ -8,7 +8,7 @@ final class V05Tests: XCTestCase {
 
     func testMenuSections() throws {
         let l = try libs()
-        let p = PlayerProfile(nickname: "", ageBand: .age10to12, variant: "es-MX")
+        let p = PlayerProfile(nickname: "", ageBand: .age11to12, variant: "es-MX")
         let s = CourseOverview.summaries(p, libraries: l, order: ContentLibrary.bundledCourseIds)
         func ids(_ c: CourseCategory) -> [String] { s.filter { $0.category == c }.map(\.courseId) }
         XCTAssertEqual(ids(.modern), ["en-es", "en-fr", "en-ja", "en-de", "en-it", "en-zh"])

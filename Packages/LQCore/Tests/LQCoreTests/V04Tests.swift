@@ -8,7 +8,7 @@ final class V04Tests: XCTestCase {
 
     func testCourseSummariesUseParkedProgress() throws {
         let l = try libs()
-        var p = PlayerProfile(nickname: "", ageBand: .age10to12, variant: "es-AR")
+        var p = PlayerProfile(nickname: "", ageBand: .age11to12, variant: "es-AR")
         let prog = Progression(library: l["en-es"]!)
         for a in l["en-es"]!.units[0].quests[0].activities { prog.complete(activity: a, outcome: .init(correct: true), profile: &p, now: Date()) }
         p.switchCourse(to: "en-fr", defaultVariant: "fr-CA")
@@ -24,7 +24,7 @@ final class V04Tests: XCTestCase {
     }
 
     func testTodaySummaryNeverGuilts() {
-        var p = PlayerProfile(nickname: "", ageBand: .age10to12, variant: "es-MX")
+        var p = PlayerProfile(nickname: "", ageBand: .age11to12, variant: "es-MX")
         let now = Date()
         XCTAssertEqual(TodaySummary.compute(p, now: now).activities, 0)
         XCTAssertFalse(TodaySummary.compute(p, now: now).message.lowercased().contains("streak"))

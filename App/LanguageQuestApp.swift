@@ -3,6 +3,7 @@ import LQCore
 
 @main
 struct LanguageQuestApp: App {
+    @UIApplicationDelegateAdaptor(OrientationDelegate.self) private var orientationDelegate
     @StateObject private var model = AppModel()
     @Environment(\.scenePhase) private var scenePhase
 
@@ -65,6 +66,28 @@ struct RootView: View {
                     .task { try? await Task.sleep(nanoseconds: 3_500_000_000); model.toast = nil }
                     .accessibilityAddTraits(.isStaticText)
             }
+        }
+    }
+}
+
+/// The app stays portrait except while writing (Write Out), where landscape gives a bigger canvas.
+final class OrientationDelegate: NSObject, UIApplicationDelegate {
+    static var mask: UIInterfaceOrientationMask = .portrait
+
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        OrientationDelegate.mask
+    }
+
+    /// Allows (and optionally turns to) landscape; `nil` returns to portrait only.
+    @MainActor static func allowLandscape(_ on: Bool, rotateNow: Bool = false) {
+        mask = on ? .allButUpsideDown : .portrait
+        guard let scene = UIApplication.shared.connectedScenes.first(where: { $0 is UIWindowScene }) as? UIWindowScene else { return }
+        scene.windows.first?.rootViewController?.setNeedsUpdateOfSupportedInterfaceOrientations()
+        scene.keyWindow?.rootViewController?.presentedViewController?.setNeedsUpdateOfSupportedInterfaceOrientations()
+        if !on {
+            scene.requestGeometryUpdate(.iOS(interfaceOrientations: .portrait))
+        } else if rotateNow {
+            scene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscapeRight))
         }
     }
 }

@@ -88,5 +88,5 @@ def mkunit(id, order, title, target_title, objective, can_do, level, goals, voca
     return {"id":id,"version":1,"order":order,"title":title,"targetTitle":target_title,"world":"starter-village",
             "objective":objective,"canDo":can_do,
             "actfl":{"modes":["interpretive","interpersonal","presentational"],"targetLevel":level,"otherGoals":goals},
-            "ageBands":["10-12","13-15","16+"],"review":REVIEW,"vocabulary":vocab,"phrases":phrases,
+            "ageBands":["11-12","13-15","16+"],"review":REVIEW,"vocabulary":vocab,"phrases":phrases,
             "culturalNotes":notes,"quests":quests,"masteryCheck":mastery}

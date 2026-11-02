@@ -141,6 +141,6 @@ unit={"id":"u2-familia","version":1,"order":2,"title":"Family & Friends","target
  "canDo":["I can name people in my family.","I can introduce someone with este es or esta es.","I can describe a person with a few words.",
           "I can name colors.","I can say what pets I have."],
  "actfl":{"modes":["interpretive","interpersonal","presentational"],"targetLevel":"Novice Low–Novice Mid","otherGoals":["Cultures","Comparisons"]},
- "ageBands":["10-12","13-15","16+"],"review":REVIEW,
+ "ageBands":["11-12","13-15","16+"],"review":REVIEW,
  "vocabulary":vocab,"phrases":phrases,"culturalNotes":notes,"quests":[q1,q2,q3,q4,q5],"masteryCheck":mastery}
 dump(unit, OUT+"/unit2-familia.json")

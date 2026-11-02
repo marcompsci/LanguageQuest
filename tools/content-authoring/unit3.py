@@ -151,6 +151,6 @@ unit={"id":"u3-mercado","version":1,"order":3,"title":"At the Market","targetTit
  "canDo":["I can name fruits and breakfast foods.","I can say what I want, like, and don't like.","I can count from 11 to 20.",
           "I can ask how much something costs.","I can order food politely."],
  "actfl":{"modes":["interpretive","interpersonal","presentational"],"targetLevel":"Novice Mid","otherGoals":["Cultures","Comparisons","Communities"]},
- "ageBands":["10-12","13-15","16+"],"review":REVIEW,
+ "ageBands":["11-12","13-15","16+"],"review":REVIEW,
  "vocabulary":vocab,"phrases":phrases,"culturalNotes":notes,"quests":[q1,q2,q3,q4,q5],"masteryCheck":mastery}
 dump(unit, OUT+"/unit3-mercado.json")

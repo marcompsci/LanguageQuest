@@ -148,7 +148,7 @@ final class SideGameTests: XCTestCase {
     func testScramblePuzzlesAreSolvableAndScrambled() {
         for v in lib.course.variants.map(\.id) {
             for seed in 1...20 as ClosedRange<UInt64> {
-                var p = PlayerProfile(nickname: "", ageBand: .age10to12, variant: v)
+                var p = PlayerProfile(nickname: "", ageBand: .age11to12, variant: v)
                 p.knowledge["gato"] = ItemKnowledge(now: Date())
                 let s = WordScramble(library: lib, profile: p, seed: seed)
                 XCTAssertEqual(s.puzzles.count, WordScramble.rounds)
@@ -164,7 +164,7 @@ final class SideGameTests: XCTestCase {
     }
 
     func testScrambleScoring() {
-        let p = PlayerProfile(nickname: "", ageBand: .age10to12, variant: "es-MX")
+        let p = PlayerProfile(nickname: "", ageBand: .age11to12, variant: "es-MX")
         var s = WordScramble(library: lib, profile: p, seed: 9)
         XCTAssertFalse(s.submit("zzz"))
         XCTAssertTrue(s.submit(s.current!.answer))   // second try
@@ -235,7 +235,7 @@ final class SideGameTests: XCTestCase {
     }
 
     func testExtrasAreOptionalForOldSaves() throws {
-        var p = PlayerProfile(nickname: "", ageBand: .age10to12, variant: "es-MX")
+        var p = PlayerProfile(nickname: "", ageBand: .age11to12, variant: "es-MX")
         XCTAssertNil(p.extras)
         p.updateExtras { $0.treasuresFound.insert("t-sol"); $0.battleStars["duel-mateo"] = 2 }
         let data = try JSONEncoder().encode(p)

@@ -25,6 +25,8 @@ final class AppModel: ObservableObject {
         case wardrobe
         case flashcards
         case kana
+        case bonus
+        case writeOut
         var id: String {
             switch self {
             case .quest(let q): return "quest-\(q)"
@@ -44,6 +46,8 @@ final class AppModel: ObservableObject {
             case .wardrobe: return "wardrobe"
             case .flashcards: return "flashcards"
             case .kana: return "kana"
+            case .bonus: return "bonus"
+            case .writeOut: return "writeOut"
             }
         }
     }
@@ -108,7 +112,7 @@ final class AppModel: ObservableObject {
             toast = "We couldn't open the saved progress, so we're starting fresh."
         }
         if AppModel.isUITesting, ProcessInfo.processInfo.arguments.contains("-seedProfile") {
-            var p = PlayerProfile(nickname: "Tester", ageBand: .age10to12, variant: "es-MX")
+            var p = PlayerProfile(nickname: "Tester", ageBand: .age11to12, variant: "es-MX")
             p.settings.reducedMotion = true
             try? FamilyManager.addProfile(p, to: &save, config: storeConfig)
         }
@@ -277,7 +281,7 @@ final class AppModel: ObservableObject {
         guard let sheet else { return .village }
         switch sheet {
         case .battle: return .battle
-        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana:
+        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut:
             return GameMusic.lessons(for: library?.course.targetLanguage ?? "es")
         case .journal, .bag, .parent, .games, .phrasebook, .languages, .settings, .wardrobe:
             return .village

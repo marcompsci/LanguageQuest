@@ -1,7 +1,7 @@
 import Foundation
 
 /// Optional parent PIN. The written-out math gate stops younger siblings but not
-/// teens, so for a 10+ audience a parent can set a PIN. Only a salted SHA-256
+/// teens, so for an 11+ audience a parent can set a PIN. Only a salted SHA-256
 /// hash is stored (the app keeps it in the Keychain).
 public struct ParentPINRecord: Codable, Hashable, Sendable {
     public var salt: String

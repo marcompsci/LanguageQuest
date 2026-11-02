@@ -27,17 +27,17 @@ final class PurchaseGatingTests: XCTestCase {
     func testProfileSlots() throws {
         var s = FamilySave()
         for i in 0..<StoreConfig.default.maxProfilesFree {
-            try FamilyManager.addProfile(PlayerProfile(nickname: "K\(i)", ageBand: .age10to12, variant: "es-MX"), to: &s, config: enabled, now: now)
+            try FamilyManager.addProfile(PlayerProfile(nickname: "K\(i)", ageBand: .age11to12, variant: "es-MX"), to: &s, config: enabled, now: now)
         }
-        XCTAssertThrowsError(try FamilyManager.addProfile(PlayerProfile(nickname: "X", ageBand: .age10to12, variant: "es-MX"), to: &s, config: enabled, now: now)) {
+        XCTAssertThrowsError(try FamilyManager.addProfile(PlayerProfile(nickname: "X", ageBand: .age11to12, variant: "es-MX"), to: &s, config: enabled, now: now)) {
             XCTAssertEqual($0 as? FamilyError, .profileLimitReached(max: 2))
         }
         s.entitlement = EntitlementSnapshot()
         s.entitlement.plan = .familyPlus
         s.entitlement.expiresAt = now.addingTimeInterval(86_400)
-        try FamilyManager.addProfile(PlayerProfile(nickname: "X", ageBand: .age10to12, variant: "es-MX"), to: &s, config: enabled, now: now)
-        try FamilyManager.addProfile(PlayerProfile(nickname: "Y", ageBand: .age10to12, variant: "es-MX"), to: &s, config: enabled, now: now)
-        XCTAssertThrowsError(try FamilyManager.addProfile(PlayerProfile(nickname: "Z", ageBand: .age10to12, variant: "es-MX"), to: &s, config: enabled, now: now))
+        try FamilyManager.addProfile(PlayerProfile(nickname: "X", ageBand: .age11to12, variant: "es-MX"), to: &s, config: enabled, now: now)
+        try FamilyManager.addProfile(PlayerProfile(nickname: "Y", ageBand: .age11to12, variant: "es-MX"), to: &s, config: enabled, now: now)
+        XCTAssertThrowsError(try FamilyManager.addProfile(PlayerProfile(nickname: "Z", ageBand: .age11to12, variant: "es-MX"), to: &s, config: enabled, now: now))
         try FamilyManager.deleteProfile(s.profiles[0].id, from: &s)
         XCTAssertEqual(s.profiles.count, 3)
         XCTAssertEqual(s.activeProfileId, s.profiles.first?.id)

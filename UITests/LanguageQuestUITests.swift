@@ -19,7 +19,7 @@ final class LanguageQuestUITests: XCTestCase {
         XCTAssertTrue(next.waitForExistence(timeout: 5))
         next.tap()                                   // welcome
         XCTAssertFalse(next.isEnabled, "age has no default; must be chosen")
-        app.buttons["age-10-12"].tap()
+        app.buttons["age-11-12"].tap()
         next.tap()                                   // age
         next.tap()                                   // language
         XCTAssertFalse(next.isEnabled, "variant must be chosen")

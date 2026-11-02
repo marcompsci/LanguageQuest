@@ -19,6 +19,7 @@
 		82AD379946AF0384699DE258 /* LanguageQuest.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 89E6181925702439665497F9 /* LanguageQuest.storekit */; };
 		8465350E29DD14BDA1FEC31B /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB717234CB21DE33DDB51F97 /* AppModel.swift */; };
 		967AD8C76FC3BCA7DC4064B1 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A22EDA37507347E218EC53 /* JournalView.swift */; };
+		A6352DCBDCA39851B8585E8F /* WriteOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4A8113C531B263A0B038EB /* WriteOutView.swift */; };
 		B125A9CA54EFCF36C27365F2 /* LanguageQuestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3FCD0BA6191D6442B45EE /* LanguageQuestApp.swift */; };
 		B252674FD4CBEE3926B34BB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244A1528DFD2A71384D6F57A /* Assets.xcassets */; };
 		B32F8A02CBEFA207D0F298FB /* LQCore in Frameworks */ = {isa = PBXBuildFile; productRef = 52D665DF6B3B549126E38AB8 /* LQCore */; };
@@ -71,6 +72,7 @@
 		AB717234CB21DE33DDB51F97 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		AF1687C4DE66B87EAF3D3353 /* ParentAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentAreaView.swift; sourceTree = "<group>"; };
 		B8B0EBDF36C86E623DC6A2DD /* LanguageQuest.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LanguageQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE4A8113C531B263A0B038EB /* WriteOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteOutView.swift; sourceTree = "<group>"; };
 		C96DE49B4C0737B07A0147F3 /* LQCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LQCore; path = Packages/LQCore; sourceTree = SOURCE_ROOT; };
 		D7A22EDA37507347E218EC53 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		DA9539C4E88EB0F5D43E63AB /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				839773334A51BD6E8B119381 /* QuestPlayerView.swift */,
 				121348E801C4C30DE01D77D7 /* ReviewViews.swift */,
 				4C9B41B13A3A33C328E3C229 /* WorldView.swift */,
+				BE4A8113C531B263A0B038EB /* WriteOutView.swift */,
 				68B4556FA5F8F6BE9A4751E0 /* Activities */,
 			);
 			path = Views;
@@ -324,6 +327,7 @@
 				DED4F6268EA8A467897AD97B /* Theme.swift in Sources */,
 				B8ABB7B0C45E1B3213B15354 /* VillageScene.swift in Sources */,
 				CECC3A8DC62F6B1FB50A3A84 /* WorldView.swift in Sources */,
+				A6352DCBDCA39851B8585E8F /* WriteOutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,11 +427,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Language Quest";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Only if a grown-up turns on speech practice: the microphone listens while you hold the talk button so the app can check your Spanish. Audio is processed on this device and never saved or sent.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Only if a grown-up turns on speech practice: the microphone listens while you hold the talk button so the app can check your pronunciation. Audio is processed on this device and never saved or sent.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech practice uses on-device recognition only. Your voice never leaves this device and is not stored.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -448,11 +452,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Language Quest";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Only if a grown-up turns on speech practice: the microphone listens while you hold the talk button so the app can check your Spanish. Audio is processed on this device and never saved or sent.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Only if a grown-up turns on speech practice: the microphone listens while you hold the talk button so the app can check your pronunciation. Audio is processed on this device and never saved or sent.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech practice uses on-device recognition only. Your voice never leaves this device and is not stored.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

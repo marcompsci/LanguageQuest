@@ -24,6 +24,8 @@ struct SheetRouter: View {
         case .wardrobe: WardrobeView()
         case .flashcards: FlashcardsView()
         case .kana: KanaDojoView()
+        case .bonus: BonusLessonView()
+        case .writeOut: WriteOutView()
         }
     }
 }
@@ -107,6 +109,7 @@ struct PlayerSettingsView: View {
                             Text("Speaking speed")
                             Slider(value: setting(\.speechRate, prof), in: 0.3...0.55)
                         }
+                        VoiceStatusRow(language: lib.course.displayLanguage, variant: lib.course.variant(prof.variant))
                     }
                     Section("Look and comfort") {
                         Picker("Look", selection: binding(\.theme, prof)) {
@@ -190,18 +193,106 @@ struct WardrobeView: View {
 
 // MARK: - Flashcards
 
+/// A flashcard you answer by picking its meaning from four choices. Flipping is
+/// still allowed as a peek; a peeked card is then self-rated.
+struct ChoiceFlashcard: View {
+    @EnvironmentObject var model: AppModel
+    @Environment(\.palette) var p
+    let card: Flashcard
+    let choices: FlashcardChoices
+    /// Romanization line under the word (nil = none).
+    var romanized: String?
+    var compact = false
+    /// Called once with whether the learner knew it.
+    let onAnswer: (Bool) -> Void
+    @State private var picked: Int?
+    @State private var peeked = false
+
+    var body: some View {
+        VStack(spacing: compact ? 10 : 14) {
+            Button { withAnimation(.easeInOut(duration: 0.2)) { peeked.toggle() } } label: {
+                VStack(spacing: 6) {
+                    if let pic = card.picture { Text(pic).font(.system(size: compact ? 40 : 56)).accessibilityHidden(true) }
+                    Text(card.front.base).font(compact ? .title2.bold() : .title.bold())
+                    if let r = romanized { Text(r).font(.subheadline).foregroundStyle(Color(p.secondaryText)) }
+                    if peeked && picked == nil {
+                        Text(card.back).font(.headline).foregroundStyle(Color(p.accent))
+                    } else if picked == nil {
+                        Text("Pick the meaning · tap to peek").font(.caption2).foregroundStyle(Color(p.secondaryText))
+                    }
+                }
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity, minHeight: compact ? 110 : 180)
+                .background(Color(p.surface), in: RoundedRectangle(cornerRadius: 18))
+                .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color(p.accent).opacity(0.35), lineWidth: 1))
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(peeked ? "\(card.front.base) means \(card.back)" : card.front.base)
+            .accessibilityHint(picked == nil ? "Pick its meaning below, or tap to peek" : "")
+            .accessibilityIdentifier("flashcard")
+
+            if peeked && picked == nil {
+                HStack(spacing: 10) {
+                    Button("Still learning") { finish(false) }.buttonStyle(SecondaryButtonStyle())
+                    Button("I knew it") { finish(true) }.buttonStyle(PrimaryButtonStyle())
+                        .accessibilityIdentifier("knewIt")
+                }
+            } else {
+                LazyVGrid(columns: [GridItem(.flexible(), spacing: 8), GridItem(.flexible(), spacing: 8)], spacing: 8) {
+                    ForEach(Array(choices.options.enumerated()), id: \.offset) { i, o in
+                        Button { pick(i) } label: {
+                            HStack(spacing: 6) {
+                                if picked != nil, i == choices.answerIndex { Image(systemName: "checkmark.circle.fill").accessibilityHidden(true) }
+                                else if picked == i { Image(systemName: "xmark.circle.fill").accessibilityHidden(true) }
+                                Text(o).font(.subheadline.bold()).multilineTextAlignment(.center).lineLimit(3).minimumScaleFactor(0.8)
+                            }
+                            .frame(maxWidth: .infinity, minHeight: compact ? 48 : 58)
+                            .padding(.horizontal, 6)
+                            .background(fill(i), in: RoundedRectangle(cornerRadius: 12))
+                        }
+                        .buttonStyle(.plain)
+                        .disabled(picked != nil)
+                        .accessibilityValue(picked == nil ? "" : (i == choices.answerIndex ? "Correct answer" : (picked == i ? "Your answer" : "")))
+                        .accessibilityIdentifier("flash-option-\(i)")
+                    }
+                }
+            }
+        }
+    }
+
+    private func fill(_ i: Int) -> Color {
+        guard let pk = picked else { return Color(p.accent).opacity(0.12) }
+        if i == choices.answerIndex { return Color.green.opacity(0.35) }
+        if i == pk { return Color.red.opacity(0.30) }
+        return Color(p.accent).opacity(0.06)
+    }
+
+    private func pick(_ i: Int) {
+        picked = i
+        let ok = i == choices.answerIndex
+        model.sfx(ok ? .correct : .retry)
+        onAnswer(ok)
+    }
+
+    private func finish(_ knew: Bool) {
+        picked = knew ? choices.answerIndex : -1
+        onAnswer(knew)
+    }
+}
+
 struct FlashcardsView: View {
     @EnvironmentObject var model: AppModel
     @Environment(\.palette) var p
     @Environment(\.dismiss) var dismiss
     @State private var deck: [Flashcard] = []
     @State private var index = 0
-    @State private var flipped = false
+    @State private var answered: Bool?
     @State private var knew = 0
+    @State private var seed: UInt64 = 1
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
+            VStack(spacing: 18) {
                 if deck.isEmpty {
                     ProgressView()
                 } else if index >= deck.count {
@@ -211,34 +302,23 @@ struct FlashcardsView: View {
                         .multilineTextAlignment(.center)
                     Button("Another deck") { build() }.buttonStyle(PrimaryButtonStyle())
                     Spacer()
-                } else {
+                } else if let lib = model.library {
                     let card = deck[index]
                     Text("Card \(index + 1) of \(deck.count)").font(.caption).foregroundStyle(Color(p.secondaryText))
-                    Button { withAnimation(.easeInOut(duration: 0.2)) { flipped.toggle() } } label: {
-                        VStack(spacing: 12) {
-                            if let pic = card.picture { Text(pic).font(.system(size: 64)).accessibilityHidden(true) }
-                            if flipped {
-                                Text(card.back).font(.title.bold())
-                                Text(model.display(card.front)).font(.title3).foregroundStyle(Color(p.secondaryText))
-                            } else {
-                                Text(model.display(card.front)).font(.title.bold())
-                                Text("Tap to flip").font(.caption).foregroundStyle(Color(p.secondaryText))
-                            }
-                        }
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: .infinity, minHeight: 260)
-                        .background(Color(p.surface), in: RoundedRectangle(cornerRadius: 20))
+                    ChoiceFlashcard(card: card, choices: FlashcardChoices.make(for: card, library: lib, seed: seed &+ UInt64(index)),
+                                    romanized: (model.profile?.settings.romanizationOn ?? true) ? lib.course.romanize(card.front.base) : nil) { ok in
+                        model.updateProfile { FlashcardDeck.record(card, knewIt: ok, profile: &$0, now: Date()) }
+                        if ok { knew += 1 }
+                        answered = ok
                     }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel(flipped ? "\(model.text(card.front)) means \(card.back)" : model.text(card.front))
-                    .accessibilityHint(flipped ? "" : "Flips the card")
-                    .accessibilityIdentifier("flashcard")
-                    SpeakerButton(text: card.front)
-                    if flipped {
-                        HStack(spacing: 12) {
-                            Button("Still learning") { answer(false) }.buttonStyle(SecondaryButtonStyle())
-                            Button("I knew it") { answer(true) }.buttonStyle(PrimaryButtonStyle())
-                                .accessibilityIdentifier("knewIt")
+                    .id("\(seed)-\(index)")
+                    HStack {
+                        SpeakerButton(text: card.front)
+                        Spacer()
+                        if let a = answered {
+                            Text(a ? "Nice!" : "It'll come back soon.").font(.headline)
+                            Button("Next") { next() }.buttonStyle(PrimaryButtonStyle())
+                                .accessibilityIdentifier("flashNext")
                         }
                     }
                     Spacer()
@@ -254,17 +334,14 @@ struct FlashcardsView: View {
 
     private func build() {
         guard let p = model.profile, let lib = model.library else { return }
-        deck = FlashcardDeck.build(p, library: lib, now: Date(), seed: UInt64.random(in: 1...UInt64.max))
-        index = 0; knew = 0; flipped = false
+        seed = UInt64.random(in: 1...UInt64.max / 2)
+        deck = FlashcardDeck.build(p, library: lib, now: Date(), seed: seed)
+        index = 0; knew = 0; answered = nil
         if let first = deck.first { model.say(first.front) }
     }
 
-    private func answer(_ knewIt: Bool) {
-        let card = deck[index]
-        model.updateProfile { FlashcardDeck.record(card, knewIt: knewIt, profile: &$0, now: Date()) }
-        model.sfx(knewIt ? .correct : .retry)
-        if knewIt { knew += 1 }
-        flipped = false
+    private func next() {
+        answered = nil
         index += 1
         if index < deck.count { model.say(deck[index].front) }
     }
@@ -345,6 +422,85 @@ struct KanaDojoView: View {
         if d.finished {
             let stars = d.stars
             model.updateProfile { $0.updateExtras { $0.kanaBestStars = max($0.kanaBestStars ?? 0, stars) } }
+        }
+    }
+}
+
+/// Shows which voice reads the lessons and how to get a smoother one.
+struct VoiceStatusRow: View {
+    let language: String
+    let variant: LanguageVariant?
+    @EnvironmentObject var model: AppModel
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            if let st = SpeechService.voiceStatus(for: variant) {
+                Label("\(language) voice: \(st.name)", systemImage: st.natural ? "waveform" : "waveform.badge.exclamationmark")
+                if st.natural {
+                    Text("This is a high-quality voice.").font(.caption)
+                } else {
+                    Text("For a smoother, more natural voice, a grown-up can download an Enhanced or Premium \(language) voice (free): Settings › Accessibility › Read & Speak (or Spoken Content) › Voices.")
+                        .font(.caption)
+                }
+            } else {
+                Label("No \(language) voice on this device", systemImage: "speaker.slash")
+                Text("iPhone has no voice for \(language) yet, so lessons read the Latin spelling with an English voice.").font(.caption)
+            }
+            Button("Test the voice") { model.say(VText(model.phrases.helloAgain.base)) }
+                .font(.subheadline)
+        }
+    }
+}
+
+// MARK: - Bonus lesson
+
+struct BonusLessonView: View {
+    @EnvironmentObject var model: AppModel
+    @Environment(\.dismiss) var dismiss
+    @State private var lesson: BonusLesson?
+    @State private var done = false
+    @State private var correct = 0
+    @State private var xp = 0
+
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                ThemedBackground()
+                if done, let l = lesson {
+                    VStack(spacing: 16) {
+                        Image(systemName: "gift.fill").font(.system(size: 60)).accessibilityHidden(true)
+                        Text(model.phrases.excellent).font(.largeTitle.bold())
+                        Text("\(correct) of \(l.activities.count) right on the first try.")
+                        Text(xp > 0 ? "+\(xp) bonus XP!" : "You already got today's bonus XP. Come back tomorrow for more!")
+                            .font(.headline).multilineTextAlignment(.center)
+                        Button("Done") { dismiss() }.buttonStyle(PrimaryButtonStyle())
+                    }
+                    .padding(24)
+                } else if let l = lesson {
+                    VStack(spacing: 6) {
+                        Text(l.title).font(.headline).padding(.top, 6)
+                        ActivitySequence(activities: l.activities, onEach: { a, r in
+                            model.complete(a, outcome: r.outcome, verified: r.verified)
+                            if r.outcome.correct && r.outcome.attempts == 1 { correct += 1 }
+                        }, onFinish: {
+                            var gained = 0
+                            model.updateProfile { gained = BonusLesson.claim(&$0, day: l.dayKey) }
+                            xp = gained
+                            model.sfx(.reward)
+                            done = true
+                        })
+                    }
+                } else {
+                    ProgressView()
+                }
+            }
+            .navigationTitle("Bonus lesson")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar { ToolbarItem(placement: .cancellationAction) { Button("Close") { dismiss() } } }
+            .onAppear {
+                guard lesson == nil, let p = model.profile, let lib = model.library else { return }
+                lesson = BonusLesson.build(p, library: lib, plan: model.plan, now: Date())
+            }
         }
     }
 }

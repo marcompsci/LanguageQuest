@@ -161,7 +161,7 @@ final class MultiCourseTests: XCTestCase {
     }
 
     func testSwitchingCoursesKeepsEachCoursesProgress() throws {
-        var p = PlayerProfile(nickname: "Mo", ageBand: .age10to12, variant: "es-MX")
+        var p = PlayerProfile(nickname: "Mo", ageBand: .age11to12, variant: "es-MX")
         p.progress.completedQuests = ["u1-q1"]
         p.knowledge["hola"] = ItemKnowledge(now: Date())
         p.rewards.xp = 50

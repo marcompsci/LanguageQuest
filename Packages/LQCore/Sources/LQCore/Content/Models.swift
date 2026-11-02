@@ -41,34 +41,35 @@ public enum ReviewStatus: String, Codable, Comparable, Sendable {
 }
 
 /// Age bands drive presentation (theme, reading support), never proficiency.
-/// Language Quest is for ages 10 and up.
+/// Language Quest is for ages 11 and up.
 public enum AgeBand: String, Codable, CaseIterable, Sendable {
-    case age10to12 = "10-12"
+    case age11to12 = "11-12"
     case age13to15 = "13-15"
     case age16plus = "16+"
 
     /// The youngest age the app is designed for.
-    public static let minimumAge = 10
+    public static let minimumAge = 11
 
     public var label: String {
         switch self {
-        case .age10to12: return "10–12"
+        case .age11to12: return "11–12"
         case .age13to15: return "13–15"
         case .age16plus: return "16+"
         }
     }
 
     /// The default visual theme for this band. Players can switch any time.
-    public var defaultTheme: ThemeKind { self == .age10to12 ? .playful : .explorer }
+    /// Since v0.6 (ages 11+) everyone starts with the sleeker Explorer look.
+    public var defaultTheme: ThemeKind { .explorer }
 
-    /// Read-aloud of English instructions is available to everyone but off by default for 10+.
+    /// Read-aloud of English instructions is available to everyone but off by default for 11+.
     public var readAloudByDefault: Bool { false }
 
-    /// Saves from the earlier 7+ prototype stored "7-9"; those profiles become 10–12.
+    /// Older saves stored "7-9" (7+ prototype) or "10-12" (v0.2–v0.5); those profiles become 11–12.
     public init(from decoder: Decoder) throws {
         let raw = try decoder.singleValueContainer().decode(String.self)
         if let band = AgeBand(rawValue: raw) { self = band; return }
-        if raw == "7-9" { self = .age10to12; return }
+        if raw == "7-9" || raw == "10-12" { self = .age11to12; return }
         throw DecodingError.dataCorrupted(.init(codingPath: decoder.codingPath, debugDescription: "Unknown age band \(raw)"))
     }
 }
@@ -394,11 +395,15 @@ public struct ChoiceOption: Codable, Hashable, Identifiable, Sendable {
     public var text: VText
     public var picture: String?
     public var altText: String?
+    public init(id: String, text: VText, picture: String? = nil, altText: String? = nil) {
+        self.id = id; self.text = text; self.picture = picture; self.altText = altText
+    }
 }
 
 public struct MatchPair: Codable, Hashable, Sendable {
     public var target: VText
     public var english: String
+    public init(target: VText, english: String) { self.target = target; self.english = english }
 }
 
 public struct Activity: Codable, Hashable, Identifiable, Sendable {
@@ -430,6 +435,20 @@ public struct Activity: Codable, Hashable, Identifiable, Sendable {
     public var items: [String]
     public var hint: String
     public var explanation: String
+
+}
+
+extension Activity {
+    /// For activities built in code (bonus lessons). Authored activities come from JSON.
+    public init(id: String, type: ActivityType, skill: Skill, mode: CommunicationMode, practice: PracticeKind,
+                prompt: String, target: VText? = nil, targetEnglish: String? = nil, choices: [ChoiceOption]? = nil,
+                answer: String? = nil, accepted: [VText]? = nil, pairs: [MatchPair]? = nil,
+                items: [String], hint: String, explanation: String) {
+        self.id = id; self.type = type; self.skill = skill; self.mode = mode; self.practice = practice
+        self.prompt = prompt; self.target = target; self.targetEnglish = targetEnglish; self.choices = choices
+        self.answer = answer; self.accepted = accepted; self.pairs = pairs
+        self.items = items; self.hint = hint; self.explanation = explanation
+    }
 }
 
 // MARK: - Dialogue

@@ -142,6 +142,6 @@ unit={"id":"u1-saludos","version":1,"order":1,"title":"Greetings & Introductions
  "canDo":["I can greet people at different times of day.","I can say my name and ask someone's name.","I can ask how someone is and answer.",
           "I can use please, thank you, you're welcome, and sorry.","I can count from 0 to 10."],
  "actfl":{"modes":["interpretive","interpersonal","presentational"],"targetLevel":"Novice Low–Novice Mid","otherGoals":["Cultures","Comparisons"]},
- "ageBands":["10-12","13-15","16+"],"review":REVIEW,
+ "ageBands":["11-12","13-15","16+"],"review":REVIEW,
  "vocabulary":vocab,"phrases":phrases,"culturalNotes":notes,"quests":[q1,q2,q3,q4,q5],"masteryCheck":mastery}
 dump(unit, OUT+"/unit1-saludos.json")

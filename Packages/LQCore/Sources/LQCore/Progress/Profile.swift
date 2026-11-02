@@ -21,7 +21,7 @@ public struct AvatarConfig: Codable, Hashable, Sendable {
 }
 
 public enum ThemeKind: String, Codable, CaseIterable, Sendable {
-    /// Bright and rounded (default for 10–12).
+    /// Bright and rounded (was the default for the youngest band).
     case playful
     /// Dusk palette, sleeker UI, denser text (default for 13+).
     case explorer
@@ -41,7 +41,7 @@ public struct LearnerSettings: Codable, Hashable, Sendable {
     public var soundEffects = true
     public var music = true
     public var voiceVolume = 1.0
-    public var speechRate = 0.42
+    public var speechRate = 0.47
     public var subtitles = true
     public var readAloudInstructions = false
     public var textScale = 1.0

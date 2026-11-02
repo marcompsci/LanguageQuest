@@ -11,6 +11,9 @@ public struct ExtrasProgress: Codable, Hashable, Sendable {
     /// Added in v0.4: optional so v0.2/v0.3 saves still decode.
     public var kanaBestStars: Int? = nil
     public var flashcardsReviewed: Int? = nil
+    /// Added in v0.6: days (yyyy-MM-dd) the bonus lesson's XP was claimed, and words written out.
+    public var bonusDays: [String]? = nil
+    public var wordsWritten: [String]? = nil
     public init() {}
 }
 

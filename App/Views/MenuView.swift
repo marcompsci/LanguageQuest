@@ -22,6 +22,7 @@ struct MenuView: View {
                     if let prof = model.profile {
                         explorerCard(prof)
                         RecentLessonView()
+                        bonusCard(prof)
                         ForEach(CourseCategory.allCases, id: \.self) { section in
                             let rows = model.courseSummaries.filter { $0.category == section }
                             if !rows.isEmpty {
@@ -51,6 +52,34 @@ struct MenuView: View {
             }
         }
         .onAppear { phase = DayPhase.now() }
+    }
+
+    private func bonusCard(_ prof: PlayerProfile) -> some View {
+        let day = ActivityLog.dayKey(Date())
+        let claimed = BonusLesson.claimed(prof, day: day)
+        let flag = model.courseSummaries.first(where: \.isActive)?.flag ?? "🌐"
+        return Button { model.sheet = .bonus } label: {
+            HStack(spacing: 14) {
+                Image(systemName: claimed ? "gift" : "gift.fill").font(.title)
+                    .foregroundStyle(Color(p.accent)).frame(width: 44)
+                    .accessibilityHidden(true)
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("Bonus lesson").font(.headline)
+                    Text("\(flag) \(model.languageName) · 6 quick activities").font(.subheadline)
+                    Text(claimed ? "Today's bonus XP collected. You can still play!" : "+\(BonusLesson.bonusXP) bonus XP today")
+                        .font(.caption).foregroundStyle(Color(p.secondaryText))
+                }
+                Spacer(minLength: 0)
+                Image(systemName: "chevron.right").foregroundStyle(Color(p.secondaryText))
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(
+                LinearGradient(colors: [Color(p.accent).opacity(claimed ? 0.10 : 0.28), Color(p.surface)], startPoint: .topLeading, endPoint: .bottomTrailing),
+                in: RoundedRectangle(cornerRadius: 16))
+        }
+        .buttonStyle(.plain)
+        .accessibilityIdentifier("bonusLesson")
     }
 
     private func explorerCard(_ prof: PlayerProfile) -> some View {
@@ -124,6 +153,8 @@ struct LanguageHubView: View {
                         LazyVGrid(columns: columns, spacing: 12) {
                             MenuTile(icon: "gamecontroller.fill", title: "Games", id: "menu-games") { model.sheet = .games }
                             MenuTile(icon: "rectangle.on.rectangle.angled", title: "Flashcards", id: "menu-flashcards") { model.sheet = .flashcards }
+                            MenuTile(icon: "gift.fill", title: "Bonus lesson", id: "menu-bonus") { model.sheet = .bonus }
+                            MenuTile(icon: "pencil.and.scribble", title: "Write Out", id: "menu-writeout") { model.sheet = .writeOut }
                             if model.library?.course.script == .kana {
                                 MenuTile(icon: "character.ja", title: "Kana Dojo", id: "menu-kana") { model.sheet = .kana }
                             }
@@ -174,6 +205,8 @@ struct HamburgerMenu: View {
         Menu {
             Button { model.sheet = .review } label: { Label("Review", systemImage: "arrow.triangle.2.circlepath") }
             Button { model.sheet = .phrasebook } label: { Label("Phrasebook", systemImage: "character.book.closed.fill") }
+            Button { model.sheet = .writeOut } label: { Label("Write Out", systemImage: "pencil.and.scribble") }
+            Button { model.sheet = .bonus } label: { Label("Bonus lesson", systemImage: "gift.fill") }
             Button { model.sheet = .journal } label: { Label("Quest journal", systemImage: "book.closed.fill") }
             Button { model.sheet = .wardrobe } label: { Label("Wardrobe", systemImage: "tshirt.fill") }
             Button { model.sheet = .bag } label: { Label("Bag and badges", systemImage: "bag.fill") }
@@ -258,7 +291,6 @@ struct RecentLessonView: View {
     @EnvironmentObject var model: AppModel
     @Environment(\.palette) var p
     @State private var seed = UInt64.random(in: 1...UInt64.max)
-    @State private var flipped = false
     @State private var answered: Bool?
     /// The card on screen stays put after answering (recording changes which word is due).
     @State private var shown: Flashcard?
@@ -300,37 +332,20 @@ struct RecentLessonView: View {
 
     @ViewBuilder
     private func quickCard(_ card: Flashcard, courseId: String) -> some View {
-        VStack(spacing: 10) {
-            Text("Quick flashcard").font(.caption.bold()).foregroundStyle(Color(p.secondaryText))
-                .frame(maxWidth: .infinity, alignment: .leading)
-            Button { withAnimation(.easeInOut(duration: 0.2)) { flipped.toggle() } } label: {
-                VStack(spacing: 6) {
-                    if let pic = card.picture { Text(pic).font(.largeTitle).accessibilityHidden(true) }
-                    Text(flipped ? card.back : card.front.base).font(.title2.bold())
-                    if !flipped, let r = roman(card.front, courseId) { Text(r).font(.subheadline).foregroundStyle(Color(p.secondaryText)) }
-                    if flipped { Text(card.front.base).font(.subheadline).foregroundStyle(Color(p.secondaryText)) }
-                    if !flipped { Text("Tap to flip").font(.caption2).foregroundStyle(Color(p.secondaryText)) }
-                }
-                .multilineTextAlignment(.center)
-                .frame(maxWidth: .infinity, minHeight: 110)
-                .background(Color(p.accent).opacity(0.10), in: RoundedRectangle(cornerRadius: 14))
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel(flipped ? "\(card.front.base) means \(card.back)" : card.front.base)
-            .accessibilityHint(flipped ? "" : "Flips the card")
-            .accessibilityIdentifier("quickFlashcard")
-            if let a = answered {
-                HStack {
-                    Text(a ? "Nice! See you in your next review." : "No problem, it'll come back soon.").font(.subheadline)
-                    Spacer()
-                    Button("Another") { seed &+= 1; flipped = false; answered = nil; shown = nil }.font(.subheadline.bold())
-                        .accessibilityIdentifier("quickAnother")
-                }
-            } else if flipped {
-                HStack(spacing: 10) {
-                    Button("Still learning") { record(card, courseId, false) }.buttonStyle(SecondaryButtonStyle())
-                    Button("I knew it") { record(card, courseId, true) }.buttonStyle(PrimaryButtonStyle())
-                        .accessibilityIdentifier("quickKnewIt")
+        if let lib = model.libraries[courseId] {
+            VStack(spacing: 10) {
+                Text("Quick flashcard").font(.caption.bold()).foregroundStyle(Color(p.secondaryText))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                ChoiceFlashcard(card: card, choices: FlashcardChoices.make(for: card, library: lib, seed: seed),
+                                romanized: roman(card.front, courseId), compact: true) { ok in record(card, courseId, ok) }
+                    .id("\(seed)-\(card.itemId)")
+                if let a = answered {
+                    HStack {
+                        Text(a ? "Nice! See you in your next review." : "No problem, it'll come back soon.").font(.subheadline)
+                        Spacer()
+                        Button("Another") { seed &+= 1; answered = nil; shown = nil }.font(.subheadline.bold())
+                            .accessibilityIdentifier("quickAnother")
+                    }
                 }
             }
         }
@@ -340,7 +355,6 @@ struct RecentLessonView: View {
         let libs = model.libraries
         shown = card
         model.updateProfile { RecentLessonCard.record(card, courseId: courseId, knewIt: knewIt, profile: &$0, libraries: libs, now: Date()) }
-        model.sfx(knewIt ? .correct : .retry)
         answered = knewIt
     }
 }
