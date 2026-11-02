@@ -85,26 +85,28 @@ final class WorldCoordinator: ObservableObject, VillageSceneDelegate {
             let done = lib.allQuests.filter { $0.npc == npc.id && p.progress.completedQuests.contains($0.id) }
             if let last = done.last {
                 let duel = BattleRoster.opponent(forNPC: npc.id).flatMap { BattleRoster.isUnlocked($0, progress: p.progress, progression: prog) ? $0 : nil }
-                var choices = [DialogueChoice(text: "¡Sí, por favor!", gloss: "Yes, please! (practice the quest again)", next: "yes"),
-                               DialogueChoice(text: "Ahora no, gracias.", gloss: "Not now, thanks.", next: "no")]
+                let ph = model.phrases
+                var choices = [DialogueChoice(text: ph.yesPlease, gloss: "Yes, please! (practice the quest again)", next: "yes"),
+                               DialogueChoice(text: ph.notNow, gloss: "Not now, thanks.", next: "no")]
                 if duel != nil {
-                    choices.insert(DialogueChoice(text: "¡Un duelo de palabras!", gloss: "A word duel!", next: "duel"), at: 1)
+                    choices.insert(DialogueChoice(text: ph.duel, gloss: "A word duel!", next: "duel"), at: 1)
                 }
+                let greeting = duel.flatMap { ph.duelGreetings[$0.id] } ?? ph.letsGo
                 let d = Dialogue(start: "a", nodes: [
-                    DialogueNode(id: "a", speaker: npc.name, line: "¡Hola otra vez, {name}! ¿Practicamos?", gloss: "Hi again, {name}! Shall we practice?",
+                    DialogueNode(id: "a", speaker: npc.name, line: ph.helloAgain, gloss: "Hi again, {name}! Shall we practice?",
                                  choices: choices, next: nil, effects: nil, hint: nil),
-                    DialogueNode(id: "duel", speaker: npc.name, line: duel?.greeting ?? "¡Vamos!", gloss: duel?.greetingGloss ?? "Let's go!",
+                    DialogueNode(id: "duel", speaker: npc.name, line: greeting, gloss: duel?.greetingGloss ?? "Let's go!",
                                  choices: nil, next: nil, effects: [DialogueEffect(kind: .setFlag, value: "duel")], hint: nil),
-                    DialogueNode(id: "yes", speaker: npc.name, line: "¡Vamos!", gloss: "Let's go!", choices: nil, next: nil,
+                    DialogueNode(id: "yes", speaker: npc.name, line: ph.letsGo, gloss: "Let's go!", choices: nil, next: nil,
                                  effects: [DialogueEffect(kind: .setFlag, value: "replay")], hint: nil),
-                    DialogueNode(id: "no", speaker: npc.name, line: "¡Hasta luego!", gloss: "See you later!", choices: nil, next: nil, effects: nil, hint: nil),
+                    DialogueNode(id: "no", speaker: npc.name, line: ph.seeYou, gloss: "See you later!", choices: nil, next: nil, effects: nil, hint: nil),
                 ])
                 conversation = Conversation(npc: npc, runner: DialogueRunner(d), quest: nil, replayQuest: last, duel: duel)
             } else {
                 let next = prog.nextQuest(p.progress, plan: model.plan)
                 let tip = next.map { q in "Finish “\(q.title)” with \(StarterVillage.npc(q.npc)?.name ?? "a friend") first." } ?? "Come back soon!"
                 let d = Dialogue(start: "a", nodes: [
-                    DialogueNode(id: "a", speaker: npc.name, line: "¡Hola! Vuelve pronto.", gloss: "Hi! Come back soon. (\(tip))",
+                    DialogueNode(id: "a", speaker: npc.name, line: model.phrases.comeBackSoon, gloss: "Hi! Come back soon. (\(tip))",
                                  choices: nil, next: nil, effects: nil, hint: nil)])
                 conversation = Conversation(npc: npc, runner: DialogueRunner(d), quest: nil)
             }
@@ -119,13 +121,13 @@ final class WorldCoordinator: ObservableObject, VillageSceneDelegate {
         model.updateProfile { $0.updateExtras { $0.treasuresFound.insert(t.id) } }
         model.sfx(.treasure)
         model.foundTreasure = t
-        model.say(t.spanish)
+        model.say(t.word(model.library?.course.targetLanguage ?? "es"))
         refreshActionLabel()
     }
 
     func scene(_ s: VillageScene, readSign sign: PlaceSign) {
         signText = sign
-        model?.say(VText(sign.spanish))
+        model?.say(VText(sign.text(model?.library?.course.targetLanguage ?? "es")))
     }
 
     func scene(_ s: VillageScene, reachedExit exit: MapExit) {
@@ -223,10 +225,12 @@ struct WorldView: View {
                 Button("\(n.name)") { world.scene.walk(to: n.position) }
             }
             ForEach(StarterVillage.signs, id: \.spanish) { s in
-                Button("\(s.english) (\(s.spanish))") { world.scene.walk(to: s.position) }
+                Button("\(s.english) (\(s.text(lang)))") { world.scene.walk(to: s.position) }
             }
         }
     }
+
+    private var lang: String { model.library?.course.targetLanguage ?? "es" }
 
     private var topBar: some View {
         HStack(spacing: 8) {
@@ -312,11 +316,11 @@ struct WorldView: View {
         Card {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(s.spanish).font(.title3.bold())
+                    Text(model.display(s.text(lang))).font(.title3.bold())
                     Text(s.english).font(.subheadline).foregroundStyle(Color(model.palette.secondaryText))
                 }
                 Spacer()
-                SpeakerButton(text: VText(s.spanish))
+                SpeakerButton(text: VText(s.text(lang)))
             }
         }
         .padding(.horizontal, 16)

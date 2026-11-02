@@ -48,7 +48,7 @@ struct JournalView: View {
                     }
                     Section {
                         Button { model.sheet = .placement } label: {
-                            Label("Already know some Spanish? Take the placement test", systemImage: "graduationcap")
+                            Label("Already know some \(model.languageName)? Take the placement test", systemImage: "graduationcap")
                         }
                     }
                 }
@@ -129,7 +129,7 @@ struct BagView: View {
                                 HStack {
                                     VStack(alignment: .leading) {
                                         Text(c.name)
-                                        Text(c.spanishName).font(.caption)
+                                        if model.activeCourseId == "en-es" { Text(c.spanishName).font(.caption) }
                                     }
                                     Spacer()
                                     if on { Label("Wearing", systemImage: "checkmark") }

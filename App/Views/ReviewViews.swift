@@ -61,7 +61,7 @@ struct ReviewView: View {
                 case .done:
                     VStack(spacing: 16) {
                         Image(systemName: "sparkles").font(.system(size: 60)).accessibilityHidden(true)
-                        Text("¡Buen trabajo!").font(.largeTitle.bold())
+                        Text(model.phrases.goodJob).font(.largeTitle.bold())
                         Text("Words you missed will come back soon. Words you knew will come back later.")
                             .multilineTextAlignment(.center)
                         Button("Done") { dismiss() }.buttonStyle(PrimaryButtonStyle())
@@ -168,7 +168,7 @@ struct PlacementView: View {
                         Button("Start") {
                             if let lib = model.library { session = PlacementSession(library: lib); started = true }
                         }.buttonStyle(PrimaryButtonStyle()).accessibilityIdentifier("startPlacement")
-                        Button("I'm new to Spanish: skip") {
+                        Button("I'm new to \(model.languageName): skip") {
                             if let lib = model.library {
                                 var s = PlacementSession(library: lib); s.skip(); session = s
                                 model.updateProfile { s.apply(to: &$0, now: Date()) }
@@ -204,7 +204,7 @@ struct MasteryCheckView: View {
                 if let u = model.library?.unit(unitId) {
                     if let r = result {
                         VStack(spacing: 16) {
-                            Text(r.passed == true ? "¡Excelente!" : "Good practice!").font(.largeTitle.bold())
+                            Text(r.passed == true ? model.phrases.excellent : "Good practice!").font(.largeTitle.bold())
                             Text("\(r.overall.correct) of \(r.overall.total) right on the first try.")
                             Text(r.passed == true ? "You passed the \(u.title) mastery check."
                                  : "Keep reviewing and try again any time. Nothing is lost.")

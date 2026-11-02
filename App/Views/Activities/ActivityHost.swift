@@ -102,16 +102,17 @@ struct ActivityHost: View {
             }
         case .typeAnswer:
             TypeExercise(activity: activity) { text in
-                submit(AnswerChecker.check(text, accepted: activity.accepted ?? [], variant: variantId))
+                submit(AnswerChecker.check(text, accepted: activity.accepted ?? [], variant: variantId, context: checkContext))
             }
         case .speak:
             SpeakExercise(activity: activity, assessment: assessment,
-                          onRecognized: { text in submit(AnswerChecker.check(text, accepted: activity.accepted ?? [], variant: variantId)) },
+                          onRecognized: { text in submit(AnswerChecker.check(text, accepted: activity.accepted ?? [], variant: variantId, context: checkContext)) },
                           onSelfCheck: { selfChecked = true; finish(correct: true, extraAttempts: 0) })
         }
     }
 
     private var variantId: String { model.profile?.variant ?? "es-419" }
+    private var checkContext: CheckContext { model.library?.checkContext ?? .latin }
 
     private func submitChoice(_ id: String) {
         let expected = activity.choices?.first { $0.id == activity.answer }.map { model.text($0.text) } ?? ""
@@ -146,7 +147,7 @@ struct ActivityHost: View {
                         .font(.title)
                         .foregroundStyle(Color(v.isCorrect ? p.success : p.retry))
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(AnswerChecker.feedback(for: v, variantName: model.variantName))
+                        Text(AnswerChecker.feedback(for: v, praise: model.phrases.veryGood, variantName: model.variantName))
                             .font(.headline)
                             .accessibilityIdentifier("feedbackText")
                         if finished { Text(activity.explanation).font(.subheadline) }

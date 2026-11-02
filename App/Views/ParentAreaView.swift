@@ -237,8 +237,17 @@ struct ParentDashboardView: View {
 
     private func settingsSection(_ prof: PlayerProfile, _ lib: ContentLibrary) -> some View {
         Section("Settings for \(prof.nickname.isEmpty ? "this explorer" : prof.nickname)") {
-            Picker("Spanish variant", selection: binding(\.variant, prof)) {
-                ForEach(lib.course.variants) { v in Text("\(v.flagEmoji) \(v.name)").tag(v.id) }
+            Picker("Language", selection: Binding(get: { model.activeCourseId }, set: { model.switchCourse(to: $0) })) {
+                ForEach(model.courses, id: \.id) { c in Text("\(c.displayLanguage) (\(c.nativeName ?? ""))").tag(c.id) }
+            }
+            if lib.course.variants.count > 1 {
+                Picker("\(lib.course.displayLanguage) variety", selection: binding(\.variant, prof)) {
+                    ForEach(lib.course.variants) { v in Text("\(v.flagEmoji) \(v.name)").tag(v.id) }
+                }
+            }
+            if lib.course.script == .kana {
+                Toggle("Show romaji under Japanese", isOn: Binding(get: { prof.settings.romanizationOn },
+                                                                   set: { v in model.updateProfile { $0.settings.showRomanization = v } }))
             }
             Picker("Look", selection: binding(\.theme, prof)) {
                 Text("Playful (younger)").tag(ThemeKind.playful)
@@ -281,7 +290,7 @@ struct ParentDashboardView: View {
                             model.updateParent { $0.allowOnDeviceSpeech = ok }
                             if !ok { speechMessage = "Microphone or speech permission wasn't given. Speaking stays in no-microphone mode." }
                             else if SpeechRecognitionService.recognizer(for: model.variant) == nil {
-                                speechMessage = "This device can't check this Spanish offline, so speaking will stay in no-microphone mode."
+                                speechMessage = "This device can't check this language offline, so speaking will stay in no-microphone mode."
                             }
                         }
                     } else {

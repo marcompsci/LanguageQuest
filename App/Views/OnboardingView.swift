@@ -49,7 +49,7 @@ struct OnboardingView: View {
                     .interpolation(.none)
                     .accessibilityLabel("Luna, your guide")
                 Text("Language Quest").font(.largeTitle.bold())
-                Text("Explore a village, meet new friends, and learn Spanish by talking with them.")
+                Text("Explore a village, meet new friends, and learn Spanish, French or Japanese by talking with them.")
                     .font(.title3).multilineTextAlignment(.center)
                 Text("No ads. No timers. Mistakes are how we learn.").font(.subheadline)
             }
@@ -67,14 +67,20 @@ struct OnboardingView: View {
         case .language:
             VStack(alignment: .leading, spacing: 12) {
                 Text("What do you want to learn?").font(.title.bold())
-                choiceRow("Spanish (taught in English)", selected: true) {}
-                Text("French and Japanese will come later, after their lessons are written and checked by experts.")
+                ForEach(model.courses, id: \.id) { c in
+                    choiceRow("\(c.displayLanguage) · \(c.nativeName ?? "")", detail: courseDetail(c),
+                              selected: model.onboardingCourseId == c.id) {
+                        if model.onboardingCourseId != c.id { model.onboardingCourseId = c.id; variantId = nil }
+                    }
+                    .accessibilityIdentifier("course-\(c.id)")
+                }
+                Text("You can add another language later in the Parents area. Each language keeps its own progress.")
                     .font(.footnote).foregroundStyle(Color(p.secondaryText))
             }
         case .variant:
             VStack(alignment: .leading, spacing: 12) {
-                Text("Which Spanish?").font(.title.bold())
-                Text("All of these are real Spanish. Pick the one your family, friends, or school uses. You can change it later.")
+                Text("Which \(model.languageName)?").font(.title.bold())
+                Text("All of these are real \(model.languageName). Pick the one your family, friends, or school uses. You can change it later.")
                     .font(.subheadline)
                 ForEach(model.library?.course.variants ?? []) { v in
                     choiceRow("\(v.flagEmoji) \(v.name)", detail: v.note, selected: variantId == v.id) { variantId = v.id }
@@ -125,15 +131,31 @@ struct OnboardingView: View {
         }
     }
 
+    private func courseDetail(_ c: Course) -> String {
+        switch c.targetLanguage {
+        case "es": return "6 regional varieties, from Mexico to Spain to Argentina"
+        case "fr": return "France or Québec"
+        case "ja": return "Hiragana and katakana, with romaji to help you read"
+        default: return ""
+        }
+    }
+
     private func go(_ d: Int) {
         error = nil
-        if let s = Step(rawValue: step.rawValue + d) { step = s }
+        guard var s = Step(rawValue: step.rawValue + d) else { return }
+        // A course with one variant (Japanese) needs no variant step.
+        if s == .variant, let only = model.library?.course.variants, only.count == 1 {
+            variantId = only[0].id
+            s = Step(rawValue: s.rawValue + d) ?? s
+        }
+        step = s
     }
 
     private func next() {
         guard step == .name else { go(1); return }
         guard let band = ageBand, let v = variantId else { return }
-        let profile = PlayerProfile(nickname: PlayerProfile.sanitizeNickname(nickname), ageBand: band, avatar: avatar, variant: v)
+        let profile = PlayerProfile(nickname: PlayerProfile.sanitizeNickname(nickname), ageBand: band, avatar: avatar,
+                                    courseId: model.onboardingCourseId, variant: v)
         do {
             try model.createProfile(profile)
             model.sheet = .placement

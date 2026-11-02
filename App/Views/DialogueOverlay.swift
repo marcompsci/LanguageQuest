@@ -24,7 +24,7 @@ struct DialogueOverlay: View {
                         Spacer()
                         SpeakerButton(text: node.line, label: "Hear \(conversation.npc.name) again")
                     }
-                    Text(model.text(node.line))
+                    Text(model.display(node.line))
                         .font(.title3.weight(.semibold))
                         .fixedSize(horizontal: false, vertical: true)
                         .accessibilityIdentifier("dialogueLine")
@@ -52,7 +52,7 @@ struct DialogueOverlay: View {
                         ForEach(Array(choices.enumerated()), id: \.offset) { i, c in
                             Button { showHint = false; onChoose(i) } label: {
                                 VStack(alignment: .leading, spacing: 2) {
-                                    Text(model.text(c.text)).font(.headline)
+                                    Text(model.display(c.text)).font(.headline)
                                     if subtitlesOn || showEnglish {
                                         Text(model.personalize(c.gloss)).font(.caption).foregroundStyle(Color(p.secondaryText))
                                     }

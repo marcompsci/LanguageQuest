@@ -44,8 +44,21 @@ final class AppModel: ObservableObject {
     @Published var toast: String?
     @Published var stretchReminder = false
 
-    let library: ContentLibrary?
-    let progression: Progression?
+    /// Every bundled course, by id ("en-es", "en-fr", "en-ja").
+    let libraries: [String: ContentLibrary]
+    private let progressions: [String: Progression]
+    /// Course chosen during onboarding, before a profile exists.
+    @Published var onboardingCourseId = "en-es"
+
+    /// The active explorer's course (or the one being picked in onboarding).
+    var activeCourseId: String { route == .onboarding ? onboardingCourseId : (profile?.courseId ?? onboardingCourseId) }
+    var library: ContentLibrary? { libraries[activeCourseId] ?? libraries["en-es"] }
+    var progression: Progression? { progressions[activeCourseId] ?? progressions["en-es"] }
+    /// Short lines in the active course's language.
+    var phrases: LocalPhrases { library?.phrases ?? .spanish }
+    var languageName: String { library?.course.displayLanguage ?? "Spanish" }
+    /// Bundled courses in menu order.
+    var courses: [Course] { ContentLibrary.bundledCourseIds.compactMap { libraries[$0]?.course } }
     let storeConfig: StoreConfig
     let speech = SpeechService()
     let audio = AudioService()
@@ -67,14 +80,15 @@ final class AppModel: ObservableObject {
             let base = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
             saveStore = FileSaveStore(directory: base.appendingPathComponent("LanguageQuest", isDirectory: true))
         }
-        do {
-            let lib = try ContentLibrary.bundledSpanish()
-            library = lib
-            progression = Progression(library: lib)
-        } catch {
-            library = nil
-            progression = nil
-            route = .failed("The lessons couldn't be loaded. Please reinstall the app.\n\n\(error)")
+        var libs: [String: ContentLibrary] = [:]
+        var loadError: Error?
+        for id in ContentLibrary.bundledCourseIds {
+            do { libs[id] = try ContentLibrary.bundled(id) } catch { loadError = error }
+        }
+        libraries = libs
+        progressions = libs.mapValues { Progression(library: $0) }
+        if libs["en-es"] == nil {
+            route = .failed("The lessons couldn't be loaded. Please reinstall the app.\n\n\(String(describing: loadError))")
             return
         }
         do {
@@ -179,7 +193,21 @@ final class AppModel: ObservableObject {
         return s.replacingOccurrences(of: "{name}", with: n)
     }
 
-    func text(_ v: VText) -> String { personalize(v.text(for: profile?.variant ?? "es-419")) }
+    func text(_ v: VText) -> String { personalize(v.text(for: profile?.variant ?? library?.course.defaultVariant ?? "es-419")) }
+
+    /// Text for display: adds romaji under Japanese when the setting is on.
+    func display(_ v: VText) -> String { display(text(v)) }
+    func display(_ s: String) -> String {
+        guard profile?.settings.romanizationOn ?? true, let r = library?.course.romanize(s), r != s else { return s }
+        return "\(s)\n\(r)"
+    }
+
+    /// Switches the active explorer to another language, keeping each course's progress.
+    func switchCourse(to id: String) {
+        guard let lib = libraries[id] else { return }
+        updateProfile { $0.switchCourse(to: id, defaultVariant: lib.course.defaultVariant) }
+        sheet = nil
+    }
 
     func say(_ v: VText) {
         guard let p = profile else { return }

@@ -75,7 +75,7 @@ struct ThemedBackground: View {
 struct SpeakerButton: View {
     @EnvironmentObject var model: AppModel
     let text: VText
-    var label = "Play Spanish audio"
+    var label = "Play audio"
     var big = false
     var body: some View {
         Button { model.say(text) } label: {

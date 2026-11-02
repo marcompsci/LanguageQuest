@@ -52,7 +52,7 @@ struct QuestPlayerView: View {
     private func intro(_ u: LessonUnit, _ q: Quest) -> some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Text(model.text(u.targetTitle)).font(.caption.bold()).foregroundStyle(Color(p.secondaryText))
+                Text(model.display(u.targetTitle)).font(.caption.bold()).foregroundStyle(Color(p.secondaryText))
                 Text(q.title).font(.largeTitle.bold())
                 Text(q.summary).font(.title3)
                 Card {
@@ -82,12 +82,12 @@ struct QuestPlayerView: View {
             Spacer()
             Image(systemName: "star.circle.fill").font(.system(size: 80)).foregroundStyle(Color(p.accent))
                 .accessibilityHidden(true)
-            Text("¡Misión cumplida!").font(.largeTitle.bold())
+            Text(model.phrases.questComplete).font(.largeTitle.bold())
                 .onAppear { model.sfx(.reward) }
             Text("Quest complete: \(q.title)").font(.title3)
             Text("+\(xpEarned) XP").font(.title2.bold())
             if let c = reward?.cosmeticUnlocked, let item = Catalog.cosmetic(c) {
-                Card { Label("New item: \(item.name) (\(item.spanishName))", systemImage: "gift.fill") }
+                Card { Label(model.activeCourseId == "en-es" ? "New item: \(item.name) (\(item.spanishName))" : "New item: \(item.name)", systemImage: "gift.fill") }
             }
             if let b = reward?.badgeEarned, let badge = Catalog.badge(b) {
                 Card { Label("Badge: \(badge.name). \(badge.detail)", systemImage: "rosette") }

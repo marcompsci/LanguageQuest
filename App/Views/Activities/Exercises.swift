@@ -30,7 +30,7 @@ struct ChoiceExercise: View {
                         if let pic = c.picture {
                             Text(pic).font(.largeTitle).accessibilityLabel(c.altText ?? "")
                         }
-                        Text(model.text(c.text)).font(.title3)
+                        Text(model.display(c.text)).font(.title3)
                         Spacer()
                         if picked == c.id {
                             Image(systemName: c.id == activity.answer ? "checkmark" : "arrow.uturn.backward")
@@ -54,12 +54,12 @@ struct ChoiceExercise: View {
         case .listenChoose, .dialogueReply:
             HStack(spacing: 16) {
                 if let t = activity.target {
-                    SpeakerButton(text: t, label: "Play the Spanish", big: activity.type == .listenChoose)
+                    SpeakerButton(text: t, label: "Play the audio", big: activity.type == .listenChoose)
                         .onAppear { model.say(t) }
                     VStack(alignment: .leading) {
                         // Text is available for deaf and hard-of-hearing learners and as a support.
                         if showText || activity.type == .dialogueReply {
-                            Text(model.text(t)).font(.title2.bold())
+                            Text(model.display(t)).font(.title2.bold())
                         } else {
                             Button("Show the words") { showText = true }.font(.subheadline)
                         }
@@ -69,14 +69,14 @@ struct ChoiceExercise: View {
         case .readChoose:
             if let t = activity.target {
                 HStack {
-                    Text(model.text(t)).font(.title.bold())
+                    Text(model.display(t)).font(.title.bold())
                     Spacer()
                     SpeakerButton(text: t)
                 }
             }
         case .fillBlank:
             if let s = activity.sentence {
-                Text(model.text(s).replacingOccurrences(of: "___", with: "_____"))
+                Text(model.display(s).replacingOccurrences(of: "___", with: "_____"))
                     .font(.title.bold())
                     .accessibilityLabel(model.text(s).replacingOccurrences(of: "___", with: "blank"))
             }
@@ -105,7 +105,7 @@ struct MatchExercise: View {
         HStack(alignment: .top, spacing: 12) {
             VStack(spacing: 10) {
                 ForEach(pairs.indices, id: \.self) { i in
-                    tile(model.text(pairs[i].target), state: matched.contains(i) ? .done : selectedLeft == i ? .selected : .idle) {
+                    tile(model.display(pairs[i].target), state: matched.contains(i) ? .done : selectedLeft == i ? .selected : .idle) {
                         guard !matched.contains(i) else { return }
                         selectedLeft = i
                         model.say(pairs[i].target)
@@ -199,7 +199,8 @@ struct BuildExercise: View {
 
     private func chip(_ t: String, filled: Bool, action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            Text(t).font(.title3.weight(.semibold))
+            Text(model.display(t)).font(.title3.weight(.semibold))
+                .multilineTextAlignment(.center)
                 .padding(.horizontal, 14).frame(minHeight: 46)
                 .background(filled ? Color(p.accent) : Color(p.surface), in: RoundedRectangle(cornerRadius: 10))
                 .foregroundStyle(filled ? Color(p.onAccent) : Color(p.text))
@@ -245,11 +246,15 @@ struct TypeExercise: View {
     let onCheck: (String) -> Void
     @State private var text = ""
     @FocusState private var focused: Bool
-    private let accents = ["á", "é", "í", "ó", "ú", "ñ", "ü", "¿", "¡"]
+    @EnvironmentObject var model: AppModel
+    private var accents: [String] { model.library?.course.typingKeys ?? ["á", "é", "í", "ó", "ú", "ñ", "ü", "¿", "¡"] }
+    private var placeholder: String {
+        model.library?.course.script == .kana ? "Type in kana or romaji" : "Type in \(model.languageName)"
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            TextField("Type in Spanish", text: $text)
+            TextField(placeholder, text: $text)
                 .font(.title2)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
@@ -312,7 +317,7 @@ struct SpeakExercise: View {
             if let t = activity.target {
                 if showsModel {
                     HStack {
-                        Text(model.text(t)).font(.title.bold())
+                        Text(model.display(t)).font(.title.bold())
                         Spacer()
                         SpeakerButton(text: t, label: "Hear it first")
                     }
@@ -336,13 +341,13 @@ struct SpeakExercise: View {
                 // No microphone: say it aloud, then self-check. Nothing is recorded.
                 Text("Say it out loud. Then tap below.").font(.subheadline)
                 if !showsModel {
-                    Button("Show me the Spanish") { revealed = true }.buttonStyle(SecondaryButtonStyle())
+                    Button("Show me the answer") { revealed = true }.buttonStyle(SecondaryButtonStyle())
                 }
                 Button { revealed = true; onSelfCheck() } label: { Label("I said it!", systemImage: "checkmark.bubble.fill") }
                     .buttonStyle(PrimaryButtonStyle())
                     .accessibilityIdentifier("saidItButton")
                 if availability == .unsupportedOnDevice {
-                    Text("Speech checking isn't available for this Spanish on this device, so nothing is recorded.").font(.caption)
+                    Text("Speech checking isn't available for this language on this device, so nothing is recorded.").font(.caption)
                 }
             }
         }

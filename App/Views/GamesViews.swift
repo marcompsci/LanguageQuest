@@ -11,19 +11,20 @@ struct TreasureCard: View {
     @Environment(\.palette) var p
     let treasure: WordTreasure
     let onClose: () -> Void
+    private var lang: String { model.library?.course.targetLanguage ?? "es" }
 
     var body: some View {
         ZStack {
             Color.black.opacity(0.3).ignoresSafeArea().onTapGesture(perform: onClose)
             VStack(spacing: 12) {
-                Text("¡Palabra perdida!").font(.caption.bold()).foregroundStyle(Color(p.secondaryText))
+                Text(model.display(model.phrases.lostWord)).font(.caption.bold()).foregroundStyle(Color(p.secondaryText))
                 Text(treasure.emoji).font(.system(size: 64)).accessibilityHidden(true)
                 HStack {
-                    Text(model.text(treasure.spanish)).font(.title.bold())
-                    SpeakerButton(text: treasure.spanish)
+                    Text(model.display(treasure.word(lang))).font(.title.bold())
+                    SpeakerButton(text: treasure.word(lang))
                 }
                 Text(treasure.english).font(.title3)
-                Text(treasure.fact).font(.subheadline).multilineTextAlignment(.center)
+                Text(treasure.fact(lang)).font(.subheadline).multilineTextAlignment(.center)
                 let found = model.profile?.extrasOrEmpty.treasuresFound.count ?? 0
                 Text("Treasure book: \(found)/\(StarterVillage.treasures.count)").font(.footnote.bold())
                 Button("Keep exploring", action: onClose).buttonStyle(PrimaryButtonStyle())
@@ -81,7 +82,7 @@ struct GamesHubView: View {
                         Label("Treasure book: \(found.count)/\(StarterVillage.treasures.count) lost words", systemImage: "sparkles")
                         ForEach(StarterVillage.treasures) { t in
                             if found.contains(t.id) {
-                                HStack { Text(t.emoji); Text(model.text(t.spanish)).bold(); Text("= \(t.english)") }
+                                HStack { Text(t.emoji); Text(model.display(t.word(model.library?.course.targetLanguage ?? "es"))).bold(); Text("= \(t.english)") }
                             }
                         }
                         if found.count < StarterVillage.treasures.count {
@@ -179,16 +180,16 @@ struct BattleView: View {
 
     private func question(_ q: BattleQuestion, _ b: WordBattle) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(q.spanishPrompt ? "What does it mean?" : "How do you say it in Spanish?").font(.headline)
+            Text(q.spanishPrompt ? "What does it mean?" : "How do you say it in \(model.languageName)?").font(.headline)
             HStack {
-                Text(model.text(q.prompt)).font(.largeTitle.bold())
+                Text(model.display(q.prompt)).font(.largeTitle.bold())
                 Spacer()
                 if q.spanishPrompt { SpeakerButton(text: q.prompt) }
             }
             ForEach(q.options.indices, id: \.self) { i in
                 Button { answer(i) } label: {
                     HStack {
-                        Text(model.text(q.options[i])).font(.title3)
+                        Text(model.display(q.options[i])).font(.title3)
                         Spacer()
                         if picked != nil && i == q.answerIndex { Image(systemName: "checkmark").accessibilityLabel("Right answer") }
                     }
@@ -244,7 +245,7 @@ struct BattleView: View {
 
     private func results(_ b: WordBattle) -> some View {
         VStack(spacing: 14) {
-            Text(b.playerWon ? "¡Ganaste!" : "¡Buen duelo!").font(.largeTitle.bold())
+            Text(b.playerWon ? model.phrases.youWon : model.phrases.goodDuel).font(.largeTitle.bold())
             Text(b.playerWon ? "You won the duel against \(b.opponent.name)." : "\(b.opponent.name) won this time. Every word you missed comes back in Review.")
                 .multilineTextAlignment(.center)
             Text(String(repeating: "★", count: b.stars) + String(repeating: "☆", count: 3 - b.stars)).font(.largeTitle)
@@ -276,7 +277,7 @@ struct ScrambleView: View {
                         puzzle(pz, g)
                     } else {
                         VStack(spacing: 14) {
-                            Text("¡Muy bien!").font(.largeTitle.bold())
+                            Text(model.phrases.veryGood).font(.largeTitle.bold())
                             Text(String(repeating: "★", count: g.stars) + String(repeating: "☆", count: 3 - g.stars)).font(.largeTitle)
                             Text("\(g.firstTryCorrect) of \(g.puzzles.count) on the first try")
                             Button("Play again") { game = nil; setup() }.buttonStyle(SecondaryButtonStyle())
@@ -301,7 +302,7 @@ struct ScrambleView: View {
     private func puzzle(_ pz: ScramblePuzzle, _ g: WordScramble) -> some View {
         VStack(alignment: .leading, spacing: 16) {
             ProgressView(value: Double(g.index), total: Double(g.puzzles.count))
-            Text("Unscramble the Spanish for:").font(.headline)
+            Text("Unscramble the \(model.languageName) for:").font(.headline)
             Text(pz.english).font(.title.bold())
             if let a = pz.article { Text("Hint: it starts with “\(a)”").font(.subheadline) }
             let word = String(chosen.map { pz.letters[$0] })
@@ -384,7 +385,7 @@ struct MarketRushView: View {
                         ScrollView { order(o, g, lib).padding(20) }
                     } else {
                         VStack(spacing: 14) {
-                            Text("¡Gracias por su compra!").font(.largeTitle.bold()).multilineTextAlignment(.center)
+                            Text(model.phrases.thanksForShopping).font(.largeTitle.bold()).multilineTextAlignment(.center)
                             Text(String(repeating: "★", count: g.stars) + String(repeating: "☆", count: 3 - g.stars)).font(.largeTitle)
                             Button("Play again") { game = nil; setup() }.buttonStyle(SecondaryButtonStyle())
                             Button("Done") { dismiss() }.buttonStyle(PrimaryButtonStyle())
@@ -403,7 +404,8 @@ struct MarketRushView: View {
 
     private func money(_ n: Int) -> String {
         guard let c = currency else { return "\(n)" }
-        return "\(n) \(n == 1 ? c.singular : c.plural)"
+        let amount = n * c.scale
+        return "\(amount) \(amount == 1 ? c.singular : c.plural)"
     }
 
     private func setup() {
@@ -419,9 +421,9 @@ struct MarketRushView: View {
             ProgressView(value: Double(g.index), total: Double(g.orders.count))
             Card {
                 VStack(alignment: .leading, spacing: 6) {
-                    Label("La lista de compras", systemImage: "list.bullet.clipboard").font(.headline)
+                    Label(model.phrases.shoppingList, systemImage: "list.bullet.clipboard").font(.headline)
                     ForEach(o.wanted, id: \.itemId) { w in
-                        HStack { Text("• \(name(w.itemId, lib))").font(.title3); Spacer(); SpeakerButton(text: VText(name(w.itemId, lib))) }
+                        HStack { Text("• " + model.display(name(w.itemId, lib))).font(.title3); Spacer(); SpeakerButton(text: VText(name(w.itemId, lib))) }
                     }
                 }
             }
@@ -463,11 +465,11 @@ struct MarketRushView: View {
                 .disabled(basket.isEmpty)
                 .accessibilityIdentifier("checkBasket")
             } else {
-                Text("Pay exactly \(money(o.total)). ¿Cuánto cuesta en total?").font(.headline)
+                Text("Pay exactly \(money(o.total)). \(model.phrases.howMuchTotal)").font(.headline)
                 Text("Paid: \(money(coins.reduce(0, +)))").font(.title2.bold())
                 HStack(spacing: 10) {
                     ForEach(MarketRush.coins, id: \.self) { c in
-                        Button("\(c)") { coins.append(c); model.sfx(.coin) }
+                        Button("\(c * (currency?.scale ?? 1))") { coins.append(c); model.sfx(.coin) }
                             .font(.title2.bold())
                             .frame(width: 60, height: 60)
                             .background(Color(RGB(0xF2C230)), in: Circle())
@@ -527,7 +529,7 @@ struct PhrasebookView: View {
                     }
                 }
             }
-            .searchable(text: $query, prompt: "Search Spanish or English")
+            .searchable(text: $query, prompt: model.library?.course.script == .kana ? "Search kana, romaji or English" : "Search \(model.languageName) or English")
             .navigationTitle("Phrasebook")
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
         }
@@ -537,7 +539,7 @@ struct PhrasebookView: View {
         HStack(alignment: .top, spacing: 10) {
             if let pic = e.item.picture { Text(pic).font(.title2).accessibilityHidden(true) }
             VStack(alignment: .leading, spacing: 3) {
-                Text(model.text(e.item.target)).font(.headline)
+                Text(model.display(e.item.target)).font(.headline)
                 Text(e.item.english).font(.subheadline)
                 if !e.otherRegions.isEmpty {
                     Text(e.otherRegions.map { "\($0.variantName): \($0.form)" }.joined(separator: " · "))
