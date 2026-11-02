@@ -1,0 +1,1462 @@
+{
+  "id": "u3-mercado",
+  "version": 1,
+  "order": 3,
+  "title": "At the Market",
+  "targetTitle": "En el mercado",
+  "world": "starter-village",
+  "objective": "Name foods, say what you want and like, count to twenty, ask prices, and order politely.",
+  "canDo": [
+    "I can name fruits and breakfast foods.",
+    "I can say what I want, like, and don't like.",
+    "I can count from 11 to 20.",
+    "I can ask how much something costs.",
+    "I can order food politely."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Mid",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons",
+      "Communities"
+    ]
+  },
+  "ageBands": [
+    "7-9",
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Written by the development team. Needs review by native-speaker linguists for each regional variant before release. Audio uses on-device text-to-speech until native recordings are made."
+  },
+  "vocabulary": [
+    {
+      "id": "manzana",
+      "kind": "word",
+      "target": "la manzana",
+      "english": "the apple",
+      "gender": "f",
+      "picture": "🍎",
+      "altText": "a red apple"
+    },
+    {
+      "id": "platano",
+      "kind": "word",
+      "target": {
+        "base": "el plátano",
+        "es-AR": "la banana",
+        "es-CO": "el banano",
+        "es-PR": "el guineo"
+      },
+      "english": "the banana",
+      "picture": "🍌",
+      "altText": "a banana",
+      "note": "Banana has many names: plátano (Mexico, Spain), banana (Argentina), banano (Colombia), guineo (Puerto Rico)."
+    },
+    {
+      "id": "naranja",
+      "kind": "word",
+      "target": "la naranja",
+      "english": "the orange (fruit)",
+      "gender": "f",
+      "picture": "🍊",
+      "altText": "an orange"
+    },
+    {
+      "id": "fresa",
+      "kind": "word",
+      "target": {
+        "base": "la fresa",
+        "es-AR": "la frutilla"
+      },
+      "english": "the strawberry",
+      "gender": "f",
+      "picture": "🍓",
+      "altText": "a strawberry"
+    },
+    {
+      "id": "uvas",
+      "kind": "word",
+      "target": "las uvas",
+      "english": "the grapes",
+      "gender": "f",
+      "picture": "🍇",
+      "altText": "a bunch of grapes"
+    },
+    {
+      "id": "aguacate",
+      "kind": "word",
+      "target": {
+        "base": "el aguacate",
+        "es-AR": "la palta"
+      },
+      "english": "the avocado",
+      "picture": "🥑",
+      "altText": "an avocado"
+    },
+    {
+      "id": "pan",
+      "kind": "word",
+      "target": "el pan",
+      "english": "the bread",
+      "gender": "m",
+      "picture": "🍞",
+      "altText": "a loaf of bread"
+    },
+    {
+      "id": "leche",
+      "kind": "word",
+      "target": "la leche",
+      "english": "the milk",
+      "gender": "f",
+      "picture": "🥛",
+      "altText": "a glass of milk"
+    },
+    {
+      "id": "queso",
+      "kind": "word",
+      "target": "el queso",
+      "english": "the cheese",
+      "gender": "m",
+      "picture": "🧀",
+      "altText": "a wedge of cheese"
+    },
+    {
+      "id": "huevos",
+      "kind": "word",
+      "target": "los huevos",
+      "english": "the eggs",
+      "gender": "m",
+      "picture": "🥚",
+      "altText": "an egg"
+    },
+    {
+      "id": "jugo",
+      "kind": "word",
+      "target": {
+        "base": "el jugo",
+        "es-ES": "el zumo"
+      },
+      "english": "the juice",
+      "gender": "m",
+      "picture": "🧃",
+      "altText": "a juice box"
+    },
+    {
+      "id": "agua",
+      "kind": "word",
+      "target": "el agua",
+      "english": "the water",
+      "gender": "f",
+      "picture": "💧",
+      "altText": "a water drop",
+      "note": "Agua is a feminine word, but it uses el: el agua fría."
+    },
+    {
+      "id": "desayuno",
+      "kind": "word",
+      "target": "el desayuno",
+      "english": "breakfast",
+      "gender": "m"
+    },
+    {
+      "id": "once",
+      "kind": "word",
+      "target": "once",
+      "english": "eleven (11)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "doce",
+      "kind": "word",
+      "target": "doce",
+      "english": "twelve (12)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "trece",
+      "kind": "word",
+      "target": "trece",
+      "english": "thirteen (13)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "catorce",
+      "kind": "word",
+      "target": "catorce",
+      "english": "fourteen (14)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "quince",
+      "kind": "word",
+      "target": "quince",
+      "english": "fifteen (15)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "dieciseis",
+      "kind": "word",
+      "target": "dieciséis",
+      "english": "sixteen (16)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "diecisiete",
+      "kind": "word",
+      "target": "diecisiete",
+      "english": "seventeen (17)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "dieciocho",
+      "kind": "word",
+      "target": "dieciocho",
+      "english": "eighteen (18)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "diecinueve",
+      "kind": "word",
+      "target": "diecinueve",
+      "english": "nineteen (19)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "veinte",
+      "kind": "word",
+      "target": "veinte",
+      "english": "twenty (20)",
+      "partOfSpeech": "number"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "quiero",
+      "kind": "phrase",
+      "target": "quiero…",
+      "english": "I want…",
+      "example": {
+        "target": "Quiero pan.",
+        "english": "I want bread."
+      }
+    },
+    {
+      "id": "quisiera",
+      "kind": "phrase",
+      "target": "quisiera…",
+      "english": "I would like… (extra polite)",
+      "example": {
+        "target": "Quisiera un jugo, por favor.",
+        "english": "I'd like a juice, please."
+      }
+    },
+    {
+      "id": "me-gusta",
+      "kind": "phrase",
+      "target": "me gusta…",
+      "english": "I like…",
+      "example": {
+        "target": "Me gusta el queso.",
+        "english": "I like cheese."
+      }
+    },
+    {
+      "id": "no-me-gusta",
+      "kind": "phrase",
+      "target": "no me gusta…",
+      "english": "I don't like…"
+    },
+    {
+      "id": "cuanto-cuesta",
+      "kind": "phrase",
+      "target": "¿Cuánto cuesta?",
+      "english": "How much does it cost?"
+    },
+    {
+      "id": "cuesta",
+      "kind": "phrase",
+      "target": "cuesta…",
+      "english": "it costs…"
+    },
+    {
+      "id": "me-da",
+      "kind": "phrase",
+      "target": "¿Me da…?",
+      "english": "Can I have…? (polite, to a shopkeeper)",
+      "note": "Me da uses usted, the polite you, which is right for shopkeepers."
+    },
+    {
+      "id": "aqui-tiene",
+      "kind": "phrase",
+      "target": "aquí tiene",
+      "english": "here you go (polite)"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "n-u3-mercados",
+      "title": "Open-air markets",
+      "body": "Many towns have a mercado where families buy fresh fruit, vegetables, bread and cheese from people they know by name. Shopkeepers often greet regular customers with “¿Qué le doy?” (What can I give you?).",
+      "byVariant": {
+        "es-MX": "In Mexico, a tianguis is a street market that pops up on a certain day of the week.",
+        "es-ES": "In Spain, many towns have a covered market (mercado de abastos)."
+      }
+    },
+    {
+      "id": "n-u3-tortilla",
+      "title": "Same word, different food",
+      "body": "A tortilla in Mexico is a thin flatbread made of corn or flour. In Spain, a tortilla is a thick omelet made with eggs and potatoes!",
+      "byVariant": {
+        "es-ES": "In Spain, la tortilla española is made with eggs, potatoes and often onion.",
+        "es-MX": "In Mexico, tortillas are part of almost every meal, from tacos to quesadillas."
+      }
+    },
+    {
+      "id": "n-u3-dinero",
+      "title": "Money",
+      "body": "Different countries use different money. Market examples follow the variant you chose.",
+      "byVariant": {
+        "es-419": "Examples use pesos.",
+        "es-MX": "Mexico uses the peso.",
+        "es-ES": "Spain uses the euro.",
+        "es-AR": "Argentina uses the peso.",
+        "es-CO": "Colombia uses the peso.",
+        "es-PR": "Puerto Rico uses the U.S. dollar."
+      }
+    },
+    {
+      "id": "n-u3-provecho",
+      "title": "¡Buen provecho!",
+      "body": "Before or during a meal, people say “¡Buen provecho!”: enjoy your meal. It's polite to say it even to strangers eating nearby."
+    }
+  ],
+  "quests": [
+    {
+      "id": "u3-q1",
+      "order": 1,
+      "title": "Don Pepe's fruit stand",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Don Pepe shows off his fresh fruit.",
+      "objective": "Name fruits.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "¡Bienvenidos al mercado! Tengo fruta fresca.",
+            "gloss": "Welcome to the market! I have fresh fruit.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": "¿Qué fruta es roja?",
+            "gloss": "Which fruit is red?",
+            "choices": [
+              {
+                "text": "La manzana.",
+                "gloss": "The apple.",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": {
+                  "base": "El plátano.",
+                  "es-AR": "La banana.",
+                  "es-CO": "El banano.",
+                  "es-PR": "El guineo."
+                },
+                "gloss": "The banana.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "Bananas are yellow! Which fruit is red?"
+              }
+            ],
+            "hint": "Coco says: Think of a red fruit. 🍎"
+          },
+          {
+            "id": "n3",
+            "speaker": "Don Pepe",
+            "line": "¡Eso es! La manzana es roja.",
+            "gloss": "That's it! The apple is red.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "u3-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "u3-q1-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "manzana"
+          ],
+          "hint": "Manzana sounds like man-SAH-nah.",
+          "explanation": "La manzana = the apple.",
+          "target": "la manzana",
+          "targetEnglish": "the apple",
+          "choices": [
+            {
+              "id": "a",
+              "text": "the orange",
+              "picture": "🍊",
+              "altText": "an orange"
+            },
+            {
+              "id": "b",
+              "text": "the apple",
+              "picture": "🍎",
+              "altText": "a red apple"
+            },
+            {
+              "id": "c",
+              "text": "the banana",
+              "picture": "🍌",
+              "altText": "a banana"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u3-q1-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "naranja",
+            "platano",
+            "fresa",
+            "uvas"
+          ],
+          "hint": "Naranja sounds like orange's cousin: nah-RAHN-hah.",
+          "explanation": "Naranja, plátano, fresa, uvas.",
+          "pairs": [
+            {
+              "target": "la naranja",
+              "english": "the orange (fruit)"
+            },
+            {
+              "target": {
+                "base": "el plátano",
+                "es-AR": "la banana",
+                "es-CO": "el banano",
+                "es-PR": "el guineo"
+              },
+              "english": "the banana"
+            },
+            {
+              "target": {
+                "base": "la fresa",
+                "es-AR": "la frutilla"
+              },
+              "english": "the strawberry"
+            },
+            {
+              "target": "las uvas",
+              "english": "the grapes"
+            }
+          ]
+        },
+        {
+          "id": "u3-q1-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "aguacate",
+            "verde"
+          ],
+          "hint": "Verde is a color from Unit 2.",
+          "explanation": "In Argentina, an avocado is a palta.",
+          "target": {
+            "base": "El aguacate es verde.",
+            "es-AR": "La palta es verde."
+          },
+          "targetEnglish": "The avocado is green.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "The apple is green."
+            },
+            {
+              "id": "b",
+              "text": "The avocado is green."
+            },
+            {
+              "id": "c",
+              "text": "The avocado is yellow."
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u3-q1-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Spanish: “the apple”",
+          "items": [
+            "manzana"
+          ],
+          "hint": "It starts with m.",
+          "explanation": "La manzana = the apple.",
+          "targetEnglish": "the apple",
+          "accepted": [
+            "la manzana",
+            "manzana"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "hat-sun"
+      }
+    },
+    {
+      "id": "u3-q2",
+      "order": 2,
+      "title": "Bread at the bakery",
+      "npc": "dona-rosa",
+      "location": "The bakery",
+      "summary": "Doña Rosa asks what you'd like.",
+      "objective": "Say what you want, like, and don't like.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Doña Rosa",
+            "line": "¡Buenos días! ¿Qué quieres?",
+            "gloss": "Good morning! What would you like?",
+            "choices": [
+              {
+                "text": "Quiero pan, por favor.",
+                "gloss": "I want bread, please.",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Quiero pan.",
+                "gloss": "I want bread.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Almost! Add the magic words: “por favor”."
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "Doña Rosa",
+            "line": "¡Aquí tienes! ¿Te gusta el pan dulce?",
+            "gloss": "Here you go! Do you like sweet bread?",
+            "choices": [
+              {
+                "text": "¡Sí, me gusta mucho!",
+                "gloss": "Yes, I like it a lot!",
+                "next": "n3"
+              },
+              {
+                "text": "No, no me gusta.",
+                "gloss": "No, I don't like it.",
+                "next": "n3"
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "Doña Rosa",
+            "line": "¡Gracias por venir!",
+            "gloss": "Thanks for coming!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "u3-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "u3-q2-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "me-gusta",
+            "pan"
+          ],
+          "hint": "Gusta is about liking.",
+          "explanation": "Me gusta = I like.",
+          "target": "Me gusta el pan.",
+          "targetEnglish": "I like bread.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "I want bread."
+            },
+            {
+              "id": "b",
+              "text": "I don't like bread."
+            },
+            {
+              "id": "c",
+              "text": "I like bread."
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "u3-q2-a2",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "no-me-gusta",
+            "leche"
+          ],
+          "hint": "No me … = I don't like.",
+          "explanation": "No me gusta la leche = I don't like milk.",
+          "sentence": "No me ___ la leche.",
+          "targetEnglish": "I don't like milk.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "quiero"
+            },
+            {
+              "id": "b",
+              "text": "gusta"
+            },
+            {
+              "id": "c",
+              "text": "gustan"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u3-q2-a3",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “I want bread, please.”",
+          "items": [
+            "quiero",
+            "pan",
+            "por-favor"
+          ],
+          "hint": "Start with I want.",
+          "explanation": "Quiero pan, por favor.",
+          "tiles": [
+            "Quiero",
+            "pan",
+            "por favor"
+          ],
+          "targetEnglish": "I want bread, please.",
+          "distractors": [
+            "gusta"
+          ]
+        },
+        {
+          "id": "u3-q2-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "me-gusta",
+            "queso"
+          ],
+          "hint": "Queso: KEH-soh.",
+          "explanation": "Me gusta el queso = I like cheese.",
+          "target": "Me gusta el queso.",
+          "targetEnglish": "I like cheese.",
+          "accepted": [
+            "Me gusta el queso"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "chef-hat"
+      }
+    },
+    {
+      "id": "u3-q3",
+      "order": 3,
+      "title": "Numbers to twenty",
+      "npc": "senora-ana",
+      "location": "The market",
+      "summary": "Señora Ana counts her eggs and cheese.",
+      "objective": "Count from 11 to 20.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Señora Ana",
+            "line": "¡Hola! Tengo doce huevos.",
+            "gloss": "Hi! I have twelve eggs.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Señora Ana",
+            "line": "¿Cuántos huevos hay?",
+            "gloss": "How many eggs are there?",
+            "choices": [
+              {
+                "text": "Doce.",
+                "gloss": "Twelve.",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "Dos.",
+                "gloss": "Two.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "Listen again: doce is 12, dos is 2."
+              }
+            ],
+            "hint": "Coco says: She said doce. That's 12!"
+          },
+          {
+            "id": "n3",
+            "speaker": "Señora Ana",
+            "line": "¡Muy bien! Doce huevos para Doña Rosa.",
+            "gloss": "Very good! Twelve eggs for Doña Rosa.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "u3-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "u3-q3-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "quince"
+          ],
+          "hint": "Quince: KEEN-seh.",
+          "explanation": "Quince = 15. (Cinco is 5.)",
+          "target": "quince",
+          "targetEnglish": "fifteen",
+          "choices": [
+            {
+              "id": "a",
+              "text": "5"
+            },
+            {
+              "id": "b",
+              "text": "15"
+            },
+            {
+              "id": "c",
+              "text": "50"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u3-q3-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "once",
+            "doce",
+            "trece",
+            "catorce",
+            "dieciseis"
+          ],
+          "hint": "Dieci- means ten-and…",
+          "explanation": "Once, doce, trece, catorce… dieciséis = ten-and-six.",
+          "pairs": [
+            {
+              "target": "once",
+              "english": "11"
+            },
+            {
+              "target": "doce",
+              "english": "12"
+            },
+            {
+              "target": "trece",
+              "english": "13"
+            },
+            {
+              "target": "catorce",
+              "english": "14"
+            },
+            {
+              "target": "dieciséis",
+              "english": "16"
+            }
+          ]
+        },
+        {
+          "id": "u3-q3-a3",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "dieciocho",
+            "diecisiete",
+            "diecinueve"
+          ],
+          "hint": "What comes after 17?",
+          "explanation": "17, 18, 19: diecisiete, dieciocho, diecinueve.",
+          "sentence": "diecisiete, ___, diecinueve",
+          "targetEnglish": "seventeen, ___, nineteen",
+          "choices": [
+            {
+              "id": "a",
+              "text": "dieciséis"
+            },
+            {
+              "id": "b",
+              "text": "dieciocho"
+            },
+            {
+              "id": "c",
+              "text": "veinte"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u3-q3-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Spanish: “twenty”",
+          "items": [
+            "veinte"
+          ],
+          "hint": "BAYN-teh.",
+          "explanation": "Veinte = 20.",
+          "targetEnglish": "twenty",
+          "accepted": [
+            "veinte"
+          ]
+        },
+        {
+          "id": "u3-q3-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "dieciseis",
+            "diecisiete",
+            "dieciocho",
+            "diecinueve",
+            "veinte"
+          ],
+          "hint": "Dieci- sounds like dee-eh-see.",
+          "explanation": "You counted to veinte!",
+          "target": "dieciséis, diecisiete, dieciocho, diecinueve, veinte",
+          "targetEnglish": "16, 17, 18, 19, 20",
+          "accepted": [
+            "dieciséis diecisiete dieciocho diecinueve veinte"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "coin-pin"
+      }
+    },
+    {
+      "id": "u3-q4",
+      "order": 4,
+      "title": "How much is it?",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Buy fruit from Don Pepe, politely.",
+      "objective": "Ask prices and buy something politely.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "¿Qué desea?",
+            "gloss": "What would you like?",
+            "choices": [
+              {
+                "text": "¿Cuánto cuesta la naranja?",
+                "gloss": "How much is the orange?",
+                "next": "n2"
+              }
+            ],
+            "hint": "Coco says: Shopkeepers use usted, the polite you."
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": {
+              "base": "Cuesta cinco pesos.",
+              "es-ES": "Cuesta cinco euros.",
+              "es-PR": "Cuesta cinco dólares."
+            },
+            "gloss": "It costs five.",
+            "choices": [
+              {
+                "text": "Aquí tiene. ¡Gracias!",
+                "gloss": "Here you go. Thanks!",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "De nada.",
+                "gloss": "You're welcome.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "You're paying, so say “Aquí tiene” (here you go) and thank him!"
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "Don Pepe",
+            "line": "¡Gracias a usted!",
+            "gloss": "Thank you!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "u3-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "u3-q4-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "cuanto-cuesta"
+          ],
+          "hint": "Cuesta sounds like cost.",
+          "explanation": "¿Cuánto cuesta? = How much does it cost?",
+          "target": "¿Cuánto cuesta?",
+          "targetEnglish": "How much does it cost?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "How many are there?"
+            },
+            {
+              "id": "b",
+              "text": "How much does it cost?"
+            },
+            {
+              "id": "c",
+              "text": "What do you want?"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u3-q4-a2",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "cuesta",
+            "diez"
+          ],
+          "hint": "Diez is from Unit 1.",
+          "explanation": "Cuesta diez = it costs ten.",
+          "target": {
+            "base": "Cuesta diez pesos.",
+            "es-ES": "Cuesta diez euros.",
+            "es-PR": "Cuesta diez dólares."
+          },
+          "targetEnglish": "It costs ten.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "It costs 2."
+            },
+            {
+              "id": "b",
+              "text": "It costs 12."
+            },
+            {
+              "id": "c",
+              "text": "It costs 10."
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "u3-q4-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "me-da",
+            "fresa"
+          ],
+          "hint": "How do you ask for something politely?",
+          "explanation": "¿Me da…, por favor? is a polite way to ask a shopkeeper.",
+          "target": {
+            "base": "Las fresas cuestan quince pesos.",
+            "es-AR": "Las frutillas cuestan quince pesos.",
+            "es-ES": "Las fresas cuestan quince euros.",
+            "es-PR": "Las fresas cuestan quince dólares."
+          },
+          "targetEnglish": "The strawberries cost fifteen.",
+          "choices": [
+            {
+              "id": "a",
+              "text": {
+                "base": "¿Me da las fresas, por favor?",
+                "es-AR": "¿Me da las frutillas, por favor?"
+              }
+            },
+            {
+              "id": "b",
+              "text": "¿Cómo te llamas?"
+            },
+            {
+              "id": "c",
+              "text": "Buenas noches."
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "u3-q4-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Spanish: “How much does it cost?”",
+          "items": [
+            "cuanto-cuesta"
+          ],
+          "hint": "Two words.",
+          "explanation": "¿Cuánto cuesta?",
+          "targetEnglish": "How much does it cost?",
+          "accepted": [
+            "¿Cuánto cuesta?"
+          ]
+        },
+        {
+          "id": "u3-q4-a5",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "aqui-tiene"
+          ],
+          "hint": "What do you say when you hand over money?",
+          "explanation": "Aquí tiene = here you go (polite).",
+          "target": {
+            "base": "Son cinco pesos, por favor.",
+            "es-ES": "Son cinco euros, por favor.",
+            "es-PR": "Son cinco dólares, por favor."
+          },
+          "targetEnglish": "That's five, please.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Mucho gusto."
+            },
+            {
+              "id": "b",
+              "text": "Aquí tiene."
+            },
+            {
+              "id": "c",
+              "text": "Hasta luego."
+            }
+          ],
+          "answer": "b"
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "bandana-purple"
+      }
+    },
+    {
+      "id": "u3-q5",
+      "order": 5,
+      "title": "Breakfast with Luna",
+      "npc": "luna",
+      "location": "Luna's house",
+      "summary": "Luna invites you for breakfast.",
+      "objective": "Order food politely with quisiera.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "¡Buenos días! Es la hora del desayuno.",
+            "gloss": "Good morning! It's breakfast time.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": {
+              "base": "¿Qué quieres? Hay huevos, pan y jugo.",
+              "es-ES": "¿Qué quieres? Hay huevos, pan y zumo."
+            },
+            "gloss": "What do you want? There are eggs, bread and juice.",
+            "choices": [
+              {
+                "text": "Quisiera huevos, por favor.",
+                "gloss": "I'd like eggs, please.",
+                "next": "n3"
+              },
+              {
+                "text": "Quisiera pan con queso, por favor.",
+                "gloss": "I'd like bread with cheese, please.",
+                "next": "n3"
+              },
+              {
+                "text": "¡Quiero todo!",
+                "gloss": "I want everything!",
+                "next": "n3"
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "Luna",
+            "line": "¡Buen provecho!",
+            "gloss": "Enjoy your meal!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "u3-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "u3-q5-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "huevos",
+            "jugo",
+            "agua",
+            "queso"
+          ],
+          "hint": "Agua sounds like aqua.",
+          "explanation": "Huevos, jugo, agua, queso.",
+          "pairs": [
+            {
+              "target": "los huevos",
+              "english": "the eggs"
+            },
+            {
+              "target": {
+                "base": "el jugo",
+                "es-ES": "el zumo"
+              },
+              "english": "the juice"
+            },
+            {
+              "target": "el agua",
+              "english": "the water"
+            },
+            {
+              "target": "el queso",
+              "english": "the cheese"
+            }
+          ]
+        },
+        {
+          "id": "u3-q5-a2",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "desayuno"
+          ],
+          "hint": "It's the first meal of the day.",
+          "explanation": "El desayuno = breakfast.",
+          "target": "el desayuno",
+          "targetEnglish": "breakfast",
+          "choices": [
+            {
+              "id": "a",
+              "text": "lunch"
+            },
+            {
+              "id": "b",
+              "text": "breakfast"
+            },
+            {
+              "id": "c",
+              "text": "dinner"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u3-q5-a3",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “I would like an orange juice.”",
+          "items": [
+            "quisiera",
+            "jugo",
+            "naranja"
+          ],
+          "hint": "Start with I would like.",
+          "explanation": "Quisiera un jugo de naranja. In Spain: un zumo de naranja.",
+          "tiles": [
+            "Quisiera",
+            "un",
+            {
+              "base": "jugo",
+              "es-ES": "zumo"
+            },
+            "de",
+            "naranja"
+          ],
+          "targetEnglish": "I would like an orange juice.",
+          "distractors": [
+            "queso"
+          ]
+        },
+        {
+          "id": "u3-q5-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Spanish: “the water”",
+          "items": [
+            "agua"
+          ],
+          "hint": "It sounds like aqua.",
+          "explanation": "El agua = the water.",
+          "targetEnglish": "the water",
+          "accepted": [
+            "el agua",
+            "agua"
+          ]
+        },
+        {
+          "id": "u3-q5-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "quisiera",
+            "huevos"
+          ],
+          "hint": "Huevos: WEH-vohs.",
+          "explanation": "Quisiera is extra polite.",
+          "target": "Quisiera huevos, por favor.",
+          "targetEnglish": "I'd like eggs, please.",
+          "accepted": [
+            "Quisiera huevos por favor"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "crown-flowers",
+        "badge": "badge-u3"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "u3-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "u3-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "uvas"
+        ],
+        "hint": "OO-vahs.",
+        "explanation": "Las uvas = the grapes.",
+        "target": "las uvas",
+        "targetEnglish": "the grapes",
+        "choices": [
+          {
+            "id": "a",
+            "text": "the grapes"
+          },
+          {
+            "id": "b",
+            "text": "the cheese"
+          },
+          {
+            "id": "c",
+            "text": "the eggs"
+          }
+        ],
+        "answer": "a"
+      },
+      {
+        "id": "u3-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Spanish: “fourteen”",
+        "items": [
+          "catorce"
+        ],
+        "hint": "cah-TOR-seh",
+        "explanation": "Catorce = 14.",
+        "targetEnglish": "fourteen",
+        "accepted": [
+          "catorce"
+        ]
+      },
+      {
+        "id": "u3-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "no-me-gusta",
+          "queso"
+        ],
+        "hint": "No = not.",
+        "explanation": "No me gusta = I don't like.",
+        "target": "No me gusta el queso.",
+        "targetEnglish": "I don't like cheese.",
+        "choices": [
+          {
+            "id": "a",
+            "text": "I like cheese."
+          },
+          {
+            "id": "b",
+            "text": "I want cheese."
+          },
+          {
+            "id": "c",
+            "text": "I don't like cheese."
+          }
+        ],
+        "answer": "c"
+      },
+      {
+        "id": "u3-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Spanish: “I want”",
+        "items": [
+          "quiero"
+        ],
+        "hint": "kee-EH-roh",
+        "explanation": "Quiero = I want.",
+        "targetEnglish": "I want",
+        "accepted": [
+          "quiero"
+        ]
+      },
+      {
+        "id": "u3-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in Spanish: “How much does it cost?”",
+        "items": [
+          "cuanto-cuesta"
+        ],
+        "hint": "Ask the price.",
+        "explanation": "¿Cuánto cuesta?",
+        "target": "¿Cuánto cuesta?",
+        "targetEnglish": "How much does it cost?",
+        "accepted": [
+          "¿Cuánto cuesta?"
+        ]
+      }
+    ]
+  }
+}

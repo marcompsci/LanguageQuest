@@ -1,0 +1,1423 @@
+{
+  "id": "u2-familia",
+  "version": 1,
+  "order": 2,
+  "title": "Family & Friends",
+  "targetTitle": "Mi familia",
+  "world": "starter-village",
+  "objective": "Talk about family and friends, introduce people, describe them, name colors, and talk about pets.",
+  "canDo": [
+    "I can name people in my family.",
+    "I can introduce someone with este es or esta es.",
+    "I can describe a person with a few words.",
+    "I can name colors.",
+    "I can say what pets I have."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Low–Novice Mid",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons"
+    ]
+  },
+  "ageBands": [
+    "7-9",
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Written by the development team. Needs review by native-speaker linguists for each regional variant before release. Audio uses on-device text-to-speech until native recordings are made."
+  },
+  "vocabulary": [
+    {
+      "id": "familia",
+      "kind": "word",
+      "target": "la familia",
+      "english": "the family",
+      "gender": "f",
+      "picture": "👨‍👩‍👧",
+      "altText": "a family of three"
+    },
+    {
+      "id": "mama",
+      "kind": "word",
+      "target": "la mamá",
+      "english": "mom",
+      "gender": "f"
+    },
+    {
+      "id": "papa",
+      "kind": "word",
+      "target": "el papá",
+      "english": "dad",
+      "gender": "m",
+      "note": "Without the accent, la papa means potato!"
+    },
+    {
+      "id": "hermano",
+      "kind": "word",
+      "target": "el hermano",
+      "english": "the brother",
+      "gender": "m"
+    },
+    {
+      "id": "hermana",
+      "kind": "word",
+      "target": "la hermana",
+      "english": "the sister",
+      "gender": "f"
+    },
+    {
+      "id": "abuelo",
+      "kind": "word",
+      "target": "el abuelo",
+      "english": "the grandpa",
+      "gender": "m"
+    },
+    {
+      "id": "abuela",
+      "kind": "word",
+      "target": "la abuela",
+      "english": "the grandma",
+      "gender": "f"
+    },
+    {
+      "id": "amigo",
+      "kind": "word",
+      "target": "el amigo",
+      "english": "the friend (boy)",
+      "gender": "m"
+    },
+    {
+      "id": "amiga",
+      "kind": "word",
+      "target": "la amiga",
+      "english": "the friend (girl)",
+      "gender": "f"
+    },
+    {
+      "id": "alto",
+      "kind": "word",
+      "target": "alto",
+      "english": "tall",
+      "partOfSpeech": "adjective",
+      "note": "Use alta for a girl or woman."
+    },
+    {
+      "id": "bajo",
+      "kind": "word",
+      "target": "bajo",
+      "english": "short (height)",
+      "partOfSpeech": "adjective",
+      "note": "Use baja for a girl or woman."
+    },
+    {
+      "id": "simpatico",
+      "kind": "word",
+      "target": "simpático",
+      "english": "nice / friendly",
+      "partOfSpeech": "adjective",
+      "note": "Use simpática for a girl or woman."
+    },
+    {
+      "id": "divertido",
+      "kind": "word",
+      "target": "divertido",
+      "english": "fun",
+      "partOfSpeech": "adjective",
+      "note": "Use divertida for a girl or woman."
+    },
+    {
+      "id": "rojo",
+      "kind": "word",
+      "target": "rojo",
+      "english": "red",
+      "partOfSpeech": "adjective",
+      "picture": "🔴",
+      "altText": "a red circle"
+    },
+    {
+      "id": "azul",
+      "kind": "word",
+      "target": "azul",
+      "english": "blue",
+      "partOfSpeech": "adjective",
+      "picture": "🔵",
+      "altText": "a blue circle"
+    },
+    {
+      "id": "verde",
+      "kind": "word",
+      "target": "verde",
+      "english": "green",
+      "partOfSpeech": "adjective",
+      "picture": "🟢",
+      "altText": "a green circle"
+    },
+    {
+      "id": "amarillo",
+      "kind": "word",
+      "target": "amarillo",
+      "english": "yellow",
+      "partOfSpeech": "adjective",
+      "picture": "🟡",
+      "altText": "a yellow circle"
+    },
+    {
+      "id": "morado",
+      "kind": "word",
+      "target": "morado",
+      "english": "purple",
+      "partOfSpeech": "adjective",
+      "picture": "🟣",
+      "altText": "a purple circle"
+    },
+    {
+      "id": "cafe",
+      "kind": "word",
+      "target": {
+        "base": "café",
+        "es-ES": "marrón",
+        "es-AR": "marrón"
+      },
+      "english": "brown",
+      "partOfSpeech": "adjective",
+      "picture": "🟤",
+      "altText": "a brown circle",
+      "note": "Mexico and much of Latin America say café; Spain and Argentina say marrón."
+    },
+    {
+      "id": "perro",
+      "kind": "word",
+      "target": "el perro",
+      "english": "the dog",
+      "gender": "m",
+      "picture": "🐕",
+      "altText": "a dog",
+      "note": "A girl dog is la perra."
+    },
+    {
+      "id": "gato",
+      "kind": "word",
+      "target": "el gato",
+      "english": "the cat",
+      "gender": "m",
+      "picture": "🐈",
+      "altText": "a cat"
+    },
+    {
+      "id": "pez",
+      "kind": "word",
+      "target": "el pez",
+      "english": "the fish",
+      "gender": "m",
+      "picture": "🐟",
+      "altText": "a fish",
+      "note": "A live fish is el pez; fish you eat is el pescado."
+    },
+    {
+      "id": "pajaro",
+      "kind": "word",
+      "target": "el pájaro",
+      "english": "the bird",
+      "gender": "m",
+      "picture": "🐦",
+      "altText": "a bird"
+    },
+    {
+      "id": "tortuga",
+      "kind": "word",
+      "target": "la tortuga",
+      "english": "the turtle",
+      "gender": "f",
+      "picture": "🐢",
+      "altText": "a turtle"
+    },
+    {
+      "id": "mascota",
+      "kind": "word",
+      "target": "la mascota",
+      "english": "the pet",
+      "gender": "f"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "este-es",
+      "kind": "phrase",
+      "target": "este es…",
+      "english": "this is… (boy / man)",
+      "example": {
+        "target": "Este es mi hermano.",
+        "english": "This is my brother."
+      }
+    },
+    {
+      "id": "esta-es",
+      "kind": "phrase",
+      "target": "esta es…",
+      "english": "this is… (girl / woman)",
+      "example": {
+        "target": "Esta es mi abuela.",
+        "english": "This is my grandma."
+      }
+    },
+    {
+      "id": "es",
+      "kind": "phrase",
+      "target": "es…",
+      "english": "he / she / it is…",
+      "example": {
+        "target": "Es simpática.",
+        "english": "She is nice."
+      }
+    },
+    {
+      "id": "tengo",
+      "kind": "phrase",
+      "target": "tengo…",
+      "english": "I have…",
+      "example": {
+        "target": "Tengo un gato.",
+        "english": "I have a cat."
+      }
+    },
+    {
+      "id": "tienes",
+      "kind": "phrase",
+      "target": {
+        "base": "¿Tienes…?",
+        "es-AR": "¿Tenés…?"
+      },
+      "english": "Do you have…?"
+    },
+    {
+      "id": "de-que-color",
+      "kind": "phrase",
+      "target": "¿De qué color es?",
+      "english": "What color is it?"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "n-u2-apellidos",
+      "title": "Two last names",
+      "body": "Many people in Spanish-speaking countries have two last names (apellidos): one from their dad's family and one from their mom's. Mateo Ruiz López has Ruiz from his dad and López from his mom.",
+      "byVariant": {
+        "es-AR": "In Argentina, many people use just one last name day to day, even if they have two."
+      }
+    },
+    {
+      "id": "n-u2-abuelos",
+      "title": "Grandparents close by",
+      "body": "It's common for grandparents to live with their family or very close by, and to help raise the grandkids. Grown-ups often call kids “mi amor” or “mi vida” as a sweet nickname."
+    },
+    {
+      "id": "n-u2-padrinos",
+      "title": "Padrinos",
+      "body": "Many families have padrinos (godparents): special grown-ups chosen to look after a child as they grow. A padrino or madrina is often like part of the family."
+    }
+  ],
+  "quests": [
+    {
+      "id": "u2-q1",
+      "order": 1,
+      "title": "Mateo's family photo",
+      "npc": "mateo",
+      "location": "The plaza",
+      "summary": "Mateo shows you a photo of his family.",
+      "objective": "Name the people in a family.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Mateo",
+            "line": "¡Mira! Es una foto de mi familia.",
+            "gloss": "Look! It's a photo of my family.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Mateo",
+            "line": {
+              "base": "Ella es mi mamá y él es mi papá. ¿Tienes hermanos?",
+              "es-AR": "Ella es mi mamá y él es mi papá. ¿Tenés hermanos?"
+            },
+            "gloss": "She's my mom and he's my dad. Do you have brothers or sisters?",
+            "choices": [
+              {
+                "text": "Sí, tengo un hermano.",
+                "gloss": "Yes, I have a brother.",
+                "next": "n3"
+              },
+              {
+                "text": "Sí, tengo una hermana.",
+                "gloss": "Yes, I have a sister.",
+                "next": "n3"
+              },
+              {
+                "text": "No, no tengo hermanos.",
+                "gloss": "No, I don't have brothers or sisters.",
+                "next": "n3"
+              }
+            ],
+            "hint": "Coco says: Any true answer is a good answer here!"
+          },
+          {
+            "id": "n3",
+            "speaker": "Mateo",
+            "line": "¡Qué bien! Yo tengo una hermana, Sofía.",
+            "gloss": "Cool! I have a sister, Sofía.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "u2-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "u2-q1-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "familia",
+            "mama",
+            "papa",
+            "hermano",
+            "hermana"
+          ],
+          "hint": "Words ending in -o are often boys; -a often girls.",
+          "explanation": "Hermano = brother, hermana = sister.",
+          "pairs": [
+            {
+              "target": "la familia",
+              "english": "the family"
+            },
+            {
+              "target": "la mamá",
+              "english": "mom"
+            },
+            {
+              "target": "el papá",
+              "english": "dad"
+            },
+            {
+              "target": "el hermano",
+              "english": "the brother"
+            },
+            {
+              "target": "la hermana",
+              "english": "the sister"
+            }
+          ]
+        },
+        {
+          "id": "u2-q1-a2",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "abuela"
+          ],
+          "hint": "It ends in -a, so it's a woman.",
+          "explanation": "Abuela = grandma, abuelo = grandpa.",
+          "target": "la abuela",
+          "targetEnglish": "the grandma",
+          "choices": [
+            {
+              "id": "a",
+              "text": "the grandpa"
+            },
+            {
+              "id": "b",
+              "text": "the grandma"
+            },
+            {
+              "id": "c",
+              "text": "the sister"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u2-q1-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "abuelo",
+            "es"
+          ],
+          "hint": "Abuelo ends in -o.",
+          "explanation": "Es mi abuelo = He's my grandpa.",
+          "target": "Es mi abuelo.",
+          "targetEnglish": "He's my grandpa.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "He's my brother."
+            },
+            {
+              "id": "b",
+              "text": "She's my grandma."
+            },
+            {
+              "id": "c",
+              "text": "He's my grandpa."
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "u2-q1-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Spanish: “the sister”",
+          "items": [
+            "hermana"
+          ],
+          "hint": "It starts with h (silent!).",
+          "explanation": "La hermana = the sister.",
+          "targetEnglish": "the sister",
+          "accepted": [
+            "la hermana",
+            "hermana"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "hat-straw"
+      }
+    },
+    {
+      "id": "u2-q2",
+      "order": 2,
+      "title": "Meet my friends",
+      "npc": "luna",
+      "location": "The plaza",
+      "summary": "Luna introduces her friends Nico and Sofía.",
+      "objective": "Introduce people with este es and esta es.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "¡Hola otra vez! Te presento a mis amigos.",
+            "gloss": "Hi again! Let me introduce my friends.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "Este es Nico y esta es Sofía.",
+            "gloss": "This is Nico and this is Sofía.",
+            "choices": [
+              {
+                "text": "¡Mucho gusto!",
+                "gloss": "Nice to meet you!",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "¿Cuántos hay?",
+                "gloss": "How many are there?",
+                "next": "n2",
+                "correct": false,
+                "feedback": "You just met them! Say “¡Mucho gusto!”."
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "Luna",
+            "line": "Nico tiene un perro. ¡Vamos a verlo después!",
+            "gloss": "Nico has a dog. Let's go see it later!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "u2-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "u2-q2-a1",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "esta-es",
+            "amiga"
+          ],
+          "hint": "Sofía is a girl.",
+          "explanation": "Esta es… introduces a girl or woman; este es… a boy or man.",
+          "sentence": "___ es mi amiga Sofía.",
+          "targetEnglish": "This is my friend Sofía.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Este"
+            },
+            {
+              "id": "b",
+              "text": "Esta"
+            },
+            {
+              "id": "c",
+              "text": "Estos"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u2-q2-a2",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “This is my friend (a boy).”",
+          "items": [
+            "este-es",
+            "amigo"
+          ],
+          "hint": "Boy friend → este and amigo.",
+          "explanation": "Este es mi amigo = This is my friend.",
+          "tiles": [
+            "Este",
+            "es",
+            "mi",
+            "amigo"
+          ],
+          "targetEnglish": "This is my friend (a boy).",
+          "distractors": [
+            "esta"
+          ]
+        },
+        {
+          "id": "u2-q2-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "este-es",
+            "amigo"
+          ],
+          "hint": "What do you say when you meet someone new?",
+          "explanation": "Answer an introduction with ¡Mucho gusto!",
+          "target": "Este es mi amigo Nico.",
+          "targetEnglish": "This is my friend Nico.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Tengo un gato."
+            },
+            {
+              "id": "b",
+              "text": "¡Mucho gusto, Nico!"
+            },
+            {
+              "id": "c",
+              "text": "Lo siento."
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u2-q2-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "esta-es",
+            "amiga"
+          ],
+          "hint": "Esta: ES-tah.",
+          "explanation": "Esta es mi amiga introduces a girl.",
+          "target": "Esta es mi amiga.",
+          "targetEnglish": "This is my friend (a girl).",
+          "accepted": [
+            "Esta es mi amiga"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "backpack-blue"
+      }
+    },
+    {
+      "id": "u2-q3",
+      "order": 3,
+      "title": "Describe a friend",
+      "npc": "profe-sol",
+      "location": "The school",
+      "summary": "Profe Sol's class learns to describe people.",
+      "objective": "Describe people with es and a few adjectives.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Profe Sol",
+            "line": "Hoy aprendemos a describir a las personas.",
+            "gloss": "Today we learn to describe people.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Profe Sol",
+            "line": "¿Cómo es Nico? ¿Es alto o bajo?",
+            "gloss": "What's Nico like? Is he tall or short?",
+            "choices": [
+              {
+                "text": "Es alto.",
+                "gloss": "He's tall.",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "Es bajo.",
+                "gloss": "He's short.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "Look again: Nico is the tallest kid in the village!"
+              }
+            ],
+            "hint": "Coco says: Nico is taller than the fence!"
+          },
+          {
+            "id": "n3",
+            "speaker": "Profe Sol",
+            "line": "¡Sí! Nico es alto y muy simpático.",
+            "gloss": "Yes! Nico is tall and very nice.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "u2-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "u2-q3-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "alto",
+            "es"
+          ],
+          "hint": "Alto sounds like “altitude”, way up high.",
+          "explanation": "Alto = tall.",
+          "target": "Nico es alto.",
+          "targetEnglish": "Nico is tall.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Nico is tall."
+            },
+            {
+              "id": "b",
+              "text": "Nico is short."
+            },
+            {
+              "id": "c",
+              "text": "Nico is fun."
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "u2-q3-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "alto",
+            "bajo",
+            "simpatico",
+            "divertido"
+          ],
+          "hint": "Divertido looks like “diverting”: fun!",
+          "explanation": "Alto, bajo, simpático, divertido.",
+          "pairs": [
+            {
+              "target": "alto",
+              "english": "tall"
+            },
+            {
+              "target": "bajo",
+              "english": "short (height)"
+            },
+            {
+              "target": "simpático",
+              "english": "nice / friendly"
+            },
+            {
+              "target": "divertido",
+              "english": "fun"
+            }
+          ]
+        },
+        {
+          "id": "u2-q3-a3",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "divertido",
+            "es"
+          ],
+          "hint": "Sofía is a girl, so the word ends in -a.",
+          "explanation": "Describing words match the person: divertido for a boy, divertida for a girl.",
+          "sentence": "Sofía es muy ___.",
+          "targetEnglish": "Sofía is very fun.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "divertidos"
+            },
+            {
+              "id": "b",
+              "text": "divertido"
+            },
+            {
+              "id": "c",
+              "text": "divertida"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "u2-q3-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Spanish: “Mateo is fun.”",
+          "items": [
+            "divertido",
+            "es"
+          ],
+          "hint": "Mateo + es + fun (for a boy).",
+          "explanation": "Mateo es divertido.",
+          "targetEnglish": "Mateo is fun.",
+          "accepted": [
+            "Mateo es divertido"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "beret-green"
+      }
+    },
+    {
+      "id": "u2-q4",
+      "order": 4,
+      "title": "Abuela Lola's colors",
+      "npc": "abuela-lola",
+      "location": "Abuela Lola's garden",
+      "summary": "Mateo's grandma is painting and needs help with colors.",
+      "objective": "Name colors.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Abuela Lola",
+            "line": "¡Hola, mi amor! Estoy pintando.",
+            "gloss": "Hi, sweetie! I'm painting.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Abuela Lola",
+            "line": "¿De qué color es el sol?",
+            "gloss": "What color is the sun?",
+            "choices": [
+              {
+                "text": "Es amarillo.",
+                "gloss": "It's yellow.",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "Es azul.",
+                "gloss": "It's blue.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "Hmm, look up! The sun is yellow: amarillo."
+              }
+            ]
+          },
+          {
+            "id": "n3",
+            "speaker": "Abuela Lola",
+            "line": "¡Perfecto! Me ayudas con los colores.",
+            "gloss": "Perfect! You're helping me with the colors.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "u2-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "u2-q4-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "azul"
+          ],
+          "hint": "Azul sounds a bit like “azure”, the sky color.",
+          "explanation": "Azul = blue.",
+          "target": "azul",
+          "targetEnglish": "blue",
+          "choices": [
+            {
+              "id": "a",
+              "text": "green",
+              "picture": "🟢",
+              "altText": "a green circle"
+            },
+            {
+              "id": "b",
+              "text": "blue",
+              "picture": "🔵",
+              "altText": "a blue circle"
+            },
+            {
+              "id": "c",
+              "text": "red",
+              "picture": "🔴",
+              "altText": "a red circle"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u2-q4-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "rojo",
+            "verde",
+            "amarillo",
+            "morado"
+          ],
+          "hint": "Verde sounds like “verdant”: green and leafy.",
+          "explanation": "Rojo, verde, amarillo, morado.",
+          "pairs": [
+            {
+              "target": "rojo",
+              "english": "red"
+            },
+            {
+              "target": "verde",
+              "english": "green"
+            },
+            {
+              "target": "amarillo",
+              "english": "yellow"
+            },
+            {
+              "target": "morado",
+              "english": "purple"
+            }
+          ]
+        },
+        {
+          "id": "u2-q4-a3",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "cafe",
+            "perro"
+          ],
+          "hint": "Perro is dog.",
+          "explanation": "In Mexico it's café; in Spain and Argentina, marrón.",
+          "target": {
+            "base": "El perro es café.",
+            "es-ES": "El perro es marrón.",
+            "es-AR": "El perro es marrón."
+          },
+          "targetEnglish": "The dog is brown.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "The dog is brown."
+            },
+            {
+              "id": "b",
+              "text": "The cat is brown."
+            },
+            {
+              "id": "c",
+              "text": "The dog is black."
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "u2-q4-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "rojo",
+            "azul",
+            "verde"
+          ],
+          "hint": "Roll the r in rojo if you can: rrrojo!",
+          "explanation": "A Spanish r at the start of a word is rolled.",
+          "target": "rojo, azul, verde",
+          "targetEnglish": "red, blue, green",
+          "accepted": [
+            "rojo azul verde"
+          ]
+        },
+        {
+          "id": "u2-q4-a5",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Spanish: “yellow”",
+          "items": [
+            "amarillo"
+          ],
+          "hint": "ah-mah-REE-yoh",
+          "explanation": "Amarillo = yellow. The double l sounds like y.",
+          "targetEnglish": "yellow",
+          "accepted": [
+            "amarillo"
+          ]
+        },
+        {
+          "id": "u2-q4-a6",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "de-que-color",
+            "amarillo"
+          ],
+          "hint": "Answer with Es… and a color.",
+          "explanation": "¿De qué color es? asks the color. Answer: Es amarillo.",
+          "target": "¿De qué color es el sol?",
+          "targetEnglish": "What color is the sun?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Es morado."
+            },
+            {
+              "id": "b",
+              "text": "Tengo un sol."
+            },
+            {
+              "id": "c",
+              "text": "Es amarillo."
+            }
+          ],
+          "answer": "c"
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "paintbrush"
+      }
+    },
+    {
+      "id": "u2-q5",
+      "order": 5,
+      "title": "Nico's pets",
+      "npc": "nico",
+      "location": "Near the pond",
+      "summary": "Nico and his dog Canela talk about pets.",
+      "objective": "Name pets and say what you have.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Nico",
+            "line": "¡Hola! Esta es mi perra, Canela.",
+            "gloss": "Hi! This is my dog, Canela.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Nico",
+            "line": {
+              "base": "¿Tienes mascota?",
+              "es-AR": "¿Tenés mascota?"
+            },
+            "gloss": "Do you have a pet?",
+            "choices": [
+              {
+                "text": "Sí, tengo un gato.",
+                "gloss": "Yes, I have a cat.",
+                "next": "n3"
+              },
+              {
+                "text": "Sí, tengo un pez.",
+                "gloss": "Yes, I have a fish.",
+                "next": "n3"
+              },
+              {
+                "text": "No, no tengo mascota.",
+                "gloss": "No, I don't have a pet.",
+                "next": "n3"
+              }
+            ],
+            "hint": "Coco says: Pick what's true for you, or just pretend!"
+          },
+          {
+            "id": "n3",
+            "speaker": "Nico",
+            "line": "¡A Canela le gustan todos los amigos!",
+            "gloss": "Canela likes all friends!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "u2-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "u2-q5-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "gato"
+          ],
+          "hint": "Gato sounds like “got-oh”.",
+          "explanation": "El gato = the cat.",
+          "target": "el gato",
+          "targetEnglish": "the cat",
+          "choices": [
+            {
+              "id": "a",
+              "text": "the dog",
+              "picture": "🐕",
+              "altText": "a dog"
+            },
+            {
+              "id": "b",
+              "text": "the bird",
+              "picture": "🐦",
+              "altText": "a bird"
+            },
+            {
+              "id": "c",
+              "text": "the cat",
+              "picture": "🐈",
+              "altText": "a cat"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "u2-q5-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "perro",
+            "pez",
+            "pajaro",
+            "tortuga"
+          ],
+          "hint": "Tortuga sounds like tortoise.",
+          "explanation": "Perro, pez, pájaro, tortuga.",
+          "pairs": [
+            {
+              "target": "el perro",
+              "english": "the dog"
+            },
+            {
+              "target": "el pez",
+              "english": "the fish"
+            },
+            {
+              "target": "el pájaro",
+              "english": "the bird"
+            },
+            {
+              "target": "la tortuga",
+              "english": "the turtle"
+            }
+          ]
+        },
+        {
+          "id": "u2-q5-a3",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “I have a dog.”",
+          "items": [
+            "tengo",
+            "perro"
+          ],
+          "hint": "Start with I have.",
+          "explanation": "Tengo un perro = I have a dog.",
+          "tiles": [
+            "Tengo",
+            "un",
+            "perro"
+          ],
+          "targetEnglish": "I have a dog.",
+          "distractors": [
+            "una"
+          ]
+        },
+        {
+          "id": "u2-q5-a4",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "tienes",
+            "tengo",
+            "mascota"
+          ],
+          "hint": "Answer with tengo (I have).",
+          "explanation": "¿Tienes…? asks “do you have…?”, and you answer with tengo.",
+          "target": {
+            "base": "¿Tienes mascota?",
+            "es-AR": "¿Tenés mascota?"
+          },
+          "targetEnglish": "Do you have a pet?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Sí, es azul."
+            },
+            {
+              "id": "b",
+              "text": "Sí, tengo un gato."
+            },
+            {
+              "id": "c",
+              "text": "Hasta luego."
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u2-q5-a5",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Spanish: “the turtle”",
+          "items": [
+            "tortuga"
+          ],
+          "hint": "It starts with t and ends with -uga.",
+          "explanation": "La tortuga = the turtle.",
+          "targetEnglish": "the turtle",
+          "accepted": [
+            "la tortuga",
+            "tortuga"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "pet-dog",
+        "badge": "badge-u2"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "u2-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "u2-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "abuelo"
+        ],
+        "hint": "Ends in -o.",
+        "explanation": "El abuelo = the grandpa.",
+        "target": "el abuelo",
+        "targetEnglish": "the grandpa",
+        "choices": [
+          {
+            "id": "a",
+            "text": "the grandma"
+          },
+          {
+            "id": "b",
+            "text": "the brother"
+          },
+          {
+            "id": "c",
+            "text": "the grandpa"
+          }
+        ],
+        "answer": "c"
+      },
+      {
+        "id": "u2-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Spanish: “the brother”",
+        "items": [
+          "hermano"
+        ],
+        "hint": "The h is silent.",
+        "explanation": "El hermano = the brother.",
+        "targetEnglish": "the brother",
+        "accepted": [
+          "el hermano",
+          "hermano"
+        ]
+      },
+      {
+        "id": "u2-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "simpatico",
+          "es"
+        ],
+        "hint": "Simpática = nice.",
+        "explanation": "Ella es simpática = She is nice.",
+        "target": "Ella es simpática.",
+        "targetEnglish": "She is nice.",
+        "choices": [
+          {
+            "id": "a",
+            "text": "She is tall."
+          },
+          {
+            "id": "b",
+            "text": "She is nice."
+          },
+          {
+            "id": "c",
+            "text": "She is my sister."
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "u2-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Spanish: “red”",
+        "items": [
+          "rojo"
+        ],
+        "hint": "Roll the r!",
+        "explanation": "Rojo = red.",
+        "targetEnglish": "red",
+        "accepted": [
+          "rojo"
+        ]
+      },
+      {
+        "id": "u2-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in Spanish: “I have a dog.”",
+        "items": [
+          "tengo",
+          "perro"
+        ],
+        "hint": "I have = tengo.",
+        "explanation": "Tengo un perro.",
+        "target": "Tengo un perro.",
+        "targetEnglish": "I have a dog.",
+        "accepted": [
+          "Tengo un perro."
+        ]
+      }
+    ]
+  }
+}

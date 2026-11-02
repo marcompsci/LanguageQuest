@@ -1,0 +1,1355 @@
+{
+  "id": "u1-saludos",
+  "version": 1,
+  "order": 1,
+  "title": "Greetings & Introductions",
+  "targetTitle": "¡Hola!",
+  "world": "starter-village",
+  "objective": "Greet people, introduce yourself, ask how someone is, use polite words, and count to ten.",
+  "canDo": [
+    "I can greet people at different times of day.",
+    "I can say my name and ask someone's name.",
+    "I can ask how someone is and answer.",
+    "I can use please, thank you, you're welcome, and sorry.",
+    "I can count from 0 to 10."
+  ],
+  "actfl": {
+    "modes": [
+      "interpretive",
+      "interpersonal",
+      "presentational"
+    ],
+    "targetLevel": "Novice Low–Novice Mid",
+    "otherGoals": [
+      "Cultures",
+      "Comparisons"
+    ]
+  },
+  "ageBands": [
+    "7-9",
+    "10-12",
+    "13-15",
+    "16+"
+  ],
+  "review": {
+    "text": "authored",
+    "audio": "draft",
+    "reviewers": [],
+    "notes": "Written by the development team. Needs review by native-speaker linguists for each regional variant before release. Audio uses on-device text-to-speech until native recordings are made."
+  },
+  "vocabulary": [
+    {
+      "id": "hola",
+      "kind": "word",
+      "target": "hola",
+      "english": "hello",
+      "picture": "👋",
+      "altText": "a waving hand",
+      "example": {
+        "target": "¡Hola, Luna!",
+        "english": "Hi, Luna!"
+      }
+    },
+    {
+      "id": "adios",
+      "kind": "word",
+      "target": "adiós",
+      "english": "goodbye",
+      "note": "Many people say chao or chau (Argentina, Colombia) as a casual goodbye."
+    },
+    {
+      "id": "buenos-dias",
+      "kind": "phrase",
+      "target": "buenos días",
+      "english": "good morning",
+      "picture": "🌅",
+      "altText": "the sun rising"
+    },
+    {
+      "id": "buenas-tardes",
+      "kind": "phrase",
+      "target": "buenas tardes",
+      "english": "good afternoon",
+      "picture": "☀️",
+      "altText": "a bright sun"
+    },
+    {
+      "id": "buenas-noches",
+      "kind": "phrase",
+      "target": "buenas noches",
+      "english": "good evening / good night",
+      "picture": "🌙",
+      "altText": "a crescent moon"
+    },
+    {
+      "id": "hasta-luego",
+      "kind": "phrase",
+      "target": "hasta luego",
+      "english": "see you later"
+    },
+    {
+      "id": "bien",
+      "kind": "word",
+      "target": "bien",
+      "english": "well / fine",
+      "picture": "👍",
+      "altText": "thumbs up"
+    },
+    {
+      "id": "muy-bien",
+      "kind": "phrase",
+      "target": "muy bien",
+      "english": "very well"
+    },
+    {
+      "id": "mal",
+      "kind": "word",
+      "target": "mal",
+      "english": "bad / not well",
+      "picture": "👎",
+      "altText": "thumbs down"
+    },
+    {
+      "id": "mas-o-menos",
+      "kind": "phrase",
+      "target": "más o menos",
+      "english": "so-so"
+    },
+    {
+      "id": "gracias",
+      "kind": "word",
+      "target": "gracias",
+      "english": "thank you"
+    },
+    {
+      "id": "por-favor",
+      "kind": "phrase",
+      "target": "por favor",
+      "english": "please"
+    },
+    {
+      "id": "de-nada",
+      "kind": "phrase",
+      "target": "de nada",
+      "english": "you're welcome"
+    },
+    {
+      "id": "lo-siento",
+      "kind": "phrase",
+      "target": "lo siento",
+      "english": "I'm sorry"
+    },
+    {
+      "id": "perdon",
+      "kind": "word",
+      "target": "perdón",
+      "english": "excuse me / sorry"
+    },
+    {
+      "id": "cero",
+      "kind": "word",
+      "target": "cero",
+      "english": "zero (0)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "uno",
+      "kind": "word",
+      "target": "uno",
+      "english": "one (1)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "dos",
+      "kind": "word",
+      "target": "dos",
+      "english": "two (2)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "tres",
+      "kind": "word",
+      "target": "tres",
+      "english": "three (3)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "cuatro",
+      "kind": "word",
+      "target": "cuatro",
+      "english": "four (4)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "cinco",
+      "kind": "word",
+      "target": "cinco",
+      "english": "five (5)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "seis",
+      "kind": "word",
+      "target": "seis",
+      "english": "six (6)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "siete",
+      "kind": "word",
+      "target": "siete",
+      "english": "seven (7)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "ocho",
+      "kind": "word",
+      "target": "ocho",
+      "english": "eight (8)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "nueve",
+      "kind": "word",
+      "target": "nueve",
+      "english": "nine (9)",
+      "partOfSpeech": "number"
+    },
+    {
+      "id": "diez",
+      "kind": "word",
+      "target": "diez",
+      "english": "ten (10)",
+      "partOfSpeech": "number"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "como-te-llamas",
+      "kind": "phrase",
+      "target": {
+        "base": "¿Cómo te llamas?",
+        "es-AR": "¿Cómo te llamás?"
+      },
+      "english": "What's your name?"
+    },
+    {
+      "id": "me-llamo",
+      "kind": "phrase",
+      "target": "me llamo…",
+      "english": "my name is…",
+      "example": {
+        "target": "Me llamo Mateo.",
+        "english": "My name is Mateo."
+      }
+    },
+    {
+      "id": "mucho-gusto",
+      "kind": "phrase",
+      "target": "mucho gusto",
+      "english": "nice to meet you",
+      "note": "In Spain you'll also hear encantado (boys) or encantada (girls)."
+    },
+    {
+      "id": "como-estas",
+      "kind": "phrase",
+      "target": "¿Cómo estás?",
+      "english": "How are you?"
+    },
+    {
+      "id": "y-tu",
+      "kind": "phrase",
+      "target": {
+        "base": "¿Y tú?",
+        "es-AR": "¿Y vos?"
+      },
+      "english": "And you?"
+    },
+    {
+      "id": "y-usted",
+      "kind": "phrase",
+      "target": "¿Y usted?",
+      "english": "And you? (polite, to adults you don't know well)"
+    }
+  ],
+  "culturalNotes": [
+    {
+      "id": "n-u1-usted",
+      "title": "Tú and usted",
+      "body": "Spanish has a friendly “you” (tú) and a polite “you” (usted). Kids usually use usted with grown-ups they don't know well, like a baker or a teacher. Titles like Don and Doña show respect for older people.",
+      "byVariant": {
+        "es-AR": "In Argentina, friends say vos instead of tú: ¿Cómo te llamás? Usted is still used for respect.",
+        "es-CO": "In Colombia, usted is very common, even between friends and family."
+      }
+    },
+    {
+      "id": "n-u1-besos",
+      "title": "Hello with a kiss",
+      "body": "In many Spanish-speaking places, friends and family greet with a light kiss on the cheek. Handshakes are common for first meetings.",
+      "byVariant": {
+        "es-ES": "In Spain, friends often greet with two kisses, one on each cheek.",
+        "es-AR": "In Argentina, one kiss on the cheek is a normal hello, even between friends who are boys."
+      }
+    },
+    {
+      "id": "n-u1-tardes",
+      "title": "When is “la tarde”?",
+      "body": "Buenos días is for the morning, buenas tardes for after lunch until it gets dark, and buenas noches for the evening and for going to bed. Many people just say “¡Buenas!”"
+    }
+  ],
+  "quests": [
+    {
+      "id": "u1-q1",
+      "order": 1,
+      "title": "Good morning, village!",
+      "npc": "luna",
+      "location": "Luna's house",
+      "summary": "Luna shows you around and teaches the first greetings.",
+      "objective": "Greet people with hola and the right greeting for the time of day.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Luna",
+            "line": "¡Hola! Soy Luna. ¡Bienvenidos a Pueblo Inicio!",
+            "gloss": "Hi! I'm Luna. Welcome to Starter Village!",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Luna",
+            "line": "Aquí decimos «buenos días» por la mañana.",
+            "gloss": "Here we say “buenos días” in the morning.",
+            "choices": [
+              {
+                "text": "¡Buenos días, Luna!",
+                "gloss": "Good morning, Luna!",
+                "next": "n3",
+                "correct": true
+              },
+              {
+                "text": "¡Buenas noches, Luna!",
+                "gloss": "Good night, Luna!",
+                "next": "n3",
+                "correct": false,
+                "feedback": "It's morning! Buenas noches is for the night. Try buenos días."
+              }
+            ],
+            "hint": "Coco says: It's morning, so pick buenos días!"
+          },
+          {
+            "id": "n3",
+            "speaker": "Luna",
+            "line": "¡Muy bien! Vamos a saludar a todos.",
+            "gloss": "Very good! Let's go say hi to everyone.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "u1-q1"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "u1-q1-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "buenos-dias"
+          ],
+          "hint": "Días means days. It's a morning greeting.",
+          "explanation": "¡Buenos días! means good morning.",
+          "target": "¡Buenos días!",
+          "targetEnglish": "Good morning!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Good night!"
+            },
+            {
+              "id": "b",
+              "text": "Good morning!"
+            },
+            {
+              "id": "c",
+              "text": "Goodbye!"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u1-q1-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "hola",
+            "adios",
+            "hasta-luego",
+            "buenas-noches",
+            "buenas-tardes"
+          ],
+          "hint": "Noches sounds like night. Tardes is the afternoon.",
+          "explanation": "Hola = hello, adiós = goodbye, buenas tardes = good afternoon, buenas noches = good night.",
+          "pairs": [
+            {
+              "target": "hola",
+              "english": "hello"
+            },
+            {
+              "target": "adiós",
+              "english": "goodbye"
+            },
+            {
+              "target": "hasta luego",
+              "english": "see you later"
+            },
+            {
+              "target": "buenas noches",
+              "english": "good night"
+            },
+            {
+              "target": "buenas tardes",
+              "english": "good afternoon"
+            }
+          ]
+        },
+        {
+          "id": "u1-q1-a3",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "buenos-dias",
+            "hola"
+          ],
+          "hint": "Say the same greeting back.",
+          "explanation": "When someone says buenos días, you say ¡Buenos días! back.",
+          "target": "¡Hola! ¡Buenos días!",
+          "targetEnglish": "Hi! Good morning!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Gracias."
+            },
+            {
+              "id": "b",
+              "text": "¡Buenas noches!"
+            },
+            {
+              "id": "c",
+              "text": "¡Buenos días!"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "u1-q1-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "hola",
+            "buenos-dias"
+          ],
+          "hint": "Hola has a silent h: OH-lah.",
+          "explanation": "The h in hola is always silent.",
+          "target": "¡Hola! ¡Buenos días!",
+          "targetEnglish": "Hi! Good morning!",
+          "accepted": [
+            "Hola buenos días",
+            "Hola, buenos días",
+            "Buenos días"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "scarf-yellow"
+      }
+    },
+    {
+      "id": "u1-q2",
+      "order": 2,
+      "title": "What's your name?",
+      "npc": "mateo",
+      "location": "The plaza",
+      "summary": "Mateo wants to know your name.",
+      "objective": "Ask someone's name and say your own.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Mateo",
+            "line": {
+              "base": "¡Hola! Me llamo Mateo. ¿Cómo te llamas?",
+              "es-AR": "¡Hola! Me llamo Mateo. ¿Cómo te llamás?"
+            },
+            "gloss": "Hi! My name is Mateo. What's your name?",
+            "choices": [
+              {
+                "text": "Me llamo {name}.",
+                "gloss": "My name is {name}.",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Tengo diez.",
+                "gloss": "I have ten.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "Mateo asked your name! Start with “Me llamo…”."
+              }
+            ],
+            "hint": "Coco says: To say your name, use “Me llamo” and then your name."
+          },
+          {
+            "id": "n2",
+            "speaker": "Mateo",
+            "line": "¡Mucho gusto, {name}!",
+            "gloss": "Nice to meet you, {name}!",
+            "next": "n3"
+          },
+          {
+            "id": "n3",
+            "speaker": "Mateo",
+            "line": "Vamos a practicar los nombres.",
+            "gloss": "Let's practice names.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "u1-q2"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "u1-q2-a1",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "como-te-llamas"
+          ],
+          "hint": "Llamar means to call. “What are you called?”",
+          "explanation": "¿Cómo te llamas? literally means “How do you call yourself?”",
+          "target": {
+            "base": "¿Cómo te llamas?",
+            "es-AR": "¿Cómo te llamás?"
+          },
+          "targetEnglish": "What's your name?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "What's your name?"
+            },
+            {
+              "id": "b",
+              "text": "How are you?"
+            },
+            {
+              "id": "c",
+              "text": "How many?"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "u1-q2-a2",
+          "type": "buildSentence",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Build the sentence: “My name is Mateo.”",
+          "items": [
+            "me-llamo"
+          ],
+          "hint": "Start with Me.",
+          "explanation": "Me llamo Mateo = My name is Mateo.",
+          "tiles": [
+            "Me",
+            "llamo",
+            "Mateo"
+          ],
+          "targetEnglish": "My name is Mateo.",
+          "distractors": [
+            "Gracias"
+          ]
+        },
+        {
+          "id": "u1-q2-a3",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "mucho-gusto"
+          ],
+          "hint": "Gusto sounds like “enjoy”. You say it when you meet someone.",
+          "explanation": "Mucho gusto = nice to meet you.",
+          "target": "Mucho gusto.",
+          "targetEnglish": "Nice to meet you.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Very well."
+            },
+            {
+              "id": "b",
+              "text": "See you later."
+            },
+            {
+              "id": "c",
+              "text": "Nice to meet you."
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "u1-q2-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Spanish: “Nice to meet you.”",
+          "items": [
+            "mucho-gusto"
+          ],
+          "hint": "Two words: mucho …",
+          "explanation": "Mucho gusto. (Encantado or encantada also works!)",
+          "targetEnglish": "Nice to meet you.",
+          "accepted": [
+            "mucho gusto",
+            "encantado",
+            "encantada"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "cap-red"
+      }
+    },
+    {
+      "id": "u1-q3",
+      "order": 3,
+      "title": "How are you?",
+      "npc": "dona-rosa",
+      "location": "The bakery",
+      "summary": "Doña Rosa the baker asks how you are.",
+      "objective": "Ask how someone is and answer, politely with grown-ups.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Doña Rosa",
+            "line": "¡Buenas tardes! ¿Cómo estás?",
+            "gloss": "Good afternoon! How are you?",
+            "choices": [
+              {
+                "text": "Muy bien, gracias. ¿Y usted?",
+                "gloss": "Very well, thanks. And you?",
+                "next": "n2"
+              },
+              {
+                "text": "Más o menos.",
+                "gloss": "So-so.",
+                "next": "n2"
+              },
+              {
+                "text": "Me llamo Rosa.",
+                "gloss": "My name is Rosa.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "That's her name! She asked how you are. Try “Muy bien, gracias”."
+              }
+            ],
+            "hint": "Coco says: With grown-ups, “¿Y usted?” is the polite way to ask back."
+          },
+          {
+            "id": "n2",
+            "speaker": "Doña Rosa",
+            "line": "¡Yo estoy muy bien! Gracias por preguntar.",
+            "gloss": "I'm very well! Thanks for asking.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "u1-q3"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "u1-q3-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "como-estas"
+          ],
+          "hint": "Estás is about how you are right now.",
+          "explanation": "¿Cómo estás? = How are you?",
+          "target": "¿Cómo estás?",
+          "targetEnglish": "How are you?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "What's your name?"
+            },
+            {
+              "id": "b",
+              "text": "How are you?"
+            },
+            {
+              "id": "c",
+              "text": "Where are you?"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u1-q3-a2",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "mas-o-menos"
+          ],
+          "hint": "Más = more, menos = less. More or less…",
+          "explanation": "Más o menos means so-so, not great and not bad.",
+          "target": "Más o menos.",
+          "targetEnglish": "So-so.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Very well."
+            },
+            {
+              "id": "b",
+              "text": "Bad."
+            },
+            {
+              "id": "c",
+              "text": "So-so."
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "u1-q3-a3",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "muy-bien",
+            "bien"
+          ],
+          "hint": "Which word means well?",
+          "explanation": "Estoy muy bien = I'm very well.",
+          "sentence": "Estoy muy ___.",
+          "targetEnglish": "I'm very well.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "gracias"
+            },
+            {
+              "id": "b",
+              "text": "bien"
+            },
+            {
+              "id": "c",
+              "text": "hola"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u1-q3-a4",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "bien",
+            "gracias",
+            "y-tu"
+          ],
+          "hint": "Gracias: GRAH-see-ahs (in Spain: GRAH-thee-ahs).",
+          "explanation": "Asking back, ¿Y tú?, is friendly and polite.",
+          "target": {
+            "base": "Bien, gracias. ¿Y tú?",
+            "es-AR": "Bien, gracias. ¿Y vos?"
+          },
+          "targetEnglish": "Fine, thanks. And you?",
+          "accepted": [
+            {
+              "base": "Bien gracias y tú",
+              "es-AR": "Bien gracias y vos"
+            },
+            "Bien gracias"
+          ]
+        },
+        {
+          "id": "u1-q3-a5",
+          "type": "readChoose",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Read. What does it mean?",
+          "items": [
+            "mal",
+            "y-usted"
+          ],
+          "hint": "Mal is the opposite of bien.",
+          "explanation": "Use ¿Y usted? to ask a grown-up back politely.",
+          "target": "Mal. ¿Y usted?",
+          "targetEnglish": "Not well. And you? (polite)",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Not well. And you? (polite)"
+            },
+            {
+              "id": "b",
+              "text": "Very well. And you?"
+            },
+            {
+              "id": "c",
+              "text": "So-so, thanks."
+            }
+          ],
+          "answer": "a"
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "apron"
+      }
+    },
+    {
+      "id": "u1-q4",
+      "order": 4,
+      "title": "The magic words",
+      "npc": "profe-sol",
+      "location": "The school",
+      "summary": "Profe Sol teaches the polite words everyone uses.",
+      "objective": "Use please, thank you, you're welcome, and sorry.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Profe Sol",
+            "line": "¡Hola! Soy la profe Sol. En mi clase usamos palabras mágicas.",
+            "gloss": "Hi! I'm Teacher Sol. In my class we use magic words.",
+            "next": "n2"
+          },
+          {
+            "id": "n2",
+            "speaker": "Profe Sol",
+            "line": "¿Quieres un libro?",
+            "gloss": "Do you want a book?",
+            "choices": [
+              {
+                "text": "Sí, por favor.",
+                "gloss": "Yes, please.",
+                "next": "n3"
+              },
+              {
+                "text": "No, gracias.",
+                "gloss": "No, thank you.",
+                "next": "n3"
+              },
+              {
+                "text": "De nada.",
+                "gloss": "You're welcome.",
+                "next": "n2",
+                "correct": false,
+                "feedback": "De nada answers a thank-you. Try “Sí, por favor” or “No, gracias”."
+              }
+            ],
+            "hint": "Coco says: Please is “por favor”. Thank you is “gracias”."
+          },
+          {
+            "id": "n3",
+            "speaker": "Profe Sol",
+            "line": "¡Qué amable! Ahora, a practicar.",
+            "gloss": "How kind! Now, let's practice.",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "u1-q4"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "u1-q4-a1",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "por-favor",
+            "gracias",
+            "de-nada",
+            "lo-siento"
+          ],
+          "hint": "Siento is about feeling. Lo siento = I feel it (I'm sorry).",
+          "explanation": "These four words help everywhere you go.",
+          "pairs": [
+            {
+              "target": "por favor",
+              "english": "please"
+            },
+            {
+              "target": "gracias",
+              "english": "thank you"
+            },
+            {
+              "target": "de nada",
+              "english": "you're welcome"
+            },
+            {
+              "target": "lo siento",
+              "english": "I'm sorry"
+            }
+          ]
+        },
+        {
+          "id": "u1-q4-a2",
+          "type": "dialogueReply",
+          "skill": "listening",
+          "mode": "interpersonal",
+          "practice": "guided",
+          "prompt": "Pick the best reply.",
+          "items": [
+            "de-nada"
+          ],
+          "hint": "What do you say after someone thanks you?",
+          "explanation": "De nada literally means “of nothing”: it was nothing!",
+          "target": "Gracias por tu ayuda.",
+          "targetEnglish": "Thanks for your help.",
+          "choices": [
+            {
+              "id": "a",
+              "text": "De nada."
+            },
+            {
+              "id": "b",
+              "text": "Por favor."
+            },
+            {
+              "id": "c",
+              "text": "Buenos días."
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "u1-q4-a3",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Spanish: “please”",
+          "items": [
+            "por-favor"
+          ],
+          "hint": "Two words, starts with por…",
+          "explanation": "Por favor = please.",
+          "targetEnglish": "please",
+          "accepted": [
+            "por favor"
+          ]
+        },
+        {
+          "id": "u1-q4-a4",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "perdon"
+          ],
+          "hint": "You say it when you bump into someone.",
+          "explanation": "Perdón works for “excuse me” and for a small “sorry”.",
+          "target": "¡Perdón!",
+          "targetEnglish": "Excuse me! / Sorry!",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Please!"
+            },
+            {
+              "id": "b",
+              "text": "Excuse me! / Sorry!"
+            },
+            {
+              "id": "c",
+              "text": "Thank you!"
+            }
+          ],
+          "answer": "b"
+        }
+      ],
+      "reward": {
+        "xp": 30,
+        "cosmetic": "glasses-round"
+      }
+    },
+    {
+      "id": "u1-q5",
+      "order": 5,
+      "title": "Count with Don Pepe",
+      "npc": "don-pepe",
+      "location": "The market",
+      "summary": "Don Pepe needs help counting his apples.",
+      "objective": "Count from 0 to 10.",
+      "dialogue": {
+        "start": "n1",
+        "nodes": [
+          {
+            "id": "n1",
+            "speaker": "Don Pepe",
+            "line": "¡Buenas! Soy Don Pepe. ¿Me ayudas a contar?",
+            "gloss": "Hi there! I'm Don Pepe. Will you help me count?",
+            "choices": [
+              {
+                "text": "¡Sí, claro!",
+                "gloss": "Yes, of course!",
+                "next": "n2",
+                "correct": true
+              },
+              {
+                "text": "Adiós.",
+                "gloss": "Goodbye.",
+                "next": "n1",
+                "correct": false,
+                "feedback": "Don Pepe needs your help! Try “¡Sí, claro!”."
+              }
+            ]
+          },
+          {
+            "id": "n2",
+            "speaker": "Don Pepe",
+            "line": "Uno, dos, tres… ¡Vamos!",
+            "gloss": "One, two, three… Let's go!",
+            "effects": [
+              {
+                "kind": "startQuest",
+                "value": "u1-q5"
+              }
+            ]
+          }
+        ]
+      },
+      "activities": [
+        {
+          "id": "u1-q5-a1",
+          "type": "listenChoose",
+          "skill": "listening",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Listen. What does it mean?",
+          "items": [
+            "siete"
+          ],
+          "hint": "Siete starts like “see”.",
+          "explanation": "Siete = 7.",
+          "target": "siete",
+          "targetEnglish": "seven",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6"
+            },
+            {
+              "id": "b",
+              "text": "7"
+            },
+            {
+              "id": "c",
+              "text": "9"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "u1-q5-a2",
+          "type": "match",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Match the Spanish to the English.",
+          "items": [
+            "cero",
+            "uno",
+            "dos",
+            "tres",
+            "cuatro",
+            "cinco"
+          ],
+          "hint": "Dos sounds a bit like “two-s”… almost!",
+          "explanation": "Count: cero, uno, dos, tres, cuatro, cinco.",
+          "pairs": [
+            {
+              "target": "cero",
+              "english": "0"
+            },
+            {
+              "target": "uno",
+              "english": "1"
+            },
+            {
+              "target": "dos",
+              "english": "2"
+            },
+            {
+              "target": "tres",
+              "english": "3"
+            },
+            {
+              "target": "cuatro",
+              "english": "4"
+            },
+            {
+              "target": "cinco",
+              "english": "5"
+            }
+          ]
+        },
+        {
+          "id": "u1-q5-a3",
+          "type": "fillBlank",
+          "skill": "reading",
+          "mode": "interpretive",
+          "practice": "guided",
+          "prompt": "Pick the word that fits.",
+          "items": [
+            "ocho",
+            "seis",
+            "nueve"
+          ],
+          "hint": "What comes after siete?",
+          "explanation": "Seis, siete, ocho, nueve: 6, 7, 8, 9.",
+          "sentence": "seis, siete, ___, nueve",
+          "targetEnglish": "six, seven, ___, nine",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ocho"
+            },
+            {
+              "id": "b",
+              "text": "tres"
+            },
+            {
+              "id": "c",
+              "text": "diez"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "u1-q5-a4",
+          "type": "typeAnswer",
+          "skill": "writing",
+          "mode": "presentational",
+          "practice": "independent",
+          "prompt": "Write in Spanish: “ten”",
+          "items": [
+            "diez"
+          ],
+          "hint": "It rhymes with “yes” (dee-ES).",
+          "explanation": "Diez = 10.",
+          "targetEnglish": "ten",
+          "accepted": [
+            "diez"
+          ]
+        },
+        {
+          "id": "u1-q5-a5",
+          "type": "speak",
+          "skill": "speaking",
+          "mode": "presentational",
+          "practice": "guided",
+          "prompt": "Say it out loud.",
+          "items": [
+            "seis",
+            "siete",
+            "ocho",
+            "nueve",
+            "diez"
+          ],
+          "hint": "Nueve: NWEH-veh.",
+          "explanation": "You counted to diez!",
+          "target": "seis, siete, ocho, nueve, diez",
+          "targetEnglish": "six, seven, eight, nine, ten",
+          "accepted": [
+            "seis siete ocho nueve diez"
+          ]
+        }
+      ],
+      "reward": {
+        "xp": 40,
+        "cosmetic": "basket",
+        "badge": "badge-u1"
+      }
+    }
+  ],
+  "masteryCheck": {
+    "id": "u1-mastery",
+    "passPercent": 80,
+    "activities": [
+      {
+        "id": "u1-m1",
+        "type": "listenChoose",
+        "skill": "listening",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Listen. What does it mean?",
+        "items": [
+          "buenas-noches"
+        ],
+        "hint": "Noches = nights.",
+        "explanation": "Buenas noches is for the evening and bedtime.",
+        "target": "Buenas noches.",
+        "targetEnglish": "Good night.",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Good morning."
+          },
+          {
+            "id": "b",
+            "text": "Good night."
+          },
+          {
+            "id": "c",
+            "text": "Thank you."
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "u1-m2",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Spanish: “thank you”",
+        "items": [
+          "gracias"
+        ],
+        "hint": "One word.",
+        "explanation": "Gracias = thank you.",
+        "targetEnglish": "thank you",
+        "accepted": [
+          "gracias"
+        ]
+      },
+      {
+        "id": "u1-m3",
+        "type": "readChoose",
+        "skill": "reading",
+        "mode": "interpretive",
+        "practice": "independent",
+        "prompt": "Read. What does it mean?",
+        "items": [
+          "y-tu"
+        ],
+        "hint": "You say it to ask the question back.",
+        "explanation": "¿Y tú? = And you?",
+        "target": {
+          "base": "¿Y tú?",
+          "es-AR": "¿Y vos?"
+        },
+        "targetEnglish": "And you?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Who are you?"
+          },
+          {
+            "id": "b",
+            "text": "And you?"
+          },
+          {
+            "id": "c",
+            "text": "Are you well?"
+          }
+        ],
+        "answer": "b"
+      },
+      {
+        "id": "u1-m4",
+        "type": "typeAnswer",
+        "skill": "writing",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Write in Spanish: “five”",
+        "items": [
+          "cinco"
+        ],
+        "hint": "SEEN-koh.",
+        "explanation": "Cinco = 5.",
+        "targetEnglish": "five",
+        "accepted": [
+          "cinco"
+        ]
+      },
+      {
+        "id": "u1-m5",
+        "type": "speak",
+        "skill": "speaking",
+        "mode": "presentational",
+        "practice": "independent",
+        "prompt": "Say in Spanish: “Nice to meet you.”",
+        "items": [
+          "mucho-gusto"
+        ],
+        "hint": "What do you say when you meet someone?",
+        "explanation": "Mucho gusto = nice to meet you.",
+        "target": "Mucho gusto.",
+        "targetEnglish": "Nice to meet you.",
+        "accepted": [
+          "Mucho gusto."
+        ]
+      }
+    ]
+  }
+}
