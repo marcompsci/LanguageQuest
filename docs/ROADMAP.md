@@ -88,6 +88,20 @@ Status key: ✅ done and tested · 🟡 built, needs device or expert validation
 | Village art and atmosphere | Rich tiles, lighting, particles; off with Reduce Motion | 🟡 device look |
 | Speed duel | Fast answers earn bonus spark; slow perfect play can't beat the speed rival; classic unchanged | ✅ core tested |
 
+## Milestone 3f: v0.7 "levels and word games", 10 phases 🟡
+| # | Phase | Acceptance | Status |
+|---|---|---|---|
+| 1 | Explorer levels | Level curve, titles, one celebration per level | ✅ core tested |
+| 2 | Daily challenges | 3 per day, stable all day, paid once, reset next day without loss | ✅ core tested |
+| 3 | Achievements | Unlock once; count across languages; survive save/load | ✅ core tested |
+| 4 | Echo | 4 distinct written options in every course | ✅ core tested |
+| 5 | Memory Match | Pairs, mismatches, ignores, stars | ✅ core tested |
+| 6 | Spelling Bee | Script or Latin spelling accepted in every course | ✅ core tested |
+| 7 | Mistakes notebook | Most-missed first; retry feeds review | ✅ core tested |
+| 8 | My stats | 7-day chart; words by mastery per language | ✅ core tested · 🟡 device look |
+| 9 | Haptics and confetti | Follow sound and Reduce Motion settings | 🟡 device check |
+| 10 | Easy-read text | Spacing and contrast; older saves default off | ✅ decode tested · 🟡 device look |
+
 ## Later: game and curriculum expansion ⬜
 - **Conversation Town** (Units 4–6: school, home, hobbies), then Adventure City, Explorer Academy, Quest Kingdom, Mastery Realm. Worlds are data: a new map plus NPC files.
 - **Word Battles 2:** listening and speaking rounds, plus new opponents per world.

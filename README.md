@@ -67,6 +67,19 @@ xcodebuild -project LanguageQuest.xcodeproj -scheme LanguageQuest \
 9. **Phrasebook.** Every word you've met, searchable in Spanish (any region's form) or English, with audio, mastery level, and how other regions say it.
 10. **Parent PIN.** Optional; a salted hash is stored in the Keychain. Teens can solve the math gate, so this keeps parent settings for parents. Forgot your PIN? The device passcode resets it.
 
+## v0.7: levels, challenges and word games
+
+1. **Explorer levels.** XP turns into levels (100 XP, then +50 more per level) with titles from Newcomer to Legend, and a celebration on level-up.
+2. **Daily challenges.** Three small goals a day (same all day), +15 XP each. Nothing is lost if you skip a day.
+3. **Achievements.** Ten trophies (First Steps, World Traveler, Scribe, Speedster, Treasure Hunter, Card Shark…) in a Trophies screen.
+4. **Echo.** Hear a word, pick how it's written.
+5. **Memory Match.** Pair six words with their meanings; stars for fewer moves.
+6. **Spelling Bee.** Hear a word, type it (Latin spelling works for other scripts; missing accents get a gentle note).
+7. **Mistakes notebook.** Your most-missed words in the current language, with a multiple-choice retry.
+8. **My stats.** Activities over the last 7 days and words per language by mastery level.
+9. **Juice.** Vibration on right and wrong answers (follows the sound-effects setting) and confetti for celebrations (off with Reduce Motion).
+10. **Easy-read text.** An optional setting with wider letter and line spacing and no faded grey text.
+
 ## v0.6: ages 11+, writing, bonus lessons
 
 - **Ages 11+.** Bands are now 11–12, 13–15 and 16+; older saves ("7-9", "10-12") load as 11–12. Everyone starts with the sleeker Explorer look.

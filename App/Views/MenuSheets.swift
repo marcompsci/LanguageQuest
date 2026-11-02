@@ -26,6 +26,12 @@ struct SheetRouter: View {
         case .kana: KanaDojoView()
         case .bonus: BonusLessonView()
         case .writeOut: WriteOutView()
+        case .trophies: TrophiesView()
+        case .stats: StatsView()
+        case .mistakes: MistakesView()
+        case .echo: EchoView()
+        case .memory: MemoryMatchView()
+        case .bee: SpellingBeeView()
         }
     }
 }
@@ -121,6 +127,9 @@ struct PlayerSettingsView: View {
                             Text("Larger").tag(1.15)
                         }
                         Toggle("Reduce motion", isOn: setting(\.reducedMotion, prof))
+                        Toggle("Easy-read text (wider spacing, higher contrast)", isOn: Binding(get: { (model.profile ?? prof).settings.easyReadOn },
+                                                                                        set: { v in model.updateProfile { $0.settings.easyRead = v } }))
+                            .accessibilityIdentifier("easyReadToggle")
                     }
                     Section { EmptyView() } footer: {
                         Text("Break reminders, speech checking, purchases and deleting data are in the Parents area.")
@@ -308,7 +317,7 @@ struct FlashcardsView: View {
                     ChoiceFlashcard(card: card, choices: FlashcardChoices.make(for: card, library: lib, seed: seed &+ UInt64(index)),
                                     romanized: (model.profile?.settings.romanizationOn ?? true) ? lib.course.romanize(card.front.base) : nil) { ok in
                         model.updateProfile { FlashcardDeck.record(card, knewIt: ok, profile: &$0, now: Date()) }
-                        if ok { knew += 1 }
+                        if ok { knew += 1; model.record(.flashcardRight) }
                         answered = ok
                     }
                     .id("\(seed)-\(index)")
@@ -422,6 +431,7 @@ struct KanaDojoView: View {
         if d.finished {
             let stars = d.stars
             model.updateProfile { $0.updateExtras { $0.kanaBestStars = max($0.kanaBestStars ?? 0, stars) } }
+            model.record(.gamePlayed)
         }
     }
 }
@@ -488,6 +498,7 @@ struct BonusLessonView: View {
                             xp = gained
                             model.sfx(.reward)
                             done = true
+                            model.record(.bonusDone)
                         })
                     }
                 } else {

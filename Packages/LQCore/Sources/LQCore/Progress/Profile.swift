@@ -56,6 +56,9 @@ public struct LearnerSettings: Codable, Hashable, Sendable {
     public var musicLevel: Double { musicVolume ?? Self.defaultMusicVolume }
 
     public var romanizationOn: Bool { showRomanization ?? true }
+    /// Added in v0.7: wider spacing and higher contrast for easier reading.
+    public var easyRead: Bool? = nil
+    public var easyReadOn: Bool { easyRead ?? false }
 
     public init() {}
 }
@@ -155,6 +158,8 @@ public struct PlayerProfile: Codable, Hashable, Identifiable, Sendable {
     public var otherCourses: [String: CourseSnapshot]?
     /// The last quest practiced, in any language (for the menu's Recent lesson card).
     public var recentLesson: RecentLesson?
+    /// Daily challenges, achievements and lifetime counters (shared across languages).
+    public var meta: MetaProgress?
 
     public init(id: UUID = UUID(), nickname: String, ageBand: AgeBand, avatar: AvatarConfig = .init(),
                 courseId: String = "en-es", variant: String, now: Date = Date()) {

@@ -279,6 +279,7 @@ struct WritingPad: View {
         feedback = selfChecked ? "Great writing! ✍️" : "I can read it: \(target.text)! ✍️"
         showSelfCheck = false
         if let id = target.itemId { model.updateProfile { WriteOut.record(id, profile: &$0) } }
+        model.record(.wordWritten)
         if step != .memory {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
                 step = step == .trace ? .copy : .memory

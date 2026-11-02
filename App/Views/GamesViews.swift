@@ -65,6 +65,20 @@ struct GamesHubView: View {
                     } header: { Text("Word Battles") } footer: {
                         Text("Friendly duels: answer to charge your spark. Mistakes never cost points, only the spark you'd have gained. Or challenge them by talking to them in the village.")
                     }
+                    Section("Word games") {
+                        Button { model.sheet = .echo } label: {
+                            gameRow(icon: "ear", title: "Echo", detail: "Hear a word, pick how it's written", locked: false)
+                        }
+                        .accessibilityIdentifier("echoGame")
+                        Button { model.sheet = .memory } label: {
+                            gameRow(icon: "square.grid.3x2.fill", title: "Memory Match", detail: "Pair words with their meanings", locked: false)
+                        }
+                        .accessibilityIdentifier("memoryGame")
+                        Button { model.sheet = .bee } label: {
+                            gameRow(icon: "character.cursor.ibeam", title: "Spelling Bee", detail: "Hear it, type it", locked: false)
+                        }
+                        .accessibilityIdentifier("beeGame")
+                    }
                     Section("Puzzles and mini-games") {
                         if WordScramble.isAvailable(prog.library) {
                             Button { model.sheet = .scramble } label: {
@@ -299,6 +313,9 @@ struct BattleView: View {
             prof.updateExtras { e in e.battleStars[b.opponent.id] = max(e.battleStars[b.opponent.id] ?? 0, b.stars) }
         }
         model.sfx(b.playerWon ? .reward : .select)
+        if b.playerWon { model.record(.duelWon) }
+        if b.playerWon && b.mode == .speed { model.record(.speedDuelWon) }
+        model.record(.gamePlayed)
     }
 
     private func results(_ b: WordBattle) -> some View {
@@ -394,7 +411,7 @@ struct ScrambleView: View {
             Button("Skip this word") {
                 revealed = pz.answer
                 game?.skip()
-                if let g = game, g.finished { model.updateProfile { $0.updateExtras { $0.scrambleBestStars = max($0.scrambleBestStars, g.stars) } } }
+                if let g = game, g.finished { model.updateProfile { $0.updateExtras { $0.scrambleBestStars = max($0.scrambleBestStars, g.stars) } }; model.record(.gamePlayed) }
                 chosen = []
                 feedback = nil
             }.font(.subheadline)
@@ -412,7 +429,7 @@ struct ScrambleView: View {
             model.say(VText(pz.answer))
             model.updateProfile { PracticeRecorder.record(itemId: pz.itemId, outcome: ReviewOutcome(correct: true, attempts: 1),
                                                           track: .guidedProduction, profile: &$0, now: Date()) }
-            if g.finished { model.updateProfile { $0.updateExtras { $0.scrambleBestStars = max($0.scrambleBestStars, g.stars) } } }
+            if g.finished { model.updateProfile { $0.updateExtras { $0.scrambleBestStars = max($0.scrambleBestStars, g.stars) } }; model.record(.gamePlayed) }
             chosen = []; feedback = nil; revealed = nil
         } else {
             model.sfx(.retry)
@@ -543,7 +560,7 @@ struct MarketRushView: View {
                             var next = g
                             next.completeRound()
                             game = next
-                            if next.finished { model.updateProfile { $0.updateExtras { $0.marketBestStars = max($0.marketBestStars, next.stars) } } }
+                            if next.finished { model.updateProfile { $0.updateExtras { $0.marketBestStars = max($0.marketBestStars, next.stars) } }; model.record(.gamePlayed) }
                             basket = []; coins = []; paying = false; message = nil
                         } else {
                             model.sfx(.retry); game?.noteMistake()

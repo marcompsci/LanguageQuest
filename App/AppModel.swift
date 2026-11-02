@@ -27,6 +27,12 @@ final class AppModel: ObservableObject {
         case kana
         case bonus
         case writeOut
+        case trophies
+        case stats
+        case mistakes
+        case echo
+        case memory
+        case bee
         var id: String {
             switch self {
             case .quest(let q): return "quest-\(q)"
@@ -48,6 +54,12 @@ final class AppModel: ObservableObject {
             case .kana: return "kana"
             case .bonus: return "bonus"
             case .writeOut: return "writeOut"
+            case .trophies: return "trophies"
+            case .stats: return "stats"
+            case .mistakes: return "mistakes"
+            case .echo: return "echo"
+            case .memory: return "memory"
+            case .bee: return "bee"
             }
         }
     }
@@ -56,6 +68,15 @@ final class AppModel: ObservableObject {
     @Published var sheet: Sheet?
     @Published private(set) var save = FamilySave()
     @Published var toast: String?
+    /// A level-up, achievement or finished challenge to celebrate (shown over everything).
+    @Published var celebration: Celebration?
+
+    struct Celebration: Identifiable, Equatable {
+        let id = UUID()
+        var icon: String
+        var title: String
+        var detail: String
+    }
     @Published var stretchReminder = false
 
     /// Every bundled course, by id ("en-es", "en-fr", "en-ja").
@@ -208,6 +229,7 @@ final class AppModel: ObservableObject {
         let r = prog.complete(activity: act, outcome: outcome, profile: &p, now: Date())
         save.activeProfile = p
         persist()
+        record(.activity)
         return r
     }
 
@@ -262,10 +284,54 @@ final class AppModel: ObservableObject {
 
     // MARK: Sound
 
-    /// Plays a sound effect if the explorer's settings allow it.
+    /// Plays a sound effect (and a matching vibration) if the explorer's settings allow it.
     func sfx(_ e: SoundEffect) {
         audio.effectsOn = profile?.settings.soundEffects ?? true
         audio.play(e)
+        guard profile?.settings.soundEffects ?? true else { return }
+        switch e {
+        case .correct, .reward, .treasure: UINotificationFeedbackGenerator().notificationOccurred(.success)
+        case .retry: UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+        case .battleHit: UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+        case .select, .coin: UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        case .step, .talk: break
+        }
+    }
+
+    // MARK: Challenges, achievements, levels
+
+    /// Counts something the learner did, then celebrates any level, achievement or challenge it unlocked.
+    func record(_ e: MetaEvent) {
+        guard profile != nil else { return }
+        let now = Date()
+        let todays = DailyChallenge.today(now)
+        let before = Set(todays.filter { c in profile.map { c.isDone($0, now: now) } ?? false }.map(\.id))
+        updateProfile { $0.record(e, now: now) }
+        if let p = profile, let done = todays.first(where: { $0.isDone(p, now: now) && !before.contains($0.id) && !$0.isClaimed(p, now: now) }) {
+            celebrate(Celebration(icon: done.icon, title: "Challenge complete!", detail: "\(done.title). Claim +\(DailyChallenge.xp) XP on the main menu."))
+        }
+        checkMilestones()
+    }
+
+    /// Unlocks achievements and shows a level-up when XP crossed a level.
+    func checkMilestones() {
+        guard profile != nil else { return }
+        var newOnes: [Achievement] = []
+        let libs = libraries
+        updateProfile { newOnes = Achievement.evaluate(&$0, libraries: libs) }
+        for a in newOnes { celebrate(Celebration(icon: a.icon, title: "Achievement: \(a.title)", detail: a.detail)) }
+        if let p = profile, let lvl = ExplorerLevel.pendingLevelUp(p) {
+            updateProfile { $0.updateMeta { $0.lastLevelSeen = lvl } }
+            celebrate(Celebration(icon: "arrow.up.circle.fill", title: "Level \(lvl)!", detail: "You're now a \(ExplorerLevel.title(lvl))."))
+        }
+    }
+
+    private var celebrationQueue: [Celebration] = []
+    func celebrate(_ c: Celebration) {
+        if celebration == nil { celebration = c; sfx(.reward) } else { celebrationQueue.append(c) }
+    }
+    func dismissCelebration() {
+        celebration = celebrationQueue.isEmpty ? nil : celebrationQueue.removeFirst()
     }
 
     /// Applies the music setting and picks the track for what's on screen.
@@ -281,9 +347,9 @@ final class AppModel: ObservableObject {
         guard let sheet else { return .village }
         switch sheet {
         case .battle: return .battle
-        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut:
+        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes:
             return GameMusic.lessons(for: library?.course.targetLanguage ?? "es")
-        case .journal, .bag, .parent, .games, .phrasebook, .languages, .settings, .wardrobe:
+        case .journal, .bag, .parent, .games, .phrasebook, .languages, .settings, .wardrobe, .trophies, .stats:
             return .village
         }
     }

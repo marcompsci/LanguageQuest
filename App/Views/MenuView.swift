@@ -23,6 +23,7 @@ struct MenuView: View {
                         explorerCard(prof)
                         RecentLessonView()
                         bonusCard(prof)
+                        DailyChallengesCard()
                         ForEach(CourseCategory.allCases, id: \.self) { section in
                             let rows = model.courseSummaries.filter { $0.category == section }
                             if !rows.isEmpty {
@@ -51,7 +52,7 @@ struct MenuView: View {
                 .padding(16)
             }
         }
-        .onAppear { phase = DayPhase.now() }
+        .onAppear { phase = DayPhase.now(); model.checkMilestones() }
     }
 
     private func bonusCard(_ prof: PlayerProfile) -> some View {
@@ -90,7 +91,7 @@ struct MenuView: View {
                     .accessibilityHidden(true)
                 VStack(alignment: .leading, spacing: 4) {
                     Text("\(phase.greeting), \(prof.nickname.isEmpty ? "explorer" : prof.nickname)!").font(.headline)
-                    Label("\(prof.rewards.xp) XP", systemImage: "star.fill").font(.subheadline)
+                    LevelBadge(xp: prof.rewards.xp)
                     Text("\(prof.rewards.badges.count) badge\(prof.rewards.badges.count == 1 ? "" : "s") · \(prof.rewards.ownedCosmetics.count) item\(prof.rewards.ownedCosmetics.count == 1 ? "" : "s")")
                         .font(.caption).foregroundStyle(Color(p.secondaryText))
                 }
@@ -206,6 +207,9 @@ struct HamburgerMenu: View {
             Button { model.sheet = .review } label: { Label("Review", systemImage: "arrow.triangle.2.circlepath") }
             Button { model.sheet = .phrasebook } label: { Label("Phrasebook", systemImage: "character.book.closed.fill") }
             Button { model.sheet = .writeOut } label: { Label("Write Out", systemImage: "pencil.and.scribble") }
+            Button { model.sheet = .mistakes } label: { Label("Mistakes notebook", systemImage: "exclamationmark.bubble") }
+            Button { model.sheet = .trophies } label: { Label("Trophies", systemImage: "trophy.fill") }
+            Button { model.sheet = .stats } label: { Label("My stats", systemImage: "chart.bar.fill") }
             Button { model.sheet = .bonus } label: { Label("Bonus lesson", systemImage: "gift.fill") }
             Button { model.sheet = .journal } label: { Label("Quest journal", systemImage: "book.closed.fill") }
             Button { model.sheet = .wardrobe } label: { Label("Wardrobe", systemImage: "tshirt.fill") }
@@ -355,6 +359,7 @@ struct RecentLessonView: View {
         let libs = model.libraries
         shown = card
         model.updateProfile { RecentLessonCard.record(card, courseId: courseId, knewIt: knewIt, profile: &$0, libraries: libs, now: Date()) }
+        if knewIt { model.record(.flashcardRight) }
         answered = knewIt
     }
 }

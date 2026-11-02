@@ -49,12 +49,18 @@ struct RootView: View {
         // One sheet presenter for the menu and the village.
         .sheet(item: $model.sheet) { sheet in
             SheetRouter(sheet: sheet)
-                .lqTheme(model.palette, scale: model.profile?.settings.textScale ?? 1)
+                .lqTheme(model.palette, scale: model.profile?.settings.textScale ?? 1, easyRead: model.profile?.settings.easyReadOn ?? false)
                 .environmentObject(model)
         }
         .onChange(of: model.sheet) { _, _ in model.syncMusic() }
         .onChange(of: model.route) { _, _ in model.syncMusic() }
-        .lqTheme(model.palette, scale: model.profile?.settings.textScale ?? 1)
+        .lqTheme(model.palette, scale: model.profile?.settings.textScale ?? 1, easyRead: model.profile?.settings.easyReadOn ?? false)
+        .overlay {
+            if let c = model.celebration {
+                CelebrationOverlay(celebration: c, reducedMotion: model.profile?.settings.reducedMotion ?? false) { model.dismissCelebration() }
+                    .transition(.opacity)
+            }
+        }
         .overlay(alignment: .top) {
             if let t = model.toast {
                 Text(t)

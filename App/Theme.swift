@@ -18,10 +18,14 @@ extension EnvironmentValues {
 
 extension View {
     /// Applies the age-sensitive theme. Text scale stacks on top of Dynamic Type.
-    func lqTheme(_ p: ThemePalette, scale: Double) -> some View {
-        self.environment(\.palette, p)
-            .foregroundStyle(Color(p.text))
-            .tint(Color(p.accent))
+    func lqTheme(_ p: ThemePalette, scale: Double, easyRead: Bool = false) -> some View {
+        var pal = p
+        if easyRead { pal.secondaryText = p.text }          // higher contrast: no faded grey text
+        return self.environment(\.palette, pal)
+            .foregroundStyle(Color(pal.text))
+            .tint(Color(pal.accent))
+            .tracking(easyRead ? 1.1 : 0)
+            .lineSpacing(easyRead ? 5 : 0)
             .dynamicTypeSize(scale > 1.05 ? DynamicTypeSize.xLarge ... DynamicTypeSize.accessibility3
                                           : DynamicTypeSize.xSmall ... DynamicTypeSize.accessibility3)
     }

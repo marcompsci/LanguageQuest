@@ -27,6 +27,7 @@
 		B8ABB7B0C45E1B3213B15354 /* VillageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6630EF63B7B3AD80B83D73BE /* VillageScene.swift */; };
 		BF2F86CA990FFF0DF4744BA0 /* SpeechRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374A69BDC88AB7B2B67ECD6D /* SpeechRecognitionService.swift */; };
 		C0387E5F8FF73282C0E143B8 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9539C4E88EB0F5D43E63AB /* MenuView.swift */; };
+		C8DE75CF938B2A28AC6A671F /* V07Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E096BD86117351B30A9214 /* V07Views.swift */; };
 		C95C5F77DAB31969D855FD4C /* ParentPINStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F655C88FC9FE2FD3B98B1E /* ParentPINStore.swift */; };
 		CECC3A8DC62F6B1FB50A3A84 /* WorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9B41B13A3A33C328E3C229 /* WorldView.swift */; };
 		D9F62E3B1EC99AD2FE9EBC6D /* PixelArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6D37AA912455CA4D33775E /* PixelArt.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07E096BD86117351B30A9214 /* V07Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V07Views.swift; sourceTree = "<group>"; };
 		09218DAB3D8CE8E0AE56979E /* MenuSheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSheets.swift; sourceTree = "<group>"; };
 		104DA89544E5EDF9E10687B6 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		11E3FCD0BA6191D6442B45EE /* LanguageQuestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageQuestApp.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				AF1687C4DE66B87EAF3D3353 /* ParentAreaView.swift */,
 				839773334A51BD6E8B119381 /* QuestPlayerView.swift */,
 				121348E801C4C30DE01D77D7 /* ReviewViews.swift */,
+				07E096BD86117351B30A9214 /* V07Views.swift */,
 				4C9B41B13A3A33C328E3C229 /* WorldView.swift */,
 				BE4A8113C531B263A0B038EB /* WriteOutView.swift */,
 				68B4556FA5F8F6BE9A4751E0 /* Activities */,
@@ -328,6 +331,7 @@
 				378E29EAB7E85A778F3CD5C4 /* SpeechService.swift in Sources */,
 				E341C4B530914E2EDC7AC111 /* StoreService.swift in Sources */,
 				DED4F6268EA8A467897AD97B /* Theme.swift in Sources */,
+				C8DE75CF938B2A28AC6A671F /* V07Views.swift in Sources */,
 				A5CAAE604B801E57EEE03338 /* VillageFX.swift in Sources */,
 				B8ABB7B0C45E1B3213B15354 /* VillageScene.swift in Sources */,
 				CECC3A8DC62F6B1FB50A3A84 /* WorldView.swift in Sources */,
