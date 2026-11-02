@@ -76,6 +76,16 @@ struct GamesHubView: View {
                         }
                         .disabled(!marketOpen)
                         .accessibilityIdentifier("marketGame")
+                        Button { model.sheet = .flashcards } label: {
+                            gameRow(icon: "rectangle.on.rectangle.angled", title: "Flashcards",
+                                    detail: "\(extras.flashcardsReviewed ?? 0) cards flipped", locked: false)
+                        }
+                        if model.library?.course.script == .kana {
+                            Button { model.sheet = .kana } label: {
+                                gameRow(icon: "character.ja", title: "Kana Dojo", detail: stars(extras.kanaBestStars ?? 0), locked: false)
+                            }
+                            .accessibilityIdentifier("kanaGame")
+                        }
                     }
                     Section("Exploration") {
                         let found = extras.treasuresFound

@@ -37,10 +37,20 @@ struct RootView: View {
                 }
             case .onboarding:
                 OnboardingView()
+            case .menu:
+                MenuView()
             case .world:
                 WorldView()
             }
         }
+        // One sheet presenter for the menu and the village.
+        .sheet(item: $model.sheet) { sheet in
+            SheetRouter(sheet: sheet)
+                .lqTheme(model.palette, scale: model.profile?.settings.textScale ?? 1)
+                .environmentObject(model)
+        }
+        .onChange(of: model.sheet) { _, _ in model.syncMusic() }
+        .onChange(of: model.route) { _, _ in model.syncMusic() }
         .lqTheme(model.palette, scale: model.profile?.settings.textScale ?? 1)
         .overlay(alignment: .top) {
             if let t = model.toast {

@@ -113,7 +113,10 @@ public struct Progression: Sendable {
                 xp += quest.reward.xp
                 result.questCompleted = quest.id
                 if let c = quest.reward.cosmetic, profile.rewards.ownedCosmetics.insert(c).inserted { result.cosmeticUnlocked = c }
-                if let b = quest.reward.badge, profile.rewards.badges.insert(b).inserted { result.badgeEarned = b }
+                if let base = quest.reward.badge {
+                    let b = Catalog.badgeId(base, courseId: library.course.id)
+                    if profile.rewards.badges.insert(b).inserted { result.badgeEarned = b }
+                }
             }
         }
         profile.rewards.xp += xp

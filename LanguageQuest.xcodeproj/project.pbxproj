@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		047ED72C713FA111A400F301 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13833B177E1737D61CF0196B /* PrivacyInfo.xcprivacy */; };
+		13A38705224E41F942A6175D /* MenuSheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09218DAB3D8CE8E0AE56979E /* MenuSheets.swift */; };
 		1C7494722B876922D0DA074D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162D1FB9AE4F4A78866BBA60 /* OnboardingView.swift */; };
 		21FA13FD7F29201293359C11 /* LanguageQuestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE9089108E6FBF0100BEAF6 /* LanguageQuestUITests.swift */; };
 		378E29EAB7E85A778F3CD5C4 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A560394D6350E0C9A44F60 /* SpeechService.swift */; };
@@ -23,6 +24,7 @@
 		B32F8A02CBEFA207D0F298FB /* LQCore in Frameworks */ = {isa = PBXBuildFile; productRef = 52D665DF6B3B549126E38AB8 /* LQCore */; };
 		B8ABB7B0C45E1B3213B15354 /* VillageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6630EF63B7B3AD80B83D73BE /* VillageScene.swift */; };
 		BF2F86CA990FFF0DF4744BA0 /* SpeechRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374A69BDC88AB7B2B67ECD6D /* SpeechRecognitionService.swift */; };
+		C0387E5F8FF73282C0E143B8 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9539C4E88EB0F5D43E63AB /* MenuView.swift */; };
 		C95C5F77DAB31969D855FD4C /* ParentPINStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F655C88FC9FE2FD3B98B1E /* ParentPINStore.swift */; };
 		CECC3A8DC62F6B1FB50A3A84 /* WorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9B41B13A3A33C328E3C229 /* WorldView.swift */; };
 		D9F62E3B1EC99AD2FE9EBC6D /* PixelArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6D37AA912455CA4D33775E /* PixelArt.swift */; };
@@ -45,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09218DAB3D8CE8E0AE56979E /* MenuSheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSheets.swift; sourceTree = "<group>"; };
 		104DA89544E5EDF9E10687B6 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		11E3FCD0BA6191D6442B45EE /* LanguageQuestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageQuestApp.swift; sourceTree = "<group>"; };
 		121348E801C4C30DE01D77D7 /* ReviewViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViews.swift; sourceTree = "<group>"; };
@@ -70,6 +73,7 @@
 		B8B0EBDF36C86E623DC6A2DD /* LanguageQuest.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LanguageQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96DE49B4C0737B07A0147F3 /* LQCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LQCore; path = Packages/LQCore; sourceTree = SOURCE_ROOT; };
 		D7A22EDA37507347E218EC53 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
+		DA9539C4E88EB0F5D43E63AB /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		EE6D37AA912455CA4D33775E /* PixelArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelArt.swift; sourceTree = "<group>"; };
 		FC908AEBC0707AE8B0DA3EBA /* LanguageQuestUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = LanguageQuestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -140,6 +144,8 @@
 				1589B69E8921F9555AC9F843 /* DialogueOverlay.swift */,
 				3D16AA0744FB255447A7BC6E /* GamesViews.swift */,
 				D7A22EDA37507347E218EC53 /* JournalView.swift */,
+				09218DAB3D8CE8E0AE56979E /* MenuSheets.swift */,
+				DA9539C4E88EB0F5D43E63AB /* MenuView.swift */,
 				162D1FB9AE4F4A78866BBA60 /* OnboardingView.swift */,
 				AF1687C4DE66B87EAF3D3353 /* ParentAreaView.swift */,
 				839773334A51BD6E8B119381 /* QuestPlayerView.swift */,
@@ -304,6 +310,8 @@
 				60C28828D15E7F5DB34BD027 /* GamesViews.swift in Sources */,
 				967AD8C76FC3BCA7DC4064B1 /* JournalView.swift in Sources */,
 				B125A9CA54EFCF36C27365F2 /* LanguageQuestApp.swift in Sources */,
+				13A38705224E41F942A6175D /* MenuSheets.swift in Sources */,
+				C0387E5F8FF73282C0E143B8 /* MenuView.swift in Sources */,
 				1C7494722B876922D0DA074D /* OnboardingView.swift in Sources */,
 				F3C1712C845D736DA06C7EB9 /* ParentAreaView.swift in Sources */,
 				C95C5F77DAB31969D855FD4C /* ParentPINStore.swift in Sources */,

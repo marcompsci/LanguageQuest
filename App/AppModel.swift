@@ -5,7 +5,7 @@ import LQCore
 /// wires it to persistence, services, and navigation.
 @MainActor
 final class AppModel: ObservableObject {
-    enum Route: Equatable { case loading, onboarding, world, failed(String) }
+    enum Route: Equatable { case loading, onboarding, menu, world, failed(String) }
 
     enum Sheet: Identifiable, Equatable {
         case quest(String)
@@ -20,6 +20,11 @@ final class AppModel: ObservableObject {
         case scramble
         case market
         case phrasebook
+        case languages
+        case settings
+        case wardrobe
+        case flashcards
+        case kana
         var id: String {
             switch self {
             case .quest(let q): return "quest-\(q)"
@@ -34,6 +39,11 @@ final class AppModel: ObservableObject {
             case .scramble: return "scramble"
             case .market: return "market"
             case .phrasebook: return "phrasebook"
+            case .languages: return "languages"
+            case .settings: return "settings"
+            case .wardrobe: return "wardrobe"
+            case .flashcards: return "flashcards"
+            case .kana: return "kana"
             }
         }
     }
@@ -102,7 +112,7 @@ final class AppModel: ObservableObject {
             p.settings.reducedMotion = true
             try? FamilyManager.addProfile(p, to: &save, config: storeConfig)
         }
-        route = profile == nil ? .onboarding : .world
+        route = profile == nil ? .onboarding : .menu
         speech.onSpeakingChanged = { [weak self] speaking in self?.audio.voiceSpeaking = speaking }
     }
 
@@ -138,6 +148,15 @@ final class AppModel: ObservableObject {
         save.activeProfileId = p.id
         persist()
         route = .world
+    }
+
+    /// Main menu <-> village.
+    func openMenu() { sheet = nil; route = .menu; syncMusic() }
+    func play() { sheet = nil; route = .world; syncMusic() }
+
+    var courseSummaries: [CourseSummary] {
+        guard let p = profile else { return [] }
+        return CourseOverview.summaries(p, libraries: libraries, order: ContentLibrary.bundledCourseIds)
     }
 
     func switchProfile(_ id: UUID) {
@@ -206,8 +225,12 @@ final class AppModel: ObservableObject {
     /// Switches the active explorer to another language, keeping each course's progress.
     func switchCourse(to id: String) {
         guard let lib = libraries[id] else { return }
+        guard id != profile?.courseId else { sheet = nil; return }
         updateProfile { $0.switchCourse(to: id, defaultVariant: lib.course.defaultVariant) }
         sheet = nil
+        sfx(.reward)
+        toast = "\(lib.course.variant(profile?.variant ?? "")?.flagEmoji ?? "🌐") Now learning \(lib.course.displayLanguage)!"
+        syncMusic()
     }
 
     func say(_ v: VText) {
@@ -235,17 +258,17 @@ final class AppModel: ObservableObject {
         audio.musicOn = profile?.settings.music ?? true
         audio.musicLevel = profile?.settings.musicLevel ?? LearnerSettings.defaultMusicVolume
         audio.lessonMode = sheet != nil
-        audio.setMusic(route == .world ? musicForScreen : nil)
+        audio.setMusic(route == .world || route == .menu ? musicForScreen : nil)
     }
 
-    /// Battle music for duels; reggaeton during Spanish lessons and games; the village theme otherwise.
+    /// Battle music for duels; each language's lesson theme (reggaeton, Paris waltz, Tokyo pop) during lessons and games; the village theme otherwise.
     private var musicForScreen: GameMusic {
         guard let sheet else { return .village }
         switch sheet {
         case .battle: return .battle
-        case .quest, .review, .placement, .mastery, .scramble, .market:
-            return library?.course.targetLanguage == "es" ? .reggaeton : .village
-        case .journal, .bag, .parent, .games, .phrasebook:
+        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana:
+            return GameMusic.lessons(for: library?.course.targetLanguage ?? "es")
+        case .journal, .bag, .parent, .games, .phrasebook, .languages, .settings, .wardrobe:
             return .village
         }
     }

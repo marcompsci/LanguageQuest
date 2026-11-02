@@ -19,6 +19,16 @@ final class VillageScene: SKScene {
     let tileSize: CGFloat = 48
     var reducedMotion = false
     var explorerTheme = false { didSet { tint.alpha = explorerTheme ? 0.18 : 0 } }
+    /// Time-of-day wash over the village (from the device clock).
+    private let dayTint = SKSpriteNode(color: .clear, size: .zero)
+    private(set) var dayPhase: DayPhase = .day
+
+    func setDayPhase(_ phase: DayPhase) {
+        dayPhase = phase
+        let t = phase.tint
+        dayTint.color = UIColor(red: t.color.r, green: t.color.g, blue: t.color.b, alpha: 1)
+        dayTint.alpha = t.alpha
+    }
     /// Direction held on the on-screen pad (nil when released).
     var heldDirection: Direction?
     /// Set while a dialogue or lesson is open, so the player can't wander off.
@@ -91,12 +101,16 @@ final class VillageScene: SKScene {
         tint.alpha = explorerTheme ? 0.18 : 0
         tint.blendMode = .alpha
         cam.addChild(tint)
+        dayTint.zPosition = 99
+        cam.addChild(dayTint)
+        setDayPhase(dayPhase)
         updateCamera()
         startAmbient()
     }
 
     override func didChangeSize(_ oldSize: CGSize) {
         tint.size = CGSize(width: size.width * 2, height: size.height * 2)
+        dayTint.size = tint.size
         updateCamera()
     }
 

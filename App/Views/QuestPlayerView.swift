@@ -89,7 +89,7 @@ struct QuestPlayerView: View {
             if let c = reward?.cosmeticUnlocked, let item = Catalog.cosmetic(c) {
                 Card { Label(model.activeCourseId == "en-es" ? "New item: \(item.name) (\(item.spanishName))" : "New item: \(item.name)", systemImage: "gift.fill") }
             }
-            if let b = reward?.badgeEarned, let badge = Catalog.badge(b) {
+            if let b = reward?.badgeEarned, let badge = Catalog.badge(anyId: b) {
                 Card { Label("Badge: \(badge.name). \(badge.detail)", systemImage: "rosette") }
             }
             Text("XP shows how much you played. Your Review keeps track of what you remember.")

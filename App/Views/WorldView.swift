@@ -214,11 +214,13 @@ struct WorldView: View {
         }
         .onAppear { world.sync(from: model); model.syncMusic() }
         .onChange(of: model.save) { _, _ in world.sync(from: model); model.syncMusic() }
-        .onChange(of: model.sheet) { _, _ in world.sync(from: model); model.syncMusic() }
-        .sheet(item: $model.sheet) { sheet in
-            sheetView(sheet)
-                .lqTheme(model.palette, scale: model.profile?.settings.textScale ?? 1)
-                .environmentObject(model)
+        .onChange(of: model.sheet) { _, _ in world.sync(from: model) }
+        .task {
+            // Re-check the clock every few minutes so evening arrives on its own.
+            while !Task.isCancelled {
+                world.scene.setDayPhase(DayPhase.now())
+                try? await Task.sleep(nanoseconds: 300_000_000_000)
+            }
         }
         .confirmationDialog("Go to…", isPresented: $showPlaces, titleVisibility: .visible) {
             ForEach(StarterVillage.npcs, id: \.id) { n in
@@ -234,12 +236,18 @@ struct WorldView: View {
 
     private var topBar: some View {
         HStack(spacing: 8) {
+            hudButton("house.fill", "Main menu") { model.openMenu() }
+                .accessibilityIdentifier("menuButton")
+            Button { model.sheet = .languages } label: {
+                Text(model.courseSummaries.first(where: \.isActive)?.flag ?? "🌐").font(.title2).frame(width: 46, height: 46)
+                    .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12))
+            }
+            .accessibilityLabel("Language: \(model.languageName). Tap to switch.")
+            .accessibilityIdentifier("languageButton")
             hudButton("book.closed.fill", "Quest journal") { model.sheet = .journal }
             hudButton("bag.fill", "Bag and badges") { model.sheet = .bag }
-            hudButton("arrow.triangle.2.circlepath", "Review") { model.sheet = .review }
             hudButton("gamecontroller.fill", "Games") { model.sheet = .games }
                 .accessibilityIdentifier("gamesButton")
-            hudButton("character.book.closed.fill", "Phrasebook") { model.sheet = .phrasebook }
             Spacer()
             if let p = model.profile {
                 Label("\(p.rewards.xp) XP", systemImage: "star.fill")
@@ -248,8 +256,6 @@ struct WorldView: View {
                     .background(.thinMaterial, in: Capsule())
                     .accessibilityLabel("\(p.rewards.xp) experience points")
             }
-            hudButton("lock.shield", "Parents") { model.sheet = .parent }
-                .accessibilityIdentifier("grownUpsButton")
         }
         .padding(.horizontal, 12)
         .padding(.top, 4)
@@ -344,23 +350,6 @@ struct WorldView: View {
         .padding(.horizontal, 16)
     }
 
-    @ViewBuilder
-    private func sheetView(_ s: AppModel.Sheet) -> some View {
-        switch s {
-        case .quest(let id): QuestPlayerView(questId: id)
-        case .journal: JournalView()
-        case .bag: BagView()
-        case .review: ReviewView()
-        case .placement: PlacementView()
-        case .mastery(let unitId): MasteryCheckView(unitId: unitId)
-        case .parent: ParentAreaView()
-        case .games: GamesHubView()
-        case .battle(let id): BattleView(opponentId: id)
-        case .scramble: ScrambleView()
-        case .market: MarketRushView()
-        case .phrasebook: PhrasebookView()
-        }
-    }
 }
 
 /// Four big arrows. Hold to walk.

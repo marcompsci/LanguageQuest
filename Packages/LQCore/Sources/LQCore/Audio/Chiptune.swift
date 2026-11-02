@@ -143,7 +143,17 @@ public enum SoundEffect: String, CaseIterable, Sendable {
 }
 
 public enum GameMusic: String, CaseIterable, Sendable {
-    case village, battle, reggaeton
+    case village, battle, reggaeton, paris, tokyo
+
+    /// Lesson music for a target language.
+    public static func lessons(for language: String) -> GameMusic {
+        switch language {
+        case "es": return .reggaeton
+        case "fr": return .paris
+        case "ja": return .tokyo
+        default: return .village
+        }
+    }
 
     public var song: ChipSong {
         switch self {
@@ -166,6 +176,10 @@ public enum GameMusic: String, CaseIterable, Sendable {
                 ChipTrack(notes: ChipSong.parse(bass), wave: .triangle, volume: 0.17)], loops: true)
         case .reggaeton:
             return Self.reggaetonSong
+        case .paris:
+            return Self.parisSong
+        case .tokyo:
+            return Self.tokyoSong
         }
     }
 }
@@ -204,6 +218,59 @@ extension GameMusic {
             ChipTrack(notes: ChipSong.parse(stab { $0.1 }), wave: .square(duty: 0.25), volume: 0.035, decay: 0.08),
             ChipTrack(notes: ChipSong.parse(stab { $0.2 }), wave: .square(duty: 0.25), volume: 0.035, decay: 0.08),
             ChipTrack(notes: ChipSong.parse(hook), wave: .square(duty: 0.5), volume: 0.07, decay: 0.6),
+        ], loops: true)
+    }
+}
+
+extension GameMusic {
+    /// An original café-musette waltz for French lessons: 3/4 at 160 BPM,
+    /// accordion-like melody over an oom-pah-pah (Am–Dm–G–C | F–Dm–E–Am).
+    static var parisSong: ChipSong {
+        let melody = "E5:1.5 D5:0.5 C5:1 D5:1 F5:1 A5:1 G5:1.5 F5:0.5 D5:1 E5:2 -:1 " +
+                     "C5:1 F5:1 A5:1 A5:1.5 G5:0.5 F5:1 E5:1 G#5:1 B5:1 A5:2 -:1"
+        let roots = ["A2", "D3", "G2", "C3", "F2", "D3", "E2", "A2"]
+        let low = ["C4", "D4", "B3", "C4", "A3", "D4", "G#3", "C4"]
+        let high = ["E4", "F4", "D4", "E4", "C4", "F4", "B3", "E4"]
+        let bass = roots.map { "\($0):1 -:2" }.joined(separator: " ")
+        let pahLow = low.map { "-:1 \($0):1 \($0):1" }.joined(separator: " ")
+        let pahHigh = high.map { "-:1 \($0):1 \($0):1" }.joined(separator: " ")
+        return ChipSong(bpm: 160, tracks: [
+            ChipTrack(notes: ChipSong.parse(melody), wave: .square(duty: 0.5), volume: 0.07, decay: 1.2),
+            ChipTrack(notes: ChipSong.parse(bass), wave: .triangle, volume: 0.22, decay: 0.35),
+            ChipTrack(notes: ChipSong.parse(pahLow), wave: .square(duty: 0.25), volume: 0.035, decay: 0.12),
+            ChipTrack(notes: ChipSong.parse(pahHigh), wave: .square(duty: 0.25), volume: 0.035, decay: 0.12),
+        ], loops: true)
+    }
+
+    /// An original mellow city-pop groove for Japanese lessons: 84 BPM, a
+    /// pentatonic koto-like pluck over soft drums and seventh chords.
+    static var tokyoSong: ChipSong {
+        func rep(_ s: String, _ n: Int) -> String { Array(repeating: s, count: n).joined(separator: " ") }
+        let melody = "A4:0.5 C5:0.5 D5:0.5 E5:1 D5:0.5 C5:1 D5:0.5 E5:0.5 G5:1 E5:1 -:1 " +
+                     "A5:0.5 G5:0.5 E5:0.5 D5:0.5 C5:1 A4:1 C5:2 -:2 " +
+                     "E5:0.5 G5:0.5 A5:1 G5:0.5 E5:0.5 D5:1 C5:0.5 D5:0.5 E5:1 -:2 " +
+                     "G5:0.5 E5:0.5 D5:0.5 C5:0.5 A4:1 G4:1 A4:3 -:1"
+        let roots = ["F2", "E2", "D2", "C2", "F2", "E2", "D2", "G2"]
+        let bass = roots.map { r in
+            let up = ChipSynth.midi(r).map { m -> String in
+                let names = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+                return "\(names[(m + 12) % 12])\((m + 12) / 12 - 1)"
+            } ?? r
+            return "\(r):1.5 \(up):0.5 \(r):1 -:1"
+        }.joined(separator: " ")
+        let keysLow = ["A3", "G3", "F3", "E3", "A3", "G3", "F3", "F3"].map { "\($0):3.5 -:0.5" }.joined(separator: " ")
+        let keysHigh = ["E4", "D4", "C4", "B3", "E4", "D4", "C4", "B3"].map { "\($0):3.5 -:0.5" }.joined(separator: " ")
+        let kick = rep("C2:0.25 -:1.75", 16)
+        let rim = rep("-:1 C4:0.25 -:0.75", 16)
+        let hats = rep("C6:0.25 -:0.25", 64)
+        return ChipSong(bpm: 84, tracks: [
+            ChipTrack(notes: ChipSong.parse(melody), wave: .square(duty: 0.125), volume: 0.07, decay: 0.35),
+            ChipTrack(notes: ChipSong.parse(bass), wave: .triangle, volume: 0.2, decay: 0.5),
+            ChipTrack(notes: ChipSong.parse(keysLow), wave: .triangle, volume: 0.06, decay: 0.9),
+            ChipTrack(notes: ChipSong.parse(keysHigh), wave: .triangle, volume: 0.06, decay: 0.9),
+            ChipTrack(notes: ChipSong.parse(kick), wave: .triangle, volume: 0.22, decay: 0.08),
+            ChipTrack(notes: ChipSong.parse(rim), wave: .noise, volume: 0.07, decay: 0.04),
+            ChipTrack(notes: ChipSong.parse(hats), wave: .noise, volume: 0.03, decay: 0.02),
         ], loops: true)
     }
 }

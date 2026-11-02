@@ -34,7 +34,7 @@ final class LanguageQuestUITests: XCTestCase {
         XCTAssertTrue(skip.waitForExistence(timeout: 5))
         skip.tap()
         app.buttons["Back to the village"].tap()
-        XCTAssertTrue(app.buttons["grownUpsButton"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["menuButton"].waitForExistence(timeout: 5))
     }
 
     @MainActor func testJapaneseOnboardingSkipsVariantStep() {
@@ -47,6 +47,23 @@ final class LanguageQuestUITests: XCTestCase {
         app.buttons["course-en-ja"].tap()
         next.tap()                                   // language → straight to avatar (one variant)
         XCTAssertTrue(app.staticTexts["Make your explorer"].waitForExistence(timeout: 3))
+    }
+
+    @MainActor func testMenuSwitchesLanguageAndKeepsProgress() {
+        let app = launch(seed: true)
+        XCTAssertTrue(app.buttons["playButton"].waitForExistence(timeout: 5))
+        app.buttons["course-en-fr"].tap()
+        XCTAssertTrue(app.buttons["Play: French village"].waitForExistence(timeout: 3))
+        app.buttons["course-en-ja"].tap()
+        XCTAssertTrue(app.buttons["menu-kana"].waitForExistence(timeout: 3), "Kana Dojo shows for Japanese")
+        app.buttons["playButton"].tap()
+        XCTAssertTrue(app.buttons["languageButton"].waitForExistence(timeout: 5))
+        app.buttons["languageButton"].tap()
+        app.buttons["course-en-es"].tap()            // switch from the village HUD
+        XCTAssertTrue(app.buttons["menuButton"].waitForExistence(timeout: 5))
+        app.buttons["menuButton"].tap()
+        XCTAssertTrue(app.buttons["Play: Spanish village"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["menu-kana"].exists)
     }
 
     @MainActor func testParentGateBlocksWrongAnswer() {
@@ -77,6 +94,8 @@ final class LanguageQuestUITests: XCTestCase {
 
     @MainActor func testFirstQuestFromDialogueToReward() {
         let app = launch(seed: true)
+        app.buttons["playButton"].tap()              // menu → village
+        XCTAssertTrue(app.buttons["goToButton"].waitForExistence(timeout: 5))
         app.buttons["goToButton"].tap()
         app.buttons["Luna"].tap()
         let line = app.staticTexts["dialogueLine"]
@@ -105,11 +124,13 @@ final class LanguageQuestUITests: XCTestCase {
         app.buttons["continueButton"].tap()
         XCTAssertTrue(app.staticTexts["¡Misión cumplida!"].waitForExistence(timeout: 5))
         app.buttons["backToVillage"].tap()
-        XCTAssertTrue(app.buttons["grownUpsButton"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["menuButton"].waitForExistence(timeout: 5))
     }
 
     @MainActor func testWrongAnswerGivesFeedbackAndRetryNotPunishment() {
         let app = launch(seed: true)
+        app.buttons["playButton"].tap()              // menu → village
+        XCTAssertTrue(app.buttons["goToButton"].waitForExistence(timeout: 5))
         app.buttons["goToButton"].tap()
         app.buttons["Luna"].tap()
         XCTAssertTrue(app.staticTexts["dialogueLine"].waitForExistence(timeout: 10))

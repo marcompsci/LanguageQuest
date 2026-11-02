@@ -8,6 +8,9 @@ public struct ExtrasProgress: Codable, Hashable, Sendable {
     public var scrambleBestStars = 0
     public var marketBestStars = 0
     public var treasuresFound: Set<String> = []
+    /// Added in v0.4: optional so v0.2/v0.3 saves still decode.
+    public var kanaBestStars: Int? = nil
+    public var flashcardsReviewed: Int? = nil
     public init() {}
 }
 

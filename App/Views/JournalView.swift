@@ -139,7 +139,7 @@ struct BagView: View {
                         }
                     }
                     Section("Badges") {
-                        let earned = Catalog.badges.filter { prof.rewards.badges.contains($0.id) }
+                        let earned = prof.rewards.badges.sorted().compactMap { Catalog.badge(anyId: $0) }
                         if earned.isEmpty { Text("Badges appear here when you finish a unit or pass a mastery check.") }
                         ForEach(earned) { b in Label("\(b.name): \(b.detail)", systemImage: "rosette") }
                     }

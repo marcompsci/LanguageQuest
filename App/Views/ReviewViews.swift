@@ -218,7 +218,7 @@ struct MasteryCheckView: View {
                             if r.verified { answers.append(AssessmentAnswer(activity: a, correct: r.outcome.correct)) }
                         }, onFinish: {
                             let r = MasteryCheckGrader.grade(unit: u, answers: answers, now: Date())
-                            model.updateProfile { MasteryCheckGrader.apply(r, unit: u, badge: Catalog.masteryBadge(forUnitOrder: u.order), profile: &$0) }
+                            model.updateProfile { MasteryCheckGrader.apply(r, unit: u, badge: Catalog.masteryBadge(forUnitOrder: u.order, courseId: model.activeCourseId), profile: &$0) }
                             result = r
                         })
                     } else {
