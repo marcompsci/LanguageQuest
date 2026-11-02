@@ -54,6 +54,20 @@ Status key: ✅ done and tested · 🟡 built, needs device or expert validation
 | 9 | Phrasebook | Accent-insensitive search across all regions' forms and English | ✅ core tested |
 | 10 | Parent PIN | SHA-256 vectors; trivial PINs rejected; lockout | ✅ core tested |
 
+## Milestone 3c: v0.4 "menu and languages", 10 phases 🟡
+| # | Phase | Acceptance | Status |
+|---|---|---|---|
+| 1 | Main menu | Launch opens a menu when an explorer exists; Play goes to the village; house button returns | ✅ builds and runs on iPhone · 🟡 UI test written |
+| 2 | One-tap language switching | Flags with progress on the menu, a flag button in the village HUD, and Settings; progress kept per language | ✅ core tested (parked progress shown) · 🟡 UI test written |
+| 3 | Today card | Activities today, words due for review; never mentions streaks or losing | ✅ core tested |
+| 4 | Explorer settings | Sound, text, romaji, variety, look without the parent gate; data, money, permissions and break reminders stay behind it | 🟡 device check |
+| 5 | Wardrobe | Avatar editor and earned items in one place | 🟡 device check |
+| 6 | Flashcards | Due words first; new learners still get a deck; feeds spaced review | ✅ core tested |
+| 7 | Kana Dojo (Japanese) | 4 distinct options every question, hiragana and katakana; best stars saved | ✅ core tested |
+| 8 | Day and night | Village tint follows the device clock; night stays readable | ✅ core tested · 🟡 device look |
+| 9 | Lesson music per language | Reggaeton (Spanish), Paris waltz (French), Tokyo pop (Japanese); tracks loop in sync | ✅ core tested · 🟡 heard on device |
+| 10 | Per-language badges | Unit and mastery badges are earned once per language and named for it | ✅ core tested |
+
 ## Later: game and curriculum expansion ⬜
 - **Conversation Town** (Units 4–6: school, home, hobbies), then Adventure City, Explorer Academy, Quest Kingdom, Mastery Realm. Worlds are data: a new map plus NPC files.
 - **Word Battles 2:** listening and speaking rounds, plus new opponents per world.
@@ -61,7 +75,7 @@ Status key: ✅ done and tested · 🟡 built, needs device or expert validation
 - **Mini-games in Spanish:** soccer (commands and numbers), cooking (food and imperatives), treasure hunt (directions), shopping (money), travel (transport), racing (left/right and fast/slow).
 - **Family and classroom co-op:** same device, or family-only via Game Center friends; **preset messages only**; no stranger matching.
 - **More variants:** vosotros unit for Spain; Chile and Peru variants after linguist review.
-- **French and Japanese:** authored in v0.3 (3 units each). Next: linguist review, native audio, kanji with furigana for older learners, and a kana-reading mini-game.
+- **French and Japanese:** authored in v0.3 (3 units each). Next: linguist review, native audio, and kanji with furigana for older learners (kana-reading Kana Dojo shipped in v0.4).
 - **Monetisation:** turn on Family Plus only after legal, technical, and unit-economics review (PRD §6).
 - **Android:** reuse the JSON content and the LQCore test vectors.
 
@@ -70,7 +84,7 @@ Status key: ✅ done and tested · 🟡 built, needs device or expert validation
 | Item | State |
 |---|---|
 | iOS app target | Builds and runs on iPhone (v0.2); needs device play-testing |
-| UI tests | Written, not yet run |
+| UI tests | Written (menu and language-switch test added in v0.4), not yet run |
 | Spanish content | Authored by the dev team; **not linguist-reviewed** (marked `authored`) |
 | Audio | **Text-to-speech placeholder**; no native recordings |
 | Speech recognition | Implemented (on-device only), **untested on device**; locale support varies by device |

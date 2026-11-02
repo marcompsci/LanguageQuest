@@ -67,6 +67,10 @@ xcodebuild -project LanguageQuest.xcodeproj -scheme LanguageQuest \
 9. **Phrasebook.** Every word you've met, searchable in Spanish (any region's form) or English, with audio, mastery level, and how other regions say it.
 10. **Parent PIN.** Optional; a salted hash is stored in the Keychain. Teens can solve the math gate, so this keeps parent settings for parents. Forgot your PIN? The device passcode resets it.
 
+## v0.4: menu and languages
+
+The app now opens on a **main menu**: Play, your three languages with flags and progress (tap one to switch), a Today card, and buttons for Games, Flashcards, Review, Phrasebook, Kana Dojo (Japanese), Quest journal, Wardrobe, Bag, Settings and Parents. In the village, the house button goes back to the menu and the flag button switches language. Also new: flashcards, the Kana Dojo, a day/night tint, a lesson theme for each language (reggaeton, a Paris waltz, Tokyo pop) and badges per language.
+
 ## Languages (v0.3)
 
 | Course | Varieties | Units | Notes |
@@ -75,7 +79,7 @@ xcodebuild -project LanguageQuest.xcodeproj -scheme LanguageQuest \
 | French | France, Québec | 3 units · 15 quests | Québec words: bienvenue, le déjeuner (breakfast), brun; prices in euros or Canadian dollars |
 | Japanese | Standard | 3 units · 15 quests | Hiragana and katakana with spaces between words, romaji shown underneath (can be turned off); answers in kana or romaji; long vowels forgiven; prices in yen |
 
-Choose the language during onboarding, or switch it in **Parents → Settings → Language**. Each language keeps its own progress, while XP, items and badges are shared. **All three courses are authored but not yet linguist-reviewed.**
+Choose the language during onboarding, or switch it any time from the menu, the flag button in the village, or Settings. Each language keeps its own progress, while XP, items and badges are shared. **All three courses are authored but not yet linguist-reviewed.**
 
 ## Editing content
 
