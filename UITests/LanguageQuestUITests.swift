@@ -88,7 +88,7 @@ final class LanguageQuestUITests: XCTestCase {
         field.typeText("1")
         app.buttons["gateContinue"].tap()
         XCTAssertTrue(app.staticTexts["gateMessage"].waitForExistence(timeout: 2))
-        XCTAssertFalse(app.staticTexts["What they've learned"].exists)
+        XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label ==[c] %@", "What they've learned")).firstMatch.exists)
     }
 
     @MainActor func testParentGateOpensDashboard() {
@@ -102,7 +102,9 @@ final class LanguageQuestUITests: XCTestCase {
         field.tap()
         field.typeText(String(answer))
         app.buttons["gateContinue"].tap()
-        XCTAssertTrue(app.staticTexts["What they've learned"].waitForExistence(timeout: 5))
+        // List section headers are shown in capitals, so match without case.
+        let learned = app.staticTexts.matching(NSPredicate(format: "label ==[c] %@", "What they've learned")).firstMatch
+        XCTAssertTrue(learned.waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["Activity (not mastery)"].exists || app.cells.count > 0)
     }
 
@@ -207,8 +209,11 @@ final class LanguageQuestUITests: XCTestCase {
         for item in ["Review", "Phrasebook", "Write Out", "Bonus lesson", "Quest journal", "Wardrobe", "Bag and badges",
                      "Mistakes notebook", "Trophies", "My stats", "Settings", "Privacy policy"] {
             app.buttons["hamburgerMenu"].tap()
-            XCTAssertTrue(app.buttons[item].waitForExistence(timeout: 3), item)
-            app.buttons[item].tap()
+            // Pick the item inside the open menu (some, like Write Out, also exist as tiles on the page).
+            let inMenu = app.collectionViews.buttons[item].firstMatch
+            let target = inMenu.waitForExistence(timeout: 3) ? inMenu : app.buttons.matching(identifier: item).element(boundBy: 0)
+            XCTAssertTrue(target.exists, item)
+            target.tap()
             let close = app.navigationBars.buttons.matching(NSPredicate(format: "label IN %@", ["Done", "Close"])).firstMatch
             XCTAssertTrue(close.waitForExistence(timeout: 5), "\(item) has a way out")
             close.tap()

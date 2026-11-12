@@ -26,8 +26,9 @@ extension View {
             .tint(Color(pal.accent))
             .tracking(easyRead ? 1.1 : 0)
             .lineSpacing(easyRead ? 5 : 0)
-            .dynamicTypeSize(scale > 1.05 ? DynamicTypeSize.xLarge ... DynamicTypeSize.accessibility3
-                                          : DynamicTypeSize.xSmall ... DynamicTypeSize.accessibility3)
+            // Full Dynamic Type range (up to the largest accessibility size); "Larger text" only raises the minimum.
+            .dynamicTypeSize(scale > 1.05 ? DynamicTypeSize.xLarge ... DynamicTypeSize.accessibility5
+                                          : DynamicTypeSize.xSmall ... DynamicTypeSize.accessibility5)
     }
 }
 

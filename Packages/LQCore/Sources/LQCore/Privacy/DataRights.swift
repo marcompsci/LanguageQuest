@@ -12,9 +12,9 @@ public enum PrivacyNotice {
         return s
     }
 
-    /// Public URL of the hosted policy, once it exists (set before external TestFlight).
-    /// nil = the app shows only the built-in copy.
-    public static let hostedPolicyURL: String? = nil
+    /// Public URL of the hosted policy (the repository is public, so GitHub serves docs/privacy-policy.md).
+    /// Use this same URL in App Store Connect. Swap it for your own website any time.
+    public static let hostedPolicyURL: String? = "https://github.com/marcompsci/LanguageQuest/blob/main/docs/privacy-policy.md"
 
     public static let version = 2
 

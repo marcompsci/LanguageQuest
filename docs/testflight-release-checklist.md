@@ -1,0 +1,66 @@
+# TestFlight release checklist: Language Quest
+
+Run this before **every** TestFlight upload. A failing or skipped item means the build does not go out.
+
+## A. Automated (must all pass)
+
+```bash
+scripts/release-check.sh          # on the Mac: compliance gate, unit tests, Release build, UI tests
+```
+
+GitHub Actions runs the same gates on every push (**Release gate** workflow):
+
+| Job | What it checks |
+|---|---|
+| Compliance checks (static) | Privacy manifest, required-reason APIs, permission strings, export compliance key, no ATS exceptions or HTTP, secrets scan, dependencies, version/build format and sync, bundle/team/signing, entitlements, app icon, purchases off, privacy policy parity, no placeholder text, test hooks are Debug-only |
+| LQCore unit tests + content checks | All unit tests (content validation for 13 courses, compliance regressions) and generated content matching the authoring scripts |
+| iOS build, analyze, UI tests | Unsigned Release build for device, Clang static analyzer, all UI tests on an iPhone simulator (one retry for simulator start-up failures only) |
+
+- [ ] `scripts/release-check.sh` ends with "Automated release checks passed"
+- [ ] The latest **Release gate** run on the commit you are uploading is green
+
+## B. Before each upload (manual)
+
+- [ ] Increase `CURRENT_PROJECT_VERSION` in `project.yml` (and `MARKETING_VERSION` for a new version), then run `xcodegen generate` (XcodeGen 2.42.0) and commit
+- [ ] Xcode: **Any iOS Device** › Product › **Archive** › Organizer › **Validate App** passes with no errors
+- [ ] Smoke test the archived build on a real iPhone: create an explorer, finish Luna's quest, open each ☰ screen, Write Out in landscape, Parents gate
+- [ ] One pass on an **iPad** simulator or device (layout, rotation, Write Out)
+- [ ] `docs/app-review-notes.md` lists every new feature in this build (guideline 2.3.1(a), so nothing is hidden or undocumented under 2.5.19)
+- [ ] "What to Test" text updated in `docs/external-tester-guide.md`
+
+## C. One-time App Store Connect setup (manual)
+
+- [ ] Privacy policy hosted at a public HTTPS URL; URL entered in App Information and TestFlight Test Information; `PrivacyNotice.hostedPolicyURL` set
+- [ ] App Privacy: **Data Not Collected**
+- [ ] Age rating questionnaire completed (including the content descriptors added November 16, 2026)
+- [ ] TestFlight Test Information: beta description, feedback email, Beta App Review contact, sign-in **not required**, Review Notes
+- [ ] No in-app purchase products created (purchases are off in this version)
+
+## D. If something changed, re-check
+
+| You changed… | Also do |
+|---|---|
+| Added a network call, SDK or package | Privacy label, policy, manifest, gate check 7, ATS |
+| Used UserDefaults / file dates / disk space | Declare the reason in `PrivacyInfo.xcprivacy` (the gate fails until you do) |
+| Asked for a new permission | Purpose string in `project.yml` (the gate checks it); request it only after the parental gate |
+| Turned on purchases | Follow the §4 payments checklist in `apple-compliance-report.md` |
+| Added text players see | No "coming soon" or placeholder text (the gate scans for it) |
+
+---
+
+## Release-readiness result (audit of November 12, 2026)
+
+**Result: FAIL.** The app itself is in good shape, but critical TestFlight requirements are still open.
+
+What passed:
+- Static compliance gate: 15 pass, 0 fail, 0 warn, 8 manual.
+- 140 unit tests.
+- Unsigned Release build and static analysis (GitHub Actions).
+- A Debug build installed and ran on the owner's iPhone (Xcode, Nov 12).
+
+What blocks it:
+1. **Privacy policy is not yet hosted** at a public URL. External TestFlight needs it, and so does guideline 5.1.1(i).
+2. **UI tests:** the first CI run had 3 of 10 UI tests failing. The fix status is recorded in `apple-compliance-report.md` §5.
+3. **Not yet done by a person:** the Release archive and Validate App, the age rating questionnaire, the App Privacy label, Test Information, and an iPad check.
+
+When items 1–3 are done, the result becomes **CONDITIONAL**: automated checks pass, and Apple's TestFlight App Review is still required. External TestFlight approval is not App Store approval.
