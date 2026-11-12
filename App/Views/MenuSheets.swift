@@ -32,6 +32,7 @@ struct SheetRouter: View {
         case .echo: EchoView()
         case .memory: MemoryMatchView()
         case .bee: SpellingBeeView()
+        case .privacy: PrivacyPolicyView()
         }
     }
 }

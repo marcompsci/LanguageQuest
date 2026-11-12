@@ -33,6 +33,7 @@ final class AppModel: ObservableObject {
         case echo
         case memory
         case bee
+        case privacy
         var id: String {
             switch self {
             case .quest(let q): return "quest-\(q)"
@@ -60,6 +61,7 @@ final class AppModel: ObservableObject {
             case .echo: return "echo"
             case .memory: return "memory"
             case .bee: return "bee"
+            case .privacy: return "privacy"
             }
         }
     }
@@ -105,7 +107,14 @@ final class AppModel: ObservableObject {
     private var reminderTask: Task<Void, Never>?
 
     /// UI tests launch with "-uiTesting" to use an in-memory save.
-    nonisolated static var isUITesting: Bool { ProcessInfo.processInfo.arguments.contains("-uiTesting") }
+    /// Release builds ignore these launch arguments entirely (no hidden modes ship).
+    nonisolated static var isUITesting: Bool {
+        #if DEBUG
+        ProcessInfo.processInfo.arguments.contains("-uiTesting")
+        #else
+        false
+        #endif
+    }
 
     init() {
         storeConfig = .default
@@ -129,8 +138,9 @@ final class AppModel: ObservableObject {
         do {
             if let loaded = try saveStore.load() { save = loaded }
         } catch {
-            // Keep the unreadable file untouched; start fresh in memory and tell the grown-up.
-            toast = "We couldn't open the saved progress, so we're starting fresh."
+            // Move the unreadable file aside (kept, not deleted) so new saves can't overwrite it.
+            (saveStore as? FileSaveStore)?.quarantineUnreadable()
+            toast = "We couldn't open the saved progress, so we're starting fresh. The old file was kept."
         }
         if AppModel.isUITesting, ProcessInfo.processInfo.arguments.contains("-seedProfile") {
             var p = PlayerProfile(nickname: "Tester", ageBand: .age11to12, variant: "es-MX")
@@ -349,7 +359,7 @@ final class AppModel: ObservableObject {
         case .battle: return .battle
         case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes:
             return GameMusic.lessons(for: library?.course.targetLanguage ?? "es")
-        case .journal, .bag, .parent, .games, .phrasebook, .languages, .settings, .wardrobe, .trophies, .stats:
+        case .journal, .bag, .parent, .games, .phrasebook, .languages, .settings, .wardrobe, .trophies, .stats, .privacy:
             return .village
         }
     }

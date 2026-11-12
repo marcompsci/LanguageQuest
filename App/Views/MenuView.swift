@@ -217,6 +217,7 @@ struct HamburgerMenu: View {
             Divider()
             Button { model.sheet = .settings } label: { Label("Settings", systemImage: "gearshape.fill") }
             Button { model.sheet = .parent } label: { Label("Parents", systemImage: "lock.shield") }
+            Button { model.sheet = .privacy } label: { Label("Privacy policy", systemImage: "hand.raised.fill") }
         } label: {
             Image(systemName: "line.3.horizontal")
                 .font(.title2.bold())

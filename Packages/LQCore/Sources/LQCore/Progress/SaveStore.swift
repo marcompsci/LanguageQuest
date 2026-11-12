@@ -112,6 +112,20 @@ public final class FileSaveStore: SaveStore {
     public func deleteAll() throws {
         for u in [mainURL, backupURL] where fm.fileExists(atPath: u.path) { try fm.removeItem(at: u) }
     }
+
+    /// Moves unreadable save files aside (never deletes them) so starting fresh can't
+    /// overwrite progress a newer or repaired app version might still read.
+    /// Returns the quarantined file URLs.
+    @discardableResult
+    public func quarantineUnreadable(now: Date = Date()) -> [URL] {
+        let stamp = Int(now.timeIntervalSince1970)
+        var moved: [URL] = []
+        for (u, name) in [(mainURL, "family"), (backupURL, "family.backup")] where fm.fileExists(atPath: u.path) {
+            let dest = directory.appendingPathComponent("\(name).unreadable-\(stamp).json")
+            if (try? fm.moveItem(at: u, to: dest)) != nil { moved.append(dest) }
+        }
+        return moved
+    }
 }
 
 public final class MemorySaveStore: SaveStore {

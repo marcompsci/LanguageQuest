@@ -70,7 +70,8 @@ public struct Progression: Sendable {
 
     public func isExitOpen(_ e: MapExit, _ p: CourseProgress) -> Bool {
         guard let need = e.requiresUnitOrder else { return true }
-        guard let u = library.units.first(where: { $0.order == need }) else { return false }
+        // Starter courses have fewer units: then the exit opens after their last unit.
+        guard let u = library.units.first(where: { $0.order == need }) ?? library.units.max(by: { $0.order < $1.order }) else { return false }
         return isUnitFinished(u, p)
     }
 

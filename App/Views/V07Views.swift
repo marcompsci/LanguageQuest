@@ -576,3 +576,49 @@ struct SpellingBeeView: View {
         if g.current == nil { model.record(.gamePlayed) }
     }
 }
+
+// MARK: - Privacy policy (shipped in the app, works offline)
+
+struct PrivacyPolicyView: View {
+    @Environment(\.dismiss) var dismiss
+    /// false when pushed inside an existing navigation stack (the Parents area).
+    var standalone = true
+
+    var body: some View {
+        if standalone {
+            NavigationStack {
+                content.toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
+            }
+        } else {
+            content
+        }
+    }
+
+    private var content: some View {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 10) {
+                    ForEach(Array(PrivacyNotice.policyMarkdown().components(separatedBy: "\n").enumerated()), id: \.offset) { _, line in
+                        if line.hasPrefix("# ") {
+                            Text(line.dropFirst(2)).font(.title.bold()).accessibilityAddTraits(.isHeader)
+                        } else if line.hasPrefix("## ") {
+                            Text(line.dropFirst(3)).font(.title3.bold()).padding(.top, 6).accessibilityAddTraits(.isHeader)
+                        } else if line.hasPrefix("- ") {
+                            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                                Text("•").accessibilityHidden(true)
+                                Text(md(String(line.dropFirst(2))))
+                            }
+                        } else if !line.trimmingCharacters(in: .whitespaces).isEmpty {
+                            Text(md(line))
+                        }
+                    }
+                }
+                .padding(20)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .navigationTitle("Privacy policy")
+            .navigationBarTitleDisplayMode(.inline)
+            .accessibilityIdentifier("privacyPolicy")
+    }
+
+    private func md(_ s: String) -> AttributedString { (try? AttributedString(markdown: s)) ?? AttributedString(s) }
+}

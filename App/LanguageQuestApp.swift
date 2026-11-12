@@ -81,7 +81,8 @@ final class OrientationDelegate: NSObject, UIApplicationDelegate {
     static var mask: UIInterfaceOrientationMask = .portrait
 
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        OrientationDelegate.mask
+        // iPad apps support every orientation (multitasking and resizable windows); the portrait lock is iPhone only.
+        UIDevice.current.userInterfaceIdiom == .pad ? .all : OrientationDelegate.mask
     }
 
     /// Allows (and optionally turns to) landscape; `nil` returns to portrait only.

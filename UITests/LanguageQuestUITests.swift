@@ -196,4 +196,32 @@ final class LanguageQuestUITests: XCTestCase {
         let a = words[parts[0]] ?? 0, b = words[parts[1]] ?? 0
         return op == " plus " ? a + b : a * b
     }
+
+    // MARK: Compliance audit: no dead ends, privacy policy reachable
+
+    /// Every ☰ menu screen (except Parents, which has its own gate tests) opens and can be closed.
+    @MainActor func testEveryMenuScreenOpensAndCloses() {
+        let app = launch(seed: true)
+        XCTAssertTrue(app.buttons["course-en-es"].waitForExistence(timeout: 5))
+        app.buttons["course-en-es"].tap()
+        for item in ["Review", "Phrasebook", "Write Out", "Bonus lesson", "Quest journal", "Wardrobe", "Bag and badges",
+                     "Mistakes notebook", "Trophies", "My stats", "Settings", "Privacy policy"] {
+            app.buttons["hamburgerMenu"].tap()
+            XCTAssertTrue(app.buttons[item].waitForExistence(timeout: 3), item)
+            app.buttons[item].tap()
+            let close = app.navigationBars.buttons.matching(NSPredicate(format: "label IN %@", ["Done", "Close"])).firstMatch
+            XCTAssertTrue(close.waitForExistence(timeout: 5), "\(item) has a way out")
+            close.tap()
+            XCTAssertTrue(app.buttons["playButton"].waitForExistence(timeout: 5), "back on the language page after \(item)")
+        }
+    }
+
+    @MainActor func testPrivacyPolicyIsReadableOffline() {
+        let app = launch(seed: true)
+        XCTAssertTrue(app.buttons["hamburgerMenu"].waitForExistence(timeout: 5))
+        app.buttons["hamburgerMenu"].tap()
+        app.buttons["Privacy policy"].tap()
+        XCTAssertTrue(app.staticTexts["Language Quest Privacy Policy"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Children's privacy"].exists)
+    }
 }

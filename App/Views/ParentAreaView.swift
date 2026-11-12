@@ -353,6 +353,10 @@ struct ParentDashboardView: View {
                 }
             }
             if let url = exportURL { ShareLink("Share export file", item: url) }
+            NavigationLink("Read the full privacy policy") { PrivacyPolicyView(standalone: false) }
+            if let s = PrivacyNotice.hostedPolicyURL, let url = URL(string: s) {
+                Link("Privacy policy on the web", destination: url)
+            }
             Button("Delete this explorer", role: .destructive) { confirmDeleteProfile = true }
             Button("Delete all data on this device", role: .destructive) { confirmDeleteAll = true }
         } header: { Text("Privacy and data") } footer: {
@@ -370,7 +374,7 @@ struct ParentDashboardView: View {
         Section {
             let decision = PurchaseGate.decide(config: model.storeConfig, parent: model.save.parent, gatePassedAt: gatePassedAt, now: Date())
             if decision == .plansDisabled {
-                Text("Everything in this version is free: all three Starter Village units, review, hints, and this dashboard. Paid extras aren't available yet.")
+                Text("Everything in this version is free: every language, game and review. There are no purchases in this version.")
             } else {
                 Toggle("Allow purchases", isOn: Binding(get: { model.save.parent.purchasesAllowed },
                                                        set: { v in model.updateParent { $0.purchasesAllowed = v } }))

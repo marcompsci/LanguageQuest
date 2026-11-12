@@ -133,9 +133,11 @@ final class WorldCoordinator: ObservableObject, VillageSceneDelegate {
     func scene(_ s: VillageScene, reachedExit exit: MapExit) {
         guard let model else { return }
         if model.progression?.isExitOpen(exit, model.profile?.progress ?? CourseProgress()) == true {
-            notice = "\(exit.label) is the next world. It's coming in a future update!"
+            // The lookout opens a mixed review of everything learned so far.
+            notice = "From the lookout you can see \(exit.label). Warm up with a review of everything you've learned!"
+            model.sheet = .review
         } else {
-            notice = "The road to \(exit.label) opens after you finish all three units."
+            notice = "The lookout opens after you finish every unit in \(model.languageName)."
         }
     }
 

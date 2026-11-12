@@ -94,7 +94,7 @@ public enum StarterVillage {
                   other: ["fr": "La fontaine", "ja": "ふんすい"]),
         PlaceSign(position: GridPoint(25, 15), spanish: "El mercado", english: "The market",
                   other: ["fr": "Le marché", "ja": "いちば"]),
-        PlaceSign(position: GridPoint(31, 11), spanish: "Pueblo Conversación", english: "Conversation Town (coming soon)",
+        PlaceSign(position: GridPoint(31, 11), spanish: "Pueblo Conversación", english: "Conversation Town lookout",
                   other: ["fr": "Ville Conversation", "ja": "かいわ タウン"]),
     ]
 

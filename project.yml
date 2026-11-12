@@ -8,7 +8,7 @@ options:
 settings:
   base:
     SWIFT_VERSION: "5.0"
-    MARKETING_VERSION: "0.1.0"
+    MARKETING_VERSION: "0.7.0"
     CURRENT_PROJECT_VERSION: "1"
     DEVELOPMENT_TEAM: X6LZQ3FS36
 packages:
@@ -33,6 +33,8 @@ targets:
         INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.education
+        # Only Apple OS crypto is used (CryptoKit SHA-256 to hash the parent PIN): exempt.
+        INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
         INFOPLIST_KEY_NSMicrophoneUsageDescription: "Only if a grown-up turns on speech practice: the microphone listens while you hold the talk button so the app can check your pronunciation. Audio is processed on this device and never saved or sent."
         INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "Speech practice uses on-device recognition only. Your voice never leaves this device and is not stored."
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon

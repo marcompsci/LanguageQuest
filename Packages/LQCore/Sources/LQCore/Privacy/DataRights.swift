@@ -3,16 +3,30 @@ import Foundation
 /// The current privacy notice version shown in parent setup. Bump it when the
 /// notice changes so adults see and acknowledge the new one.
 public enum PrivacyNotice {
-    public static let version = 1
+    /// The full privacy policy shipped inside the app (Markdown). The same text is in
+    /// docs/privacy-policy.md for hosting at the App Store Connect privacy policy URL.
+    public static func policyMarkdown() -> String {
+        guard let url = Bundle.module.url(forResource: "Content/legal/privacy-policy", withExtension: "md")
+                ?? Bundle.module.url(forResource: "privacy-policy", withExtension: "md", subdirectory: "Content/legal"),
+              let s = try? String(contentsOf: url, encoding: .utf8) else { return "" }
+        return s
+    }
+
+    /// Public URL of the hosted policy, once it exists (set before external TestFlight).
+    /// nil = the app shows only the built-in copy.
+    public static let hostedPolicyURL: String? = nil
+
+    public static let version = 2
 
     /// What data exists, where it lives, and how long it is kept. Shown in the
     /// parent area and mirrored in docs/PRIVACY_AND_CHILD_SAFETY.md.
     public static let dataInventory: [(data: String, whereKept: String, retention: String)] = [
-        ("Optional nickname, age band, avatar, chosen Spanish variant", "This device only", "Until the profile is deleted"),
-        ("Lesson progress, review schedule, assessment results", "This device only", "Until the profile is deleted"),
+        ("Optional nickname, age band, avatar, chosen languages and varieties", "This device only", "Until the profile is deleted"),
+        ("Lesson progress, review schedule, assessment results, game scores, XP, levels, challenges, achievements", "This device only", "Until the profile is deleted"),
         ("Minutes and activities per day", "This device only", "\(ActivityLog.retentionDays) days, then pruned automatically"),
         ("Purchase status (if paid plans are ever enabled)", "This device + Apple", "Apple's records; the app keeps only plan and expiry"),
         ("Speech audio (on-device recognition, only if a grown-up allows it)", "Processed in memory on this device", "Never stored or sent"),
+        ("Handwriting in Write Out (read on-device by Apple's Vision framework)", "Processed in memory on this device", "Never stored or sent; only a list of words written is kept"),
     ]
 }
 

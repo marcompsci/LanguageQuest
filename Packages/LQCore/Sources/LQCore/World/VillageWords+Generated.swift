@@ -12,7 +12,7 @@ extension StarterVillage {
         "The bakery": ["de": "Die Bäckerei", "it": "Il forno", "zh": "面包店", "yo": "Ilé búrẹ́dì", "he": "המאפייה", "egy": "per ta", "am": "ዳቦ ቤት", "grc": "τὸ ἀρτοπωλεῖον", "la": "Pistrina", "hbo": "בֵּית הַלֶּחֶם"],
         "The fountain": ["de": "Der Brunnen", "it": "La fontana", "zh": "喷泉", "yo": "Orísun omi", "he": "המזרקה", "egy": "she", "am": "የውሃ ምንጭ", "grc": "ἡ κρήνη", "la": "Fons", "hbo": "הַבְּאֵר"],
         "The market": ["de": "Der Markt", "it": "Il mercato", "zh": "市场", "yo": "Ọjà", "he": "השוק", "egy": "meryt", "am": "ገበያ", "grc": "ἡ ἀγορά", "la": "Forum", "hbo": "הַשּׁוּק"],
-        "Conversation Town (coming soon)": ["de": "Gesprächsstadt (bald)", "it": "Città della Conversazione (presto)", "zh": "对话镇", "yo": "Ìlú Ìjíròrò", "he": "עיר השיחה", "egy": "nut medu", "am": "የውይይት ከተማ", "grc": "ἡ πόλις τῶν λόγων", "la": "Oppidum Colloquii", "hbo": "עִיר הַדְּבָרִים"],
+        "Conversation Town lookout": ["de": "Aussicht auf Gesprächsstadt", "it": "Belvedere della Città della Conversazione", "zh": "对话镇", "yo": "Ìlú Ìjíròrò", "he": "עיר השיחה", "egy": "nut medu", "am": "የውይይት ከተማ", "grc": "ἡ πόλις τῶν λόγων", "la": "Oppidum Colloquii", "hbo": "עִיר הַדְּבָרִים"],
     ]
 
     /// Treasure words by treasure id, then language code (fact nil = use the general fact).
