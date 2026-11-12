@@ -70,7 +70,22 @@ jobs:
           xcrun simctl bootstatus "$UDID" -b
           run_tests() {
             xcodebuild -project LanguageQuest.xcodeproj -scheme LanguageQuest -destination "id=$UDID" \
-              -resultBundlePath "UITests-$1.xcresult" test | tail -n 80
+              -resultBundlePath "UITests-$1.xcresult" test > "ui-$1.log" 2>&1
+            local rc=$?
+            grep -E "Test Case .*(passed|failed)|error:|\*\* TEST" "ui-$1.log" || true
+            return $rc
           }
           # One retry only for runner start-up failures; a real test failure fails both attempts and the job.
-          run_tests 1 || { echo "::warning::UI test attempt 1 failed; retrying once"; run_tests 2; }
+          set +e
+          run_tests 1; rc=$?
+          if [ $rc -ne 0 ]; then echo "::warning::UI test attempt 1 failed; retrying once"; run_tests 2; rc=$?; fi
+          exit $rc
+      - name: Upload UI test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-test-results
+          path: |
+            UITests-*.xcresult
+            ui-*.log
+          if-no-files-found: ignore
