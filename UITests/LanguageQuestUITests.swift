@@ -168,15 +168,22 @@ final class LanguageQuestUITests: XCTestCase {
     @MainActor func testAccessibilityAuditOnboardingAndGate() throws {
         let app = launch(seed: false)
         XCTAssertTrue(app.buttons["onboardingNext"].waitForExistence(timeout: 5))
-        try app.performAccessibilityAudit()
+        try app.performAccessibilityAudit { Self.report($0) }
         let seeded = launch(seed: true)
         seeded.buttons["hamburgerMenu"].tap()
         seeded.buttons["Parents"].tap()
         XCTAssertTrue(seeded.textFields["gateAnswer"].waitForExistence(timeout: 5))
-        try seeded.performAccessibilityAudit()
+        try seeded.performAccessibilityAudit { Self.report($0) }
     }
 
     // MARK: Helpers
+
+    /// Prints each audit issue with the element it's about (so CI logs say what to fix), then lets it fail the test.
+    static func report(_ issue: XCUIAccessibilityAuditIssue) -> Bool {
+        let el = issue.element.map { "\($0.elementType.rawValue) id='\($0.identifier)' label='\($0.label)'" } ?? "no element"
+        print("AUDIT-ISSUE: \(issue.compactDescription) | \(el)")
+        return false
+    }
 
     static let words: [String: Int] = {
         let ones = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve",
@@ -227,11 +234,11 @@ final class LanguageQuestUITests: XCTestCase {
             XCUIDevice.shared.appearance = style
             let app = launch(seed: true)
             XCTAssertTrue(app.buttons["hamburgerMenu"].waitForExistence(timeout: 5))
-            try app.performAccessibilityAudit(for: [.contrast, .dynamicType, .textClipped])
+            try app.performAccessibilityAudit(for: [.contrast, .dynamicType, .textClipped]) { Self.report($0) }
             app.buttons["hamburgerMenu"].tap()
             app.collectionViews.buttons["Settings"].firstMatch.tap()
             XCTAssertTrue(app.navigationBars["Settings"].waitForExistence(timeout: 5))
-            try app.performAccessibilityAudit(for: [.contrast])
+            try app.performAccessibilityAudit(for: [.contrast]) { Self.report($0) }
             app.terminate()
         }
         XCUIDevice.shared.appearance = .unspecified

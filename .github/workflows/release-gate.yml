@@ -77,7 +77,7 @@ jobs:
             xcodebuild -project LanguageQuest.xcodeproj -scheme LanguageQuest -destination "id=$UDID" \
               -resultBundlePath "UITests-$1.xcresult" test > "ui-$1.log" 2>&1
             local rc=$?
-            grep -E "Test Case .*(passed|failed)|error:|\*\* TEST" "ui-$1.log" || true
+            grep -E "Test Case .*(passed|failed)|error:|AUDIT-ISSUE|\*\* TEST" "ui-$1.log" || true
             return $rc
           }
           # One retry only for runner start-up failures; a real test failure fails both attempts and the job.
