@@ -187,6 +187,12 @@ final class LanguageQuestUITests: XCTestCase {
             print("AUDIT-IGNORED (system bar button, Large Content Viewer): \(issue.compactDescription) | \(el)")
             return true
         }
+        // Flag emoji are pictures, not text: WCAG contrast rules don't apply to them (they're hidden from VoiceOver too).
+        if issue.auditType == .contrast, let e = issue.element, !e.label.isEmpty,
+           e.label.unicodeScalars.allSatisfy({ (0x1F1E6...0x1F1FF).contains($0.value) || $0.properties.isEmojiPresentation }) {
+            print("AUDIT-IGNORED (emoji picture): \(issue.compactDescription) | \(el)")
+            return true
+        }
         print("AUDIT-ISSUE: \(issue.compactDescription) | \(el)")
         return false
     }
