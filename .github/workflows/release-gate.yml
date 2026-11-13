@@ -10,6 +10,11 @@ on:
 permissions:
   contents: read
 
+# A newer push cancels an older run of the same branch (saves macOS minutes).
+concurrency:
+  group: release-gate-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   compliance:
     name: Compliance checks (static)
@@ -78,10 +83,15 @@ jobs:
           # One retry only for runner start-up failures; a real test failure fails both attempts and the job.
           set +e
           run_tests 1; rc=$?
-          # Retry only when the simulator/test runner failed to start, never for a failed assertion.
-          if [ $rc -ne 0 ] && grep -qE "failed to initialize for UI testing|AX loaded notification|Failed to launch|Simulator device failed to" ui-1.log \
-             && ! grep -qE "Test Case .* failed" ui-1.log; then
-            echo "::warning::Simulator start-up failure; retrying once"; run_tests 2; rc=$?
+          # Retry once only when every error is a simulator/launch failure, never for a failed assertion.
+          INFRA='failed to initialize for UI testing|AX loaded notification|Failed to launch|background assertion|Simulator device failed|Application .* is not running'
+          if [ $rc -ne 0 ]; then
+            real=$(grep -E "error:" ui-1.log | grep -vE "$INFRA" | wc -l | tr -d ' ')
+            if [ "$real" = "0" ]; then
+              echo "::warning::Only simulator/launch failures; rebooting the simulator and retrying once"
+              xcrun simctl shutdown "$UDID" || true; xcrun simctl boot "$UDID"; xcrun simctl bootstatus "$UDID" -b
+              run_tests 2; rc=$?
+            fi
           fi
           exit $rc
       - name: Upload UI test results
