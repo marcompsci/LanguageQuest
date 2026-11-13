@@ -253,7 +253,7 @@ final class LanguageQuestUITests: XCTestCase {
             try app.performAccessibilityAudit(for: [.contrast]) { Self.report($0) }
             app.terminate()
         }
-        XCUIDevice.shared.appearance = .unspecified
+        XCUIDevice.shared.appearance = .light   // back to the simulator default (.unspecified is rejected)
     }
 
     @MainActor func testPrivacyPolicyIsReadableOffline() {
