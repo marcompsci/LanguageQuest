@@ -24,6 +24,9 @@ extension View {
         return self.environment(\.palette, pal)
             .foregroundStyle(Color(pal.text))
             .tint(Color(pal.accent))
+            // Match system lists, sheets and bars to the theme. Without this, the dark Explorer theme's
+            // light text sat on white system backgrounds when the phone was in Light Mode.
+            .preferredColorScheme(pal.isDark ? .dark : .light)
             .tracking(easyRead ? 1.1 : 0)
             .lineSpacing(easyRead ? 5 : 0)
             // Full Dynamic Type range (up to the largest accessibility size); "Larger text" only raises the minimum.
@@ -96,4 +99,9 @@ struct SpeakerButton: View {
         .buttonStyle(.bordered)
         .accessibilityLabel(label)
     }
+}
+
+extension ThemePalette {
+    /// True for dark backgrounds (relative luminance below 0.3).
+    var isDark: Bool { 0.2126 * background.r + 0.7152 * background.g + 0.0722 * background.b < 0.3 }
 }

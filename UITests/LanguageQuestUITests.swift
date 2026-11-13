@@ -221,6 +221,22 @@ final class LanguageQuestUITests: XCTestCase {
         }
     }
 
+    /// Light Mode and Dark Mode both get an accessibility audit (the dark theme once put light text on white lists).
+    @MainActor func testAccessibilityAuditInLightAndDarkAppearance() throws {
+        for style in [XCUIDevice.Appearance.light, .dark] {
+            XCUIDevice.shared.appearance = style
+            let app = launch(seed: true)
+            XCTAssertTrue(app.buttons["hamburgerMenu"].waitForExistence(timeout: 5))
+            try app.performAccessibilityAudit(for: [.contrast, .dynamicType, .textClipped])
+            app.buttons["hamburgerMenu"].tap()
+            app.collectionViews.buttons["Settings"].firstMatch.tap()
+            XCTAssertTrue(app.navigationBars["Settings"].waitForExistence(timeout: 5))
+            try app.performAccessibilityAudit(for: [.contrast])
+            app.terminate()
+        }
+        XCUIDevice.shared.appearance = .unspecified
+    }
+
     @MainActor func testPrivacyPolicyIsReadableOffline() {
         let app = launch(seed: true)
         XCTAssertTrue(app.buttons["hamburgerMenu"].waitForExistence(timeout: 5))
