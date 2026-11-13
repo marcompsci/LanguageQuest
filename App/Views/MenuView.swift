@@ -4,6 +4,7 @@ import LQCore
 /// Main menu: shown at launch. Players pick a language here, which opens that language's page.
 struct MenuView: View {
     @EnvironmentObject var model: AppModel
+    @Environment(\.dynamicTypeSize) private var typeSize
     @Environment(\.palette) var p
     @State private var phase = DayPhase.now()
 
@@ -84,7 +85,9 @@ struct MenuView: View {
 
     private func explorerCard(_ prof: PlayerProfile) -> some View {
         Card {
-            HStack(spacing: 14) {
+            // At accessibility text sizes the avatar goes above the text so long words aren't squeezed.
+            let layout = typeSize.isAccessibilitySize ? AnyLayout(VStackLayout(alignment: .leading, spacing: 10)) : AnyLayout(HStackLayout(spacing: 14))
+            layout {
                 Image(uiImage: PixelArt.avatarImage(prof.avatar, scale: 5))
                     .interpolation(.none)
                     .accessibilityHidden(true)

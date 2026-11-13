@@ -11,12 +11,14 @@ struct LevelBadge: View {
         let lvl = ExplorerLevel.level(forXP: xp)
         let prog = ExplorerLevel.progress(forXP: xp)
         VStack(alignment: .leading, spacing: 4) {
-            HStack(spacing: 6) {
-                Text("Lv \(lvl)").font(.caption.bold())
-                    .padding(.horizontal, 7).padding(.vertical, 2)
-                    .background(Color(p.accent), in: Capsule())
-                    .foregroundStyle(Color(p.onAccent))
-                Text(ExplorerLevel.title(lvl)).font(.subheadline.bold()).fixedSize(horizontal: false, vertical: true)
+            let pill = Text("Lv \(lvl)").font(.caption.bold())
+                .padding(.horizontal, 7).padding(.vertical, 2)
+                .background(Color(p.accent), in: Capsule())
+                .foregroundStyle(Color(p.onAccent))
+            let title = Text(ExplorerLevel.title(lvl)).font(.subheadline.bold()).fixedSize(horizontal: false, vertical: true)
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: 6) { pill; title }
+                VStack(alignment: .leading, spacing: 4) { pill; title }
             }
             ProgressView(value: Double(prog.into), total: Double(prog.needed)).tint(Color(p.accent))
             Text("\(prog.into)/\(prog.needed) XP to level \(lvl + 1)").font(.caption).foregroundStyle(Color(p.secondaryText))
