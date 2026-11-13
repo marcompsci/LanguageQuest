@@ -135,7 +135,7 @@ struct LanguageHubView: View {
                     topBar
                     if let prof = model.profile, let s = model.courseSummaries.first(where: \.isActive) {
                         VStack(spacing: 4) {
-                            Text(s.flag).font(.system(size: 64)).accessibilityHidden(true)
+                            Text(s.flag).font(.system(size: 64)).fixedSize().padding(.vertical, 4).accessibilityHidden(true)
                             Text(s.language).font(.system(.largeTitle, design: .rounded, weight: .heavy))
                                 .accessibilityAddTraits(.isHeader)
                             Text(s.nativeName).font(.headline).foregroundStyle(Color(p.secondaryText))
