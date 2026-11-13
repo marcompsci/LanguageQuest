@@ -181,6 +181,12 @@ final class LanguageQuestUITests: XCTestCase {
     /// Prints each audit issue with the element it's about (so CI logs say what to fix), then lets it fail the test.
     static func report(_ issue: XCUIAccessibilityAuditIssue) -> Bool {
         let el = issue.element.map { "\($0.elementType.rawValue) id='\($0.identifier)' label='\($0.label)'" } ?? "no element"
+        // System navigation-bar buttons (Done/Close) don't grow with Dynamic Type by design; iOS shows them
+        // in the Large Content Viewer on long press instead. Logged, not failed.
+        if issue.auditType == .dynamicType, let e = issue.element, e.elementType == .button, ["Done", "Close"].contains(e.label) {
+            print("AUDIT-IGNORED (system bar button, Large Content Viewer): \(issue.compactDescription) | \(el)")
+            return true
+        }
         print("AUDIT-ISSUE: \(issue.compactDescription) | \(el)")
         return false
     }

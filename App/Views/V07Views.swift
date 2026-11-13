@@ -16,10 +16,11 @@ struct LevelBadge: View {
                     .padding(.horizontal, 7).padding(.vertical, 2)
                     .background(Color(p.accent), in: Capsule())
                     .foregroundStyle(Color(p.onAccent))
-                Text(ExplorerLevel.title(lvl)).font(.subheadline.bold())
+                Text(ExplorerLevel.title(lvl)).font(.subheadline.bold()).fixedSize(horizontal: false, vertical: true)
             }
             ProgressView(value: Double(prog.into), total: Double(prog.needed)).tint(Color(p.accent))
-            Text("\(prog.into)/\(prog.needed) XP to level \(lvl + 1)").font(.caption2).foregroundStyle(Color(p.secondaryText))
+            Text("\(prog.into)/\(prog.needed) XP to level \(lvl + 1)").font(.caption).foregroundStyle(Color(p.secondaryText))
+                .fixedSize(horizontal: false, vertical: true)   // wrap instead of truncating at large text sizes
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Level \(lvl), \(ExplorerLevel.title(lvl)). \(prog.into) of \(prog.needed) XP to the next level.")
