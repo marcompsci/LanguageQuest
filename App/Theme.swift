@@ -35,13 +35,18 @@ extension View {
 /// A big, friendly button. Minimum 54pt tall for small hands.
 struct PrimaryButtonStyle: ButtonStyle {
     @Environment(\.palette) var p
+    @Environment(\.isEnabled) var isEnabled
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.headline)
+            .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity, minHeight: 54)
             .padding(.horizontal, 16)
-            .background(Color(p.accent).opacity(configuration.isPressed ? 0.8 : 1), in: RoundedRectangle(cornerRadius: 14))
-            .foregroundStyle(Color(p.onAccent))
+            // Disabled buttons keep readable contrast (secondary text on surface) instead of fading out.
+            .background(isEnabled ? Color(p.accent).opacity(configuration.isPressed ? 0.8 : 1) : Color(p.surface),
+                        in: RoundedRectangle(cornerRadius: 14))
+            .overlay(RoundedRectangle(cornerRadius: 14).stroke(isEnabled ? .clear : Color(p.secondaryText), lineWidth: 1))
+            .foregroundStyle(isEnabled ? Color(p.onAccent) : Color(p.secondaryText))
     }
 }
 

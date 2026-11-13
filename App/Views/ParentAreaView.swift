@@ -37,21 +37,22 @@ struct ParentGateView: View {
     @State private var message: String?
 
     var body: some View {
+        ScrollView {
         VStack(spacing: 18) {
-            Image(systemName: "lock.shield.fill").font(.system(size: 48)).accessibilityHidden(true)
+            Image(systemName: "lock.shield.fill").font(.largeTitle).imageScale(.large).accessibilityHidden(true)
             Text("For parents and guardians").font(.title.bold())
             Text("This area is for a parent or guardian.")
                 .font(.subheadline).multilineTextAlignment(.center)
             Text("Type the answer in numbers:").font(.headline)
             Text(challenge.question).font(.title2.bold()).multilineTextAlignment(.center)
                 .accessibilityIdentifier("gateQuestion")
-            TextField("Answer", text: $input)
+            TextField("Answer", text: $input, prompt: Text("Answer").foregroundStyle(Color(p.secondaryText)))
                 .keyboardType(.numberPad)
                 .font(.title)
                 .multilineTextAlignment(.center)
                 .padding(12)
                 .background(Color(p.surface), in: RoundedRectangle(cornerRadius: 12))
-                .frame(maxWidth: 220)
+                .frame(maxWidth: 320)
                 .accessibilityIdentifier("gateAnswer")
             if let m = message { Text(m).foregroundStyle(Color(p.retry)).accessibilityIdentifier("gateMessage") }
             Button("Continue") {
@@ -67,9 +68,10 @@ struct ParentGateView: View {
             .frame(maxWidth: 320)
             .disabled(input.isEmpty || tracker.isLocked(now: Date()))
             .accessibilityIdentifier("gateContinue")
-            Spacer()
         }
         .padding(24)
+        }
+        .scrollDismissesKeyboard(.interactively)
     }
 }
 
@@ -86,14 +88,14 @@ struct PINGateView: View {
         VStack(spacing: 18) {
             Image(systemName: "lock.fill").font(.system(size: 48)).accessibilityHidden(true)
             Text("Parent PIN").font(.title.bold())
-            SecureField("PIN", text: $pin)
+            SecureField("PIN", text: $pin, prompt: Text("PIN").foregroundStyle(Color(p.secondaryText)))
                 .keyboardType(.numberPad)
                 .textContentType(.oneTimeCode)
                 .font(.title)
                 .multilineTextAlignment(.center)
                 .padding(12)
                 .background(Color(p.surface), in: RoundedRectangle(cornerRadius: 12))
-                .frame(maxWidth: 220)
+                .frame(maxWidth: 320)
                 .accessibilityIdentifier("pinField")
             if let m = message { Text(m).foregroundStyle(Color(p.retry)) }
             Button("Unlock") {
