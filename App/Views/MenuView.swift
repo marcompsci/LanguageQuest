@@ -58,7 +58,6 @@ struct MenuView: View {
     private func bonusCard(_ prof: PlayerProfile) -> some View {
         let day = ActivityLog.dayKey(Date())
         let claimed = BonusLesson.claimed(prof, day: day)
-        let flag = model.courseSummaries.first(where: \.isActive)?.flag ?? "🌐"
         return Button { model.sheet = .bonus } label: {
             HStack(spacing: 14) {
                 Image(systemName: claimed ? "gift" : "gift.fill").font(.title)
@@ -66,7 +65,7 @@ struct MenuView: View {
                     .accessibilityHidden(true)
                 VStack(alignment: .leading, spacing: 3) {
                     Text("Bonus lesson").font(.headline)
-                    Text("\(flag) \(model.languageName) · 6 quick activities").font(.subheadline)
+                    Text("\(model.languageName) · 6 quick activities").font(.subheadline)
                     Text(claimed ? "Today's bonus XP collected. You can still play!" : "+\(BonusLesson.bonusXP) bonus XP today")
                         .font(.caption).foregroundStyle(Color(p.secondaryText))
                 }
@@ -262,6 +261,7 @@ struct LanguageRow: View {
         Button { if let action { action() } else { model.switchCourse(to: summary.courseId) } } label: {
             HStack(spacing: 12) {
                 Text(summary.flag).font(.largeTitle)
+                    .accessibilityHidden(true)   // decorative: the language name is right next to it
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
                         Text(summary.language).font(.headline)
