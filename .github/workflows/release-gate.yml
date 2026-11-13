@@ -78,7 +78,11 @@ jobs:
           # One retry only for runner start-up failures; a real test failure fails both attempts and the job.
           set +e
           run_tests 1; rc=$?
-          if [ $rc -ne 0 ]; then echo "::warning::UI test attempt 1 failed; retrying once"; run_tests 2; rc=$?; fi
+          # Retry only when the simulator/test runner failed to start, never for a failed assertion.
+          if [ $rc -ne 0 ] && grep -qE "failed to initialize for UI testing|AX loaded notification|Failed to launch|Simulator device failed to" ui-1.log \
+             && ! grep -qE "Test Case .* failed" ui-1.log; then
+            echo "::warning::Simulator start-up failure; retrying once"; run_tests 2; rc=$?
+          fi
           exit $rc
       - name: Upload UI test results
         if: always()

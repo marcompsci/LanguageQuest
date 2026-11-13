@@ -86,6 +86,7 @@ PERMS = {
     "NSLocationWhenInUseUsageDescription": r"CLLocationManager",
     "NSContactsUsageDescription": r"CNContactStore",
     "NSUserTrackingUsageDescription": r"ATTrackingManager",
+    "NSFaceIDUsageDescription": r"LAContext\(\)",
 }
 bad = []
 for key, rx in PERMS.items():
@@ -117,7 +118,12 @@ ats = [p for p in ("project.yml",) if "NSAllowsArbitraryLoads" in read(p) or "NS
 http = [f"{os.path.relpath(p, ROOT)}" for p, s in ALL_SRC.items()
         if re.search(r"\"http://(?!www\.apple\.com/DTDs)", s)]
 add("FAIL" if (ats or http) else "PASS", "No ATS exceptions or plain-HTTP URLs",
-    "; ".join(ats + http) or "no exceptions; app makes no network requests of its own")
+    "; ".join(ats + http) or "no exceptions")
+
+# 5b. No networking: the privacy policy and the Data Not Collected label depend on it.
+net = uses(r"\bURLSession\b|\bURLRequest\b|NWConnection|NWPathMonitor|WKWebView|SFSafariViewController|CFSocket|import\s+Network\b|Data\(contentsOf:\s*URL\(string")
+add("FAIL" if net else "PASS", "No network code (policy says nothing leaves the device)",
+    f"network APIs in {', '.join(net)}: update the privacy policy and App Privacy label, then this check" if net else "no URLSession, sockets or web views")
 
 # 6. Secrets ------------------------------------------------------------------
 SECRET_RX = [
@@ -215,8 +221,17 @@ except OSError as e:
     add("FAIL", "Privacy policy", f"missing: {e}")
 hosted = re.search(r"hostedPolicyURL:\s*String\?\s*=\s*\"(https://[^\"]+)\"",
                    read("Packages/LQCore/Sources/LQCore/Privacy/DataRights.swift"))
-add("PASS" if hosted else "MANUAL", "Hosted privacy policy URL",
-    hosted.group(1) if hosted else "not set: host docs/privacy-policy.md, put the URL in PrivacyNotice.hostedPolicyURL and in App Store Connect")
+if not hosted:
+    add("MANUAL", "Hosted privacy policy URL", "not set: host docs/privacy-policy.md, put the URL in PrivacyNotice.hostedPolicyURL and in App Store Connect")
+else:
+    # Check it really loads without a login; if this machine is offline, a person must check (never a silent pass).
+    import urllib.request
+    try:
+        with urllib.request.urlopen(urllib.request.Request(hosted.group(1), method="GET", headers={"User-Agent": "compliance-check"}), timeout=15) as r:
+            ok = r.status == 200
+        add("PASS" if ok else "FAIL", "Hosted privacy policy URL loads publicly", f"{hosted.group(1)} → HTTP {r.status}")
+    except Exception as e:  # noqa: BLE001
+        add("MANUAL", "Hosted privacy policy URL loads publicly", f"could not reach {hosted.group(1)} from here ({e.__class__.__name__}); open it in a private browser window")
 
 # 14. Placeholder / unfinished text in shipped strings -------------------------
 # Phrases are matched in any case; TODO/FIXME only in capitals (Spanish "todo" means "everything").

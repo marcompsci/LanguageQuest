@@ -8,7 +8,7 @@ Language Quest is a language-learning game for players aged 11 and up, made by P
 
 - No accounts, sign-in, or email addresses.
 - No ads, analytics, tracking, or third-party software development kits (SDKs).
-- No chat, messaging, sharing, or user-generated content that other people can see.
+- No chat, messaging, or user-generated content that other people can see. (A parent can choose to export a file through the iOS share sheet; see below.)
 - No location, contacts, photos, camera, or health data.
 - Nothing is sent to us or to anyone else. The app works fully offline.
 
@@ -19,13 +19,13 @@ The app saves the following only on the device it is installed on, so the game c
 - An optional nickname, an age band (11–12, 13–15, or 16+; never a birthdate), an avatar, and the languages and varieties you chose.
 - Lesson progress, the review schedule, answers to practice activities, game scores, XP, levels, daily challenges, and achievements.
 - Minutes and activities per day, kept for a limited time and then removed automatically.
-- Parent settings. An optional parent PIN is stored only as a salted hash in the device's Keychain.
+- Parent settings. An optional parent PIN is stored only as a salted hash in the device's Keychain. If a parent forgets the PIN, the device's own passcode or Face ID / Touch ID can reset it; the app only receives a yes/no answer from iOS.
 
 This information is stored in the app's private storage, protected by iOS file protection. It is included in your device's own backups (for example, iCloud Backup if you turn it on), which Apple handles under its own privacy policy. We cannot see it.
 
 ## Microphone and speech (off by default)
 
-Speech practice is off unless a parent turns it on in the Parents area. When it is on, the microphone is used only while the player holds the talk button. Speech is recognized on the device (on-device recognition is required) and the audio is never saved or sent anywhere.
+Speech practice is off unless a parent turns it on in the Parents area. When it is on, the microphone is used only after the player taps the talk button, until they tap "I'm done" or stop speaking. Speech is recognized on the device (on-device recognition is required) and the audio is never saved or sent anywhere.
 
 ## Handwriting (Write Out)
 
@@ -45,7 +45,7 @@ In the Parents area you can:
 
 - **Export** an explorer's data as a file, to keep or review.
 - **Delete** an explorer and all their progress.
-- **Delete all data** on the device.
+- **Delete all data** on the device (every explorer, backups, exported files and the parent PIN).
 
 Deleting the app also deletes all of its data from the device.
 

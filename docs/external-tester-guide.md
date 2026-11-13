@@ -13,7 +13,7 @@ This covers getting Language Quest to testers outside your App Store Connect tea
 > Thanks for testing! Please try:
 > 1. Create an explorer and finish the first quest with Luna (Spanish).
 > 2. Switch to another language from the main menu and play a quest there.
-> 3. Games: Echo, Memory Match, Spelling Bee and a Speed duel.
+> 3. Games: Echo, Memory Match and Spelling Bee. After finishing Unit 1, try a Speed duel in Word Battles.
 > 4. Write Out: write a word, turn the phone sideways, and tap Check.
 > 5. The Bonus lesson and Daily challenges on the main menu.
 > Tell us about anything confusing, any wrong translations, sounds that are too loud, or crashes. Use the TestFlight app to send a screenshot with feedback.
@@ -28,9 +28,8 @@ None needed: the app has no sign-in. Leave "Sign-in required" **off**.
 
 ## 5. Privacy policy checklist
 
-- [ ] Host `docs/privacy-policy.md` at a public HTTPS address (for example GitHub Pages or your Phoronomics website). It must load without a login.
+- [x] Hosted at https://github.com/marcompsci/LanguageQuest/blob/main/docs/privacy-policy.md (public repo; loads without a login). It's also set in `PrivacyNotice.hostedPolicyURL`. To move it to your own site, change both places.
 - [ ] Put the URL in **App Information › Privacy Policy URL** and **TestFlight › Test Information › Privacy Policy URL**.
-- [ ] Put the same URL in `PrivacyNotice.hostedPolicyURL` (`Packages/LQCore/Sources/LQCore/Privacy/DataRights.swift`) so the Parents area links to it, then rebuild.
 - [ ] App Privacy label: **Data Not Collected**.
 
 ## 6. Support and feedback contact
@@ -41,7 +40,7 @@ None needed: the app has no sign-in. Leave "Sign-in required" **off**.
 
 ## 7. Encryption / export compliance
 
-- [ ] The build includes `ITSAppUsesNonExemptEncryption = NO`, so App Store Connect should not ask. If it does, answer that the app uses only exempt encryption (Apple OS hashing; no HTTPS of its own).
+- [ ] The build includes `ITSAppUsesNonExemptEncryption = NO`, so App Store Connect should not ask. If it does, answer that the app uses no non-exempt encryption (only a SHA-256 hash of the parent PIN; no network connections).
 - [ ] With exempt encryption there is no documentation to upload.
 
 ## 8. Tester compatibility

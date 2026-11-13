@@ -109,8 +109,18 @@ public final class FileSaveStore: SaveStore {
         #endif
     }
 
+    /// Deletes every save file: main, backup and any quarantined unreadable copies.
     public func deleteAll() throws {
         for u in [mainURL, backupURL] where fm.fileExists(atPath: u.path) { try fm.removeItem(at: u) }
+        let others = (try? fm.contentsOfDirectory(atPath: directory.path)) ?? []
+        for name in others where name.hasPrefix("family.") && name.contains(".unreadable-") {
+            try fm.removeItem(at: directory.appendingPathComponent(name))
+        }
+    }
+
+    /// Removes the backup copy (used after deleting an explorer so the backup can't still hold them).
+    public func purgeBackup() {
+        if fm.fileExists(atPath: backupURL.path) { try? fm.removeItem(at: backupURL) }
     }
 
     /// Moves unreadable save files aside (never deletes them) so starting fresh can't

@@ -33,9 +33,10 @@ targets:
         INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.education
-        # Only Apple OS crypto is used (CryptoKit SHA-256 to hash the parent PIN): exempt.
+        # No encryption: the only crypto is a SHA-256 hash of the parent PIN (hashing is exempt).
         INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
-        INFOPLIST_KEY_NSMicrophoneUsageDescription: "Only if a grown-up turns on speech practice: the microphone listens while you hold the talk button so the app can check your pronunciation. Audio is processed on this device and never saved or sent."
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "Only if a grown-up turns on speech practice: the microphone listens after you tap the talk button, until you tap “I’m done” or finish speaking, so the app can check your pronunciation. Audio is processed on this device and never saved or sent."
+        INFOPLIST_KEY_NSFaceIDUsageDescription: "Face ID can confirm you are the device owner if you forget the Language Quest parent PIN."
         INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "Speech practice uses on-device recognition only. Your voice never leaves this device and is not stored."
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         CODE_SIGN_STYLE: Automatic

@@ -10,22 +10,22 @@ Language Quest collects no data. It has no network code, accounts, backend, anal
 
 | Item | Status | Evidence |
 |---|---|---|
-| HTTPS/TLS network transport | N/A: the app makes no network requests (StoreKit is the only Apple service, and it's off) | Gate: no `URLSession`, no plain-HTTP URLs, no ATS exceptions |
-| Secure token storage | No tokens exist. The parent PIN is a salted SHA-256 hash in the Keychain (`ParentPINStore`, this device only) | Code review |
+| HTTPS/TLS network transport | N/A: the app makes no network requests (StoreKit is the only Apple service, and it's off) | Gate check 5b fails on any URLSession, socket or web view; check 5 fails on plain HTTP or ATS exceptions |
+| Secure token storage | No tokens exist. The parent PIN is a salted SHA-256 hash in the Keychain (`ParentPINStore`, this device only). Resetting it uses LocalAuthentication; the app only receives yes or no | Code review |
 | No production secrets in the bundle | ✅ None | Gate secrets scan of every tracked file (keys, tokens, JWTs, `.p8/.p12/.mobileprovision`) |
 | Server-side authorization, Supabase RLS, Firebase rules | N/A: no backend | Code search |
 | Unauthorized database access | N/A: local file only. iOS sandbox plus `completeFileProtectionUntilFirstUserAuthentication` | `FileSaveStore.save` |
 | Session handling | N/A: no sessions | — |
 | Input validation and safe output | Typed answers are compared on-device and never executed or sent. The nickname is local only and is not rendered as Markdown or HTML. Export is JSON produced by `JSONEncoder` | Code review |
-| Permission purpose strings | ✅ Microphone and Speech Recognition, both specific and accurate. Requested only after a parent turns on speech practice behind the gate | `project.yml`; gate check 3 |
-| Privacy policy access | ✅ In the app (☰ › Privacy policy, and Parents). ⏳ The **public URL still needs hosting** | `docs/privacy-policy.md`; `PrivacyPolicyTests` |
+| Permission purpose strings | ✅ Microphone, Speech Recognition and Face ID (PIN reset), all specific and accurate. Mic and speech are requested only after a parent turns on speech practice behind the gate | `project.yml`; gate check 3 (now also covers `LAContext`) |
+| Privacy policy access | ✅ In the app (☰ › Privacy policy, and Parents) and online at the public GitHub URL | `docs/privacy-policy.md`; `PrivacyPolicyTests`; gate URL check |
 | In-app account deletion | N/A: no accounts. Local "Delete this explorer" and "Delete all data" are behind the parental gate | `ParentAreaView` |
-| Data deletion and retention | ✅ Daily activity log pruned after `ActivityLog.retentionDays`. Delete-all also clears the PIN. Unreadable saves are kept aside (not silently destroyed) | Unit tests |
+| Data deletion and retention | ✅ Daily activity log pruned after `ActivityLog.retentionDays` for every explorer at launch. Delete-all removes all save files, backups, quarantined copies, exports and the PIN. Deleting an explorer purges the backup. Unreadable saves are kept aside until delete-all | `DeletionTests`, `ComplianceTests` |
 | App privacy disclosure inventory | ✅ The in-app inventory (`PrivacyNotice.dataInventory`, version 2) matches the policy | `ComplianceTests.testPrivacyInventoryCoversEveryOnDeviceDataType` |
 | Privacy manifest | ✅ `App/Resources/PrivacyInfo.xcprivacy`: no tracking, no domains, no collected data | Gate check 1 |
 | Required-reason APIs | ✅ None used (no UserDefaults, file timestamps, boot time, disk space, keyboards) | Gate check 2 (fails if one is added without a declared reason) |
 | Third-party SDK privacy | N/A: no third-party packages | Gate check 7 |
-| Encryption export classification | ✅ Exempt: Apple CryptoKit hashing only. `ITSAppUsesNonExemptEncryption = NO` | Gate check 4 |
+| Encryption export classification | ✅ No encryption: only a SHA-256 hash of the PIN. `ITSAppUsesNonExemptEncryption = NO` | Gate check 4 |
 | Tracking / ATT | ✅ None. The gate fails if `ATTrackingManager` appears | Gate check 3 |
 
 ## App Store Connect "App Privacy" answers

@@ -64,3 +64,19 @@ final class PrivacyPolicyTests: XCTestCase {
         XCTAssertEqual(try String(contentsOf: docs, encoding: .utf8), inApp, "docs/privacy-policy.md must match the in-app copy")
     }
 }
+
+final class DeletionTests: XCTestCase {
+    func testDeleteAllAlsoRemovesQuarantinedCopiesAndPurgeBackupWorks() throws {
+        let dir = FileManager.default.temporaryDirectory.appendingPathComponent("lq-\(UUID().uuidString)")
+        let store = FileSaveStore(directory: dir)
+        try store.save(FamilySave())
+        try store.save(FamilySave())               // creates family.backup.json
+        XCTAssertTrue(FileManager.default.fileExists(atPath: dir.appendingPathComponent("family.backup.json").path))
+        store.purgeBackup()
+        XCTAssertFalse(FileManager.default.fileExists(atPath: dir.appendingPathComponent("family.backup.json").path))
+        try Data("x".utf8).write(to: dir.appendingPathComponent("family.unreadable-5.json"))
+        try store.deleteAll()
+        let left = try FileManager.default.contentsOfDirectory(atPath: dir.path).filter { $0.hasPrefix("family") }
+        XCTAssertEqual(left, [], "delete-all leaves no family files behind")
+    }
+}

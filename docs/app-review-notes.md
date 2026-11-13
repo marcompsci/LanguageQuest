@@ -8,7 +8,7 @@ Paste the "Review Notes" section into App Store Connect › TestFlight › Test 
 
 Language Quest is an offline language-learning game for ages 11 and up. Players explore a pixel-art village, talk to characters in the language they are learning, complete short quests, and play word games.
 
-NO SIGN-IN. There are no accounts, so no demo account is needed. On first launch, create an explorer: tap Next through the short setup, choose any age band (11–12, 13–15 or 16+), choose a language (Spanish is the most complete) and a variety, enter any name, and tap "Start exploring".
+NO SIGN-IN. There are no accounts, so no demo account is needed. On first launch, create an explorer: tap Next through the short setup, choose any age band (11–12, 13–15 or 16+), choose a language (Spanish is the most complete) and a variety, enter any name, and tap "Start exploring". A short placement quiz is offered next; tap "I'm new to Spanish: skip" to go straight to the village.
 
 NO NETWORK, ADS, ANALYTICS OR TRACKING. All data stays on the device. Privacy label: Data Not Collected.
 
@@ -29,16 +29,16 @@ FEATURES IN THIS BUILD
 - Accessibility: VoiceOver labels, Reduce Motion, larger text, and an easy-read text option.
 
 PARENTS AREA (☰ › Parents)
-- Protected by a parental gate: type the answer to a written-out sum, in digits. An optional parent PIN can replace it.
+- Protected by a parental gate: type the answer to a written-out sum or multiplication (for example "Forty-seven plus thirty-eight"), in digits. An optional parent PIN can replace it. "Forgot PIN" uses the device passcode or Face ID.
 - Contains: on-device speech checking toggle (off by default; requests microphone and speech recognition permission only when turned on, and recognition is on-device only), break reminders, settings, optional parent PIN, data export, and delete explorer / delete all data.
 
-PERMISSIONS: The microphone and speech recognition are requested only after a parent enables speech practice. No other permissions are used.
+PERMISSIONS: The microphone and speech recognition are requested only after a parent enables speech practice (the mic listens after the talk button is tapped, until "I'm done" or speech ends). Face ID is used only if a parent chooses "Forgot PIN". No other permissions are used.
 
 ---
 
 ## Reviewer navigation (2-minute path)
 
-1. Launch → create an explorer (age band 13–15, Spanish, Mexico, any name) → Start exploring.
+1. Launch → create an explorer (age band 13–15, Spanish, Mexico, any name) → Start exploring → skip the placement quiz.
 2. You're in the Spanish village. Tap **Go to › Luna**, talk to her, and finish the first quest (4 short activities).
 3. Tap the **house** button → language page → **Games** → **Echo** or **Memory Match**.
 4. **☰ › Write Out** → pick a word → turn the phone sideways → write it → **Check**.
@@ -68,4 +68,4 @@ Expected result: 4+ (or 9+). You can set a higher minimum age if you want to mat
 
 ## Encryption
 
-ITSAppUsesNonExemptEncryption = NO (only Apple CryptoKit hashing is used). Answer "No" / "exempt" if App Store Connect asks.
+ITSAppUsesNonExemptEncryption = NO. The app uses no encryption, only a SHA-256 hash of the parent PIN. Answer "No" / "exempt" if App Store Connect asks.

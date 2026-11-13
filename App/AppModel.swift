@@ -147,6 +147,11 @@ final class AppModel: ObservableObject {
             p.settings.reducedMotion = true
             try? FamilyManager.addProfile(p, to: &save, config: storeConfig)
         }
+        // Retention: prune every explorer's daily log at launch, not only the active one's.
+        if !save.profiles.isEmpty {
+            for i in save.profiles.indices { save.profiles[i].log.prune(now: Date()) }
+            persist()
+        }
         route = profile == nil ? .onboarding : .menu
         speech.onSpeakingChanged = { [weak self] speaking in self?.audio.voiceSpeaking = speaking }
     }
@@ -208,14 +213,25 @@ final class AppModel: ObservableObject {
     func deleteProfile(_ id: UUID) {
         try? FamilyManager.deleteProfile(id, from: &save)
         persist()
+        (saveStore as? FileSaveStore)?.purgeBackup()   // the backup still held the deleted explorer
+        AppModel.removeExportFiles()
         if save.profiles.isEmpty { route = .onboarding; sheet = nil }
     }
 
     func deleteEverything() {
         ParentPINStore.delete()
+        AppModel.removeExportFiles()
         if let fresh = try? FamilyManager.deleteEverything(store: saveStore) { save = fresh }
         sheet = nil
         route = .onboarding
+    }
+
+    /// Exported JSON files live in the temporary folder until deleted here (or by iOS).
+    static func removeExportFiles() {
+        let tmp = FileManager.default.temporaryDirectory
+        for name in (try? FileManager.default.contentsOfDirectory(atPath: tmp.path)) ?? [] where name.hasPrefix("LanguageQuest-export") {
+            try? FileManager.default.removeItem(at: tmp.appendingPathComponent(name))
+        }
     }
 
     func addNewProfileFlow() {

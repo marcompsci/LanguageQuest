@@ -305,7 +305,7 @@ struct ParentDashboardView: View {
                 }))
             if let m = speechMessage { Text(m).font(.caption) }
         } header: { Text("Speaking practice") } footer: {
-            Text("Off by default. When on, the microphone listens only while your child holds the talk button, recognition happens on this device, and audio is never saved or sent. When off, kids say words aloud and tap “I said it!”.")
+            Text("Off by default. When on, the microphone listens only after your child taps the talk button, until they tap “I'm done” or stop speaking, recognition happens on this device, and audio is never saved or sent. When off, kids say words aloud and tap “I said it!”.")
         }
     }
 

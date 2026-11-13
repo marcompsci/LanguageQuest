@@ -436,7 +436,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Language Quest";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Only if a grown-up turns on speech practice: the microphone listens while you hold the talk button so the app can check your pronunciation. Audio is processed on this device and never saved or sent.";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Face ID can confirm you are the device owner if you forget the Language Quest parent PIN.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Only if a grown-up turns on speech practice: the microphone listens after you tap the talk button, until you tap “I’m done” or finish speaking, so the app can check your pronunciation. Audio is processed on this device and never saved or sent.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech practice uses on-device recognition only. Your voice never leaves this device and is not stored.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -462,7 +463,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Language Quest";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Only if a grown-up turns on speech practice: the microphone listens while you hold the talk button so the app can check your pronunciation. Audio is processed on this device and never saved or sent.";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Face ID can confirm you are the device owner if you forget the Language Quest parent PIN.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Only if a grown-up turns on speech practice: the microphone listens after you tap the talk button, until you tap “I’m done” or finish speaking, so the app can check your pronunciation. Audio is processed on this device and never saved or sent.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Speech practice uses on-device recognition only. Your voice never leaves this device and is not stored.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
