@@ -374,7 +374,7 @@ struct EchoView: View {
                     Spacer()
                 } else if let g = game {
                     Spacer()
-                    Text(String(repeating: "★", count: g.stars) + String(repeating: "☆", count: 3 - g.stars)).font(.system(size: 48))
+                    Text(String(repeating: "★", count: g.stars) + String(repeating: "☆", count: 3 - g.stars)).font(.largeTitle).accessibilityLabel("\(g.stars) of 3 stars")
                     Text("\(g.correct) of \(g.questions.count) heard right").font(.title2.bold())
                     Button("Play again") { start() }.buttonStyle(PrimaryButtonStyle())
                     Spacer()
@@ -545,7 +545,7 @@ struct SpellingBeeView: View {
                     Spacer()
                 } else if let g = game {
                     Spacer()
-                    Text(String(repeating: "★", count: g.stars) + String(repeating: "☆", count: 3 - g.stars)).font(.system(size: 48))
+                    Text(String(repeating: "★", count: g.stars) + String(repeating: "☆", count: 3 - g.stars)).font(.largeTitle).accessibilityLabel("\(g.stars) of 3 stars")
                     Text("\(g.correct) of \(g.words.count) spelled right").font(.title2.bold())
                     Button("Play again") { start() }.buttonStyle(PrimaryButtonStyle())
                     Spacer()

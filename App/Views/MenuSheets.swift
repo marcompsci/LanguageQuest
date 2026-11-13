@@ -375,7 +375,7 @@ struct KanaDojoView: View {
                             .font(.caption).foregroundStyle(Color(p.secondaryText))
                         Text(q.readKana ? "How do you read this?" : "Which one says “\(q.romaji)”?").font(.headline)
                         Text(q.readKana ? q.kana : q.romaji)
-                            .font(.system(size: 96, weight: .bold))
+                            .font(.system(size: 96, weight: .bold, design: .default)).dynamicTypeSize(.large) // a single big practice glyph; its romaji is spoken and shown in the options
                             .frame(maxWidth: .infinity, minHeight: 150)
                             .background(Color(p.surface), in: RoundedRectangle(cornerRadius: 20))
                             .accessibilityLabel(q.readKana ? "Kana character" : q.romaji)
@@ -390,7 +390,7 @@ struct KanaDojoView: View {
                         if let f = feedback { Text(f).font(.headline) }
                     } else {
                         Spacer()
-                        Text(String(repeating: "★", count: d.stars) + String(repeating: "☆", count: 3 - d.stars)).font(.system(size: 48))
+                        Text(String(repeating: "★", count: d.stars) + String(repeating: "☆", count: 3 - d.stars)).font(.largeTitle).accessibilityLabel("\(d.stars) of 3 stars")
                         Text("\(d.correct) of \(d.questions.count) right").font(.title2.bold())
                         Button("Hiragana again") { start(.hiragana) }.buttonStyle(PrimaryButtonStyle())
                         Button("Try katakana") { start(.katakana) }.buttonStyle(SecondaryButtonStyle())

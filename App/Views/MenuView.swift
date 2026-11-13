@@ -17,7 +17,7 @@ struct MenuView: View {
                         HamburgerMenu()
                     }
                     Text("Language Quest")
-                        .font(.system(size: 34, weight: .heavy, design: .rounded))
+                        .font(.system(.largeTitle, design: .rounded, weight: .heavy))
                         .accessibilityAddTraits(.isHeader)
                     if let prof = model.profile {
                         explorerCard(prof)
@@ -136,7 +136,7 @@ struct LanguageHubView: View {
                     if let prof = model.profile, let s = model.courseSummaries.first(where: \.isActive) {
                         VStack(spacing: 4) {
                             Text(s.flag).font(.system(size: 64)).accessibilityHidden(true)
-                            Text(s.language).font(.system(size: 32, weight: .heavy, design: .rounded))
+                            Text(s.language).font(.system(.largeTitle, design: .rounded, weight: .heavy))
                                 .accessibilityAddTraits(.isHeader)
                             Text(s.nativeName).font(.headline).foregroundStyle(Color(p.secondaryText))
                             ProgressView(value: s.fraction).tint(Color(p.accent)).padding(.horizontal, 40).padding(.top, 6)
