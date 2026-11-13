@@ -81,7 +81,7 @@ Severity: **BLOCKER** (Apple will reject or the build can't be distributed), **H
 | Static compliance gate (`scripts/compliance-check.py`) | Run: 17 pass, 0 fail, 7 manual (items only a person or App Store Connect can confirm) |
 | 141 LQCore unit tests | Run: all pass (Linux, Swift 5.10; also in CI) |
 | Unsigned Release build for device, plus Clang static analyzer | Run in GitHub Actions (macOS 15): pass |
-| UI tests (10) on an iPhone simulator | Run in GitHub Actions. The first run had 3 real failures: Dynamic Type capped at accessibility3, which the accessibility audit flagged and is now fixed; and two test-selector problems, now fixed. The final status is in the checklist result. |
+| UI tests (11) on an iPhone simulator | Run in GitHub Actions: all pass. Earlier runs found real problems that are now fixed: Dynamic Type capped at accessibility3, light text on white lists in Light Mode with the dark theme (F23), low-contrast disabled buttons and placeholders, a truncating XP line, a fixed-size title, and the level title clipping beside the avatar at large text sizes. |
 | Debug build installed on the owner's iPhone | Run (Xcode, Nov 12): built and launched |
 | Independent fact-check of these documents against the code | Run: found F20–F22 plus wording errors, all fixed |
 | Xcode Release **archive** and Validate App | **Not run.** Needs Xcode with your signing on the Mac (Product › Archive › Validate App). |
@@ -90,4 +90,4 @@ Severity: **BLOCKER** (Apple will reject or the build can't be distributed), **H
 
 ## 6. Result
 
-See the release-readiness result at the end of `docs/testflight-release-checklist.md`; the CI status is recorded there.
+**CONDITIONAL.** All automated checks pass (static gate, 141 unit tests, Release build, static analysis, 11 UI tests with Light/Dark accessibility audits). Remaining items need a person: archive and Validate App, App Store Connect setup (privacy URL, App Privacy label, age rating, Test Information), an iPad pass, and the upload itself, followed by Apple's TestFlight App Review. Passing TestFlight review is not App Store approval, and nothing here guarantees either. Details: the release-readiness result in `docs/testflight-release-checklist.md`.

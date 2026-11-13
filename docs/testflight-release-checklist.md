@@ -50,17 +50,21 @@ GitHub Actions runs the same gates on every push (**Release gate** workflow):
 
 ## Release-readiness result (audit of November 12, 2026)
 
-**Result: FAIL.** The app itself is in good shape, but critical TestFlight requirements are still open.
+**Result: CONDITIONAL.** Every automated check passes. What remains can only be done by a person in Xcode and App Store Connect, and then Apple's own TestFlight App Review. External TestFlight approval is **not** App Store approval.
 
 What passed:
-- Static compliance gate: 15 pass, 0 fail, 0 warn, 8 manual.
-- 140 unit tests.
-- Unsigned Release build and static analysis (GitHub Actions).
+- Static compliance gate (`scripts/compliance-check.py`): 17 pass, 0 fail, 0 warn, 7 manual.
+- 141 LQCore unit tests (Linux and CI), plus the check that generated content matches the authoring scripts.
+- GitHub Actions "Release gate" (macOS 15): unsigned Release build, Clang static analysis, and all 11 UI tests on an iPhone simulator, including the accessibility audits (contrast, Dynamic Type, clipped text) in Light and Dark Mode.
+- Privacy policy hosted at a public HTTPS URL (GitHub, HTTP 200) and bundled in the app for offline reading.
 - A Debug build installed and ran on the owner's iPhone (Xcode, Nov 12).
 
-What blocks it:
-1. **Privacy policy is not yet hosted** at a public URL. External TestFlight needs it, and so does guideline 5.1.1(i).
-2. **UI tests:** the first CI run had 3 of 10 UI tests failing. The fix status is recorded in `apple-compliance-report.md` §5.
-3. **Not yet done by a person:** the Release archive and Validate App, the age rating questionnaire, the App Privacy label, Test Information, and an iPad check.
+What a person still has to do before external testers can get a build (sections B and C above):
+1. Xcode Release **Archive** and **Validate App** with your signing.
+2. App Store Connect: privacy policy URL, App Privacy answer "Data Not Collected", age rating questionnaire, TestFlight Test Information (description, feedback email, review notes from `app-review-notes.md`).
+3. One pass on an iPad, and an Instruments memory check on a long session.
+4. Upload the build and submit it for TestFlight review. This was deliberately not done: it needs your go-ahead.
 
-When items 1–3 are done, the result becomes **CONDITIONAL**: automated checks pass, and Apple's TestFlight App Review is still required. External TestFlight approval is not App Store approval.
+Accessibility audit exceptions (logged as `AUDIT-IGNORED` in the test output, never hidden):
+- Done/Close buttons in navigation bars for Dynamic Type: iOS shows these through the Large Content Viewer.
+- Flag emoji for contrast and clipped text: they are decorative pictures (hidden from VoiceOver), not text.
