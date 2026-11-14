@@ -153,6 +153,9 @@ final class AppModel: ObservableObject {
         if AppModel.isUITesting, ProcessInfo.processInfo.arguments.contains("-seedProfile") {
             var p = PlayerProfile(nickname: "Tester", ageBand: .age11to12, variant: "es-MX")
             p.settings.reducedMotion = true
+            if ProcessInfo.processInfo.arguments.contains("-seedFirstQuest"), let q = libs["en-es"]?.units.first?.quests.first {
+                p.progress.startedQuests.insert(q.id); p.progress.completedQuests.insert(q.id)
+            }
             try? FamilyManager.addProfile(p, to: &save, config: storeConfig)
         }
         // Retention: prune every explorer's daily log at launch, not only the active one's.

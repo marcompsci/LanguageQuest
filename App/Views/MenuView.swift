@@ -161,13 +161,13 @@ struct LanguageHubView: View {
                         LazyVGrid(columns: columns, spacing: 12) {
                             MenuTile(icon: "gamecontroller.fill", title: "Games", id: "menu-games") { model.sheet = .games }
                             MenuTile(icon: "rectangle.on.rectangle.angled", title: "Flashcards", id: "menu-flashcards") { model.sheet = .flashcards }
+                            if model.library?.course.script == .kana {
+                                MenuTile(icon: "character.ja", title: "Kana Dojo", id: "menu-kana") { model.sheet = .kana }
+                            }
                             MenuTile(icon: "gift.fill", title: "Bonus lesson", id: "menu-bonus") { model.sheet = .bonus }
                             MenuTile(icon: "pencil.and.scribble", title: "Write Out", id: "menu-writeout") { model.sheet = .writeOut }
                             MenuTile(icon: "books.vertical.fill", title: "Word Library", id: "menu-words") { model.sheet = .words }
                             MenuTile(icon: "checklist", title: "Unit quizzes", id: "menu-quizzes") { model.sheet = .quizzes }
-                            if model.library?.course.script == .kana {
-                                MenuTile(icon: "character.ja", title: "Kana Dojo", id: "menu-kana") { model.sheet = .kana }
-                            }
                         }
                     }
                 }

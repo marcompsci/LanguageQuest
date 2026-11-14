@@ -50,6 +50,16 @@ Severity: **BLOCKER** (Apple will reject or the build can't be distributed), **H
 | F23 | 2.1 completeness / accessibility (legibility in Light Mode) | `Theme.swift` | **HIGH** | Since v0.6 every explorer starts on the dark Explorer theme, but the app never set a color scheme. On a phone in Light Mode (reviewers often use it), system lists and sheets turned white while the text stayed light, so Parents, Settings, Trophies and similar screens were nearly unreadable. Found by the UI accessibility audit ("Contrast failed"). | The app now sets Dark or Light to match the theme. Disabled buttons and field placeholders keep readable contrast. Full Dynamic Type range (up to the largest accessibility size). | ✅ | `testAccessibilityAuditOnboardingAndGate`, new `testAccessibilityAuditInLightAndDarkAppearance` (CI) |
 | F19 | 5.2 intellectual property | Art, audio, text | LOW | All art is drawn in code and the music is original chiptune. Fonts are Apple system fonts. Flags are system emoji. | None. Keep marketing art original under 2.3.14 (no prices or unverifiable claims in creative assets). | ✅ | Code review |
 
+### v0.8 additions (November 13, 2026)
+
+| # | Guideline / requirement | Where | Sev. | Concern | Remediation | Done? | Verified by |
+|---|---|---|---|---|---|---|---|
+| F24 | 2.5.19 / 2.3.1(a) new features must be documented for review | `docs/app-review-notes.md` | MEDIUM | Six new features in 0.8 (Word Library, starred words, word of the day, Sentence Builder, unit quizzes, weekly goal, parent reminders and summary). | Listed under "NEW IN 0.8" in the review notes and in What to Test. | ✅ | Docs |
+| F25 | 4.5.4 notifications / 5.1.1 permissions | `ReminderScheduler.swift`, parent area | MEDIUM | Reminders need notification permission. They must not be required, must not carry personal information, and must be disclosed. | Off by default; permission asked only when a parent turns them on; local notifications only (no push token or server); generic text with no name or progress; removed by "Delete all data"; privacy policy v3 and the in-app inventory describe them. | ✅ | Gate check "Notifications are local, parent-enabled and disclosed"; unit test `testReminderPlanDefaultsOffAndOldSavesLoad` |
+| F26 | 5.1.1 sharing of a child's progress | `ParentWeeklyReportSection` | LOW | The weekly summary includes the nickname and activity. | Behind the parental gate; shared only when a parent taps Share and picks a destination in the iOS share sheet; nothing is sent automatically. Disclosed in the policy. | ✅ | Code review; unit test `testWeeklyReportSummarizesWithoutPrivateDetails` |
+| F27 | Save compatibility (2.1 stability) | `ExtrasProgress`, `MetaProgress`, `ParentSettings` | MEDIUM | New saved fields could break loading v0.7 saves. | All new fields are optional; a v0.7-shaped save decodes in a unit test. | ✅ | Unit test |
+| F28 | 2.4.1 iPad | `MenuView`, `LanguageHubView` | LOW | Layout stretched across the full iPad width. | Readable max width (720 pt) and an adaptive tile grid. Still needs a person to check on an iPad. | Partly | Manual (checklist B) |
+
 ## 3. Functionality and crash review (Phase 3)
 
 | Check | Result | How |

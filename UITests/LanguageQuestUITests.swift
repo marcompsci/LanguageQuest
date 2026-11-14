@@ -6,11 +6,20 @@ import XCTest
 final class LanguageQuestUITests: XCTestCase {
     override func setUp() { continueAfterFailure = false }
 
-    @MainActor private func launch(seed: Bool) -> XCUIApplication {
+    @MainActor private func launch(seed: Bool, firstQuestDone: Bool = false) -> XCUIApplication {
         let app = XCUIApplication()
-        app.launchArguments = ["-uiTesting"] + (seed ? ["-seedProfile"] : [])
+        app.launchArguments = ["-uiTesting"] + (seed ? ["-seedProfile"] : []) + (firstQuestDone ? ["-seedFirstQuest"] : [])
         app.launch()
         return app
+    }
+
+    /// Tiles on the language page sit in a lazy grid: scroll until the tile exists.
+    @MainActor private func revealTile(_ id: String, in app: XCUIApplication) -> Bool {
+        for _ in 0..<4 {
+            if app.buttons[id].waitForExistence(timeout: 2) && app.buttons[id].isHittable { return true }
+            app.swipeUp()
+        }
+        return app.buttons[id].exists
     }
 
     @MainActor func testOnboardingCreatesExplorerAndSkipsPlacement() {
@@ -71,7 +80,8 @@ final class LanguageQuestUITests: XCTestCase {
         app.buttons["Done"].tap()
         app.buttons["backToLanguages"].tap()
         app.buttons["course-en-ja"].tap()
-        XCTAssertTrue(app.buttons["menu-kana"].waitForExistence(timeout: 3), "Kana Dojo shows for Japanese")
+        XCTAssertTrue(revealTile("menu-kana", in: app), "Kana Dojo shows for Japanese")
+        app.swipeDown(); app.swipeDown()
         app.buttons["playButton"].tap()
         XCTAssertTrue(app.buttons["menuButton"].waitForExistence(timeout: 5))
         app.buttons["menuButton"].tap()              // village → Japanese page
@@ -193,7 +203,17 @@ final class LanguageQuestUITests: XCTestCase {
             print("AUDIT-IGNORED (emoji picture): \(issue.compactDescription) | \(el)")
             return true
         }
-        print("AUDIT-ISSUE: \(issue.compactDescription) | \(el)")
+        // Contrast is measured from screen pixels, so text cut off by the screen edge or the home indicator can't be
+        // measured fairly. Those are logged with their frame; the same text is audited when fully on screen elsewhere.
+        if issue.auditType == .contrast, let e = issue.element {
+            let window = XCUIApplication().windows.firstMatch.frame
+            let safe = window.insetBy(dx: 0, dy: 0).divided(atDistance: 34, from: .maxYEdge).remainder
+            if !safe.contains(e.frame) {
+                print("AUDIT-IGNORED (partly off screen \(e.frame) in \(window)): \(issue.compactDescription) | \(el)")
+                return true
+            }
+        }
+        print("AUDIT-ISSUE: \(issue.compactDescription) | \(el) frame=\(issue.element?.frame ?? .zero)")
         return false
     }
 
@@ -216,6 +236,63 @@ final class LanguageQuestUITests: XCTestCase {
         let parts = s.components(separatedBy: op).map { $0.trimmingCharacters(in: .whitespaces) }
         let a = words[parts[0]] ?? 0, b = words[parts[1]] ?? 0
         return op == " plus " ? a + b : a * b
+    }
+
+    // MARK: v0.8
+
+    /// Word Library: search, star a word, then practice starred words.
+    @MainActor func testWordLibraryStarAndPractice() {
+        let app = launch(seed: true)
+        XCTAssertTrue(app.buttons["course-en-es"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["weeklyGoalPicker"].exists, "weekly goal on the main menu")
+        app.buttons["course-en-es"].tap()
+        XCTAssertTrue(app.otherElements["wordOfTheDay"].waitForExistence(timeout: 3) || app.buttons["Hear the word of the day"].exists)
+        XCTAssertTrue(revealTile("menu-words", in: app))
+        app.buttons["menu-words"].tap()
+        XCTAssertTrue(app.navigationBars["Word Library"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["practiceStarred"].isEnabled, "nothing starred yet")
+        let star = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'star-'")).firstMatch
+        XCTAssertTrue(star.waitForExistence(timeout: 3))
+        star.tap()
+        XCTAssertTrue(app.buttons["practiceStarred"].isEnabled)
+        app.buttons["practiceStarred"].tap()
+        XCTAssertTrue(app.navigationBars["Starred words"].waitForExistence(timeout: 5))
+        app.buttons["Done"].tap()
+        XCTAssertTrue(app.buttons["playButton"].waitForExistence(timeout: 5))
+    }
+
+    /// Quizzes are locked until a quest is done; then one can be played to the end. Sentence Builder opens from Games.
+    @MainActor func testUnitQuizAndSentenceBuilder() {
+        let app = launch(seed: true, firstQuestDone: true)
+        XCTAssertTrue(app.buttons["course-en-es"].waitForExistence(timeout: 5))
+        app.buttons["course-en-es"].tap()
+        XCTAssertTrue(revealTile("menu-quizzes", in: app))
+        app.buttons["menu-quizzes"].tap()
+        XCTAssertTrue(app.buttons["quiz-1"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["quiz-2"].isEnabled, "unit 2 is locked")
+        app.buttons["quiz-1"].tap()
+        for _ in 0..<10 {
+            let opt = app.buttons["quiz-option-0"]
+            guard opt.waitForExistence(timeout: 3) else { break }
+            opt.tap()
+            XCTAssertTrue(app.buttons["quizNext"].waitForExistence(timeout: 3))
+            app.buttons["quizNext"].tap()
+        }
+        XCTAssertTrue(app.buttons["Try again"].waitForExistence(timeout: 5), "quiz reaches a score")
+        app.navigationBars.buttons.element(boundBy: 0).tap()   // back to the list
+        let row = app.buttons["quiz-1"]
+        XCTAssertTrue(row.waitForExistence(timeout: 3))
+        XCTAssertTrue(row.label.contains("Best score") || app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH 'Best score'")).firstMatch.exists, "best score kept")
+        app.buttons["Done"].tap()
+        app.swipeDown(); app.swipeDown()
+        XCTAssertTrue(revealTile("menu-games", in: app))
+        app.buttons["menu-games"].tap()
+        let builder = app.buttons["builderGame"]
+        XCTAssertTrue(builder.waitForExistence(timeout: 5))
+        builder.tap()
+        XCTAssertTrue(app.navigationBars["Sentence Builder"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["tile-0"].exists)
+        app.buttons["Done"].tap()
     }
 
     // MARK: Compliance audit: no dead ends, privacy policy reachable
