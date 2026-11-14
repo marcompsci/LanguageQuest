@@ -310,7 +310,8 @@ final class LanguageQuestUITests: XCTestCase {
         app.buttons["menu-games"].tap()
         XCTAssertTrue(app.buttons["rightOrWrongGame"].waitForExistence(timeout: 5))
         app.buttons["rightOrWrongGame"].tap()
-        XCTAssertTrue(app.buttons["rowRight"].waitForExistence(timeout: 5))
+        if !app.buttons["rowRight"].waitForExistence(timeout: 6) { print("UI-DUMP:\n" + app.debugDescription) }
+        XCTAssertTrue(app.buttons["rowRight"].exists)
         app.buttons["rowRight"].tap()
         XCTAssertTrue(app.buttons["rowNext"].waitForExistence(timeout: 3), "feedback after an answer")
         app.buttons["Done"].tap()
