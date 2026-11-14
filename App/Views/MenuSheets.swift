@@ -33,6 +33,10 @@ struct SheetRouter: View {
         case .memory: MemoryMatchView()
         case .bee: SpellingBeeView()
         case .privacy: PrivacyPolicyView()
+        case .words: WordLibraryView()
+        case .starredPractice: FlashcardsView(starredOnly: true)
+        case .builder: SentenceBuilderView()
+        case .quizzes: QuizzesView()
         }
     }
 }
@@ -299,11 +303,18 @@ struct FlashcardsView: View {
     @State private var answered: Bool?
     @State private var knew = 0
     @State private var seed: UInt64 = 1
+    @State private var built = false
+    /// Practice only the words the explorer starred in the Word Library.
+    var starredOnly = false
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 18) {
-                if deck.isEmpty {
+                if deck.isEmpty && built {
+                    Spacer()
+                    Text("No starred words yet. Tap ☆ next to a word in the Word Library to add it.").multilineTextAlignment(.center)
+                    Spacer()
+                } else if deck.isEmpty {
                     ProgressView()
                 } else if index >= deck.count {
                     Spacer()
@@ -336,7 +347,7 @@ struct FlashcardsView: View {
             }
             .padding(20)
             .background(ThemedBackground())
-            .navigationTitle("Flashcards")
+            .navigationTitle(starredOnly ? "Starred words" : "Flashcards")
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
             .onAppear { if deck.isEmpty { build() } }
         }
@@ -345,7 +356,8 @@ struct FlashcardsView: View {
     private func build() {
         guard let p = model.profile, let lib = model.library else { return }
         seed = UInt64.random(in: 1...UInt64.max / 2)
-        deck = FlashcardDeck.build(p, library: lib, now: Date(), seed: seed)
+        deck = starredOnly ? StarredWords.deck(p, library: lib, now: Date(), seed: seed) : FlashcardDeck.build(p, library: lib, now: Date(), seed: seed)
+        built = true
         index = 0; knew = 0; answered = nil
         if let first = deck.first { model.say(first.front) }
     }

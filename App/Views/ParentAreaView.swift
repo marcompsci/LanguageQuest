@@ -141,9 +141,11 @@ struct ParentDashboardView: View {
                 masterySection(report, lib)
                 unitsSection(report)
                 activitySection(report)
+                ParentWeeklyReportSection()
                 suggestionsSection(report)
                 settingsSection(prof, lib)
                 speechSection
+                ParentRemindersSection()
                 pinSection
                 privacySection(prof)
                 planSection

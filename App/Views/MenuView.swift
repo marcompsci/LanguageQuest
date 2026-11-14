@@ -25,6 +25,7 @@ struct MenuView: View {
                         RecentLessonView()
                         bonusCard(prof)
                         DailyChallengesCard()
+                        WeeklyGoalCard()
                         ForEach(CourseCategory.allCases, id: \.self) { section in
                             let rows = model.courseSummaries.filter { $0.category == section }
                             if !rows.isEmpty {
@@ -51,6 +52,8 @@ struct MenuView: View {
                     }
                 }
                 .padding(16)
+                .frame(maxWidth: 720)          // readable width on iPad
+                .frame(maxWidth: .infinity)
             }
         }
         .onAppear { phase = DayPhase.now(); model.checkMilestones() }
@@ -128,7 +131,8 @@ struct LanguageHubView: View {
     @EnvironmentObject var model: AppModel
     @Environment(\.palette) var p
 
-    private let columns = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
+    /// Two tiles across on iPhone, more on iPad.
+    private let columns = [GridItem(.adaptive(minimum: 150), spacing: 12)]
 
     var body: some View {
         ZStack {
@@ -153,11 +157,14 @@ struct LanguageHubView: View {
                         .accessibilityLabel("Play: \(s.language) village")
                         .accessibilityIdentifier("playButton")
                         todayCard(prof)
+                        WordOfTheDayCard()
                         LazyVGrid(columns: columns, spacing: 12) {
                             MenuTile(icon: "gamecontroller.fill", title: "Games", id: "menu-games") { model.sheet = .games }
                             MenuTile(icon: "rectangle.on.rectangle.angled", title: "Flashcards", id: "menu-flashcards") { model.sheet = .flashcards }
                             MenuTile(icon: "gift.fill", title: "Bonus lesson", id: "menu-bonus") { model.sheet = .bonus }
                             MenuTile(icon: "pencil.and.scribble", title: "Write Out", id: "menu-writeout") { model.sheet = .writeOut }
+                            MenuTile(icon: "books.vertical.fill", title: "Word Library", id: "menu-words") { model.sheet = .words }
+                            MenuTile(icon: "checklist", title: "Unit quizzes", id: "menu-quizzes") { model.sheet = .quizzes }
                             if model.library?.course.script == .kana {
                                 MenuTile(icon: "character.ja", title: "Kana Dojo", id: "menu-kana") { model.sheet = .kana }
                             }
@@ -165,6 +172,8 @@ struct LanguageHubView: View {
                     }
                 }
                 .padding(16)
+                .frame(maxWidth: 720)
+                .frame(maxWidth: .infinity)
             }
         }
     }
@@ -208,6 +217,7 @@ struct HamburgerMenu: View {
         Menu {
             Button { model.sheet = .review } label: { Label("Review", systemImage: "arrow.triangle.2.circlepath") }
             Button { model.sheet = .phrasebook } label: { Label("Phrasebook", systemImage: "character.book.closed.fill") }
+            Button { model.sheet = .words } label: { Label("Word Library", systemImage: "books.vertical.fill") }
             Button { model.sheet = .writeOut } label: { Label("Write Out", systemImage: "pencil.and.scribble") }
             Button { model.sheet = .mistakes } label: { Label("Mistakes notebook", systemImage: "exclamationmark.bubble") }
             Button { model.sheet = .trophies } label: { Label("Trophies", systemImage: "trophy.fill") }

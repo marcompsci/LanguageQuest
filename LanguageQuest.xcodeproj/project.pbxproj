@@ -11,6 +11,7 @@
 		13A38705224E41F942A6175D /* MenuSheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09218DAB3D8CE8E0AE56979E /* MenuSheets.swift */; };
 		1C7494722B876922D0DA074D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162D1FB9AE4F4A78866BBA60 /* OnboardingView.swift */; };
 		21FA13FD7F29201293359C11 /* LanguageQuestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE9089108E6FBF0100BEAF6 /* LanguageQuestUITests.swift */; };
+		28935F8581CA0A951E6769FA /* V08Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D88B109594435DBAFA4955A /* V08Views.swift */; };
 		378E29EAB7E85A778F3CD5C4 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A560394D6350E0C9A44F60 /* SpeechService.swift */; };
 		453D788C8933ABC39FFBD203 /* DialogueOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589B69E8921F9555AC9F843 /* DialogueOverlay.swift */; };
 		60C28828D15E7F5DB34BD027 /* GamesViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D16AA0744FB255447A7BC6E /* GamesViews.swift */; };
@@ -21,6 +22,7 @@
 		967AD8C76FC3BCA7DC4064B1 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A22EDA37507347E218EC53 /* JournalView.swift */; };
 		A5CAAE604B801E57EEE03338 /* VillageFX.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0CDFC4A8D26B20DCD814BA /* VillageFX.swift */; };
 		A6352DCBDCA39851B8585E8F /* WriteOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4A8113C531B263A0B038EB /* WriteOutView.swift */; };
+		A665C9540A64AADF0998A183 /* ReminderScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391FCA85BA600939BECF438B /* ReminderScheduler.swift */; };
 		B125A9CA54EFCF36C27365F2 /* LanguageQuestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3FCD0BA6191D6442B45EE /* LanguageQuestApp.swift */; };
 		B252674FD4CBEE3926B34BB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244A1528DFD2A71384D6F57A /* Assets.xcassets */; };
 		B32F8A02CBEFA207D0F298FB /* LQCore in Frameworks */ = {isa = PBXBuildFile; productRef = 52D665DF6B3B549126E38AB8 /* LQCore */; };
@@ -52,6 +54,7 @@
 /* Begin PBXFileReference section */
 		07E096BD86117351B30A9214 /* V07Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V07Views.swift; sourceTree = "<group>"; };
 		09218DAB3D8CE8E0AE56979E /* MenuSheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSheets.swift; sourceTree = "<group>"; };
+		0D88B109594435DBAFA4955A /* V08Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V08Views.swift; sourceTree = "<group>"; };
 		104DA89544E5EDF9E10687B6 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		11E3FCD0BA6191D6442B45EE /* LanguageQuestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageQuestApp.swift; sourceTree = "<group>"; };
 		121348E801C4C30DE01D77D7 /* ReviewViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViews.swift; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 		162D1FB9AE4F4A78866BBA60 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		244A1528DFD2A71384D6F57A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		374A69BDC88AB7B2B67ECD6D /* SpeechRecognitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionService.swift; sourceTree = "<group>"; };
+		391FCA85BA600939BECF438B /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
 		3AAF908645A01795BB7F12E9 /* AudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioService.swift; sourceTree = "<group>"; };
 		3D16AA0744FB255447A7BC6E /* GamesViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViews.swift; sourceTree = "<group>"; };
 		42A560394D6350E0C9A44F60 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 			children = (
 				3AAF908645A01795BB7F12E9 /* AudioService.swift */,
 				93F655C88FC9FE2FD3B98B1E /* ParentPINStore.swift */,
+				391FCA85BA600939BECF438B /* ReminderScheduler.swift */,
 				374A69BDC88AB7B2B67ECD6D /* SpeechRecognitionService.swift */,
 				42A560394D6350E0C9A44F60 /* SpeechService.swift */,
 				104DA89544E5EDF9E10687B6 /* StoreService.swift */,
@@ -158,6 +163,7 @@
 				839773334A51BD6E8B119381 /* QuestPlayerView.swift */,
 				121348E801C4C30DE01D77D7 /* ReviewViews.swift */,
 				07E096BD86117351B30A9214 /* V07Views.swift */,
+				0D88B109594435DBAFA4955A /* V08Views.swift */,
 				4C9B41B13A3A33C328E3C229 /* WorldView.swift */,
 				BE4A8113C531B263A0B038EB /* WriteOutView.swift */,
 				68B4556FA5F8F6BE9A4751E0 /* Activities */,
@@ -326,12 +332,14 @@
 				C95C5F77DAB31969D855FD4C /* ParentPINStore.swift in Sources */,
 				D9F62E3B1EC99AD2FE9EBC6D /* PixelArt.swift in Sources */,
 				652EB4A97685BAB639C45233 /* QuestPlayerView.swift in Sources */,
+				A665C9540A64AADF0998A183 /* ReminderScheduler.swift in Sources */,
 				E5A04E36E6410A88D3319A76 /* ReviewViews.swift in Sources */,
 				BF2F86CA990FFF0DF4744BA0 /* SpeechRecognitionService.swift in Sources */,
 				378E29EAB7E85A778F3CD5C4 /* SpeechService.swift in Sources */,
 				E341C4B530914E2EDC7AC111 /* StoreService.swift in Sources */,
 				DED4F6268EA8A467897AD97B /* Theme.swift in Sources */,
 				C8DE75CF938B2A28AC6A671F /* V07Views.swift in Sources */,
+				28935F8581CA0A951E6769FA /* V08Views.swift in Sources */,
 				A5CAAE604B801E57EEE03338 /* VillageFX.swift in Sources */,
 				B8ABB7B0C45E1B3213B15354 /* VillageScene.swift in Sources */,
 				CECC3A8DC62F6B1FB50A3A84 /* WorldView.swift in Sources */,
@@ -415,7 +423,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.7.0;
+				MARKETING_VERSION = 0.8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -551,7 +559,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.7.0;
+				MARKETING_VERSION = 0.8.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

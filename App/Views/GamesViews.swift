@@ -78,6 +78,13 @@ struct GamesHubView: View {
                             gameRow(icon: "character.cursor.ibeam", title: "Spelling Bee", detail: "Hear it, type it", locked: false)
                         }
                         .accessibilityIdentifier("beeGame")
+                        if SentenceBuilder.isAvailable(prof, library: prog.library) {
+                            Button { model.sheet = .builder } label: {
+                                gameRow(icon: "text.word.spacing", title: "Sentence Builder",
+                                        detail: (extras.builderBestStars ?? 0) > 0 ? stars(extras.builderBestStars ?? 0) : "Put the words in order", locked: false)
+                            }
+                            .accessibilityIdentifier("builderGame")
+                        }
                     }
                     Section("Puzzles and mini-games") {
                         if WordScramble.isAvailable(prog.library) {

@@ -34,6 +34,10 @@ final class AppModel: ObservableObject {
         case memory
         case bee
         case privacy
+        case words
+        case starredPractice
+        case builder
+        case quizzes
         var id: String {
             switch self {
             case .quest(let q): return "quest-\(q)"
@@ -62,6 +66,10 @@ final class AppModel: ObservableObject {
             case .memory: return "memory"
             case .bee: return "bee"
             case .privacy: return "privacy"
+            case .words: return "words"
+            case .starredPractice: return "starredPractice"
+            case .builder: return "builder"
+            case .quizzes: return "quizzes"
             }
         }
     }
@@ -220,6 +228,7 @@ final class AppModel: ObservableObject {
 
     func deleteEverything() {
         ParentPINStore.delete()
+        ReminderScheduler.removeAll()
         AppModel.removeExportFiles()
         if let fresh = try? FamilyManager.deleteEverything(store: saveStore) { save = fresh }
         sheet = nil
