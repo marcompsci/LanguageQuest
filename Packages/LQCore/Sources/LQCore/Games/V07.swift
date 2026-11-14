@@ -11,6 +11,9 @@ public struct MetaProgress: Codable, Hashable, Sendable {
     public var achievements: [String: Date] = [:]
     public var counters: [String: Int] = [:]
     public var lastLevelSeen: Int = 1
+    /// Added in v0.8 (optional so v0.7 saves load): weekly goal in days, and the week its XP was claimed.
+    public var weeklyGoalDays: Int? = nil
+    public var weeklyClaimedWeek: String? = nil
     public init() {}
 }
 
@@ -138,7 +141,9 @@ public struct Achievement: Hashable, Identifiable, Sendable {
     public var detail: String
     public var icon: String
 
-    public static let all: [Achievement] = [
+    public static let all: [Achievement] = base + v08
+
+    static let base: [Achievement] = [
         Achievement(id: "a-first-quest", title: "First Steps", detail: "Finish your first quest.", icon: "figure.walk"),
         Achievement(id: "a-three-langs", title: "World Traveler", detail: "Start 3 languages.", icon: "globe"),
         Achievement(id: "a-50-words", title: "Word Collector", detail: "Meet 50 words in any languages.", icon: "books.vertical"),
@@ -152,6 +157,7 @@ public struct Achievement: Hashable, Identifiable, Sendable {
     ]
 
     func isMet(_ p: PlayerProfile, libraries: [String: ContentLibrary]) -> Bool {
+        if let v = isMetV08(p) { return v }
         let states = p.allCourseStates
         let c = p.metaOrEmpty.counters
         switch id {

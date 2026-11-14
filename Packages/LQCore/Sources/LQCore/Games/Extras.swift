@@ -14,6 +14,10 @@ public struct ExtrasProgress: Codable, Hashable, Sendable {
     /// Added in v0.6: days (yyyy-MM-dd) the bonus lesson's XP was claimed, and words written out.
     public var bonusDays: [String]? = nil
     public var wordsWritten: [String]? = nil
+    /// Added in v0.8: starred words, Sentence Builder best stars, best unit-quiz score (%) by unit id.
+    public var starredWords: [String]? = nil
+    public var builderBestStars: Int? = nil
+    public var quizBest: [String: Int]? = nil
     public init() {}
 }
 

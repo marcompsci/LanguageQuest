@@ -13,6 +13,8 @@ public struct ParentSettings: Codable, Hashable, Sendable {
     public var allowCloudSync = false
     public var dailyLimitMinutes: Int? = nil
     public var purchasesAllowed = false
+    /// Added in v0.8: practice reminders a parent set up (local notifications only). nil = never set.
+    public var reminders: ReminderPlan? = nil
     public init() {}
 }
 
