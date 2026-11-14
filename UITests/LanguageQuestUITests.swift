@@ -309,6 +309,7 @@ final class LanguageQuestUITests: XCTestCase {
         XCTAssertTrue(revealTile("menu-games", in: app))
         app.buttons["menu-games"].tap()
         XCTAssertTrue(app.buttons["rightOrWrongGame"].waitForExistence(timeout: 5))
+        app.swipeUp()   // the new rows sit at the bottom edge of the sheet, where a tap can be taken by the system
         app.buttons["rightOrWrongGame"].tap()
         if !app.buttons["rowRight"].waitForExistence(timeout: 6) {
             // The CI log keeps only AUDIT-ISSUE lines, so prefix each line of the element tree.
@@ -320,6 +321,7 @@ final class LanguageQuestUITests: XCTestCase {
         app.buttons["Done"].tap()
         if !app.buttons["listenTypeGame"].waitForExistence(timeout: 3) { app.buttons["menu-games"].tap() }
         XCTAssertTrue(app.buttons["listenTypeGame"].waitForExistence(timeout: 5))
+        app.swipeUp()
         app.buttons["listenTypeGame"].tap()
         let field = app.textFields["listenTypeField"]
         XCTAssertTrue(field.waitForExistence(timeout: 5))
