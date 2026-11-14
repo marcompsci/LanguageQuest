@@ -14,6 +14,8 @@ public struct MetaProgress: Codable, Hashable, Sendable {
     /// Added in v0.8 (optional so v0.7 saves load): weekly goal in days, and the week its XP was claimed.
     public var weeklyGoalDays: Int? = nil
     public var weeklyClaimedWeek: String? = nil
+    /// Added in v0.9: languages pinned to the top of the main menu (at most 3).
+    public var pinnedCourses: [String]? = nil
     public init() {}
 }
 
@@ -141,7 +143,7 @@ public struct Achievement: Hashable, Identifiable, Sendable {
     public var detail: String
     public var icon: String
 
-    public static let all: [Achievement] = base + v08
+    public static let all: [Achievement] = base + v08 + v09
 
     static let base: [Achievement] = [
         Achievement(id: "a-first-quest", title: "First Steps", detail: "Finish your first quest.", icon: "figure.walk"),

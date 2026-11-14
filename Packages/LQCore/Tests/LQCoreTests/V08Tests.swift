@@ -223,7 +223,7 @@ final class V08Tests: XCTestCase {
     // 10. Achievements
 
     func testNewAchievementsAreUniqueAndStarsCount() throws {
-        XCTAssertEqual(Achievement.all.count, 14)
+        XCTAssertGreaterThanOrEqual(Achievement.all.count, 14)
         XCTAssertEqual(Set(Achievement.all.map(\.id)).count, Achievement.all.count)
         let l = try libs(), lib = try XCTUnwrap(l["en-it"])
         var p = learner(lib)

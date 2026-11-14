@@ -58,6 +58,9 @@ public struct LearnerSettings: Codable, Hashable, Sendable {
     public var romanizationOn: Bool { showRomanization ?? true }
     /// Added in v0.7: wider spacing and higher contrast for easier reading.
     public var easyRead: Bool? = nil
+    /// Added in v0.9: black-and-white high-contrast colors, and the village arrow pad on the right (for left-handed play). nil = off.
+    public var highContrast: Bool? = nil
+    public var leftHanded: Bool? = nil
     public var easyReadOn: Bool { easyRead ?? false }
 
     public init() {}

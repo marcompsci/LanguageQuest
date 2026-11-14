@@ -221,6 +221,9 @@ public struct SentenceBuilder: Sendable {
         return false
     }
 
+    /// A hint was used: this sentence no longer counts as right first time.
+    public mutating func useHint() { if current != nil { missedCurrent = true } }
+
     /// Skips a puzzle (counts as not first-try).
     public mutating func skip() { guard current != nil else { return }; missedCurrent = false; index += 1 }
 
@@ -461,7 +464,7 @@ extension Achievement {
         case "a-builder": return (c[MetaEvent.sentenceBuilt] ?? 0) >= 1
         case "a-quiz": return (c[MetaEvent.quizPerfect] ?? 0) >= 1
         case "a-weekly": return (c[MetaEvent.weeklyGoalMet] ?? 0) >= 1
-        default: return nil
+        default: return isMetV09(p)
         }
     }
 }

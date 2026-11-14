@@ -18,6 +18,10 @@ public struct ExtrasProgress: Codable, Hashable, Sendable {
     public var starredWords: [String]? = nil
     public var builderBestStars: Int? = nil
     public var quizBest: [String: Int]? = nil
+    /// Added in v0.9: best scores in Listen & Type and Right or Wrong, and the explorer's own notes on words (word id → note).
+    public var listenBest: Int? = nil
+    public var rightOrWrongBest: Int? = nil
+    public var wordNotes: [String: String]? = nil
     public init() {}
 }
 
