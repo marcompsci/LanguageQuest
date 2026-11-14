@@ -310,7 +310,10 @@ final class LanguageQuestUITests: XCTestCase {
         app.buttons["menu-games"].tap()
         XCTAssertTrue(app.buttons["rightOrWrongGame"].waitForExistence(timeout: 5))
         app.buttons["rightOrWrongGame"].tap()
-        if !app.buttons["rowRight"].waitForExistence(timeout: 6) { print("UI-DUMP:\n" + app.debugDescription) }
+        if !app.buttons["rowRight"].waitForExistence(timeout: 6) {
+            // The CI log keeps only lines starting with AUDIT-, so prefix each line of the element tree.
+            print(app.debugDescription.split(separator: "\n").prefix(80).map { "AUDIT-DUMP \($0)" }.joined(separator: "\n"))
+        }
         XCTAssertTrue(app.buttons["rowRight"].exists)
         app.buttons["rowRight"].tap()
         XCTAssertTrue(app.buttons["rowNext"].waitForExistence(timeout: 3), "feedback after an answer")
