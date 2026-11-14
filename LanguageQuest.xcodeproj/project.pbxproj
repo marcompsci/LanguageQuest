@@ -36,6 +36,7 @@
 		DED4F6268EA8A467897AD97B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B4134866A3A20F5A8EC302 /* Theme.swift */; };
 		E341C4B530914E2EDC7AC111 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DA89544E5EDF9E10687B6 /* StoreService.swift */; };
 		E5A04E36E6410A88D3319A76 /* ReviewViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121348E801C4C30DE01D77D7 /* ReviewViews.swift */; };
+		E8A716BEC7B558C9AE53115F /* V09Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0BF9FB3F53A164898A6045 /* V09Views.swift */; };
 		F3C1712C845D736DA06C7EB9 /* ParentAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1687C4DE66B87EAF3D3353 /* ParentAreaView.swift */; };
 		FC78BE459FEA149A6AA3978B /* ActivityHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFEBAFB3FD0CBBD0ACF5EB /* ActivityHost.swift */; };
 		FF8A7186C3B96302181E0AE9 /* Exercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D46C30E93643BB88B3BF0 /* Exercises.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		07E096BD86117351B30A9214 /* V07Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V07Views.swift; sourceTree = "<group>"; };
 		09218DAB3D8CE8E0AE56979E /* MenuSheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSheets.swift; sourceTree = "<group>"; };
+		0C0BF9FB3F53A164898A6045 /* V09Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V09Views.swift; sourceTree = "<group>"; };
 		0D88B109594435DBAFA4955A /* V08Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V08Views.swift; sourceTree = "<group>"; };
 		104DA89544E5EDF9E10687B6 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		11E3FCD0BA6191D6442B45EE /* LanguageQuestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageQuestApp.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				121348E801C4C30DE01D77D7 /* ReviewViews.swift */,
 				07E096BD86117351B30A9214 /* V07Views.swift */,
 				0D88B109594435DBAFA4955A /* V08Views.swift */,
+				0C0BF9FB3F53A164898A6045 /* V09Views.swift */,
 				4C9B41B13A3A33C328E3C229 /* WorldView.swift */,
 				BE4A8113C531B263A0B038EB /* WriteOutView.swift */,
 				68B4556FA5F8F6BE9A4751E0 /* Activities */,
@@ -340,6 +343,7 @@
 				DED4F6268EA8A467897AD97B /* Theme.swift in Sources */,
 				C8DE75CF938B2A28AC6A671F /* V07Views.swift in Sources */,
 				28935F8581CA0A951E6769FA /* V08Views.swift in Sources */,
+				E8A716BEC7B558C9AE53115F /* V09Views.swift in Sources */,
 				A5CAAE604B801E57EEE03338 /* VillageFX.swift in Sources */,
 				B8ABB7B0C45E1B3213B15354 /* VillageScene.swift in Sources */,
 				CECC3A8DC62F6B1FB50A3A84 /* WorldView.swift in Sources */,
@@ -423,7 +427,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.8.0;
+				MARKETING_VERSION = 0.9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -559,7 +563,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.8.0;
+				MARKETING_VERSION = 0.9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

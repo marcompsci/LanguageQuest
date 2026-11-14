@@ -26,6 +26,7 @@ struct MenuView: View {
                         bonusCard(prof)
                         DailyChallengesCard()
                         WeeklyGoalCard()
+                        PinnedLanguagesCard()
                         ForEach(CourseCategory.allCases, id: \.self) { section in
                             let rows = model.courseSummaries.filter { $0.category == section }
                             if !rows.isEmpty {
@@ -169,6 +170,7 @@ struct LanguageHubView: View {
                             MenuTile(icon: "books.vertical.fill", title: "Word Library", id: "menu-words") { model.sheet = .words }
                             MenuTile(icon: "checklist", title: "Unit quizzes", id: "menu-quizzes") { model.sheet = .quizzes }
                         }
+                        UnitMapCard()
                     }
                 }
                 .padding(16)
@@ -186,6 +188,7 @@ struct LanguageHubView: View {
             .accessibilityHint("Back to the main menu to choose a language")
             .accessibilityIdentifier("backToLanguages")
             Spacer()
+            PinButton()
             HamburgerMenu()
         }
     }

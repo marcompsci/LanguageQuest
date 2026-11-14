@@ -25,6 +25,12 @@ struct JournalView: View {
                             }
                             ForEach(u.quests.sorted { $0.order < $1.order }) { q in
                                 questRow(q, status: prog.status(of: q, in: u, prof.progress, plan: model.plan))
+                                if ConversationReplay.available(q, progress: prof.progress) {
+                                    NavigationLink { ConversationReplayView(questId: q.id) } label: {
+                                        Label("Read the conversation again", systemImage: "text.bubble").font(.subheadline)
+                                    }
+                                    .accessibilityIdentifier("replay-\(q.id)")
+                                }
                             }
                             if prog.isUnitFinished(u, prof.progress) {
                                 let passed = prof.progress.passedMasteryChecks.contains(u.masteryCheck.id)

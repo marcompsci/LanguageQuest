@@ -156,6 +156,7 @@ struct TrophiesView: View {
                                 }
                                 Spacer()
                                 if let d = have[a.id] { Text(d, style: .date).font(.caption2) }
+                                else if let pr = a.progress(prof, libraries: model.libraries) { AchievementProgressBar(progress: pr).frame(width: 80) }
                             }
                             .opacity(have[a.id] != nil ? 1 : 0.6)
                             .accessibilityElement(children: .combine)
@@ -182,6 +183,7 @@ struct StatsView: View {
         NavigationStack {
             List {
                 if let prof = model.profile {
+                    ReviewForecastSection()
                     Section("Last 7 days") {
                         let week = PlayerStats.lastWeek(prof, now: Date())
                         let top = max(week.map(\.activities).max() ?? 1, 1)
@@ -200,6 +202,7 @@ struct StatsView: View {
                         }
                         .frame(height: 130)
                     }
+                    MonthCalendarSection()
                     Section("Words by language") {
                         let langs = PlayerStats.languages(prof, libraries: model.libraries)
                         if langs.isEmpty { Text("Words show up here once you start a quest.") }

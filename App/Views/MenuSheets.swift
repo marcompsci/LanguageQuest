@@ -37,6 +37,8 @@ struct SheetRouter: View {
         case .starredPractice: FlashcardsView(starredOnly: true)
         case .builder: SentenceBuilderView()
         case .quizzes: QuizzesView()
+        case .listenType: ListenTypeView()
+        case .rightOrWrong: RightOrWrongView()
         }
     }
 }
@@ -135,6 +137,12 @@ struct PlayerSettingsView: View {
                         Toggle("Easy-read text (wider spacing, higher contrast)", isOn: Binding(get: { (model.profile ?? prof).settings.easyReadOn },
                                                                                         set: { v in model.updateProfile { $0.settings.easyRead = v } }))
                             .accessibilityIdentifier("easyReadToggle")
+                        Toggle("High-contrast colors (black and white)", isOn: Binding(get: { (model.profile ?? prof).settings.highContrastOn },
+                                                                                   set: { v in model.updateProfile { $0.settings.highContrast = v } }))
+                            .accessibilityIdentifier("highContrastToggle")
+                        Toggle("Arrow pad on the right (left-handed)", isOn: Binding(get: { (model.profile ?? prof).settings.leftHandedOn },
+                                                                                 set: { v in model.updateProfile { $0.settings.leftHanded = v } }))
+                            .accessibilityIdentifier("leftHandedToggle")
                     }
                     Section { EmptyView() } footer: {
                         Text("Break reminders, speech checking, purchases and deleting data are in the Parents area.")

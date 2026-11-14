@@ -18,7 +18,10 @@ struct WordLibraryView: View {
         NavigationStack {
             List {
                 if let prof = model.profile, let lib = model.library {
-                    let entries = WordLibrary.entries(prof, library: lib, filter: filter, query: query)
+                    let byWord = WordLibrary.entries(prof, library: lib, filter: filter, query: query)
+                    let entries = query.isEmpty ? byWord : WordLibrary.entries(prof, library: lib, filter: filter).filter { e in
+                        byWord.contains { $0.id == e.id } || WordLibrary.matchesNote(e, query: query, profile: prof)
+                    }
                     let starredCount = (prof.extrasOrEmpty.starredWords ?? []).filter { lib.item($0) != nil }.count
                     Section {
                         Picker("Show", selection: $filter) {
@@ -40,7 +43,7 @@ struct WordLibraryView: View {
                     ForEach(entries) { e in row(e, lib) }
                 }
             }
-            .searchable(text: $query, prompt: "Search words or meanings")
+            .searchable(text: $query, prompt: "Search words, meanings or notes")
             .navigationTitle("Word Library")
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
         }
@@ -84,13 +87,16 @@ struct WordLibraryView: View {
                 .accessibilityIdentifier("star-\(e.id)")
             }
             if openId == e.id {
-                HStack { SpeakerButton(text: e.item.target, label: "Hear \(model.text(e.item.target))"); Spacer() }
+                HStack { SpeakerButton(text: e.item.target, label: "Hear \(model.text(e.item.target))"); SlowSpeakerButton(text: e.item.target); Spacer() }
                 if let ex = e.item.example {
                     Text(model.display(ex.target)).font(.subheadline.italic())
                     Text(ex.english).font(.caption).foregroundStyle(Color(p.secondaryText))
                 }
                 if let note = e.item.note { Text(note).font(.caption) }
                 if let pos = e.item.partOfSpeech { Text(pos).font(.caption2).foregroundStyle(Color(p.secondaryText)) }
+                WordNoteEditor(itemId: e.id)
+            } else if let note = model.profile.flatMap({ WordNotes.note(e.id, in: $0) }) {
+                Label(note, systemImage: "note.text").font(.caption).foregroundStyle(Color(p.secondaryText)).lineLimit(1)
             }
         }
     }
@@ -113,6 +119,7 @@ struct WordOfTheDayCard: View {
                     }
                     Spacer()
                     SpeakerButton(text: w.target, label: "Hear the word of the day")
+                    SlowSpeakerButton(text: w.target)
                     Button {
                         model.updateProfile { StarredWords.toggle(w.id, profile: &$0) }
                         model.checkMilestones()
@@ -152,6 +159,7 @@ struct SentenceBuilderView: View {
                         if let f = feedback { Text(f).font(.headline).multilineTextAlignment(.center) }
                         HStack {
                             Button("Clear") { placed = []; feedback = nil }.buttonStyle(.bordered).disabled(placed.isEmpty)
+                            Button("Hint") { hint(pz) }.buttonStyle(.bordered).accessibilityIdentifier("builderHint")
                             Button("Skip") { skip() }.buttonStyle(.bordered)
                             Button("Check") { check(pz) }.buttonStyle(PrimaryButtonStyle())
                                 .disabled(placed.count != pz.tiles.count)
@@ -230,6 +238,17 @@ struct SentenceBuilderView: View {
             if g.isFinished { done(g) }
         } else {
             feedback = "Not quite. Tap a word in your sentence to move it back, then try again."
+        }
+    }
+
+    /// Puts the next right word in place (or says the start is off). The sentence won't count as first-try.
+    private func hint(_ pz: SentencePuzzle) {
+        guard var g = game else { return }
+        g.useHint(); game = g
+        if let i = SentenceBuilder.hint(for: pz, placed: placed) {
+            placed.append(i); feedback = "Here's the next word."
+        } else if placed.count < pz.answer.count {
+            feedback = "Something near the start is out of place. Tap words to take them back out."
         }
     }
 
@@ -323,6 +342,7 @@ struct UnitQuizView: View {
     @State private var picked: Int?
     @State private var shownIndex = 0
     @State private var saved = false
+    @State private var missed: [MissedAnswer] = []
 
     var body: some View {
         ScrollView {
@@ -356,6 +376,24 @@ struct UnitQuizView: View {
                     Text("\(q.correct) of \(q.questions.count) right").font(.title2.bold())
                     Text(q.percent == 100 ? "Perfect! You know this unit." : "Missed words come back sooner in your reviews.")
                         .multilineTextAlignment(.center)
+                    if !missed.isEmpty {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Let's look at these again").font(.headline)
+                            ForEach(missed) { m in
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(m.prompt).font(.subheadline.bold())
+                                    Label("Right answer: \(m.right)", systemImage: "checkmark.circle").font(.subheadline)
+                                        .foregroundStyle(Color(p.success))
+                                    Text("You picked: \(m.picked)").font(.caption).foregroundStyle(Color(p.secondaryText))
+                                }
+                                .accessibilityElement(children: .combine)
+                            }
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(12)
+                        .background(Color(p.surface), in: RoundedRectangle(cornerRadius: 14))
+                        .accessibilityIdentifier("quizMissed")
+                    }
                     Button("Try again") { start() }.buttonStyle(PrimaryButtonStyle())
                 }
             }
@@ -377,13 +415,14 @@ struct UnitQuizView: View {
     private func start() {
         guard let prof = model.profile, let lib = model.library, let u = lib.units.first(where: { $0.id == unitId }) else { return }
         quiz = UnitQuiz(unit: u, profile: prof, library: lib, seed: playSeed())
-        picked = nil; shownIndex = 0; saved = false
+        picked = nil; shownIndex = 0; saved = false; missed = []
     }
 
     private func pick(_ i: Int, _ item: QuizQuestion) {
         guard var q = quiz else { return }
         let ok = q.answer(i)
         quiz = q; picked = i
+        if let m = item.missed(picked: i) { missed.append(m) }
         model.sfx(ok ? .correct : .retry)
         model.updateProfile { UnitQuiz.record(item, correct: ok, profile: &$0, now: Date()) }
     }

@@ -296,10 +296,23 @@ struct WorldView: View {
         .accessibilityLabel(label)
     }
 
+    /// The arrow pad goes on the right for left-handed play (Settings › Arrow pad on the right).
     private var controls: some View {
         HStack(alignment: .bottom) {
-            DPad { world.scene.heldDirection = $0 }
-            Spacer()
+            if model.profile?.settings.leftHandedOn == true {
+                actionButtons
+                Spacer()
+                DPad { world.scene.heldDirection = $0 }
+            } else {
+                DPad { world.scene.heldDirection = $0 }
+                Spacer()
+                actionButtons
+            }
+        }
+        .padding(16)
+    }
+
+    private var actionButtons: some View {
             VStack(spacing: 10) {
                 Button { showPlaces = true } label: {
                     Label("Go to", systemImage: "mappin.and.ellipse").font(.subheadline.bold())
@@ -316,8 +329,6 @@ struct WorldView: View {
                 .accessibilityLabel(world.actionLabel)
                 .accessibilityIdentifier("actionButton")
             }
-        }
-        .padding(16)
     }
 
     private func signBubble(_ s: PlaceSign) -> some View {

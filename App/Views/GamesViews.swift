@@ -85,6 +85,16 @@ struct GamesHubView: View {
                             }
                             .accessibilityIdentifier("builderGame")
                         }
+                        Button { model.sheet = .listenType } label: {
+                            gameRow(icon: "ear.fill", title: "Listen & Type",
+                                    detail: (extras.listenBest ?? 0) > 0 ? "Best: \(extras.listenBest ?? 0)/10" : "Hear a word, then type it", locked: false)
+                        }
+                        .accessibilityIdentifier("listenTypeGame")
+                        Button { model.sheet = .rightOrWrong } label: {
+                            gameRow(icon: "checkmark.circle.badge.xmark", title: "Right or Wrong",
+                                    detail: (extras.rightOrWrongBest ?? 0) > 0 ? "Best: \(extras.rightOrWrongBest ?? 0)/10" : "Is that the right meaning?", locked: false)
+                        }
+                        .accessibilityIdentifier("rightOrWrongGame")
                     }
                     Section("Puzzles and mini-games") {
                         if WordScramble.isAvailable(prog.library) {

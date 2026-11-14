@@ -38,6 +38,8 @@ final class AppModel: ObservableObject {
         case starredPractice
         case builder
         case quizzes
+        case listenType
+        case rightOrWrong
         var id: String {
             switch self {
             case .quest(let q): return "quest-\(q)"
@@ -70,6 +72,8 @@ final class AppModel: ObservableObject {
             case .starredPractice: return "starredPractice"
             case .builder: return "builder"
             case .quizzes: return "quizzes"
+            case .listenType: return "listenType"
+            case .rightOrWrong: return "rightOrWrong"
             }
         }
     }
@@ -190,7 +194,10 @@ final class AppModel: ObservableObject {
         return lib.course.variant(p.variant) ?? lib.course.variant(lib.course.defaultVariant)
     }
 
-    var palette: ThemePalette { ThemePalette.of(profile?.theme ?? .playful) }
+    var palette: ThemePalette {
+        if profile?.settings.highContrastOn == true { return .highContrast }
+        return ThemePalette.of(profile?.theme ?? .playful)
+    }
 
     func variantName(_ id: String) -> String { library?.course.variant(id)?.name ?? id }
 
@@ -307,10 +314,11 @@ final class AppModel: ObservableObject {
         syncMusic()
     }
 
-    func say(_ v: VText) {
+    func say(_ v: VText, slow: Bool = false) {
         guard let p = profile else { return }
         let raw = v.text(for: p.variant)
-        speech.speakTarget(personalize(raw), romanized: library?.course.romanize(raw).map(personalize), variant: variant, settings: p.settings)
+        speech.speakTarget(personalize(raw), romanized: library?.course.romanize(raw).map(personalize), variant: variant,
+                           settings: slow ? SlowSpeech.settings(p.settings) : p.settings)
     }
 
     func readAloud(_ english: String) {
@@ -385,7 +393,7 @@ final class AppModel: ObservableObject {
         guard let sheet else { return .village }
         switch sheet {
         case .battle: return .battle
-        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes, .starredPractice, .builder, .quizzes:
+        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes, .starredPractice, .builder, .quizzes, .listenType, .rightOrWrong:
             return GameMusic.lessons(for: library?.course.targetLanguage ?? "es")
         case .journal, .bag, .parent, .games, .phrasebook, .languages, .settings, .wardrobe, .trophies, .stats, .privacy, .words:
             return .village
