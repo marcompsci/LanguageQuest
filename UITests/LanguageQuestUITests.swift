@@ -265,6 +265,8 @@ final class LanguageQuestUITests: XCTestCase {
     @MainActor func testUnitQuizAndSentenceBuilder() {
         let app = launch(seed: true, firstQuestDone: true)
         XCTAssertTrue(app.buttons["course-en-es"].waitForExistence(timeout: 5))
+        // A finished quest unlocks "First Steps": close the celebration(s) first.
+        while app.buttons["celebrationDone"].waitForExistence(timeout: 2) { app.buttons["celebrationDone"].tap() }
         app.buttons["course-en-es"].tap()
         XCTAssertTrue(revealTile("menu-quizzes", in: app))
         app.buttons["menu-quizzes"].tap()
