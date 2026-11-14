@@ -382,9 +382,9 @@ final class AppModel: ObservableObject {
         guard let sheet else { return .village }
         switch sheet {
         case .battle: return .battle
-        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes:
+        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes, .starredPractice, .builder, .quizzes:
             return GameMusic.lessons(for: library?.course.targetLanguage ?? "es")
-        case .journal, .bag, .parent, .games, .phrasebook, .languages, .settings, .wardrobe, .trophies, .stats, .privacy:
+        case .journal, .bag, .parent, .games, .phrasebook, .languages, .settings, .wardrobe, .trophies, .stats, .privacy, .words:
             return .village
         }
     }
