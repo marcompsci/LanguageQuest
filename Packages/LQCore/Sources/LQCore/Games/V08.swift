@@ -6,12 +6,12 @@ import Foundation
 
 extension PlayerProfile {
     /// The variant to use with a library (the learner's own for the active course, otherwise the default).
-    func variant(for library: ContentLibrary) -> String {
+    public func variant(for library: ContentLibrary) -> String {
         courseId == library.course.id ? variant : (otherCourses?[library.course.id]?.variant ?? library.course.defaultVariant)
     }
 
     /// Units the learner has reached: any quest started or finished, or placed out. Always at least the first unit.
-    func reachedUnits(_ library: ContentLibrary) -> [LessonUnit] {
+    public func reachedUnits(_ library: ContentLibrary) -> [LessonUnit] {
         let reached = library.units.filter { u in
             progress.placedOutUnits.contains(u.id) ||
             u.quests.contains { progress.startedQuests.contains($0.id) || progress.completedQuests.contains($0.id) }

@@ -297,6 +297,68 @@ final class LanguageQuestUITests: XCTestCase {
         app.buttons["Done"].tap()
     }
 
+    // MARK: v0.9
+
+    /// The new games open from Games and play a round; the language can be pinned to the main menu.
+    @MainActor func testNewGamesAndPinning() {
+        let app = launch(seed: true)
+        XCTAssertTrue(app.buttons["course-en-es"].waitForExistence(timeout: 5))
+        app.buttons["course-en-es"].tap()
+        XCTAssertTrue(app.buttons["pinLanguage"].waitForExistence(timeout: 5))
+        app.buttons["pinLanguage"].tap()
+        XCTAssertTrue(revealTile("menu-games", in: app))
+        app.buttons["menu-games"].tap()
+        XCTAssertTrue(app.buttons["rightOrWrongGame"].waitForExistence(timeout: 5))
+        app.buttons["rightOrWrongGame"].tap()
+        XCTAssertTrue(app.buttons["rowRight"].waitForExistence(timeout: 5))
+        app.buttons["rowRight"].tap()
+        XCTAssertTrue(app.buttons["rowNext"].waitForExistence(timeout: 3), "feedback after an answer")
+        app.buttons["Done"].tap()
+        if !app.buttons["listenTypeGame"].waitForExistence(timeout: 3) { app.buttons["menu-games"].tap() }
+        XCTAssertTrue(app.buttons["listenTypeGame"].waitForExistence(timeout: 5))
+        app.buttons["listenTypeGame"].tap()
+        let field = app.textFields["listenTypeField"]
+        XCTAssertTrue(field.waitForExistence(timeout: 5))
+        field.tap(); field.typeText("hola")
+        app.buttons["listenTypeCheck"].tap()
+        XCTAssertTrue(app.buttons["listenTypeNext"].waitForExistence(timeout: 3))
+        app.buttons["Done"].tap()
+        // Back on the main menu, the pinned section shows Spanish.
+        app.swipeDown(); app.swipeDown()
+        XCTAssertTrue(app.buttons["backToLanguages"].waitForExistence(timeout: 5))
+        app.buttons["backToLanguages"].tap()
+        XCTAssertTrue(app.staticTexts["section-pinned"].waitForExistence(timeout: 5) || app.otherElements["section-pinned"].exists
+                      || app.descendants(matching: .any)["section-pinned"].exists, "pinned section")
+    }
+
+    /// High contrast and the left-handed pad can be switched on in Settings; the conversation replay opens.
+    @MainActor func testAccessibilitySettingsAndConversationReplay() {
+        let app = launch(seed: true, firstQuestDone: true)
+        XCTAssertTrue(app.buttons["course-en-es"].waitForExistence(timeout: 5))
+        while app.buttons["celebrationDone"].waitForExistence(timeout: 2) { app.buttons["celebrationDone"].tap() }
+        app.buttons["course-en-es"].tap()
+        XCTAssertTrue(app.buttons["hamburgerMenu"].waitForExistence(timeout: 5))
+        app.buttons["hamburgerMenu"].tap()
+        let settings = app.buttons["Settings"].firstMatch
+        XCTAssertTrue(settings.waitForExistence(timeout: 5))
+        settings.tap()
+        let hc = app.switches["highContrastToggle"]
+        for _ in 0..<4 where !hc.exists { app.swipeUp() }
+        XCTAssertTrue(hc.waitForExistence(timeout: 3))
+        if hc.switches.firstMatch.exists { hc.switches.firstMatch.tap() } else { hc.tap() }
+        XCTAssertTrue(app.switches["leftHandedToggle"].exists)
+        app.buttons["Done"].tap()
+        XCTAssertTrue(app.buttons["hamburgerMenu"].waitForExistence(timeout: 5))
+        app.buttons["hamburgerMenu"].tap()
+        let journal = app.buttons["Quest journal"].firstMatch
+        XCTAssertTrue(journal.waitForExistence(timeout: 5))
+        journal.tap()
+        let replay = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'replay-'")).firstMatch
+        XCTAssertTrue(replay.waitForExistence(timeout: 5))
+        replay.tap()
+        XCTAssertTrue(app.navigationBars["Conversation"].waitForExistence(timeout: 5))
+    }
+
     // MARK: Compliance audit: no dead ends, privacy policy reachable
 
     /// Every ☰ menu screen (except Parents, which has its own gate tests) opens and can be closed.

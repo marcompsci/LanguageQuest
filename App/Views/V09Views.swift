@@ -112,7 +112,7 @@ struct ListenTypeView: View {
         game = g
         model.sfx(verdict.isCorrect ? .correct : .retry)
         model.updateProfile {
-            PracticeRecorder.record(itemId: item.id, outcome: ReviewOutcome(correct: verdict.isCorrect), track: .production, profile: &$0, now: Date())
+            PracticeRecorder.record(itemId: item.id, outcome: ReviewOutcome(correct: verdict.isCorrect), track: .spontaneousProduction, profile: &$0, now: Date())
         }
         feedback = (verdict.isCorrect, AnswerChecker.feedback(for: verdict, praise: "Great ear!", variantName: model.variantName)
                     + (verdict.isCorrect ? "" : "\nIt means “\(item.english)”."))

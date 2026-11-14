@@ -60,6 +60,15 @@ Severity: **BLOCKER** (Apple will reject or the build can't be distributed), **H
 | F27 | Save compatibility (2.1 stability) | `ExtrasProgress`, `MetaProgress`, `ParentSettings` | MEDIUM | New saved fields could break loading v0.7 saves. | All new fields are optional; a v0.7-shaped save decodes in a unit test. | ✅ | Unit test |
 | F28 | 2.4.1 iPad | `MenuView`, `LanguageHubView` | LOW | Layout stretched across the full iPad width. | Readable max width (720 pt) and an adaptive tile grid. Still needs a person to check on an iPad. | Partly | Manual (checklist B) |
 
+### v0.9 additions (November 14, 2026)
+
+| # | Guideline / requirement | Where | Sev. | Concern | Remediation | Done? | Verified by |
+|---|---|---|---|---|---|---|---|
+| F29 | 2.5.19 / 2.3.1(a) new features documented | `docs/app-review-notes.md` | MEDIUM | 15 changes in 0.9 (two games, slow replay, unit map, pins, notes, conversation replay, accessibility settings…). | Listed under "NEW IN 0.9" and in What to Test. | ✅ | Docs |
+| F30 | 1.2 user-generated content / 5.1.1 | `WordNoteEditor`, `WordNotes` | LOW | Explorers can type notes on words. | Private and on-device only: never shown to other users, never sent; capped at 200 characters; deleted with the profile; in the privacy policy (v4) and in-app inventory. Not UGC shared with others, so 1.2's reporting and blocking rules don't apply. | ✅ | Unit test `testWordNotesTrimCapAndRemove`; code review |
+| F31 | Accessibility (supports 2.1 completeness and Accessibility Nutrition Labels) | `ThemePalette.highContrast`, `WorldView` | LOW | New options: high-contrast palette and left-handed controls. | High-contrast pairs are all ≥ 7:1 (unit test). Left-handed mode moves the arrow pad without mirroring arrows. | ✅ | Unit test `testHighContrastPaletteIsAAA` |
+| F32 | Save compatibility (2.1) | New optional fields | MEDIUM | v0.8 saves must still load. | All new fields optional; decode test. | ✅ | Unit test `testV08SaveLoads` |
+
 ## 3. Functionality and crash review (Phase 3)
 
 | Check | Result | How |

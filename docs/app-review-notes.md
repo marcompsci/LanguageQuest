@@ -1,4 +1,4 @@
-# App Review notes: Language Quest 0.8.0
+# App Review notes: Language Quest 0.9.0
 
 Paste the "Review Notes" section into App Store Connect › TestFlight › Test Information (Beta App Review) and, later, into App Review Information for the App Store. Guideline 2.3.1(a) asks for features to be described specifically, so keep this list current with every build.
 
@@ -20,6 +20,16 @@ HOW TO NAVIGATE
 - ☰ (top right): Review, Phrasebook, Word Library, Write Out, Bonus lesson, Quest journal, Wardrobe, Bag and badges, Mistakes notebook, Trophies, My stats, Settings, Parents, Privacy policy.
 - In the village: use the arrow pad to walk; "Go to" walks to a character; the house button returns to the language page; the flag button switches language.
 
+NEW IN 0.9
+- Games: Listen & Type (hear a word, type it) and Right or Wrong (is this the right meaning?).
+- A turtle button plays words slowly (Word Library, Word of the day, Listen & Type).
+- Language page: "Your units" map with quests, strong words and quiz scores; a pin button (top right) pins the language to the top of the main menu (up to 3).
+- Unit quizzes show the missed answers at the end. Sentence Builder has a Hint button.
+- Quest journal: "Read the conversation again" for finished quests, with an English toggle.
+- Word Library: the explorer can write a private note on any word (max 200 characters). Notes stay on the device, are never shared, and are not visible to other users: this is not user-generated content shared with others.
+- My stats: what's coming up for review, and a 30-day activity calendar. Trophies show progress toward each one.
+- Settings: High-contrast colors (black and white) and Arrow pad on the right (left-handed).
+
 NEW IN 0.8
 - Word Library: every word in the language, searchable, with filters (All, Met, Practice, Starred). Tap ☆ to star a word, then "Practice starred words" for a flashcard deck of them.
 - Word of the day on each language page.
@@ -32,7 +42,7 @@ NEW IN 0.8
 FEATURES IN THIS BUILD
 - 13 courses: Spanish (6 regional varieties), French (France, Québec) and Japanese (kana with romaji) with 3 units each; starter units (5 quests) for German, Italian, Chinese, Yoruba, Hebrew, Ancient Egyptian, Amharic, Ancient Greek, Latin and Biblical Hebrew. Course text is written by the developer and is being reviewed by native speakers and specialists.
 - Activities: listening, reading, matching, sentence building, typing, dialogue replies, optional speaking.
-- Games: Word Battles (classic, or an opt-in speed mode with no time penalty), Word Scramble, Market Rush, Echo, Memory Match, Spelling Bee, Sentence Builder, Flashcards (multiple choice), Kana Dojo.
+- Games: Word Battles (classic, or an opt-in speed mode with no time penalty), Word Scramble, Market Rush, Echo, Memory Match, Spelling Bee, Sentence Builder, Listen & Type, Right or Wrong, Flashcards (multiple choice), Kana Dojo.
 - Write Out: trace, copy and write words on a canvas; the screen may rotate to landscape for more room; print or cursive for Latin-alphabet languages. Handwriting is read on-device with Apple's Vision framework and never stored.
 - Progress: spaced review, XP and levels, daily challenges, achievements, a mistakes notebook, and a 7-day stats chart. There are no streaks or penalties for missing a day.
 - Accessibility: VoiceOver labels, Reduce Motion, larger text, and an easy-read text option.

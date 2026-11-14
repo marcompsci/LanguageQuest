@@ -1,6 +1,6 @@
 # Language Quest Privacy Policy
 
-Effective: November 13, 2026 · Version 3
+Effective: November 14, 2026 · Version 4
 
 Language Quest is a language-learning game for players aged 11 and up, made by Phoronomics. This policy explains what the app does with information. In short: **the app does not collect any information from you. Everything stays on your device.**
 
@@ -17,7 +17,7 @@ Language Quest is a language-learning game for players aged 11 and up, made by P
 The app saves the following only on the device it is installed on, so the game can remember your progress:
 
 - An optional nickname, an age band (11–12, 13–15, or 16+; never a birthdate), an avatar, and the languages and varieties you chose.
-- Lesson progress, the review schedule, answers to practice activities, game scores, quiz scores, XP, levels, daily challenges, the weekly goal, achievements, and words you starred.
+- Lesson progress, the review schedule, answers to practice activities, game scores, quiz scores, XP, levels, daily challenges, the weekly goal, achievements, words you starred, languages you pinned, and any notes you write on words. Notes are private: they stay on this device and are never shown to anyone else or sent anywhere.
 - Minutes and activities per day, kept for a limited time and then removed automatically.
 - Parent settings, including practice reminder times if a parent turns reminders on. An optional parent PIN is stored only as a salted hash in the device's Keychain. If a parent forgets the PIN, the device's own passcode or Face ID / Touch ID can reset it; the app only receives a yes/no answer from iOS.
 

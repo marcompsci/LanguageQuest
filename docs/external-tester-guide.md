@@ -16,8 +16,9 @@ This covers getting Language Quest to testers outside your App Store Connect tea
 > 3. Games: Echo, Memory Match and Spelling Bee. After finishing Unit 1, try a Speed duel in Word Battles.
 > 4. Write Out: write a word, turn the phone sideways, and tap Check.
 > 5. New in 0.8: the Word Library (search and star words, then practice starred words), Unit quizzes, Sentence Builder in Games, the Word of the day, and the Weekly goal on the main menu.
-> 6. Parents: try practice reminders and the weekly summary's Share button.
-> 7. On an iPad, check the main menu and language page layout.
+> 6. New in 0.9: Listen & Type and Right or Wrong in Games, the turtle (slow) button, pinning a language, "Read the conversation again" in the Quest journal, notes on words, and High-contrast colors / left-handed arrow pad in Settings.
+> 7. Parents: try practice reminders and the weekly summary's Share button.
+> 8. On an iPad, check the main menu and language page layout.
 > Tell us about anything confusing, any wrong translations, sounds that are too loud, or crashes. Use the TestFlight app to send a screenshot with feedback.
 
 ## 3. Review notes and reviewer navigation
