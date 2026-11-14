@@ -67,7 +67,7 @@ Severity: **BLOCKER** (Apple will reject or the build can't be distributed), **H
 | Cold/warm start, onboarding | Works on a real iPhone (v0.7 Debug build ran on Nov 2) | Device run; onboarding UI test exists |
 | Sign-in/out, account creation and deletion | N/A (no accounts); local explorer delete and delete-all exist | Code review |
 | Main navigation, dead ends | New UI test opens and closes every ☰ screen | `testEveryMenuScreenOpensAndCloses` (CI) |
-| Crash patterns | One `try!` (parsing the fixed built-in village map, covered by tests), no force-unwrapped optionals on data paths, and the only `fatalError` is an unused `init(coder:)`. The missing Face ID purpose string (F20) was a real crash risk and is fixed. Content is validated by tests for all 13 courses. | Code search; 141 unit tests |
+| Crash patterns | One `try!` (parsing the fixed built-in village map, covered by tests), no force-unwrapped optionals on data paths, and the only `fatalError` is an unused `init(coder:)`. The missing Face ID purpose string (F20) was a real crash risk and is fixed. Content is validated by tests for all 13 courses. | Code search; 154 unit tests |
 | Offline / API failures | Fully offline. StoreKit isn't called while purchases are off. | Code review |
 | Background/foreground | The audio engine restarts after interruptions (earlier fix); saves are atomic | Code review |
 | Orientation | iPhone: portrait, plus landscape in Write Out. iPad: all orientations. | Code; **iPad not tested** |
@@ -88,10 +88,10 @@ Severity: **BLOCKER** (Apple will reject or the build can't be distributed), **H
 
 | Check | Status |
 |---|---|
-| Static compliance gate (`scripts/compliance-check.py`) | Run: 17 pass, 0 fail, 7 manual (items only a person or App Store Connect can confirm) |
-| 141 LQCore unit tests | Run: all pass (Linux, Swift 5.10; also in CI) |
+| Static compliance gate (`scripts/compliance-check.py`) | Run: 18 pass, 0 fail, 7 manual (items only a person or App Store Connect can confirm) |
+| 154 LQCore unit tests | Run: all pass (Linux, Swift 5.10; also in CI) |
 | Unsigned Release build for device, plus Clang static analyzer | Run in GitHub Actions (macOS 15): pass |
-| UI tests (11) on an iPhone simulator | Run in GitHub Actions: all pass. Earlier runs found real problems that are now fixed: Dynamic Type capped at accessibility3, light text on white lists in Light Mode with the dark theme (F23), low-contrast disabled buttons and placeholders, a truncating XP line, a fixed-size title, and the level title clipping beside the avatar at large text sizes. |
+| UI tests (13) on an iPhone simulator | Run in GitHub Actions: all pass. Earlier runs found real problems that are now fixed: Dynamic Type capped at accessibility3, light text on white lists in Light Mode with the dark theme (F23), low-contrast disabled buttons and placeholders, a truncating XP line, a fixed-size title, and the level title clipping beside the avatar at large text sizes. |
 | Debug build installed on the owner's iPhone | Run (Xcode, Nov 12): built and launched |
 | Independent fact-check of these documents against the code | Run: found F20–F22 plus wording errors, all fixed |
 | Xcode Release **archive** and Validate App | **Not run.** Needs Xcode with your signing on the Mac (Product › Archive › Validate App). |
@@ -100,4 +100,4 @@ Severity: **BLOCKER** (Apple will reject or the build can't be distributed), **H
 
 ## 6. Result
 
-**CONDITIONAL.** All automated checks pass (static gate, 141 unit tests, Release build, static analysis, 11 UI tests with Light/Dark accessibility audits). Remaining items need a person: archive and Validate App, App Store Connect setup (privacy URL, App Privacy label, age rating, Test Information), an iPad pass, and the upload itself, followed by Apple's TestFlight App Review. Passing TestFlight review is not App Store approval, and nothing here guarantees either. Details: the release-readiness result in `docs/testflight-release-checklist.md`.
+**CONDITIONAL.** All automated checks pass (static gate, 154 unit tests, Release build, static analysis, 13 UI tests with Light/Dark accessibility audits). Remaining items need a person: archive and Validate App, App Store Connect setup (privacy URL, App Privacy label, age rating, Test Information), an iPad pass, and the upload itself, followed by Apple's TestFlight App Review. Passing TestFlight review is not App Store approval, and nothing here guarantees either. Details: the release-readiness result in `docs/testflight-release-checklist.md`.

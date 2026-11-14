@@ -48,14 +48,14 @@ GitHub Actions runs the same gates on every push (**Release gate** workflow):
 
 ---
 
-## Release-readiness result (audit of November 12, 2026)
+## Release-readiness result (v0.8.0, November 13, 2026)
 
 **Result: CONDITIONAL.** Every automated check passes. What remains can only be done by a person in Xcode and App Store Connect, and then Apple's own TestFlight App Review. External TestFlight approval is **not** App Store approval.
 
 What passed:
-- Static compliance gate (`scripts/compliance-check.py`): 17 pass, 0 fail, 0 warn, 7 manual.
-- 141 LQCore unit tests (Linux and CI), plus the check that generated content matches the authoring scripts.
-- GitHub Actions "Release gate" (macOS 15): unsigned Release build, Clang static analysis, and all 11 UI tests on an iPhone simulator, including the accessibility audits (contrast, Dynamic Type, clipped text) in Light and Dark Mode.
+- Static compliance gate (`scripts/compliance-check.py`): 18 pass, 0 fail, 0 warn, 7 manual.
+- 154 LQCore unit tests (Linux and CI), plus the check that generated content matches the authoring scripts.
+- GitHub Actions "Release gate" (macOS 15): unsigned Release build, Clang static analysis, and all 13 UI tests on an iPhone simulator, including the accessibility audits (contrast, Dynamic Type, clipped text) in Light and Dark Mode.
 - Privacy policy hosted at a public HTTPS URL (GitHub, HTTP 200) and bundled in the app for offline reading.
 - A Debug build installed and ran on the owner's iPhone (Xcode, Nov 12).
 
