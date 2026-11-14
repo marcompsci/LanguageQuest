@@ -16,13 +16,14 @@ public enum PrivacyNotice {
     /// Use this same URL in App Store Connect. Swap it for your own website any time.
     public static let hostedPolicyURL: String? = "https://github.com/marcompsci/LanguageQuest/blob/main/docs/privacy-policy.md"
 
-    public static let version = 2
+    public static let version = 3
 
     /// What data exists, where it lives, and how long it is kept. Shown in the
     /// parent area and mirrored in docs/PRIVACY_AND_CHILD_SAFETY.md.
     public static let dataInventory: [(data: String, whereKept: String, retention: String)] = [
         ("Optional nickname, age band, avatar, chosen languages and varieties", "This device only", "Until the profile is deleted"),
-        ("Lesson progress, review schedule, assessment results, game scores, XP, levels, challenges, achievements", "This device only", "Until the profile is deleted"),
+        ("Lesson progress, review schedule, assessment results, game and quiz scores, XP, levels, challenges, weekly goal, achievements, starred words", "This device only", "Until the profile is deleted"),
+        ("Practice reminder days and time (only if a parent turns reminders on)", "This device only (local notifications)", "Until turned off or all data is deleted"),
         ("Minutes and activities per day", "This device only", "\(ActivityLog.retentionDays) days, then pruned automatically"),
         ("Purchase status (if paid plans are ever enabled)", "This device + Apple", "Apple's records; the app keeps only plan and expiry"),
         ("Speech audio (on-device recognition, only if a grown-up allows it)", "Processed in memory on this device", "Never stored or sent"),

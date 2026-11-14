@@ -1,6 +1,6 @@
 # Language Quest Privacy Policy
 
-Effective: November 12, 2026 · Version 2
+Effective: November 13, 2026 · Version 3
 
 Language Quest is a language-learning game for players aged 11 and up, made by Phoronomics. This policy explains what the app does with information. In short: **the app does not collect any information from you. Everything stays on your device.**
 
@@ -17,9 +17,9 @@ Language Quest is a language-learning game for players aged 11 and up, made by P
 The app saves the following only on the device it is installed on, so the game can remember your progress:
 
 - An optional nickname, an age band (11–12, 13–15, or 16+; never a birthdate), an avatar, and the languages and varieties you chose.
-- Lesson progress, the review schedule, answers to practice activities, game scores, XP, levels, daily challenges, and achievements.
+- Lesson progress, the review schedule, answers to practice activities, game scores, quiz scores, XP, levels, daily challenges, the weekly goal, achievements, and words you starred.
 - Minutes and activities per day, kept for a limited time and then removed automatically.
-- Parent settings. An optional parent PIN is stored only as a salted hash in the device's Keychain. If a parent forgets the PIN, the device's own passcode or Face ID / Touch ID can reset it; the app only receives a yes/no answer from iOS.
+- Parent settings, including practice reminder times if a parent turns reminders on. An optional parent PIN is stored only as a salted hash in the device's Keychain. If a parent forgets the PIN, the device's own passcode or Face ID / Touch ID can reset it; the app only receives a yes/no answer from iOS.
 
 This information is stored in the app's private storage, protected by iOS file protection. It is included in your device's own backups (for example, iCloud Backup if you turn it on), which Apple handles under its own privacy policy. We cannot see it.
 
@@ -31,13 +31,21 @@ Speech practice is off unless a parent turns it on in the Parents area. When it 
 
 When you check a word in Write Out, your drawing is read on the device by Apple's Vision framework. The drawing is not saved or sent. The app keeps only the list of words you have written, to show your progress.
 
+## Practice reminders (off by default)
+
+A parent can turn on practice reminders in the Parents area. iOS then asks for permission to show notifications. Reminders are scheduled on the device itself (local notifications): no server, push token, or account is involved, and the message shows no name or progress. Turning reminders off, or deleting all data, removes them.
+
+## Weekly summary
+
+The Parents area shows a summary of the last 7 days, made on the device. It is shared only if a parent taps Share and chooses where to send it with the iOS share sheet.
+
 ## Purchases
 
 There are no purchases in this version. If paid plans are offered in the future, payment is handled entirely by Apple. The app would keep only which plan is active and when it expires.
 
 ## Children's privacy
 
-Language Quest is designed for players aged 11 and up, including players under 13. Because the app does not collect, use, or disclose personal information from children (everything stays on the device), no information is shared with us. Settings that matter to parents (speech practice, data deletion, purchases, break reminders) are behind a parental gate and an optional PIN.
+Language Quest is designed for players aged 11 and up, including players under 13. Because the app does not collect, use, or disclose personal information from children (everything stays on the device), no information is shared with us. Settings that matter to parents (speech practice, practice reminders, data deletion, purchases, break reminders) are behind a parental gate and an optional PIN.
 
 ## Your choices: export and delete
 
@@ -45,7 +53,7 @@ In the Parents area you can:
 
 - **Export** an explorer's data as a file, to keep or review.
 - **Delete** an explorer and all their progress.
-- **Delete all data** on the device (every explorer, backups, exported files and the parent PIN).
+- **Delete all data** on the device (every explorer, backups, exported files, scheduled reminders and the parent PIN).
 
 Deleting the app also deletes all of its data from the device.
 

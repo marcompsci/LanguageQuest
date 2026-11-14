@@ -490,7 +490,7 @@ struct ParentRemindersSection: View {
                             }
                         }
                         .buttonStyle(.bordered)
-                        .tint(on ? .accentColor : .gray)
+                        .tint(on ? Color.accentColor : Color.gray)
                         .accessibilityLabel("\(Calendar.current.weekdaySymbols[wd - 1]), \(on ? "on" : "off")")
                     }
                 }

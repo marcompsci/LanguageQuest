@@ -211,6 +211,22 @@ if paid:
 else:
     add("PASS", "Purchases off in this build", "StoreConfig.default.paidPlansEnabled == false; no purchase UI reachable")
 
+# 12b. Notifications: local only, asked for by a parent, disclosed in the policy -----
+notif = uses(r"UNUserNotificationCenter")
+if notif:
+    remote = uses(r"registerForRemoteNotifications|aps-environment")
+    asks = uses(r"requestAuthorization\(")
+    policy_txt = read("docs/privacy-policy.md").lower()
+    problems = []
+    if remote: problems.append(f"remote push in {', '.join(remote)} (policy says local only)")
+    if "notification" not in policy_txt: problems.append("privacy policy doesn't mention notifications")
+    callers = uses(r"ReminderScheduler\.requestPermission")
+    if any("ParentAreaView" not in c and "V08Views" not in c for c in callers): problems.append(f"permission asked outside the parent area: {callers}")
+    add("FAIL" if problems else "PASS", "Notifications are local, parent-enabled and disclosed",
+        "; ".join(problems) if problems else f"local only; permission asked from the parent area ({', '.join(asks)})")
+else:
+    add("PASS", "Notifications", "not used")
+
 # 13. Privacy policy ----------------------------------------------------------
 try:
     in_app = read("Packages/LQCore/Sources/LQCore/Resources/Content/legal/privacy-policy.md")

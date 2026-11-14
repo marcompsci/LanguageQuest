@@ -60,7 +60,9 @@ jobs:
       - name: Release build for device (unsigned)
         run: |
           xcodebuild -project LanguageQuest.xcodeproj -scheme LanguageQuest -configuration Release \
-            -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED=NO build | tail -n 40
+            -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED=NO build > build.log 2>&1 || {
+              grep -E "error:|\*\* BUILD" build.log | sort -u | head -60; exit 1; }
+          tail -n 5 build.log
       - name: Static analysis
         run: |
           xcodebuild -project LanguageQuest.xcodeproj -scheme LanguageQuest -configuration Debug \
