@@ -1,4 +1,4 @@
-# App Review notes: Language Quest 1.0.0
+# App Review notes: Language Quest 1.1.0
 
 Paste the "Review Notes" section into App Store Connect › TestFlight › Test Information (Beta App Review) and, later, into App Review Information for the App Store. Guideline 2.3.1(a) asks for features to be described specifically, so keep this list current with every build.
 
@@ -24,6 +24,17 @@ HOW TO NAVIGATE
 - Tap a language to open its page: Play (enters the village), Today, Word of the day, Games, Flashcards, Bonus lesson, Write Out, Word Library, Unit quizzes (and Kana Dojo for Japanese).
 - ☰ (top right): Review, Phrasebook, Word Library, Write Out, Bonus lesson, Quest journal, Wardrobe, Bag and badges, Mistakes notebook, Trophies, My stats, Settings, Parents, Privacy policy.
 - In the village: use the arrow pad to walk; "Go to" walks to a character; the house button returns to the language page; the flag button switches language.
+
+NEW IN 1.1
+- Today's path on the language page: memory check, next quest, review; each ticks off when done.
+- Warm-up: before a new quest, up to 3 optional guesses about its words ("Skip the warm-up" is always there). Guesses are not recorded as mistakes.
+- Quiz upgrades: picture cues, fill-in-the-blank sentences in memory checks, "You'll see this again in N days", an optional first-letter Hint on typed questions, accent keys (á, ñ, ç, ß…) above the keyboard, and VoiceOver announcements of each result.
+- After a miss, the player can write a private memory hook (stored on the device as a word note).
+- Memory check: choose 5 or 10 questions. Lesson quizzes can be retaken from the Quest journal.
+- Streak calendar and personal bests in My progress; outfits for 7- and 30-day streaks (cosmetic only); a weekly recap card early in the week.
+- Parents area: a Learning section per explorer (quizzes, average, streak, words locked in).
+- Family Plus: if notifications are already allowed, a local heads-up 2 days before a free trial ends.
+- Siri & Shortcuts: "Start a memory check in Language Quest", "Continue learning in Language Quest". They only open the app.
 
 NEW IN 1.0
 - Lesson quiz: every finished quest ends with 5 questions on the words that most need remembering (new in the lesson, starting to fade, or missed before), from recognition to typing from memory. Missed words come back at the end of the quiz.

@@ -60,6 +60,15 @@ Severity: **BLOCKER** (Apple will reject or the build can't be distributed), **H
 | F27 | Save compatibility (2.1 stability) | `ExtrasProgress`, `MetaProgress`, `ParentSettings` | MEDIUM | New saved fields could break loading v0.7 saves. | All new fields are optional; a v0.7-shaped save decodes in a unit test. | ✅ | Unit test |
 | F28 | 2.4.1 iPad | `MenuView`, `LanguageHubView` | LOW | Layout stretched across the full iPad width. | Readable max width (720 pt) and an adaptive tile grid. Still needs a person to check on an iPad. | Partly | Manual (checklist B) |
 
+### v1.1 additions (November 20, 2026)
+
+| # | Guideline / requirement | Where | Sev. | Concern | Remediation | Done? | Verified by |
+|---|---|---|---|---|---|---|---|
+| F40 | 2.3.1(a) / 2.5.19 new features documented | `docs/app-review-notes.md` | MEDIUM | 20 changes in 1.1. | "NEW IN 1.1" section and the tester guide. | ✅ | Docs |
+| F41 | 3.1.2 good practice: trial transparency | `TrialNotice`, `ReminderScheduler.scheduleTrialNotice` | LOW | Families should know before a free trial converts. | Local heads-up 2 days before the trial ends, only if notifications are already allowed (never asks); in privacy policy v6. | ✅ | Unit test `testTrialNoticeTiming` |
+| F42 | 2.5.1 public APIs / SiriKit & App Intents | `AppShortcuts.swift` | LOW | Shortcuts must work as described and not collect data. | App Intents that only open the app; no parameters, nothing donated beyond the phrases. Disclosed in the policy. | ✅ | CI build |
+| F43 | 1.3 / 5.1.1 kids: memory hooks are private notes | `MemoryHookEditor` | LOW | Free text typed by children. | Same as word notes (F30): on the device only, never shared, deleted with the profile. | ✅ | Unit test `testMemoryHookCountsOnce` |
+
 ### v1.0 additions (November 19, 2026)
 
 | # | Guideline / requirement | Where | Sev. | Concern | Remediation | Done? | Verified by |

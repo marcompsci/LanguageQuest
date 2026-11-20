@@ -16,6 +16,7 @@ This covers getting Language Quest to testers outside your App Store Connect tea
 > 3. Games: Echo, Memory Match and Spelling Bee. After finishing Unit 1, try a Speed duel in Word Battles.
 > 4. Write Out: write a word, turn the phone sideways, and tap Check.
 > 5. New in 0.8: the Word Library (search and star words, then practice starred words), Unit quizzes, Sentence Builder in Games, the Word of the day, and the Weekly goal on the main menu.
+> 5a. New in 1.1: Today's path, the warm-up before a new quest, Hint and accent keys on typed questions, 10-question memory checks, retaking a lesson quiz from the Quest journal, the streak calendar, and Siri: "Start a memory check in Language Quest".
 > 5b. New in 1.0: finish a quest and take the 5-question lesson quiz; try a Memory check and My progress; check the streak on the main menu; turn on Come-back reminders in Settings; open ☰ › Family Plus (a Sandbox account is needed to test a purchase).
 > 6. New in 0.9: Listen & Type and Right or Wrong in Games, the turtle (slow) button, pinning a language, "Read the conversation again" in the Quest journal, notes on words, and High-contrast colors / left-handed arrow pad in Settings.
 > 7. Parents: try practice reminders and the weekly summary's Share button.

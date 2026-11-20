@@ -42,6 +42,7 @@ struct SheetRouter: View {
         case .memoryCheck: MemoryCheckSheet()
         case .myProgress: MyProgressView()
         case .plus: PlusPaywallView()
+        case .lessonQuiz(let q): LessonQuizSheet(questId: q)
         }
     }
 }

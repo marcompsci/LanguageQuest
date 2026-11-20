@@ -43,6 +43,7 @@ final class AppModel: ObservableObject {
         case memoryCheck
         case myProgress
         case plus
+        case lessonQuiz(String)
         var id: String {
             switch self {
             case .quest(let q): return "quest-\(q)"
@@ -80,6 +81,7 @@ final class AppModel: ObservableObject {
             case .memoryCheck: return "memoryCheck"
             case .myProgress: return "myProgress"
             case .plus: return "plus"
+            case .lessonQuiz(let q): return "lessonQuiz-\(q)"
             }
         }
     }
@@ -372,9 +374,15 @@ final class AppModel: ObservableObject {
     /// Counts a real practice for the streak and celebrates milestones.
     func countPractice() {
         var reached: Int?
-        updateProfile { reached = Streak.recordPractice(&$0, now: Date()) }
-        if let m = reached { celebrate(Celebration(icon: "flame.fill", title: "\(m)-day streak!", detail: "Little and often is how memories stick.")) }
+        var outfit: String?
+        updateProfile { reached = Streak.recordPractice(&$0, now: Date()); if let m = reached { outfit = StreakRewards.grant(m, profile: &$0) } }
+        if let m = reached { celebrateStreak(m, outfit: outfit) }
         checkMilestones()
+    }
+
+    func celebrateStreak(_ m: Int, outfit: String?) {
+        let extra = outfit.flatMap { Catalog.cosmetic($0) }.map { " New outfit: \($0.name)!" } ?? ""
+        celebrate(Celebration(icon: "flame.fill", title: "\(m)-day streak!", detail: "Little and often is how memories stick." + extra))
     }
 
     /// Saves a finished lesson quiz or memory check (history, streak, achievements).
@@ -382,7 +390,7 @@ final class AppModel: ObservableObject {
         guard let lib = library else { return nil }
         var out: (record: QuizRecord, streakMilestone: Int?)?
         updateProfile { out = RetentionQuiz.finish(quiz, profile: &$0, library: lib, now: Date()) }
-        if let m = out?.streakMilestone { celebrate(Celebration(icon: "flame.fill", title: "\(m)-day streak!", detail: "Little and often is how memories stick.")) }
+        if let m = out?.streakMilestone { celebrateStreak(m, outfit: StreakRewards.byMilestone[m]) }
         record(.activity)
         return out?.record
     }
@@ -433,7 +441,7 @@ final class AppModel: ObservableObject {
         guard let sheet else { return .village }
         switch sheet {
         case .battle: return .battle
-        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes, .starredPractice, .builder, .quizzes, .listenType, .rightOrWrong, .memoryCheck:
+        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes, .starredPractice, .builder, .quizzes, .listenType, .rightOrWrong, .memoryCheck, .lessonQuiz:
             return GameMusic.lessons(for: library?.course.targetLanguage ?? "es")
         case .journal, .bag, .parent, .games, .phrasebook, .languages, .settings, .wardrobe, .trophies, .stats, .privacy, .words, .myProgress, .plus:
             return .village
@@ -446,6 +454,14 @@ final class AppModel: ObservableObject {
         sessionStart = Date()
         if profile != nil {
             updateProfile { SmartReminders.noteSessionStart(&$0, now: Date()) }
+            // v1.1: a Siri / Shortcuts action waiting to open something.
+            if let action = PendingShortcut.value {
+                PendingShortcut.value = nil
+                switch action {
+                case .memoryCheck: sheet = .memoryCheck
+                case .continueLearning: break
+                }
+            }
             if let t = ReminderScheduler.openedTemplate {
                 ReminderScheduler.openedTemplate = nil
                 updateProfile { SmartReminders.noteOpened(t, profile: &$0) }
@@ -482,5 +498,8 @@ final class AppModel: ObservableObject {
         let txs = await store.currentVerifiedTransactions()
         save.entitlement = EntitlementResolver.resolve(txs, config: storeConfig, now: Date())
         persist()
+        // v1.1: a heads-up 2 days before a free trial ends (only if notifications are already allowed).
+        let trial = await store.trialEnd()
+        ReminderScheduler.scheduleTrialNotice(TrialNotice.reminderDate(trialEnds: trial, isTrial: trial != nil, now: Date()))
     }
 }

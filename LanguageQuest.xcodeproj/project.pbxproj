@@ -13,10 +13,12 @@
 		21FA13FD7F29201293359C11 /* LanguageQuestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE9089108E6FBF0100BEAF6 /* LanguageQuestUITests.swift */; };
 		28935F8581CA0A951E6769FA /* V08Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D88B109594435DBAFA4955A /* V08Views.swift */; };
 		378E29EAB7E85A778F3CD5C4 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A560394D6350E0C9A44F60 /* SpeechService.swift */; };
+		453020187B09C819457E1E31 /* V11Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C302986D844A0FCBB00326 /* V11Views.swift */; };
 		453D788C8933ABC39FFBD203 /* DialogueOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589B69E8921F9555AC9F843 /* DialogueOverlay.swift */; };
 		60C28828D15E7F5DB34BD027 /* GamesViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D16AA0744FB255447A7BC6E /* GamesViews.swift */; };
 		652EB4A97685BAB639C45233 /* QuestPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839773334A51BD6E8B119381 /* QuestPlayerView.swift */; };
 		7C158082F93BA199CB0CB962 /* AudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF908645A01795BB7F12E9 /* AudioService.swift */; };
+		7DA53FFC76F66DAF345AD308 /* AppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA293F84E4FC3758A96CE5E /* AppShortcuts.swift */; };
 		82AD379946AF0384699DE258 /* LanguageQuest.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 89E6181925702439665497F9 /* LanguageQuest.storekit */; };
 		8465350E29DD14BDA1FEC31B /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB717234CB21DE33DDB51F97 /* AppModel.swift */; };
 		967AD8C76FC3BCA7DC4064B1 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A22EDA37507347E218EC53 /* JournalView.swift */; };
@@ -74,9 +76,11 @@
 		4FFFEBAFB3FD0CBBD0ACF5EB /* ActivityHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHost.swift; sourceTree = "<group>"; };
 		5AE9089108E6FBF0100BEAF6 /* LanguageQuestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageQuestUITests.swift; sourceTree = "<group>"; };
 		6630EF63B7B3AD80B83D73BE /* VillageScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageScene.swift; sourceTree = "<group>"; };
+		67C302986D844A0FCBB00326 /* V11Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V11Views.swift; sourceTree = "<group>"; };
 		807D46C30E93643BB88B3BF0 /* Exercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercises.swift; sourceTree = "<group>"; };
 		839773334A51BD6E8B119381 /* QuestPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestPlayerView.swift; sourceTree = "<group>"; };
 		89E6181925702439665497F9 /* LanguageQuest.storekit */ = {isa = PBXFileReference; path = LanguageQuest.storekit; sourceTree = "<group>"; };
+		8BA293F84E4FC3758A96CE5E /* AppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShortcuts.swift; sourceTree = "<group>"; };
 		93F655C88FC9FE2FD3B98B1E /* ParentPINStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentPINStore.swift; sourceTree = "<group>"; };
 		A3B4134866A3A20F5A8EC302 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		AB717234CB21DE33DDB51F97 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 		4CD4F014F92FEEF23E214B75 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8BA293F84E4FC3758A96CE5E /* AppShortcuts.swift */,
 				3AAF908645A01795BB7F12E9 /* AudioService.swift */,
 				93F655C88FC9FE2FD3B98B1E /* ParentPINStore.swift */,
 				391FCA85BA600939BECF438B /* ReminderScheduler.swift */,
@@ -170,6 +175,7 @@
 				0D88B109594435DBAFA4955A /* V08Views.swift */,
 				0C0BF9FB3F53A164898A6045 /* V09Views.swift */,
 				DCDF9E316276EE72F0049AF9 /* V10Views.swift */,
+				67C302986D844A0FCBB00326 /* V11Views.swift */,
 				4C9B41B13A3A33C328E3C229 /* WorldView.swift */,
 				BE4A8113C531B263A0B038EB /* WriteOutView.swift */,
 				68B4556FA5F8F6BE9A4751E0 /* Activities */,
@@ -325,6 +331,7 @@
 			files = (
 				FC78BE459FEA149A6AA3978B /* ActivityHost.swift in Sources */,
 				8465350E29DD14BDA1FEC31B /* AppModel.swift in Sources */,
+				7DA53FFC76F66DAF345AD308 /* AppShortcuts.swift in Sources */,
 				7C158082F93BA199CB0CB962 /* AudioService.swift in Sources */,
 				453D788C8933ABC39FFBD203 /* DialogueOverlay.swift in Sources */,
 				FF8A7186C3B96302181E0AE9 /* Exercises.swift in Sources */,
@@ -348,6 +355,7 @@
 				28935F8581CA0A951E6769FA /* V08Views.swift in Sources */,
 				E8A716BEC7B558C9AE53115F /* V09Views.swift in Sources */,
 				B51E9DC63B37220AB828B6FA /* V10Views.swift in Sources */,
+				453020187B09C819457E1E31 /* V11Views.swift in Sources */,
 				A5CAAE604B801E57EEE03338 /* VillageFX.swift in Sources */,
 				B8ABB7B0C45E1B3213B15354 /* VillageScene.swift in Sources */,
 				CECC3A8DC62F6B1FB50A3A84 /* WorldView.swift in Sources */,
@@ -431,7 +439,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -567,7 +575,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

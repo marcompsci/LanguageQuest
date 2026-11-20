@@ -213,6 +213,8 @@ enum PixelArt {
         case "pet-dog": break // drawn as a separate follower sprite
         case "cape-night": c.rect(3, 8, 1, 6, 0x23305E); c.rect(12, 8, 1, 6, 0x23305E)
         case "helmet-star": c.rect(4, 0, 8, 3, 0xC7D0E0); c.set(8, 1, 0xF2C230)
+        case "scarf-flame": c.rect(4, 7, 8, 2, 0xE8552B); c.rect(9, 9, 2, 2, 0xF2A23A); c.set(10, 11, 0xF2C230)
+        case "laurel-gold": c.set(4, 2, 0xE2B43C); c.set(5, 1, 0xE2B43C); c.set(6, 1, 0xF2D04A); c.set(9, 1, 0xF2D04A); c.set(10, 1, 0xE2B43C); c.set(11, 2, 0xE2B43C)
         default: break
         }
     }

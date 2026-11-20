@@ -50,6 +50,7 @@ struct ListenTypeView: View {
                                 .focused($focused)
                                 .onSubmit { submit() }
                                 .accessibilityIdentifier("listenTypeField")
+                            AccentKeyBar(text: $typed)
                             Button("Check") { submit() }
                                 .buttonStyle(PrimaryButtonStyle())
                                 .disabled(typed.trimmingCharacters(in: .whitespaces).isEmpty)

@@ -24,6 +24,7 @@ struct MenuView: View {
                         explorerCard(prof)
                         RecentLessonView()
                         bonusCard(prof)
+                        WeeklyRecapCard()
                         StreakCard()
                         DailyChallengesCard()
                         WeeklyGoalCard()
@@ -159,6 +160,7 @@ struct LanguageHubView: View {
                         .accessibilityLabel("Play: \(s.language) village")
                         .accessibilityIdentifier("playButton")
                         WelcomeBackCard()
+                        TodayPathCard { model.play() }
                         todayCard(prof)
                         WordOfTheDayCard()
                         LazyVGrid(columns: columns, spacing: 12) {

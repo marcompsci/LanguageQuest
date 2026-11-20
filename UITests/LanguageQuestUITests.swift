@@ -185,6 +185,11 @@ final class LanguageQuestUITests: XCTestCase {
         app.buttons["reply0"].tap()
         app.buttons["dialogueNext"].tap()
         app.buttons["startQuestButton"].tap()
+        // v1.1: a warm-up of up to 3 guesses comes first for a new quest.
+        if app.buttons["warm-skip"].waitForExistence(timeout: 3) {
+            XCTAssertTrue(app.buttons["warm-option-0"].exists)
+            app.buttons["warm-skip"].tap()
+        }
         app.buttons["choice-a"].tap()                      // wrong
         XCTAssertTrue(app.buttons["tryAgainButton"].waitForExistence(timeout: 2))
         app.buttons["tryAgainButton"].tap()
@@ -394,6 +399,9 @@ final class LanguageQuestUITests: XCTestCase {
         app.buttons["course-en-es"].tap()
         XCTAssertTrue(revealTile("menu-memorycheck", in: app))
         app.buttons["menu-memorycheck"].tap()
+        XCTAssertTrue(app.buttons["check-5"].waitForExistence(timeout: 5), "choose 5 or 10 questions")
+        XCTAssertTrue(app.buttons["check-10"].exists)
+        app.buttons["check-5"].tap()
         XCTAssertTrue(finishLessonQuiz(app), "memory check reaches a score")
         while app.buttons["celebrationDone"].waitForExistence(timeout: 2) { app.buttons["celebrationDone"].tap() }
         XCTAssertTrue(revealTile("menu-progress", in: app))
@@ -408,6 +416,25 @@ final class LanguageQuestUITests: XCTestCase {
         app.buttons["Family Plus"].firstMatch.tap()
         XCTAssertTrue(app.textFields["gateAnswer"].waitForExistence(timeout: 5), "parental gate before any price")
         XCTAssertFalse(app.buttons["restorePurchases"].exists)
+    }
+
+    // MARK: v1.1
+
+    /// Today's path shows on the language page, and a finished quest can retake its lesson quiz from the journal.
+    @MainActor func testTodaysPathAndRetakeQuiz() {
+        let app = launch(seed: true, firstQuestDone: true)
+        XCTAssertTrue(app.buttons["course-en-es"].waitForExistence(timeout: 5))
+        while app.buttons["celebrationDone"].waitForExistence(timeout: 2) { app.buttons["celebrationDone"].tap() }
+        app.buttons["course-en-es"].tap()
+        XCTAssertTrue(app.buttons["path-memoryCheck"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["path-review"].exists)
+        XCTAssertTrue(app.buttons["hamburgerMenu"].waitForExistence(timeout: 5))
+        app.buttons["hamburgerMenu"].tap()
+        app.buttons["Quest journal"].firstMatch.tap()
+        let retake = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'retake-'")).firstMatch
+        XCTAssertTrue(retake.waitForExistence(timeout: 5))
+        retake.tap()
+        XCTAssertTrue(finishLessonQuiz(app), "the retaken lesson quiz reaches a score")
     }
 
     // MARK: Compliance audit: no dead ends, privacy policy reachable

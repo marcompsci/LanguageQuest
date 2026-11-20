@@ -12,6 +12,9 @@ struct QuestPlayerView: View {
     @State private var xpEarned = 0
     @State private var reward: ActivityCompletion?
     @State private var showIntro = true
+    /// v1.1: up to 3 warm-up guesses before a new quest (the pretesting effect).
+    @State private var warmUp: [RetentionQuestion]?
+    @State private var warmUpDone = false
     /// v1.0: every finished lesson ends with a 5-question quiz on what matters most to remember.
     @State private var quizDone = false
     @State private var quizScore: QuizRecord?
@@ -25,6 +28,8 @@ struct QuestPlayerView: View {
                 if let e = entry {
                     if showIntro {
                         intro(e.unit, e.quest)
+                    } else if !warmUpDone, let w = warmUp, !w.isEmpty, index == 0 {
+                        WarmUpView(questions: w) { warmUpDone = true }
                     } else if index < e.quest.activities.count {
                         let a = e.quest.activities[index]
                         VStack(spacing: 0) {
@@ -66,7 +71,12 @@ struct QuestPlayerView: View {
                 if let note = u.culturalNotes[safe: q.order - 1] ?? u.culturalNotes.first {
                     CulturalNoteCard(note: note)
                 }
-                Button("Let's go!") { showIntro = false }
+                Button("Let's go!") {
+                    if let prof = model.profile, let lib = model.library, WarmUp.isOffered(q, profile: prof) {
+                        warmUp = WarmUp.questions(q, profile: prof, library: lib, seed: UInt64.random(in: 1...UInt64.max / 2))
+                    }
+                    showIntro = false
+                }
                     .buttonStyle(PrimaryButtonStyle())
                     .accessibilityIdentifier("startQuestButton")
             }

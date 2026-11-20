@@ -30,6 +30,10 @@ struct JournalView: View {
                                         Label("Read the conversation again", systemImage: "text.bubble").font(.subheadline)
                                     }
                                     .accessibilityIdentifier("replay-\(q.id)")
+                                    Button { model.sheet = .lessonQuiz(q.id) } label: {
+                                        Label("Retake the lesson quiz", systemImage: "checkmark.seal").font(.subheadline)
+                                    }
+                                    .accessibilityIdentifier("retake-\(q.id)")
                                 }
                             }
                             if prog.isUnitFinished(u, prof.progress) {

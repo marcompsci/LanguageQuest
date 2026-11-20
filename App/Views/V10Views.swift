@@ -11,7 +11,9 @@ struct RetentionQuizView: View {
     @EnvironmentObject var model: AppModel
     @Environment(\.palette) var p
     let kind: RetentionQuizKind
+    var count: Int = RetentionQuiz.size
     var onDone: (QuizRecord?) -> Void
+    @State private var hintShown: String?
 
     @State private var quiz: RetentionQuiz?
     @State private var typed = ""
@@ -68,6 +70,12 @@ struct RetentionQuizView: View {
 
     @ViewBuilder
     private func question(_ q: RetentionQuestion) -> some View {
+        if let pic = model.library?.item(q.itemId)?.picture, q.kind == .meaning || q.kind == .listen {
+            Text(pic).font(.system(size: 56)).accessibilityHidden(true)   // a picture cue helps memory (dual coding)
+        }
+        if let hook = model.profile.flatMap({ WordNotes.note(q.itemId, in: $0) }), q.kind != .typeIt && q.kind != .pickWord {
+            Label("Your hook: \(hook)", systemImage: "link").font(.caption).lineLimit(2)
+        }
         Text(q.reason).font(.caption.bold())
             .padding(.horizontal, 10).padding(.vertical, 4)
             .background(Color(p.surface), in: Capsule())
@@ -89,6 +97,11 @@ struct RetentionQuizView: View {
             Text("How do you say this?").font(.headline)
             Text("“\(q.meaning)”").font(.title.bold()).multilineTextAlignment(.center)
             choices(q)
+        case .cloze:
+            Text("Which word fills the blank?").font(.headline)
+            Text(q.context ?? "").font(.title2.bold()).multilineTextAlignment(.center)
+            if let e = q.contextEnglish { Text("“\(e)”").font(.subheadline).multilineTextAlignment(.center) }
+            choices(q)
         case .typeIt:
             Text("Type it from memory").font(.headline)
             Text("“\(q.meaning)”").font(.title.bold()).multilineTextAlignment(.center)
@@ -100,7 +113,16 @@ struct RetentionQuizView: View {
                 .focused($focused)
                 .onSubmit { submitTyped(q) }
                 .accessibilityIdentifier("quizTyped")
+            AccentKeyBar(text: $typed)
+            if let h = hintShown { Text(h).font(.title3.monospaced()).accessibilityLabel("Starts with \(h.prefix(1))") }
             HStack {
+                Button("Hint") {
+                    guard var qz = quiz, let lib = model.library, let prof = model.profile else { return }
+                    qz.useHint(); quiz = qz
+                    hintShown = RetentionQuiz.firstLetterHint(q, variant: prof.variant(for: lib))
+                }
+                .buttonStyle(.bordered).disabled(hintShown != nil)
+                .accessibilityIdentifier("quizHint")
                 Button("I don't know") { typed = ""; submitTyped(q, giveUp: true) }.buttonStyle(.bordered)
                     .accessibilityIdentifier("quizDontKnow")
                 Button("Check") { submitTyped(q) }.buttonStyle(PrimaryButtonStyle())
@@ -142,11 +164,18 @@ struct RetentionQuizView: View {
             .padding(14)
             .background(Color(p.surface), in: RoundedRectangle(cornerRadius: 14))
             if !ok { Text("It'll come back at the end, and again soon in your reviews.").font(.subheadline).multilineTextAlignment(.center) }
+            if ok, let t = RetentionQuiz.nextReviewText(model.profile.flatMap { RetentionQuiz.nextReviewDays(q.itemId, profile: $0, now: Date()) }) {
+                Label(t, systemImage: "calendar").font(.subheadline)
+            }
+            if !ok { MemoryHookEditor(itemId: q.itemId) }
             Button("Next") { feedback = nil; typed = ""; if quiz?.isFinished == true { finish() } }
                 .buttonStyle(PrimaryButtonStyle())
                 .accessibilityIdentifier("rq-next")
         }
-        .onAppear { if !ok { model.say(q.word) } }
+        .onAppear {
+            if !ok { model.say(q.word) }
+            UIAccessibility.post(notification: .announcement, argument: ok ? "Correct" : "The answer is \(model.text(q.word)), \(q.meaning)")
+        }
     }
 
     private func results(_ rec: QuizRecord) -> some View {
@@ -169,7 +198,7 @@ struct RetentionQuizView: View {
 
     private func start() {
         guard let prof = model.profile, let lib = model.library else { return }
-        let q = RetentionQuiz(kind: kind, profile: prof, library: lib, now: Date(), seed: playSeed())
+        let q = RetentionQuiz(kind: kind, profile: prof, library: lib, now: Date(), seed: playSeed(), count: count)
         if q.questions.isEmpty { onDone(nil); return }
         quiz = q
     }
@@ -192,21 +221,46 @@ struct RetentionQuizView: View {
 
     private func after(_ q: RetentionQuestion, ok: Bool, first: Bool) {
         model.sfx(ok ? .correct : .retry)
-        if first { model.updateProfile { RetentionQuiz.record(q, correct: ok, profile: &$0, now: Date()) } }
+        let usedHint = quiz?.hinted.contains(q.itemId) ?? false
+        if first { model.updateProfile { RetentionQuiz.record(q, correct: ok, hinted: usedHint, profile: &$0, now: Date()) } }
+        hintShown = nil
         feedback = (ok, q)
     }
 
     private func finish() {
         guard record == nil, let qz = quiz, qz.isFinished else { return }
         record = model.finishRetentionQuiz(qz)
+        if let r = record { UIAccessibility.post(notification: .announcement, argument: "\(r.correct) of \(r.total) right") }
     }
 }
 
 struct MemoryCheckSheet: View {
+    @EnvironmentObject var model: AppModel
     @Environment(\.dismiss) var dismiss
+    @State private var length: MemoryCheckLength?
     var body: some View {
         NavigationStack {
-            RetentionQuizView(kind: .memoryCheck) { _ in dismiss() }
+            Group {
+                if let l = length {
+                    RetentionQuizView(kind: .memoryCheck, count: l.rawValue) { _ in
+                        model.updateProfile { TodayPath.mark(.memoryCheck, profile: &$0, now: Date()) }
+                        dismiss()
+                    }
+                } else {
+                    VStack(spacing: 16) {
+                        Image(systemName: "brain.head.profile").font(.system(size: 54)).accessibilityHidden(true)
+                        Text("Memory check").font(.title.bold())
+                        Text("Questions on the words that are starting to fade, so they come back stronger.")
+                            .multilineTextAlignment(.center)
+                        Button("Quick: 5 questions") { length = .short }.buttonStyle(PrimaryButtonStyle())
+                            .accessibilityIdentifier("check-5")
+                        Button("Longer: 10 questions") { length = .long }.buttonStyle(.bordered)
+                            .accessibilityIdentifier("check-10")
+                    }
+                    .padding(24)
+                    .frame(maxWidth: 600)
+                }
+            }
                 .background(ThemedBackground())
                 .navigationTitle("Memory check")
                 .navigationBarTitleDisplayMode(.inline)
@@ -239,6 +293,8 @@ struct MyProgressView: View {
                     } header: { Text("Your memory in \(model.languageName)") } footer: {
                         Text("\"Remembered now\" is the app's estimate of how many of your words you'd recall today. Words are locked in after you remember them 3 times after a break.")
                     }
+                    StreakCalendarSection()
+                    PersonalBestsSection()
                     Section("Quiz scores by week") {
                         Chart(r.weeks) { w in
                             if let avg = w.averagePercent {

@@ -67,7 +67,7 @@ struct ReviewView: View {
                         Button("Done") { dismiss() }.buttonStyle(PrimaryButtonStyle())
                     }
                     .padding(24)
-                    .onAppear { model.countPractice() }
+                    .onAppear { model.countPractice(); model.updateProfile { TodayPath.mark(.review, profile: &$0, now: Date()) } }
                 }
             }
             .navigationTitle("Review")

@@ -63,6 +63,16 @@ final class StoreService: ObservableObject {
         return out
     }
 
+    /// When the current free trial ends, if Family Plus is in its free trial (nil otherwise).
+    func trialEnd() async -> Date? {
+        guard config.paidPlansEnabled else { return nil }
+        for await result in Transaction.currentEntitlements {
+            guard case .verified(let t) = result else { continue }
+            if t.offerType == .introductory, let end = t.expirationDate, end > Date() { return end }
+        }
+        return nil
+    }
+
     /// Listens for renewals, refunds, and Ask to Buy approvals for the app's lifetime.
     func listenForTransactions(onChange: @escaping () async -> Void) async {
         await onChange()

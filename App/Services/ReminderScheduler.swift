@@ -55,6 +55,23 @@ enum ReminderScheduler {
         }
     }
 
+    static let trialId = "lq-trial-ends"
+
+    /// Schedules (or clears) the free-trial heads-up, only if notifications are already allowed: it never asks.
+    static func scheduleTrialNotice(_ at: Date?) {
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [trialId])
+        guard let at else { return }
+        center.getNotificationSettings { s in
+            guard s.authorizationStatus == .authorized || s.authorizationStatus == .provisional else { return }
+            let content = UNMutableNotificationContent()
+            content.title = "Family Plus"
+            content.body = TrialNotice.body
+            let when = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: at)
+            center.add(UNNotificationRequest(identifier: trialId, content: content, trigger: UNCalendarNotificationTrigger(dateMatching: when, repeats: false)))
+        }
+    }
+
     static func removeSmart() { UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: smartIds) }
 
     /// Removes every reminder (used when all data is deleted).
