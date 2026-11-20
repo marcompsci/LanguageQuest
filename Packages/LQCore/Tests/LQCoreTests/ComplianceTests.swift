@@ -48,8 +48,15 @@ final class ComplianceTests: XCTestCase {
         XCTAssertTrue(PrivacyNotice.dataInventory.allSatisfy { !$0.whereKept.lowercased().contains("server") })
     }
 
-    func testPaidPlansStayOffInThisBuild() {
-        XCTAssertFalse(StoreConfig.default.paidPlansEnabled, "turning purchases on needs the 3.1 checklist first")
+    /// Purchases are on in v1.0, so the 3.1.2 disclosure must say price, period, auto-renewal and how to cancel,
+    /// and learning essentials must stay free.
+    func testPurchasesOnlyWithSubscriptionDisclosures() {
+        XCTAssertTrue(StoreConfig.default.paidPlansEnabled)
+        let d = PlusOffer.disclosure(price: "$3.99", period: "month", hasTrial: true).lowercased()
+        for must in ["$3.99", "month", "renews automatically", "24 hours", "cancel", "free for 7 days"] { XCTAssertTrue(d.contains(must), must) }
+        for f in [Feature.review, .retentionChecks, .lessons(unitOrder: 1), .parentDashboard, .dataExportAndDeletion] {
+            XCTAssertTrue(FeatureGate.isAvailable(f, plan: .explorer))
+        }
     }
 }
 

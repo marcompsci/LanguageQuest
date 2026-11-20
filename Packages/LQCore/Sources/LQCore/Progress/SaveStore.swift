@@ -15,6 +15,8 @@ public struct ParentSettings: Codable, Hashable, Sendable {
     public var purchasesAllowed = false
     /// Added in v0.8: practice reminders a parent set up (local notifications only). nil = never set.
     public var reminders: ReminderPlan? = nil
+    /// Added in v1.0: a parent can block the player's own smart reminders. nil = not blocked.
+    public var remindersBlocked: Bool? = nil
     public init() {}
 }
 

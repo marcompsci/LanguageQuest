@@ -197,8 +197,8 @@ final class AssessmentFlowTests: XCTestCase {
         s.apply(to: &p, now: t0)
         XCTAssertEqual(p.assessments.last?.kind, .baseline)
         let prog = Progression(library: lib)
-        XCTAssertTrue(prog.isUnitUnlocked(lib.units[1], p.progress, plan: .explorer))
-        XCTAssertFalse(prog.isUnitUnlocked(lib.units[2], p.progress, plan: .explorer))
+        XCTAssertTrue(prog.isUnitUnlocked(lib.units[1], p.progress, plan: .familyPlus))
+        XCTAssertFalse(prog.isUnitUnlocked(lib.units[2], p.progress, plan: .familyPlus))
     }
 
     func testPlacementAllCorrectFinishesCourse() {

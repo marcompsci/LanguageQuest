@@ -24,7 +24,9 @@ public struct Progression: Sendable {
     // MARK: Unlocks
 
     public func isUnitUnlocked(_ unit: LessonUnit, _ p: CourseProgress, plan: Plan, config: StoreConfig = .default) -> Bool {
-        guard FeatureGate.isAvailable(.lessons(unitOrder: unit.order), plan: plan, config: config) else { return false }
+        // Grandfathering: a unit the player already started (or placed out of) never locks again.
+        let touched = p.placedOutUnits.contains(unit.id) || unit.quests.contains { p.startedQuests.contains($0.id) || p.completedQuests.contains($0.id) }
+        guard touched || FeatureGate.isAvailable(.lessons(unitOrder: unit.order), plan: plan, config: config) else { return false }
         if p.placedOutUnits.contains(unit.id) { return true }
         guard let prev = library.units.last(where: { $0.order < unit.order }) else { return true }
         return isUnitFinished(prev, p)

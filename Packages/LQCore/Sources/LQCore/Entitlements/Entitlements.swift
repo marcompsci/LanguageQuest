@@ -16,7 +16,7 @@ public struct StoreConfig: Codable, Hashable, Sendable {
     public var parentGateValiditySeconds: Double
 
     public static let `default` = StoreConfig(
-        paidPlansEnabled: false,
+        paidPlansEnabled: true,
         monthlyProductId: "com.phoronomics.languagequest.familyplus.monthly",
         yearlyProductId: "com.phoronomics.languagequest.familyplus.yearly",
         subscriptionGroupId: "familyplus",
@@ -44,8 +44,8 @@ public enum Feature: Hashable, Sendable {
     case extraCosmetics
     case profileSlot(index: Int)
 
-    /// Units 1–3 (the Starter Village curriculum) are always free.
-    public static let freeUnitCount = 3
+    /// Unit 1 of every language is always free (v1.0). Units a player already started stay open whatever the plan.
+    public static let freeUnitCount = 1
 
     public var isEssential: Bool {
         switch self {

@@ -16,6 +16,10 @@ public struct MetaProgress: Codable, Hashable, Sendable {
     public var weeklyClaimedWeek: String? = nil
     /// Added in v0.9: languages pinned to the top of the main menu (at most 3).
     public var pinnedCourses: [String]? = nil
+    /// Added in v1.0: the gentle streak, recent session start times (to time reminders), and which reminder messages were opened.
+    public var streak: StreakState? = nil
+    public var sessionStarts: [Date]? = nil
+    public var reminderStats: [String: TemplateStats]? = nil
     public init() {}
 }
 
@@ -143,7 +147,7 @@ public struct Achievement: Hashable, Identifiable, Sendable {
     public var detail: String
     public var icon: String
 
-    public static let all: [Achievement] = base + v08 + v09
+    public static let all: [Achievement] = base + v08 + v09 + v10
 
     static let base: [Achievement] = [
         Achievement(id: "a-first-quest", title: "First Steps", detail: "Finish your first quest.", icon: "figure.walk"),

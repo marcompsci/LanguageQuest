@@ -151,18 +151,26 @@ final class ProgressionTests: XCTestCase {
     func testFinishingUnitOneOpensUnitTwoAndExitAfterUnitThree() {
         var p = newProfile()
         for q in lib.units[0].quests { for a in q.activities { prog.complete(activity: a, outcome: .init(correct: true), profile: &p, now: t0) } }
-        XCTAssertTrue(prog.isUnitUnlocked(lib.units[1], p.progress, plan: .explorer))
+        XCTAssertFalse(prog.isUnitUnlocked(lib.units[1], p.progress, plan: .explorer), "unit 2 is Family Plus")
+        XCTAssertTrue(prog.isUnitUnlocked(lib.units[1], p.progress, plan: .familyPlus))
         XCTAssertTrue(p.rewards.badges.contains("badge-u1"))
         let exit = StarterVillage.exits[0]
         XCTAssertFalse(prog.isExitOpen(exit, p.progress))
         for u in lib.units.dropFirst() { for q in u.quests { for a in q.activities { prog.complete(activity: a, outcome: .init(correct: true), profile: &p, now: t0) } } }
         XCTAssertTrue(prog.isExitOpen(exit, p.progress))
-        XCTAssertNil(prog.nextQuest(p.progress, plan: .explorer))
+        XCTAssertNil(prog.nextQuest(p.progress, plan: .familyPlus))
         XCTAssertEqual(p.progress.completedQuests.count, 15)
     }
 
-    func testAllFreeUnitsAvailableWithoutPurchase() {
-        for u in lib.units { XCTAssertTrue(FeatureGate.isAvailable(.lessons(unitOrder: u.order), plan: .explorer)) }
+    func testUnitOneFreeLaterUnitsPlusAndStartedUnitsStayOpen() {
+        XCTAssertTrue(FeatureGate.isAvailable(.lessons(unitOrder: 1), plan: .explorer))
+        for u in lib.units.dropFirst() { XCTAssertFalse(FeatureGate.isAvailable(.lessons(unitOrder: u.order), plan: .explorer)) }
+        // Grandfathering: a unit started before v1.0 stays open without Plus.
+        var p = newProfile()
+        for q in lib.units[0].quests { p.progress.completedQuests.insert(q.id) }
+        XCTAssertFalse(prog.isUnitUnlocked(lib.units[1], p.progress, plan: .explorer))
+        p.progress.startedQuests.insert(lib.units[1].quests[0].id)
+        XCTAssertTrue(prog.isUnitUnlocked(lib.units[1], p.progress, plan: .explorer))
     }
 
     func testEveryQuestRewardExistsInCatalog() {

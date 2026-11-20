@@ -61,6 +61,8 @@ public struct LearnerSettings: Codable, Hashable, Sendable {
     /// Added in v0.9: black-and-white high-contrast colors, and the village arrow pad on the right (for left-handed play). nil = off.
     public var highContrast: Bool? = nil
     public var leftHanded: Bool? = nil
+    /// Added in v1.0: activity-timed "come back" reminders the player turned on (a parent can block them). nil = off.
+    public var smartReminders: Bool? = nil
     public var easyReadOn: Bool { easyRead ?? false }
 
     public init() {}

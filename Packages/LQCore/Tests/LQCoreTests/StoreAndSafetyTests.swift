@@ -5,15 +5,20 @@ final class PurchaseGatingTests: XCTestCase {
     let now = Date(timeIntervalSince1970: 1_800_000_000)
     var enabled: StoreConfig { var c = StoreConfig.default; c.paidPlansEnabled = true; return c }
 
-    func testPaidPlansAreOffByDefault() {
-        XCTAssertFalse(StoreConfig.default.paidPlansEnabled)
-        let tx = VerifiedTransaction(productId: StoreConfig.default.monthlyProductId, purchaseDate: now, expirationDate: now.addingTimeInterval(86_400 * 30))
-        XCTAssertEqual(EntitlementResolver.resolve([tx], config: .default, now: now).plan, .explorer)
-        XCTAssertEqual(PurchaseGate.decide(config: .default, parent: ParentSettings(), gatePassedAt: now, now: now), .plansDisabled)
+    /// v1.0: Family Plus is on, but every purchase still needs a fresh parental gate AND a parent's "Allow purchases".
+    func testPaidPlansAreOnButParentControlled() {
+        XCTAssertTrue(StoreConfig.default.paidPlansEnabled)
+        XCTAssertEqual(PurchaseGate.decide(config: .default, parent: ParentSettings(), gatePassedAt: nil, now: now), .needsParentGate)
+        XCTAssertEqual(PurchaseGate.decide(config: .default, parent: ParentSettings(), gatePassedAt: now, now: now), .purchasesNotAllowedByParent,
+                       "purchases are off until a parent allows them")
+        var off = StoreConfig.default; off.paidPlansEnabled = false
+        let tx = VerifiedTransaction(productId: off.monthlyProductId, purchaseDate: now, expirationDate: now.addingTimeInterval(86_400 * 30))
+        XCTAssertEqual(EntitlementResolver.resolve([tx], config: off, now: now).plan, .explorer)
+        XCTAssertEqual(PurchaseGate.decide(config: off, parent: ParentSettings(), gatePassedAt: now, now: now), .plansDisabled)
     }
 
     func testEssentialLearningIsNeverGated() {
-        let essential: [Feature] = [.lessons(unitOrder: 1), .lessons(unitOrder: 3), .review, .correctionFeedback, .hints,
+        let essential: [Feature] = [.lessons(unitOrder: 1), .review, .correctionFeedback, .hints,
                                     .placementTest, .retentionChecks, .parentDashboard, .dataExportAndDeletion, .accessibilitySettings]
         for f in essential {
             XCTAssertTrue(f.isEssential)
@@ -21,7 +26,8 @@ final class PurchaseGatingTests: XCTestCase {
         }
         XCTAssertFalse(FeatureGate.isAvailable(.advancedWorld, plan: .explorer, config: enabled))
         XCTAssertTrue(FeatureGate.isAvailable(.advancedWorld, plan: .familyPlus, config: enabled))
-        XCTAssertFalse(FeatureGate.isAvailable(.lessons(unitOrder: 4), plan: .explorer, config: enabled))
+        XCTAssertFalse(FeatureGate.isAvailable(.lessons(unitOrder: 2), plan: .explorer, config: enabled), "unit 2+ is Family Plus")
+        XCTAssertTrue(FeatureGate.isAvailable(.lessons(unitOrder: 2), plan: .familyPlus, config: enabled))
     }
 
     func testProfileSlots() throws {
@@ -62,7 +68,8 @@ final class PurchaseGatingTests: XCTestCase {
         // Offline: cached snapshot honoured until expiry, then lapses to free (learning keeps working).
         XCTAssertEqual(EntitlementResolver.effectivePlan(s, config: c, now: now), .familyPlus)
         XCTAssertEqual(EntitlementResolver.effectivePlan(s, config: c, now: now.addingTimeInterval(month * 2)), .explorer)
-        XCTAssertEqual(EntitlementResolver.effectivePlan(s, config: .default, now: now), .explorer)
+        var off = StoreConfig.default; off.paidPlansEnabled = false
+        XCTAssertEqual(EntitlementResolver.effectivePlan(s, config: off, now: now), .explorer)
     }
 
     func testPurchaseNeedsFreshParentGateAndParentPermission() {

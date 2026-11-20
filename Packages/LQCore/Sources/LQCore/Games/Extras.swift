@@ -22,6 +22,8 @@ public struct ExtrasProgress: Codable, Hashable, Sendable {
     public var listenBest: Int? = nil
     public var rightOrWrongBest: Int? = nil
     public var wordNotes: [String: String]? = nil
+    /// Added in v1.0: every lesson quiz and memory check (most recent 300).
+    public var quizHistory: [QuizRecord]? = nil
     public init() {}
 }
 

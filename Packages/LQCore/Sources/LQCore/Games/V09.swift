@@ -347,7 +347,7 @@ extension Achievement {
         case "a-starred": return prog(StarredWords.totalStarred(p), 5)
         case "a-notes": return prog(WordNotes.total(p), 3)
         case "a-replay": return prog(c[MetaEvent.replayedChat] ?? 0, 3)
-        default: return nil
+        default: return progressV10(p, now: Date())
         }
     }
 
@@ -365,7 +365,7 @@ extension Achievement {
         case "a-sharp": return (c[MetaEvent.rightOrWrongPerfect] ?? 0) >= 1
         case "a-notes": return WordNotes.total(p) >= 3
         case "a-replay": return (c[MetaEvent.replayedChat] ?? 0) >= 3
-        default: return nil
+        default: return isMetV10(p, now: Date())
         }
     }
 }
