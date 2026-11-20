@@ -35,6 +35,8 @@ public enum Catalog {
         Cosmetic(id: "chef-hat", name: "Chef hat", spanishName: "el gorro de chef", slot: .hat, plusOnly: false),
         Cosmetic(id: "coin-pin", name: "Coin pin", spanishName: "el broche de moneda", slot: .accessory, plusOnly: false),
         Cosmetic(id: "hat-sun", name: "Sun hat", spanishName: "el sombrero de sol", slot: .hat, plusOnly: false),
+        Cosmetic(id: "scarf-flame", name: "Flame scarf (7-day streak)", spanishName: "la bufanda de fuego", slot: .accessory, plusOnly: false),
+        Cosmetic(id: "laurel-gold", name: "Golden laurel (30-day streak)", spanishName: "el laurel dorado", slot: .hat, plusOnly: false),
         Cosmetic(id: "cape-night", name: "Night cape", spanishName: "la capa de noche", slot: .accessory, plusOnly: true),
         Cosmetic(id: "helmet-star", name: "Star helmet", spanishName: "el casco de estrellas", slot: .hat, plusOnly: true),
     ]

@@ -49,6 +49,8 @@ public enum RetentionQuestionKind: String, Codable, Sendable {
     case pickWord
     /// See the meaning, type the word (production: the strongest memory boost).
     case typeIt
+    /// A sentence with the word blanked out: pick the word that fits (v1.1).
+    case cloze
 }
 
 public struct RetentionQuestion: Hashable, Sendable, Identifiable {
@@ -63,11 +65,14 @@ public struct RetentionQuestion: Hashable, Sendable, Identifiable {
     public var answerIndex: Int
     /// Why this word was chosen, shown after answering.
     public var reason: String
+    /// For cloze questions: the sentence with a blank, and its English (v1.1).
+    public var context: String? = nil
+    public var contextEnglish: String? = nil
 
     public var track: PracticeTrack {
         switch kind {
         case .meaning, .listen: return .comprehension
-        case .pickWord: return .guidedProduction
+        case .pickWord, .cloze: return .guidedProduction
         case .typeIt: return .spontaneousProduction
         }
     }
@@ -90,6 +95,8 @@ public struct RetentionQuiz: Sendable {
     public private(set) var relearned: Set<String> = []
     /// Retries per word; after 2 missed retries the word moves on to the reviews instead (no endless loop).
     public private(set) var retries: [String: Int] = [:]
+    /// Questions where a hint was used (v1.1): a right answer then doesn't count as a first-try point.
+    public internal(set) var hinted: Set<String> = []
     public static let maxRetries = 2
 
     /// Priority = how close a word is to being forgotten (half-life model), how often it was missed,
@@ -108,7 +115,8 @@ public struct RetentionQuiz: Sendable {
         return quest.activities.flatMap(\.items).filter { seen.insert($0).inserted }
     }
 
-    public init(kind: RetentionQuizKind, profile p: PlayerProfile, library: ContentLibrary, now: Date, seed: UInt64) {
+    public init(kind: RetentionQuizKind, profile p: PlayerProfile, library: ContentLibrary, now: Date, seed: UInt64, count: Int = RetentionQuiz.size) {
+        let size = max(1, min(count, 10))
         self.kind = kind
         var rng = SeededRandom(seed: seed)
         let v = p.variant(for: library)
@@ -129,22 +137,22 @@ public struct RetentionQuiz: Sendable {
         }
         // Small courses: top up from the units reached so there are always 5 questions when possible.
         var usableAll = usable
-        if usableAll.count < Self.size {
-            for item in p.reachedUnits(library).flatMap(\.allItems) where usableAll.count < Self.size && !usableAll.contains(item.id) {
+        if usableAll.count < size {
+            for item in p.reachedUnits(library).flatMap(\.allItems) where usableAll.count < size && !usableAll.contains(item.id) {
                 let t = item.target.text(for: v)
                 if !t.contains("…") && !t.contains("{") && t.count <= 40 { usableAll.append(item.id) }
             }
         }
         let ranked = usableAll.map { ($0, Self.priority($0, profile: p, lessonItems: lessonSet, now: now) + Double.random(in: 0..<0.05, using: &rng)) }
             .sorted { $0.1 > $1.1 }.map(\.0)
-        var picks = Array(ranked.prefix(Self.size))
+        var picks = Array(ranked.prefix(size))
         // A lesson quiz is mostly about the lesson: at least 3 of its words when it has them.
         if case .lesson = kind {
             let fromLesson = picks.filter { lessonSet.contains($0) }.count
             if fromLesson < 3 {
                 let extra = ranked.filter { lessonSet.contains($0) && !picks.contains($0) }.prefix(3 - fromLesson)
                 picks = picks.filter { lessonSet.contains($0) } + Array(extra) + picks.filter { !lessonSet.contains($0) }
-                picks = Array(picks.prefix(Self.size))
+                picks = Array(picks.prefix(size))
             }
         }
         // Easier to harder (recognition, listening, then producing the word), mixed across words (interleaving).
@@ -159,7 +167,13 @@ public struct RetentionQuiz: Sendable {
             else if let r, r < 0.5 { reason = "Starting to fade" }
             else if (k?.comprehension.lapses ?? 0) + (k?.production.lapses ?? 0) > 0 { reason = "Missed before" }
             else { reason = "Keep it fresh" }
-            return Self.question(item, kind: kinds[n % kinds.count], variant: v, distractors: distractorPool, reason: reason, rng: &rng)
+            var qk = kinds[n % kinds.count]
+            // Memory checks put picking-the-word questions in a sentence when one is available (retrieval in context).
+            var cloze: (text: String, english: String)? = nil
+            if case .memoryCheck = kind, qk == .pickWord, let c = Cloze.sentence(for: item, profile: p, library: library) { cloze = c; qk = .cloze }
+            var q = Self.question(item, kind: qk == .cloze ? .pickWord : qk, variant: v, distractors: distractorPool, reason: reason, rng: &rng)
+            if let c = cloze { q.kind = .cloze; q.context = c.text; q.contextEnglish = c.english }
+            return q
         }
     }
 
@@ -175,7 +189,7 @@ public struct RetentionQuiz: Sendable {
             opts.shuffle(using: &rng)
             return RetentionQuestion(itemId: item.id, kind: kind, word: item.target, meaning: item.english, options: opts,
                                      optionTexts: nil, answerIndex: opts.firstIndex(of: item.english) ?? 0, reason: reason)
-        case .pickWord:
+        case .pickWord, .cloze:
             var words = [item.target]
             for o in others where words.count < 4 && !words.contains(where: { AnswerChecker.normalize($0.text(for: v)) == AnswerChecker.normalize(o.target.text(for: v)) }) {
                 words.append(o.target)
@@ -211,7 +225,7 @@ public struct RetentionQuiz: Sendable {
             ok = choice == q.answerIndex
         }
         if index < questions.count {
-            firstTry[q.itemId] = ok
+            firstTry[q.itemId] = ok && !hinted.contains(q.itemId)
             index += 1
             // A missed word comes back at the end as a multiple-choice retry (easier, with the answer fresh from feedback).
             if !ok {
@@ -235,8 +249,8 @@ public struct RetentionQuiz: Sendable {
     }
 
     /// Records each answer in the memory model.
-    public static func record(_ q: RetentionQuestion, correct ok: Bool, profile p: inout PlayerProfile, now: Date) {
-        PracticeRecorder.record(itemId: q.itemId, outcome: ReviewOutcome(correct: ok), track: q.track, profile: &p, now: now)
+    public static func record(_ q: RetentionQuestion, correct ok: Bool, hinted: Bool = false, profile p: inout PlayerProfile, now: Date) {
+        PracticeRecorder.record(itemId: q.itemId, outcome: ReviewOutcome(correct: ok, usedHint: hinted), track: q.track, profile: &p, now: now)
     }
 
     /// Saves the result to the quiz history and counts it for the streak. Returns the record and any streak milestone reached.
@@ -257,6 +271,7 @@ public struct RetentionQuiz: Sendable {
             if questId == nil { m.counters[MetaEvent.memoryCheckDone, default: 0] += 1 }
         }
         let milestone = Streak.recordPractice(&p, now: now)
+        if let m = milestone { StreakRewards.grant(m, profile: &p) }
         return (rec, milestone)
     }
 }
@@ -623,7 +638,7 @@ extension Achievement {
         case "a-quizace": return (c[MetaEvent.lessonQuizPerfect] ?? 0) >= 5
         case "a-lockedin": return p.allCourseStates.reduce(0) { $0 + $1.knowledge.values.filter { RecallModel.isLockedIn($0, now: now) }.count } >= 10
         case "a-check5": return (c[MetaEvent.memoryCheckDone] ?? 0) >= 5
-        default: return nil
+        default: return isMetV11(p, now: now)
         }
     }
 
@@ -635,7 +650,7 @@ extension Achievement {
         case "a-quizace": return prog(c[MetaEvent.lessonQuizPerfect] ?? 0, 5)
         case "a-lockedin": return prog(p.allCourseStates.reduce(0) { $0 + $1.knowledge.values.filter { RecallModel.isLockedIn($0, now: now) }.count }, 10)
         case "a-check5": return prog(c[MetaEvent.memoryCheckDone] ?? 0, 5)
-        default: return nil
+        default: return progressV11(p, now: now)
         }
     }
 }

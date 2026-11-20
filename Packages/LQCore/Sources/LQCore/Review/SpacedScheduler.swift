@@ -142,10 +142,13 @@ public struct ItemKnowledge: Codable, Hashable, Sendable {
     public var production: MemoryState
     public var spontaneousCorrect: Int = 0
     public var spontaneousDelayedCorrect: Int = 0
+    /// Added in v1.1: when the word was first met (nil in older saves).
+    public var firstSeen: Date? = nil
 
     public init(now: Date) {
         comprehension = MemoryState(due: now)
         production = MemoryState(due: now)
+        firstSeen = now
     }
 
     public mutating func record(_ o: ReviewOutcome, track: PracticeTrack, now: Date) {

@@ -21,6 +21,10 @@ public struct MetaProgress: Codable, Hashable, Sendable {
     public var sessionStarts: [Date]? = nil
     public var reminderStats: [String: TemplateStats]? = nil
     public var plannedReminders: [PlannedReminder]? = nil
+    /// Added in v1.1: today's path ticks, and the weekly recap the player closed.
+    public var pathDay: String? = nil
+    public var pathDone: [String]? = nil
+    public var recapDismissed: String? = nil
     public init() {}
 }
 
@@ -148,7 +152,7 @@ public struct Achievement: Hashable, Identifiable, Sendable {
     public var detail: String
     public var icon: String
 
-    public static let all: [Achievement] = base + v08 + v09 + v10
+    public static let all: [Achievement] = base + v08 + v09 + v10 + v11
 
     static let base: [Achievement] = [
         Achievement(id: "a-first-quest", title: "First Steps", detail: "Finish your first quest.", icon: "figure.walk"),
