@@ -24,6 +24,7 @@ struct MenuView: View {
                         explorerCard(prof)
                         RecentLessonView()
                         bonusCard(prof)
+                        StreakCard()
                         DailyChallengesCard()
                         WeeklyGoalCard()
                         PinnedLanguagesCard()
@@ -157,6 +158,7 @@ struct LanguageHubView: View {
                         .buttonStyle(PrimaryButtonStyle())
                         .accessibilityLabel("Play: \(s.language) village")
                         .accessibilityIdentifier("playButton")
+                        WelcomeBackCard()
                         todayCard(prof)
                         WordOfTheDayCard()
                         LazyVGrid(columns: columns, spacing: 12) {
@@ -169,6 +171,8 @@ struct LanguageHubView: View {
                             MenuTile(icon: "pencil.and.scribble", title: "Write Out", id: "menu-writeout") { model.sheet = .writeOut }
                             MenuTile(icon: "books.vertical.fill", title: "Word Library", id: "menu-words") { model.sheet = .words }
                             MenuTile(icon: "checklist", title: "Unit quizzes", id: "menu-quizzes") { model.sheet = .quizzes }
+                            MenuTile(icon: "brain.head.profile", title: "Memory check", id: "menu-memorycheck") { model.sheet = .memoryCheck }
+                            MenuTile(icon: "chart.line.uptrend.xyaxis", title: "My progress", id: "menu-progress") { model.sheet = .myProgress }
                         }
                         UnitMapCard()
                     }
@@ -221,6 +225,8 @@ struct HamburgerMenu: View {
             Button { model.sheet = .review } label: { Label("Review", systemImage: "arrow.triangle.2.circlepath") }
             Button { model.sheet = .phrasebook } label: { Label("Phrasebook", systemImage: "character.book.closed.fill") }
             Button { model.sheet = .words } label: { Label("Word Library", systemImage: "books.vertical.fill") }
+            Button { model.sheet = .myProgress } label: { Label("My progress", systemImage: "chart.line.uptrend.xyaxis") }
+            Button { model.sheet = .plus } label: { Label("Family Plus", systemImage: "star.circle") }
             Button { model.sheet = .writeOut } label: { Label("Write Out", systemImage: "pencil.and.scribble") }
             Button { model.sheet = .mistakes } label: { Label("Mistakes notebook", systemImage: "exclamationmark.bubble") }
             Button { model.sheet = .trophies } label: { Label("Trophies", systemImage: "trophy.fill") }

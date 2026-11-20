@@ -39,6 +39,9 @@ struct SheetRouter: View {
         case .quizzes: QuizzesView()
         case .listenType: ListenTypeView()
         case .rightOrWrong: RightOrWrongView()
+        case .memoryCheck: MemoryCheckSheet()
+        case .myProgress: MyProgressView()
+        case .plus: PlusPaywallView()
         }
     }
 }
@@ -143,6 +146,7 @@ struct PlayerSettingsView: View {
                         Toggle("Arrow pad on the right (left-handed)", isOn: Binding(get: { (model.profile ?? prof).settings.leftHandedOn },
                                                                                  set: { v in model.updateProfile { $0.settings.leftHanded = v } }))
                             .accessibilityIdentifier("leftHandedToggle")
+                        SmartRemindersToggle()
                     }
                     Section { EmptyView() } footer: {
                         Text("Break reminders, speech checking, purchases and deleting data are in the Parents area.")

@@ -67,6 +67,7 @@ struct ReviewView: View {
                         Button("Done") { dismiss() }.buttonStyle(PrimaryButtonStyle())
                     }
                     .padding(24)
+                    .onAppear { model.countPractice() }
                 }
             }
             .navigationTitle("Review")

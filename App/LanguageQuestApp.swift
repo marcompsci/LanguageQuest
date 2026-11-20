@@ -1,4 +1,5 @@
 import SwiftUI
+import UserNotifications
 import LQCore
 
 @main
@@ -79,6 +80,11 @@ struct RootView: View {
 /// The app stays portrait except while writing (Write Out), where landscape gives a bigger canvas.
 final class OrientationDelegate: NSObject, UIApplicationDelegate {
     static var mask: UIInterfaceOrientationMask = .portrait
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        UNUserNotificationCenter.current().delegate = ReminderTapDelegate.shared
+        return true
+    }
 
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         // iPad apps support every orientation (multitasking and resizable windows); the portrait lock is iPhone only.

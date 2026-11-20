@@ -146,6 +146,7 @@ struct ParentDashboardView: View {
                 settingsSection(prof, lib)
                 speechSection
                 ParentRemindersSection()
+                Section { ParentBlockRemindersToggle() } footer: { Text("Explorers can turn on come-back reminders timed to when they usually play. Turn this on to stop them.") }
                 pinSection
                 privacySection(prof)
                 planSection
@@ -376,26 +377,15 @@ struct ParentDashboardView: View {
 
     private var planSection: some View {
         Section {
-            let decision = PurchaseGate.decide(config: model.storeConfig, parent: model.save.parent, gatePassedAt: gatePassedAt, now: Date())
-            if decision == .plansDisabled {
-                Text("Everything in this version is free: every language, game and review. There are no purchases in this version.")
-            } else {
-                Toggle("Allow purchases", isOn: Binding(get: { model.save.parent.purchasesAllowed },
-                                                       set: { v in model.updateParent { $0.purchasesAllowed = v } }))
-                ForEach(model.store.products, id: \.id) { product in
-                    Button("\(product.displayName): \(product.displayPrice)") {
-                        guard PurchaseGate.decide(config: model.storeConfig, parent: model.save.parent, gatePassedAt: gatePassedAt, now: Date()) == .allowed else {
-                            gatePassedAt = nil   // ask for the gate again
-                            return
-                        }
-                        Task { _ = await model.store.purchase(product); await model.refreshEntitlements() }
-                    }
-                }
-                Button("Restore purchases") { Task { await model.store.restore(); await model.refreshEntitlements() } }
-                Text("Cancel any time in Settings > your name > Subscriptions. Learning essentials stay free.").font(.caption)
-            }
-        } header: { Text("Family Plus") }
-        .task { await model.store.loadProducts() }
+            Text(model.plan == .familyPlus ? "Family Plus is active." : "Free plan: Unit 1 of every language, every starter course, reviews, quizzes and memory checks.")
+            Toggle("Allow purchases", isOn: Binding(get: { model.save.parent.purchasesAllowed },
+                                                   set: { v in model.updateParent { $0.purchasesAllowed = v } }))
+                .accessibilityIdentifier("parentAllowPurchases")
+            Button("See Family Plus") { model.sheet = .plus }
+                .accessibilityIdentifier("parentSeePlus")
+        } header: { Text("Family Plus") } footer: {
+            Text("Purchases need this switch on and the parent question answered each time. Cancel any time in Settings › your name › Subscriptions.")
+        }
     }
 
     // MARK: Bindings

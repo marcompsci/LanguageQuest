@@ -207,7 +207,33 @@ except Exception as e:  # noqa: BLE001
 ent = read("Packages/LQCore/Sources/LQCore/Entitlements/Entitlements.swift")
 paid = re.search(r"paidPlansEnabled:\s*true", ent) is not None
 if paid:
-    add("FAIL", "Paid plans enabled", "complete the 3.1 checklist in docs/apple-compliance-report.md (Terms/EULA + privacy links in the purchase UI, IAP products in App Store Connect, restore tested) and then update this check")
+    # Guideline 3.1.1 / 3.1.2(c) / 1.3 + 5.1.4 (kids): what the purchase screen must have. Each item is checked in code.
+    pay = read("App/Views/V10Views.swift")
+    sk = json.load(open(os.path.join(ROOT, "App/Resources/LanguageQuest.storekit")))
+    sk_ids = {s["productID"] for g in sk.get("subscriptionGroups", []) for s in g["subscriptions"]}
+    code_ids = set(re.findall(r'(com\.phoronomics\.languagequest\.[\w.]+)"', ent))
+    settings_src = read("Packages/LQCore/Sources/LQCore/Progress/SaveStore.swift")
+    v10 = read("Packages/LQCore/Sources/LQCore/Games/V10.swift")
+    checks = {
+        "uses StoreKit (Apple In-App Purchase only)": "store.purchase(" in pay and not uses(r"stripe|paypal|braintree|/checkout"),
+        "Restore purchases button": "Restore purchases" in pay,
+        "Terms of Use (EULA) link": "stdeula" in pay or "Terms of Use" in pay,
+        "Privacy policy link": "Privacy policy" in pay,
+        "price, period, auto-renewal and cancel text": all(w in v10 for w in ["renews automatically", "24 hours", "cancel"]),
+        "parental gate before the offer": "ParentGateView" in pay and "PINGateView" in pay,
+        "parent's Allow purchases switch, off by default": re.search(r"purchasesAllowed\s*=\s*false", settings_src) is not None,
+        "every product id is in the StoreKit test file": code_ids <= sk_ids and len(code_ids) >= 1,
+        "learning essentials stay free (review, quizzes, unit 1)": "case .review, .correctionFeedback, .hints, .placementTest, .retentionChecks" in ent,
+    }
+    bad = [k for k, ok in checks.items() if not ok]
+    add("FAIL" if bad else "PASS", "Family Plus purchase screen meets 3.1.1/3.1.2(c)",
+        ("missing: " + "; ".join(bad)) if bad else "; ".join(checks.keys()))
+    add("WARN", "3.1.2(a) subscription 'ongoing value'",
+        "App Review has rejected subscriptions that only unlock features. Describe Family Plus as an ongoing course service "
+        "(new units added over time) in the review notes, and keep adding content; a one-time unlock is the fallback.")
+    add("MANUAL", "In-App Purchase products in App Store Connect",
+        f"create {', '.join(sorted(code_ids))} in one subscription group with the 1-week free trial, sign the Paid Apps agreement, "
+        "add tax/banking, add a review screenshot for each product, and submit them with the build")
 else:
     add("PASS", "Purchases off in this build", "StoreConfig.default.paidPlansEnabled == false; no purchase UI reachable")
 
@@ -221,9 +247,15 @@ if notif:
     if remote: problems.append(f"remote push in {', '.join(remote)} (policy says local only)")
     if "notification" not in policy_txt: problems.append("privacy policy doesn't mention notifications")
     callers = uses(r"ReminderScheduler\.requestPermission")
-    if any("ParentAreaView" not in c and "V08Views" not in c for c in callers): problems.append(f"permission asked outside the parent area: {callers}")
-    add("FAIL" if problems else "PASS", "Notifications are local, parent-enabled and disclosed",
-        "; ".join(problems) if problems else f"local only; permission asked from the parent area ({', '.join(asks)})")
+    # v1.0: the player may turn on their own come-back reminders, but a parent must be able to block them.
+    allowed = {"App/Views/ParentAreaView.swift", "App/Views/V08Views.swift", "App/Views/V10Views.swift"}
+    if any(c not in allowed for c in callers): problems.append(f"permission asked from an unexpected place: {callers}")
+    v10v = read("App/Views/V10Views.swift")
+    if "ReminderScheduler.requestPermission" in v10v and "remindersBlocked" not in v10v: problems.append("player reminder switch ignores the parent's block")
+    quiet = re.search(r"latestHour\s*=\s*(\d+)", read("Packages/LQCore/Sources/LQCore/Games/V10.swift"))
+    if not quiet or int(quiet.group(1)) > 21: problems.append("smart reminders need quiet hours (none after 9 pm)")
+    add("FAIL" if problems else "PASS", "Notifications are local, parent-controllable, quiet at night and disclosed",
+        "; ".join(problems) if problems else f"local only; asked when a parent or the player turns them on ({', '.join(asks)}); parent can block; none after {quiet.group(1)}:30")
 else:
     add("PASS", "Notifications", "not used")
 

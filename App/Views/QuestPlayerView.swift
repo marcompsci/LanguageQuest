@@ -12,6 +12,9 @@ struct QuestPlayerView: View {
     @State private var xpEarned = 0
     @State private var reward: ActivityCompletion?
     @State private var showIntro = true
+    /// v1.0: every finished lesson ends with a 5-question quiz on what matters most to remember.
+    @State private var quizDone = false
+    @State private var quizScore: QuizRecord?
 
     private var entry: (unit: LessonUnit, quest: Quest)? { model.library?.quest(questId) }
 
@@ -33,6 +36,8 @@ struct QuestPlayerView: View {
                                     .id(a.id)
                             }
                         }
+                    } else if !quizDone {
+                        RetentionQuizView(kind: .lesson(questId: e.quest.id)) { rec in quizScore = rec; quizDone = true }
                     } else {
                         finish(e.quest)
                     }
@@ -86,6 +91,7 @@ struct QuestPlayerView: View {
                 .onAppear { model.sfx(.reward) }
             Text("Quest complete: \(q.title)").font(.title3)
             Text("+\(xpEarned) XP").font(.title2.bold())
+            if let q = quizScore { Label("Lesson quiz: \(q.correct) of \(q.total)", systemImage: "checkmark.seal").font(.headline) }
             if let c = reward?.cosmeticUnlocked, let item = Catalog.cosmetic(c) {
                 Card { Label(model.activeCourseId == "en-es" ? "New item: \(item.name) (\(item.spanishName))" : "New item: \(item.name)", systemImage: "gift.fill") }
             }

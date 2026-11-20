@@ -84,7 +84,7 @@ final class V10Tests: XCTestCase {
         XCTAssertEqual(quiz.correctCount, quiz.total - 1, "the score counts first tries")
         XCTAssertEqual(quiz.missedIds, [first.itemId])
         let rec = RetentionQuiz.finish(quiz, profile: &p, library: lib, now: t0)
-        XCTAssertEqual(rec.percent, 80)
+        XCTAssertEqual(rec.record.percent, 80)
         XCTAssertEqual(p.extrasOrEmpty.quizHistory?.count, 1)
         XCTAssertEqual(Streak.state(p).current, 1, "a finished quiz counts for the streak")
     }
@@ -203,6 +203,16 @@ final class V10Tests: XCTestCase {
         let rested = SmartReminders.pick([.any], stats: stats, at: t0, used: ["friend"])
         XCTAssertNotEqual(rested.id, "friend", "a message used last time rests")
         XCTAssertEqual(SmartReminders.pick([.dueWords], stats: [:], at: t0, used: []).id, "due")
+        // Only reminders whose time passed count as sent; tapping one counts as opened.
+        var p = PlayerProfile(nickname: "", ageBand: .age13to15, variant: "es-MX", now: t0)
+        let plan = [PlannedReminder(date: t0.addingTimeInterval(3600), templateId: "due", body: "x"),
+                    PlannedReminder(date: t0.addingTimeInterval(86400 * 3), templateId: "friend", body: "y")]
+        SmartReminders.storePlan(plan, profile: &p, now: t0)
+        SmartReminders.storePlan([], profile: &p, now: t0.addingTimeInterval(7200))
+        XCTAssertEqual(p.metaOrEmpty.reminderStats?["due"]?.sent, 1)
+        XCTAssertNil(p.metaOrEmpty.reminderStats?["friend"])
+        SmartReminders.noteOpened("due", profile: &p)
+        XCTAssertEqual(p.metaOrEmpty.reminderStats?["due"]?.opened, 1)
     }
 
     // 7. Plus

@@ -235,9 +235,9 @@ public struct RetentionQuiz: Sendable {
         PracticeRecorder.record(itemId: q.itemId, outcome: ReviewOutcome(correct: ok), track: q.track, profile: &p, now: now)
     }
 
-    /// Saves the result to the quiz history and counts it for the streak.
+    /// Saves the result to the quiz history and counts it for the streak. Returns the record and any streak milestone reached.
     @discardableResult
-    public static func finish(_ quiz: RetentionQuiz, profile p: inout PlayerProfile, library: ContentLibrary, now: Date) -> QuizRecord {
+    public static func finish(_ quiz: RetentionQuiz, profile p: inout PlayerProfile, library: ContentLibrary, now: Date) -> (record: QuizRecord, streakMilestone: Int?) {
         var questId: String? = nil
         if case .lesson(let q) = quiz.kind { questId = q }
         let rec = QuizRecord(date: now, courseId: library.course.id, isLesson: questId != nil, questId: questId,
@@ -252,8 +252,8 @@ public struct RetentionQuiz: Sendable {
             if questId != nil && quiz.total > 0 && quiz.correctCount == quiz.total { m.counters[MetaEvent.lessonQuizPerfect, default: 0] += 1 }
             if questId == nil { m.counters[MetaEvent.memoryCheckDone, default: 0] += 1 }
         }
-        Streak.recordPractice(&p, now: now)
-        return rec
+        let milestone = Streak.recordPractice(&p, now: now)
+        return (rec, milestone)
     }
 }
 
@@ -438,7 +438,7 @@ public struct TemplateStats: Codable, Hashable, Sendable {
     public init() {}
 }
 
-public struct PlannedReminder: Hashable, Sendable {
+public struct PlannedReminder: Codable, Hashable, Sendable {
     public var date: Date
     public var templateId: String
     public var body: String
@@ -484,11 +484,17 @@ public enum SmartReminders {
         p.updateMeta { m in var st = m.reminderStats ?? [:]; st[templateId, default: TemplateStats()].opened += 1; m.reminderStats = st }
     }
 
-    public static func noteSent(_ planned: [PlannedReminder], profile p: inout PlayerProfile) {
+    /// Replaces the stored plan. Reminders from the old plan whose time has passed were delivered,
+    /// so they count as "sent" (the rest were never shown and don't count).
+    public static func storePlan(_ planned: [PlannedReminder], profile p: inout PlayerProfile, now: Date) {
         p.updateMeta { m in
             var st = m.reminderStats ?? [:]
-            for r in planned { st[r.templateId, default: TemplateStats()].sent += 1; st[r.templateId]?.lastSent = r.date }
+            for r in (m.plannedReminders ?? []) where r.date <= now {
+                st[r.templateId, default: TemplateStats()].sent += 1
+                st[r.templateId]?.lastSent = r.date
+            }
             m.reminderStats = st
+            m.plannedReminders = planned
         }
     }
 
@@ -544,7 +550,7 @@ public enum PlusOffer {
     /// Shown on the paywall. Everything needed to learn and remember stays free.
     public static let benefits = [
         "Units 2 and 3 of Spanish, French and Japanese (and new units as they're added)",
-        "Extra games: Memory Match, Market Rush and the Speed duel",
+        "Extra games: Memory Match and the Speed duel (Market Rush comes with Unit 3)",
         "Up to 4 explorers on this device",
     ]
     public static let alwaysFree = [
@@ -565,7 +571,7 @@ public enum PlusOffer {
 
 extension Feature {
     /// Plus-only games.
-    public static let plusGames: Set<String> = ["memory", "market", "speedDuel"]
+    public static let plusGames: Set<String> = ["memory", "speedDuel"]
 }
 
 extension FeatureGate {

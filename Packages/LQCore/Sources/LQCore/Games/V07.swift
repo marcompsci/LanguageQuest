@@ -20,6 +20,7 @@ public struct MetaProgress: Codable, Hashable, Sendable {
     public var streak: StreakState? = nil
     public var sessionStarts: [Date]? = nil
     public var reminderStats: [String: TemplateStats]? = nil
+    public var plannedReminders: [PlannedReminder]? = nil
     public init() {}
 }
 

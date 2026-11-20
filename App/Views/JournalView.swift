@@ -49,7 +49,16 @@ struct JournalView: View {
                                 if !unlocked { Image(systemName: "lock.fill").accessibilityLabel("Locked") }
                             }
                         } footer: {
-                            if !unlocked { Text("Finish the unit before to open this one, or take the placement test.") }
+                            if !unlocked {
+                                if !FeatureGate.isAvailable(.lessons(unitOrder: u.order), plan: model.plan, config: model.storeConfig) {
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        Text("Unit \(u.order) is part of Family Plus. Unit 1, reviews and quizzes are always free.")
+                                        PlusLockLabel(text: "Ask a parent about Family Plus")
+                                    }
+                                } else {
+                                    Text("Finish the unit before to open this one, or take the placement test.")
+                                }
+                            }
                         }
                     }
                     Section {

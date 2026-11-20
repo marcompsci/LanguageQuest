@@ -220,7 +220,9 @@ struct UnitMapCard: View {
                             HStack {
                                 Text("Unit \(u.order): \(u.title)").font(.subheadline.bold())
                                 Spacer()
-                                if !u.unlocked { Image(systemName: "lock.fill").font(.caption).accessibilityHidden(true) }
+                                if !u.unlocked && !FeatureGate.isAvailable(.lessons(unitOrder: u.order), plan: model.plan, config: model.storeConfig) {
+                                    PlusLockLabel(text: "Plus")
+                                } else if !u.unlocked { Image(systemName: "lock.fill").font(.caption).accessibilityHidden(true) }
                             }
                             bar(u.fractionDone, color: Color(p.accent))
                             Text(detail(u)).font(.caption).foregroundStyle(Color(p.secondaryText))

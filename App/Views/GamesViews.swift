@@ -70,8 +70,10 @@ struct GamesHubView: View {
                             gameRow(icon: "ear", title: "Echo", detail: "Hear a word, pick how it's written", locked: false)
                         }
                         .accessibilityIdentifier("echoGame")
-                        Button { model.sheet = .memory } label: {
-                            gameRow(icon: "square.grid.3x2.fill", title: "Memory Match", detail: "Pair words with their meanings", locked: false)
+                        Button { model.sheet = FeatureGate.isGameAvailable("memory", plan: model.plan, config: model.storeConfig) ? .memory : .plus } label: {
+                            gameRow(icon: "square.grid.3x2.fill", title: "Memory Match",
+                                    detail: FeatureGate.isGameAvailable("memory", plan: model.plan, config: model.storeConfig) ? "Pair words with their meanings" : "Family Plus",
+                                    locked: !FeatureGate.isGameAvailable("memory", plan: model.plan, config: model.storeConfig))
                         }
                         .accessibilityIdentifier("memoryGame")
                         Button { model.sheet = .bee } label: {
@@ -208,6 +210,9 @@ struct BattleView: View {
             }
             .buttonStyle(SecondaryButtonStyle())
             .accessibilityIdentifier("duelClassic")
+            if !FeatureGate.isGameAvailable("speedDuel", plan: model.plan, config: model.storeConfig) {
+                PlusLockLabel(text: "⚡ Speed duel: Family Plus")
+            } else {
             Button { mode = .speed; setup() } label: {
                 VStack(spacing: 4) {
                     Text("⚡ Speed duel").font(.headline)
@@ -217,6 +222,7 @@ struct BattleView: View {
             }
             .buttonStyle(PrimaryButtonStyle())
             .accessibilityIdentifier("duelSpeed")
+            }
         }
         .padding(24)
     }

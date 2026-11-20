@@ -40,6 +40,9 @@ final class AppModel: ObservableObject {
         case quizzes
         case listenType
         case rightOrWrong
+        case memoryCheck
+        case myProgress
+        case plus
         var id: String {
             switch self {
             case .quest(let q): return "quest-\(q)"
@@ -74,6 +77,9 @@ final class AppModel: ObservableObject {
             case .quizzes: return "quizzes"
             case .listenType: return "listenType"
             case .rightOrWrong: return "rightOrWrong"
+            case .memoryCheck: return "memoryCheck"
+            case .myProgress: return "myProgress"
+            case .plus: return "plus"
             }
         }
     }
@@ -275,6 +281,7 @@ final class AppModel: ObservableObject {
         save.activeProfile = p
         persist()
         record(.activity)
+        if r.questCompleted != nil { countPractice() }
         return r
     }
 
@@ -360,6 +367,39 @@ final class AppModel: ObservableObject {
     }
 
     /// Unlocks achievements and shows a level-up when XP crossed a level.
+    // MARK: v1.0: practice, quizzes, streak and reminders
+
+    /// Counts a real practice for the streak and celebrates milestones.
+    func countPractice() {
+        var reached: Int?
+        updateProfile { reached = Streak.recordPractice(&$0, now: Date()) }
+        if let m = reached { celebrate(Celebration(icon: "flame.fill", title: "\(m)-day streak!", detail: "Little and often is how memories stick.")) }
+        checkMilestones()
+    }
+
+    /// Saves a finished lesson quiz or memory check (history, streak, achievements).
+    func finishRetentionQuiz(_ quiz: RetentionQuiz) -> QuizRecord? {
+        guard let lib = library else { return nil }
+        var out: (record: QuizRecord, streakMilestone: Int?)?
+        updateProfile { out = RetentionQuiz.finish(quiz, profile: &$0, library: lib, now: Date()) }
+        if let m = out?.streakMilestone { celebrate(Celebration(icon: "flame.fill", title: "\(m)-day streak!", detail: "Little and often is how memories stick.")) }
+        record(.activity)
+        return out?.record
+    }
+
+    /// Plans the player's come-back reminders from their activity (only if they turned them on and no parent blocked them).
+    func rescheduleSmartReminders() {
+        guard let p = profile, p.settings.smartRemindersOn, save.parent.remindersBlocked != true else {
+            ReminderScheduler.removeSmart(); return
+        }
+        let now = Date()
+        let due = p.knowledge.values.filter { $0.nextDue <= now.addingTimeInterval(86400) }.count
+        let hasNew = progression?.nextQuest(p.progress, plan: plan) != nil
+        let planned = SmartReminders.plan(p, now: now, dueWords: due, hasNewLesson: hasNew)
+        ReminderScheduler.applySmart(planned)
+        updateProfile { SmartReminders.storePlan(planned, profile: &$0, now: now) }
+    }
+
     func checkMilestones() {
         guard profile != nil else { return }
         var newOnes: [Achievement] = []
@@ -393,9 +433,9 @@ final class AppModel: ObservableObject {
         guard let sheet else { return .village }
         switch sheet {
         case .battle: return .battle
-        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes, .starredPractice, .builder, .quizzes, .listenType, .rightOrWrong:
+        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes, .starredPractice, .builder, .quizzes, .listenType, .rightOrWrong, .memoryCheck:
             return GameMusic.lessons(for: library?.course.targetLanguage ?? "es")
-        case .journal, .bag, .parent, .games, .phrasebook, .languages, .settings, .wardrobe, .trophies, .stats, .privacy, .words:
+        case .journal, .bag, .parent, .games, .phrasebook, .languages, .settings, .wardrobe, .trophies, .stats, .privacy, .words, .myProgress, .plus:
             return .village
         }
     }
@@ -404,6 +444,13 @@ final class AppModel: ObservableObject {
         audio.resume()
         syncMusic()
         sessionStart = Date()
+        if profile != nil {
+            updateProfile { SmartReminders.noteSessionStart(&$0, now: Date()) }
+            if let t = ReminderScheduler.openedTemplate {
+                ReminderScheduler.openedTemplate = nil
+                updateProfile { SmartReminders.noteOpened(t, profile: &$0) }
+            }
+        }
         stretchReminder = false
         reminderTask?.cancel()
         guard let mins = profile?.settings.sessionReminderMinutes else { return }
@@ -417,6 +464,7 @@ final class AppModel: ObservableObject {
     func sessionEnded() {
         audio.suspend()
         reminderTask?.cancel()
+        rescheduleSmartReminders()
         persist()   // position changes are saved lazily
         guard let start = sessionStart else { return }
         sessionStart = nil

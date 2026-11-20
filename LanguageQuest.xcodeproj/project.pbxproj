@@ -26,6 +26,7 @@
 		B125A9CA54EFCF36C27365F2 /* LanguageQuestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3FCD0BA6191D6442B45EE /* LanguageQuestApp.swift */; };
 		B252674FD4CBEE3926B34BB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244A1528DFD2A71384D6F57A /* Assets.xcassets */; };
 		B32F8A02CBEFA207D0F298FB /* LQCore in Frameworks */ = {isa = PBXBuildFile; productRef = 52D665DF6B3B549126E38AB8 /* LQCore */; };
+		B51E9DC63B37220AB828B6FA /* V10Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDF9E316276EE72F0049AF9 /* V10Views.swift */; };
 		B8ABB7B0C45E1B3213B15354 /* VillageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6630EF63B7B3AD80B83D73BE /* VillageScene.swift */; };
 		BF2F86CA990FFF0DF4744BA0 /* SpeechRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374A69BDC88AB7B2B67ECD6D /* SpeechRecognitionService.swift */; };
 		C0387E5F8FF73282C0E143B8 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9539C4E88EB0F5D43E63AB /* MenuView.swift */; };
@@ -85,6 +86,7 @@
 		C96DE49B4C0737B07A0147F3 /* LQCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LQCore; path = Packages/LQCore; sourceTree = SOURCE_ROOT; };
 		D7A22EDA37507347E218EC53 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		DA9539C4E88EB0F5D43E63AB /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		DCDF9E316276EE72F0049AF9 /* V10Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V10Views.swift; sourceTree = "<group>"; };
 		EE0CDFC4A8D26B20DCD814BA /* VillageFX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageFX.swift; sourceTree = "<group>"; };
 		EE6D37AA912455CA4D33775E /* PixelArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelArt.swift; sourceTree = "<group>"; };
 		FC908AEBC0707AE8B0DA3EBA /* LanguageQuestUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = LanguageQuestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +169,7 @@
 				07E096BD86117351B30A9214 /* V07Views.swift */,
 				0D88B109594435DBAFA4955A /* V08Views.swift */,
 				0C0BF9FB3F53A164898A6045 /* V09Views.swift */,
+				DCDF9E316276EE72F0049AF9 /* V10Views.swift */,
 				4C9B41B13A3A33C328E3C229 /* WorldView.swift */,
 				BE4A8113C531B263A0B038EB /* WriteOutView.swift */,
 				68B4556FA5F8F6BE9A4751E0 /* Activities */,
@@ -344,6 +347,7 @@
 				C8DE75CF938B2A28AC6A671F /* V07Views.swift in Sources */,
 				28935F8581CA0A951E6769FA /* V08Views.swift in Sources */,
 				E8A716BEC7B558C9AE53115F /* V09Views.swift in Sources */,
+				B51E9DC63B37220AB828B6FA /* V10Views.swift in Sources */,
 				A5CAAE604B801E57EEE03338 /* VillageFX.swift in Sources */,
 				B8ABB7B0C45E1B3213B15354 /* VillageScene.swift in Sources */,
 				CECC3A8DC62F6B1FB50A3A84 /* WorldView.swift in Sources */,
@@ -427,7 +431,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.9.0;
+				MARKETING_VERSION = 1.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -563,7 +567,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.9.0;
+				MARKETING_VERSION = 1.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

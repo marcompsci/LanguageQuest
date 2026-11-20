@@ -13,6 +13,20 @@ final class LanguageQuestUITests: XCTestCase {
         return app
     }
 
+    /// Answers a lesson quiz or memory check to the end (first option, or "I don't know" when typing), including retries.
+    @MainActor private func finishLessonQuiz(_ app: XCUIApplication) -> Bool {
+        for _ in 0..<20 {
+            if app.buttons["rq-continue"].waitForExistence(timeout: 1) {
+                XCTAssertTrue(app.staticTexts["rq-score"].exists)
+                app.buttons["rq-continue"].tap(); return true
+            }
+            if app.buttons["rq-option-0"].exists { app.buttons["rq-option-0"].tap() }
+            else if app.buttons["quizDontKnow"].exists { app.buttons["quizDontKnow"].tap() }
+            if app.buttons["rq-next"].waitForExistence(timeout: 2) { app.buttons["rq-next"].tap() }
+        }
+        return false
+    }
+
     /// Tiles on the language page sit in a lazy grid: scroll until the tile exists.
     @MainActor private func revealTile(_ id: String, in app: XCUIApplication) -> Bool {
         for _ in 0..<4 {
@@ -149,6 +163,8 @@ final class LanguageQuestUITests: XCTestCase {
         // 4. Speak (no microphone by default): self-check.
         app.buttons["saidItButton"].tap()
         app.buttons["continueButton"].tap()
+        // v1.0: every lesson ends with a 5-question quiz.
+        XCTAssertTrue(finishLessonQuiz(app), "the lesson quiz runs and reaches a score")
         XCTAssertTrue(app.staticTexts["¡Misión cumplida!"].waitForExistence(timeout: 5))
         app.buttons["backToVillage"].tap()
         XCTAssertTrue(app.buttons["menuButton"].waitForExistence(timeout: 5))
@@ -363,6 +379,34 @@ final class LanguageQuestUITests: XCTestCase {
         XCTAssertTrue(replay.waitForExistence(timeout: 5))
         replay.tap()
         XCTAssertTrue(app.navigationBars["Conversation"].waitForExistence(timeout: 5))
+    }
+
+    // MARK: v1.0
+
+    /// Memory check and My progress open from the language page; the streak shows on the main menu;
+    /// Family Plus sits behind the parent question.
+    @MainActor func testMemoryCheckProgressStreakAndPaywallGate() {
+        let app = launch(seed: true, firstQuestDone: true)
+        XCTAssertTrue(app.buttons["course-en-es"].waitForExistence(timeout: 5))
+        while app.buttons["celebrationDone"].waitForExistence(timeout: 2) { app.buttons["celebrationDone"].tap() }
+        XCTAssertTrue(app.descendants(matching: .any)["streakCard"].exists, "streak on the main menu")
+        app.buttons["course-en-es"].tap()
+        XCTAssertTrue(revealTile("menu-memorycheck", in: app))
+        app.buttons["menu-memorycheck"].tap()
+        XCTAssertTrue(finishLessonQuiz(app), "memory check reaches a score")
+        while app.buttons["celebrationDone"].waitForExistence(timeout: 2) { app.buttons["celebrationDone"].tap() }
+        XCTAssertTrue(revealTile("menu-progress", in: app))
+        app.buttons["menu-progress"].tap()
+        XCTAssertTrue(app.navigationBars["My progress"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["progressMemoryCheck"].exists)
+        app.buttons["Done"].tap()
+        // Family Plus: the parent question comes first, then the offer with Restore.
+        app.swipeDown(); app.swipeDown()
+        XCTAssertTrue(app.buttons["hamburgerMenu"].waitForExistence(timeout: 5))
+        app.buttons["hamburgerMenu"].tap()
+        app.buttons["Family Plus"].firstMatch.tap()
+        XCTAssertTrue(app.textFields["gateAnswer"].waitForExistence(timeout: 5), "parental gate before any price")
+        XCTAssertFalse(app.buttons["restorePurchases"].exists)
     }
 
     // MARK: Compliance audit: no dead ends, privacy policy reachable
