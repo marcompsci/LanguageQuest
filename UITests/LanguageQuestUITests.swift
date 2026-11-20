@@ -149,6 +149,11 @@ final class LanguageQuestUITests: XCTestCase {
         let start = app.buttons["startQuestButton"]
         XCTAssertTrue(start.waitForExistence(timeout: 5))
         start.tap()
+        // v1.1: warm-up guesses come first for a new quest; try one, then skip.
+        XCTAssertTrue(app.buttons["warm-skip"].waitForExistence(timeout: 5), "warm-up offered before a new quest")
+        app.buttons["warm-option-0"].tap()
+        XCTAssertTrue(app.buttons["warm-next"].waitForExistence(timeout: 3))
+        app.buttons["warm-skip"].tap()
         // 1. Listen: answer is choice b.
         app.buttons["choice-b"].tap()
         app.buttons["continueButton"].tap()
