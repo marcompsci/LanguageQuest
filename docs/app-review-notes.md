@@ -1,4 +1,4 @@
-# App Review notes: Language Quest 0.9.0
+# App Review notes: Language Quest 1.0.0
 
 Paste the "Review Notes" section into App Store Connect › TestFlight › Test Information (Beta App Review) and, later, into App Review Information for the App Store. Guideline 2.3.1(a) asks for features to be described specifically, so keep this list current with every build.
 
@@ -12,13 +12,26 @@ NO SIGN-IN. There are no accounts, so no demo account is needed. On first launch
 
 NO NETWORK, ADS, ANALYTICS OR TRACKING. All data stays on the device. Privacy label: Data Not Collected.
 
-NO PURCHASES IN THIS VERSION. The app contains StoreKit code for a possible future family subscription. It is switched off in this build (StoreConfig.paidPlansEnabled = false): no products are loaded and no purchase screen can be reached. No in-app purchase products are configured in App Store Connect.
+IN-APP PURCHASE: FAMILY PLUS (auto-renewable subscription, Apple In-App Purchase only).
+- Products: com.phoronomics.languagequest.familyplus.monthly and .yearly, one subscription group, 1-week free trial.
+- What it is: an ongoing course service. It opens Units 2 and 3 of Spanish, French and Japanese (new units are added over time), two extra games (Memory Match, Speed duel) and up to 4 explorers. Unit 1 of every language, every starter course, reviews, lesson quizzes, memory checks, parent tools and accessibility stay free.
+- Where: ☰ › Family Plus, or tap a "Family Plus" lock (Quest journal, Your units, Memory Match, Speed duel). Every path shows the parent question first (the answer is shown as a sum or multiplication), then the offer with price, period, renewal and cancel terms, Restore purchases, Manage subscription, and links to the Terms of Use (Apple standard EULA) and privacy policy.
+- To test a purchase: in the offer, a parent must first switch on "Allow purchases"; then use a Sandbox account.
+- Units a player started before 1.0 stay open without a subscription.
 
 HOW TO NAVIGATE
 - Main menu: explorer level card, Recent lesson (Continue, plus a multiple-choice quick flashcard), Bonus lesson, Daily challenges, Weekly goal, then languages in three sections: Choose a language; African Languages; Old Languages.
 - Tap a language to open its page: Play (enters the village), Today, Word of the day, Games, Flashcards, Bonus lesson, Write Out, Word Library, Unit quizzes (and Kana Dojo for Japanese).
 - ☰ (top right): Review, Phrasebook, Word Library, Write Out, Bonus lesson, Quest journal, Wardrobe, Bag and badges, Mistakes notebook, Trophies, My stats, Settings, Parents, Privacy policy.
 - In the village: use the arrow pad to walk; "Go to" walks to a character; the house button returns to the language page; the flag button switches language.
+
+NEW IN 1.0
+- Lesson quiz: every finished quest ends with 5 questions on the words that most need remembering (new in the lesson, starting to fade, or missed before), from recognition to typing from memory. Missed words come back at the end of the quiz.
+- Memory check: the same 5-question quiz on fading words, from the language page or a "Welcome back" card after 2+ days away.
+- My progress: words remembered now (estimated), locked-in and fading words, quiz scores by week, recent quizzes.
+- Daily streak with 2 free streak freezes a week; a lesson, quiz, memory check or review counts. Missed days restart gently ("Fresh start!").
+- Come-back reminders: off by default; the player can turn them on in Settings (the app explains, then iOS asks for permission); a parent can block them in the Parents area. Local notifications at the player's usual time, never after 8:30 pm, fewer after a break.
+- Family Plus subscription (see IN-APP PURCHASE above).
 
 NEW IN 0.9
 - Games: Listen & Type (hear a word, type it) and Right or Wrong (is this the right meaning?).
@@ -51,7 +64,7 @@ PARENTS AREA (☰ › Parents)
 - Protected by a parental gate: type the answer to a written-out sum or multiplication (for example "Forty-seven plus thirty-eight"), in digits. An optional parent PIN can replace it. "Forgot PIN" uses the device passcode or Face ID.
 - Contains: a 7-day summary with a Share button, on-device speech checking toggle (off by default; requests microphone and speech recognition permission only when turned on, and recognition is on-device only), practice reminders (off by default; requests notification permission only when turned on; local notifications scheduled on the device, no push server), break reminders, settings, optional parent PIN, data export, and delete explorer / delete all data.
 
-PERMISSIONS: The microphone and speech recognition are requested only after a parent enables speech practice (the mic listens after the talk button is tapped, until "I'm done" or speech ends). Face ID is used only if a parent chooses "Forgot PIN". Notifications are requested only when a parent turns on practice reminders. No other permissions are used.
+PERMISSIONS: The microphone and speech recognition are requested only after a parent enables speech practice (the mic listens after the talk button is tapped, until "I'm done" or speech ends). Face ID is used only if a parent chooses "Forgot PIN". Notifications are requested only when a parent turns on practice reminders or the player turns on come-back reminders. No other permissions are used.
 
 ---
 

@@ -1,6 +1,6 @@
 # Language Quest Privacy Policy
 
-Effective: November 14, 2026 · Version 4
+Effective: November 19, 2026 · Version 5
 
 Language Quest is a language-learning game for players aged 11 and up, made by Phoronomics. This policy explains what the app does with information. In short: **the app does not collect any information from you. Everything stays on your device.**
 
@@ -17,7 +17,7 @@ Language Quest is a language-learning game for players aged 11 and up, made by P
 The app saves the following only on the device it is installed on, so the game can remember your progress:
 
 - An optional nickname, an age band (11–12, 13–15, or 16+; never a birthdate), an avatar, and the languages and varieties you chose.
-- Lesson progress, the review schedule, answers to practice activities, game scores, quiz scores, XP, levels, daily challenges, the weekly goal, achievements, words you starred, languages you pinned, and any notes you write on words. Notes are private: they stay on this device and are never shown to anyone else or sent anywhere.
+- Lesson progress, the review schedule, answers to practice activities, game scores, quiz scores, XP, levels, daily challenges, the weekly goal, achievements, words you starred, languages you pinned, and any notes you write on words. From version 1.0 it also keeps lesson-quiz and memory-check results, the daily streak, and the times practice sessions started (used only to time come-back reminders). Notes are private: they stay on this device and are never shown to anyone else or sent anywhere.
 - Minutes and activities per day, kept for a limited time and then removed automatically.
 - Parent settings, including practice reminder times if a parent turns reminders on. An optional parent PIN is stored only as a salted hash in the device's Keychain. If a parent forgets the PIN, the device's own passcode or Face ID / Touch ID can reset it; the app only receives a yes/no answer from iOS.
 
@@ -35,13 +35,17 @@ When you check a word in Write Out, your drawing is read on the device by Apple'
 
 A parent can turn on practice reminders in the Parents area. iOS then asks for permission to show notifications. Reminders are scheduled on the device itself (local notifications): no server, push token, or account is involved, and the message shows no name or progress. Turning reminders off, or deleting all data, removes them.
 
+## Come-back reminders (off by default)
+
+An explorer can turn on come-back reminders in Settings; the app explains them and iOS asks for permission first. A parent can block them in the Parents area. The app picks a time from when the explorer usually plays (never after 8:30 pm), and it notes on the device which reminder messages were opened so it can pick friendlier ones. These are local notifications: nothing is sent to a server, there is no push token, and the messages show no name or progress.
+
 ## Weekly summary
 
 The Parents area shows a summary of the last 7 days, made on the device. It is shared only if a parent taps Share and chooses where to send it with the iOS share sheet.
 
 ## Purchases
 
-There are no purchases in this version. If paid plans are offered in the future, payment is handled entirely by Apple. The app would keep only which plan is active and when it expires.
+Family Plus is an optional subscription sold through Apple's In-App Purchase. A purchase can only start after a parent turns on "Allow purchases" and answers the parent question. Payment, billing details and the Apple Account are handled entirely by Apple; the app never sees them. The app keeps only which plan is active and when it expires, read from Apple's signed receipts on the device. Unit 1 of every language, every starter course, reviews, quizzes and memory checks are always free.
 
 ## Children's privacy
 

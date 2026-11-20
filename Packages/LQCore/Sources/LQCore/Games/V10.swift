@@ -88,6 +88,9 @@ public struct RetentionQuiz: Sendable {
     /// Missed questions come back at the end until answered right (successive relearning in miniature).
     public private(set) var relearnQueue: [RetentionQuestion] = []
     public private(set) var relearned: Set<String> = []
+    /// Retries per word; after 2 missed retries the word moves on to the reviews instead (no endless loop).
+    public private(set) var retries: [String: Int] = [:]
+    public static let maxRetries = 2
 
     /// Priority = how close a word is to being forgotten (half-life model), how often it was missed,
     /// and, for a lesson, whether the lesson just taught it. New words in the lesson always come first.
@@ -225,7 +228,8 @@ public struct RetentionQuiz: Sendable {
             }
         } else {
             relearnQueue.removeFirst()
-            if ok { relearned.insert(q.itemId) } else if relearned.count + relearnQueue.count < 10 { relearnQueue.append(q) }
+            retries[q.itemId, default: 0] += 1
+            if ok { relearned.insert(q.itemId) } else if retries[q.itemId, default: 0] < Self.maxRetries { relearnQueue.append(q) }
         }
         return ok
     }

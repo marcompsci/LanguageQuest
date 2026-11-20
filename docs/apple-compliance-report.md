@@ -60,6 +60,18 @@ Severity: **BLOCKER** (Apple will reject or the build can't be distributed), **H
 | F27 | Save compatibility (2.1 stability) | `ExtrasProgress`, `MetaProgress`, `ParentSettings` | MEDIUM | New saved fields could break loading v0.7 saves. | All new fields are optional; a v0.7-shaped save decodes in a unit test. | ✅ | Unit test |
 | F28 | 2.4.1 iPad | `MenuView`, `LanguageHubView` | LOW | Layout stretched across the full iPad width. | Readable max width (720 pt) and an adaptive tile grid. Still needs a person to check on an iPad. | Partly | Manual (checklist B) |
 
+### v1.0 additions (November 19, 2026)
+
+| # | Guideline / requirement | Where | Sev. | Concern | Remediation | Done? | Verified by |
+|---|---|---|---|---|---|---|---|
+| F33 | 3.1.1 In-App Purchase | `StoreService`, `PlusPaywallView` | HIGH | Family Plus is now sold. Digital content must use Apple IAP. | StoreKit 2 only; no other payment paths or links. Verified transactions only; Restore purchases; Manage subscription. | ✅ | Gate check "Family Plus purchase screen meets 3.1.1/3.1.2(c)" |
+| F34 | 3.1.2(c) subscription information | `PlusPaywallView`, `PlusOffer.disclosure` | HIGH | The offer must show what's included, price, period, free-trial terms, auto-renewal and cancellation, plus Terms of Use and privacy links. | All shown next to each button; prices come from the App Store. EULA and privacy links in the footer. | ✅ | Unit test `testPurchasesOnlyWithSubscriptionDisclosures`; gate |
+| F35 | 3.1.2(a) ongoing value | Product design | HIGH (WARN) | App Review has rejected subscriptions that only unlock features. | Positioned as an ongoing course service (new units over time); the review notes say so. Keep shipping content. A one-time unlock is the fallback if rejected. | Partly | Gate WARN; App Review |
+| F36 | 1.3 / 5.1.4 kids, parental gate for purchases | `PlusPaywallView`, `PurchaseGate` | HIGH | Players are 11+; purchase screens must be behind a parental gate. | Every route to the offer shows the parent question (or PIN) first; a parent must also switch on "Allow purchases" (off by default). The gate expires after 2 minutes. Ask to Buy is handled. | ✅ | Unit tests `testPaidPlansAreOnButParentControlled`; UI test `testMemoryCheckProgressStreakAndPaywallGate` |
+| F37 | Fairness to existing players (2.1, 3.1.2 good practice) | `Progression.isUnitUnlocked` | MEDIUM | Units 2–3 were free before 1.0. | Any unit a player already started stays open without a subscription. | ✅ | Unit test `testUnitOneFreeLaterUnitsPlusAndStartedUnitsStayOpen` |
+| F38 | 4.5.4 notifications / 5.1.1 | `SmartReminders`, `ReminderScheduler` | MEDIUM | Come-back reminders now use activity (session start times) and can be turned on by the player. | Off by default. The app explains them before iOS asks. A parent can block them. Never after 8:30 pm; fewer after a break. Generic text with no name or progress. Local only; history stays on the device. In the privacy policy (v5) and the inventory. | ✅ | Gate check "Notifications are local, parent-controllable, quiet at night and disclosed"; unit tests |
+| F39 | 2.3.1(a) / 2.5.19 new features documented | `docs/app-review-notes.md` | MEDIUM | Lesson quiz, memory check, progress, streak, reminders, Family Plus. | "NEW IN 1.0" and IN-APP PURCHASE sections. | ✅ | Docs |
+
 ### v0.9 additions (November 14, 2026)
 
 | # | Guideline / requirement | Where | Sev. | Concern | Remediation | Done? | Verified by |

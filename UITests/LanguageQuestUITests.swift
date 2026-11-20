@@ -15,7 +15,7 @@ final class LanguageQuestUITests: XCTestCase {
 
     /// Answers a lesson quiz or memory check to the end (first option, or "I don't know" when typing), including retries.
     @MainActor private func finishLessonQuiz(_ app: XCUIApplication) -> Bool {
-        for _ in 0..<20 {
+        for _ in 0..<(5 * 3 + 2) {
             if app.buttons["rq-continue"].waitForExistence(timeout: 1) {
                 XCTAssertTrue(app.staticTexts["rq-score"].exists)
                 app.buttons["rq-continue"].tap(); return true
@@ -24,6 +24,7 @@ final class LanguageQuestUITests: XCTestCase {
             else if app.buttons["quizDontKnow"].exists { app.buttons["quizDontKnow"].tap() }
             if app.buttons["rq-next"].waitForExistence(timeout: 2) { app.buttons["rq-next"].tap() }
         }
+        print(app.debugDescription.split(separator: "\n").prefix(60).map { "AUDIT-ISSUE DUMP \($0)" }.joined(separator: "\n"))
         return false
     }
 

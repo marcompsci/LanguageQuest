@@ -89,6 +89,24 @@ final class V10Tests: XCTestCase {
         XCTAssertEqual(Streak.state(p).current, 1, "a finished quiz counts for the streak")
     }
 
+    func testRetriesEndEvenIfAlwaysWrong() throws {
+        let lib = try ContentLibrary.bundled("en-es")
+        var p = learner(lib)
+        let q = lib.units[0].quests[0]
+        play(q, &p, lib, at: t0)
+        var quiz = RetentionQuiz(kind: .lesson(questId: q.id), profile: p, library: lib, now: t0, seed: 9)
+        let v = lib.course.defaultVariant
+        var steps = 0
+        while let cur = quiz.current, steps < 100 {
+            if cur.kind == .typeIt { quiz.answer(typed: "", variant: v, context: lib.checkContext) }
+            else { quiz.answer(choice: (cur.answerIndex + 1) % cur.options.count, variant: v, context: lib.checkContext) }
+            steps += 1
+        }
+        XCTAssertTrue(quiz.isFinished)
+        XCTAssertLessThanOrEqual(steps, RetentionQuiz.size * (1 + RetentionQuiz.maxRetries))
+        XCTAssertEqual(quiz.correctCount, 0)
+    }
+
     func testTypedAnswersForgiveAccents() throws {
         let lib = try ContentLibrary.bundled("en-es")
         var p = learner(lib)
