@@ -85,7 +85,9 @@ final class LanguageQuestUITests: XCTestCase {
         XCTAssertTrue(app.buttons["Play: French village"].waitForExistence(timeout: 3))
         XCTAssertTrue(app.buttons["menu-games"].exists)
         if app.buttons["tip-path"].waitForExistence(timeout: 2) { app.buttons["tip-path"].tap() }   // v1.2 first-run tip
-        XCTAssertTrue(app.buttons["menu-flashcards"].waitForExistence(timeout: 3))
+        // The tile grid is lazy: scroll just until the Flashcards row is built (not past it).
+        for _ in 0..<3 where !app.buttons["menu-flashcards"].waitForExistence(timeout: 2) { app.swipeUp() }
+        XCTAssertTrue(app.buttons["menu-flashcards"].exists)
         XCTAssertFalse(app.buttons["menu-kana"].exists)
         app.buttons["hamburgerMenu"].tap()
         for item in ["Review", "Phrasebook", "Quest journal", "Wardrobe", "Bag and badges", "Settings", "Parents"] {
@@ -140,6 +142,7 @@ final class LanguageQuestUITests: XCTestCase {
         app.buttons["playButton"].tap()              // → village
         XCTAssertTrue(app.buttons["goToButton"].waitForExistence(timeout: 5))
         app.buttons["goToButton"].tap()
+        XCTAssertTrue(app.buttons["Luna"].waitForExistence(timeout: 5))
         app.buttons["Luna"].tap()
         let line = app.staticTexts["dialogueLine"]
         XCTAssertTrue(line.waitForExistence(timeout: 10), "walking to Luna opens her dialogue")
