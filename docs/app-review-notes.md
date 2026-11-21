@@ -1,4 +1,4 @@
-# App Review notes: Language Quest 1.2.0
+# App Review notes: Language Quest 1.3.0
 
 Paste the "Review Notes" section into App Store Connect › TestFlight › Test Information (Beta App Review) and, later, into App Review Information for the App Store. Guideline 2.3.1(a) asks for features to be described specifically, so keep this list current with every build.
 
@@ -24,6 +24,17 @@ HOW TO NAVIGATE
 - Tap a language to open its page: Play (enters the village), Today, Word of the day, Games, Flashcards, Bonus lesson, Write Out, Word Library, Unit quizzes (and Kana Dojo for Japanese).
 - ☰ (top right): Review, Phrasebook, Word Library, Write Out, Bonus lesson, Quest journal, Wardrobe, Bag and badges, Mistakes notebook, Trophies, My stats, Settings, Parents, Privacy policy.
 - In the village: use the arrow pad to walk; "Go to" walks to a character; the house button returns to the language page; the flag button switches language.
+
+NEW IN 1.3
+- Quiz: after a right answer the player can tick "I guessed" (the score is unchanged; the word comes back sooner). Answers are timed on the device to tune the review schedule. "3 in a row!" combos, a look-back list of answers, and a slow replay after a listening miss.
+- Quick 3 (a 3-question check for busy days) and Bedtime review (evening, today's weakest words) on the language page, with an optional daily minutes goal (Settings).
+- Memory check: a listening-only option.
+- Games: Lightning round (60 seconds; for fun, it doesn't change the review schedule).
+- My progress: day-by-day review forecast chart, unit mastery rings, look-alike words drill, weekly question goal, Today's report.
+- Word Library: example sentence and "Review soon" on each word. Sentence of the day.
+- Settings: haptics and big answer buttons.
+- Parents area: a bedtime (no play after it, or before 5 am; a parent can allow more for the day), the words to practise together, and a shareable plain-text word list (only through the system share sheet).
+- No new data leaves the device; no tracking or analytics. Purchase rules are unchanged.
 
 NEW IN 1.2
 - Tricky words: words missed 3+ times (or in 2 quizzes) get their own drill in My progress and a "Tricky" filter in the Word Library.

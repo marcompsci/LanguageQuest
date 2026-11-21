@@ -20,6 +20,13 @@ struct RetentionQuizView: View {
     @State private var feedback: (ok: Bool, question: RetentionQuestion)?
     @State private var record: QuizRecord?
     @FocusState private var focused: Bool
+    // v1.3: answer timing, "I guessed", combos.
+    @State private var questionStart = Date()
+    @State private var guessed = false
+    @State private var pending: (q: RetentionQuestion, ok: Bool, hinted: Bool, seconds: Double)?
+    @State private var combo = ComboCounter()
+    @State private var comboHit: Int?
+    @State private var showLookBack = false
 
     var body: some View {
         ScrollView {
@@ -72,6 +79,8 @@ struct RetentionQuizView: View {
         case .memoryCheck: return "Memory check: \(n) questions"
         case .tricky: return "Tricky words: \(n) questions"
         case .words: return "Practice: \(n) questions"
+        case .listening: return "Listening check: \(n) questions"
+        case .quick: return "Quick \(n)"
         }
     }
 
@@ -144,7 +153,7 @@ struct RetentionQuizView: View {
             ForEach(Array(q.options.enumerated()), id: \.offset) { i, o in
                 Button { answer(q, choice: i) } label: {
                     Text(q.optionTexts.map { model.display($0[i]) } ?? o).font(.title3)
-                        .frame(maxWidth: .infinity, minHeight: 54).padding(.horizontal, 8)
+                        .frame(maxWidth: .infinity, minHeight: model.profile?.settings.bigButtonsOn == true ? 76 : 54).padding(.horizontal, 8)
                         .background(Color(p.surface), in: RoundedRectangle(cornerRadius: 14))
                         .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color(p.accent).opacity(0.5)))
                 }
@@ -179,14 +188,24 @@ struct RetentionQuizView: View {
                 if case .almost? = quiz?.lastVerdict { Text("Almost! Just a small slip.").font(.headline) }
                 TypoDiffView(typed: t, expected: q.word.text(for: prof.variant(for: lib)))
             }
+            if let c = comboHit { Label("\(c) in a row!", systemImage: "flame.fill").font(.headline).foregroundStyle(Color(p.accent)) }
+            if ok, pending != nil {
+                Toggle("I guessed", isOn: $guessed)
+                    .padding(.horizontal, 4)
+                    .accessibilityIdentifier("rq-guessed")
+                    .accessibilityHint("A guess still counts in your score, but the word comes back sooner.")
+                if guessed { Text("Thanks for being honest. It still counts, and the word comes back sooner.").font(.caption).multilineTextAlignment(.center) }
+            }
             if !ok { MemoryHookEditor(itemId: q.itemId) }
-            Button("Next") { feedback = nil; typed = ""; if quiz?.isFinished == true { finish() } }
+            Button("Next") { flushPending(); feedback = nil; typed = ""; questionStart = Date(); if quiz?.isFinished == true { finish() } }
                 .buttonStyle(PrimaryButtonStyle())
                 .keyboardShortcut(.defaultAction)
                 .accessibilityIdentifier("rq-next")
         }
+        .onDisappear { flushPending() }
         .onAppear {
-            if !ok { model.autoSay(q.word) }
+            // v1.3: after a listening miss, replay the word slowly.
+            if !ok { if q.kind == .listen { model.autoSay(q.word, slow: true) } else { model.autoSay(q.word) } }
             UIAccessibility.post(notification: .announcement, argument: ok ? "Correct" : "The answer is \(model.text(q.word)), \(q.meaning)")
         }
     }
@@ -207,6 +226,25 @@ struct RetentionQuizView: View {
                 Button("Practice the \(rec.missed.count) I missed") { model.sheet = .practiceWords(rec.missed) }
                     .buttonStyle(.bordered).accessibilityIdentifier("rq-practiceMissed")
             }
+            if let rows = quiz?.reviewRows, !rows.isEmpty {
+                DisclosureGroup("Look back at your answers", isExpanded: $showLookBack) {
+                    ForEach(rows) { r in
+                        HStack {
+                            Image(systemName: r.correct ? "checkmark.circle.fill" : "xmark.circle.fill")
+                                .foregroundStyle(Color(r.correct ? p.success : p.retry))
+                                .accessibilityLabel(r.correct ? "right" : "missed")
+                            VStack(alignment: .leading) {
+                                Text(model.display(r.word)).font(.headline)
+                                Text(r.meaning + (r.hinted ? " · hint used" : "")).font(.caption)
+                            }
+                            Spacer()
+                            SpeakerButton(text: r.word)
+                        }
+                        .accessibilityElement(children: .combine)
+                    }
+                }
+                .accessibilityIdentifier("rq-lookBack")
+            }
             Button("Continue") { onDone(rec) }.buttonStyle(PrimaryButtonStyle()).keyboardShortcut(.defaultAction)
                 .accessibilityIdentifier("rq-continue")
         }
@@ -219,6 +257,7 @@ struct RetentionQuizView: View {
         let q = RetentionQuiz(kind: kind, profile: prof, library: lib, now: Date(), seed: playSeed(), count: count)
         if q.questions.isEmpty { onDone(nil); return }
         quiz = q
+        questionStart = Date()
     }
 
     private func answer(_ q: RetentionQuestion, choice: Int) {
@@ -239,14 +278,26 @@ struct RetentionQuizView: View {
 
     private func after(_ q: RetentionQuestion, ok: Bool, first: Bool) {
         model.sfx(ok ? .correct : .retry)
+        model.haptic(ok)
         let usedHint = quiz?.hinted.contains(q.itemId) ?? false
-        if first { model.updateProfile { RetentionQuiz.record(q, correct: ok, hinted: usedHint, profile: &$0, now: Date()) } }
+        // Saved when the player moves on, so "I guessed" can still be ticked.
+        if first { pending = (q, ok, usedHint, Date().timeIntervalSince(questionStart)) }
+        guessed = false
+        comboHit = combo.record(ok)
         hintShown = nil
         feedback = (ok, q)
     }
 
+    private func flushPending() {
+        guard let pr = pending else { return }
+        pending = nil
+        let g = guessed
+        model.updateProfile { RetentionQuiz.record(pr.q, correct: pr.ok, hinted: pr.hinted, guessed: g, seconds: pr.seconds, profile: &$0, now: Date()) }
+    }
+
     private func finish() {
         guard record == nil, let qz = quiz, qz.isFinished else { return }
+        flushPending()
         record = model.finishRetentionQuiz(qz)
         if let r = record { UIAccessibility.post(notification: .announcement, argument: "\(r.correct) of \(r.total) right") }
     }
@@ -275,6 +326,8 @@ struct MemoryCheckSheet: View {
                             .accessibilityIdentifier("check-5")
                         Button("Longer: 10 questions (earns a streak freeze once a week)") { length = .long }.buttonStyle(.bordered)
                             .accessibilityIdentifier("check-10")
+                        Button("Listening only: 5 questions") { model.sheet = .listeningCheck }.buttonStyle(.bordered)
+                            .accessibilityIdentifier("check-listen")
                     }
                     .padding(24)
                     .frame(maxWidth: 600)

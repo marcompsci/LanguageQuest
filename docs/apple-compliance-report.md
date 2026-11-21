@@ -60,6 +60,16 @@ Severity: **BLOCKER** (Apple will reject or the build can't be distributed), **H
 | F27 | Save compatibility (2.1 stability) | `ExtrasProgress`, `MetaProgress`, `ParentSettings` | MEDIUM | New saved fields could break loading v0.7 saves. | All new fields are optional; a v0.7-shaped save decodes in a unit test. | ✅ | Unit test |
 | F28 | 2.4.1 iPad | `MenuView`, `LanguageHubView` | LOW | Layout stretched across the full iPad width. | Readable max width (720 pt) and an adaptive tile grid. Still needs a person to check on an iPad. | Partly | Manual (checklist B) |
 
+### v1.3 additions (November 21, 2026)
+
+| # | Guideline / requirement | Where | Sev. | Concern | Remediation | Done? | Verified by |
+|---|---|---|---|---|---|---|---|
+| F49 | 2.3.1(a) new features documented | `docs/app-review-notes.md` | MEDIUM | 25 changes in 1.3. | "NEW IN 1.3" section and the tester guide. | ✅ | Docs |
+| F50 | 5.1.1 data minimization: answer timing | `AnswerTiming`, `RetentionQuiz.record` | LOW | Timing children's answers. | Used only to set the next review date on the device; not shown, stored separately or sent anywhere. Listed in privacy policy v8. | ✅ | Unit test `testGuessesAndSlowAnswersComeBackSooner` |
+| F51 | 1.3 kids: parent bedtime | `Bedtime`, `TimeLimitOverlay` | LOW | The child must not be able to get past the stop screen. | Same parent gate / PIN as the playtime limit. | ✅ | Unit test `testParentBedtime` |
+| F52 | 5.1.1 / 1.3: word list sharing | `ParentWordsSection`, `WordListExport` | LOW | A shareable list made from a child's progress. | In the gated Parents area; plain text of words met only (no nickname); leaves the device only through the system share sheet after a parent taps Share. | ✅ | Unit test `testWordListExport` |
+| F53 | Privacy policy matches storage | `privacy-policy.md` v8 | LOW | New on-device fields. | Policy v8 lists them; both copies identical; `PrivacyNotice.version` = 8. | ✅ | Policy parity test |
+
 ### v1.2 additions (November 20, 2026)
 
 | # | Guideline / requirement | Where | Sev. | Concern | Remediation | Done? | Verified by |

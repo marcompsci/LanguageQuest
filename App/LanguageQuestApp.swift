@@ -59,11 +59,11 @@ struct RootView: View {
         .lqTheme(model.palette, scale: model.profile?.settings.textScale ?? 1, easyRead: model.profile?.settings.easyReadOn ?? false)
         .overlay {
             // v1.2: the parent's daily playtime limit (checked every minute).
-            if limitTick >= 0 && model.timeLimitReached { TimeLimitOverlay() }
+            if limitTick >= 0 && (model.timeLimitReached || model.bedtimeReached) { TimeLimitOverlay(bedtime: !model.timeLimitReached) }
         }
         .onReceive(Timer.publish(every: 60, on: .main, in: .common).autoconnect()) { _ in
             limitTick += 1
-            if model.timeLimitReached && model.sheet != nil { model.sheet = nil }   // the stop screen sits over everything
+            if (model.timeLimitReached || model.bedtimeReached) && model.sheet != nil { model.sheet = nil }   // the stop screen sits over everything
         }
         .overlay {
             if let c = model.celebration {

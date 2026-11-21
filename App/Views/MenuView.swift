@@ -178,6 +178,7 @@ struct LanguageHubView: View {
                             MenuTile(icon: "brain.head.profile", title: "Memory check", id: "menu-memorycheck") { model.sheet = .memoryCheck }
                             MenuTile(icon: "chart.line.uptrend.xyaxis", title: "My progress", id: "menu-progress") { model.sheet = .myProgress }
                         }
+                        TodayGoalCard()
                         UnitMapCard()
                     }
                 }

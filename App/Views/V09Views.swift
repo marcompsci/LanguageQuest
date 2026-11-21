@@ -351,6 +351,7 @@ struct ReviewForecastSection: View {
                 Label("\(f.dueNow) ready now", systemImage: "clock.badge.checkmark")
                 Label("\(f.tomorrow) more by tomorrow night", systemImage: "moon.stars")
                 Label("\(f.nextSevenDays) in the next 7 days", systemImage: "calendar")
+                ForecastChart()
                 if f.dueNow > 0 {
                     Button("Review now") { model.sheet = .review }.accessibilityIdentifier("forecastReview")
                 }

@@ -46,6 +46,12 @@ struct SheetRouter: View {
         case .tricky: WordsQuizSheet(kind: .tricky, title: "Tricky words")
         case .practiceWords(let ids): WordsQuizSheet(kind: .words(ids), title: "Practice")
         case .dictation: DictationView()
+        case .lightning: LightningView()
+        case .quickThree: KindQuizSheet(kind: .quick, title: "Quick 3", count: 3)
+        case .listeningCheck: KindQuizSheet(kind: .listening, title: "Listening check")
+        case .lookAlikes(let ids): LookAlikeSheet(ids: ids)
+        case .bedtimeReview(let ids): BedtimeSheet(ids: ids)
+        case .todayReport: NavigationStack { TodayReportView() }
         }
     }
 }
@@ -135,6 +141,12 @@ struct PlayerSettingsView: View {
                         VoiceStatusRow(language: lib.course.displayLanguage, variant: lib.course.variant(prof.variant))
                     }
                     Section("Look and comfort") {
+                        Toggle("Haptics (a tap on right and wrong answers)", isOn: Binding(get: { (model.profile ?? prof).settings.hapticsOn },
+                                                                                       set: { v in model.updateProfile { $0.settings.haptics = v } }))
+                            .accessibilityIdentifier("haptics")
+                        Toggle("Big answer buttons", isOn: Binding(get: { (model.profile ?? prof).settings.bigButtonsOn },
+                                                                   set: { v in model.updateProfile { $0.settings.bigButtons = v } }))
+                            .accessibilityIdentifier("bigButtons")
                         Picker("Look", selection: binding(\.theme, prof)) {
                             Text("Playful").tag(ThemeKind.playful)
                             Text("Explorer").tag(ThemeKind.explorer)
@@ -160,6 +172,12 @@ struct PlayerSettingsView: View {
                             ForEach(ReviewSize.choices, id: \.self) { Text("\($0)").tag($0) }
                         }
                         .accessibilityIdentifier("reviewSize")
+                        Picker("Daily goal", selection: Binding(get: { (model.profile ?? prof).settings.dailyGoalMinutes ?? 0 },
+                                                               set: { v in model.updateProfile { $0.settings.dailyGoalMinutes = v == 0 ? nil : v } })) {
+                            Text("Off").tag(0)
+                            ForEach(DailyGoal.choices, id: \.self) { Text("\($0) minutes a day").tag($0) }
+                        }
+                        .accessibilityIdentifier("dailyGoal")
                     }
                     Section { EmptyView() } footer: {
                         Text("Break reminders, speech checking, purchases and deleting data are in the Parents area.")

@@ -184,6 +184,9 @@ struct StatsView: View {
             List {
                 if let prof = model.profile {
                     ReviewForecastSection()
+                    WeeklyQuestionsSection()
+                    UnitMasterySection()
+                    LookAlikesSection()
                     Section("Last 7 days") {
                         let week = PlayerStats.lastWeek(prof, now: Date())
                         let top = max(week.map(\.activities).max() ?? 1, 1)

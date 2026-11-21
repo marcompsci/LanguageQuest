@@ -13,6 +13,7 @@
 		21FA13FD7F29201293359C11 /* LanguageQuestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE9089108E6FBF0100BEAF6 /* LanguageQuestUITests.swift */; };
 		28935F8581CA0A951E6769FA /* V08Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D88B109594435DBAFA4955A /* V08Views.swift */; };
 		378E29EAB7E85A778F3CD5C4 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A560394D6350E0C9A44F60 /* SpeechService.swift */; };
+		44831260AD3EAE49F30B2389 /* V13Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD84D4390398071E290D432 /* V13Views.swift */; };
 		453020187B09C819457E1E31 /* V11Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C302986D844A0FCBB00326 /* V11Views.swift */; };
 		453D788C8933ABC39FFBD203 /* DialogueOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589B69E8921F9555AC9F843 /* DialogueOverlay.swift */; };
 		60C28828D15E7F5DB34BD027 /* GamesViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D16AA0744FB255447A7BC6E /* GamesViews.swift */; };
@@ -84,6 +85,7 @@
 		89E6181925702439665497F9 /* LanguageQuest.storekit */ = {isa = PBXFileReference; path = LanguageQuest.storekit; sourceTree = "<group>"; };
 		8BA293F84E4FC3758A96CE5E /* AppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShortcuts.swift; sourceTree = "<group>"; };
 		93F655C88FC9FE2FD3B98B1E /* ParentPINStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentPINStore.swift; sourceTree = "<group>"; };
+		9AD84D4390398071E290D432 /* V13Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V13Views.swift; sourceTree = "<group>"; };
 		A3B4134866A3A20F5A8EC302 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		AB717234CB21DE33DDB51F97 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		AF1687C4DE66B87EAF3D3353 /* ParentAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentAreaView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				DCDF9E316276EE72F0049AF9 /* V10Views.swift */,
 				67C302986D844A0FCBB00326 /* V11Views.swift */,
 				6AED7B4E8364ABD3F7A355F1 /* V12Views.swift */,
+				9AD84D4390398071E290D432 /* V13Views.swift */,
 				4C9B41B13A3A33C328E3C229 /* WorldView.swift */,
 				BE4A8113C531B263A0B038EB /* WriteOutView.swift */,
 				68B4556FA5F8F6BE9A4751E0 /* Activities */,
@@ -360,6 +363,7 @@
 				B51E9DC63B37220AB828B6FA /* V10Views.swift in Sources */,
 				453020187B09C819457E1E31 /* V11Views.swift in Sources */,
 				897DFDB361DC79AB9175E963 /* V12Views.swift in Sources */,
+				44831260AD3EAE49F30B2389 /* V13Views.swift in Sources */,
 				A5CAAE604B801E57EEE03338 /* VillageFX.swift in Sources */,
 				B8ABB7B0C45E1B3213B15354 /* VillageScene.swift in Sources */,
 				CECC3A8DC62F6B1FB50A3A84 /* WorldView.swift in Sources */,
@@ -443,7 +447,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -579,7 +583,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

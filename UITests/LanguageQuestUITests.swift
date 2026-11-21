@@ -447,6 +447,31 @@ final class LanguageQuestUITests: XCTestCase {
         XCTAssertTrue(finishLessonQuiz(app), "the retaken lesson quiz reaches a score")
     }
 
+    // MARK: v1.3
+
+    /// Quick 3 from the language page (with "I guessed" and the look-back list), then a Lightning round from Games.
+    @MainActor func testQuickThreeAndLightningRound() {
+        let app = launch(seed: true, firstQuestDone: true)
+        XCTAssertTrue(app.buttons["course-en-es"].waitForExistence(timeout: 5))
+        while app.buttons["celebrationDone"].waitForExistence(timeout: 2) { app.buttons["celebrationDone"].tap() }
+        app.buttons["course-en-es"].tap()
+        if app.buttons["tip-path"].waitForExistence(timeout: 3) { app.buttons["tip-path"].tap() }
+        XCTAssertTrue(revealTile("quickThree", in: app))
+        app.buttons["quickThree"].tap()
+        XCTAssertTrue(finishLessonQuiz(app))
+        app.swipeDown(); app.swipeDown(); app.swipeDown()
+        XCTAssertTrue(revealTile("menu-games", in: app))
+        app.buttons["menu-games"].tap()
+        let lightning = app.buttons["lightningGame"]
+        for _ in 0..<4 where !(lightning.exists && lightning.isHittable) { app.swipeUp() }
+        lightning.tap()
+        XCTAssertTrue(app.buttons["lightningGo"].waitForExistence(timeout: 5))
+        app.buttons["lightningGo"].tap()
+        for _ in 0..<3 { if app.buttons["lightning-0"].waitForExistence(timeout: 3) { app.buttons["lightning-0"].tap() } }
+        XCTAssertTrue(app.buttons["Done"].exists)
+        app.buttons["Done"].tap()
+    }
+
     // MARK: v1.2
 
     /// Sentence dictation opens from Games; My progress has tricky words and "How memory works"; Settings has quiet mode.

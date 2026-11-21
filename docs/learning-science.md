@@ -1,4 +1,4 @@
-# How Language Quest helps players remember (v1.0)
+# How Language Quest helps players remember (v1.0, updated for 1.3)
 
 This page explains what the research says about remembering faster and longer, and where each idea lives in the app. Researched November 19, 2026.
 
@@ -38,6 +38,18 @@ This page explains what the research says about remembering faster and longer, a
 | Progress over time | **My progress**: words remembered now (estimated), locked in and fading; quiz scores by week (chart); recent quizzes; words to practice. |
 | Streaks (with the downsides handled) | **Daily streak with 2 free freezes a week**. Only real practice counts (a lesson, quiz, memory check or review), not opening the app. A missed streak restarts with "Fresh start!" and keeps your best; nothing warns about losing. |
 | Bandit-style reminders | **Come-back reminders** (`SmartReminders`): timed to when the player usually plays, chosen by open rate with recently used messages resting, eligible messages only (streak, words due, new quest, comeback). Fewer after a break: day 0, 1, 2, 3, 5, 7 and 14. Never after 8:30 pm. All on the device. |
+
+### Added in 1.3
+
+| Idea | In Language Quest |
+|---|---|
+| Metacognition (judging what you really know) | After a right answer the player can tick **"I guessed"**. The score is unchanged, but the word comes back sooner (`RetentionQuiz.record(guessed:)`). |
+| Retrieval fluency | Each quiz answer is timed on the device. A slow right answer lowers the word's ease, so its gaps grow more slowly (`AnswerTiming`). Typed answers get twice as long. |
+| Sleep and consolidation | In the evening, **Bedtime review** offers today's 3–5 weakest words (`BedtimeReview`). |
+| Discrimination learning | **Look-alike words** (pero / perro) are found by spelling distance and practised side by side (`LookAlikes`). |
+| Small, frequent practice | **Quick 3** for busy days, a **daily minutes goal**, and a **weekly question goal**. |
+| Listening comprehension | A **listening-only memory check**, and a slow replay after a listening miss. |
+| Context | A **sentence of the day** and example sentences in the Word Library. |
 
 ## What we deliberately didn't copy
 

@@ -47,6 +47,12 @@ final class AppModel: ObservableObject {
         case tricky
         case practiceWords([String])
         case dictation
+        case lightning
+        case quickThree
+        case listeningCheck
+        case lookAlikes([String])
+        case bedtimeReview([String])
+        case todayReport
         var id: String {
             switch self {
             case .quest(let q): return "quest-\(q)"
@@ -88,6 +94,12 @@ final class AppModel: ObservableObject {
             case .tricky: return "tricky"
             case .practiceWords(let ids): return "practice-\(ids.joined(separator: ","))"
             case .dictation: return "dictation"
+            case .lightning: return "lightning"
+            case .quickThree: return "quickThree"
+            case .listeningCheck: return "listeningCheck"
+            case .lookAlikes(let ids): return "lookAlikes-\(ids.joined(separator: ","))"
+            case .bedtimeReview(let ids): return "bedtime-\(ids.joined(separator: ","))"
+            case .todayReport: return "todayReport"
             }
         }
     }
@@ -417,9 +429,21 @@ final class AppModel: ObservableObject {
     }
 
     /// Speaks automatically unless the player turned on quiet mode (they can still tap any speaker button).
-    func autoSay(_ v: VText) {
+    func autoSay(_ v: VText, slow: Bool = false) {
         guard profile?.settings.quietModeOn != true else { return }
-        say(v)
+        say(v, slow: slow)
+    }
+
+    /// v1.3: a light tap on right and wrong answers (Settings › Haptics).
+    func haptic(_ ok: Bool) {
+        guard profile?.settings.hapticsOn != false else { return }
+        UINotificationFeedbackGenerator().notificationOccurred(ok ? .success : .warning)
+    }
+
+    /// v1.3: the parent's bedtime (no play after it, until a parent allows more for the day).
+    var bedtimeReached: Bool {
+        guard let p = profile else { return false }
+        return Bedtime.isPast(parent: save.parent, profile: p, now: Date())
     }
 
     /// After a 10-question memory check: one extra streak freeze a week (up to 3).
@@ -478,7 +502,7 @@ final class AppModel: ObservableObject {
         guard let sheet else { return .village }
         switch sheet {
         case .battle: return .battle
-        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes, .starredPractice, .builder, .quizzes, .listenType, .rightOrWrong, .memoryCheck, .lessonQuiz, .tricky, .practiceWords, .dictation:
+        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes, .starredPractice, .builder, .quizzes, .listenType, .rightOrWrong, .memoryCheck, .lessonQuiz, .tricky, .practiceWords, .dictation, .lightning, .quickThree, .listeningCheck, .lookAlikes, .bedtimeReview, .todayReport:
             return GameMusic.lessons(for: library?.course.targetLanguage ?? "es")
         case .journal, .bag, .parent, .games, .phrasebook, .languages, .settings, .wardrobe, .trophies, .stats, .privacy, .words, .myProgress, .plus:
             return .village

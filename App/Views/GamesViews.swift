@@ -122,6 +122,10 @@ struct GamesHubView: View {
                             gameRow(icon: "rectangle.on.rectangle.angled", title: "Flashcards",
                                     detail: "\(extras.flashcardsReviewed ?? 0) cards flipped", locked: false)
                         }
+                        Button { model.sheet = .lightning } label: {
+                            gameRow(icon: "bolt.fill", title: "Lightning round", detail: "Best: \(LightningRound.best(prof))", locked: false)
+                        }
+                        .accessibilityIdentifier("lightningGame")
                         if model.library?.course.script == .kana {
                             Button { model.sheet = .kana } label: {
                                 gameRow(icon: "character.ja", title: "Kana Dojo", detail: stars(extras.kanaBestStars ?? 0), locked: false)

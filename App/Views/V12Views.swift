@@ -198,6 +198,7 @@ struct ParentShareCardSection: View {
 
 struct TimeLimitOverlay: View {
     @EnvironmentObject var model: AppModel
+    var bedtime = false
     @Environment(\.palette) var p
     @State private var asking = false
     var body: some View {
@@ -213,7 +214,7 @@ struct TimeLimitOverlay: View {
                     Button("Back") { asking = false }.foregroundStyle(.white)
                 } else {
                     Image(systemName: "moon.stars.fill").font(.system(size: 60)).foregroundStyle(.yellow).accessibilityHidden(true)
-                    Text("That's today's playtime!").font(.title.bold()).foregroundStyle(.white)
+                    Text(bedtime ? "It's bedtime!" : "That's today's playtime!").font(.title.bold()).foregroundStyle(.white)
                     Text("Great work. Your words will be waiting tomorrow, and resting helps them stick.")
                         .multilineTextAlignment(.center).foregroundStyle(.white)
                     Button("A parent can allow more time") { asking = true }
