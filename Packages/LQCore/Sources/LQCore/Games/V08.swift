@@ -29,7 +29,7 @@ extension MetaEvent {
 // MARK: - 1. Word Library
 
 public enum WordFilter: String, CaseIterable, Identifiable, Sendable {
-    case all = "All", met = "Met", practice = "Practice", starred = "Starred"
+    case all = "All", met = "Met", practice = "Practice", starred = "Starred", tricky = "Tricky"
     public var id: String { rawValue }
 }
 
@@ -48,6 +48,7 @@ public enum WordLibrary {
     public static func entries(_ p: PlayerProfile, library: ContentLibrary, filter: WordFilter = .all,
                                query: String = "", now: Date = Date()) -> [WordEntry] {
         let starred = Set(p.extrasOrEmpty.starredWords ?? [])
+        let tricky = filter == .tricky ? Set(TrickyWords.ids(p)) : []
         let q = AnswerChecker.normalize(query)
         var seen = Set<String>()
         var out: [WordEntry] = []
@@ -62,6 +63,7 @@ public enum WordLibrary {
                     guard let k else { continue }
                     if k.level > .familiar && k.nextDue > now { continue }
                 case .starred: if !e.starred { continue }
+                case .tricky: if !tricky.contains(e.id) { continue }
                 }
                 if !q.isEmpty {
                     let forms = item.target.allForms + [item.english] + item.target.allForms.compactMap { library.course.romanize($0) }

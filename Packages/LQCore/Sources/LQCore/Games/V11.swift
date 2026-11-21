@@ -319,7 +319,7 @@ extension Achievement {
         case "a-hooks": return (c[MetaEvent.hookWritten] ?? 0) >= 3
         case "a-streak30": return Streak.state(p).longest >= 30
         case "a-perfect3": return PersonalBests.make(p, now: now).perfectRun >= 3
-        default: return nil
+        default: return isMetV12(p)
         }
     }
 
@@ -331,7 +331,7 @@ extension Achievement {
         case "a-hooks": return prog(c[MetaEvent.hookWritten] ?? 0, 3)
         case "a-streak30": return prog(Streak.state(p).longest, 30)
         case "a-perfect3": return prog(PersonalBests.make(p, now: now).perfectRun, 3)
-        default: return nil
+        default: return progressV12(p)
         }
     }
 }

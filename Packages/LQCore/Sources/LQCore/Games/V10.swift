@@ -81,6 +81,8 @@ public struct RetentionQuestion: Hashable, Sendable, Identifiable {
 public enum RetentionQuizKind: Hashable, Sendable {
     case lesson(questId: String)
     case memoryCheck
+    /// v1.2: a drill on words that keep slipping away.
+    case tricky
 }
 
 public struct RetentionQuiz: Sendable {
@@ -97,6 +99,9 @@ public struct RetentionQuiz: Sendable {
     public private(set) var retries: [String: Int] = [:]
     /// Questions where a hint was used (v1.1): a right answer then doesn't count as a first-try point.
     public internal(set) var hinted: Set<String> = []
+    /// The last typed answer's verdict (v1.2: to show "Almost!" and what was different).
+    public private(set) var lastVerdict: AnswerVerdict?
+    public private(set) var lastTyped: String?
     public static let maxRetries = 2
 
     /// Priority = how close a word is to being forgotten (half-life model), how often it was missed,
@@ -123,11 +128,11 @@ public struct RetentionQuiz: Sendable {
         let lesson: [String]
         switch kind {
         case .lesson(let qid): lesson = library.quest(qid).map { Self.lessonItems($0.quest) } ?? []
-        case .memoryCheck: lesson = []
+        case .memoryCheck, .tricky: lesson = []
         }
         let lessonSet = Set(lesson)
         // The pool: this lesson's words plus every word met so far (a lesson quiz can mix in a fading older word).
-        var pool = lesson + p.knowledge.keys.sorted()
+        var pool = kind == .tricky ? TrickyWords.ids(p) : lesson + p.knowledge.keys.sorted()
         if pool.isEmpty { pool = p.reachedUnits(library).flatMap(\.allItems).map(\.id) }
         var seen = Set<String>()
         let usable = pool.filter { id in
@@ -220,8 +225,11 @@ public struct RetentionQuiz: Sendable {
         guard let q = current else { return false }
         let ok: Bool
         if q.kind == .typeIt {
-            ok = AnswerChecker.check(typed ?? "", accepted: [q.word], variant: variant, context: context).isCorrect
+            let v = AnswerChecker.check(typed ?? "", accepted: [q.word], variant: variant, context: context)
+            lastVerdict = v; lastTyped = typed
+            ok = v.isCorrect
         } else {
+            lastVerdict = nil; lastTyped = nil
             ok = choice == q.answerIndex
         }
         if index < questions.count {
@@ -268,7 +276,8 @@ public struct RetentionQuiz: Sendable {
         }
         p.updateMeta { m in
             if questId != nil && quiz.total > 0 && quiz.correctCount == quiz.total { m.counters[MetaEvent.lessonQuizPerfect, default: 0] += 1 }
-            if questId == nil { m.counters[MetaEvent.memoryCheckDone, default: 0] += 1 }
+            if questId == nil && quiz.kind != .tricky { m.counters[MetaEvent.memoryCheckDone, default: 0] += 1 }
+            if quiz.kind == .tricky { m.counters[MetaEvent.trickyDrill, default: 0] += 1 }
         }
         let milestone = Streak.recordPractice(&p, now: now)
         if let m = milestone { StreakRewards.grant(m, profile: &p) }
