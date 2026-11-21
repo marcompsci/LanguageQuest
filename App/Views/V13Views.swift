@@ -132,7 +132,7 @@ struct TodayGoalCard: View {
     @EnvironmentObject var model: AppModel
     @Environment(\.palette) var p
     var body: some View {
-        if let prof = model.profile, !prof.knowledge.isEmpty {
+        if let prof = model.profile {
             Card {
                 VStack(alignment: .leading, spacing: 10) {
                     if let goal = DailyGoal.goal(prof.settings) {

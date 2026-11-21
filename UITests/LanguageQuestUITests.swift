@@ -456,8 +456,11 @@ final class LanguageQuestUITests: XCTestCase {
         while app.buttons["celebrationDone"].waitForExistence(timeout: 2) { app.buttons["celebrationDone"].tap() }
         app.buttons["course-en-es"].tap()
         if app.buttons["tip-path"].waitForExistence(timeout: 3) { app.buttons["tip-path"].tap() }
-        XCTAssertTrue(revealTile("quickThree", in: app))
-        app.buttons["quickThree"].tap()
+        let quick = app.buttons["quickThree"]
+        for _ in 0..<8 where !(quick.exists && quick.isHittable) { app.swipeUp() }
+        if !quick.exists { print(app.debugDescription.split(separator: "\n").prefix(80).map { "AUDIT-ISSUE DUMP \($0)" }.joined(separator: "\n")) }
+        XCTAssertTrue(quick.exists)
+        quick.tap()
         XCTAssertTrue(finishLessonQuiz(app))
         app.swipeDown(); app.swipeDown(); app.swipeDown()
         XCTAssertTrue(revealTile("menu-games", in: app))
