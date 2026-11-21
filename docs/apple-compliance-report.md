@@ -60,6 +60,16 @@ Severity: **BLOCKER** (Apple will reject or the build can't be distributed), **H
 | F27 | Save compatibility (2.1 stability) | `ExtrasProgress`, `MetaProgress`, `ParentSettings` | MEDIUM | New saved fields could break loading v0.7 saves. | All new fields are optional; a v0.7-shaped save decodes in a unit test. | ✅ | Unit test |
 | F28 | 2.4.1 iPad | `MenuView`, `LanguageHubView` | LOW | Layout stretched across the full iPad width. | Readable max width (720 pt) and an adaptive tile grid. Still needs a person to check on an iPad. | Partly | Manual (checklist B) |
 
+### v1.2 additions (November 20, 2026)
+
+| # | Guideline / requirement | Where | Sev. | Concern | Remediation | Done? | Verified by |
+|---|---|---|---|---|---|---|---|
+| F44 | 2.3.1(a) new features documented | `docs/app-review-notes.md` | MEDIUM | 25 changes in 1.2. | "NEW IN 1.2" section and the tester guide. | ✅ | Docs |
+| F45 | 5.1.1 / 1.3 kids: progress-card sharing | `ParentShareCardSection` | MEDIUM | A child's nickname and stats in a shareable image. | Lives in the gated Parents area; the image is made on the device and only leaves through the system share sheet after a parent taps Share. No upload by the app. | ✅ | Code review; still needs a person to check it on a device |
+| F46 | 1.3 kids: daily playtime limit | `TimeLimit`, `TimeLimitOverlay` | LOW | The child must not be able to get past the stop screen. | Allowing more time needs the parent PIN or the parent gate. Counted on the device. | ✅ | Unit tests `V12Tests` |
+| F47 | 5.1.1 notifications: app icon badge | `ReminderScheduler.setBadge` | LOW | Asking for badge permission. | Requested together with the come-back reminder permission the player turns on; the badge clears when reminders are off or blocked by a parent. | ✅ | Code review |
+| F48 | Privacy policy matches storage | `privacy-policy.md` v7 | LOW | New on-device fields. | Policy v7 lists them; both copies identical (test-enforced); `PrivacyNotice.version` = 7 so the app shows the update. | ✅ | Policy parity test |
+
 ### v1.1 additions (November 20, 2026)
 
 | # | Guideline / requirement | Where | Sev. | Concern | Remediation | Done? | Verified by |

@@ -21,6 +21,7 @@
 		7DA53FFC76F66DAF345AD308 /* AppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA293F84E4FC3758A96CE5E /* AppShortcuts.swift */; };
 		82AD379946AF0384699DE258 /* LanguageQuest.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 89E6181925702439665497F9 /* LanguageQuest.storekit */; };
 		8465350E29DD14BDA1FEC31B /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB717234CB21DE33DDB51F97 /* AppModel.swift */; };
+		897DFDB361DC79AB9175E963 /* V12Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AED7B4E8364ABD3F7A355F1 /* V12Views.swift */; };
 		967AD8C76FC3BCA7DC4064B1 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A22EDA37507347E218EC53 /* JournalView.swift */; };
 		A5CAAE604B801E57EEE03338 /* VillageFX.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0CDFC4A8D26B20DCD814BA /* VillageFX.swift */; };
 		A6352DCBDCA39851B8585E8F /* WriteOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4A8113C531B263A0B038EB /* WriteOutView.swift */; };
@@ -77,6 +78,7 @@
 		5AE9089108E6FBF0100BEAF6 /* LanguageQuestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageQuestUITests.swift; sourceTree = "<group>"; };
 		6630EF63B7B3AD80B83D73BE /* VillageScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillageScene.swift; sourceTree = "<group>"; };
 		67C302986D844A0FCBB00326 /* V11Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V11Views.swift; sourceTree = "<group>"; };
+		6AED7B4E8364ABD3F7A355F1 /* V12Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V12Views.swift; sourceTree = "<group>"; };
 		807D46C30E93643BB88B3BF0 /* Exercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercises.swift; sourceTree = "<group>"; };
 		839773334A51BD6E8B119381 /* QuestPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestPlayerView.swift; sourceTree = "<group>"; };
 		89E6181925702439665497F9 /* LanguageQuest.storekit */ = {isa = PBXFileReference; path = LanguageQuest.storekit; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				0C0BF9FB3F53A164898A6045 /* V09Views.swift */,
 				DCDF9E316276EE72F0049AF9 /* V10Views.swift */,
 				67C302986D844A0FCBB00326 /* V11Views.swift */,
+				6AED7B4E8364ABD3F7A355F1 /* V12Views.swift */,
 				4C9B41B13A3A33C328E3C229 /* WorldView.swift */,
 				BE4A8113C531B263A0B038EB /* WriteOutView.swift */,
 				68B4556FA5F8F6BE9A4751E0 /* Activities */,
@@ -356,6 +359,7 @@
 				E8A716BEC7B558C9AE53115F /* V09Views.swift in Sources */,
 				B51E9DC63B37220AB828B6FA /* V10Views.swift in Sources */,
 				453020187B09C819457E1E31 /* V11Views.swift in Sources */,
+				897DFDB361DC79AB9175E963 /* V12Views.swift in Sources */,
 				A5CAAE604B801E57EEE03338 /* VillageFX.swift in Sources */,
 				B8ABB7B0C45E1B3213B15354 /* VillageScene.swift in Sources */,
 				CECC3A8DC62F6B1FB50A3A84 /* WorldView.swift in Sources */,
@@ -439,7 +443,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -575,7 +579,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

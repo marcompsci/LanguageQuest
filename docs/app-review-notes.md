@@ -1,4 +1,4 @@
-# App Review notes: Language Quest 1.1.0
+# App Review notes: Language Quest 1.2.0
 
 Paste the "Review Notes" section into App Store Connect › TestFlight › Test Information (Beta App Review) and, later, into App Review Information for the App Store. Guideline 2.3.1(a) asks for features to be described specifically, so keep this list current with every build.
 
@@ -24,6 +24,19 @@ HOW TO NAVIGATE
 - Tap a language to open its page: Play (enters the village), Today, Word of the day, Games, Flashcards, Bonus lesson, Write Out, Word Library, Unit quizzes (and Kana Dojo for Japanese).
 - ☰ (top right): Review, Phrasebook, Word Library, Write Out, Bonus lesson, Quest journal, Wardrobe, Bag and badges, Mistakes notebook, Trophies, My stats, Settings, Parents, Privacy policy.
 - In the village: use the arrow pad to walk; "Go to" walks to a character; the house button returns to the language page; the flag button switches language.
+
+NEW IN 1.2
+- Tricky words: words missed 3+ times (or in 2 quizzes) get their own drill in My progress and a "Tricky" filter in the Word Library.
+- Typed answers show which letters were different ("Almost!").
+- Sentence dictation game (Games): hear a sentence, type all of it.
+- Practice the words you missed, straight from a memory-check result; quiz history rows open a detail page.
+- Settings: words per review (8/10/12/20), quiet mode (words play only when tapped), reminder days off.
+- Today's path chest (+30 XP once a day when all 3 steps are done). A 10-question memory check earns one extra streak freeze per week (max 3).
+- Parents area: daily playtime limit with a friendly stop screen (a parent gate allows more for the day), and a progress-card picture shared only through the system share sheet when a parent chooses.
+- My progress: new words this week, "How memory works" with example forgetting curves, when-you-practice chart; per-word memory curve in the Word Library.
+- Outfits at levels 5 and 10 (cosmetic only). App icon badge shows words ready to review, only while come-back reminders are on.
+- Accessibility: check/cross icons as well as colors on answers; number keys 1-4 and Return on hardware keyboards; a first-run tip and a one-time "what's new" card.
+- No new data leaves the device; no tracking or analytics were added. Purchase rules are unchanged.
 
 NEW IN 1.1
 - Today's path on the language page: memory check, next quest, review; each ticks off when done.

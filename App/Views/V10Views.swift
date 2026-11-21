@@ -63,9 +63,16 @@ struct RetentionQuizView: View {
         }
     }
 
+    private var isLesson: Bool { if case .lesson = kind { return true }; return false }
+
     private var kindTitle: String {
-        if case .lesson = kind { return "Lesson quiz: 5 questions" }
-        return "Quick memory check: 5 questions"
+        let n = quiz?.total ?? count
+        switch kind {
+        case .lesson: return "Lesson quiz: \(n) questions"
+        case .memoryCheck: return "Memory check: \(n) questions"
+        case .tricky: return "Tricky words: \(n) questions"
+        case .words: return "Practice: \(n) questions"
+        }
     }
 
     @ViewBuilder
@@ -91,7 +98,7 @@ struct RetentionQuizView: View {
                 SpeakerButton(text: q.word, label: "Play the word", big: true)
                 SlowSpeakerButton(text: q.word)
             }
-            .onAppear { model.say(q.word) }
+            .onAppear { model.autoSay(q.word) }
             choices(q)
         case .pickWord:
             Text("How do you say this?").font(.headline)
@@ -142,6 +149,7 @@ struct RetentionQuizView: View {
                         .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color(p.accent).opacity(0.5)))
                 }
                 .buttonStyle(.plain)
+                .keyboardShortcut(KeyEquivalent(Character("\(i + 1)")), modifiers: [])   // iPad keyboards: 1–4
                 .accessibilityIdentifier("rq-option-\(i)")
             }
         }
@@ -167,13 +175,18 @@ struct RetentionQuizView: View {
             if ok, let t = RetentionQuiz.nextReviewText(model.profile.flatMap { RetentionQuiz.nextReviewDays(q.itemId, profile: $0, now: Date()) }) {
                 Label(t, systemImage: "calendar").font(.subheadline)
             }
+            if !ok, q.kind == .typeIt, let t = quiz?.lastTyped, !t.isEmpty, let lib = model.library, let prof = model.profile {
+                if case .almost = quiz?.lastVerdict { Text("Almost! Just a small slip.").font(.headline) }
+                TypoDiffView(typed: t, expected: q.word.text(for: prof.variant(for: lib)))
+            }
             if !ok { MemoryHookEditor(itemId: q.itemId) }
             Button("Next") { feedback = nil; typed = ""; if quiz?.isFinished == true { finish() } }
                 .buttonStyle(PrimaryButtonStyle())
+                .keyboardShortcut(.defaultAction)
                 .accessibilityIdentifier("rq-next")
         }
         .onAppear {
-            if !ok { model.say(q.word) }
+            if !ok { model.autoSay(q.word) }
             UIAccessibility.post(notification: .announcement, argument: ok ? "Correct" : "The answer is \(model.text(q.word)), \(q.meaning)")
         }
     }
@@ -190,7 +203,12 @@ struct RetentionQuizView: View {
                 let r = RetentionReport.make(p0, now: Date())
                 if let avg = r.averageLast10 { Text("Your last \(min(10, r.lessonQuizzes + r.memoryChecks)) quizzes: \(avg)% on average").font(.caption) }
             }
-            Button("Continue") { onDone(rec) }.buttonStyle(PrimaryButtonStyle()).accessibilityIdentifier("rq-continue")
+            if !rec.missed.isEmpty, !isLesson {
+                Button("Practice the \(rec.missed.count) I missed") { model.sheet = .practiceWords(rec.missed) }
+                    .buttonStyle(.bordered).accessibilityIdentifier("rq-practiceMissed")
+            }
+            Button("Continue") { onDone(rec) }.buttonStyle(PrimaryButtonStyle()).keyboardShortcut(.defaultAction)
+                .accessibilityIdentifier("rq-continue")
         }
     }
 
@@ -242,8 +260,9 @@ struct MemoryCheckSheet: View {
         NavigationStack {
             Group {
                 if let l = length {
-                    RetentionQuizView(kind: .memoryCheck, count: l.rawValue) { _ in
+                    RetentionQuizView(kind: .memoryCheck, count: l.rawValue) { rec in
                         model.updateProfile { TodayPath.mark(.memoryCheck, profile: &$0, now: Date()) }
+                        if l == .long, rec != nil { model.earnFreezeIfPossible() }
                         dismiss()
                     }
                 } else {
@@ -254,7 +273,7 @@ struct MemoryCheckSheet: View {
                             .multilineTextAlignment(.center)
                         Button("Quick: 5 questions") { length = .short }.buttonStyle(PrimaryButtonStyle())
                             .accessibilityIdentifier("check-5")
-                        Button("Longer: 10 questions") { length = .long }.buttonStyle(.bordered)
+                        Button("Longer: 10 questions (earns a streak freeze once a week)") { length = .long }.buttonStyle(.bordered)
                             .accessibilityIdentifier("check-10")
                     }
                     .padding(24)
@@ -293,7 +312,11 @@ struct MyProgressView: View {
                     } header: { Text("Your memory in \(model.languageName)") } footer: {
                         Text("\"Remembered now\" is the app's estimate of how many of your words you'd recall today. Words are locked in after you remember them 3 times after a break.")
                     }
+                    Section { NavigationLink("How memory works") { MemoryScienceView() } }
+                    TrickyWordsSection()
+                    WordsThisWeekSection()
                     StreakCalendarSection()
+                    PracticeTimesSection()
                     PersonalBestsSection()
                     Section("Quiz scores by week") {
                         Chart(r.weeks) { w in
@@ -329,6 +352,7 @@ struct MyProgressView: View {
                     if !hist.isEmpty {
                         Section("Recent quizzes") {
                             ForEach(Array(hist.enumerated()), id: \.offset) { _, rec in
+                                NavigationLink { QuizDetailView(record: rec) } label: {
                                 HStack {
                                     Image(systemName: rec.isLesson ? "flag.checkered" : "brain.head.profile").accessibilityHidden(true)
                                     Text(rec.isLesson ? (rec.questId.flatMap { lib.quest($0)?.quest.title } ?? "Lesson quiz") : "Memory check")
@@ -336,6 +360,7 @@ struct MyProgressView: View {
                                     Text("\(rec.correct)/\(rec.total)").bold()
                                 }
                                 .accessibilityElement(children: .combine)
+                                }
                             }
                         }
                     }

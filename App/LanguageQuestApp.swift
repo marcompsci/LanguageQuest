@@ -26,6 +26,7 @@ struct LanguageQuestApp: App {
 
 struct RootView: View {
     @EnvironmentObject var model: AppModel
+    @State private var limitTick = 0
 
     var body: some View {
         Group {
@@ -56,6 +57,14 @@ struct RootView: View {
         .onChange(of: model.sheet) { _, _ in model.syncMusic() }
         .onChange(of: model.route) { _, _ in model.syncMusic() }
         .lqTheme(model.palette, scale: model.profile?.settings.textScale ?? 1, easyRead: model.profile?.settings.easyReadOn ?? false)
+        .overlay {
+            // v1.2: the parent's daily playtime limit (checked every minute).
+            if limitTick >= 0 && model.timeLimitReached { TimeLimitOverlay() }
+        }
+        .onReceive(Timer.publish(every: 60, on: .main, in: .common).autoconnect()) { _ in
+            limitTick += 1
+            if model.timeLimitReached && model.sheet != nil { model.sheet = nil }   // the stop screen sits over everything
+        }
         .overlay {
             if let c = model.celebration {
                 CelebrationOverlay(celebration: c, reducedMotion: model.profile?.settings.reducedMotion ?? false) { model.dismissCelebration() }

@@ -83,6 +83,8 @@ public enum RetentionQuizKind: Hashable, Sendable {
     case memoryCheck
     /// v1.2: a drill on words that keep slipping away.
     case tricky
+    /// v1.2: practice just these words again (e.g. the ones missed in a quiz).
+    case words([String])
 }
 
 public struct RetentionQuiz: Sendable {
@@ -128,11 +130,16 @@ public struct RetentionQuiz: Sendable {
         let lesson: [String]
         switch kind {
         case .lesson(let qid): lesson = library.quest(qid).map { Self.lessonItems($0.quest) } ?? []
-        case .memoryCheck, .tricky: lesson = []
+        case .memoryCheck, .tricky, .words: lesson = []
         }
         let lessonSet = Set(lesson)
         // The pool: this lesson's words plus every word met so far (a lesson quiz can mix in a fading older word).
-        var pool = kind == .tricky ? TrickyWords.ids(p) : lesson + p.knowledge.keys.sorted()
+        var pool: [String]
+        switch kind {
+        case .tricky: pool = TrickyWords.ids(p)
+        case .words(let ids): pool = ids
+        default: pool = lesson + p.knowledge.keys.sorted()
+        }
         if pool.isEmpty { pool = p.reachedUnits(library).flatMap(\.allItems).map(\.id) }
         var seen = Set<String>()
         let usable = pool.filter { id in
@@ -276,7 +283,7 @@ public struct RetentionQuiz: Sendable {
         }
         p.updateMeta { m in
             if questId != nil && quiz.total > 0 && quiz.correctCount == quiz.total { m.counters[MetaEvent.lessonQuizPerfect, default: 0] += 1 }
-            if questId == nil && quiz.kind != .tricky { m.counters[MetaEvent.memoryCheckDone, default: 0] += 1 }
+            if quiz.kind == .memoryCheck { m.counters[MetaEvent.memoryCheckDone, default: 0] += 1 }
             if quiz.kind == .tricky { m.counters[MetaEvent.trickyDrill, default: 0] += 1 }
         }
         let milestone = Streak.recordPractice(&p, now: now)

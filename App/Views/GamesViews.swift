@@ -92,6 +92,10 @@ struct GamesHubView: View {
                                     detail: (extras.listenBest ?? 0) > 0 ? "Best: \(extras.listenBest ?? 0)/10" : "Hear a word, then type it", locked: false)
                         }
                         .accessibilityIdentifier("listenTypeGame")
+                        Button { model.sheet = .dictation } label: {
+                            gameRow(icon: "text.bubble.fill", title: "Sentence dictation", detail: "Hear a sentence, type it all", locked: false)
+                        }
+                        .accessibilityIdentifier("dictationGame")
                         Button { model.sheet = .rightOrWrong } label: {
                             gameRow(icon: "checkmark.circle.badge.xmark", title: "Right or Wrong",
                                     detail: (extras.rightOrWrongBest ?? 0) > 0 ? "Best: \(extras.rightOrWrongBest ?? 0)/10" : "Is that the right meaning?", locked: false)

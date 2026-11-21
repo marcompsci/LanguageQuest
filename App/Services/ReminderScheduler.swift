@@ -14,7 +14,7 @@ enum ReminderScheduler {
         switch settings.authorizationStatus {
         case .authorized, .provisional, .ephemeral: return true
         case .denied: return false
-        default: return (try? await center.requestAuthorization(options: [.alert, .sound])) ?? false
+        default: return (try? await center.requestAuthorization(options: [.alert, .sound, .badge])) ?? false
         }
     }
 
@@ -71,6 +71,9 @@ enum ReminderScheduler {
             center.add(UNNotificationRequest(identifier: trialId, content: content, trigger: UNCalendarNotificationTrigger(dateMatching: when, repeats: false)))
         }
     }
+
+    /// The app icon shows how many words are ready for review (only with come-back reminders on).
+    static func setBadge(_ n: Int) { UNUserNotificationCenter.current().setBadgeCount(max(0, n)) { _ in } }
 
     static func removeSmart() { UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: smartIds) }
 

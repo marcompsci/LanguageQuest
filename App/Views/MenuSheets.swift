@@ -43,6 +43,9 @@ struct SheetRouter: View {
         case .myProgress: MyProgressView()
         case .plus: PlusPaywallView()
         case .lessonQuiz(let q): LessonQuizSheet(questId: q)
+        case .tricky: WordsQuizSheet(kind: .tricky, title: "Tricky words")
+        case .practiceWords(let ids): WordsQuizSheet(kind: .words(ids), title: "Practice")
+        case .dictation: DictationView()
         }
     }
 }
@@ -126,6 +129,9 @@ struct PlayerSettingsView: View {
                             Text("Speaking speed")
                             Slider(value: setting(\.speechRate, prof), in: 0.3...0.55)
                         }
+                        Toggle("Quiet mode (words play only when you tap)", isOn: Binding(get: { (model.profile ?? prof).settings.quietModeOn },
+                                                                                 set: { v in model.updateProfile { $0.settings.quietMode = v } }))
+                            .accessibilityIdentifier("quietMode")
                         VoiceStatusRow(language: lib.course.displayLanguage, variant: lib.course.variant(prof.variant))
                     }
                     Section("Look and comfort") {
@@ -148,6 +154,12 @@ struct PlayerSettingsView: View {
                                                                                  set: { v in model.updateProfile { $0.settings.leftHanded = v } }))
                             .accessibilityIdentifier("leftHandedToggle")
                         SmartRemindersToggle()
+                        ReminderDaysOffRow()
+                        Picker("Words per review", selection: Binding(get: { ReviewSize.size((model.profile ?? prof).settings) },
+                                                                     set: { v in model.updateProfile { $0.settings.reviewSize = v } })) {
+                            ForEach(ReviewSize.choices, id: \.self) { Text("\($0)").tag($0) }
+                        }
+                        .accessibilityIdentifier("reviewSize")
                     }
                     Section { EmptyView() } footer: {
                         Text("Break reminders, speech checking, purchases and deleting data are in the Parents area.")

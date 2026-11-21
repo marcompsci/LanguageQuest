@@ -1,6 +1,6 @@
 # Language Quest Privacy Policy
 
-Effective: November 20, 2026 · Version 6
+Effective: November 20, 2026 · Version 7
 
 Language Quest is a language-learning game for players aged 11 and up, made by Phoronomics. This policy explains what the app does with information. In short: **the app does not collect any information from you. Everything stays on your device.**
 
@@ -17,7 +17,7 @@ Language Quest is a language-learning game for players aged 11 and up, made by P
 The app saves the following only on the device it is installed on, so the game can remember your progress:
 
 - An optional nickname, an age band (11–12, 13–15, or 16+; never a birthdate), an avatar, and the languages and varieties you chose.
-- Lesson progress, the review schedule, answers to practice activities, game scores, quiz scores, XP, levels, daily challenges, the weekly goal, achievements, words you starred, languages you pinned, and any notes you write on words. From version 1.0 it also keeps lesson-quiz and memory-check results, the daily streak, today's path, the weekly recap you closed, and the times practice sessions started (used only to time come-back reminders). Notes are private: they stay on this device and are never shown to anyone else or sent anywhere.
+- Lesson progress, the review schedule, answers to practice activities, game scores, quiz scores, XP, levels, daily challenges, the weekly goal, achievements, words you starred, languages you pinned, and any notes you write on words. From version 1.0 it also keeps lesson-quiz and memory-check results, the daily streak, today's path, the weekly recap you closed, and the times practice sessions started (used only to time come-back reminders). From version 1.2 it also keeps the reminder days off you choose, the words-per-review setting, quiet mode, whether today's path chest was opened, whether a parent allowed extra playtime today, and which tips and "what's new" cards were closed. Notes are private: they stay on this device and are never shown to anyone else or sent anywhere.
 - Minutes and activities per day, kept for a limited time and then removed automatically.
 - Parent settings, including practice reminder times if a parent turns reminders on. An optional parent PIN is stored only as a salted hash in the device's Keychain. If a parent forgets the PIN, the device's own passcode or Face ID / Touch ID can reset it; the app only receives a yes/no answer from iOS.
 
@@ -50,6 +50,10 @@ The Parents area shows a summary of the last 7 days, made on the device. It is s
 ## Purchases
 
 Family Plus is an optional subscription sold through Apple's In-App Purchase. A purchase can only start after a parent turns on "Allow purchases" and answers the parent question. Payment, billing details and the Apple Account are handled entirely by Apple; the app never sees them. The app keeps only which plan is active and when it expires, read from Apple's signed receipts on the device. If notifications are already allowed, the app schedules one local reminder 2 days before a free trial ends; it never asks for notification permission for this. Unit 1 of every language, every starter course, reviews, quizzes and memory checks are always free.
+
+## Daily playtime limit and progress card
+
+A parent can set a daily playtime limit in the Parents area. Playtime is counted on the device only. The progress card is a picture made on the device; it is shared only if a parent taps Share and picks where it goes. The app does not send it anywhere by itself.
 
 ## Children's privacy
 

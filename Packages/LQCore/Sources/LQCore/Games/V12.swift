@@ -264,7 +264,8 @@ public enum OnceMessages {
         "Finish Today's path to open a chest (+30 XP).",
         "Earn an extra streak freeze with a 10-question memory check.",
         "See how memory works, and each word's memory curve.",
-        "Quiet mode, wider letter spacing and keyboard shortcuts.",
+        "Practice the words you missed right from the quiz results.",
+        "Quiet mode, reminder days off and keyboard shortcuts.",
     ]
 
     public static func shouldShowWhatsNew(_ p: PlayerProfile) -> Bool {
@@ -283,7 +284,6 @@ public enum OnceMessages {
 
 extension LearnerSettings {
     public var quietModeOn: Bool { quietMode ?? false }
-    public var wideSpacingOn: Bool { wideSpacing ?? false }
 }
 
 // MARK: - 23. Achievements

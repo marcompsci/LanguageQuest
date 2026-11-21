@@ -44,6 +44,9 @@ final class AppModel: ObservableObject {
         case myProgress
         case plus
         case lessonQuiz(String)
+        case tricky
+        case practiceWords([String])
+        case dictation
         var id: String {
             switch self {
             case .quest(let q): return "quest-\(q)"
@@ -82,6 +85,9 @@ final class AppModel: ObservableObject {
             case .myProgress: return "myProgress"
             case .plus: return "plus"
             case .lessonQuiz(let q): return "lessonQuiz-\(q)"
+            case .tricky: return "tricky"
+            case .practiceWords(let ids): return "practice-\(ids.joined(separator: ","))"
+            case .dictation: return "dictation"
             }
         }
     }
@@ -398,14 +404,42 @@ final class AppModel: ObservableObject {
     /// Plans the player's come-back reminders from their activity (only if they turned them on and no parent blocked them).
     func rescheduleSmartReminders() {
         guard let p = profile, p.settings.smartRemindersOn, save.parent.remindersBlocked != true else {
-            ReminderScheduler.removeSmart(); return
+            ReminderScheduler.removeSmart(); ReminderScheduler.setBadge(0); return
         }
         let now = Date()
         let due = p.knowledge.values.filter { $0.nextDue <= now.addingTimeInterval(86400) }.count
         let hasNew = progression?.nextQuest(p.progress, plan: plan) != nil
-        let planned = SmartReminders.plan(p, now: now, dueWords: due, hasNewLesson: hasNew)
+        let planned = SmartReminders.respectingDaysOff(SmartReminders.plan(p, now: now, dueWords: due, hasNewLesson: hasNew),
+                                                       daysOff: p.settings.reminderDaysOff ?? [])
         ReminderScheduler.applySmart(planned)
+        ReminderScheduler.setBadge(ReviewPlanner.dueItems(p.knowledge, now: now, limit: 99).count)
         updateProfile { SmartReminders.storePlan(planned, profile: &$0, now: now) }
+    }
+
+    /// Speaks automatically unless the player turned on quiet mode (they can still tap any speaker button).
+    func autoSay(_ v: VText) {
+        guard profile?.settings.quietModeOn != true else { return }
+        say(v)
+    }
+
+    /// After a 10-question memory check: one extra streak freeze a week (up to 3).
+    func earnFreezeIfPossible() {
+        var earned = false
+        updateProfile { earned = Streak.earnFreeze(&$0, now: Date()) }
+        if earned { celebrate(Celebration(icon: "snowflake", title: "Streak freeze earned!", detail: "A long memory check earns one each week.")) }
+        checkMilestones()
+    }
+
+    /// Minutes played today, including the current session (for the parent's daily limit).
+    var minutesToday: Double {
+        guard let p = profile else { return 0 }
+        let logged = p.log.minutesByDay[ActivityLog.dayKey(Date())] ?? 0
+        return logged + (sessionStart.map { Date().timeIntervalSince($0) / 60 } ?? 0)
+    }
+
+    var timeLimitReached: Bool {
+        guard let p = profile else { return false }
+        return TimeLimit.isReached(minutesToday: minutesToday, parent: save.parent, profile: p, now: Date())
     }
 
     func checkMilestones() {
@@ -417,6 +451,9 @@ final class AppModel: ObservableObject {
         if let p = profile, let lvl = ExplorerLevel.pendingLevelUp(p) {
             updateProfile { $0.updateMeta { $0.lastLevelSeen = lvl } }
             celebrate(Celebration(icon: "arrow.up.circle.fill", title: "Level \(lvl)!", detail: "You're now a \(ExplorerLevel.title(lvl))."))
+            var gifts: [String] = []
+            updateProfile { gifts = LevelRewards.grant(profile: &$0) }
+            for g in gifts { if let c = Catalog.cosmetic(g) { celebrate(Celebration(icon: "tshirt.fill", title: "New outfit!", detail: "\(c.name) is in your wardrobe.")) } }
         }
     }
 
@@ -441,7 +478,7 @@ final class AppModel: ObservableObject {
         guard let sheet else { return .village }
         switch sheet {
         case .battle: return .battle
-        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes, .starredPractice, .builder, .quizzes, .listenType, .rightOrWrong, .memoryCheck, .lessonQuiz:
+        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes, .starredPractice, .builder, .quizzes, .listenType, .rightOrWrong, .memoryCheck, .lessonQuiz, .tricky, .practiceWords, .dictation:
             return GameMusic.lessons(for: library?.course.targetLanguage ?? "es")
         case .journal, .bag, .parent, .games, .phrasebook, .languages, .settings, .wardrobe, .trophies, .stats, .privacy, .words, .myProgress, .plus:
             return .village

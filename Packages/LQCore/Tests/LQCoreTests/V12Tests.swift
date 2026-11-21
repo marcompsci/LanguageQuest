@@ -41,6 +41,15 @@ final class V12Tests: XCTestCase {
         XCTAssertNil(p.metaOrEmpty.counters[MetaEvent.memoryCheckDone], "a drill isn't counted as a memory check")
     }
 
+    func testPracticeJustTheMissedWords() throws {
+        let lib = try ContentLibrary.bundled("en-fr")
+        var p = learner(lib)
+        play(lib.units[0].quests[0], &p, lib, at: t0)
+        let ids = Array(RetentionQuiz.lessonItems(lib.units[0].quests[0]).prefix(2))
+        let q = RetentionQuiz(kind: .words(ids), profile: p, library: lib, now: t0, seed: 1, count: ids.count)
+        XCTAssertEqual(Set(q.questions.map(\.itemId)), Set(ids))
+    }
+
     // 2
     func testTypoDiffMarksTheWrongLetters() {
         let m = TypoDiff.marks(typed: "gatto", expected: "gato")
@@ -92,7 +101,6 @@ final class V12Tests: XCTestCase {
         s.reviewSize = 20; XCTAssertEqual(ReviewSize.size(s), 20)
         s.reviewSize = 999; XCTAssertEqual(ReviewSize.size(s), ReviewSize.defaultSize, "only listed sizes")
         XCTAssertFalse(LearnerSettings().quietModeOn)
-        XCTAssertFalse(LearnerSettings().wideSpacingOn)
     }
 
     // 6

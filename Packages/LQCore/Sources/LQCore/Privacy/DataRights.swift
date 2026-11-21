@@ -16,7 +16,7 @@ public enum PrivacyNotice {
     /// Use this same URL in App Store Connect. Swap it for your own website any time.
     public static let hostedPolicyURL: String? = "https://github.com/marcompsci/LanguageQuest/blob/main/docs/privacy-policy.md"
 
-    public static let version = 6
+    public static let version = 7
 
     /// What data exists, where it lives, and how long it is kept. Shown in the
     /// parent area and mirrored in docs/PRIVACY_AND_CHILD_SAFETY.md.

@@ -114,7 +114,7 @@ struct ReviewView: View {
     /// One activity per due item, preferring a different activity type than last time.
     private func dueActivities() -> [Activity] {
         guard let p = model.profile, let lib = model.library else { return [] }
-        let ids = ReviewPlanner.dueItems(p.knowledge, now: Date(), limit: 10)
+        let ids = ReviewPlanner.dueItems(p.knowledge, now: Date(), limit: ReviewSize.size(p.settings))
         let pool = lib.units.flatMap { $0.quests.flatMap(\.activities) }.filter { p.progress.completedActivities[$0.id] != nil }
         var used = Set<String>()
         var out: [Activity] = []

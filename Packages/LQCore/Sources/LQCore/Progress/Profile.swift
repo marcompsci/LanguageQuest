@@ -63,10 +63,9 @@ public struct LearnerSettings: Codable, Hashable, Sendable {
     public var leftHanded: Bool? = nil
     /// Added in v1.0: activity-timed "come back" reminders the player turned on (a parent can block them). nil = off.
     public var smartReminders: Bool? = nil
-    /// Added in v1.2: review session size, quiet mode (no automatic speech), wider letter spacing, reminder days off (1 = Sunday).
+    /// Added in v1.2: review session size, quiet mode (no automatic speech), reminder days off (1 = Sunday).
     public var reviewSize: Int? = nil
     public var quietMode: Bool? = nil
-    public var wideSpacing: Bool? = nil
     public var reminderDaysOff: [Int]? = nil
     public var easyReadOn: Bool { easyRead ?? false }
 

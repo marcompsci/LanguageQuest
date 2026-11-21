@@ -103,7 +103,7 @@ struct ListenTypeView: View {
         guard let prof = model.profile, let lib = model.library else { return }
         game = ListenTypeGame(profile: prof, library: lib, seed: playSeed())
         typed = ""; feedback = nil; saved = false
-        if let w = game?.current { DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { model.say(w.target) } }
+        if let w = game?.current { DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { model.autoSay(w.target) } }
     }
 
     private func submit() {
@@ -125,7 +125,7 @@ struct ListenTypeView: View {
         if g.isFinished {
             if !saved { saved = true; model.updateProfile { ListenTypeGame.finish(g, profile: &$0) }; model.record(.gamePlayed) }
         } else if let w = g.current {
-            model.say(w.target); focused = true
+            model.autoSay(w.target); focused = true
         }
     }
 }

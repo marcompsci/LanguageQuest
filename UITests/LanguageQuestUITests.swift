@@ -442,6 +442,44 @@ final class LanguageQuestUITests: XCTestCase {
         XCTAssertTrue(finishLessonQuiz(app), "the retaken lesson quiz reaches a score")
     }
 
+    // MARK: v1.2
+
+    /// Sentence dictation opens from Games; My progress has tricky words and "How memory works"; Settings has quiet mode.
+    @MainActor func testDictationProgressScienceAndQuietMode() {
+        let app = launch(seed: true, firstQuestDone: true)
+        XCTAssertTrue(app.buttons["course-en-es"].waitForExistence(timeout: 5))
+        while app.buttons["celebrationDone"].waitForExistence(timeout: 2) { app.buttons["celebrationDone"].tap() }
+        app.buttons["course-en-es"].tap()
+        if app.buttons["tip-path"].waitForExistence(timeout: 3) { app.buttons["tip-path"].tap() }
+        XCTAssertTrue(revealTile("menu-games", in: app))
+        app.buttons["menu-games"].tap()
+        XCTAssertTrue(app.buttons["dictationGame"].waitForExistence(timeout: 5))
+        app.swipeUp()
+        app.buttons["dictationGame"].tap()
+        let field = app.textFields["dictField"]
+        XCTAssertTrue(field.waitForExistence(timeout: 5))
+        field.tap(); field.typeText("hola")
+        app.buttons["dictCheck"].tap()
+        XCTAssertTrue(app.buttons["dictNext"].waitForExistence(timeout: 3))
+        app.buttons["Done"].tap()
+        app.swipeDown(); app.swipeDown()
+        XCTAssertTrue(revealTile("menu-progress", in: app))
+        app.buttons["menu-progress"].tap()
+        XCTAssertTrue(app.navigationBars["My progress"].waitForExistence(timeout: 5))
+        app.buttons["How memory works"].firstMatch.tap()
+        XCTAssertTrue(app.navigationBars["How memory works"].waitForExistence(timeout: 5))
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        app.buttons["Done"].tap()
+        app.swipeDown(); app.swipeDown()
+        XCTAssertTrue(app.buttons["hamburgerMenu"].waitForExistence(timeout: 5))
+        app.buttons["hamburgerMenu"].tap()
+        app.buttons["Settings"].firstMatch.tap()
+        let quiet = app.switches["quietMode"]
+        for _ in 0..<4 where !quiet.exists { app.swipeUp() }
+        XCTAssertTrue(quiet.waitForExistence(timeout: 3))
+        XCTAssertTrue(app.descendants(matching: .any)["reviewSize"].exists || { for _ in 0..<3 { app.swipeUp() }; return app.descendants(matching: .any)["reviewSize"].exists }())
+    }
+
     // MARK: Compliance audit: no dead ends, privacy policy reachable
 
     /// Every ☰ menu screen (except Parents, which has its own gate tests) opens and can be closed.

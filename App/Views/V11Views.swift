@@ -20,6 +20,7 @@ struct TodayPathCard: View {
                         Spacer()
                         Text("\(steps.filter(\.done).count)/\(steps.count)").font(.subheadline.bold())
                     }
+                    PathChestButton(steps: steps)
                     ForEach(steps) { s in
                         Button { go(s.kind) } label: {
                             HStack(spacing: 10) {
@@ -74,7 +75,12 @@ struct WarmUpView: View {
                     HStack { Text(model.display(q.word)).font(.largeTitle.bold()); SpeakerButton(text: q.word) }
                     ForEach(Array(q.options.enumerated()), id: \.offset) { i, o in
                         Button { if picked == nil { picked = i; model.sfx(i == q.answerIndex ? .correct : .select) } } label: {
-                            Text(o).font(.title3).frame(maxWidth: .infinity, minHeight: 52)
+                            HStack {
+                                Text(o).font(.title3)
+                                if picked != nil, i == q.answerIndex { Image(systemName: "checkmark.circle.fill").accessibilityLabel("right answer") }
+                                else if picked == i { Image(systemName: "xmark.circle.fill").accessibilityLabel("your guess") }
+                            }
+                            .frame(maxWidth: .infinity, minHeight: 52)
                                 .background(fill(i, q), in: RoundedRectangle(cornerRadius: 14))
                         }
                         .buttonStyle(.plain)
@@ -255,6 +261,7 @@ struct ParentLearningSection: View {
                     Text("Quizzes this week: \(s.quizzesThisWeek)" + (s.averageThisWeek.map { " · average \($0)%" } ?? ""))
                     Text("Streak: \(s.streak) day\(s.streak == 1 ? "" : "s") · words locked in: \(s.lockedIn)")
                     if let r = s.rememberedNow { Text("Estimated words remembered today: \(r)%") }
+                    if let t = PracticeTimes.summary(prof) { Text(t) }
                 }
                 .font(.subheadline)
                 .accessibilityElement(children: .combine)

@@ -94,6 +94,7 @@ struct WordLibraryView: View {
                 }
                 if let note = e.item.note { Text(note).font(.caption) }
                 if let pos = e.item.partOfSpeech { Text(pos).font(.caption2).foregroundStyle(Color(p.secondaryText)) }
+                WordCurveView(itemId: e.id)
                 WordNoteEditor(itemId: e.id)
             } else if let note = model.profile.flatMap({ WordNotes.note(e.id, in: $0) }) {
                 Label(note, systemImage: "note.text").font(.caption).foregroundStyle(Color(p.secondaryText)).lineLimit(1)
@@ -233,7 +234,7 @@ struct SentenceBuilderView: View {
         game = g
         model.sfx(ok ? .correct : .retry)
         if ok {
-            model.say(VText(pz.full))
+            model.autoSay(VText(pz.full))
             placed = []; feedback = nil
             if g.isFinished { done(g) }
         } else {
@@ -357,7 +358,12 @@ struct UnitQuizView: View {
                     }
                     ForEach(Array(item.options.enumerated()), id: \.offset) { i, o in
                         Button { pick(i, item) } label: {
-                            Text(item.optionTexts.map { model.display($0[i]) } ?? o).font(.title3)
+                            HStack {
+                                Text(item.optionTexts.map { model.display($0[i]) } ?? o).font(.title3)
+                                // Icons as well as colors, so the result is clear without telling red from green.
+                                if picked != nil, i == item.answerIndex { Image(systemName: "checkmark.circle.fill").accessibilityLabel("right answer") }
+                                else if picked == i { Image(systemName: "xmark.circle.fill").accessibilityLabel("your answer") }
+                            }
                                 .frame(maxWidth: .infinity, minHeight: 56)
                                 .padding(.horizontal, 8)
                                 .background(fill(i, item), in: RoundedRectangle(cornerRadius: 14))

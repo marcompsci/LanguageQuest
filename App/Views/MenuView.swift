@@ -24,6 +24,7 @@ struct MenuView: View {
                         explorerCard(prof)
                         RecentLessonView()
                         bonusCard(prof)
+                        WhatsNewCard()
                         WeeklyRecapCard()
                         StreakCard()
                         DailyChallengesCard()
@@ -160,6 +161,7 @@ struct LanguageHubView: View {
                         .accessibilityLabel("Play: \(s.language) village")
                         .accessibilityIdentifier("playButton")
                         WelcomeBackCard()
+                        TipCard(id: "path", icon: "lightbulb.fill", text: "Tip: do the 3 steps of Today's path to open a daily chest. A 10-question memory check also earns a streak freeze.")
                         TodayPathCard { model.play() }
                         todayCard(prof)
                         WordOfTheDayCard()
