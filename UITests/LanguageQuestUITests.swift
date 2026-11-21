@@ -84,7 +84,7 @@ final class LanguageQuestUITests: XCTestCase {
         app.buttons["course-en-fr"].tap()            // main menu → French page
         XCTAssertTrue(app.buttons["Play: French village"].waitForExistence(timeout: 3))
         XCTAssertTrue(app.buttons["menu-games"].exists)
-        XCTAssertTrue(app.buttons["menu-flashcards"].exists)
+        XCTAssertTrue(revealTile("menu-flashcards", in: app))   // v1.2's tip card can push it below the fold
         XCTAssertFalse(app.buttons["menu-kana"].exists)
         app.buttons["hamburgerMenu"].tap()
         for item in ["Review", "Phrasebook", "Quest journal", "Wardrobe", "Bag and badges", "Settings", "Parents"] {
@@ -335,8 +335,8 @@ final class LanguageQuestUITests: XCTestCase {
         app.buttons["pinLanguage"].tap()
         XCTAssertTrue(revealTile("menu-games", in: app))
         app.buttons["menu-games"].tap()
-        XCTAssertTrue(app.buttons["rightOrWrongGame"].waitForExistence(timeout: 5))
         app.swipeUp()   // the new rows sit at the bottom edge of the sheet, where a tap can be taken by the system
+        XCTAssertTrue(revealTile("rightOrWrongGame", in: app))
         app.buttons["rightOrWrongGame"].tap()
         if !app.buttons["rowRight"].waitForExistence(timeout: 6) {
             // The CI log keeps only AUDIT-ISSUE lines, so prefix each line of the element tree.
