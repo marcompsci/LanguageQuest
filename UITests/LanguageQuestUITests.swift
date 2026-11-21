@@ -83,11 +83,12 @@ final class LanguageQuestUITests: XCTestCase {
         }
         app.buttons["course-en-fr"].tap()            // main menu → French page
         XCTAssertTrue(app.buttons["Play: French village"].waitForExistence(timeout: 3))
-        XCTAssertTrue(app.buttons["menu-games"].exists)
         if app.buttons["tip-path"].waitForExistence(timeout: 2) { app.buttons["tip-path"].tap() }   // v1.2 first-run tip
-        // The tile grid is lazy: scroll just until the Flashcards row is built (not past it).
-        for _ in 0..<3 where !app.buttons["menu-flashcards"].waitForExistence(timeout: 2) { app.swipeUp() }
-        XCTAssertTrue(app.buttons["menu-flashcards"].exists)
+        // The tile grid is lazy: scroll just until each row is built (not past it).
+        for tile in ["menu-games", "menu-flashcards"] {
+            for _ in 0..<3 where !app.buttons[tile].waitForExistence(timeout: 2) { app.swipeUp() }
+            XCTAssertTrue(app.buttons[tile].exists, tile)
+        }
         XCTAssertFalse(app.buttons["menu-kana"].exists)
         app.buttons["hamburgerMenu"].tap()
         for item in ["Review", "Phrasebook", "Quest journal", "Wardrobe", "Bag and badges", "Settings", "Parents"] {
