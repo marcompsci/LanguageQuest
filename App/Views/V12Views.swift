@@ -329,10 +329,11 @@ struct MemoryScienceView: View {
             Section {
                 Text("Memories fade over time unless you use them. Each time you pull a word out of memory, especially just as it starts to fade, it fades more slowly afterwards.")
                 Chart {
-                    ForEach(RecallModel.exampleCurves(), id: \.label) { c in
-                        ForEach(c.points) { pt in
+                    let curves = RecallModel.exampleCurves()
+                    ForEach(curves.indices, id: \.self) { ci in
+                        ForEach(curves[ci].points) { pt in
                             LineMark(x: .value("Days", pt.day), y: .value("Remembered", pt.recall * 100))
-                                .foregroundStyle(by: .value("When", c.label))
+                                .foregroundStyle(by: .value("When", curves[ci].label))
                         }
                     }
                 }
@@ -430,7 +431,7 @@ struct PathChestButton: View {
                 var xp = 0
                 model.updateProfile { xp = TodayPath.openChest(steps, profile: &$0, now: Date()) }
                 model.sfx(.coin)
-                model.celebrate(Celebration(icon: "gift.fill", title: "Path complete!", detail: "+\(xp) XP. See you tomorrow!"))
+                model.celebrate(AppModel.Celebration(icon: "gift.fill", title: "Path complete!", detail: "+\(xp) XP. See you tomorrow!"))
                 model.checkMilestones()
             } label: { Label("Open today's chest", systemImage: "gift.fill").frame(maxWidth: .infinity) }
             .buttonStyle(PrimaryButtonStyle())

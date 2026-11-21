@@ -176,7 +176,7 @@ struct RetentionQuizView: View {
                 Label(t, systemImage: "calendar").font(.subheadline)
             }
             if !ok, q.kind == .typeIt, let t = quiz?.lastTyped, !t.isEmpty, let lib = model.library, let prof = model.profile {
-                if case .almost = quiz?.lastVerdict { Text("Almost! Just a small slip.").font(.headline) }
+                if case .almost? = quiz?.lastVerdict { Text("Almost! Just a small slip.").font(.headline) }
                 TypoDiffView(typed: t, expected: q.word.text(for: prof.variant(for: lib)))
             }
             if !ok { MemoryHookEditor(itemId: q.itemId) }

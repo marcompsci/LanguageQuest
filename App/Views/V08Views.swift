@@ -55,6 +55,7 @@ struct WordLibraryView: View {
         case .met: return "Words you've met in quests and games."
         case .practice: return "Words that are new to you or ready for review."
         case .starred: return "Tap ☆ on any word to add it here."
+        case .tricky: return "Words you keep missing. Drill them from My progress."
         }
     }
 
