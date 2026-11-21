@@ -84,7 +84,8 @@ final class LanguageQuestUITests: XCTestCase {
         app.buttons["course-en-fr"].tap()            // main menu → French page
         XCTAssertTrue(app.buttons["Play: French village"].waitForExistence(timeout: 3))
         XCTAssertTrue(app.buttons["menu-games"].exists)
-        XCTAssertTrue(revealTile("menu-flashcards", in: app))   // v1.2's tip card can push it below the fold
+        if app.buttons["tip-path"].waitForExistence(timeout: 2) { app.buttons["tip-path"].tap() }   // v1.2 first-run tip
+        XCTAssertTrue(app.buttons["menu-flashcards"].waitForExistence(timeout: 3))
         XCTAssertFalse(app.buttons["menu-kana"].exists)
         app.buttons["hamburgerMenu"].tap()
         for item in ["Review", "Phrasebook", "Quest journal", "Wardrobe", "Bag and badges", "Settings", "Parents"] {
