@@ -85,6 +85,10 @@ public enum RetentionQuizKind: Hashable, Sendable {
     case tricky
     /// v1.2: practice just these words again (e.g. the ones missed in a quiz).
     case words([String])
+    /// v1.3: every question asked by sound.
+    case listening
+    /// v1.3: three questions for a busy day.
+    case quick
 }
 
 public struct RetentionQuiz: Sendable {
@@ -130,7 +134,7 @@ public struct RetentionQuiz: Sendable {
         let lesson: [String]
         switch kind {
         case .lesson(let qid): lesson = library.quest(qid).map { Self.lessonItems($0.quest) } ?? []
-        case .memoryCheck, .tricky, .words: lesson = []
+        case .memoryCheck, .tricky, .words, .listening, .quick: lesson = []
         }
         let lessonSet = Set(lesson)
         // The pool: this lesson's words plus every word met so far (a lesson quiz can mix in a fading older word).
@@ -168,7 +172,13 @@ public struct RetentionQuiz: Sendable {
             }
         }
         // Easier to harder (recognition, listening, then producing the word), mixed across words (interleaving).
-        let kinds: [RetentionQuestionKind] = [.meaning, .listen, .pickWord, .typeIt, .typeIt]
+        // v1.3: a listening check asks every question by sound; a quick 3 stays on recognition and recall.
+        let kinds: [RetentionQuestionKind]
+        switch kind {
+        case .listening: kinds = [RetentionQuestionKind.listen]
+        case .quick: kinds = [RetentionQuestionKind.meaning, .pickWord, .typeIt]
+        default: kinds = [RetentionQuestionKind.meaning, .listen, .pickWord, .typeIt, .typeIt]
+        }
         let distractorPool = library.allItems
         questions = picks.enumerated().compactMap { (n, id) -> RetentionQuestion? in
             guard let item = library.item(id) else { return nil }
@@ -264,8 +274,12 @@ public struct RetentionQuiz: Sendable {
     }
 
     /// Records each answer in the memory model.
-    public static func record(_ q: RetentionQuestion, correct ok: Bool, hinted: Bool = false, profile p: inout PlayerProfile, now: Date) {
-        PracticeRecorder.record(itemId: q.itemId, outcome: ReviewOutcome(correct: ok, usedHint: hinted), track: q.track, profile: &p, now: now)
+    /// v1.3: `guessed` (the player said a right answer was a guess) and `seconds` (how long the answer took) make a
+    /// shaky right answer come back sooner. Neither changes the quiz score.
+    public static func record(_ q: RetentionQuestion, correct ok: Bool, hinted: Bool = false, guessed: Bool = false, seconds: Double? = nil,
+                              profile p: inout PlayerProfile, now: Date) {
+        let outcome = ReviewOutcome(correct: ok, responseSeconds: AnswerTiming.effectiveSeconds(seconds, kind: q.kind), usedHint: hinted || (ok && guessed))
+        PracticeRecorder.record(itemId: q.itemId, outcome: outcome, track: q.track, profile: &p, now: now)
     }
 
     /// Saves the result to the quiz history and counts it for the streak. Returns the record and any streak milestone reached.
@@ -285,6 +299,8 @@ public struct RetentionQuiz: Sendable {
             if questId != nil && quiz.total > 0 && quiz.correctCount == quiz.total { m.counters[MetaEvent.lessonQuizPerfect, default: 0] += 1 }
             if quiz.kind == .memoryCheck { m.counters[MetaEvent.memoryCheckDone, default: 0] += 1 }
             if quiz.kind == .tricky { m.counters[MetaEvent.trickyDrill, default: 0] += 1 }
+            if quiz.kind == .quick { m.counters[MetaEvent.quickDone, default: 0] += 1 }
+            if quiz.kind == .listening { m.counters[MetaEvent.listeningDone, default: 0] += 1 }
         }
         let milestone = Streak.recordPractice(&p, now: now)
         if let m = milestone { StreakRewards.grant(m, profile: &p) }

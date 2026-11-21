@@ -17,6 +17,8 @@ public struct ParentSettings: Codable, Hashable, Sendable {
     public var reminders: ReminderPlan? = nil
     /// Added in v1.0: a parent can block the player's own smart reminders. nil = not blocked.
     public var remindersBlocked: Bool? = nil
+    /// v1.3: no play after this hour (and before 5 am). nil = off.
+    public var bedtimeHour: Int? = nil
     public init() {}
 }
 

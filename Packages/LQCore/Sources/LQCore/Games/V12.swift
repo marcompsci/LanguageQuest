@@ -255,17 +255,17 @@ public enum PracticeTimes {
 // MARK: - 20 + 21. Tips and what's new (shown once)
 
 public enum OnceMessages {
-    public static let currentVersion = "1.2"
+    public static let currentVersion = "1.3"
 
     public static let whatsNew: [String] = [
-        "Tricky words: words you keep missing get their own drill.",
-        "\"Almost!\": see exactly which letters were off when you type.",
-        "Sentence dictation in Listen & Type.",
-        "Finish Today's path to open a chest (+30 XP).",
-        "Earn an extra streak freeze with a 10-question memory check.",
-        "See how memory works, and each word's memory curve.",
-        "Practice the words you missed right from the quiz results.",
-        "Quiet mode, reminder days off and keyboard shortcuts.",
+        "\"I guessed\": tell the quiz when a right answer was a guess, and the word comes back sooner.",
+        "Lightning round: 60 seconds, as many words as you can.",
+        "Look-alike words: practise words that are spelled almost the same.",
+        "Quick 3 for busy days, and a listening-only memory check.",
+        "Bedtime review in the evening: sleep helps new words stick.",
+        "Word of the day, a 7-day review forecast and unit mastery rings.",
+        "Mistake journal, today's report and a daily minutes goal.",
+        "Haptics and big answer buttons in Settings.",
     ]
 
     public static func shouldShowWhatsNew(_ p: PlayerProfile) -> Bool {
@@ -303,7 +303,7 @@ extension Achievement {
         case "a-dictation": return (c[MetaEvent.dictationPerfect] ?? 0) >= 1
         case "a-path7": return (c[MetaEvent.pathComplete] ?? 0) >= 7
         case "a-freeze": return (c[MetaEvent.freezeEarned] ?? 0) >= 1
-        default: return nil
+        default: return isMetV13(p)
         }
     }
 
@@ -313,7 +313,7 @@ extension Achievement {
         switch id {
         case "a-tricky": return prog(c[MetaEvent.trickyDrill] ?? 0, 3)
         case "a-path7": return prog(c[MetaEvent.pathComplete] ?? 0, 7)
-        default: return nil
+        default: return progressV13(p)
         }
     }
 }

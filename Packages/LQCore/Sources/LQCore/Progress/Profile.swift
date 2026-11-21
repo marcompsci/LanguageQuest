@@ -67,6 +67,10 @@ public struct LearnerSettings: Codable, Hashable, Sendable {
     public var reviewSize: Int? = nil
     public var quietMode: Bool? = nil
     public var reminderDaysOff: [Int]? = nil
+    /// v1.3 (all optional so older saves load).
+    public var dailyGoalMinutes: Int? = nil
+    public var haptics: Bool? = nil
+    public var bigButtons: Bool? = nil
     public var easyReadOn: Bool { easyRead ?? false }
 
     public init() {}

@@ -31,6 +31,8 @@ public struct MetaProgress: Codable, Hashable, Sendable {
     public var freezeEarnedWeek: String? = nil
     public var whatsNewSeen: String? = nil
     public var tipsSeen: [String]? = nil
+    /// v1.3: the day the bedtime review was done.
+    public var bedtimeDay: String? = nil
     public init() {}
 }
 
@@ -158,7 +160,7 @@ public struct Achievement: Hashable, Identifiable, Sendable {
     public var detail: String
     public var icon: String
 
-    public static let all: [Achievement] = base + v08 + v09 + v10 + v11 + v12
+    public static let all: [Achievement] = base + v08 + v09 + v10 + v11 + v12 + v13
 
     static let base: [Achievement] = [
         Achievement(id: "a-first-quest", title: "First Steps", detail: "Finish your first quest.", icon: "figure.walk"),
