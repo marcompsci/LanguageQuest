@@ -255,17 +255,17 @@ public enum PracticeTimes {
 // MARK: - 20 + 21. Tips and what's new (shown once)
 
 public enum OnceMessages {
-    public static let currentVersion = "1.3"
+    public static let currentVersion = "1.4"
 
     public static let whatsNew: [String] = [
-        "\"I guessed\": tell the quiz when a right answer was a guess, and the word comes back sooner.",
-        "Lightning round: 60 seconds, as many words as you can.",
-        "Look-alike words: practise words that are spelled almost the same.",
-        "Quick 3 for busy days, and a listening-only memory check.",
-        "Bedtime review in the evening: sleep helps new words stick.",
-        "Word of the day, a 7-day review forecast and unit mastery rings.",
-        "Mistake journal, today's report and a daily minutes goal.",
-        "Haptics and big answer buttons in Settings.",
+        "Six new games: articles, picture match, odd one out, free recall, word chain and a family quiz.",
+        "Yesterday's words: a quick check after a night's sleep.",
+        "Mini stories: read words in context, then answer a question.",
+        "Related words and a fresh start for words that keep slipping.",
+        "Your skills by type: reading, listening, choosing and spelling.",
+        "A 12-week activity map and you vs last week.",
+        "Tell us why you're learning, and plan when you'll practise.",
+        "Challenge mode, and pause reminders for a holiday.",
     ]
 
     public static func shouldShowWhatsNew(_ p: PlayerProfile) -> Bool {

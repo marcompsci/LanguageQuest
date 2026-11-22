@@ -71,6 +71,11 @@ public struct LearnerSettings: Codable, Hashable, Sendable {
     public var dailyGoalMinutes: Int? = nil
     public var haptics: Bool? = nil
     public var bigButtons: Bool? = nil
+    /// v1.4 (all optional so older saves load).
+    public var challengeMode: Bool? = nil
+    public var learningReason: String? = nil
+    public var practiceCue: String? = nil
+    public var remindersPausedUntil: Date? = nil
     public var easyReadOn: Bool { easyRead ?? false }
 
     public init() {}

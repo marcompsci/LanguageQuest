@@ -160,7 +160,7 @@ public struct Achievement: Hashable, Identifiable, Sendable {
     public var detail: String
     public var icon: String
 
-    public static let all: [Achievement] = base + v08 + v09 + v10 + v11 + v12 + v13
+    public static let all: [Achievement] = base + v08 + v09 + v10 + v11 + v12 + v13 + v14
 
     static let base: [Achievement] = [
         Achievement(id: "a-first-quest", title: "First Steps", detail: "Finish your first quest.", icon: "figure.walk"),

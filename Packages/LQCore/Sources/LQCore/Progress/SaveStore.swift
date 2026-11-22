@@ -19,6 +19,8 @@ public struct ParentSettings: Codable, Hashable, Sendable {
     public var remindersBlocked: Bool? = nil
     /// v1.3: no play after this hour (and before 5 am). nil = off.
     public var bedtimeHour: Int? = nil
+    /// v1.4: a weekly minutes target the parent sets. nil = off.
+    public var weeklyMinutesTarget: Int? = nil
     public init() {}
 }
 

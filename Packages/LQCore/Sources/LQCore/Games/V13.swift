@@ -414,7 +414,7 @@ extension Achievement {
         case "a-lookalike": return (c[MetaEvent.lookAlikeDrill] ?? 0) >= 1
         case "a-bedtime": return (c[MetaEvent.bedtimeReview] ?? 0) >= 3
         case "a-week50": return WeeklyQuestions.bestWeek(p) >= WeeklyQuestions.goal
-        default: return nil
+        default: return isMetV14(p)
         }
     }
 
@@ -425,7 +425,7 @@ extension Achievement {
         case "a-lightning": return prog(c[MetaEvent.lightningBest] ?? 0, 15)
         case "a-bedtime": return prog(c[MetaEvent.bedtimeReview] ?? 0, 3)
         case "a-week50": return prog(WeeklyQuestions.bestWeek(p), WeeklyQuestions.goal)
-        default: return nil
+        default: return progressV14(p)
         }
     }
 }

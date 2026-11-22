@@ -176,6 +176,7 @@ public struct RetentionQuiz: Sendable {
         let kinds: [RetentionQuestionKind]
         switch kind {
         case .listening: kinds = [RetentionQuestionKind.listen]
+        case .memoryCheck where p.settings.challengeModeOn: kinds = [RetentionQuestionKind.typeIt]   // v1.4 challenge mode
         case .quick: kinds = [RetentionQuestionKind.meaning, .pickWord, .typeIt]
         default: kinds = [RetentionQuestionKind.meaning, .listen, .pickWord, .typeIt, .typeIt]
         }
@@ -280,6 +281,7 @@ public struct RetentionQuiz: Sendable {
                               profile p: inout PlayerProfile, now: Date) {
         let outcome = ReviewOutcome(correct: ok, responseSeconds: AnswerTiming.effectiveSeconds(seconds, kind: q.kind), usedHint: hinted || (ok && guessed))
         PracticeRecorder.record(itemId: q.itemId, outcome: outcome, track: q.track, profile: &p, now: now)
+        SkillBreakdown.count(q, correct: ok, profile: &p)
     }
 
     /// Saves the result to the quiz history and counts it for the streak. Returns the record and any streak milestone reached.
