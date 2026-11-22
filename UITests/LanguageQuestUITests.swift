@@ -472,6 +472,10 @@ final class LanguageQuestUITests: XCTestCase {
             XCTAssertTrue(app.staticTexts["choiceScore"].waitForExistence(timeout: 3))
         }
         app.buttons["Done"].tap()
+        // Opening a game replaces the Games sheet, so open Games again.
+        app.swipeDown(); app.swipeDown(); app.swipeDown()
+        XCTAssertTrue(revealTile("menu-games", in: app))
+        app.buttons["menu-games"].tap()
         let story = app.buttons["storyGame"]
         for _ in 0..<8 where !(story.exists && story.isHittable) { app.swipeUp() }
         story.tap()
