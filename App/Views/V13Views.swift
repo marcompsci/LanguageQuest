@@ -169,6 +169,7 @@ struct TodayGoalCard: View {
                         Text("A last look at today's words before sleep helps them stick.").font(.caption)
                     }
                     SentenceOfTheDayRow()
+                    TodayExtrasRows()
                 }
             }
         }

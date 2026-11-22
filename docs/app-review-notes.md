@@ -1,4 +1,4 @@
-# App Review notes: Language Quest 1.3.0
+# App Review notes: Language Quest 1.4.0
 
 Paste the "Review Notes" section into App Store Connect › TestFlight › Test Information (Beta App Review) and, later, into App Review Information for the App Store. Guideline 2.3.1(a) asks for features to be described specifically, so keep this list current with every build.
 
@@ -24,6 +24,17 @@ HOW TO NAVIGATE
 - Tap a language to open its page: Play (enters the village), Today, Word of the day, Games, Flashcards, Bonus lesson, Write Out, Word Library, Unit quizzes (and Kana Dojo for Japanese).
 - ☰ (top right): Review, Phrasebook, Word Library, Write Out, Bonus lesson, Quest journal, Wardrobe, Bag and badges, Mistakes notebook, Trophies, My stats, Settings, Parents, Privacy policy.
 - In the village: use the arrow pad to walk; "Go to" walks to a character; the house button returns to the language page; the flag button switches language.
+
+NEW IN 1.4
+- Games: Articles (el/la, le/la, il/la), Picture match, Odd one out, Free recall (90 seconds), Mini story, Word chain, and Quiz a grown-up. Games don't change the review schedule.
+- Language page: Yesterday's words (a quick check), the player's reason for learning and practice plan.
+- Quiz: an example sentence after a miss; celebrations when words get locked in and at word milestones (25, 50, 100…).
+- Word Library: related words, and "Start this word fresh" for words missed 6+ times.
+- My progress: tip of the day, you vs last week, a 12-week activity map, skills by question type.
+- Settings: challenge mode, why I'm learning, when I'll practise, pause reminders (3/7/14 days), and a preview of upcoming reminders. Celebrations also follow the iPhone's Reduce Motion setting.
+- Siri & Shortcuts: "Quick 3 in Language Quest".
+- Parents area: 30-day minutes chart, weekly minutes target, skills, and a printable practice sheet (plain text through the system share sheet only).
+- No new data leaves the device; no tracking or analytics. Purchase rules are unchanged.
 
 NEW IN 1.3
 - Quiz: after a right answer the player can tick "I guessed" (the score is unchanged; the word comes back sooner). Answers are timed on the device to tune the review schedule. "3 in a row!" combos, a look-back list of answers, and a slow replay after a listening miss.

@@ -97,6 +97,7 @@ struct WordLibraryView: View {
                 if let pos = e.item.partOfSpeech { Text(pos).font(.caption2).foregroundStyle(Color(p.secondaryText)) }
                 WordCurveView(itemId: e.id)
                 WordExtrasRow(itemId: e.id)
+                WordRelatedRow(itemId: e.id)
                 WordNoteEditor(itemId: e.id)
             } else if let note = model.profile.flatMap({ WordNotes.note(e.id, in: $0) }) {
                 Label(note, systemImage: "note.text").font(.caption).foregroundStyle(Color(p.secondaryText)).lineLimit(1)

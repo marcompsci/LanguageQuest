@@ -60,6 +60,16 @@ Severity: **BLOCKER** (Apple will reject or the build can't be distributed), **H
 | F27 | Save compatibility (2.1 stability) | `ExtrasProgress`, `MetaProgress`, `ParentSettings` | MEDIUM | New saved fields could break loading v0.7 saves. | All new fields are optional; a v0.7-shaped save decodes in a unit test. | ✅ | Unit test |
 | F28 | 2.4.1 iPad | `MenuView`, `LanguageHubView` | LOW | Layout stretched across the full iPad width. | Readable max width (720 pt) and an adaptive tile grid. Still needs a person to check on an iPad. | Partly | Manual (checklist B) |
 
+### v1.4 additions (November 21, 2026)
+
+| # | Guideline / requirement | Where | Sev. | Concern | Remediation | Done? | Verified by |
+|---|---|---|---|---|---|---|---|
+| F54 | 2.3.1(a) new features documented | `docs/app-review-notes.md` | MEDIUM | 30 changes in 1.4. | "NEW IN 1.4" section and the tester guide. | ✅ | Docs |
+| F55 | 2.5.13 / App Intents: new Siri phrase | `QuickThreeIntent` | LOW | A shortcut that opens a quiz. | Opens the app only (`openAppWhenRun`); sends nothing anywhere. | ✅ | Code review |
+| F56 | 5.1.1 data minimization: skills and reasons | `SkillBreakdown`, `LearningReason`, `PracticeCue` | LOW | More details about the child. | Counters and choices stay on the device, are optional, and are listed in privacy policy v9. | ✅ | Unit tests `V14Tests` |
+| F57 | 1.3 kids: practice sheet sharing | `ParentProgressExtras`, `PracticeSheet` | LOW | A shareable sheet from a child's progress. | In the gated Parents area; plain text, no nickname; leaves the device only through the system share sheet. | ✅ | Unit test `testPracticeSheet` |
+| F58 | Privacy policy matches storage | `privacy-policy.md` v9 | LOW | New on-device fields. | Policy v9; both copies identical; `PrivacyNotice.version` = 9. | ✅ | Policy parity test |
+
 ### v1.3 additions (November 21, 2026)
 
 | # | Guideline / requirement | Where | Sev. | Concern | Remediation | Done? | Verified by |

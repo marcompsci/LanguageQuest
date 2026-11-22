@@ -53,6 +53,10 @@ final class AppModel: ObservableObject {
         case lookAlikes([String])
         case bedtimeReview([String])
         case todayReport
+        case choiceGame(String)
+        case freeRecall
+        case miniStory
+        case yesterdayCheck([String])
         var id: String {
             switch self {
             case .quest(let q): return "quest-\(q)"
@@ -100,6 +104,10 @@ final class AppModel: ObservableObject {
             case .lookAlikes(let ids): return "lookAlikes-\(ids.joined(separator: ","))"
             case .bedtimeReview(let ids): return "bedtime-\(ids.joined(separator: ","))"
             case .todayReport: return "todayReport"
+            case .choiceGame(let g): return "choice-\(g)"
+            case .freeRecall: return "freeRecall"
+            case .miniStory: return "miniStory"
+            case .yesterdayCheck(let ids): return "yesterday-\(ids.joined(separator: ","))"
             }
         }
     }
@@ -421,8 +429,8 @@ final class AppModel: ObservableObject {
         let now = Date()
         let due = p.knowledge.values.filter { $0.nextDue <= now.addingTimeInterval(86400) }.count
         let hasNew = progression?.nextQuest(p.progress, plan: plan) != nil
-        let planned = SmartReminders.respectingDaysOff(SmartReminders.plan(p, now: now, dueWords: due, hasNewLesson: hasNew),
-                                                       daysOff: p.settings.reminderDaysOff ?? [])
+        let planned = ReminderPause.apply(SmartReminders.respectingDaysOff(SmartReminders.plan(p, now: now, dueWords: due, hasNewLesson: hasNew),
+                                                       daysOff: p.settings.reminderDaysOff ?? []), settings: p.settings)
         ReminderScheduler.applySmart(planned)
         ReminderScheduler.setBadge(ReviewPlanner.dueItems(p.knowledge, now: now, limit: 99).count)
         updateProfile { SmartReminders.storePlan(planned, profile: &$0, now: now) }
@@ -466,8 +474,36 @@ final class AppModel: ObservableObject {
         return TimeLimit.isReached(minutesToday: minutesToday, parent: save.parent, profile: p, now: Date())
     }
 
+    /// v1.4: the reminders that would be scheduled right now (shown in Settings so nothing is a surprise).
+    func previewSmartReminders() -> [PlannedReminder] {
+        guard let p = profile, p.settings.smartRemindersOn, save.parent.remindersBlocked != true else { return [] }
+        let now = Date()
+        let due = ReviewPlanner.dueItems(p.knowledge, now: now.addingTimeInterval(86400), limit: 99).count
+        return ReminderPause.apply(SmartReminders.respectingDaysOff(SmartReminders.plan(p, now: now, dueWords: due, hasNewLesson: false),
+                                                                    daysOff: p.settings.reminderDaysOff ?? []), settings: p.settings)
+    }
+
+    /// v1.4: celebrate words that just got locked in during a quiz.
+    func celebrateLockIns(before: [String: ItemKnowledge]) {
+        guard let p = profile else { return }
+        let ids = LockIns.newly(before: before, after: p.knowledge, now: Date())
+        guard !ids.isEmpty else { return }
+        let names = ids.prefix(3).compactMap { library?.item($0).map { display($0.target) } }.joined(separator: ", ")
+        celebrate(Celebration(icon: "lock.fill", title: ids.count == 1 ? "A word is locked in!" : "\(ids.count) words locked in!",
+                              detail: names + ". You've remembered " + (ids.count == 1 ? "it" : "them") + " after real breaks."))
+    }
+
+    private var wordsSeen: Int?
+
     func checkMilestones() {
         guard profile != nil else { return }
+        // v1.4: word-count milestones (25, 50, 100…).
+        if let n = profile?.knowledge.count {
+            if let before = wordsSeen, let m = WordMilestones.crossed(before: before, after: n) {
+                celebrate(Celebration(icon: "books.vertical.fill", title: "\(m) words!", detail: "You've met \(m) words. Keep going!"))
+            }
+            wordsSeen = n
+        }
         var newOnes: [Achievement] = []
         let libs = libraries
         updateProfile { newOnes = Achievement.evaluate(&$0, libraries: libs) }
@@ -502,7 +538,7 @@ final class AppModel: ObservableObject {
         guard let sheet else { return .village }
         switch sheet {
         case .battle: return .battle
-        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes, .starredPractice, .builder, .quizzes, .listenType, .rightOrWrong, .memoryCheck, .lessonQuiz, .tricky, .practiceWords, .dictation, .lightning, .quickThree, .listeningCheck, .lookAlikes, .bedtimeReview, .todayReport:
+        case .quest, .review, .placement, .mastery, .scramble, .market, .flashcards, .kana, .bonus, .writeOut, .echo, .memory, .bee, .mistakes, .starredPractice, .builder, .quizzes, .listenType, .rightOrWrong, .memoryCheck, .lessonQuiz, .tricky, .practiceWords, .dictation, .lightning, .quickThree, .listeningCheck, .lookAlikes, .bedtimeReview, .todayReport, .choiceGame, .freeRecall, .miniStory, .yesterdayCheck:
             return GameMusic.lessons(for: library?.course.targetLanguage ?? "es")
         case .journal, .bag, .parent, .games, .phrasebook, .languages, .settings, .wardrobe, .trophies, .stats, .privacy, .words, .myProgress, .plus:
             return .village
@@ -520,6 +556,7 @@ final class AppModel: ObservableObject {
                 PendingShortcut.value = nil
                 switch action {
                 case .memoryCheck: sheet = .memoryCheck
+                case .quickThree: sheet = .quickThree
                 case .continueLearning: break
                 }
             }

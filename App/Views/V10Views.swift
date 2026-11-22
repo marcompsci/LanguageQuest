@@ -27,6 +27,7 @@ struct RetentionQuizView: View {
     @State private var combo = ComboCounter()
     @State private var comboHit: Int?
     @State private var showLookBack = false
+    @State private var startKnowledge: [String: ItemKnowledge] = [:]
 
     var body: some View {
         ScrollView {
@@ -196,6 +197,16 @@ struct RetentionQuizView: View {
                     .accessibilityHint("A guess still counts in your score, but the word comes back sooner.")
                 if guessed { Text("Thanks for being honest. It still counts, and the word comes back sooner.").font(.caption).multilineTextAlignment(.center) }
             }
+            // v1.4: after a miss, the word in a sentence (unless the question already showed one).
+            if !ok, q.context == nil, let lib = model.library, let prof = model.profile, let item = lib.item(q.itemId),
+               let ex = ExampleSentence.sentence(for: item, profile: prof, library: lib) {
+                VStack(spacing: 2) {
+                    Text(model.display(ex.text)).font(.subheadline.italic())
+                    Text("“\(ex.english)”").font(.caption)
+                }
+                .multilineTextAlignment(.center)
+                .accessibilityIdentifier("rq-example")
+            }
             if !ok { MemoryHookEditor(itemId: q.itemId) }
             Button("Next") { flushPending(); feedback = nil; typed = ""; questionStart = Date(); if quiz?.isFinished == true { finish() } }
                 .buttonStyle(PrimaryButtonStyle())
@@ -258,6 +269,7 @@ struct RetentionQuizView: View {
         if q.questions.isEmpty { onDone(nil); return }
         quiz = q
         questionStart = Date()
+        startKnowledge = prof.knowledge
     }
 
     private func answer(_ q: RetentionQuestion, choice: Int) {
@@ -299,6 +311,7 @@ struct RetentionQuizView: View {
         guard record == nil, let qz = quiz, qz.isFinished else { return }
         flushPending()
         record = model.finishRetentionQuiz(qz)
+        model.celebrateLockIns(before: startKnowledge)
         if let r = record { UIAccessibility.post(notification: .announcement, argument: "\(r.correct) of \(r.total) right") }
     }
 }

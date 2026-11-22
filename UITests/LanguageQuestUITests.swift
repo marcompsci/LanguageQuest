@@ -447,6 +447,38 @@ final class LanguageQuestUITests: XCTestCase {
         XCTAssertTrue(finishLessonQuiz(app), "the retaken lesson quiz reaches a score")
     }
 
+    // MARK: v1.4
+
+    /// A v1.4 choice game (Quiz a grown-up) plays through to a score, and the mini story opens.
+    @MainActor func testFamilyQuizAndMiniStory() {
+        let app = launch(seed: true, firstQuestDone: true)
+        XCTAssertTrue(app.buttons["course-en-es"].waitForExistence(timeout: 5))
+        while app.buttons["celebrationDone"].waitForExistence(timeout: 2) { app.buttons["celebrationDone"].tap() }
+        app.buttons["course-en-es"].tap()
+        if app.buttons["tip-path"].waitForExistence(timeout: 3) { app.buttons["tip-path"].tap() }
+        XCTAssertTrue(revealTile("menu-games", in: app))
+        app.buttons["menu-games"].tap()
+        let family = app.buttons["familyGame"]
+        for _ in 0..<8 where !(family.exists && family.isHittable) { app.swipeUp() }
+        XCTAssertTrue(family.exists)
+        family.tap()
+        if app.buttons["choiceStart"].waitForExistence(timeout: 5) {
+            app.buttons["choiceStart"].tap()
+            for _ in 0..<12 {
+                if app.staticTexts["choiceScore"].exists { break }
+                if app.buttons["choice-0"].waitForExistence(timeout: 2) { app.buttons["choice-0"].tap() }
+                if app.buttons["choiceNext"].waitForExistence(timeout: 2) { app.buttons["choiceNext"].tap() }
+            }
+            XCTAssertTrue(app.staticTexts["choiceScore"].waitForExistence(timeout: 3))
+        }
+        app.buttons["Done"].tap()
+        let story = app.buttons["storyGame"]
+        for _ in 0..<8 where !(story.exists && story.isHittable) { app.swipeUp() }
+        story.tap()
+        XCTAssertTrue(app.navigationBars["Mini story"].waitForExistence(timeout: 5))
+        app.buttons["Done"].tap()
+    }
+
     // MARK: v1.3
 
     /// Quick 3 from the language page (with "I guessed" and the look-back list), then a Lightning round from Games.

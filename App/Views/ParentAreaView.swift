@@ -145,6 +145,7 @@ struct ParentDashboardView: View {
                 ParentLearningSection()
                 ParentShareCardSection()
                 ParentWordsSection()
+                ParentProgressExtras()
                 Section { ParentTimeLimitRow(); ParentBedtimeRow() } header: { Text("Playtime") } footer: { Text("When today's playtime is used up, the app shows a friendly stop screen. A parent can allow more for the day. Bedtime also blocks play before 5 am.") }
                 suggestionsSection(report)
                 settingsSection(prof, lib)

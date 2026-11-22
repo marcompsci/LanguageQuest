@@ -52,6 +52,10 @@ struct SheetRouter: View {
         case .lookAlikes(let ids): LookAlikeSheet(ids: ids)
         case .bedtimeReview(let ids): BedtimeSheet(ids: ids)
         case .todayReport: NavigationStack { TodayReportView() }
+        case .choiceGame(let g): ChoiceGameRouter(game: g)
+        case .freeRecall: FreeRecallView()
+        case .miniStory: MiniStoryView()
+        case .yesterdayCheck(let ids): YesterdaySheet(ids: ids)
         }
     }
 }
@@ -167,6 +171,7 @@ struct PlayerSettingsView: View {
                             .accessibilityIdentifier("leftHandedToggle")
                         SmartRemindersToggle()
                         ReminderDaysOffRow()
+                        ReminderPauseRows()
                         Picker("Words per review", selection: Binding(get: { ReviewSize.size((model.profile ?? prof).settings) },
                                                                      set: { v in model.updateProfile { $0.settings.reviewSize = v } })) {
                             ForEach(ReviewSize.choices, id: \.self) { Text("\($0)").tag($0) }
@@ -178,6 +183,7 @@ struct PlayerSettingsView: View {
                             ForEach(DailyGoal.choices, id: \.self) { Text("\($0) minutes a day").tag($0) }
                         }
                         .accessibilityIdentifier("dailyGoal")
+                        LearningSettingsRows()
                     }
                     Section { EmptyView() } footer: {
                         Text("Break reminders, speech checking, purchases and deleting data are in the Parents area.")

@@ -3,13 +3,13 @@ import Foundation
 // v1.4: thirty improvements. Everything stays on the device; nothing new is sent anywhere.
 
 extension MetaEvent {
-    static let articleDrill = "articleDrill"
-    static let pictureMatch = "pictureMatch"
-    static let oddOneOut = "oddOneOut"
-    static let freeRecallBest = "freeRecallBest"
-    static let familyQuiz = "familyQuiz"
-    static let wordChain = "wordChain"
-    static let wordReset = "wordReset"
+    public static let articleDrill = "articleDrill"
+    public static let pictureMatch = "pictureMatch"
+    public static let oddOneOut = "oddOneOut"
+    public static let freeRecallBest = "freeRecallBest"
+    public static let familyQuiz = "familyQuiz"
+    public static let wordChain = "wordChain"
+    public static let wordReset = "wordReset"
     static func skillRight(_ k: RetentionQuestionKind) -> String { "skill-ok-" + k.rawValue }
     static func skillAsked(_ k: RetentionQuestionKind) -> String { "skill-n-" + k.rawValue }
 }

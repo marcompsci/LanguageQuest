@@ -126,6 +126,37 @@ struct GamesHubView: View {
                             gameRow(icon: "bolt.fill", title: "Lightning round", detail: "Best: \(LightningRound.best(prof))", locked: false)
                         }
                         .accessibilityIdentifier("lightningGame")
+                        // v1.4 games
+                        if let lib = model.library, ArticleDrill.isAvailable(prof, library: lib), let a = ArticleDrill.articles(lib.course) {
+                            Button { model.sheet = .choiceGame("articles") } label: {
+                                gameRow(icon: "textformat", title: "Articles: \(a.m) or \(a.f)?", detail: "Learn each noun's gender", locked: false)
+                            }
+                            .accessibilityIdentifier("articleGame")
+                        }
+                        Button { model.sheet = .choiceGame("pictures") } label: {
+                            gameRow(icon: "photo.on.rectangle", title: "Picture match", detail: "Match the word to its picture", locked: false)
+                        }
+                        .accessibilityIdentifier("pictureGame")
+                        Button { model.sheet = .choiceGame("odd") } label: {
+                            gameRow(icon: "circle.grid.2x2", title: "Odd one out", detail: "Which word doesn't belong?", locked: false)
+                        }
+                        .accessibilityIdentifier("oddGame")
+                        Button { model.sheet = .freeRecall } label: {
+                            gameRow(icon: "brain", title: "Free recall", detail: "Type every word you remember", locked: false)
+                        }
+                        .accessibilityIdentifier("freeRecallGame")
+                        Button { model.sheet = .miniStory } label: {
+                            gameRow(icon: "book.fill", title: "Mini story", detail: "Read, then answer a question", locked: false)
+                        }
+                        .accessibilityIdentifier("storyGame")
+                        Button { model.sheet = .choiceGame("chain") } label: {
+                            gameRow(icon: "link", title: "Word chain", detail: "Next word starts with the last letter", locked: false)
+                        }
+                        .accessibilityIdentifier("chainGame")
+                        Button { model.sheet = .choiceGame("family") } label: {
+                            gameRow(icon: "figure.2.and.child.holdinghands", title: "Quiz a grown-up", detail: "You ask, they answer", locked: false)
+                        }
+                        .accessibilityIdentifier("familyGame")
                         if model.library?.course.script == .kana {
                             Button { model.sheet = .kana } label: {
                                 gameRow(icon: "character.ja", title: "Kana Dojo", detail: stars(extras.kanaBestStars ?? 0), locked: false)

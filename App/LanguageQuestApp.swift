@@ -26,6 +26,7 @@ struct LanguageQuestApp: App {
 
 struct RootView: View {
     @EnvironmentObject var model: AppModel
+    @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
     @State private var limitTick = 0
 
     var body: some View {
@@ -67,7 +68,7 @@ struct RootView: View {
         }
         .overlay {
             if let c = model.celebration {
-                CelebrationOverlay(celebration: c, reducedMotion: model.profile?.settings.reducedMotion ?? false) { model.dismissCelebration() }
+                CelebrationOverlay(celebration: c, reducedMotion: (model.profile?.settings.reducedMotion ?? false) || systemReduceMotion) { model.dismissCelebration() }
                     .transition(.opacity)
             }
         }

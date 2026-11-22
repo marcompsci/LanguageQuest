@@ -26,6 +26,19 @@ struct OpenTodaysPathIntent: AppIntent {
     }
 }
 
+/// v1.4: "Quick 3 in Language Quest" for busy days.
+struct QuickThreeIntent: AppIntent {
+    static let title: LocalizedStringResource = "Quick 3"
+    static let description = IntentDescription("Opens Language Quest on a 3-question check.")
+    static let openAppWhenRun = true
+
+    @MainActor
+    func perform() async throws -> some IntentResult {
+        PendingShortcut.value = .quickThree
+        return .result()
+    }
+}
+
 struct LanguageQuestShortcuts: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
         AppShortcut(intent: StartMemoryCheckIntent(),
@@ -34,10 +47,13 @@ struct LanguageQuestShortcuts: AppShortcutsProvider {
         AppShortcut(intent: OpenTodaysPathIntent(),
                     phrases: ["Continue learning in \(.applicationName)", "Open \(.applicationName)"],
                     shortTitle: "Continue learning", systemImageName: "play.fill")
+        AppShortcut(intent: QuickThreeIntent(),
+                    phrases: ["Quick 3 in \(.applicationName)", "Quick quiz in \(.applicationName)"],
+                    shortTitle: "Quick 3", systemImageName: "hare.fill")
     }
 }
 
 enum PendingShortcut {
-    enum Action { case memoryCheck, continueLearning }
+    enum Action { case memoryCheck, continueLearning, quickThree }
     @MainActor static var value: Action?
 }

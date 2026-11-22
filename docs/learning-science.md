@@ -1,4 +1,4 @@
-# How Language Quest helps players remember (v1.0, updated for 1.3)
+# How Language Quest helps players remember (v1.0, updated for 1.4)
 
 This page explains what the research says about remembering faster and longer, and where each idea lives in the app. Researched November 19, 2026.
 
@@ -50,6 +50,20 @@ This page explains what the research says about remembering faster and longer, a
 | Small, frequent practice | **Quick 3** for busy days, a **daily minutes goal**, and a **weekly question goal**. |
 | Listening comprehension | A **listening-only memory check**, and a slow replay after a listening miss. |
 | Context | A **sentence of the day** and example sentences in the Word Library. |
+
+### Added in 1.4
+
+| Idea | In Language Quest |
+|---|---|
+| Free recall | **Free recall**: type every word you remember from a unit in 90 seconds, with no hints (`FreeRecall`). |
+| Retrieval after sleep | **Yesterday's words**: a quick check of words practised yesterday (`YesterdayRecall`). |
+| Context and reading | **Mini stories** built from a unit's example sentences, with a question; an example sentence after a quiz miss. |
+| Grammatical gender | **Article drill** (el / la, le / la, il / la) for nouns already met (`ArticleDrill`). |
+| Desirable difficulty | **Challenge mode** turns every memory-check question into a typed answer. |
+| Leeches | A word missed 6+ times can **start fresh**, with short gaps again (`WordReset`). |
+| Goals and plans | **Why I'm learning**, and a **"When I…, I'll practise"** plan (implementation intentions). |
+| Feedback on skills | **Skills by question type**, a **12-week map**, and **you vs last week**. |
+| Teaching others | **Quiz a grown-up**: explaining and testing someone else reinforces memory. |
 
 ## What we deliberately didn't copy
 
